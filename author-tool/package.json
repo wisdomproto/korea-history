@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "tsx watch server/index.ts",
     "build": "vite build && node esbuild.server.mjs",
+    "build:all": "vite build && node esbuild.server.mjs && cd .. && npx expo export --platform web",
     "build:client": "vite build",
     "build:server": "node esbuild.server.mjs",
     "start": "NODE_ENV=production node dist-server/index.js",

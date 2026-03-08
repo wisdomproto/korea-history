@@ -8,7 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "build:web": "npx expo export --platform web",
-    "serve:web": "npx serve dist -s -l ${PORT:-3000}"
+    "build:railway": "npm install && cd author-tool && npm install && npm run build:all",
+    "start:railway": "cd author-tool && npm start"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "2.2.0",

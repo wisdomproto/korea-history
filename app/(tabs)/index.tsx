@@ -30,9 +30,9 @@ function getAuthorToolUrl(): string {
   const envUrl = process.env.EXPO_PUBLIC_AUTHOR_TOOL_URL;
   if (envUrl) return envUrl;
   if (Platform.OS === 'web' && typeof window !== 'undefined') {
-    return `${window.location.protocol}//${window.location.hostname}:3001`;
+    return `${window.location.origin}/admin`;
   }
-  return 'http://localhost:3001';
+  return 'http://localhost:3001/admin';
 }
 
 export default function HomeScreen() {

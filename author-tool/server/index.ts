@@ -32,9 +32,9 @@ async function startServer() {
 
   app.use(errorMiddleware as express.ErrorRequestHandler);
 
-  // --- Vite integration ---
+  // --- Static file serving ---
   if (isDev) {
-    // Dev: use Vite dev server as middleware (HMR, fast refresh etc.)
+    // Dev: Vite dev server for author tool at /admin
     const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
       server: { middlewareMode: true },
@@ -42,11 +42,20 @@ async function startServer() {
     });
     app.use(vite.middlewares);
   } else {
-    // Prod: serve built static files
-    const distPath = path.resolve(__dirname, '../dist');
-    app.use(express.static(distPath));
+    // Prod: serve author tool at /admin, main app at /
+    const adminDistPath = path.resolve(__dirname, '../dist');
+    const mainDistPath = path.resolve(__dirname, '../../dist');
+
+    // Author tool (admin)
+    app.use('/admin', express.static(adminDistPath));
+    app.get('/admin/{*path}', (_req, res) => {
+      res.sendFile(path.join(adminDistPath, 'index.html'));
+    });
+
+    // Main app (Expo web) — catch-all
+    app.use(express.static(mainDistPath));
     app.get('{*path}', (_req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
+      res.sendFile(path.join(mainDistPath, 'index.html'));
     });
   }
 
