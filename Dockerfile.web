@@ -1,0 +1,29 @@
+FROM node:20-slim
+
+WORKDIR /app
+
+# Copy package files and install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy app source
+COPY app/ app/
+COPY components/ components/
+COPY hooks/ hooks/
+COPY lib/ lib/
+COPY data/ data/
+COPY assets/ assets/
+COPY app.json tsconfig.json ./
+
+# Build args for env vars (set in Railway dashboard)
+ARG EXPO_PUBLIC_AUTHOR_TOOL_URL
+ENV EXPO_PUBLIC_AUTHOR_TOOL_URL=$EXPO_PUBLIC_AUTHOR_TOOL_URL
+
+# Export static web build
+RUN npx expo export --platform web
+
+# Install lightweight static server
+RUN npm install -g serve
+
+EXPOSE 3000
+CMD ["serve", "dist", "-l", "3000", "-s"]

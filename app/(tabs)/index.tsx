@@ -27,6 +27,8 @@ function getDday(dateStr: string): number {
 const AUTHOR_TOOL_PW = '8054';
 
 function getAuthorToolUrl(): string {
+  const envUrl = process.env.EXPO_PUBLIC_AUTHOR_TOOL_URL;
+  if (envUrl) return envUrl;
   if (Platform.OS === 'web' && typeof window !== 'undefined') {
     return `${window.location.protocol}//${window.location.hostname}:3001`;
   }
