@@ -1,0 +1,15 @@
+node_modules/
+author-tool/node_modules/
+author-tool/dist/
+author-tool/dist-server/
+.expo/
+.claude/
+ios/
+android/
+web-build/
+*.log
+.env
+.env*.local
+.DS_Store
+.git/
+*.md

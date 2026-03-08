@@ -47,8 +47,9 @@ yarn-error.*
 # test files
 test.pdf
 
-# author-tool dependencies
+# author-tool
 author-tool/node_modules/
+author-tool/dist-server/
 
 # logs
 *.log

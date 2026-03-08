@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { StyleSheet, View, Text, Pressable } from 'react-native';
+import { StyleSheet, View, Text, Pressable, Modal, TextInput, Alert, Linking, Platform } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -24,6 +24,15 @@ function getDday(dateStr: string): number {
   return Math.ceil((target.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
 }
 
+const AUTHOR_TOOL_PW = '8054';
+
+function getAuthorToolUrl(): string {
+  if (Platform.OS === 'web' && typeof window !== 'undefined') {
+    return `${window.location.protocol}//${window.location.hostname}:3001`;
+  }
+  return 'http://localhost:3001';
+}
+
 export default function HomeScreen() {
   const router = useRouter();
   const [profile, setProfile] = useState<UserProfile | null>(null);
@@ -31,6 +40,8 @@ export default function HomeScreen() {
   const [records, setRecords] = useState<ExamRecord[]>([]);
   const [dailyLog, setDailyLog] = useState<DailyStudyLog | null>(null);
   const [unresolvedWrong, setUnresolvedWrong] = useState(0);
+  const [showPwModal, setShowPwModal] = useState(false);
+  const [pwInput, setPwInput] = useState('');
 
   useFocusEffect(
     useCallback(() => {
@@ -54,10 +65,80 @@ export default function HomeScreen() {
       ? Math.round(records.reduce((sum, r) => sum + r.score, 0) / records.length)
       : null;
 
+  const handlePwSubmit = () => {
+    if (pwInput === AUTHOR_TOOL_PW) {
+      setShowPwModal(false);
+      setPwInput('');
+      const url = getAuthorToolUrl();
+      if (Platform.OS === 'web' && typeof window !== 'undefined') {
+        window.open(url, '_blank');
+      } else {
+        Linking.openURL(url);
+      }
+    } else {
+      setPwInput('');
+      Alert.alert('오류', '비밀번호가 틀렸습니다.');
+    }
+  };
+
+  const pwModal = (
+    <Modal
+      visible={showPwModal}
+      transparent
+      animationType="fade"
+      onRequestClose={() => { setShowPwModal(false); setPwInput(''); }}
+    >
+      <Pressable
+        style={styles.modalOverlay}
+        onPress={() => { setShowPwModal(false); setPwInput(''); }}
+      >
+        <Pressable style={styles.modalContent} onPress={(e) => e.stopPropagation()}>
+          <Text style={styles.modalTitle}>관리자 인증</Text>
+          <TextInput
+            style={styles.modalInput}
+            placeholder="비밀번호 입력"
+            placeholderTextColor={COLORS.textLight}
+            secureTextEntry
+            value={pwInput}
+            onChangeText={setPwInput}
+            onSubmitEditing={handlePwSubmit}
+            autoFocus
+          />
+          <View style={styles.modalButtons}>
+            <Pressable
+              style={styles.modalCancelBtn}
+              onPress={() => { setShowPwModal(false); setPwInput(''); }}
+            >
+              <Text style={styles.modalCancelText}>취소</Text>
+            </Pressable>
+            <Pressable style={styles.modalConfirmBtn} onPress={handlePwSubmit}>
+              <Text style={styles.modalConfirmText}>확인</Text>
+            </Pressable>
+          </View>
+        </Pressable>
+      </Pressable>
+    </Modal>
+  );
+
+  const headerRow = (
+    <View style={styles.headerRow}>
+      <Text style={styles.headerTitle}>한국사 마스터</Text>
+      <Pressable
+        style={styles.adminBtn}
+        onPress={() => setShowPwModal(true)}
+        hitSlop={8}
+      >
+        <Ionicons name="construct-outline" size={18} color={COLORS.textLight} />
+      </Pressable>
+    </View>
+  );
+
   // 온보딩 미완료 상태
   if (!profile?.onboardingCompleted) {
     return (
       <Container>
+        {headerRow}
+        {pwModal}
         <View style={styles.welcomeCard}>
           <View style={styles.welcomeIconWrap}>
             <Ionicons name="school" size={40} color={COLORS.primary} />
@@ -94,6 +175,8 @@ export default function HomeScreen() {
 
   return (
     <Container scroll>
+      {headerRow}
+      {pwModal}
       {/* D-day 카드 */}
       <View style={styles.ddayCard}>
         <View style={styles.ddayRow}>
@@ -301,6 +384,84 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  // --- 헤더 ---
+  headerRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 4,
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: '800',
+    color: COLORS.text,
+  },
+  adminBtn: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  // --- 비밀번호 모달 ---
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContent: {
+    backgroundColor: COLORS.surface,
+    borderRadius: RADIUS.lg,
+    padding: 24,
+    width: 300,
+    ...SHADOWS.md,
+  },
+  modalTitle: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: COLORS.text,
+    marginBottom: 16,
+    textAlign: 'center',
+  },
+  modalInput: {
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    borderRadius: RADIUS.sm,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    fontSize: 15,
+    color: COLORS.text,
+    marginBottom: 16,
+  },
+  modalButtons: {
+    flexDirection: 'row',
+    gap: 10,
+  },
+  modalCancelBtn: {
+    flex: 1,
+    paddingVertical: 10,
+    borderRadius: RADIUS.sm,
+    backgroundColor: COLORS.bg,
+    alignItems: 'center',
+  },
+  modalCancelText: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: COLORS.textSecondary,
+  },
+  modalConfirmBtn: {
+    flex: 1,
+    paddingVertical: 10,
+    borderRadius: RADIUS.sm,
+    backgroundColor: COLORS.primary,
+    alignItems: 'center',
+  },
+  modalConfirmText: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#fff',
+  },
   // --- 온보딩 미완료 ---
   welcomeCard: {
     backgroundColor: COLORS.surface,

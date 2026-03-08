@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch server/index.ts",
-    "build": "vite build",
+    "build": "vite build && node esbuild.server.mjs",
+    "build:client": "vite build",
+    "build:server": "node esbuild.server.mjs",
     "start": "NODE_ENV=production node dist-server/index.js",
     "typecheck": "tsc --noEmit"
   },
@@ -35,6 +37,7 @@
     "@vitejs/plugin-react": "^4.3.0",
     "autoprefixer": "^10.4.0",
     "concurrently": "^9.0.0",
+    "esbuild": "^0.27.3",
     "postcss": "^8.4.0",
     "tailwindcss": "^3.4.0",
     "tsx": "^4.19.0",
