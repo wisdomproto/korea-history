@@ -25,7 +25,14 @@
       "points": 2,
       "era": "선사·고조선",
       "category": "사회",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "반달 돌칼",
+        "청동기",
+        "거푸집",
+        "철제 농기구",
+        "비파형 동검"
+      ]
     },
     {
       "id": 2,
@@ -43,7 +50,11 @@
       "points": 2,
       "era": "선사·고조선",
       "category": "정치",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "순장",
+        "영고"
+      ]
     },
     {
       "id": 3,
@@ -61,7 +72,11 @@
       "points": 2,
       "era": "삼국",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "관창",
+        "계백"
+      ]
     },
     {
       "id": 4,
@@ -79,7 +94,11 @@
       "points": 2,
       "era": "남북국",
       "category": "문화",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "선종",
+        "가지산문"
+      ]
     },
     {
       "id": 5,
@@ -97,7 +116,11 @@
       "points": 2,
       "era": "고려",
       "category": "문화",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "직지심체요절",
+        "금속 활자"
+      ]
     },
     {
       "id": 6,
@@ -115,7 +138,12 @@
       "points": 2,
       "era": "조선 전기",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "조선 태종",
+        "의금부",
+        "왕권 강화"
+      ]
     },
     {
       "id": 7,
@@ -133,7 +161,10 @@
       "points": 3,
       "era": "조선 후기",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "균역법"
+      ]
     },
     {
       "id": 8,
@@ -151,7 +182,13 @@
       "points": 2,
       "era": "근대",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "고종",
+        "러시아 공사관",
+        "아관파천",
+        "을미사변"
+      ]
     },
     {
       "id": 9,
@@ -169,7 +206,13 @@
       "points": 2,
       "era": "현대",
       "category": "정치",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "6월 민주 항쟁",
+        "호헌 철폐",
+        "독재 타도",
+        "직선제 개헌"
+      ]
     },
     {
       "id": 10,
@@ -187,7 +230,12 @@
       "points": 3,
       "era": "현대",
       "category": "경제",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "박정희 정부",
+        "수출 주도형 공업화",
+        "경제 개발 5개년 계획"
+      ]
     }
   ]
 }

@@ -25,7 +25,12 @@
       "points": 2,
       "era": "선사·고조선",
       "category": "사회",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "고인돌",
+        "한반도",
+        "동아시아"
+      ]
     },
     {
       "id": 32,
@@ -43,7 +48,13 @@
       "points": 2,
       "era": "삼국",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "백제",
+        "평양성",
+        "고국원왕",
+        "마한"
+      ]
     },
     {
       "id": 33,
@@ -61,7 +72,13 @@
       "points": 2,
       "era": "남북국",
       "category": "경제",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "완도",
+        "청해진",
+        "남해",
+        "황해"
+      ]
     },
     {
       "id": 34,
@@ -79,7 +96,13 @@
       "points": 3,
       "era": "고려",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "고려",
+        "원나라",
+        "반원 자주 정책",
+        "신돈"
+      ]
     },
     {
       "id": 35,
@@ -97,7 +120,12 @@
       "points": 2,
       "era": "조선 전기",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "조선",
+        "성종",
+        "6전 체계"
+      ]
     },
     {
       "id": 36,
@@ -115,7 +143,12 @@
       "points": 3,
       "era": "조선 후기",
       "category": "정치",
-      "difficulty": 3
+      "difficulty": 3,
+      "keywords": [
+        "선조",
+        "동인",
+        "서인"
+      ]
     },
     {
       "id": 37,
@@ -133,7 +166,14 @@
       "points": 2,
       "era": "조선 후기",
       "category": "경제",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "광해군",
+        "경기도",
+        "공납",
+        "쌀",
+        "포"
+      ]
     },
     {
       "id": 38,
@@ -151,7 +191,14 @@
       "points": 2,
       "era": "근대",
       "category": "정치",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "1876년",
+        "조선",
+        "일본",
+        "부산",
+        "항구 개항"
+      ]
     },
     {
       "id": 39,
@@ -169,7 +216,13 @@
       "points": 2,
       "era": "근대",
       "category": "정치",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "1919년 3월 1일",
+        "민족 대표 33인",
+        "독립 선언서",
+        "만세 시위"
+      ]
     },
     {
       "id": 40,
@@ -187,7 +240,14 @@
       "points": 2,
       "era": "현대",
       "category": "경제",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "1970년대",
+        "박정희 정부",
+        "근면",
+        "자조",
+        "협동"
+      ]
     }
   ]
 }

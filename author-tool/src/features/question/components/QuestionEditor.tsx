@@ -4,6 +4,7 @@ import { Button } from '@/components/Button';
 import { MetadataSelector } from './MetadataSelector';
 import { imageApi } from '../api/image.api';
 import { generatorApi } from '@/features/generator/api/generator.api';
+import { ImageCropModal } from './ImageCropModal';
 import type { Question, Era, Category, ModelsResponse, GeneratedQuestion } from '@/lib/types';
 
 interface QuestionEditorProps {
@@ -173,6 +174,7 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
   };
 
   const [tab, setTab] = useState<'edit' | 'preview'>('edit');
+  const [showCropModal, setShowCropModal] = useState(false);
 
   // Build current question state for preview
   const previewQuestion: Question = {
@@ -398,12 +400,18 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
               {imageUrl ? (
                 <div className="relative group">
                   <img src={imageUrl} alt="문제 이미지" className="max-h-[600px] w-full rounded-lg object-contain bg-gray-50 p-2" />
-                  <button
-                    onClick={() => setImageUrl('')}
-                    className="absolute top-2 right-2 rounded-full bg-red-500 text-white w-6 h-6 text-xs opacity-0 group-hover:opacity-100 transition-opacity"
-                  >
-                    &times;
-                  </button>
+                  <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button
+                      onClick={() => setShowCropModal(true)}
+                      className="rounded-full bg-blue-500 text-white w-7 h-7 text-sm flex items-center justify-center"
+                      title="이미지 자르기"
+                    >✂</button>
+                    <button
+                      onClick={() => setImageUrl('')}
+                      className="rounded-full bg-red-500 text-white w-7 h-7 text-sm flex items-center justify-center"
+                      title="이미지 삭제"
+                    >&times;</button>
+                  </div>
                 </div>
               ) : (
                 <div
@@ -505,6 +513,24 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
             <p className="mt-1.5 text-xs text-gray-400">녹색 원 = 정답 클릭 변경 · 이미지 영역 클릭 → Ctrl+V · 드래그앤드롭 · 파일 선택</p>
           </div>
         </>
+      )}
+
+      {/* Image Crop Modal */}
+      {showCropModal && imageUrl && (
+        <ImageCropModal
+          open={showCropModal}
+          imageUrl={imageUrl}
+          onClose={() => setShowCropModal(false)}
+          onCropped={(file) => {
+            uploadMutation.mutate(file, {
+              onSuccess: (url) => {
+                setImageUrl(url);
+                setShowCropModal(false);
+              },
+            });
+          }}
+          loading={uploadMutation.isPending}
+        />
       )}
     </div>
   );

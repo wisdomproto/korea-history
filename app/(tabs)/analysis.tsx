@@ -101,7 +101,7 @@ export default function AnalysisScreen() {
           {unresolvedCount > 0 && (
             <Pressable
               style={styles.recommendCard}
-              onPress={() => router.push('/exam/review')}
+              onPress={() => router.navigate('/exam/review')}
             >
               <View style={[styles.recommendIconWrap, { backgroundColor: '#FEF3C7' }]}>
                 <Ionicons name="refresh" size={18} color="#F59E0B" />
@@ -117,7 +117,7 @@ export default function AnalysisScreen() {
             <Pressable
               style={styles.recommendCard}
               onPress={() =>
-                router.push({ pathname: '/exam/unit', params: { era: topWeakEra.key } })
+                router.navigate({ pathname: '/exam/unit', params: { era: topWeakEra.key } })
               }
             >
               <View style={[styles.recommendIconWrap, { backgroundColor: '#EFF6FF' }]}>
@@ -187,7 +187,7 @@ export default function AnalysisScreen() {
                 key={era.key}
                 style={styles.barRow}
                 onPress={() =>
-                  router.push({ pathname: '/exam/unit', params: { era: era.key } })
+                  router.navigate({ pathname: '/exam/unit', params: { era: era.key } })
                 }
               >
                 <Text style={styles.barLabel}>{era.label}</Text>

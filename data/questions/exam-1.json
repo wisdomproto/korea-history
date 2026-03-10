@@ -28,7 +28,14 @@
       "id": 1001,
       "examId": 8,
       "questionNumber": 1,
-      "imageUrl": "/uploads/img_1772941686632_j29ry0.png"
+      "imageUrl": "/uploads/img_1772941686632_j29ry0.png",
+      "keywords": [
+        "고인돌",
+        "반달 돌칼",
+        "가락바퀴",
+        "주먹도끼",
+        "뗀석기"
+      ]
     },
     {
       "content": "밑줄 그은 '이 나라'에 대한 설명으로 옳은 것은?",
@@ -47,7 +54,14 @@
       "difficulty": 3,
       "id": 1002,
       "examId": 8,
-      "questionNumber": 2
+      "questionNumber": 2,
+      "keywords": [
+        "개천절",
+        "단군왕검",
+        "마니산 참성단",
+        "범금 8조",
+        "고조선"
+      ]
     },
     {
       "content": "(가), (나) 나라에 대한 설명으로 옳은 것은?",
@@ -66,7 +80,14 @@
       "difficulty": 3,
       "id": 1003,
       "examId": 8,
-      "questionNumber": 3
+      "questionNumber": 3,
+      "keywords": [
+        "동맹",
+        "상가",
+        "고추가",
+        "무천",
+        "서옥제"
+      ]
     },
     {
       "content": "밑줄 그은 '이 불상'으로 옳은 것은?",
@@ -85,7 +106,12 @@
       "difficulty": 3,
       "id": 1004,
       "examId": 8,
-      "questionNumber": 4
+      "questionNumber": 4,
+      "keywords": [
+        "삼산관",
+        "교토 고류사",
+        "미륵보살 반가사유상"
+      ]
     },
     {
       "content": "(가) 왕의 업적으로 옳은 것은?",
@@ -104,7 +130,14 @@
       "difficulty": 3,
       "id": 1005,
       "examId": 8,
-      "questionNumber": 5
+      "questionNumber": 5,
+      "keywords": [
+        "양나라",
+        "벽돌 무덤",
+        "진묘수",
+        "22담로",
+        "무령왕"
+      ]
     },
     {
       "content": "(가) 인물에 대한 설명으로 옳은 것은?",
@@ -123,7 +156,14 @@
       "difficulty": 3,
       "id": 1006,
       "examId": 8,
-      "questionNumber": 6
+      "questionNumber": 6,
+      "keywords": [
+        "함양 상림",
+        "시무책 10여 조",
+        "진성 여왕",
+        "최치원",
+        "청방인문표"
+      ]
     },
     {
       "content": "(가)~(다)를 일어난 순서대로 옳게 나열한 것은?",
@@ -142,7 +182,14 @@
       "difficulty": 3,
       "id": 1007,
       "examId": 8,
-      "questionNumber": 7
+      "questionNumber": 7,
+      "keywords": [
+        "대야성",
+        "의자왕",
+        "김유신",
+        "흑치상지",
+        "복신"
+      ]
     },
     {
       "content": "다음 정책을 실시한 왕의 재위 시기에 있었던 사실로 옳은 것은?",
@@ -161,7 +208,14 @@
       "difficulty": 3,
       "id": 1008,
       "examId": 8,
-      "questionNumber": 8
+      "questionNumber": 8,
+      "keywords": [
+        "9주",
+        "5소경",
+        "관료전",
+        "녹읍 폐지",
+        "신문왕"
+      ]
     },
     {
       "content": "다음 제도를 운영한 국가에 대한 설명으로 옳은 것은?",
@@ -180,7 +234,14 @@
       "difficulty": 3,
       "id": 1009,
       "examId": 8,
-      "questionNumber": 9
+      "questionNumber": 9,
+      "keywords": [
+        "정당성",
+        "선조성",
+        "중대성",
+        "대내상",
+        "주자감"
+      ]
     },
     {
       "content": "(가) 인물에 대한 설명으로 옳은 것은?",
@@ -199,7 +260,14 @@
       "difficulty": 3,
       "id": 1010,
       "examId": 8,
-      "questionNumber": 10
+      "questionNumber": 10,
+      "keywords": [
+        "정개",
+        "완산주",
+        "후백제",
+        "공산 전투",
+        "견훤"
+      ]
     },
     {
       "content": "다음 자료의 상황이 나타난 시기를 연표에서 옳게 고른 것은?",
@@ -218,7 +286,14 @@
       "difficulty": 3,
       "id": 1011,
       "examId": 8,
-      "questionNumber": 11
+      "questionNumber": 11,
+      "keywords": [
+        "9성 반환",
+        "최홍정",
+        "문관",
+        "거위이",
+        "고려사"
+      ]
     },
     {
       "content": "밑줄 그은 '이 왕'의 재위 시기에 있었던 사실로 옳은 것은?",
@@ -237,7 +312,14 @@
       "difficulty": 3,
       "id": 1012,
       "examId": 8,
-      "questionNumber": 12
+      "questionNumber": 12,
+      "keywords": [
+        "준풍",
+        "광종",
+        "망이산성",
+        "공복",
+        "황도"
+      ]
     },
     {
       "content": "다음 상황이 나타난 시기에 볼 수 있는 모습으로 가장 적절한 것은?",
@@ -256,7 +338,13 @@
       "difficulty": 3,
       "id": 1013,
       "examId": 8,
-      "questionNumber": 13
+      "questionNumber": 13,
+      "keywords": [
+        "진병법석",
+        "은병",
+        "경시서",
+        "고려"
+      ]
     },
     {
       "content": "다음 자료에 나타난 상황 이후에 전개된 사실로 옳은 것은?",
@@ -275,7 +363,14 @@
       "difficulty": 3,
       "id": 1014,
       "examId": 8,
-      "questionNumber": 14
+      "questionNumber": 14,
+      "keywords": [
+        "원종",
+        "강화 환도",
+        "임유무",
+        "승화후",
+        "삼별초"
+      ]
     },
     {
       "content": "다음 대화에 해당하는 문화유산으로 옳은 것은?",
@@ -302,6 +397,12 @@
         null,
         null,
         null
+      ],
+      "keywords": [
+        "봉정사 극락전",
+        "주심포 양식",
+        "맞배지붕",
+        "공민왕"
       ]
     },
     {
@@ -321,7 +422,14 @@
       "difficulty": 3,
       "id": 1016,
       "examId": 8,
-      "questionNumber": 16
+      "questionNumber": 16,
+      "keywords": [
+        "관학 진흥",
+        "사학 12도",
+        "문헌공도",
+        "국자감",
+        "양현고"
+      ]
     },
     {
       "content": "(가) 인물에 대한 설명으로 옳은 것은?",
@@ -340,7 +448,14 @@
       "difficulty": 3,
       "id": 1017,
       "examId": 8,
-      "questionNumber": 17
+      "questionNumber": 17,
+      "keywords": [
+        "태종",
+        "마천목",
+        "좌명공신",
+        "제2차 왕자의 난",
+        "6조 직계제"
+      ]
     },
     {
       "content": "(가) 사건에 대한 설명으로 옳은 것은?",
@@ -359,7 +474,14 @@
       "difficulty": 3,
       "id": 1018,
       "examId": 8,
-      "questionNumber": 18
+      "questionNumber": 18,
+      "keywords": [
+        "무오사화",
+        "김종직",
+        "연산군",
+        "조의제문",
+        "부관참시"
+      ]
     },
     {
       "content": "(가) 기구에 대한 설명으로 옳은 것은?",
@@ -378,7 +500,14 @@
       "difficulty": 3,
       "id": 1019,
       "examId": 8,
-      "questionNumber": 19
+      "questionNumber": 19,
+      "keywords": [
+        "향소",
+        "향청",
+        "경재소",
+        "좌수",
+        "별감"
+      ]
     },
     {
       "content": "(가)에 해당하는 문화유산으로 옳은 것은?",
@@ -397,7 +526,13 @@
       "difficulty": 3,
       "id": 1020,
       "examId": 8,
-      "questionNumber": 20
+      "questionNumber": 20,
+      "keywords": [
+        "원각사지 십층석탑",
+        "세조",
+        "대리석",
+        "백탑파"
+      ]
     },
     {
       "content": "밑줄 그은 '이 전쟁' 중에 있었던 사실로 옳은 것은?",
@@ -416,7 +551,14 @@
       "difficulty": 3,
       "id": 1021,
       "examId": 8,
-      "questionNumber": 21
+      "questionNumber": 21,
+      "keywords": [
+        "병자호란",
+        "남한산성",
+        "홍명구",
+        "유림",
+        "김준룡"
+      ]
     },
     {
       "content": "(가), (나) 사이의 시기에 있었던 사실로 옳은 것은?",
@@ -435,7 +577,14 @@
       "difficulty": 3,
       "id": 1022,
       "examId": 8,
-      "questionNumber": 22
+      "questionNumber": 22,
+      "keywords": [
+        "경신환국",
+        "허적",
+        "갑술환국",
+        "장희빈",
+        "인현왕후"
+      ]
     },
     {
       "content": "밑줄 그은 '이 법'의 영향으로 가장 적절한 것은?",
@@ -454,7 +603,13 @@
       "difficulty": 3,
       "id": 1023,
       "examId": 8,
-      "questionNumber": 23
+      "questionNumber": 23,
+      "keywords": [
+        "대동법",
+        "공납",
+        "방납",
+        "공인"
+      ]
     },
     {
       "content": "(가), (나) 왕에 대한 설명으로 옳은 것은?",
@@ -473,7 +628,14 @@
       "difficulty": 3,
       "id": 1024,
       "examId": 8,
-      "questionNumber": 24
+      "questionNumber": 24,
+      "keywords": [
+        "영조",
+        "속대전",
+        "정조",
+        "대전통편",
+        "장용영"
+      ]
     },
     {
       "content": "(가) 인물에 대한 설명으로 옳은 것은?",
@@ -492,7 +654,14 @@
       "difficulty": 3,
       "id": 1025,
       "examId": 8,
-      "questionNumber": 25
+      "questionNumber": 25,
+      "keywords": [
+        "이익",
+        "성호사설",
+        "한전론",
+        "곽우록",
+        "서얼 차별 폐지"
+      ]
     },
     {
       "content": "다음 그림이 그려진 시기의 문화에 대한 설명으로 옳지 않은 것은?",
@@ -511,7 +680,14 @@
       "difficulty": 3,
       "id": 1026,
       "examId": 8,
-      "questionNumber": 26
+      "questionNumber": 26,
+      "keywords": [
+        "김득신",
+        "풍속화",
+        "조선 후기",
+        "판소리",
+        "한글 소설"
+      ]
     },
     {
       "content": "(가) 인물에 대한 설명으로 옳은 것은?",
@@ -530,7 +706,14 @@
       "difficulty": 3,
       "id": 1027,
       "examId": 8,
-      "questionNumber": 27
+      "questionNumber": 27,
+      "keywords": [
+        "김홍집",
+        "수신사",
+        "조선책략",
+        "한성 조약",
+        "아관파천"
+      ]
     },
     {
       "content": "교사의 질문에 대한 학생의 답변으로 옳은 것은?",
@@ -549,7 +732,13 @@
       "difficulty": 3,
       "id": 1028,
       "examId": 8,
-      "questionNumber": 28
+      "questionNumber": 28,
+      "keywords": [
+        "조미 수호 통상 조약",
+        "최혜국 대우",
+        "거중 조정",
+        "미국"
+      ]
     },
     {
       "content": "밑줄 그은 '변란'에 대한 정부의 대책으로 옳은 것은?",
@@ -568,7 +757,14 @@
       "difficulty": 3,
       "id": 1029,
       "examId": 8,
-      "questionNumber": 29
+      "questionNumber": 29,
+      "keywords": [
+        "임술 농민 봉기",
+        "진주",
+        "백낙신",
+        "삼정의 문란",
+        "삼정이정청"
+      ]
     },
     {
       "content": "(가) 종교에 대한 설명으로 옳은 것은?",
@@ -587,7 +783,14 @@
       "difficulty": 3,
       "id": 1030,
       "examId": 8,
-      "questionNumber": 30
+      "questionNumber": 30,
+      "keywords": [
+        "동학",
+        "최제우",
+        "포접제",
+        "복권",
+        "상소"
+      ]
     },
     {
       "content": "(가) 단체에 대한 설명으로 옳은 것은?",
@@ -606,7 +809,13 @@
       "difficulty": 3,
       "id": 1031,
       "examId": 8,
-      "questionNumber": 31
+      "questionNumber": 31,
+      "keywords": [
+        "독립문",
+        "서재필",
+        "독립협회",
+        "영은문"
+      ]
     },
     {
       "content": "(가)에 해당하는 지역을 지도에서 옳게 찾은 것은?",
@@ -625,7 +834,13 @@
       "difficulty": 3,
       "id": 1032,
       "examId": 8,
-      "questionNumber": 32
+      "questionNumber": 32,
+      "keywords": [
+        "초량 왜관",
+        "부산",
+        "조계",
+        "대일 무역"
+      ]
     },
     {
       "content": "(가)~(다) 학생이 발표한 내용을 일어난 순서대로 옳게 나열한 것은?",
@@ -644,7 +859,14 @@
       "difficulty": 3,
       "id": 1033,
       "examId": 8,
-      "questionNumber": 33
+      "questionNumber": 33,
+      "keywords": [
+        "최익현",
+        "위정척사 운동",
+        "개항 반대 상소",
+        "태인 의병",
+        "임병찬"
+      ]
     },
     {
       "content": "다음 자료를 활용한 탐구 활동으로 가장 적절한 것은?",
@@ -663,7 +885,13 @@
       "difficulty": 3,
       "id": 1034,
       "examId": 8,
-      "questionNumber": 34
+      "questionNumber": 34,
+      "keywords": [
+        "방곡령",
+        "함경도 관찰사",
+        "조일 통상 장정",
+        "일본 공사"
+      ]
     },
     {
       "content": "(가)~(라)를 작성된 순서대로 옳게 나열한 것은?",
@@ -682,7 +910,14 @@
       "difficulty": 3,
       "id": 1035,
       "examId": 8,
-      "questionNumber": 35
+      "questionNumber": 35,
+      "keywords": [
+        "이황",
+        "사단칠정론",
+        "정도전",
+        "박은식",
+        "유교 구신론"
+      ]
     },
     {
       "content": "(가)~(라)를 작성한 인물에 대해 탐구한 내용으로 적절한 것을 <보기>에서 고른 것은?",
@@ -701,7 +936,15 @@
       "difficulty": 3,
       "id": 1036,
       "examId": 8,
-      "questionNumber": 36
+      "questionNumber": 36,
+      "keywords": [
+        "이황",
+        "정도전",
+        "박은식",
+        "사단칠정론",
+        "불씨잡변",
+        "유교 구신론"
+      ]
     },
     {
       "content": "(가)의 활동으로 옳은 것을 〈보기〉에서 고른 것은?",
@@ -720,7 +963,14 @@
       "difficulty": 3,
       "id": 1037,
       "examId": 8,
-      "questionNumber": 37
+      "questionNumber": 37,
+      "keywords": [
+        "대한민국 임시정부",
+        "3·1 운동",
+        "상하이",
+        "임시 의정원",
+        "구미 위원부"
+      ]
     },
     {
       "content": "밑줄 그은 '특사'가 파견된 배경으로 가장 적절한 것은?",
@@ -739,7 +989,14 @@
       "difficulty": 3,
       "id": 1038,
       "examId": 8,
-      "questionNumber": 38
+      "questionNumber": 38,
+      "keywords": [
+        "헤이그 특사",
+        "이상설",
+        "평화회의",
+        "을사늑약",
+        "외교권"
+      ]
     },
     {
       "content": "밑줄 그은 '이 시기'에 볼 수 있는 모습으로 가장 적절한 것은?",
@@ -758,7 +1015,13 @@
       "difficulty": 3,
       "id": 1039,
       "examId": 8,
-      "questionNumber": 39
+      "questionNumber": 39,
+      "keywords": [
+        "전차",
+        "한성 전기 회사",
+        "대한제국",
+        "대한국 국제"
+      ]
     },
     {
       "content": "다음 자료를 활용한 탐구 주제로 가장 적절한 것은?",
@@ -777,7 +1040,12 @@
       "difficulty": 3,
       "id": 1040,
       "examId": 8,
-      "questionNumber": 40
+      "questionNumber": 40,
+      "keywords": [
+        "송수만",
+        "보안회",
+        "황무지 개간권"
+      ]
     },
     {
       "content": "(가), (나) 발표 사이의 시기에 있었던 사실로 옳은 것은?",
@@ -796,7 +1064,13 @@
       "difficulty": 3,
       "id": 1041,
       "examId": 8,
-      "questionNumber": 41
+      "questionNumber": 41,
+      "keywords": [
+        "조선교육령",
+        "보통학교",
+        "경성제국대학",
+        "예과"
+      ]
     },
     {
       "content": "다음 자료에 나타난 사건의 영향으로 적절한 것은?",
@@ -815,7 +1089,13 @@
       "difficulty": 3,
       "id": 1042,
       "examId": 8,
-      "questionNumber": 42
+      "questionNumber": 42,
+      "keywords": [
+        "이왕 국장",
+        "고종 인산일",
+        "조선 독립운동",
+        "만세 운동"
+      ]
     },
     {
       "content": "(가) 군사 조직에 대한 설명으로 옳은 것은?",
@@ -834,7 +1114,14 @@
       "difficulty": 3,
       "id": 1043,
       "examId": 8,
-      "questionNumber": 43
+      "questionNumber": 43,
+      "keywords": [
+        "윤세주",
+        "김원봉",
+        "의열단",
+        "조선의용대",
+        "타이항산"
+      ]
     },
     {
       "content": "(가) 인물의 활동으로 옳은 것은?",
@@ -853,7 +1140,14 @@
       "difficulty": 3,
       "id": 1044,
       "examId": 8,
-      "questionNumber": 44
+      "questionNumber": 44,
+      "keywords": [
+        "윤동주",
+        "도시샤 대학",
+        "서시",
+        "북간도",
+        "치안유지법"
+      ]
     },
     {
       "content": "밑줄 그은 '이 시기'에 있었던 사실로 옳은 것을 <보기>에서 고른 것은?",
@@ -872,7 +1166,12 @@
       "difficulty": 3,
       "id": 1045,
       "examId": 8,
-      "questionNumber": 45
+      "questionNumber": 45,
+      "keywords": [
+        "국민총력조선연맹",
+        "국가총동원법",
+        "전쟁"
+      ]
     },
     {
       "content": "(가), (나) 사이의 시기에 있었던 사실로 옳은 것은?",
@@ -891,7 +1190,14 @@
       "difficulty": 3,
       "id": 1046,
       "examId": 8,
-      "questionNumber": 46
+      "questionNumber": 46,
+      "keywords": [
+        "미군정",
+        "북위 38도",
+        "김구",
+        "김규식",
+        "신탁통치 반대"
+      ]
     },
     {
       "content": "(가) 지역에 대한 설명으로 옳은 것은?",
@@ -910,7 +1216,13 @@
       "difficulty": 3,
       "id": 1047,
       "examId": 8,
-      "questionNumber": 47
+      "questionNumber": 47,
+      "keywords": [
+        "황성옛터",
+        "만월대",
+        "남북 공동 발굴",
+        "개성"
+      ]
     },
     {
       "content": "(가) 민주화 운동에 대한 설명으로 옳은 것은?",
@@ -929,7 +1241,12 @@
       "difficulty": 3,
       "id": 1048,
       "examId": 8,
-      "questionNumber": 48
+      "questionNumber": 48,
+      "keywords": [
+        "3·15 의거",
+        "부정선거",
+        "민주화 운동"
+      ]
     },
     {
       "content": "다음 판결이 있었던 정부 시기의 사실로 옳은 것은?",
@@ -948,7 +1265,14 @@
       "difficulty": 3,
       "id": 1049,
       "examId": 8,
-      "questionNumber": 49
+      "questionNumber": 49,
+      "keywords": [
+        "중앙정보부",
+        "장준하",
+        "백기완",
+        "개헌청원운동",
+        "긴급조치"
+      ]
     },
     {
       "content": "(가) 정부의 통일 노력으로 옳은 것은?",
@@ -967,7 +1291,13 @@
       "difficulty": 3,
       "id": 1050,
       "examId": 8,
-      "questionNumber": 50
+      "questionNumber": 50,
+      "keywords": [
+        "제2차 남북정상회담",
+        "경의선",
+        "노무현 정부",
+        "남북교류협력"
+      ]
     }
   ]
 }

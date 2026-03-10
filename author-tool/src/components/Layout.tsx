@@ -73,7 +73,7 @@ export function Layout() {
           // Parse PDF and add questions
           setPdfImporting(true);
           try {
-            const questions = await pdfImportApi.parse(pdfFile);
+            const questions = await pdfImportApi.parse(pdfFile, exam.examNumber);
             if (questions.length > 0) {
               addBatchMutation.mutate({ examId, questions }, {
                 onSuccess: () => {
@@ -219,7 +219,7 @@ export function Layout() {
           <div className="rounded-xl bg-white p-8 text-center shadow-2xl">
             <div className="mx-auto mb-4 h-10 w-10 animate-spin rounded-full border-4 border-primary-200 border-t-primary-600" />
             <p className="font-semibold">PDF 분석 중...</p>
-            <p className="mt-1 text-sm text-gray-500">AI가 문제를 추출하고 있습니다</p>
+            <p className="mt-1 text-sm text-gray-500">AI가 문제와 이미지를 추출하고 있습니다</p>
           </div>
         </div>
       )}

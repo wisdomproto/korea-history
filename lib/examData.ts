@@ -128,9 +128,31 @@ export async function fetchAllQuestions(): Promise<Question[]> {
   return allQuestions;
 }
 
+// ── Keywords ─────────────────────────────────────────────
+
+type KeywordsMap = Record<string, number[]>;
+let keywordsCache: KeywordsMap | null = null;
+
+/** Fetch keyword → questionId[] mapping */
+export async function fetchKeywords(): Promise<KeywordsMap> {
+  if (keywordsCache) return keywordsCache;
+  const mod = await import('../data/questions/keywords.json');
+  keywordsCache = (mod as any).default?.keywords ?? (mod as any).keywords ?? {};
+  return keywordsCache!;
+}
+
+/** Get questions matching a keyword */
+export async function fetchQuestionsByKeyword(keyword: string): Promise<Question[]> {
+  const kw = await fetchKeywords();
+  const ids = kw[keyword] || [];
+  const allQ = await fetchAllQuestions();
+  return allQ.filter((q) => ids.includes(q.id));
+}
+
 /** Clear all caches (e.g., on pull-to-refresh) */
 export function clearExamCache(): void {
   cachedManifest = null;
   examCache.clear();
   allQuestionsCache = null;
+  keywordsCache = null;
 }

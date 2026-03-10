@@ -26,7 +26,14 @@
       "points": 1,
       "era": "선사·고조선",
       "category": "문화",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "부여 송국리 유적",
+        "송국리형 토기",
+        "비파형 동검",
+        "고인돌",
+        "가락바퀴"
+      ]
     },
     {
       "id": 75002,
@@ -45,7 +52,15 @@
       "points": 2,
       "era": "선사·고조선",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "진승",
+        "항우",
+        "준왕",
+        "우거왕",
+        "왕검성",
+        "위만"
+      ]
     },
     {
       "id": 75003,
@@ -72,7 +87,14 @@
       "points": 2,
       "era": "삼국",
       "category": "문화",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "금관",
+        "APEC 정상 회의",
+        "경주",
+        "금관총 금관",
+        "황남대총 금관"
+      ]
     },
     {
       "id": 75004,
@@ -91,7 +113,14 @@
       "points": 2,
       "era": "삼국",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "고령군",
+        "지산동 고분군",
+        "주산성",
+        "신라 진흥왕",
+        "가야"
+      ]
     },
     {
       "id": 75005,
@@ -110,7 +139,15 @@
       "points": 2,
       "era": "삼국",
       "category": "경제",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "토졸",
+        "대대로",
+        "녹살",
+        "욕살",
+        "처려근지",
+        "부경"
+      ]
     },
     {
       "id": 75006,
@@ -129,7 +166,14 @@
       "points": 2,
       "era": "남북국",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "혜공왕",
+        "무열왕계",
+        "진골 귀족",
+        "호족",
+        "김헌창"
+      ]
     },
     {
       "id": 75007,
@@ -148,7 +192,15 @@
       "points": 3,
       "era": "삼국",
       "category": "정치",
-      "difficulty": 3
+      "difficulty": 3,
+      "keywords": [
+        "당",
+        "경관",
+        "장성",
+        "을지문덕",
+        "살수",
+        "연개소문"
+      ]
     },
     {
       "id": 75008,
@@ -167,7 +219,15 @@
       "points": 2,
       "era": "남북국",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "고왕",
+        "무왕",
+        "문왕",
+        "선왕",
+        "주자감",
+        "발해"
+      ]
     },
     {
       "id": 75009,
@@ -186,7 +246,15 @@
       "points": 2,
       "era": "삼국",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "백제역사유적지구",
+        "부소산성",
+        "정림사지",
+        "능산리 고분군",
+        "나성",
+        "성왕"
+      ]
     },
     {
       "id": 75010,
@@ -205,7 +273,15 @@
       "points": 3,
       "era": "고려",
       "category": "정치",
-      "difficulty": 3
+      "difficulty": 3,
+      "keywords": [
+        "견훤",
+        "포석정",
+        "고창군",
+        "신숭겸",
+        "공산 전투",
+        "왕건"
+      ]
     },
     {
       "id": 75011,
@@ -224,7 +300,14 @@
       "points": 2,
       "era": "고려",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "12목",
+        "경학박사",
+        "의학박사",
+        "최승로",
+        "시무 28조"
+      ]
     },
     {
       "id": 75012,
@@ -243,7 +326,14 @@
       "points": 1,
       "era": "고려",
       "category": "정치",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "삼별초",
+        "진도 용장성",
+        "승화후 온",
+        "대장도감",
+        "팔만대장경"
+      ]
     },
     {
       "id": 75013,
@@ -262,7 +352,14 @@
       "points": 2,
       "era": "고려",
       "category": "문화",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "최충",
+        "문헌공",
+        "해동공자",
+        "9재 학당",
+        "지공거"
+      ]
     },
     {
       "id": 75014,
@@ -281,7 +378,13 @@
       "points": 2,
       "era": "고려",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "서경 반란",
+        "대화궁",
+        "이자겸의 난",
+        "무신정변"
+      ]
     },
     {
       "id": 75015,
@@ -300,7 +403,13 @@
       "points": 2,
       "era": "고려",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "이생규장전",
+        "홍건적의 침입",
+        "이성계",
+        "위화도 회군"
+      ]
     },
     {
       "id": 75016,
@@ -319,7 +428,14 @@
       "points": 2,
       "era": "고려",
       "category": "경제",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "소(所)",
+        "별공",
+        "해동통보",
+        "화폐",
+        "벽란도"
+      ]
     },
     {
       "id": 75017,
@@ -338,7 +454,14 @@
       "points": 1,
       "era": "고려",
       "category": "문화",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "수시력",
+        "화통도감",
+        "고려 청자",
+        "금속활자",
+        "직지심체요절"
+      ]
     },
     {
       "id": 75018,
@@ -365,7 +488,13 @@
       "points": 2,
       "era": "고려",
       "category": "문화",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "은진 미륵",
+        "논산 관촉사",
+        "불상",
+        "국보"
+      ]
     },
     {
       "id": 75019,
@@ -384,7 +513,14 @@
       "points": 2,
       "era": "조선 전기",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "배극렴",
+        "조준",
+        "정도전",
+        "이방석",
+        "제1차 왕자의 난"
+      ]
     },
     {
       "id": 75020,
@@ -403,7 +539,14 @@
       "points": 2,
       "era": "조선 전기",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "상대",
+        "백관 규찰",
+        "탄핵",
+        "대사헌",
+        "장령"
+      ]
     },
     {
       "id": 75021,
@@ -422,7 +565,13 @@
       "points": 2,
       "era": "조선 전기",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "여진",
+        "이일",
+        "6진",
+        "무역소"
+      ]
     },
     {
       "id": 75022,
@@ -441,7 +590,14 @@
       "points": 3,
       "era": "조선 전기",
       "category": "정치",
-      "difficulty": 3
+      "difficulty": 3,
+      "keywords": [
+        "조광조",
+        "현량과",
+        "양재역 벽서 사건",
+        "윤임",
+        "을사사화"
+      ]
     },
     {
       "id": 75023,
@@ -460,7 +616,17 @@
       "points": 2,
       "era": "조선 후기",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "병자호란",
+        "삼학사",
+        "홍익한",
+        "윤집",
+        "오달제",
+        "남한산성",
+        "김준룡",
+        "광교산 전투"
+      ]
     },
     {
       "id": 75024,
@@ -479,7 +645,14 @@
       "points": 2,
       "era": "조선 후기",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "영조",
+        "이인좌의 난",
+        "탕평 교서",
+        "탕평비",
+        "붕당"
+      ]
     },
     {
       "id": 75025,
@@ -498,7 +671,14 @@
       "points": 1,
       "era": "조선 후기",
       "category": "사회",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "장용영",
+        "정조",
+        "겸재 정선",
+        "세책가",
+        "춘향전"
+      ]
     },
     {
       "id": 75026,
@@ -517,7 +697,18 @@
       "points": 2,
       "era": "조선 후기",
       "category": "경제",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "조선 후기",
+        "고구마",
+        "메밀",
+        "염포 왜관",
+        "상평통보",
+        "공인",
+        "송상",
+        "만상",
+        "덕대"
+      ]
     },
     {
       "id": 75027,
@@ -536,7 +727,15 @@
       "points": 2,
       "era": "조선 후기",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "순조",
+        "세도 정치",
+        "김조순",
+        "안동 김씨",
+        "홍경래의 난",
+        "정주성"
+      ]
     },
     {
       "id": 75028,
@@ -555,7 +754,14 @@
       "points": 2,
       "era": "근대",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "갑신정변",
+        "김옥균",
+        "일본 공사",
+        "청",
+        "톈진 조약"
+      ]
     },
     {
       "id": 75029,
@@ -574,7 +780,15 @@
       "points": 1,
       "era": "근대",
       "category": "사회",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "동학",
+        "최시형",
+        "교조 신원 운동",
+        "전봉준",
+        "고부 봉기",
+        "포접제"
+      ]
     },
     {
       "id": 75030,
@@ -593,7 +807,15 @@
       "points": 3,
       "era": "근대",
       "category": "정치",
-      "difficulty": 3
+      "difficulty": 3,
+      "keywords": [
+        "러일 전쟁",
+        "대한 제국",
+        "일본",
+        "러시아",
+        "포츠머스 조약",
+        "독도"
+      ]
     },
     {
       "id": 75031,
@@ -612,7 +834,14 @@
       "points": 3,
       "era": "근대",
       "category": "정치",
-      "difficulty": 3
+      "difficulty": 3,
+      "keywords": [
+        "위정척사 운동",
+        "강화도 조약",
+        "지부복궐척화의소",
+        "면암집",
+        "최익현"
+      ]
     },
     {
       "id": 75032,
@@ -631,7 +860,14 @@
       "points": 2,
       "era": "근대",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "이준",
+        "독립 협회",
+        "보안회",
+        "대한 자강회",
+        "헤이그 만국 평화 회의"
+      ]
     },
     {
       "id": 75033,
@@ -650,7 +886,14 @@
       "points": 1,
       "era": "근대",
       "category": "정치",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "동양 평화",
+        "하얼빈",
+        "뤼순",
+        "이토 히로부미",
+        "안중근"
+      ]
     },
     {
       "id": 75034,
@@ -669,7 +912,13 @@
       "points": 2,
       "era": "근대",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "헌병 경찰 제도",
+        "범죄 즉결례",
+        "조선 태형령",
+        "회사령"
+      ]
     },
     {
       "id": 75035,
@@ -688,7 +937,14 @@
       "points": 2,
       "era": "근대",
       "category": "사회",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "대홍수",
+        "관동 대지진",
+        "조선인 학살",
+        "경성 제국 대학",
+        "1920년대"
+      ]
     },
     {
       "id": 75036,
@@ -707,7 +963,13 @@
       "points": 1,
       "era": "근대",
       "category": "정치",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "파리 강화 회의",
+        "민족 자결주의",
+        "3.1 운동",
+        "윌슨"
+      ]
     },
     {
       "id": 75037,
@@ -726,7 +988,14 @@
       "points": 2,
       "era": "근대",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "김한종",
+        "박상진",
+        "대한 광복회",
+        "군대식 조직",
+        "비밀 결사"
+      ]
     },
     {
       "id": 75038,
@@ -745,7 +1014,13 @@
       "points": 3,
       "era": "근대",
       "category": "정치",
-      "difficulty": 3
+      "difficulty": 3,
+      "keywords": [
+        "대한국 국제",
+        "헌의 6조",
+        "대동 단결 선언",
+        "대한민국 임시 헌장"
+      ]
     },
     {
       "id": 75039,
@@ -764,7 +1039,14 @@
       "points": 2,
       "era": "근대",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "멕시코",
+        "유카탄 반도",
+        "에네켄 농장",
+        "한인 노동자",
+        "숭무 학교"
+      ]
     },
     {
       "id": 75040,
@@ -783,7 +1065,14 @@
       "points": 3,
       "era": "근대",
       "category": "사회",
-      "difficulty": 3
+      "difficulty": 3,
+      "keywords": [
+        "신안군",
+        "소작쟁의",
+        "암태도 소작쟁의",
+        "문재철",
+        "조선 농민 총동맹"
+      ]
     },
     {
       "id": 75041,
@@ -802,7 +1091,14 @@
       "points": 3,
       "era": "근대",
       "category": "문화",
-      "difficulty": 3
+      "difficulty": 3,
+      "keywords": [
+        "한글",
+        "한글 맞춤법 통일안",
+        "훈민정음 해례본",
+        "한글날",
+        "조선말 큰 사전"
+      ]
     },
     {
       "id": 75042,
@@ -821,7 +1117,14 @@
       "points": 1,
       "era": "근대",
       "category": "문화",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "별건곤",
+        "모던 걸",
+        "모던 보이",
+        "일제 강점기",
+        "나운규의 영화 아리랑"
+      ]
     },
     {
       "id": 75043,
@@ -840,7 +1143,14 @@
       "points": 2,
       "era": "근대",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "지복영",
+        "충칭",
+        "지청천",
+        "1940년 9월",
+        "국내 진공 작전"
+      ]
     },
     {
       "id": 75044,
@@ -859,7 +1169,14 @@
       "points": 1,
       "era": "근대",
       "category": "정치",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "공출",
+        "금속류 회수령",
+        "중일 전쟁",
+        "군수 물자 생산",
+        "애국반"
+      ]
     },
     {
       "id": 75045,
@@ -878,7 +1195,13 @@
       "points": 3,
       "era": "현대",
       "category": "정치",
-      "difficulty": 3
+      "difficulty": 3,
+      "keywords": [
+        "통일된 조국",
+        "단독 정부",
+        "38선",
+        "5·10 총선거"
+      ]
     },
     {
       "id": 75046,
@@ -897,7 +1220,14 @@
       "points": 2,
       "era": "현대",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "6·25 전쟁",
+        "부산 임시 국회",
+        "개헌안",
+        "이승만 정부",
+        "한미 상호 방위 조약"
+      ]
     },
     {
       "id": 75047,
@@ -916,7 +1246,14 @@
       "points": 2,
       "era": "현대",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "동일방직",
+        "YH 무역",
+        "신민당사 농성",
+        "박정희 정부",
+        "3·1 민주 구국 선언"
+      ]
     },
     {
       "id": 75048,
@@ -935,7 +1272,14 @@
       "points": 1,
       "era": "현대",
       "category": "정치",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "이한열",
+        "호헌 철폐",
+        "독재 타도",
+        "6월 민주 항쟁",
+        "대통령 직선제 개헌"
+      ]
     },
     {
       "id": 75049,
@@ -954,7 +1298,13 @@
       "points": 3,
       "era": "현대",
       "category": "정치",
-      "difficulty": 3
+      "difficulty": 3,
+      "keywords": [
+        "하나회 청산",
+        "문민정부",
+        "김영삼 정부",
+        "거창 사건 특별 조치법"
+      ]
     },
     {
       "id": 75050,
@@ -973,7 +1323,14 @@
       "points": 2,
       "era": "현대",
       "category": "사회",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "알뜨르 비행장",
+        "너븐숭이 4·3 기념관",
+        "4·3",
+        "제주도",
+        "김만덕"
+      ]
     },
     {
       "content": "",
@@ -991,7 +1348,8 @@
       "difficulty": 2,
       "id": 75051,
       "examId": 6,
-      "questionNumber": 51
+      "questionNumber": 51,
+      "keywords": []
     }
   ]
 }

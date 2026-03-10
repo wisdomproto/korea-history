@@ -25,7 +25,11 @@
       "points": 2,
       "era": "선사·고조선",
       "category": "사회",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "빗살무늬 토기",
+        "신석기 시대"
+      ]
     },
     {
       "id": 22,
@@ -43,7 +47,13 @@
       "points": 2,
       "era": "삼국",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "광개토대왕",
+        "한강 이북",
+        "왜구 격퇴",
+        "광개토대왕릉비"
+      ]
     },
     {
       "id": 23,
@@ -61,7 +71,13 @@
       "points": 2,
       "era": "남북국",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "발해",
+        "대조영",
+        "해동성국",
+        "고구려 계승"
+      ]
     },
     {
       "id": 24,
@@ -79,7 +95,13 @@
       "points": 3,
       "era": "고려",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "무신정변",
+        "정중부",
+        "이의방",
+        "의종"
+      ]
     },
     {
       "id": 25,
@@ -97,7 +119,12 @@
       "points": 2,
       "era": "고려",
       "category": "문화",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "팔만대장경",
+        "몽골 침략",
+        "해인사 장경판전"
+      ]
     },
     {
       "id": 26,
@@ -115,7 +142,11 @@
       "points": 2,
       "era": "조선 전기",
       "category": "문화",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "훈민정음",
+        "세종대왕"
+      ]
     },
     {
       "id": 27,
@@ -133,7 +164,13 @@
       "points": 3,
       "era": "조선 전기",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "이순신",
+        "임진왜란",
+        "한산도 대첩",
+        "거북선"
+      ]
     },
     {
       "id": 28,
@@ -151,7 +188,13 @@
       "points": 2,
       "era": "근대",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "동학농민운동",
+        "전봉준",
+        "전주 화약",
+        "집강소"
+      ]
     },
     {
       "id": 29,
@@ -169,7 +212,13 @@
       "points": 3,
       "era": "근대",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "대한민국 임시정부",
+        "3·1 운동",
+        "상하이",
+        "한국광복군"
+      ]
     },
     {
       "id": 30,
@@ -187,7 +236,14 @@
       "points": 2,
       "era": "현대",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "한국 전쟁",
+        "북한 남침",
+        "유엔군",
+        "인천 상륙 작전",
+        "정전 협정"
+      ]
     }
   ]
 }

@@ -45,13 +45,15 @@ korea_history/
 │   ├── exam-{N}.json      # { exam: Exam, questions: Question[] }
 │   └── exam-order.json    # 시험 순서 (ID 배열)
 ├── data/images/           # 문제 이미지 (R2 업로드 + 로컬 백업)
+├── scripts/               # 유틸리티 스크립트
+│   └── extract-images-from-pdf.py  # PDF 지문 이미지 추출 (PyMuPDF + Gemini 3.1 Pro)
 ├── author-tool/           # 저작도구 (별도 앱)
 │   ├── server/            # Express API (port 3001)
 │   │   ├── index.ts       # Express + Vite 통합 서버
 │   │   ├── config.ts      # 환경설정 (dataDir, gemini key, R2)
 │   │   ├── middleware.ts   # AppError, asyncHandler, errorMiddleware
 │   │   ├── controllers/   # exam, question, generator, image, pdf-import
-│   │   ├── services/      # 비즈니스 로직 (R2 업로드 포함)
+│   │   ├── services/      # 비즈니스 로직 (R2 업로드, PDF 이미지 추출 포함)
 │   │   └── routes/        # Express 라우트
 │   └── src/               # React + Vite 프론트엔드
 │       ├── features/      # exam, question, generator, dashboard
@@ -113,9 +115,11 @@ author-tool → port 3001  (저작도구: Express API + Vite 통합)
 - **Frontend**: React 18, Vite, TailwindCSS, TanStack Query
 - **State**: Zustand (editor.store)
 - **AI**: Gemini API — `@google/generative-ai` (텍스트), `@google/genai` (이미지)
-- **PDF**: pdf-parse v2 (클래스 기반 API)
+- **PDF text**: pdf-parse v2 (클래스 기반 API)
+- **PDF image**: Python subprocess (`scripts/extract-images-from-pdf.py`) — PyMuPDF + Gemini 3.1 Pro bbox 감지
 - **File upload**: multer (메모리 스토리지)
 - **Image Storage**: Cloudflare R2 (S3 호환) — `@aws-sdk/client-s3`
+- **Image Crop**: react-image-crop (프론트엔드 이미지 크롭)
 
 ## 핵심 데이터 모델
 
@@ -138,6 +142,22 @@ interface ExamFile {
 - 메인 앱은 현재 번들된 데이터를 사용 (R2 fetching은 향후 추가)
 - `IMAGE_BASE_URL`: `process.env.R2_PUBLIC_URL || 'http://localhost:3001'` (lib/constants.ts)
 
+## PDF 이미지 추출 파이프라인
+
+PDF 임포트 시 텍스트 파싱과 지문 이미지 추출이 **병렬**로 실행됨:
+
+1. **텍스트 파싱** (Gemini): pdf-parse로 텍스트 추출 → Gemini로 문제 구조화
+2. **이미지 추출** (Python + Gemini 3.1 Pro): 동시에 실행
+   - `PdfImageService` → Python subprocess로 `scripts/extract-images-from-pdf.py` 호출
+   - PyMuPDF로 페이지 렌더링 (3x 스케일) → Gemini 3.1 Pro가 지문 bbox 감지
+   - 크롭된 이미지를 R2에 병렬 업로드 → questionNumber별 imageUrl 매핑
+3. 두 결과를 합쳐서 `ParsedQuestion[]` 반환
+
+- Python 스크립트: 페이지별 Gemini 호출을 `ThreadPoolExecutor(max_workers=4)`로 병렬 처리
+- R2 업로드: `Promise.allSettled()`로 전체 병렬 업로드
+- **반드시 Gemini 3.1 Pro 사용** (`gemini-3.1-pro-preview`) — 다른 모델은 bbox 정확도 낮음
+- Python 의존성: `PyMuPDF`, `Pillow` (pip install)
+
 ## 저작도구 API 엔드포인트
 
 - `GET/POST /api/exams` — 시험 목록/생성
@@ -152,7 +172,7 @@ interface ExamFile {
 - `POST /api/images/upload` — 이미지 업로드 (R2)
 - `DELETE /api/images/:key` — 이미지 삭제 (R2)
 - `GET /api/images/models` — 사용 가능 모델 목록
-- `POST /api/pdf/parse` — PDF 문제 추출 (multipart/form-data)
+- `POST /api/pdf/parse` — PDF 문제 추출 + 이미지 추출 (multipart/form-data, examNumber 지원)
 
 ## 주의사항
 
@@ -164,6 +184,9 @@ interface ExamFile {
 - 이미지: Cloudflare R2에 저장, `/uploads` 정적 경로는 로컬 fallback용
 - 저작도구 서버는 Vite middleware mode로 API+프론트 통합 (dev에서 단일 포트)
 - 커스텀 탭바에서 `options.href` 접근 불가 → `VISIBLE_TABS` Set으로 표시 탭 필터링
+- PDF 이미지 추출에 Python 필요: `pip install PyMuPDF Pillow`
+- Gemini 3.1 Pro bbox 감지: 반드시 `gemini-3.1-pro-preview` 모델 사용 (다른 모델 부정확)
+- QuestionEditor에 이미지 크롭 기능 있음 (react-image-crop → Canvas API → R2 업로드)
 
 ## 언어
 

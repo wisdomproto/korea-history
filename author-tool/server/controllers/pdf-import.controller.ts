@@ -9,7 +9,8 @@ export const PdfImportController = {
       return;
     }
     const model = req.body?.model as string | undefined;
-    const questions = await PdfImportService.parse(file.buffer, model);
+    const examNumber = req.body?.examNumber ? parseInt(req.body.examNumber, 10) : undefined;
+    const questions = await PdfImportService.parse(file.buffer, model, examNumber);
     res.json({ success: true, data: questions });
   }),
 };

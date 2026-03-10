@@ -25,7 +25,13 @@
       "points": 2,
       "era": "선사·고조선",
       "category": "사회",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "뗀석기",
+        "사냥",
+        "채집",
+        "이동 생활"
+      ]
     },
     {
       "id": 42,
@@ -43,7 +49,13 @@
       "points": 2,
       "era": "삼국",
       "category": "사회",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "신라",
+        "진흥왕",
+        "화랑도",
+        "세속오계"
+      ]
     },
     {
       "id": 43,
@@ -61,7 +73,14 @@
       "points": 2,
       "era": "남북국",
       "category": "사회",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "신라",
+        "골품제",
+        "성골",
+        "진골",
+        "6두품"
+      ]
     },
     {
       "id": 44,
@@ -79,7 +98,14 @@
       "points": 3,
       "era": "고려",
       "category": "정치",
-      "difficulty": 3
+      "difficulty": 3,
+      "keywords": [
+        "원나라",
+        "고려",
+        "철령 이북",
+        "공민왕",
+        "쌍성총관부"
+      ]
     },
     {
       "id": 45,
@@ -97,7 +123,12 @@
       "points": 2,
       "era": "조선 전기",
       "category": "문화",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "조선",
+        "세종",
+        "향약집성방"
+      ]
     },
     {
       "id": 46,
@@ -115,7 +146,13 @@
       "points": 2,
       "era": "조선 후기",
       "category": "문화",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "수원 화성",
+        "거중기",
+        "유네스코 세계 문화유산",
+        "정조"
+      ]
     },
     {
       "id": 47,
@@ -133,7 +170,12 @@
       "points": 3,
       "era": "조선 후기",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "흥선 대원군",
+        "고종",
+        "통상 수교 거부 정책"
+      ]
     },
     {
       "id": 48,
@@ -151,7 +193,13 @@
       "points": 2,
       "era": "근대",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "독립협회",
+        "서재필",
+        "만민 공동회",
+        "러시아 내정 간섭"
+      ]
     },
     {
       "id": 49,
@@ -169,7 +217,13 @@
       "points": 2,
       "era": "근대",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "1929년",
+        "광주 학생 항일 운동",
+        "한일 학생 충돌",
+        "학생 항일 운동"
+      ]
     },
     {
       "id": 50,
@@ -187,7 +241,13 @@
       "points": 2,
       "era": "현대",
       "category": "정치",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "1960년",
+        "4·19 혁명",
+        "3·15 부정 선거",
+        "이승만 하야"
+      ]
     }
   ]
 }

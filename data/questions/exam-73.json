@@ -25,7 +25,12 @@
       "points": 2,
       "era": "선사·고조선",
       "category": "문화",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "빗살무늬 토기",
+        "조개더미",
+        "신석기 시대"
+      ]
     },
     {
       "id": 12,
@@ -43,7 +48,12 @@
       "points": 2,
       "era": "남북국",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "발해",
+        "5부",
+        "5경 15부 62주"
+      ]
     },
     {
       "id": 13,
@@ -61,7 +71,13 @@
       "points": 2,
       "era": "고려",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "광덕",
+        "준풍",
+        "연호",
+        "고려 광종"
+      ]
     },
     {
       "id": 14,
@@ -79,7 +95,14 @@
       "points": 2,
       "era": "조선 전기",
       "category": "정치",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "3사",
+        "사헌부",
+        "사간원",
+        "홍문관",
+        "조선"
+      ]
     },
     {
       "id": 15,
@@ -97,7 +120,14 @@
       "points": 2,
       "era": "조선 후기",
       "category": "문화",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "김홍도",
+        "풍속화",
+        "서당",
+        "씨름",
+        "조선 후기"
+      ]
     },
     {
       "id": 16,
@@ -115,7 +145,14 @@
       "points": 2,
       "era": "근대",
       "category": "정치",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "1876년",
+        "일본",
+        "부산",
+        "개항",
+        "강화도 조약"
+      ]
     },
     {
       "id": 17,
@@ -133,7 +170,13 @@
       "points": 3,
       "era": "근대",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "안창호",
+        "양기탁",
+        "신민회",
+        "국권 회복"
+      ]
     },
     {
       "id": 18,
@@ -151,7 +194,11 @@
       "points": 2,
       "era": "현대",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "1945년 8월 15일",
+        "광복"
+      ]
     },
     {
       "id": 19,
@@ -169,7 +216,13 @@
       "points": 2,
       "era": "현대",
       "category": "정치",
-      "difficulty": 1
+      "difficulty": 1,
+      "keywords": [
+        "1950년 6월 25일",
+        "북한",
+        "남침",
+        "한국 전쟁"
+      ]
     },
     {
       "id": 20,
@@ -187,7 +240,14 @@
       "points": 3,
       "era": "고려",
       "category": "정치",
-      "difficulty": 2
+      "difficulty": 2,
+      "keywords": [
+        "서희",
+        "외교 담판",
+        "거란군",
+        "강동 6주",
+        "거란의 1차 침입"
+      ]
     }
   ]
 }

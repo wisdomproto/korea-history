@@ -1,8 +1,10 @@
 import { generateText, generateTextWithPdf, parseJSON } from './gemini.provider.js';
+import { PdfImageService } from './pdf-image.service.js';
 
 interface ParsedQuestion {
   content: string;
   passage?: string;
+  imageUrl?: string;
   choices: [string, string, string, string, string];
   correctAnswer: number;
   points: number;
@@ -75,8 +77,16 @@ const VISION_PROMPT = `당신은 한국사능력검정시험 문제 분석 전�
 JSON 배열로만 응답하세요 (설명 없이):`;
 
 export const PdfImportService = {
-  async parse(pdfBuffer: Buffer, model?: string): Promise<ParsedQuestion[]> {
-    // Step 1: Try text extraction
+  async parse(pdfBuffer: Buffer, model?: string, examNumber?: number): Promise<ParsedQuestion[]> {
+    // Start image extraction early (runs Python subprocess + Gemini 3.1 in parallel)
+    const imagePromise = examNumber
+      ? PdfImageService.extractAndUpload(pdfBuffer, examNumber).catch((err) => {
+          console.error('[PDF] Image extraction failed (continuing without images):', err);
+          return new Map<number, string>();
+        })
+      : Promise.resolve(new Map<number, string>());
+
+    // Step 1: Try text extraction (runs in parallel with image extraction)
     const { PDFParse } = await import('pdf-parse');
     const parser = new PDFParse({ data: pdfBuffer });
     await parser.load();
@@ -89,6 +99,8 @@ export const PdfImportService = {
 
     console.log('[PDF] Extracted text length:', text?.length ?? 0, '| Real content:', stripped.length, '| hasText:', hasText);
 
+    let questions: ParsedQuestion[];
+
     if (hasText) {
       // Text-based PDF: use text extraction path
       console.log('[PDF] Using text extraction path');
@@ -97,17 +109,32 @@ export const PdfImportService = {
       const prompt = buildParsePrompt(truncated);
       const raw = await generateText(prompt, model);
       console.log('[PDF] Gemini response length:', raw.length);
-      const questions = parseJSON<ParsedQuestion[]>(raw, 'PDF 문제 파싱 실패');
+      questions = parseJSON<ParsedQuestion[]>(raw, 'PDF 문제 파싱 실패');
       console.log('[PDF] Parsed questions count:', questions.length);
-      return questions;
+    } else {
+      // Step 2: Image/scanned PDF — send PDF directly to Gemini vision
+      console.log('[PDF] Using vision fallback (image/scanned PDF)');
+      const raw = await generateTextWithPdf(pdfBuffer, VISION_PROMPT, model);
+      console.log('[PDF] Vision response length:', raw.length);
+      questions = parseJSON<ParsedQuestion[]>(raw, 'PDF 문제 파싱 실패');
+      console.log('[PDF] Vision parsed questions count:', questions.length);
     }
 
-    // Step 2: Image/scanned PDF — send PDF directly to Gemini vision
-    console.log('[PDF] Using vision fallback (image/scanned PDF)');
-    const raw = await generateTextWithPdf(pdfBuffer, VISION_PROMPT, model);
-    console.log('[PDF] Vision response length:', raw.length);
-    const questions = parseJSON<ParsedQuestion[]>(raw, 'PDF 문제 파싱 실패');
-    console.log('[PDF] Vision parsed questions count:', questions.length);
+    // Wait for image extraction (already running in parallel)
+    if (questions.length > 0) {
+      const imageMap = await imagePromise;
+      if (imageMap.size > 0) {
+        for (let i = 0; i < questions.length; i++) {
+          const qNum = i + 1; // questions are 1-indexed
+          const url = imageMap.get(qNum);
+          if (url) {
+            questions[i].imageUrl = url;
+          }
+        }
+        console.log(`[PDF] Assigned ${imageMap.size} images to questions`);
+      }
+    }
+
     return questions;
   },
 };

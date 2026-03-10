@@ -25,6 +25,7 @@ export interface Question {
   era: Era;
   category: Category;
   difficulty: 1 | 2 | 3;
+  keywords?: string[];
 }
 
 // 시대
