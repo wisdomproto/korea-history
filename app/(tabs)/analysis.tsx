@@ -101,7 +101,7 @@ export default function AnalysisScreen() {
           {unresolvedCount > 0 && (
             <Pressable
               style={styles.recommendCard}
-              onPress={() => router.navigate('/exam/review')}
+              onPress={() => router.push('/exam/review')}
             >
               <View style={[styles.recommendIconWrap, { backgroundColor: '#FEF3C7' }]}>
                 <Ionicons name="refresh" size={18} color="#F59E0B" />
@@ -117,11 +117,11 @@ export default function AnalysisScreen() {
             <Pressable
               style={styles.recommendCard}
               onPress={() =>
-                router.navigate({ pathname: '/exam/unit', params: { era: topWeakEra.key } })
+                router.push({ pathname: '/exam/unit', params: { era: topWeakEra.key } })
               }
             >
-              <View style={[styles.recommendIconWrap, { backgroundColor: '#EFF6FF' }]}>
-                <Ionicons name="book" size={18} color="#3B82F6" />
+              <View style={[styles.recommendIconWrap, { backgroundColor: COLORS.primaryLight }]}>
+                <Ionicons name="book" size={18} color={COLORS.primary} />
               </View>
               <View style={styles.recommendText}>
                 <Text style={styles.recommendTitle}>{topWeakEra.label} 집중 학습</Text>
@@ -187,7 +187,7 @@ export default function AnalysisScreen() {
                 key={era.key}
                 style={styles.barRow}
                 onPress={() =>
-                  router.navigate({ pathname: '/exam/unit', params: { era: era.key } })
+                  router.push({ pathname: '/exam/unit', params: { era: era.key } })
                 }
               >
                 <Text style={styles.barLabel}>{era.label}</Text>
@@ -388,7 +388,7 @@ const styles = StyleSheet.create({
   barBg: {
     flex: 1,
     height: 16,
-    backgroundColor: COLORS.background,
+    backgroundColor: '#F1F0FF',
     borderRadius: 8,
     overflow: 'hidden',
     marginHorizontal: 8,

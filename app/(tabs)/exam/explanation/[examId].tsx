@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { StyleSheet, View, Text, ScrollView, Pressable, ActivityIndicator } from 'react-native';
 import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
-import { COLORS } from '@/lib/constants';
+import { COLORS, RADIUS, SHADOWS } from '@/lib/constants';
 import { useExamWithQuestions } from '@/hooks/useExamData';
 import { UserAnswer, Question } from '@/lib/types';
 import { generateExplanation } from '@/lib/gemini';
@@ -349,9 +349,10 @@ const styles = StyleSheet.create({
 
   questionSection: {
     backgroundColor: COLORS.surface,
-    borderRadius: 12,
+    borderRadius: RADIUS.md,
     padding: 16,
     marginBottom: 12,
+    ...SHADOWS.sm,
   },
   questionLabel: {
     fontSize: 12,
@@ -400,10 +401,10 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: COLORS.primary,
     fontWeight: '600',
-    backgroundColor: '#EEF4FB',
+    backgroundColor: COLORS.primaryLight,
     paddingHorizontal: 8,
     paddingVertical: 2,
-    borderRadius: 8,
+    borderRadius: RADIUS.full,
     overflow: 'hidden',
     marginLeft: 8,
   },
@@ -423,9 +424,10 @@ const styles = StyleSheet.create({
 
   explanationSection: {
     backgroundColor: COLORS.surface,
-    borderRadius: 12,
+    borderRadius: RADIUS.md,
     padding: 16,
     marginBottom: 12,
+    ...SHADOWS.sm,
   },
   sectionTitle: { fontSize: 16, fontWeight: '700', color: COLORS.text, marginBottom: 10 },
   explanationText: { fontSize: 14, color: COLORS.text, lineHeight: 24 },
@@ -496,18 +498,18 @@ const styles = StyleSheet.create({
   navButton: {
     paddingHorizontal: 16,
     paddingVertical: 10,
-    borderRadius: 8,
-    backgroundColor: COLORS.background,
+    borderRadius: RADIUS.sm,
+    backgroundColor: '#F1F0FF',
     minWidth: 80,
     alignItems: 'center',
   },
   navDisabled: { opacity: 0.3 },
-  navText: { fontSize: 14, fontWeight: '600', color: COLORS.text },
+  navText: { fontSize: 14, fontWeight: '600', color: COLORS.primary },
   navDisabledText: { color: COLORS.textLight },
   listButton: {
     paddingHorizontal: 16,
     paddingVertical: 10,
-    borderRadius: 8,
+    borderRadius: RADIUS.sm,
     backgroundColor: COLORS.primary,
   },
   listButtonText: { fontSize: 14, fontWeight: '600', color: '#fff' },

@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { StyleSheet, View, Text, ScrollView, Pressable, ActivityIndicator } from 'react-native';
 import { useRouter, useLocalSearchParams, Stack } from 'expo-router';
-import { COLORS, ERAS } from '@/lib/constants';
+import { COLORS, ERAS, RADIUS, SHADOWS } from '@/lib/constants';
 import { Era, Question } from '@/lib/types';
 import { fetchAllQuestions } from '@/lib/examData';
 import QuestionCard from '@/components/exam/QuestionCard';
@@ -299,10 +299,10 @@ const styles = StyleSheet.create({
   eraHeader: { fontSize: 20, fontWeight: '800', color: COLORS.text, marginBottom: 6 },
   eraSubheader: { fontSize: 14, color: COLORS.textSecondary, marginBottom: 20, lineHeight: 20 },
   eraCard: {
-    backgroundColor: COLORS.surface, borderRadius: 12, padding: 16,
+    backgroundColor: COLORS.surface, borderRadius: RADIUS.md, padding: 16,
     flexDirection: 'row', alignItems: 'center', marginBottom: 10,
-    shadowColor: '#000', shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05, shadowRadius: 4, elevation: 2,
+    borderWidth: 1, borderColor: '#E8E8F4',
+    ...SHADOWS.sm,
   },
   eraColorDot: { width: 12, height: 12, borderRadius: 6, marginRight: 14 },
   eraTextWrap: { flex: 1 },
@@ -314,13 +314,13 @@ const styles = StyleSheet.create({
   emptyContainer: { flex: 1, backgroundColor: COLORS.background, justifyContent: 'center', alignItems: 'center', padding: 20 },
   emptyIcon: { fontSize: 48, marginBottom: 16 },
   emptyTitle: { fontSize: 18, fontWeight: '700', color: COLORS.text, marginBottom: 16 },
-  backBtn: { paddingHorizontal: 24, paddingVertical: 10, backgroundColor: COLORS.primary, borderRadius: 8 },
+  backBtn: { paddingHorizontal: 24, paddingVertical: 10, backgroundColor: COLORS.primary, borderRadius: RADIUS.sm },
   backBtnText: { color: '#fff', fontWeight: '600', fontSize: 15 },
 
   studyContainer: { flex: 1, backgroundColor: COLORS.background },
   progressBar: { padding: 16, paddingBottom: 8 },
   progressText: { fontSize: 13, color: COLORS.textSecondary, marginBottom: 6, fontWeight: '500' },
-  progressBg: { height: 6, backgroundColor: COLORS.border, borderRadius: 3 },
+  progressBg: { height: 6, backgroundColor: '#F1F0FF', borderRadius: 3 },
   progressFill: { height: '100%', borderRadius: 3 },
 
   scrollArea: { flex: 1 },
@@ -331,7 +331,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row', alignItems: 'center', backgroundColor: COLORS.surface,
     borderRadius: 10, padding: 14, borderWidth: 1.5, borderColor: COLORS.border,
   },
-  selectedChoice: { borderColor: COLORS.primary, backgroundColor: '#F0F7FF' },
+  selectedChoice: { borderColor: COLORS.primary, backgroundColor: COLORS.primaryLight },
   correctChoice: { borderColor: COLORS.success, backgroundColor: '#F1F8F1' },
   wrongChoice: { borderColor: COLORS.danger, backgroundColor: '#FFF5F5' },
   choiceNum: { width: 24, fontSize: 14, fontWeight: '700', color: COLORS.textSecondary, textAlign: 'center', marginRight: 10 },
@@ -348,7 +348,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.surface, borderTopWidth: 1, borderTopColor: COLORS.border,
     paddingHorizontal: 16, paddingVertical: 12, alignItems: 'center',
   },
-  nextBtn: { width: '100%', paddingVertical: 14, borderRadius: 10, alignItems: 'center' },
+  nextBtn: { width: '100%', paddingVertical: 14, borderRadius: RADIUS.sm, alignItems: 'center' },
   primaryBtn: { backgroundColor: COLORS.primary },
   primaryBtnText: { color: '#fff', fontSize: 15, fontWeight: '600' },
   hintText: { fontSize: 13, color: COLORS.textLight },
@@ -360,7 +360,7 @@ const styles = StyleSheet.create({
   resultDesc: { fontSize: 14, color: COLORS.textSecondary, textAlign: 'center', lineHeight: 20, marginBottom: 24 },
   resultActions: { flexDirection: 'row', gap: 12 },
   actionBtn: {
-    paddingHorizontal: 24, paddingVertical: 12, borderRadius: 10,
+    paddingHorizontal: 24, paddingVertical: 12, borderRadius: RADIUS.sm,
     backgroundColor: COLORS.surface, borderWidth: 1, borderColor: COLORS.border,
   },
   actionBtnText: { fontSize: 15, fontWeight: '600', color: COLORS.text },

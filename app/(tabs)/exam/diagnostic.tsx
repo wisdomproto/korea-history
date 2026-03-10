@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 import { StyleSheet, View, Text, Pressable, ScrollView, Alert, SafeAreaView, ActivityIndicator } from 'react-native';
 import { useRouter, Stack } from 'expo-router';
-import { COLORS, ERAS } from '@/lib/constants';
+import { COLORS, ERAS, RADIUS, SHADOWS } from '@/lib/constants';
 import { useAllQuestions } from '@/hooks/useExamData';
 import { useExam } from '@/hooks/useExam';
 import { useTimer } from '@/hooks/useTimer';
@@ -320,15 +320,15 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   navButton: {
-    paddingHorizontal: 16, paddingVertical: 10, borderRadius: 8,
-    backgroundColor: COLORS.background, minWidth: 80, alignItems: 'center',
+    paddingHorizontal: 16, paddingVertical: 10, borderRadius: RADIUS.sm,
+    backgroundColor: '#F1F0FF', minWidth: 80, alignItems: 'center',
   },
   navButtonDisabled: { opacity: 0.3 },
-  navButtonText: { fontSize: 14, fontWeight: '600', color: COLORS.text },
+  navButtonText: { fontSize: 14, fontWeight: '600', color: COLORS.primary },
   navButtonTextDisabled: { color: COLORS.textLight },
   progressText: { fontSize: 13, color: COLORS.textSecondary, fontWeight: '500' },
   submitBtn: {
-    paddingHorizontal: 16, paddingVertical: 10, borderRadius: 8,
+    paddingHorizontal: 16, paddingVertical: 10, borderRadius: RADIUS.sm,
     backgroundColor: COLORS.primary, minWidth: 80, alignItems: 'center',
   },
   submitBtnText: { fontSize: 14, fontWeight: '600', color: '#fff' },
@@ -342,7 +342,7 @@ const styles = StyleSheet.create({
   resultRate: { fontSize: 14, color: COLORS.textSecondary, marginTop: 4 },
 
   resultCard: {
-    backgroundColor: COLORS.surface, borderRadius: 16, padding: 20, marginBottom: 16,
+    backgroundColor: COLORS.surface, borderRadius: RADIUS.md, padding: 20, marginBottom: 16, ...SHADOWS.sm,
   },
   sectionTitle: { fontSize: 16, fontWeight: '700', color: COLORS.text, marginBottom: 16 },
   eraRow: { marginBottom: 14 },
@@ -351,7 +351,7 @@ const styles = StyleSheet.create({
   eraLabel: { flex: 1, fontSize: 14, color: COLORS.text, fontWeight: '500' },
   eraScore: { fontSize: 12, color: COLORS.textSecondary },
   eraBarBg: {
-    height: 8, backgroundColor: COLORS.border, borderRadius: 4, overflow: 'hidden', marginBottom: 2,
+    height: 8, backgroundColor: '#F1F0FF', borderRadius: 4, overflow: 'hidden', marginBottom: 2,
   },
   eraBar: { height: '100%', borderRadius: 4 },
   eraRate: { fontSize: 12, fontWeight: '700', textAlign: 'right' },
@@ -369,7 +369,8 @@ const styles = StyleSheet.create({
     padding: 20, paddingBottom: 32, backgroundColor: COLORS.background,
   },
   startButton: {
-    backgroundColor: COLORS.primary, borderRadius: 12, paddingVertical: 16, alignItems: 'center',
+    backgroundColor: COLORS.primary, borderRadius: RADIUS.sm, paddingVertical: 16, alignItems: 'center',
+    ...SHADOWS.md,
   },
   startButtonText: { color: '#fff', fontSize: 17, fontWeight: '700' },
 });

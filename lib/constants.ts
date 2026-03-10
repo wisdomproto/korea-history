@@ -5,14 +5,15 @@ export const IMAGE_BASE_URL = process.env.R2_PUBLIC_URL || 'http://localhost:300
 
 // 앱 색상
 export const COLORS = {
-  primary: '#3B82F6',
-  primaryDark: '#2563EB',
-  primaryLight: '#EFF6FF',
+  primary: '#6366F1',
+  primaryDark: '#4F46E5',
+  primaryLight: '#EEF2FF',
+  gradient: '#EC4899',
   secondary: '#F59E0B',
   success: '#10B981',
   danger: '#EF4444',
   warning: '#F59E0B',
-  background: '#F8FAFC',
+  background: '#EEF2FF',
   surface: '#FFFFFF',
   surfaceElevated: '#FFFFFF',
   text: '#0F172A',
@@ -25,33 +26,33 @@ export const COLORS = {
 // 디자인 토큰
 export const SHADOWS = {
   sm: {
-    shadowColor: '#000',
+    shadowColor: '#6366F1',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.04,
-    shadowRadius: 3,
+    shadowOpacity: 0.06,
+    shadowRadius: 4,
     elevation: 1,
   },
   md: {
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.06,
-    shadowRadius: 8,
+    shadowColor: '#6366F1',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
     elevation: 3,
   },
   lg: {
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.08,
-    shadowRadius: 16,
+    shadowColor: '#6366F1',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.15,
+    shadowRadius: 20,
     elevation: 6,
   },
 } as const;
 
 export const RADIUS = {
-  sm: 8,
-  md: 12,
-  lg: 16,
-  xl: 20,
+  sm: 10,
+  md: 16,
+  lg: 24,
+  xl: 32,
   full: 9999,
 } as const;
 

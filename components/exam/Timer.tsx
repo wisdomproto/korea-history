@@ -1,5 +1,6 @@
 import { StyleSheet, View, Text } from 'react-native';
-import { COLORS } from '@/lib/constants';
+import { Ionicons } from '@expo/vector-icons';
+import { COLORS, RADIUS } from '@/lib/constants';
 
 interface Props {
   formattedTime: string;
@@ -10,9 +11,13 @@ interface Props {
 export default function Timer({ formattedTime, isWarning, progress }: Props) {
   return (
     <View style={styles.container}>
-      <View style={styles.timerRow}>
-        <Text style={styles.icon}>⏱</Text>
-        <Text style={[styles.time, isWarning && styles.timeWarning]}>
+      <View style={[styles.chip, isWarning && styles.chipWarning]}>
+        <Ionicons
+          name="time-outline"
+          size={16}
+          color={isWarning ? '#fff' : '#fff'}
+        />
+        <Text style={styles.time}>
           {formattedTime}
         </Text>
       </View>
@@ -34,24 +39,25 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 8,
   },
-  timerRow: {
+  chip: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 6,
+    alignSelf: 'center',
+    backgroundColor: COLORS.primary,
+    borderRadius: RADIUS.full,
+    paddingHorizontal: 16,
+    paddingVertical: 6,
+    gap: 6,
+    marginBottom: 8,
   },
-  icon: {
-    fontSize: 14,
-    marginRight: 6,
+  chipWarning: {
+    backgroundColor: COLORS.danger,
   },
   time: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '700',
-    color: COLORS.text,
+    color: '#fff',
     fontVariant: ['tabular-nums'],
-  },
-  timeWarning: {
-    color: COLORS.danger,
   },
   progressBar: {
     height: 4,

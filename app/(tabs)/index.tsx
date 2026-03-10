@@ -444,7 +444,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: 10,
     borderRadius: RADIUS.sm,
-    backgroundColor: COLORS.bg,
+    backgroundColor: COLORS.background,
     alignItems: 'center',
   },
   modalCancelText: {
@@ -531,9 +531,9 @@ const styles = StyleSheet.create({
   // --- D-day ---
   ddayCard: {
     backgroundColor: COLORS.primary,
-    borderRadius: RADIUS.xl,
+    borderRadius: RADIUS.lg,
     padding: 22,
-    ...SHADOWS.md,
+    ...SHADOWS.lg,
   },
   ddayRow: {
     flexDirection: 'row',

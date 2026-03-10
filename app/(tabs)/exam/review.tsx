@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { StyleSheet, View, Text, ScrollView, Pressable, Alert } from 'react-native';
 import { useRouter, Stack } from 'expo-router';
-import { COLORS } from '@/lib/constants';
+import { COLORS, RADIUS } from '@/lib/constants';
 import { Question } from '@/lib/types';
 import { getWrongNotes, resolveWrongNote, WrongNote } from '@/lib/storage';
 import { fetchQuestionById } from '@/lib/examData';
@@ -213,12 +213,12 @@ const styles = StyleSheet.create({
   emptyIcon: { fontSize: 48, marginBottom: 16 },
   emptyTitle: { fontSize: 18, fontWeight: '700', color: COLORS.text, marginBottom: 8 },
   emptyDesc: { fontSize: 14, color: COLORS.textSecondary, textAlign: 'center', marginBottom: 20 },
-  backBtn: { paddingHorizontal: 24, paddingVertical: 10, backgroundColor: COLORS.primary, borderRadius: 8 },
+  backBtn: { paddingHorizontal: 24, paddingVertical: 10, backgroundColor: COLORS.primary, borderRadius: RADIUS.sm },
   backBtnText: { color: '#fff', fontWeight: '600', fontSize: 15 },
 
   progressBar: { padding: 16, paddingBottom: 8 },
   progressText: { fontSize: 13, color: COLORS.textSecondary, marginBottom: 6, fontWeight: '500' },
-  progressBg: { height: 6, backgroundColor: COLORS.border, borderRadius: 3 },
+  progressBg: { height: 6, backgroundColor: '#F1F0FF', borderRadius: 3 },
   progressFill: { height: '100%', backgroundColor: COLORS.primary, borderRadius: 3 },
 
   scrollArea: { flex: 1 },
@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row', alignItems: 'center', backgroundColor: COLORS.surface,
     borderRadius: 10, padding: 14, borderWidth: 1.5, borderColor: COLORS.border,
   },
-  selectedChoice: { borderColor: COLORS.primary, backgroundColor: '#F0F7FF' },
+  selectedChoice: { borderColor: COLORS.primary, backgroundColor: COLORS.primaryLight },
   correctChoice: { borderColor: COLORS.success, backgroundColor: '#F1F8F1' },
   wrongChoice: { borderColor: COLORS.danger, backgroundColor: '#FFF5F5' },
   choiceNum: { width: 24, fontSize: 14, fontWeight: '700', color: COLORS.textSecondary, textAlign: 'center', marginRight: 10 },
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.surface, borderTopWidth: 1, borderTopColor: COLORS.border,
     paddingHorizontal: 16, paddingVertical: 12, alignItems: 'center',
   },
-  nextBtn: { width: '100%', paddingVertical: 14, borderRadius: 10, alignItems: 'center' },
+  nextBtn: { width: '100%', paddingVertical: 14, borderRadius: RADIUS.sm, alignItems: 'center' },
   primaryBtn: { backgroundColor: COLORS.primary },
   primaryBtnText: { color: '#fff', fontSize: 15, fontWeight: '600' },
   hintText: { fontSize: 13, color: COLORS.textLight },

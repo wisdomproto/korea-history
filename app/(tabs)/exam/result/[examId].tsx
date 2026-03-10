@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { StyleSheet, View, Text, ScrollView, Pressable, ActivityIndicator } from 'react-native';
 import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
-import { COLORS, ERAS, CATEGORIES, getGrade } from '@/lib/constants';
+import { COLORS, ERAS, CATEGORIES, getGrade, RADIUS, SHADOWS } from '@/lib/constants';
 import { useExamWithQuestions } from '@/hooks/useExamData';
 import { UserAnswer, Era, Category } from '@/lib/types';
 import { addWrongAnswers, saveExamRecord } from '@/lib/storage';
@@ -280,7 +280,7 @@ const statStyles = StyleSheet.create({
   barBg: {
     flex: 1,
     height: 12,
-    backgroundColor: COLORS.border,
+    backgroundColor: '#F1F0FF',
     borderRadius: 6,
     overflow: 'hidden',
     marginHorizontal: 8,
@@ -331,69 +331,61 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   scoreCard: {
-    backgroundColor: COLORS.surface,
-    borderRadius: 16,
+    backgroundColor: COLORS.primary,
+    borderRadius: RADIUS.xl,
     padding: 28,
     alignItems: 'center',
     width: '100%',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
-    shadowRadius: 8,
-    elevation: 3,
+    ...SHADOWS.lg,
     marginBottom: 16,
   },
   examTitle: {
     fontSize: 14,
-    color: COLORS.textSecondary,
+    color: 'rgba(255,255,255,0.8)',
     marginBottom: 12,
   },
   scoreValue: {
     fontSize: 60,
-    fontWeight: '800',
-    color: COLORS.text,
+    fontWeight: '900',
+    color: '#fff',
   },
   scoreLabel: {
     fontSize: 15,
-    color: COLORS.textSecondary,
+    color: 'rgba(255,255,255,0.7)',
     marginBottom: 14,
   },
   gradeBadge: {
     paddingHorizontal: 20,
     paddingVertical: 6,
-    borderRadius: 20,
+    borderRadius: RADIUS.full,
     marginBottom: 10,
   },
   passedBadge: {
-    backgroundColor: '#E8F5E9',
+    backgroundColor: 'rgba(255,255,255,0.2)',
   },
   failedBadge: {
-    backgroundColor: '#FFEBEE',
+    backgroundColor: 'rgba(239,68,68,0.3)',
   },
   gradeText: {
     fontSize: 18,
     fontWeight: '700',
   },
   passedText: {
-    color: COLORS.success,
+    color: '#fff',
   },
   failedText: {
-    color: COLORS.danger,
+    color: '#FCA5A5',
   },
   correctCount: {
     fontSize: 13,
-    color: COLORS.textSecondary,
+    color: 'rgba(255,255,255,0.7)',
   },
   analysisCard: {
     backgroundColor: COLORS.surface,
-    borderRadius: 14,
+    borderRadius: RADIUS.md,
     padding: 18,
     marginBottom: 16,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 4,
-    elevation: 2,
+    ...SHADOWS.sm,
   },
   sectionTitle: {
     fontSize: 16,
@@ -452,7 +444,7 @@ const styles = StyleSheet.create({
   },
   explanationBtn: {
     paddingVertical: 14,
-    borderRadius: 10,
+    borderRadius: RADIUS.sm,
     backgroundColor: COLORS.primary,
     alignItems: 'center',
   },
@@ -476,11 +468,11 @@ const styles = StyleSheet.create({
   actionButton: {
     flex: 1,
     paddingVertical: 14,
-    borderRadius: 10,
+    borderRadius: RADIUS.sm,
     backgroundColor: COLORS.surface,
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: COLORS.border,
+    borderWidth: 1.5,
+    borderColor: '#E8E8F4',
   },
   primaryAction: {
     backgroundColor: COLORS.primary,

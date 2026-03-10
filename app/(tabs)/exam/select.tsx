@@ -181,10 +181,12 @@ const styles = StyleSheet.create({
   },
   examCard: {
     backgroundColor: COLORS.surface,
-    borderRadius: RADIUS.lg,
+    borderRadius: RADIUS.md,
     padding: 18,
     flexDirection: 'row',
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#E8E8F4',
     ...SHADOWS.sm,
   },
   locked: {
@@ -201,16 +203,16 @@ const styles = StyleSheet.create({
   },
   examNumber: {
     fontSize: 17,
-    fontWeight: '700',
+    fontWeight: '800',
     color: COLORS.text,
   },
   typeBadge: {
     paddingHorizontal: 8,
     paddingVertical: 2,
-    borderRadius: 6,
+    borderRadius: RADIUS.full,
   },
   advancedBadge: {
-    backgroundColor: '#EEF2FF',
+    backgroundColor: COLORS.primaryLight,
   },
   basicBadge: {
     backgroundColor: '#FEF3C7',
@@ -224,7 +226,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FEF3C7',
     paddingHorizontal: 8,
     paddingVertical: 2,
-    borderRadius: 6,
+    borderRadius: RADIUS.full,
   },
   resumeBadgeText: {
     fontSize: 11,

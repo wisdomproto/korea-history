@@ -1,7 +1,7 @@
 import { useCallback, useRef, useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Pressable, ScrollView, Alert, AppState, ActivityIndicator } from 'react-native';
 import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
-import { COLORS } from '@/lib/constants';
+import { COLORS, RADIUS, SHADOWS } from '@/lib/constants';
 import { useExamWithQuestions } from '@/hooks/useExamData';
 import { useExam } from '@/hooks/useExam';
 import { useTimer } from '@/hooks/useTimer';
@@ -280,7 +280,7 @@ const styles = StyleSheet.create({
   navBar: {
     backgroundColor: COLORS.surface,
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.border,
+    borderBottomColor: '#E8E8F4',
     paddingHorizontal: 12,
   },
   scrollArea: {
@@ -296,15 +296,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: COLORS.surface,
     borderTopWidth: 1,
-    borderTopColor: COLORS.border,
+    borderTopColor: '#E8E8F4',
     paddingHorizontal: 16,
     paddingVertical: 12,
+    ...SHADOWS.sm,
   },
   navButton: {
-    paddingHorizontal: 16,
+    paddingHorizontal: 18,
     paddingVertical: 10,
-    borderRadius: 8,
-    backgroundColor: COLORS.background,
+    borderRadius: RADIUS.sm,
+    backgroundColor: '#F1F0FF',
     minWidth: 80,
     alignItems: 'center',
   },
@@ -314,7 +315,7 @@ const styles = StyleSheet.create({
   navButtonText: {
     fontSize: 14,
     fontWeight: '600',
-    color: COLORS.text,
+    color: COLORS.primary,
   },
   navButtonTextDisabled: {
     color: COLORS.textLight,
@@ -322,19 +323,19 @@ const styles = StyleSheet.create({
   progress: {
     fontSize: 13,
     color: COLORS.textSecondary,
-    fontWeight: '500',
+    fontWeight: '600',
   },
   submitButton: {
-    paddingHorizontal: 16,
+    paddingHorizontal: 18,
     paddingVertical: 10,
-    borderRadius: 8,
+    borderRadius: RADIUS.sm,
     backgroundColor: COLORS.primary,
     minWidth: 80,
     alignItems: 'center',
   },
   submitButtonText: {
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: '700',
     color: '#fff',
   },
 });

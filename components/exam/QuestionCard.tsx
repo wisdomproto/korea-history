@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text, Image, ActivityIndicator } from 'react-native';
 import { Question } from '@/lib/types';
-import { COLORS, IMAGE_BASE_URL } from '@/lib/constants';
+import { COLORS, IMAGE_BASE_URL, RADIUS, SHADOWS } from '@/lib/constants';
 
 interface Props {
   question: Question;
@@ -22,10 +22,18 @@ export default function QuestionCard({ question, questionIndex, totalQuestions }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.questionNumber}>
-        Q. {questionIndex + 1} / {totalQuestions}
-      </Text>
-      {/* 자료 영역: 지문 텍스트 and/or 이미지 */}
+      {/* Question number - big bold */}
+      <View style={styles.numberRow}>
+        <Text style={styles.questionNumber}>Q{questionIndex + 1}</Text>
+        <Text style={styles.questionTotal}>/ {totalQuestions}</Text>
+        {question.category && (
+          <View style={styles.categoryTag}>
+            <Text style={styles.categoryText}>{question.category}</Text>
+          </View>
+        )}
+      </View>
+
+      {/* Passage / resource area - amber box */}
       {(question.passage || hasImage) && (
         <View style={styles.passageBox}>
           {question.passage && (
@@ -61,19 +69,41 @@ const styles = StyleSheet.create({
   container: {
     marginBottom: 20,
   },
+  numberRow: {
+    flexDirection: 'row',
+    alignItems: 'baseline',
+    gap: 4,
+    marginBottom: 14,
+  },
   questionNumber: {
-    fontSize: 13,
-    color: COLORS.textSecondary,
+    fontSize: 24,
+    fontWeight: '900',
+    color: COLORS.primary,
+  },
+  questionTotal: {
+    fontSize: 14,
+    color: COLORS.textLight,
+    fontWeight: '500',
+    flex: 1,
+  },
+  categoryTag: {
+    backgroundColor: COLORS.primaryLight,
+    borderRadius: RADIUS.full,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+  },
+  categoryText: {
+    fontSize: 11,
     fontWeight: '600',
-    marginBottom: 12,
+    color: COLORS.primary,
   },
   passageBox: {
-    backgroundColor: '#FFF9E6',
-    borderLeftWidth: 3,
+    backgroundColor: '#FEF9E7',
+    borderLeftWidth: 4,
     borderLeftColor: COLORS.secondary,
-    borderRadius: 6,
-    padding: 12,
-    marginBottom: 12,
+    borderRadius: RADIUS.sm,
+    padding: 14,
+    marginBottom: 14,
   },
   passageText: {
     fontSize: 14,
@@ -84,6 +114,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: COLORS.text,
     lineHeight: 26,
+    fontWeight: '500',
   },
   imageContainer: {
     borderRadius: 8,

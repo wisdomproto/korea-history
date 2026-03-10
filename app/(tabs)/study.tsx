@@ -7,8 +7,8 @@ import { COLORS, SHADOWS, RADIUS } from '@/lib/constants';
 const STUDY_MODES = [
   {
     icon: 'document-text' as const,
-    iconColor: '#3B82F6',
-    bgColor: '#EFF6FF',
+    iconColor: '#6366F1',
+    bgColor: '#EEF2FF',
     title: '회차별',
     desc: '시험 회차를 선택하여 기출문제를 풀어보세요',
     path: '/exam/select',
@@ -57,7 +57,7 @@ export default function StudyScreen() {
     <Pressable
       key={item.title}
       style={styles.menuCard}
-      onPress={() => router.navigate(item.path as any)}
+      onPress={() => router.push(item.path as any)}
     >
       <View style={[styles.iconWrap, { backgroundColor: item.bgColor }]}>
         <Ionicons name={item.icon} size={24} color={item.iconColor} />
@@ -104,16 +104,18 @@ const styles = StyleSheet.create({
   },
   menuCard: {
     backgroundColor: COLORS.surface,
-    borderRadius: RADIUS.lg,
+    borderRadius: RADIUS.md,
     padding: 18,
     flexDirection: 'row',
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#E8E8F4',
     ...SHADOWS.sm,
   },
   iconWrap: {
     width: 48,
     height: 48,
-    borderRadius: RADIUS.md,
+    borderRadius: RADIUS.sm,
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 14,

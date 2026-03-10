@@ -130,12 +130,12 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.surface,
     borderTopWidth: 0,
     ...(Platform.OS === 'web'
-      ? { boxShadow: '0 -2px 12px rgba(0,0,0,0.06)' }
+      ? { boxShadow: '0 -2px 16px rgba(99,102,241,0.08)' }
       : {
-          shadowColor: '#000',
+          shadowColor: '#6366F1',
           shadowOffset: { width: 0, height: -2 },
-          shadowOpacity: 0.06,
-          shadowRadius: 12,
+          shadowOpacity: 0.08,
+          shadowRadius: 16,
           elevation: 8,
         }),
   } as any,

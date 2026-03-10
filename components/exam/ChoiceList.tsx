@@ -1,5 +1,6 @@
 import { StyleSheet, View, Text, Pressable, Image } from 'react-native';
-import { COLORS, IMAGE_BASE_URL } from '@/lib/constants';
+import { Ionicons } from '@expo/vector-icons';
+import { COLORS, IMAGE_BASE_URL, RADIUS, SHADOWS } from '@/lib/constants';
 
 interface Props {
   choices: string[];
@@ -29,10 +30,12 @@ export default function ChoiceList({ choices, choiceImages, selectedAnswer, onSe
             style={[styles.choice, isSelected && styles.choiceSelected]}
             onPress={() => onSelect(choiceNumber)}
           >
-            <View style={[styles.label, isSelected && styles.labelSelected]}>
-              <Text style={[styles.labelText, isSelected && styles.labelTextSelected]}>
-                {CHOICE_LABELS[index]}
-              </Text>
+            <View style={[styles.badge, isSelected && styles.badgeSelected]}>
+              {isSelected ? (
+                <Ionicons name="checkmark" size={14} color="#fff" />
+              ) : (
+                <Text style={styles.badgeText}>{choiceNumber}</Text>
+              )}
             </View>
             <View style={styles.choiceContent}>
               {choice ? (
@@ -63,34 +66,32 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: COLORS.surface,
-    borderRadius: 10,
-    padding: 14,
-    borderWidth: 1.5,
-    borderColor: COLORS.border,
+    borderRadius: RADIUS.md,
+    padding: 16,
+    borderWidth: 2,
+    borderColor: '#E8E8F4',
+    ...SHADOWS.sm,
   },
   choiceSelected: {
     borderColor: COLORS.primary,
-    backgroundColor: '#EEF4FB',
+    backgroundColor: COLORS.primaryLight,
   },
-  label: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
-    backgroundColor: COLORS.background,
+  badge: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    backgroundColor: '#F1F0FF',
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 12,
+    marginRight: 14,
   },
-  labelSelected: {
+  badgeSelected: {
     backgroundColor: COLORS.primary,
   },
-  labelText: {
+  badgeText: {
     fontSize: 14,
-    color: COLORS.textSecondary,
-    fontWeight: '600',
-  },
-  labelTextSelected: {
-    color: '#fff',
+    color: COLORS.primary,
+    fontWeight: '700',
   },
   choiceContent: {
     flex: 1,
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
   },
   choiceTextSelected: {
     color: COLORS.primaryDark,
-    fontWeight: '500',
+    fontWeight: '600',
   },
   choiceImage: {
     width: '100%',

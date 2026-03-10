@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, Pressable, ScrollView } from 'react-native';
-import { COLORS } from '@/lib/constants';
+import { COLORS, RADIUS } from '@/lib/constants';
 import { UserAnswer } from '@/lib/types';
 
 interface Props {
@@ -55,20 +55,22 @@ const styles = StyleSheet.create({
   dot: {
     width: 32,
     height: 32,
-    borderRadius: 16,
-    backgroundColor: COLORS.background,
+    borderRadius: RADIUS.full,
+    backgroundColor: '#F1F0FF',
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: COLORS.border,
+    borderWidth: 1.5,
+    borderColor: 'transparent',
   },
   dotCurrent: {
     backgroundColor: COLORS.primary,
     borderColor: COLORS.primary,
+    width: 40,
+    borderRadius: RADIUS.full,
   },
   dotAnswered: {
-    backgroundColor: '#E8F5E9',
-    borderColor: COLORS.success,
+    backgroundColor: COLORS.primary,
+    borderColor: COLORS.primary,
   },
   dotText: {
     fontSize: 12,
@@ -77,8 +79,9 @@ const styles = StyleSheet.create({
   },
   dotTextCurrent: {
     color: '#fff',
+    fontWeight: '700',
   },
   dotTextAnswered: {
-    color: COLORS.success,
+    color: '#fff',
   },
 });
