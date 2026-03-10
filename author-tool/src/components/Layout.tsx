@@ -25,6 +25,7 @@ export function Layout() {
 
   const [showExamForm, setShowExamForm] = useState(false);
   const [pdfImporting, setPdfImporting] = useState(false);
+  const [pdfProgress, setPdfProgress] = useState('');
 
   const selectedQuestion = examFile?.questions.find((q) => q.id === editingQuestionId) ?? null;
 
@@ -72,8 +73,9 @@ export function Layout() {
         if (pdfFile) {
           // Parse PDF and add questions
           setPdfImporting(true);
+          setPdfProgress('PDF 업로드 중...');
           try {
-            const questions = await pdfImportApi.parse(pdfFile, exam.examNumber);
+            const questions = await pdfImportApi.parse(pdfFile, exam.examNumber, undefined, (msg) => setPdfProgress(msg));
             if (questions.length > 0) {
               addBatchMutation.mutate({ examId, questions }, {
                 onSuccess: () => {
@@ -216,10 +218,10 @@ export function Layout() {
       {/* PDF Import Loading Overlay */}
       {pdfImporting && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
-          <div className="rounded-xl bg-white p-8 text-center shadow-2xl">
+          <div className="rounded-xl bg-white p-8 text-center shadow-2xl min-w-[320px]">
             <div className="mx-auto mb-4 h-10 w-10 animate-spin rounded-full border-4 border-primary-200 border-t-primary-600" />
             <p className="font-semibold">PDF 분석 중...</p>
-            <p className="mt-1 text-sm text-gray-500">AI가 문제와 이미지를 추출하고 있습니다</p>
+            <p className="mt-2 text-sm text-gray-600 max-w-xs truncate">{pdfProgress}</p>
           </div>
         </div>
       )}
