@@ -133,31 +133,27 @@ export const PdfImageService = {
         if (!uniqueImages.has(img.question)) uniqueImages.set(img.question, img);
       }
 
-      onProgress?.(`이미지 ${uniqueImages.size}개 R2 업로드 중...`);
+      const total = uniqueImages.size;
+      onProgress?.(`이미지 ${total}개 R2 업로드 시작...`);
       console.log(`[PDF-Image] Found ${manifest.images.length} images, uploading to R2...`);
 
-      // Upload all images to R2 in parallel
+      // Upload images sequentially so progress updates stream one-by-one
       const result = new Map<number, string>();
       let uploadCount = 0;
-      const total = uniqueImages.size;
 
-      const uploadResults = await Promise.allSettled(
-        [...uniqueImages.values()].map(async (img) => {
+      for (const img of uniqueImages.values()) {
+        try {
           const imgPath = path.join(outDir, img.file);
           const imgBuffer = await fs.readFile(imgPath);
           const url = await ImageService.save(imgBuffer, img.file);
+          result.set(img.question, url);
           uploadCount++;
-          onProgress?.(`R2 업로드: ${uploadCount}/${total}`);
+          onProgress?.(`R2 업로드: ${uploadCount}/${total} (Q${img.question})`);
           console.log(`[PDF-Image] Q${img.question}: ${img.type} → ${url}`);
-          return { question: img.question, url };
-        }),
-      );
-
-      for (const r of uploadResults) {
-        if (r.status === 'fulfilled') {
-          result.set(r.value.question, r.value.url);
-        } else {
-          console.error(`[PDF-Image] Upload failed:`, r.reason);
+        } catch (err) {
+          uploadCount++;
+          console.error(`[PDF-Image] Upload failed Q${img.question}:`, err);
+          onProgress?.(`R2 업로드 실패: Q${img.question}`);
         }
       }
 

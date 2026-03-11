@@ -85,3 +85,4 @@ export async function listObjects(prefix: string): Promise<string[]> {
 export function getPublicUrl(key: string): string {
   return `${config.r2.publicUrl}/${key}`;
 }
+

@@ -33,14 +33,13 @@ export default function QuestionCard({ question, questionIndex, totalQuestions }
         )}
       </View>
 
-      {/* Passage / resource area - amber box */}
-      {(question.passage || hasImage) && (
+      <Text style={styles.content}>{question.content}</Text>
+
+      {/* Source image area */}
+      {hasImage && (
         <View style={styles.passageBox}>
-          {question.passage && (
-            <Text style={styles.passageText}>{question.passage}</Text>
-          )}
-          {hasImage && !imgError && (
-            <View style={[styles.imageContainer, question.passage ? styles.imageWithPassage : null]}>
+          {!imgError ? (
+            <View style={styles.imageContainer}>
               {imgLoading && (
                 <ActivityIndicator size="small" color={COLORS.primary} style={styles.loader} />
               )}
@@ -52,15 +51,13 @@ export default function QuestionCard({ question, questionIndex, totalQuestions }
                 onError={() => { setImgLoading(false); setImgError(true); }}
               />
             </View>
-          )}
-          {hasImage && imgError && (
+          ) : (
             <View style={styles.imagePlaceholder}>
               <Text style={styles.imageText}>[이미지 로드 실패]</Text>
             </View>
           )}
         </View>
       )}
-      <Text style={styles.content}>{question.content}</Text>
     </View>
   );
 }
@@ -103,27 +100,19 @@ const styles = StyleSheet.create({
     borderLeftColor: COLORS.secondary,
     borderRadius: RADIUS.sm,
     padding: 14,
-    marginBottom: 14,
-  },
-  passageText: {
-    fontSize: 14,
-    color: COLORS.text,
-    lineHeight: 22,
   },
   content: {
     fontSize: 16,
     color: COLORS.text,
     lineHeight: 26,
     fontWeight: '500',
+    marginBottom: 14,
   },
   imageContainer: {
     borderRadius: 8,
     overflow: 'hidden',
     backgroundColor: COLORS.background,
     minHeight: 120,
-  },
-  imageWithPassage: {
-    marginTop: 10,
   },
   loader: {
     position: 'absolute',

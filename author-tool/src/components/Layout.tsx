@@ -15,7 +15,7 @@ import type { Question, Exam } from '@/lib/types';
 export function Layout() {
   const { selectedExamId, activeView, editingQuestionId, setEditingQuestionId, setActiveView, setSelectedExamId } = useEditorStore();
   const { data: allExams } = useExams();
-  const { data: examFile, refetch: refetchExam } = useExam(selectedExamId);
+  const { data: examFile, isLoading: examLoading, refetch: refetchExam } = useExam(selectedExamId);
   const createExamMutation = useCreateExam();
   const deleteExamMutation = useDeleteExam();
   const createQuestionMutation = useCreateQuestion();
@@ -146,6 +146,16 @@ export function Layout() {
           <div className="flex-1 overflow-y-auto p-6">
             <div className="mx-auto max-w-4xl">
               <GeneratorPanel />
+            </div>
+          </div>
+        )}
+
+        {/* Exam loading */}
+        {selectedExamId && examLoading && (activeView === 'exam' || activeView === 'question') && (
+          <div className="flex-1 flex items-center justify-center">
+            <div className="text-center">
+              <div className="mx-auto mb-4 h-10 w-10 animate-spin rounded-full border-4 border-gray-200 border-t-indigo-600" />
+              <p className="text-gray-500">문제 로딩 중...</p>
             </div>
           </div>
         )}

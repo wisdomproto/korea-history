@@ -2,12 +2,25 @@
  * Async data fetching layer for exam data from R2.
  *
  * Replaces the old static `data/exams.ts` with runtime fetching + in-memory cache.
- * Falls back to bundled JSON imports when R2 is not configured (dev mode).
+ * Falls back to bundled JSON imports when R2 is not configured or unavailable.
  */
 import { Exam, Question } from './types';
+import * as bundledExamsModule from '../data/exams';
 
-// R2 public URL — set this after migration, or leave empty for bundled fallback
-const R2_BASE_URL = process.env.R2_PUBLIC_URL || '';
+// R2 public URL — Expo requires EXPO_PUBLIC_ prefix for client-side env vars
+// In dev, points to proxy (http://localhost:3001/r2) to bypass CORS
+const R2_BASE_URL = process.env.EXPO_PUBLIC_R2_URL || '';
+
+/** Rewrite absolute R2 URLs to go through our proxy when using proxy mode */
+function rewriteUrl(url: string): string {
+  if (!R2_BASE_URL || !url) return url;
+  // If R2_BASE_URL is a proxy (not direct R2), rewrite absolute R2 URLs
+  if (!R2_BASE_URL.includes('r2.dev') && url.includes('r2.dev')) {
+    const parsed = new URL(url);
+    return `${R2_BASE_URL}${parsed.pathname}`;
+  }
+  return url;
+}
 
 interface Manifest {
   generatedAt: string;
@@ -24,38 +37,36 @@ let cachedManifest: Manifest | null = null;
 const examCache = new Map<number, ExamFile>();
 let allQuestionsCache: Question[] | null = null;
 
-// ── Bundled fallback (dev / offline) ───────────────────────
-// These are the static imports that work without R2
-let bundledExams: typeof import('../data/exams') | null = null;
+// ── Bundled fallback ───────────────────────────────────────
+// Track whether R2 is reachable; once it fails, use bundled data for the session
+let r2Failed = false;
 
-async function getBundledModule() {
-  if (!bundledExams) {
-    bundledExams = await import('../data/exams');
-  }
-  return bundledExams;
-}
-
-function useR2(): boolean {
-  return R2_BASE_URL.length > 0;
+function useBundled(): boolean {
+  return !R2_BASE_URL || r2Failed;
 }
 
 // ── Public API ─────────────────────────────────────────────
 
 /** Fetch manifest (list of all exams) */
 export async function fetchExams(): Promise<Exam[]> {
-  if (!useR2()) {
-    const mod = await getBundledModule();
-    return mod.EXAMS;
+  if (useBundled()) {
+    return bundledExamsModule.EXAMS;
   }
 
   if (cachedManifest) {
     return cachedManifest.exams;
   }
 
-  const res = await fetch(`${R2_BASE_URL}/manifest.json`);
-  if (!res.ok) throw new Error(`Failed to fetch manifest: ${res.status}`);
-  cachedManifest = (await res.json()) as Manifest;
-  return cachedManifest.exams;
+  try {
+    const res = await fetch(`${R2_BASE_URL}/manifest.json`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    cachedManifest = (await res.json()) as Manifest;
+    return cachedManifest.exams;
+  } catch {
+    // R2 unreachable — fall back to bundled data for this session
+    r2Failed = true;
+    return bundledExamsModule.EXAMS;
+  }
 }
 
 /** Fetch a single exam by ID */
@@ -66,9 +77,8 @@ export async function fetchExamById(examId: number): Promise<Exam | undefined> {
 
 /** Fetch questions for an exam */
 export async function fetchQuestionsByExamId(examId: number): Promise<Question[]> {
-  if (!useR2()) {
-    const mod = await getBundledModule();
-    return mod.getQuestionsByExamId(examId);
+  if (useBundled()) {
+    return bundledExamsModule.getQuestionsByExamId(examId);
   }
 
   // Check cache
@@ -77,21 +87,27 @@ export async function fetchQuestionsByExamId(examId: number): Promise<Question[]
 
   // Find URL from manifest
   if (!cachedManifest) await fetchExams();
+  if (useBundled()) return bundledExamsModule.getQuestionsByExamId(examId);
+
   const entry = cachedManifest!.exams.find((e) => e.id === examId);
   if (!entry) return [];
 
-  const res = await fetch(entry.url);
-  if (!res.ok) return [];
-  const data = (await res.json()) as ExamFile;
-  examCache.set(examId, data);
-  return data.questions;
+  try {
+    const res = await fetch(rewriteUrl(entry.url));
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = (await res.json()) as ExamFile;
+    examCache.set(examId, data);
+    return data.questions;
+  } catch {
+    r2Failed = true;
+    return bundledExamsModule.getQuestionsByExamId(examId);
+  }
 }
 
 /** Fetch a single question by ID (searches all exams) */
 export async function fetchQuestionById(questionId: number): Promise<Question | undefined> {
-  if (!useR2()) {
-    const mod = await getBundledModule();
-    return mod.getQuestionById(questionId);
+  if (useBundled()) {
+    return bundledExamsModule.getQuestionById(questionId);
   }
 
   // Search cached exams first
@@ -107,9 +123,8 @@ export async function fetchQuestionById(questionId: number): Promise<Question | 
 
 /** Fetch ALL questions across all exams */
 export async function fetchAllQuestions(): Promise<Question[]> {
-  if (!useR2()) {
-    const mod = await getBundledModule();
-    return mod.getAllQuestions();
+  if (useBundled()) {
+    return bundledExamsModule.getAllQuestions();
   }
 
   if (allQuestionsCache) return allQuestionsCache;
@@ -155,4 +170,5 @@ export function clearExamCache(): void {
   examCache.clear();
   allQuestionsCache = null;
   keywordsCache = null;
+  r2Failed = false;
 }

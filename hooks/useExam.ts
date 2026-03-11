@@ -18,6 +18,19 @@ export function useExam(questions: Question[], options?: UseExamOptions) {
     }))
   );
 
+  // Re-initialize answers when questions load asynchronously
+  useEffect(() => {
+    if (questions.length > 0 && answers.length === 0 && !options?.initialAnswers) {
+      setAnswers(
+        questions.map((q) => ({
+          questionId: q.id,
+          questionNumber: q.questionNumber,
+          selectedAnswer: null,
+        }))
+      );
+    }
+  }, [questions.length]);
+
   const examIdRef = useRef<number | null>(null);
   const answersRef = useRef(answers);
   const indexRef = useRef(currentIndex);

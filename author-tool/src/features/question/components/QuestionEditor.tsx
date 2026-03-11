@@ -18,7 +18,6 @@ const CHOICE_LABELS = ['①', '②', '③', '④', '⑤'];
 
 export function QuestionEditor({ question, examId, onSave, saving }: QuestionEditorProps) {
   const [content, setContent] = useState(question.content);
-  const [passage, setPassage] = useState(question.passage ?? '');
   const [choices, setChoices] = useState<[string, string, string, string, string]>(question.choices);
   const [correctAnswer, setCorrectAnswer] = useState(question.correctAnswer);
   const [era, setEra] = useState<Era>(question.era);
@@ -49,19 +48,18 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
     saveTimer.current = setTimeout(() => {
       const hasChoiceImages = choiceImages.some(ci => ci);
       onSave({
-        content, passage: passage || undefined, imageUrl: imageUrl || undefined,
+        content, imageUrl: imageUrl || undefined,
         choiceImages: hasChoiceImages ? choiceImages : undefined,
         choices, correctAnswer, era, category, difficulty, points,
       });
     }, 800);
-  }, [content, passage, imageUrl, choiceImages, choices, correctAnswer, era, category, difficulty, points, onSave]);
+  }, [content, imageUrl, choiceImages, choices, correctAnswer, era, category, difficulty, points, onSave]);
 
   useEffect(() => { autoSave(); return () => { if (saveTimer.current) clearTimeout(saveTimer.current); }; }, [autoSave]);
 
   // Reset when question changes
   useEffect(() => {
     setContent(question.content);
-    setPassage(question.passage ?? '');
     setChoices(question.choices);
     setCorrectAnswer(question.correctAnswer);
     setEra(question.era);
@@ -106,7 +104,6 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
       if (data.length > 0) {
         const q = data[0];
         setContent(q.content);
-        setPassage(q.passage ?? '');
         setChoices(q.choices);
         setCorrectAnswer(q.correctAnswer);
         setShowAIGen(false);
@@ -141,19 +138,22 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
     if (!items) return;
     for (const item of items) {
       if (item.type.startsWith('image/')) {
+        // Determine effective target: explicit pasteTarget, or auto-detect main if no image yet
+        const target = pasteTarget ?? (!imageUrl ? 'main' : null);
+        if (!target) return; // No target — let browser handle paste normally
         e.preventDefault();
         const file = item.getAsFile();
         if (!file) return;
-        if (typeof pasteTarget === 'number') {
-          uploadChoiceImage(file, pasteTarget);
-        } else if (pasteTarget === 'main') {
+        if (typeof target === 'number') {
+          uploadChoiceImage(file, target);
+        } else if (target === 'main') {
           handleFile(file);
         }
         setPasteTarget(null);
         return;
       }
     }
-  }, [pasteTarget]);
+  }, [pasteTarget, imageUrl]);
 
   useEffect(() => {
     document.addEventListener('paste', handlePaste);
@@ -179,7 +179,7 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
   // Build current question state for preview
   const previewQuestion: Question = {
     ...question,
-    content, passage: passage || undefined, imageUrl: imageUrl || undefined,
+    content, imageUrl: imageUrl || undefined,
     choiceImages: choiceImages.some(ci => ci) ? choiceImages : undefined,
     choices, correctAnswer, era, category, difficulty, points,
   };
@@ -233,15 +233,10 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
                 </div>
               </div>
 
-              {/* 자료: 지문 텍스트 and/or 이미지 */}
-              {(previewQuestion.passage || previewQuestion.imageUrl) && (
-                <div className="rounded-lg border-l-4 border-amber-400 bg-amber-50 p-3 space-y-2">
-                  {previewQuestion.passage && (
-                    <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">{previewQuestion.passage}</p>
-                  )}
-                  {previewQuestion.imageUrl && (
-                    <img src={previewQuestion.imageUrl} alt="" className="w-full rounded-lg border object-contain bg-gray-50" />
-                  )}
+              {/* 자료 이미지 */}
+              {previewQuestion.imageUrl && (
+                <div className="rounded-lg border-l-4 border-amber-400 bg-amber-50 p-3">
+                  <img src={previewQuestion.imageUrl} alt="" className="w-full rounded-lg border object-contain bg-gray-50" />
                 </div>
               )}
 
@@ -329,20 +324,6 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
               rows={4}
               className="w-full rounded-lg border px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-200"
               placeholder="(가) 인물/사건에 대한 설명으로 옳은 것은?"
-            />
-          </div>
-
-          {/* Passage */}
-          <div>
-            <label className="mb-1 block text-sm font-medium text-gray-700">
-              지문/사료 <span className="font-normal text-gray-400">(선택)</span>
-            </label>
-            <textarea
-              value={passage}
-              onChange={(e) => setPassage(e.target.value)}
-              rows={3}
-              className="w-full rounded-lg border px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-200"
-              placeholder="긴 사료나 지문이 있으면 여기에 입력..."
             />
           </div>
 
@@ -522,10 +503,13 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
           imageUrl={imageUrl}
           onClose={() => setShowCropModal(false)}
           onCropped={(file) => {
+            const oldUrl = imageUrl;
             uploadMutation.mutate(file, {
               onSuccess: (url) => {
                 setImageUrl(url);
                 setShowCropModal(false);
+                // Delete old image from R2
+                if (oldUrl) imageApi.delete(oldUrl).catch(() => {});
               },
             });
           }}

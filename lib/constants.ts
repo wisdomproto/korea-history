@@ -1,7 +1,7 @@
 import { Era, Category } from './types';
 
-// 이미지 서버 URL — R2 public URL (fallback: author tool dev server)
-export const IMAGE_BASE_URL = process.env.R2_PUBLIC_URL || 'http://localhost:3001';
+// 이미지 서버 URL — Expo requires EXPO_PUBLIC_ prefix
+export const IMAGE_BASE_URL = process.env.EXPO_PUBLIC_R2_URL || 'http://localhost:3001';
 
 // 앱 색상
 export const COLORS = {

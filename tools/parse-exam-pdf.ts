@@ -20,7 +20,6 @@ import * as path from 'path';
 interface ParsedQuestion {
   questionNumber: number;
   content: string;       // 질문 텍스트
-  passage?: string;      // 자료/지문
   choices: string[];     // 5개 선지
   points: number;        // 배점
   hasImage: boolean;     // 이미지 필요 여부 (수동 보완 필요)
@@ -144,21 +143,8 @@ function parseQuestionBlock(block: string, qNum: number): ParsedQuestion | null 
     // Fall through — 수동 검토 필요
   }
 
-  // 질문/지문 분리
-  // "[자료]", "[사료]", "[해설]" 등으로 시작하는 부분을 지문으로
+  // 질문 텍스트 추출 (passage text is no longer used — source materials are image-only)
   let content = questionPart;
-  let passage: string | undefined;
-
-  // 첫 줄이 "번호. 질문텍스트" 형태
-  const firstLineMatch = content.match(/^\d{1,2}\.\s*(.*?)(?:\[|\n)/s);
-  if (firstLineMatch) {
-    // 질문 텍스트와 자료 분리
-    const passageMatch = content.match(/(\[자료\]|\[사료\]|\[해설\]|○\s|△|■|사진|그림|초대의 글)([\s\S]*)/);
-    if (passageMatch) {
-      passage = passageMatch[0].trim().replace(/\s+/g, ' ');
-      content = content.slice(0, passageMatch.index).trim();
-    }
-  }
 
   // 문제 번호 제거
   content = content.replace(/^\d{1,2}\.\s*/, '').trim();
@@ -172,7 +158,6 @@ function parseQuestionBlock(block: string, qNum: number): ParsedQuestion | null 
   return {
     questionNumber: qNum,
     content: content || `문제 ${qNum}`,
-    passage,
     choices,
     points,
     hasImage,
@@ -224,7 +209,6 @@ function toAppFormat(
       examId,
       questionNumber: q.questionNumber,
       content: q.content,
-      passage: q.passage || undefined,
       imageUrl: q.hasImage ? `TODO_ADD_IMAGE_URL` : undefined,
       choices: q.choices.length === 5 ? q.choices : ['선지1', '선지2', '선지3', '선지4', '선지5'],
       choiceImages: q.hasChoiceImages ? ['TODO', 'TODO', 'TODO', 'TODO', 'TODO'] : undefined,

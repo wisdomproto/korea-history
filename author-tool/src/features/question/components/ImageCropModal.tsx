@@ -1,8 +1,16 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useMemo } from 'react';
 import ReactCrop, { type Crop, type PixelCrop } from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import { Modal } from '@/components/Modal';
 import { Button } from '@/components/Button';
+
+/** Proxy external URLs through our server to avoid CORS canvas tainting */
+function proxyUrl(url: string): string {
+  if (url.startsWith('http') && !url.startsWith(window.location.origin)) {
+    return `/api/images/proxy?url=${encodeURIComponent(url)}`;
+  }
+  return url;
+}
 
 interface ImageCropModalProps {
   open: boolean;
@@ -48,6 +56,7 @@ export function ImageCropModal({ open, imageUrl, onClose, onCropped, loading }: 
   const [crop, setCrop] = useState<Crop>();
   const [completedCrop, setCompletedCrop] = useState<PixelCrop>();
   const imgRef = useRef<HTMLImageElement>(null);
+  const safeSrc = useMemo(() => proxyUrl(imageUrl), [imageUrl]);
 
   const handleSave = useCallback(async () => {
     if (!imgRef.current || !completedCrop) return;
@@ -68,8 +77,7 @@ export function ImageCropModal({ open, imageUrl, onClose, onCropped, loading }: 
           >
             <img
               ref={imgRef}
-              src={imageUrl}
-              crossOrigin="anonymous"
+              src={safeSrc}
               alt="Crop target"
               style={{ maxHeight: '55vh', maxWidth: '100%' }}
             />

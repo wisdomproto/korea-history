@@ -26,17 +26,33 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
   const { selectedExamId, setSelectedExamId, setActiveView } = useEditorStore();
   const qc = useQueryClient();
   const [search, setSearch] = useState('');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | null>(null); // null = custom order (DnD)
+
+  // Inline edit state
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editValue, setEditValue] = useState('');
+  const savingRef = useRef(false);
 
   // DnD state
   const [dragIdx, setDragIdx] = useState<number | null>(null);
   const [overIdx, setOverIdx] = useState<number | null>(null);
   const dragRef = useRef<number | null>(null);
 
-  const filtered = exams?.filter(
-    (e) => !search || `${e.examNumber}회`.includes(search) || e.examDate.includes(search),
-  );
+  const filtered = (() => {
+    let list = exams?.filter(
+      (e) => !search || `${e.examNumber}회`.includes(search) || e.examDate.includes(search) || (e.name ?? '').includes(search),
+    );
+    if (list && sortOrder) {
+      list = [...list].sort((a, b) => {
+        const nameA = a.name || `제${a.examNumber}회`;
+        const nameB = b.name || `제${b.examNumber}회`;
+        return sortOrder === 'asc' ? nameA.localeCompare(nameB, 'ko') : nameB.localeCompare(nameA, 'ko');
+      });
+    }
+    return list;
+  })();
 
-  const canDrag = !search; // Disable DnD when filtering
+  const canDrag = !search && !sortOrder; // Disable DnD when filtering or sorting
 
   const handleDragStart = (idx: number) => {
     if (!canDrag) return;
@@ -77,6 +93,32 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
     setOverIdx(null);
   };
 
+  const startEditing = (exam: { id: number; name?: string; examNumber: number }) => {
+    setEditingId(exam.id);
+    setEditValue(exam.name || `제${exam.examNumber}회 한국사능력검정시험`);
+  };
+
+  const saveEdit = async (id: number) => {
+    if (savingRef.current) return;
+    savingRef.current = true;
+    const trimmed = editValue.trim();
+    setEditingId(null);
+    if (!trimmed) { savingRef.current = false; return; }
+    // Optimistic update — instantly reflect in sidebar
+    qc.setQueryData(['exams'], (old: any) =>
+      old?.map((e: any) => (e.id === id ? { ...e, name: trimmed } : e)),
+    );
+    try {
+      await examApi.update(id, { name: trimmed } as any);
+      qc.invalidateQueries({ queryKey: ['exam', id] });
+    } catch (err) {
+      console.error('시험 이름 수정 실패:', err);
+      qc.invalidateQueries({ queryKey: ['exams'] }); // Rollback on error
+    } finally {
+      savingRef.current = false;
+    }
+  };
+
   return (
     <aside className="flex h-screen w-72 flex-col border-r bg-white">
       {/* Header */}
@@ -100,15 +142,24 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
         </div>
       </div>
 
-      {/* Search + Create */}
+      {/* Search + Sort + Create */}
       <div className="space-y-2 border-b px-4 py-3">
-        <input
-          type="text"
-          placeholder="시험 검색..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full rounded-lg border px-3 py-2 text-sm focus:border-primary-500 focus:outline-none"
-        />
+        <div className="flex gap-1.5">
+          <input
+            type="text"
+            placeholder="시험 검색..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="flex-1 rounded-lg border px-3 py-2 text-sm focus:border-primary-500 focus:outline-none"
+          />
+          <button
+            onClick={() => setSortOrder((prev) => prev === null ? 'asc' : prev === 'asc' ? 'desc' : null)}
+            className={`rounded-lg border px-2 py-2 text-sm transition-colors ${sortOrder ? 'border-primary-300 bg-primary-50 text-primary-700' : 'text-gray-400 hover:text-gray-600'}`}
+            title={sortOrder === 'asc' ? '이름 오름차순' : sortOrder === 'desc' ? '이름 내림차순' : '정렬 없음 (드래그 순서)'}
+          >
+            {sortOrder === 'desc' ? '↓' : sortOrder === 'asc' ? '↑' : '↕'}
+          </button>
+        </div>
         <div className="flex gap-2">
           <Button size="sm" className="flex-1" onClick={onCreateExam}>+ 새 시험</Button>
           <Button size="sm" variant="secondary" onClick={() => setActiveView('generator')}>AI 생성</Button>
@@ -141,8 +192,30 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
               )}
 
               <div className="flex items-center justify-between">
-                <span className={`font-medium ${!exam.isVisible ? 'text-gray-400' : ''}`}>제{exam.examNumber}회</span>
-                <div className="flex items-center gap-1">
+                {editingId === exam.id ? (
+                  <input
+                    type="text"
+                    value={editValue}
+                    autoFocus
+                    onClick={(e) => e.stopPropagation()}
+                    onChange={(e) => setEditValue(e.target.value)}
+                    onBlur={() => saveEdit(exam.id)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') saveEdit(exam.id);
+                      if (e.key === 'Escape') setEditingId(null);
+                    }}
+                    className="mr-2 flex-1 rounded border border-primary-300 px-1.5 py-0.5 text-sm font-medium focus:outline-none focus:border-primary-500"
+                  />
+                ) : (
+                  <span
+                    onDoubleClick={(e) => { e.stopPropagation(); startEditing(exam); }}
+                    className={`font-medium truncate cursor-text ${!exam.isVisible ? 'text-gray-400' : ''}`}
+                    title={exam.name || `제${exam.examNumber}회`}
+                  >
+                    {exam.name || `제${exam.examNumber}회`}
+                  </span>
+                )}
+                <div className="flex items-center gap-1 shrink-0">
                   <span className={`rounded px-1.5 py-0.5 text-xs ${exam.examType === 'advanced' ? 'bg-violet-100 text-violet-700' : 'bg-gray-100 text-gray-600'}`}>
                     {exam.examType === 'advanced' ? '심화' : '기본'}
                   </span>

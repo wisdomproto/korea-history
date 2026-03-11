@@ -242,6 +242,7 @@ export default function DiagnosticScreen() {
         }}
       />
       <View style={styles.container}>
+       <View style={styles.contentWrap}>
         <Timer formattedTime={formattedTime} isWarning={isWarning} progress={progress} />
 
         <View style={styles.infoBar}>
@@ -291,6 +292,7 @@ export default function DiagnosticScreen() {
             </Pressable>
           )}
         </View>
+       </View>
       </View>
     </>
   );
@@ -298,6 +300,7 @@ export default function DiagnosticScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: COLORS.background },
+  contentWrap: { flex: 1, maxWidth: 640, width: '100%', alignSelf: 'center' as const },
   submitHeaderBtn: { color: COLORS.primary, fontSize: 15, fontWeight: '600' },
   infoBar: {
     backgroundColor: '#FFF8E1',

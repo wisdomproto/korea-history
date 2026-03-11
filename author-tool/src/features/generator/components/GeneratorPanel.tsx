@@ -161,11 +161,6 @@ export function GeneratorPanel() {
                     <span className="rounded bg-gray-100 px-1.5 py-0.5">{q.category}</span>
                     <span className="text-gray-400">난이도 {q.difficulty} / {q.points}점</span>
                   </div>
-                  {q.passage && (
-                    <div className="mb-2 rounded border-l-4 border-amber-400 bg-amber-50 p-2 text-xs text-gray-600 whitespace-pre-wrap">
-                      {q.passage}
-                    </div>
-                  )}
                   <p className="mb-2 text-sm whitespace-pre-wrap">{q.content}</p>
                   <div className="space-y-1">
                     {q.choices.map((c, i) => (

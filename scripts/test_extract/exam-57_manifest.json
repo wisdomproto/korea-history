@@ -1,0 +1,385 @@
+{
+  "source": "57회 한국사_문제지(심화).pdf",
+  "examId": "57",
+  "totalImages": 54,
+  "images": [
+    {
+      "question": 1,
+      "type": "passage",
+      "description": "김해 구산동 고인돌 관련 설명 텍스트",
+      "page": 1,
+      "file": "exam-57_q01_passage.png"
+    },
+    {
+      "question": 1,
+      "type": "photo",
+      "description": "남성 캐릭터 일러스트",
+      "page": 1,
+      "file": "exam-57_q01_photo.png"
+    },
+    {
+      "question": 1,
+      "type": "photo",
+      "description": "고인돌 사진 (왼쪽)",
+      "page": 1,
+      "file": "exam-57_q01_photo_1.png"
+    },
+    {
+      "question": 1,
+      "type": "photo",
+      "description": "고인돌 사진 (오른쪽)",
+      "page": 1,
+      "file": "exam-57_q01_photo_2.png"
+    },
+    {
+      "question": 2,
+      "type": "screenshot",
+      "description": "웹 브라우저 화면 캡처",
+      "page": 1,
+      "file": "exam-57_q02_screenshot.png"
+    },
+    {
+      "question": 3,
+      "type": "passage",
+      "description": "두 개의 사료 텍스트 박스 (가), (나)",
+      "page": 1,
+      "file": "exam-57_q03_passage.png"
+    },
+    {
+      "question": 4,
+      "type": "screenshot",
+      "description": "태블릿 화면 캡처 (불상에 대한 대화)",
+      "page": 1,
+      "file": "exam-57_q04_screenshot.png"
+    },
+    {
+      "question": 5,
+      "type": "photo",
+      "description": "왕의 동상과 주변 풍경",
+      "page": 2,
+      "file": "exam-57_q05_photo.png"
+    },
+    {
+      "question": 5,
+      "type": "passage",
+      "description": "동상에 대한 설명 텍스트",
+      "page": 2,
+      "file": "exam-57_q05_passage.png"
+    },
+    {
+      "question": 6,
+      "type": "screenshot",
+      "description": "스마트폰 화면 캡처",
+      "page": 2,
+      "file": "exam-57_q06_screenshot.png"
+    },
+    {
+      "question": 7,
+      "type": "passage",
+      "description": "백제의 장군 윤충이 대야성을 공격하여 함락시킨 내용",
+      "page": 2,
+      "file": "exam-57_q07_passage.png"
+    },
+    {
+      "question": 7,
+      "type": "passage",
+      "description": "신라와 당의 군사들이 의자왕의 도성을 에워싸기 위해 소부리 벌판으로 나아간 내용",
+      "page": 2,
+      "file": "exam-57_q07_passage_1.png"
+    },
+    {
+      "question": 8,
+      "type": "passage",
+      "description": "역사 사료 텍스트 (다)",
+      "page": 2,
+      "file": "exam-57_q08_passage.png"
+    },
+    {
+      "question": 9,
+      "type": "passage",
+      "description": "역사 관련 지문",
+      "page": 2,
+      "file": "exam-57_q09_passage.png"
+    },
+    {
+      "question": 10,
+      "type": "screenshot",
+      "description": "승탑 정보 화면",
+      "page": 3,
+      "file": "exam-57_q10_screenshot.png"
+    },
+    {
+      "question": 11,
+      "type": "screenshot",
+      "description": "태블릿 화면에 '편운화상 승탑' 텍스트와 함께 표시된 이미지, 그리고 이를 가리키는 손",
+      "page": 3,
+      "file": "exam-57_q11_screenshot.png"
+    },
+    {
+      "question": 12,
+      "type": "passage",
+      "description": "안성 망이산성에서 '준풍 4년'이 발견되었으며, 준풍 연호 사용 및 개경을 황도로 명명하는 등 국왕 중심의 통치에 대한 설명",
+      "page": 3,
+      "file": "exam-57_q12_passage.png"
+    },
+    {
+      "question": 12,
+      "type": "photo",
+      "description": "안성 망이산성에서 발견된 '준풍' 연호가 새겨진 비석의 사진과 확대 이미지",
+      "page": 3,
+      "file": "exam-57_q12_photo.png"
+    },
+    {
+      "question": 13,
+      "type": "photo",
+      "description": "유물 사진",
+      "page": 3,
+      "file": "exam-57_q13_photo.png"
+    },
+    {
+      "question": 14,
+      "type": "passage",
+      "description": "사료 텍스트",
+      "page": 3,
+      "file": "exam-57_q14_passage.png"
+    },
+    {
+      "question": 15,
+      "type": "passage",
+      "description": "세 인물이 대화하는 장면과 말풍선",
+      "page": 4,
+      "file": "exam-57_q15_passage.png"
+    },
+    {
+      "question": 15,
+      "type": "photo",
+      "description": "안동 봉정사 극락전 사진",
+      "page": 4,
+      "file": "exam-57_q15_photo.png"
+    },
+    {
+      "question": 15,
+      "type": "photo",
+      "description": "보은 법주사 팔상전 사진",
+      "page": 4,
+      "file": "exam-57_q15_photo_1.png"
+    },
+    {
+      "question": 15,
+      "type": "photo",
+      "description": "구례 화엄사 각황전 사진",
+      "page": 4,
+      "file": "exam-57_q15_photo_2.png"
+    },
+    {
+      "question": 15,
+      "type": "photo",
+      "description": "예산 수덕사 대웅전 사진",
+      "page": 4,
+      "file": "exam-57_q15_photo_3.png"
+    },
+    {
+      "question": 16,
+      "type": "photo",
+      "description": "영주 부석사 무량수전 사진",
+      "page": 4,
+      "file": "exam-57_q16_photo.png"
+    },
+    {
+      "question": 16,
+      "type": "document",
+      "description": "역사 신문 기사",
+      "page": 4,
+      "file": "exam-57_q16_document.png"
+    },
+    {
+      "question": 17,
+      "type": "passage",
+      "description": "문제 풀이를 위한 역사적 배경 설명 텍스트",
+      "page": 4,
+      "file": "exam-57_q17_passage.png"
+    },
+    {
+      "question": 17,
+      "type": "photo",
+      "description": "인물이 전시된 문서를 보고 있는 일러스트",
+      "page": 4,
+      "file": "exam-57_q17_photo.png"
+    },
+    {
+      "question": 18,
+      "type": "passage",
+      "description": "문제 풀이를 위한 사료 텍스트",
+      "page": 4,
+      "file": "exam-57_q18_passage.png"
+    },
+    {
+      "question": 19,
+      "type": "passage",
+      "description": "문제 풀이를 위한 사료 텍스트",
+      "page": 5,
+      "file": "exam-57_q19_passage.png"
+    },
+    {
+      "question": 21,
+      "type": "passage",
+      "description": "역사적 사건을 설명하는 지문",
+      "page": 5,
+      "file": "exam-57_q21_passage.png"
+    },
+    {
+      "question": 21,
+      "type": "photo",
+      "description": "전통 건축물과 인물 일러스트",
+      "page": 5,
+      "file": "exam-57_q21_photo.png"
+    },
+    {
+      "question": 23,
+      "type": "passage",
+      "description": "한국사 쟁점 토론 형식의 자료로, 공납 개혁에 대한 두 인물의 대화가 담겨 있습니다.",
+      "page": 6,
+      "file": "exam-57_q23_passage.png"
+    },
+    {
+      "question": 24,
+      "type": "photo",
+      "description": "농민과 양반 지주 일러스트",
+      "page": 6,
+      "file": "exam-57_q24_photo.png"
+    },
+    {
+      "question": 25,
+      "type": "passage",
+      "description": "인물 (가)에 대한 설명이 담긴 텍스트",
+      "page": 6,
+      "file": "exam-57_q25_passage.png"
+    },
+    {
+      "question": 25,
+      "type": "photo",
+      "description": "전시된 책 이미지",
+      "page": 6,
+      "file": "exam-57_q25_photo.png"
+    },
+    {
+      "question": 25,
+      "type": "passage",
+      "description": "제도에 대한 설명이 담긴 텍스트",
+      "page": 6,
+      "file": "exam-57_q25_passage_1.png"
+    },
+    {
+      "question": 27,
+      "type": "screenshot",
+      "description": "인물 정보 웹사이트 화면 캡처",
+      "page": 7,
+      "file": "exam-57_q27_screenshot.png"
+    },
+    {
+      "question": 35,
+      "type": "passage",
+      "description": "세 개의 사료 텍스트 (가), (나), (다)",
+      "page": 9,
+      "file": "exam-57_q35_passage.png"
+    },
+    {
+      "question": 36,
+      "type": "passage",
+      "description": "사료 텍스트 박스",
+      "page": 9,
+      "file": "exam-57_q36_passage.png"
+    },
+    {
+      "question": 37,
+      "type": "document",
+      "description": "박물관 스탬프 투어 안내문 일부",
+      "page": 9,
+      "file": "exam-57_q37_document.png"
+    },
+    {
+      "question": 38,
+      "type": "passage",
+      "description": "전보 형태의 사료 텍스트",
+      "page": 10,
+      "file": "exam-57_q38_passage.png"
+    },
+    {
+      "question": 39,
+      "type": "passage",
+      "description": "사료 텍스트 박스",
+      "page": 10,
+      "file": "exam-57_q39_passage.png"
+    },
+    {
+      "question": 40,
+      "type": "passage",
+      "description": "송수만 등 체포 경위 보고에 대한 사료 텍스트",
+      "page": 10,
+      "file": "exam-57_q40_passage.png"
+    },
+    {
+      "question": 42,
+      "type": "passage",
+      "description": "조선 교육령 및 경성 제국 대학 관련 조항",
+      "page": 10,
+      "file": "exam-57_q42_passage.png"
+    },
+    {
+      "question": 43,
+      "type": "screenshot",
+      "description": "웹사이트 화면 캡처 (이달의 독립운동가 - 윤세주)",
+      "page": 11,
+      "file": "exam-57_q43_screenshot.png"
+    },
+    {
+      "question": 45,
+      "type": "screenshot",
+      "description": "박물관 웹사이트 화면 캡처",
+      "page": 11,
+      "file": "exam-57_q45_screenshot.png"
+    },
+    {
+      "question": 46,
+      "type": "passage",
+      "description": "보기 지문 (ㄱ, ㄴ, ㄷ, ㄹ 항목)",
+      "page": 11,
+      "file": "exam-57_q46_passage.png"
+    },
+    {
+      "question": 47,
+      "type": "passage",
+      "description": "노래로 읽는 한국사 제목 아래의 시/가사",
+      "page": 12,
+      "file": "exam-57_q47_passage.png"
+    },
+    {
+      "question": 47,
+      "type": "passage",
+      "description": "[해설] 제목 아래의 설명 텍스트",
+      "page": 12,
+      "file": "exam-57_q47_passage_1.png"
+    },
+    {
+      "question": 48,
+      "type": "passage",
+      "description": "3·15 의거 기념 답사 안내",
+      "page": 12,
+      "file": "exam-57_q48_passage.png"
+    },
+    {
+      "question": 49,
+      "type": "passage",
+      "description": "회색/노란 배경의 인용문, 사료 텍스트 박스",
+      "page": 12,
+      "file": "exam-57_q49_passage.png"
+    },
+    {
+      "question": 50,
+      "type": "document",
+      "description": "수행 과제 안내문 (Performance Task Guide) 및 예시 자료",
+      "page": 12,
+      "file": "exam-57_q50_document.png"
+    }
+  ]
+}

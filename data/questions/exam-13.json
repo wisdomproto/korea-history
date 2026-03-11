@@ -1,0 +1,12 @@
+{
+  "exam": {
+    "examNumber": 13,
+    "examDate": "2012-02-11",
+    "examType": "advanced",
+    "totalQuestions": 50,
+    "timeLimitMinutes": 80,
+    "isFree": true,
+    "id": 7
+  },
+  "questions": []
+}

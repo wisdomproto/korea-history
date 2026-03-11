@@ -15,5 +15,7 @@ export const imageApi = {
   generate: (prompt: string, model?: string) =>
     apiPost<{ url: string }>('/images/generate', { prompt, model }),
 
+  delete: (url: string) => apiPost<void>('/images/delete', { url }),
+
   getModels: () => apiGet<ModelsResponse>('/images/models'),
 };

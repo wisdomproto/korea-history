@@ -2,6 +2,7 @@
 export interface Exam {
   id: number;
   examNumber: number;
+  name?: string;              // 시험 이름 (예: "제77회 한국사능력검정시험")
   examDate: string;
   examType: 'advanced' | 'basic'; // 심화 / 기본
   totalQuestions: number;
@@ -16,7 +17,8 @@ export interface Question {
   examId: number;
   questionNumber: number;
   content: string;           // 질문 텍스트
-  passage?: string;          // 자료/지문 (사료, 신문기사, 대화문 등)
+  /** @deprecated Source materials are image-only (imageUrl). Kept for backward compat. */
+  passage?: string;
   imageUrl?: string;         // 자료 이미지 URL (사진, 지도, 문화재 등)
   choices: [string, string, string, string, string];
   choiceImages?: (string | null)[]; // 보기가 이미지인 경우 URL 배열

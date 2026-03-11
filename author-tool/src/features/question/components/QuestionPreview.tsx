@@ -12,15 +12,10 @@ export function QuestionPreview({ question }: { question: Question }) {
           Q. {question.questionNumber} / {question.points}점
         </div>
 
-        {/* 자료: 지문 텍스트 and/or 이미지 */}
-        {(question.passage || question.imageUrl) && (
-          <div className="mb-3 rounded border-l-4 border-amber-400 bg-amber-50 p-3 space-y-2">
-            {question.passage && (
-              <p className="text-sm text-gray-700 whitespace-pre-wrap">{question.passage}</p>
-            )}
-            {question.imageUrl && (
-              <img src={question.imageUrl} alt="" className="w-full rounded-lg border object-contain bg-gray-100" />
-            )}
+        {/* 자료 이미지 */}
+        {question.imageUrl && (
+          <div className="mb-3 rounded border-l-4 border-amber-400 bg-amber-50 p-3">
+            <img src={question.imageUrl} alt="" className="w-full rounded-lg border object-contain bg-gray-100" />
           </div>
         )}
 

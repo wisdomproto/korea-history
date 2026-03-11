@@ -9,6 +9,7 @@ import questionRoutes from './routes/question.routes.js';
 import generatorRoutes from './routes/generator.routes.js';
 import imageRoutes from './routes/image.routes.js';
 import pdfImportRoutes from './routes/pdf-import.routes.js';
+import keywordRoutes from './routes/keyword.routes.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isDev = process.env.NODE_ENV !== 'production';
@@ -18,6 +19,27 @@ async function startServer() {
 
   app.use(cors());
   app.use(express.json({ limit: '10mb' }));
+
+  // R2 proxy — bypass CORS for Expo dev (localhost:8081 → R2)
+  if (config.r2.publicUrl) {
+    app.use('/r2', async (req, res) => {
+      const r2Url = `${config.r2.publicUrl}${req.path}`;
+      try {
+        const upstream = await fetch(r2Url);
+        if (!upstream.ok) {
+          res.status(upstream.status).end();
+          return;
+        }
+        const ct = upstream.headers.get('content-type');
+        if (ct) res.setHeader('Content-Type', ct);
+        res.setHeader('Cache-Control', 'public, max-age=300');
+        const buf = Buffer.from(await upstream.arrayBuffer());
+        res.send(buf);
+      } catch {
+        res.status(502).json({ error: 'R2 proxy error' });
+      }
+    });
+  }
 
   // API routes
   app.get('/api/health', (_req, res) => {
@@ -29,6 +51,7 @@ async function startServer() {
   app.use('/api/generate', generatorRoutes);
   app.use('/api/images', imageRoutes);
   app.use('/api/pdf', pdfImportRoutes);
+  app.use('/api/keywords', keywordRoutes);
 
   app.use(errorMiddleware as express.ErrorRequestHandler);
 

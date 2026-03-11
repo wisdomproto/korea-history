@@ -35,4 +35,9 @@ export const ExamController = {
     await ExamService.reorder(examIds);
     res.json({ success: true, data: null });
   }),
+
+  sync: asyncHandler(async (_req, res) => {
+    const count = await ExamService.syncToLocal();
+    res.json({ success: true, data: { synced: count } });
+  }),
 };

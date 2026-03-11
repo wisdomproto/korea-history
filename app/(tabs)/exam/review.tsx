@@ -122,6 +122,7 @@ export default function ReviewScreen() {
     <>
       <Stack.Screen options={{ title: '오답 복습' }} />
       <View style={styles.container}>
+       <View style={styles.contentWrap}>
         {/* Progress */}
         <View style={styles.progressBar}>
           <Text style={styles.progressText}>
@@ -139,44 +140,14 @@ export default function ReviewScreen() {
             totalQuestions={reviewQuestions.length}
           />
 
-          {/* Choices with instant feedback */}
-          <View style={styles.choicesSection}>
-            {current.question.choices.map((choice, idx) => {
-              const num = idx + 1;
-              const isCorrect = num === current.question.correctAnswer;
-              const isSelected = num === selectedAnswer;
-              const isWrong = showResult && isSelected && !isCorrect;
-
-              return (
-                <Pressable
-                  key={num}
-                  style={[
-                    styles.choiceItem,
-                    showResult && isCorrect && styles.correctChoice,
-                    isWrong && styles.wrongChoice,
-                    !showResult && isSelected && styles.selectedChoice,
-                  ]}
-                  onPress={() => handleSelect(num)}
-                  disabled={showResult}
-                >
-                  <Text style={[
-                    styles.choiceNum,
-                    showResult && isCorrect && styles.correctText,
-                    isWrong && styles.wrongText,
-                  ]}>
-                    {showResult && isCorrect ? '✓' : showResult && isWrong ? '✗' : `${num}`}
-                  </Text>
-                  <Text style={[
-                    styles.choiceText,
-                    showResult && isCorrect && styles.correctText,
-                    isWrong && styles.wrongText,
-                  ]}>
-                    {choice}
-                  </Text>
-                </Pressable>
-              );
-            })}
-          </View>
+          <ChoiceList
+            choices={current.question.choices}
+            choiceImages={current.question.choiceImages}
+            selectedAnswer={selectedAnswer}
+            onSelect={handleSelect}
+            correctAnswer={current.question.correctAnswer}
+            showResult={showResult}
+          />
 
           {/* Feedback message */}
           {showResult && (
@@ -202,6 +173,7 @@ export default function ReviewScreen() {
             <Text style={styles.hintText}>선지를 선택하면 즉시 정답이 확인됩니다</Text>
           )}
         </View>
+       </View>
       </View>
     </>
   );
@@ -209,6 +181,7 @@ export default function ReviewScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: COLORS.background },
+  contentWrap: { flex: 1, maxWidth: 640, width: '100%', alignSelf: 'center' as const },
   emptyContainer: { flex: 1, backgroundColor: COLORS.background, justifyContent: 'center', alignItems: 'center', padding: 20 },
   emptyIcon: { fontSize: 48, marginBottom: 16 },
   emptyTitle: { fontSize: 18, fontWeight: '700', color: COLORS.text, marginBottom: 8 },
@@ -223,19 +196,6 @@ const styles = StyleSheet.create({
 
   scrollArea: { flex: 1 },
   scrollContent: { padding: 16, paddingTop: 0, paddingBottom: 40 },
-
-  choicesSection: { gap: 8 },
-  choiceItem: {
-    flexDirection: 'row', alignItems: 'center', backgroundColor: COLORS.surface,
-    borderRadius: 10, padding: 14, borderWidth: 1.5, borderColor: COLORS.border,
-  },
-  selectedChoice: { borderColor: COLORS.primary, backgroundColor: COLORS.primaryLight },
-  correctChoice: { borderColor: COLORS.success, backgroundColor: '#F1F8F1' },
-  wrongChoice: { borderColor: COLORS.danger, backgroundColor: '#FFF5F5' },
-  choiceNum: { width: 24, fontSize: 14, fontWeight: '700', color: COLORS.textSecondary, textAlign: 'center', marginRight: 10 },
-  choiceText: { fontSize: 14, color: COLORS.text, flex: 1, lineHeight: 20 },
-  correctText: { color: COLORS.success, fontWeight: '600' },
-  wrongText: { color: COLORS.danger },
 
   feedbackBox: { marginTop: 16, padding: 14, borderRadius: 10 },
   correctFeedback: { backgroundColor: '#E8F5E9' },

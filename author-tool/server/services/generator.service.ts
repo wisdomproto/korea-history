@@ -12,7 +12,6 @@ interface GenerateRequest {
 
 interface GeneratedQuestion {
   content: string;
-  passage?: string;
   choices: [string, string, string, string, string];
   correctAnswer: number;
   points: number;
@@ -41,10 +40,9 @@ ${topic ? `- 주제/키워드: ${topic}` : ''}
 [형식 규칙]
 1. 선지는 반드시 5개 (배열 길이 5)
 2. correctAnswer는 1~5 중 하나 (정답 번호)
-3. content: 사료나 상황을 제시한 뒤 질문. 예) "(가) 왕의 업적으로 옳은 것은?"
-4. passage: 긴 사료나 지문이 필요하면 별도 passage 필드에 작성. 짧으면 생략.
-5. 역사적 사실에 정확히 기반할 것. 오답 선지도 그럴듯하지만 명확히 틀린 내용으로.
-6. 각 문제의 era는 "${era}", category는 "${category}", difficulty는 ${difficulty}, points는 ${points}으로 고정.
+3. content: 질문 텍스트만 작성. 예) "(가) 왕의 업적으로 옳은 것은?"
+4. 역사적 사실에 정확히 기반할 것. 오답 선지도 그럴듯하지만 명확히 틀린 내용으로.
+5. 각 문제의 era는 "${era}", category는 "${category}", difficulty는 ${difficulty}, points는 ${points}으로 고정.
 
 [출제 유의사항]
 - 단순 암기보다 사료 해석, 시대 추론, 인과관계 파악 문제를 선호
@@ -55,7 +53,6 @@ JSON 배열로만 응답하세요 (설명 없이):
 [
   {
     "content": "문제 본문",
-    "passage": "사료 지문 (선택)",
     "choices": ["①", "②", "③", "④", "⑤"],
     "correctAnswer": 3,
     "points": ${points},

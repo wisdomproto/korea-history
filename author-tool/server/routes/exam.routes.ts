@@ -6,6 +6,7 @@ router.get('/', ExamController.list);
 router.get('/:id', ExamController.getById);
 router.post('/', ExamController.create);
 router.post('/reorder', ExamController.reorder);
+router.post('/sync', ExamController.sync);
 router.put('/:id', ExamController.update);
 router.delete('/:id', ExamController.delete);
 

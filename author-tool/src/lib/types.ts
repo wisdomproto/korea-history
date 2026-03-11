@@ -9,6 +9,7 @@ export const POINTS = [1, 2, 3] as const;
 export interface Exam {
   id: number;
   examNumber: number;
+  name?: string;
   examDate: string;
   examType: 'advanced' | 'basic';
   totalQuestions: number;
@@ -26,6 +27,7 @@ export interface Question {
   examId: number;
   questionNumber: number;
   content: string;
+  /** @deprecated Source materials are image-only (imageUrl). Kept for backward compat. */
   passage?: string;
   imageUrl?: string;
   choices: [string, string, string, string, string];

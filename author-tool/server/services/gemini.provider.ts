@@ -123,10 +123,67 @@ export async function generateImage(prompt: string, model?: string): Promise<Buf
 }
 
 export function parseJSON<T>(raw: string, errorMsg: string): T {
-  try {
-    const match = raw.match(/```json\n?([\s\S]*?)\n?```/) ?? raw.match(/(\[[\s\S]*\])/) ?? raw.match(/(\{[\s\S]*\})/);
-    return JSON.parse(match?.[1] ?? raw) as T;
-  } catch {
-    throw new AppError(500, `${errorMsg}: JSON 파싱 실패`);
+  // Try multiple extraction strategies
+  const strategies = [
+    // 1. ```json ... ``` code block (greedy — last ``` wins)
+    () => {
+      const m = raw.match(/```json\s*\r?\n?([\s\S]*?)```/);
+      return m?.[1]?.trim();
+    },
+    // 2. Top-level JSON array
+    () => {
+      const m = raw.match(/(\[[\s\S]*\])/);
+      return m?.[1];
+    },
+    // 3. Top-level JSON object
+    () => {
+      const m = raw.match(/(\{[\s\S]*\})/);
+      return m?.[1];
+    },
+    // 4. Raw response as-is
+    () => raw.trim(),
+  ];
+
+  for (const extract of strategies) {
+    const json = extract();
+    if (!json) continue;
+    try {
+      return JSON.parse(json) as T;
+    } catch {
+      // Try to repair truncated JSON (Gemini output token limit)
+      const repaired = tryRepairTruncatedJson(json);
+      if (repaired) {
+        try {
+          return JSON.parse(repaired) as T;
+        } catch { /* continue to next strategy */ }
+      }
+    }
   }
+
+  // All strategies failed — log for debugging
+  console.error(`[parseJSON] ${errorMsg}`);
+  console.error(`[parseJSON] Raw response (first 500 chars):`, raw.slice(0, 500));
+  console.error(`[parseJSON] Raw response (last 300 chars):`, raw.slice(-300));
+  throw new AppError(500, `${errorMsg}: JSON 파싱 실패`);
+}
+
+/** Try to repair JSON truncated by output token limit */
+function tryRepairTruncatedJson(json: string): string | null {
+  // If it looks like a truncated array, close open braces/brackets
+  if (!json.startsWith('[')) return null;
+
+  let s = json.trimEnd();
+  // Remove trailing comma or incomplete value
+  s = s.replace(/,\s*$/, '');
+  // Remove last incomplete object (no closing brace)
+  const lastBrace = s.lastIndexOf('}');
+  if (lastBrace > 0) {
+    s = s.slice(0, lastBrace + 1);
+  }
+  // Close the array if needed
+  if (!s.endsWith(']')) {
+    s += ']';
+  }
+
+  return s;
 }

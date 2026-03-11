@@ -131,10 +131,10 @@ def crop_bbox_with_margin(img: Image.Image, bbox: list[float], margin: float = M
 DETECT_PROMPT = """이 이미지는 한국사능력검정시험 기출문제 PDF의 한 페이지입니다.
 이미지 크기: {width} x {height} 픽셀
 
-각 문제에서 "지문/자료" 영역의 바운딩 박스를 찾아주세요.
+각 문제에서 **문제 질문 텍스트와 선지(①②③④⑤) 사이에 있는 모든 시각 자료 영역**의 바운딩 박스를 찾아주세요.
 
-## 지문/자료란?
-문제를 풀기 위해 제공된 참고 자료입니다. 아래 유형이 있습니다:
+## 캡쳐 대상
+문제 번호·질문 텍스트 아래부터, ①②③④⑤ 선지 텍스트 바로 위까지의 **모든 시각 콘텐츠**를 하나의 bbox로 잡습니다:
 - **screenshot**: 태블릿/스마트폰/PC 화면 캡처 (VR전시관, 웹검색, SNS, 채팅 등)
 - **photo**: 실제 사진 (유적, 유물, 인물, 풍경, 문화재)
 - **passage**: 텍스트 사료 — 회색/노란/파란 배경 박스 안의 인용문, 대화문, 서적 발췌
@@ -142,13 +142,15 @@ DETECT_PROMPT = """이 이미지는 한국사능력검정시험 기출문제 PDF
 - **map**: 지도
 - **chart**: 연표, 도표, 그래프, 표
 - **illustration**: 만화, 삽화 (대화 말풍선이 있는 일러스트)
+- **choices_image**: 선지 자체가 이미지인 경우 (①~⑤ 각각이 사진/그림)
 
-## 중요 규칙
-1. 문제 번호("1.", "2."), 문제 질문 텍스트("밑줄 그은 '이 나라'에 대한..."), 선지(①②③④⑤)는 **절대 포함하지 마세요**
-2. 지문/자료 영역의 **전체 테두리/프레임**을 완전히 포함하세요 (태블릿 화면이면 기기 프레임 전체, 텍스트 박스면 배경 박스 전체)
-3. 하나의 문제에 여러 자료가 있으면 (예: 사진 4장) **하나의 bbox로 통합**하세요
-4. 자료가 없는 순수 텍스트 문제는 제외하세요
-5. 선지에 포함된 이미지(예: ①~⑤ 각각이 사진인 경우)는 "choices_image" 타입으로 별도 처리하세요
+## 핵심 규칙
+1. **bbox 범위**: 문제 질문 텍스트 바로 아래 ~ ①②③④⑤ 선지 텍스트 바로 위. 이 사이의 모든 것(사료 텍스트 박스, 사진, 지도, 보기 이미지 등)을 하나의 bbox로 통합
+2. 문제 번호("1.", "2.")와 질문 텍스트("밑줄 그은 '이 나라'에 대한...")는 포함하지 마세요
+3. **①②③④⑤ 선지가 순수 텍스트**이면 선지를 포함하지 마세요
+4. **①②③④⑤ 선지 자체가 사진/그림**이면 선지 이미지도 bbox에 포함하세요 (type: "choices_image")
+5. 하나의 문제에 사료 텍스트 + 사진 등 여러 자료가 있으면 **전부 하나의 bbox로 통합**
+6. 시각 자료가 전혀 없는 순수 텍스트 문제는 제외
 
 ## 응답 형식
 JSON 배열로만 응답하세요 (설명 없이):
@@ -167,7 +169,7 @@ bbox는 이미지 비율 좌표 (0.0~1.0):
 - [좌측비율, 상단비율, 우측비율, 하단비율]
 - 예: 이미지 왼쪽 절반의 중앙 영역 = [0.02, 0.15, 0.48, 0.55]
 
-**bbox를 지문/자료의 실제 경계에 정확히 맞추세요. 너무 작게 잡아 내용이 잘리는 것보다 약간 크게 잡는 것이 낫습니다.**"""
+**bbox를 자료의 실제 경계에 정확히 맞추세요. 너무 작게 잡아 내용이 잘리는 것보다 약간 크게 잡는 것이 낫습니다.**"""
 
 
 def process_page(doc, page_num: int, page_img: Image.Image) -> list[dict]:
@@ -195,10 +197,17 @@ def process_page(doc, page_num: int, page_img: Image.Image) -> list[dict]:
             print(f"  Q{q_num}: invalid bbox, skipping")
             continue
 
-        # Validate bbox values
-        if any(v < 0 or v > 1 for v in bbox):
-            print(f"  Q{q_num}: bbox out of range {bbox}, clamping")
-            bbox = [max(0, min(1, v)) for v in bbox]
+        # Auto-convert pixel coordinates to ratios if needed
+        # Gemini sometimes returns mixed formats (x as ratio, y as pixels)
+        img_w, img_h = page_img.size
+        fixed_bbox = list(bbox)
+        if fixed_bbox[0] > 1 or fixed_bbox[2] > 1:
+            fixed_bbox[0] /= img_w
+            fixed_bbox[2] /= img_w
+        if fixed_bbox[1] > 1 or fixed_bbox[3] > 1:
+            fixed_bbox[1] /= img_h
+            fixed_bbox[3] /= img_h
+        bbox = [max(0, min(1, v)) for v in fixed_bbox]
 
         if bbox[2] <= bbox[0] or bbox[3] <= bbox[1]:
             print(f"  Q{q_num}: invalid bbox dimensions {bbox}, skipping")

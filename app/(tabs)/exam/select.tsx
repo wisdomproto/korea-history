@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { StyleSheet, View, Text, FlatList, Pressable, Alert, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, Text, FlatList, Pressable, Alert, ActivityIndicator, Platform } from 'react-native';
 import { useRouter, Stack } from 'expo-router';
 import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -20,6 +20,13 @@ export default function ExamSelectScreen() {
     }, [])
   );
 
+  const pushToExam = (examId: number, resume?: boolean) => {
+    router.push({
+      pathname: '/exam/[examId]',
+      params: { examId: String(examId), ...(resume ? { resume: '1' } : {}) },
+    } as any);
+  };
+
   const handleExamPress = (exam: Exam) => {
     if (!exam.isFree) {
       router.push('/premium');
@@ -30,6 +37,21 @@ export default function ExamSelectScreen() {
     if (savedExam && savedExam.examId === exam.id) {
       const answeredCount = savedExam.answers.filter((a) => a.selectedAnswer !== null).length;
       const minutes = Math.floor(savedExam.remainingSeconds / 60);
+
+      if (Platform.OS === 'web') {
+        const resume = window.confirm(
+          `이전에 풀던 시험이 있습니다.\n(${answeredCount}문항 답변, 잔여 ${minutes}분)\n\n이어서 풀까요?\n\n확인 = 이어서 풀기 / 취소 = 처음부터`,
+        );
+        if (resume) {
+          pushToExam(exam.id, true);
+        } else {
+          clearSavedExam();
+          setSavedExam(null);
+          pushToExam(exam.id);
+        }
+        return;
+      }
+
       Alert.alert(
         '진행 중인 모의고사',
         `이전에 풀던 시험이 있습니다.\n(${answeredCount}문항 답변, 잔여 ${minutes}분)\n\n이어서 풀까요?`,
@@ -40,14 +62,12 @@ export default function ExamSelectScreen() {
             onPress: () => {
               clearSavedExam();
               setSavedExam(null);
-              router.push(`/exam/${exam.id}`);
+              pushToExam(exam.id);
             },
           },
           {
             text: '이어서 풀기',
-            onPress: () => {
-              router.push(`/exam/${exam.id}?resume=1`);
-            },
+            onPress: () => pushToExam(exam.id, true),
           },
         ],
       );
@@ -57,6 +77,19 @@ export default function ExamSelectScreen() {
     // 다른 시험의 저장 상태가 있을 때
     if (savedExam && savedExam.examId !== exam.id) {
       const savedExamData = EXAMS.find((e) => e.id === savedExam.examId);
+
+      if (Platform.OS === 'web') {
+        const start = window.confirm(
+          `제${savedExamData?.examNumber ?? '?'}회 모의고사가 진행 중입니다.\n새 모의고사를 시작하면 기존 진행이 삭제됩니다.\n\n새로 시작하시겠습니까?`,
+        );
+        if (start) {
+          clearSavedExam();
+          setSavedExam(null);
+          pushToExam(exam.id);
+        }
+        return;
+      }
+
       Alert.alert(
         '진행 중인 다른 모의고사',
         `제${savedExamData?.examNumber ?? '?'}회 모의고사가 진행 중입니다.\n새 모의고사를 시작하면 기존 진행이 삭제됩니다.`,
@@ -68,7 +101,7 @@ export default function ExamSelectScreen() {
             onPress: () => {
               clearSavedExam();
               setSavedExam(null);
-              router.push(`/exam/${exam.id}`);
+              pushToExam(exam.id);
             },
           },
         ],
@@ -76,7 +109,7 @@ export default function ExamSelectScreen() {
       return;
     }
 
-    router.push(`/exam/${exam.id}`);
+    pushToExam(exam.id);
   };
 
   const renderExam = ({ item }: { item: Exam }) => {
