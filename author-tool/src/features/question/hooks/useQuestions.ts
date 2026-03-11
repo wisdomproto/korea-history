@@ -21,6 +21,31 @@ export function useUpdateQuestion() {
       questionApi.update(id, updates),
     onSuccess: (_, vars) => {
       qc.invalidateQueries({ queryKey: ['exam', vars.examId] });
+      qc.invalidateQueries({ queryKey: ['exams'] });
+    },
+  });
+}
+
+export function useBulkUpdateAnswers() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: ({ examId, answers }: { examId: number; answers: { questionNumber: number; correctAnswer: number; points?: number }[] }) =>
+      questionApi.bulkUpdateAnswers(examId, answers),
+    onSuccess: (_, vars) => {
+      qc.invalidateQueries({ queryKey: ['exam', vars.examId] });
+      qc.invalidateQueries({ queryKey: ['exams'] });
+    },
+  });
+}
+
+export function useBulkUpdateExplanations() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: ({ examId, explanations }: { examId: number; explanations: { questionNumber: number; explanation: string }[] }) =>
+      questionApi.bulkUpdateExplanations(examId, explanations),
+    onSuccess: (_, vars) => {
+      qc.invalidateQueries({ queryKey: ['exam', vars.examId] });
+      qc.invalidateQueries({ queryKey: ['exams'] });
     },
   });
 }

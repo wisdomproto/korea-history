@@ -10,6 +10,8 @@ import { QuestionEditor } from '@/features/question/components/QuestionEditor';
 import { GeneratorPanel } from '@/features/generator/components/GeneratorPanel';
 import { pdfImportApi } from '@/features/exam/api/pdf-import.api';
 import { Button } from './Button';
+import { BulkAnswerModal } from '@/features/question/components/BulkAnswerModal';
+import { BulkExplanationModal } from '@/features/question/components/BulkExplanationModal';
 import type { Question, Exam } from '@/lib/types';
 
 export function Layout() {
@@ -24,6 +26,8 @@ export function Layout() {
   const addBatchMutation = useAddBatchQuestions();
 
   const [showExamForm, setShowExamForm] = useState(false);
+  const [showBulkAnswers, setShowBulkAnswers] = useState(false);
+  const [showBulkExplanations, setShowBulkExplanations] = useState(false);
   const [pdfImporting, setPdfImporting] = useState(false);
   const [pdfProgress, setPdfProgress] = useState('');
 
@@ -174,6 +178,8 @@ export function Layout() {
                     </p>
                   </div>
                   <div className="flex gap-1">
+                    <Button size="sm" variant="secondary" onClick={() => setShowBulkAnswers(true)}>정답</Button>
+                    <Button size="sm" variant="secondary" onClick={() => setShowBulkExplanations(true)}>해설</Button>
                     <Button size="sm" onClick={handleAddQuestion} loading={createQuestionMutation.isPending}>+</Button>
                     <Button size="sm" variant="danger" onClick={handleDeleteExam}>삭제</Button>
                   </div>
@@ -222,6 +228,26 @@ export function Layout() {
           onSubmit={handleCreateExam}
           loading={createExamMutation.isPending || pdfImporting}
           existingExamNumbers={allExams?.map((e) => e.examNumber) ?? []}
+        />
+      )}
+
+      {/* Bulk Answer Modal */}
+      {showBulkAnswers && examFile && selectedExamId && (
+        <BulkAnswerModal
+          open={showBulkAnswers}
+          onClose={() => setShowBulkAnswers(false)}
+          examId={selectedExamId}
+          questionCount={examFile.questions.length}
+        />
+      )}
+
+      {/* Bulk Explanation Modal */}
+      {showBulkExplanations && examFile && selectedExamId && (
+        <BulkExplanationModal
+          open={showBulkExplanations}
+          onClose={() => setShowBulkExplanations(false)}
+          examId={selectedExamId}
+          questionCount={examFile.questions.length}
         />
       )}
 

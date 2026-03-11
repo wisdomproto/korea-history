@@ -8,4 +8,8 @@ export const questionApi = {
   delete: (id: number) => apiDelete<null>(`/questions/${id}`),
   reorder: (examId: number, questionIds: number[]) => apiPost<Question[]>('/questions/reorder', { examId, questionIds }),
   addBatch: (examId: number, questions: Partial<Question>[]) => apiPost<Question[]>('/questions/batch', { examId, questions }),
+  bulkUpdateAnswers: (examId: number, answers: { questionNumber: number; correctAnswer: number; points?: number }[]) =>
+    apiPut<Question[]>('/questions/bulk-answers', { examId, answers }),
+  bulkUpdateExplanations: (examId: number, explanations: { questionNumber: number; explanation: string }[]) =>
+    apiPut<Question[]>('/questions/bulk-explanations', { examId, explanations }),
 };

@@ -18,10 +18,6 @@ export interface Exam {
   isVisible?: boolean;
 }
 
-export interface ExamWithCount extends Exam {
-  questionCount: number;
-}
-
 export interface Question {
   id: number;
   examId: number;
@@ -37,6 +33,21 @@ export interface Question {
   era: Era;
   category: Category;
   difficulty: 1 | 2 | 3;
+  explanation?: string;
+}
+
+export interface ExamCompleteness {
+  hasQuestions: boolean;
+  missingAnswers: number;
+  missingImages: number;
+  missingExplanations: number;
+  missingContent: number;
+  status: 'complete' | 'partial' | 'incomplete';
+}
+
+export interface ExamWithCount extends Exam {
+  questionCount: number;
+  completeness: ExamCompleteness;
 }
 
 export interface ExamFile {

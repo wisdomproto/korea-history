@@ -145,14 +145,15 @@ export async function fetchAllQuestions(): Promise<Question[]> {
 
 // ── Keywords ─────────────────────────────────────────────
 
+import keywordsData from '../data/questions/keywords.json';
+
 type KeywordsMap = Record<string, number[]>;
 let keywordsCache: KeywordsMap | null = null;
 
 /** Fetch keyword → questionId[] mapping */
 export async function fetchKeywords(): Promise<KeywordsMap> {
   if (keywordsCache) return keywordsCache;
-  const mod = await import('../data/questions/keywords.json');
-  keywordsCache = (mod as any).default?.keywords ?? (mod as any).keywords ?? {};
+  keywordsCache = (keywordsData as any).keywords ?? keywordsData ?? {};
   return keywordsCache!;
 }
 

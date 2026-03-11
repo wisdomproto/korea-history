@@ -29,6 +29,7 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
   const [imageModel, setImageModel] = useState('');
   const [imagePrompt, setImagePrompt] = useState('');
   const [showImageGen, setShowImageGen] = useState(false);
+  const [explanation, setExplanation] = useState(question.explanation ?? '');
   const [showAIGen, setShowAIGen] = useState(false);
   const [textModel, setTextModel] = useState('');
   const [aiTopic, setAiTopic] = useState('');
@@ -51,9 +52,10 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
         content, imageUrl: imageUrl || undefined,
         choiceImages: hasChoiceImages ? choiceImages : undefined,
         choices, correctAnswer, era, category, difficulty, points,
+        explanation: explanation || undefined,
       });
     }, 800);
-  }, [content, imageUrl, choiceImages, choices, correctAnswer, era, category, difficulty, points, onSave]);
+  }, [content, imageUrl, choiceImages, choices, correctAnswer, era, category, difficulty, points, explanation, onSave]);
 
   useEffect(() => { autoSave(); return () => { if (saveTimer.current) clearTimeout(saveTimer.current); }; }, [autoSave]);
 
@@ -68,6 +70,7 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
     setPoints(question.points);
     setImageUrl(question.imageUrl ?? '');
     setChoiceImages(question.choiceImages ?? [null, null, null, null, null]);
+    setExplanation(question.explanation ?? '');
   }, [question.id]);
 
   // Image upload mutation
@@ -182,6 +185,7 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
     content, imageUrl: imageUrl || undefined,
     choiceImages: choiceImages.some(ci => ci) ? choiceImages : undefined,
     choices, correctAnswer, era, category, difficulty, points,
+    explanation: explanation || undefined,
   };
 
   return (
@@ -264,6 +268,13 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
                     </div>
                   );
                 })}
+              {/* Explanation */}
+              {previewQuestion.explanation && (
+                <div className="rounded-lg border-l-4 border-blue-400 bg-blue-50 p-3 text-sm text-blue-800">
+                  <p className="font-semibold text-xs mb-1 text-blue-600">해설</p>
+                  <p className="whitespace-pre-wrap">{previewQuestion.explanation}</p>
+                </div>
+              )}
               </div>
             </div>
           </div>
@@ -492,6 +503,18 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
               })}
             </div>
             <p className="mt-1.5 text-xs text-gray-400">녹색 원 = 정답 클릭 변경 · 이미지 영역 클릭 → Ctrl+V · 드래그앤드롭 · 파일 선택</p>
+          </div>
+
+          {/* Explanation */}
+          <div>
+            <label className="mb-1 block text-sm font-medium text-gray-700">해설</label>
+            <textarea
+              value={explanation}
+              onChange={(e) => setExplanation(e.target.value)}
+              rows={3}
+              className="w-full rounded-lg border px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-200"
+              placeholder="이 문제의 해설을 입력하세요..."
+            />
           </div>
         </>
       )}

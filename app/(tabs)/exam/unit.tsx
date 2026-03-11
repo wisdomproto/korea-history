@@ -1,11 +1,11 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, ScrollView, Pressable, ActivityIndicator } from 'react-native';
 import { useRouter, useLocalSearchParams, Stack } from 'expo-router';
 import { COLORS, ERAS, RADIUS, SHADOWS } from '@/lib/constants';
-import { Era, Question } from '@/lib/types';
+import { Era } from '@/lib/types';
 import { fetchAllQuestions } from '@/lib/examData';
-import QuestionCard from '@/components/exam/QuestionCard';
-import ChoiceList from '@/components/exam/ChoiceList';
+import { useStudyState } from '@/hooks/useStudyState';
+import StudyView from '@/components/exam/StudyView';
 
 export default function UnitStudyScreen() {
   const router = useRouter();
@@ -14,14 +14,10 @@ export default function UnitStudyScreen() {
   const [selectedEra, setSelectedEra] = useState<Era | null>(
     (params.era as Era) || null,
   );
-  const [questions, setQuestions] = useState<Question[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [showResult, setShowResult] = useState(false);
-  const [correctCount, setCorrectCount] = useState(0);
-  const [completed, setCompleted] = useState(false);
   const [eraCounts, setEraCounts] = useState<Record<string, number>>({});
   const [eraCountsLoaded, setEraCountsLoaded] = useState(false);
+
+  const study = useStudyState();
 
   // Load era counts on mount
   useEffect(() => {
@@ -37,40 +33,11 @@ export default function UnitStudyScreen() {
     if (!selectedEra) return;
     fetchAllQuestions().then((all) => {
       const filtered = all.filter((q) => q.era === selectedEra);
-      // Shuffle questions for variety
-      const shuffled = filtered.sort(() => Math.random() - 0.5);
-      setQuestions(shuffled);
-      setCurrentIndex(0);
-      setSelectedAnswer(null);
-      setShowResult(false);
-      setCorrectCount(0);
-      setCompleted(false);
+      study.startStudy(filtered.sort(() => Math.random() - 0.5));
     });
   }, [selectedEra]);
 
-  const current = questions[currentIndex];
-
-  const handleSelect = useCallback(
-    (choice: number) => {
-      if (showResult) return;
-      setSelectedAnswer(choice);
-      setShowResult(true);
-      if (current && choice === current.correctAnswer) {
-        setCorrectCount((c) => c + 1);
-      }
-    },
-    [showResult, current],
-  );
-
-  const handleNext = useCallback(() => {
-    if (currentIndex < questions.length - 1) {
-      setCurrentIndex((i) => i + 1);
-      setSelectedAnswer(null);
-      setShowResult(false);
-    } else {
-      setCompleted(true);
-    }
-  }, [currentIndex, questions.length]);
+  const eraInfo = ERAS.find((e) => e.key === selectedEra);
 
   // ─── 시대 선택 화면 ───
   if (!selectedEra) {
@@ -121,7 +88,7 @@ export default function UnitStudyScreen() {
   }
 
   // ─── 문제 없음 ───
-  if (questions.length === 0) {
+  if (study.questions.length === 0) {
     return (
       <>
         <Stack.Screen options={{ title: '단원별 학습' }} />
@@ -137,9 +104,8 @@ export default function UnitStudyScreen() {
   }
 
   // ─── 완료 화면 ───
-  if (completed) {
-    const eraInfo = ERAS.find((e) => e.key === selectedEra);
-    const rate = Math.round((correctCount / questions.length) * 100);
+  if (study.completed) {
+    const rate = Math.round((study.correctCount / study.questions.length) * 100);
     return (
       <>
         <Stack.Screen options={{ title: '학습 완료' }} />
@@ -147,7 +113,7 @@ export default function UnitStudyScreen() {
           <Text style={styles.resultIcon}>{rate >= 80 ? '🎉' : rate >= 60 ? '👍' : '💪'}</Text>
           <Text style={styles.resultTitle}>{eraInfo?.label} 학습 완료!</Text>
           <Text style={styles.resultScore}>
-            {questions.length}문항 중 {correctCount}문항 정답 ({rate}%)
+            {study.questions.length}문항 중 {study.correctCount}문항 정답 ({rate}%)
           </Text>
           <Text style={styles.resultDesc}>
             {rate >= 80
@@ -163,15 +129,9 @@ export default function UnitStudyScreen() {
             <Pressable
               style={[styles.actionBtn, styles.primaryBtn]}
               onPress={() => {
-                // Re-shuffle and restart
                 fetchAllQuestions().then((all) => {
                   const filtered = all.filter((q) => q.era === selectedEra);
-                  setQuestions(filtered.sort(() => Math.random() - 0.5));
-                  setCurrentIndex(0);
-                  setSelectedAnswer(null);
-                  setShowResult(false);
-                  setCorrectCount(0);
-                  setCompleted(false);
+                  study.startStudy(filtered.sort(() => Math.random() - 0.5));
                 });
               }}
             >
@@ -184,80 +144,20 @@ export default function UnitStudyScreen() {
   }
 
   // ─── 문제 풀이 화면 ───
-  const eraInfo = ERAS.find((e) => e.key === selectedEra);
-
   return (
     <>
       <Stack.Screen options={{ title: `${eraInfo?.label || '단원별'} 학습` }} />
-      <View style={styles.studyContainer}>
-       <View style={styles.contentWrap}>
-        {/* Progress */}
-        <View style={styles.progressBar}>
-          <Text style={styles.progressText}>
-            {currentIndex + 1} / {questions.length}
-          </Text>
-          <View style={styles.progressBg}>
-            <View
-              style={[
-                styles.progressFill,
-                {
-                  width: `${((currentIndex + 1) / questions.length) * 100}%`,
-                  backgroundColor: eraInfo?.color || COLORS.primary,
-                },
-              ]}
-            />
-          </View>
-        </View>
-
-        <ScrollView style={styles.scrollArea} contentContainerStyle={styles.scrollContent}>
-          <QuestionCard
-            question={current}
-            questionIndex={currentIndex}
-            totalQuestions={questions.length}
-          />
-
-          <ChoiceList
-            choices={current.choices}
-            choiceImages={current.choiceImages}
-            selectedAnswer={selectedAnswer}
-            onSelect={handleSelect}
-            correctAnswer={current.correctAnswer}
-            showResult={showResult}
-          />
-
-          {/* Feedback */}
-          {showResult && (
-            <View
-              style={[
-                styles.feedbackBox,
-                selectedAnswer === current.correctAnswer
-                  ? styles.correctFeedback
-                  : styles.wrongFeedback,
-              ]}
-            >
-              <Text style={styles.feedbackText}>
-                {selectedAnswer === current.correctAnswer
-                  ? '✅ 정답!'
-                  : `❌ 오답! 정답은 ${current.correctAnswer}번입니다.`}
-              </Text>
-            </View>
-          )}
-        </ScrollView>
-
-        {/* Bottom */}
-        <View style={styles.bottomBar}>
-          {showResult ? (
-            <Pressable style={[styles.nextBtn, styles.primaryBtn]} onPress={handleNext}>
-              <Text style={styles.primaryBtnText}>
-                {currentIndex < questions.length - 1 ? '다음 문항 ▶' : '결과 보기'}
-              </Text>
-            </Pressable>
-          ) : (
-            <Text style={styles.hintText}>선지를 선택하면 즉시 정답이 확인됩니다</Text>
-          )}
-        </View>
-       </View>
-      </View>
+      <StudyView
+        current={study.current!}
+        currentIndex={study.currentIndex}
+        totalQuestions={study.questions.length}
+        selectedAnswer={study.selectedAnswer}
+        showResult={study.showResult}
+        onSelect={study.handleSelect}
+        onNext={study.handleNext}
+        isLastQuestion={study.currentIndex >= study.questions.length - 1}
+        progressColor={eraInfo?.color}
+      />
     </>
   );
 }
@@ -286,30 +186,6 @@ const styles = StyleSheet.create({
   backBtn: { paddingHorizontal: 24, paddingVertical: 10, backgroundColor: COLORS.primary, borderRadius: RADIUS.sm },
   backBtnText: { color: '#fff', fontWeight: '600', fontSize: 15 },
 
-  studyContainer: { flex: 1, backgroundColor: COLORS.background },
-  contentWrap: { flex: 1, maxWidth: 640, width: '100%', alignSelf: 'center' as const },
-  progressBar: { padding: 16, paddingBottom: 8 },
-  progressText: { fontSize: 13, color: COLORS.textSecondary, marginBottom: 6, fontWeight: '500' },
-  progressBg: { height: 6, backgroundColor: '#F1F0FF', borderRadius: 3 },
-  progressFill: { height: '100%', borderRadius: 3 },
-
-  scrollArea: { flex: 1 },
-  scrollContent: { padding: 16, paddingTop: 0, paddingBottom: 40 },
-
-  feedbackBox: { marginTop: 16, padding: 14, borderRadius: 10 },
-  correctFeedback: { backgroundColor: '#E8F5E9' },
-  wrongFeedback: { backgroundColor: '#FFEBEE' },
-  feedbackText: { fontSize: 14, fontWeight: '600', lineHeight: 20 },
-
-  bottomBar: {
-    backgroundColor: COLORS.surface, borderTopWidth: 1, borderTopColor: COLORS.border,
-    paddingHorizontal: 16, paddingVertical: 12, alignItems: 'center',
-  },
-  nextBtn: { width: '100%', paddingVertical: 14, borderRadius: RADIUS.sm, alignItems: 'center' },
-  primaryBtn: { backgroundColor: COLORS.primary },
-  primaryBtnText: { color: '#fff', fontSize: 15, fontWeight: '600' },
-  hintText: { fontSize: 13, color: COLORS.textLight },
-
   resultContainer: { flex: 1, backgroundColor: COLORS.background, justifyContent: 'center', alignItems: 'center', padding: 20 },
   resultIcon: { fontSize: 56, marginBottom: 16 },
   resultTitle: { fontSize: 24, fontWeight: '800', color: COLORS.text, marginBottom: 8 },
@@ -321,4 +197,6 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.surface, borderWidth: 1, borderColor: COLORS.border,
   },
   actionBtnText: { fontSize: 15, fontWeight: '600', color: COLORS.text },
+  primaryBtn: { backgroundColor: COLORS.primary, borderColor: COLORS.primary },
+  primaryBtnText: { color: '#fff', fontSize: 15, fontWeight: '600' },
 });
