@@ -37,4 +37,16 @@ export const QuestionController = {
     const added = await QuestionService.addBatch(examId, questions);
     res.status(201).json({ success: true, data: added });
   }),
+
+  bulkAnswers: asyncHandler(async (req, res) => {
+    const { examId, answers } = req.body;
+    const questions = await QuestionService.bulkUpdateAnswers(examId, answers);
+    res.json({ success: true, data: questions });
+  }),
+
+  bulkExplanations: asyncHandler(async (req, res) => {
+    const { examId, explanations } = req.body;
+    const questions = await QuestionService.bulkUpdateExplanations(examId, explanations);
+    res.json({ success: true, data: questions });
+  }),
 };

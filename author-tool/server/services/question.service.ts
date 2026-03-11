@@ -83,6 +83,35 @@ export const QuestionService = {
     return reordered;
   },
 
+  async bulkUpdateAnswers(
+    examId: number,
+    answers: { questionNumber: number; correctAnswer: number; points?: number }[],
+  ): Promise<Question[]> {
+    const examFile = await ExamService.getById(examId);
+    for (const { questionNumber, correctAnswer, points } of answers) {
+      const q = examFile.questions.find((q) => q.questionNumber === questionNumber);
+      if (q) {
+        q.correctAnswer = correctAnswer;
+        if (points !== undefined) q.points = points;
+      }
+    }
+    await ExamService.save(examId, examFile);
+    return examFile.questions;
+  },
+
+  async bulkUpdateExplanations(
+    examId: number,
+    explanations: { questionNumber: number; explanation: string }[],
+  ): Promise<Question[]> {
+    const examFile = await ExamService.getById(examId);
+    for (const { questionNumber, explanation } of explanations) {
+      const q = examFile.questions.find((q) => q.questionNumber === questionNumber);
+      if (q) q.explanation = explanation;
+    }
+    await ExamService.save(examId, examFile);
+    return examFile.questions;
+  },
+
   async addBatch(examId: number, questions: Omit<Question, 'id' | 'examId' | 'questionNumber'>[]): Promise<Question[]> {
     const examFile = await ExamService.getById(examId);
     const maxId =

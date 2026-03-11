@@ -4,6 +4,7 @@ import { examApi } from '@/features/exam/api/exam.api';
 import { useQueryClient } from '@tanstack/react-query';
 import { Button } from './Button';
 import { useState, useRef } from 'react';
+import type { ExamCompleteness } from '@/lib/types';
 
 const ERA_COLORS: Record<string, string> = {
   '선사·고조선': 'bg-amber-100 text-amber-800',
@@ -15,6 +16,16 @@ const ERA_COLORS: Record<string, string> = {
   '근대': 'bg-purple-100 text-purple-800',
   '현대': 'bg-pink-100 text-pink-800',
 };
+
+function getStatusTooltip(c: ExamCompleteness): string {
+  if (!c.hasQuestions) return '문제 없음';
+  const issues: string[] = [];
+  if (c.missingContent > 0) issues.push(`내용 ${c.missingContent}개 부족`);
+  if (c.missingAnswers > 0) issues.push(`정답 ${c.missingAnswers}개 부족`);
+  if (c.missingImages > 0) issues.push(`이미지 ${c.missingImages}개 부족`);
+  if (c.missingExplanations > 0) issues.push(`해설 ${c.missingExplanations}개 부족`);
+  return issues.length === 0 ? '완료' : issues.join(' · ');
+}
 
 interface SidebarProps {
   onCreateExam: () => void;
@@ -260,7 +271,19 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
               </div>
               <div className="mt-1 flex items-center justify-between text-xs text-gray-500">
                 <span>{exam.examDate}</span>
-                <span>{exam.questionCount}문제</span>
+                <div className="flex items-center gap-1.5">
+                  {exam.completeness && (
+                    <span
+                      className={`inline-block h-2 w-2 rounded-full ${
+                        exam.completeness.status === 'complete' ? 'bg-green-500' :
+                        exam.completeness.status === 'partial' ? 'bg-yellow-500' :
+                        'bg-gray-300'
+                      }`}
+                      title={getStatusTooltip(exam.completeness)}
+                    />
+                  )}
+                  <span>{exam.questionCount}문제</span>
+                </div>
               </div>
               {exam.isFree && <span className="mt-1 inline-block rounded bg-green-100 px-1.5 py-0.5 text-xs text-green-700">무료</span>}
             </div>

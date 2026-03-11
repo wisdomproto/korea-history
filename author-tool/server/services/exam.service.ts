@@ -31,6 +31,7 @@ export interface Question {
   era: string;
   category: string;
   difficulty: 1 | 2 | 3;
+  explanation?: string;
 }
 
 export interface ExamFile {
@@ -186,15 +187,37 @@ export function getQuestionById(questionId: number): Question | undefined {
   await fs.writeFile(examsPath, module, 'utf-8');
 }
 
+interface ExamCompleteness {
+  hasQuestions: boolean;
+  missingAnswers: number;
+  missingImages: number;
+  missingExplanations: number;
+  missingContent: number;
+  status: 'complete' | 'partial' | 'incomplete';
+}
+
+function computeCompleteness(questions: Question[]): ExamCompleteness {
+  if (questions.length === 0) {
+    return { hasQuestions: false, missingAnswers: 0, missingImages: 0, missingExplanations: 0, missingContent: 0, status: 'incomplete' };
+  }
+  const missingAnswers = questions.filter(q => !q.correctAnswer || q.correctAnswer < 1 || q.correctAnswer > 5).length;
+  const missingImages = questions.filter(q => !q.imageUrl).length;
+  const missingExplanations = questions.filter(q => !q.explanation).length;
+  const missingContent = questions.filter(q => !q.content?.trim()).length;
+  const isComplete = missingAnswers === 0 && missingContent === 0 && missingImages === 0 && missingExplanations === 0;
+  const status = isComplete ? 'complete' : 'partial';
+  return { hasQuestions: true, missingAnswers, missingImages, missingExplanations, missingContent, status };
+}
+
 export const ExamService = {
-  async list(): Promise<(Exam & { questionCount: number })[]> {
+  async list(): Promise<(Exam & { questionCount: number; completeness: ExamCompleteness })[]> {
     const files = await getExamFiles();
     const all = await Promise.all(
       files.map(async (f) => {
         const data = await readExamFile(f);
         // Populate id→examNumber index for fast getById()
         idToExamNumber.set(data.exam.id, data.exam.examNumber);
-        return { ...data.exam, questionCount: data.questions.length };
+        return { ...data.exam, questionCount: data.questions.length, completeness: computeCompleteness(data.questions) };
       }),
     );
     const order = await readOrder();
