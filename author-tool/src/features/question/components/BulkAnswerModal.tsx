@@ -99,12 +99,17 @@ export function BulkAnswerModal({ open, onClose, examId, questionCount }: BulkAn
   const hasPoints = parsed.some((p) => p.points !== undefined);
 
   const handleSubmit = () => {
+    console.log('[BulkAnswer] submit', { examId, parsedCount: parsed.length, first3: parsed.slice(0, 3) });
     mutation.mutate(
       { examId, answers: parsed },
       {
-        onSuccess: () => {
+        onSuccess: (data) => {
+          console.log('[BulkAnswer] success, updated:', Array.isArray(data) ? data.length : data);
           setText('');
           onClose();
+        },
+        onError: (err: any) => {
+          console.error('[BulkAnswer] error:', err?.message || err);
         },
       },
     );

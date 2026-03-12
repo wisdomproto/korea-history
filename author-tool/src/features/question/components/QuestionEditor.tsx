@@ -36,6 +36,7 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
 
   const dropRef = useRef<HTMLDivElement>(null);
   const saveTimer = useRef<ReturnType<typeof setTimeout>>();
+  const dirtyRef = useRef(false);
 
   // Load models
   const { data: models } = useQuery<ModelsResponse>({
@@ -43,10 +44,17 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
     queryFn: () => imageApi.getModels(),
   });
 
-  // Auto-save on change (debounced)
-  const autoSave = useCallback(() => {
-    if (saveTimer.current) clearTimeout(saveTimer.current);
+  // Cancel any pending auto-save
+  const cancelAutoSave = () => {
+    if (saveTimer.current) { clearTimeout(saveTimer.current); saveTimer.current = undefined; }
+  };
+
+  // Schedule auto-save (only when dirty)
+  const scheduleSave = useCallback(() => {
+    if (!dirtyRef.current) return;
+    cancelAutoSave();
     saveTimer.current = setTimeout(() => {
+      dirtyRef.current = false;
       const hasChoiceImages = choiceImages.some(ci => ci);
       onSave({
         content, imageUrl: imageUrl || undefined,
@@ -57,10 +65,16 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
     }, 800);
   }, [content, imageUrl, choiceImages, choices, correctAnswer, era, category, difficulty, points, explanation, onSave]);
 
-  useEffect(() => { autoSave(); return () => { if (saveTimer.current) clearTimeout(saveTimer.current); }; }, [autoSave]);
+  // Trigger save check whenever fields change
+  useEffect(() => { scheduleSave(); return cancelAutoSave; }, [scheduleSave]);
 
-  // Reset when question changes
+  // Mark dirty helper — call from all user-initiated onChange handlers
+  const markDirty = useCallback(() => { dirtyRef.current = true; }, []);
+
+  // Reset all fields when switching to a different question
   useEffect(() => {
+    dirtyRef.current = false;
+    cancelAutoSave();
     setContent(question.content);
     setChoices(question.choices);
     setCorrectAnswer(question.correctAnswer);
@@ -73,10 +87,15 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
     setExplanation(question.explanation ?? '');
   }, [question.id]);
 
+  // Sync fields from external changes (bulk update) — no dirtyRef, just sync state
+  useEffect(() => { cancelAutoSave(); setCorrectAnswer(question.correctAnswer); }, [question.correctAnswer]);
+  useEffect(() => { cancelAutoSave(); setPoints(question.points); }, [question.points]);
+  useEffect(() => { cancelAutoSave(); setExplanation(question.explanation ?? ''); }, [question.explanation]);
+
   // Image upload mutation
   const uploadMutation = useMutation({
     mutationFn: (file: File) => imageApi.upload(file),
-    onSuccess: (url) => setImageUrl(url),
+    onSuccess: (url) => { markDirty(); setImageUrl(url); },
   });
 
   // Choice image upload
@@ -84,18 +103,20 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
     if (!file.type.startsWith('image/')) return;
     try {
       const url = await imageApi.upload(file);
+      markDirty();
       setChoiceImages(prev => { const next = [...prev]; next[index] = url; return next; });
     } catch { /* ignore */ }
   };
 
   const removeChoiceImage = (index: number) => {
+    markDirty();
     setChoiceImages(prev => { const next = [...prev]; next[index] = null; return next; });
   };
 
   // Image generate mutation
   const imageGenMutation = useMutation({
     mutationFn: () => imageApi.generate(imagePrompt, imageModel || undefined),
-    onSuccess: (data) => { setImageUrl(data.url); setShowImageGen(false); },
+    onSuccess: (data) => { markDirty(); setImageUrl(data.url); setShowImageGen(false); },
   });
 
   // AI question generate mutation
@@ -106,6 +127,7 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
     onSuccess: (data: GeneratedQuestion[]) => {
       if (data.length > 0) {
         const q = data[0];
+        markDirty();
         setContent(q.content);
         setChoices(q.choices);
         setCorrectAnswer(q.correctAnswer);
@@ -164,12 +186,14 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
   }, [handlePaste]);
 
   const updateChoice = (index: number, value: string) => {
+    markDirty();
     const next = [...choices] as [string, string, string, string, string];
     next[index] = value;
     setChoices(next);
   };
 
   const handleMetaChange = (field: string, value: string | number) => {
+    markDirty();
     if (field === 'era') setEra(value as Era);
     else if (field === 'category') setCategory(value as Category);
     else if (field === 'difficulty') setDifficulty(value as 1 | 2 | 3);
@@ -331,7 +355,7 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
             <label className="mb-1 block text-sm font-medium text-gray-700">문제 내용</label>
             <textarea
               value={content}
-              onChange={(e) => setContent(e.target.value)}
+              onChange={(e) => { markDirty(); setContent(e.target.value); }}
               rows={4}
               className="w-full rounded-lg border px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-200"
               placeholder="(가) 인물/사건에 대한 설명으로 옳은 것은?"
@@ -399,7 +423,7 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
                       title="이미지 자르기"
                     >✂</button>
                     <button
-                      onClick={() => setImageUrl('')}
+                      onClick={() => { markDirty(); setImageUrl(''); }}
                       className="rounded-full bg-red-500 text-white w-7 h-7 text-sm flex items-center justify-center"
                       title="이미지 삭제"
                     >&times;</button>
@@ -445,7 +469,7 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
                     {/* Text row */}
                     <div className="flex items-center gap-2">
                       <button
-                        onClick={() => setCorrectAnswer(i + 1)}
+                        onClick={() => { markDirty(); setCorrectAnswer(i + 1); }}
                         className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-xs font-bold transition-colors ${
                           correctAnswer === i + 1
                             ? 'border-green-500 bg-green-500 text-white'
@@ -510,7 +534,7 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
             <label className="mb-1 block text-sm font-medium text-gray-700">해설</label>
             <textarea
               value={explanation}
-              onChange={(e) => setExplanation(e.target.value)}
+              onChange={(e) => { markDirty(); setExplanation(e.target.value); }}
               rows={3}
               className="w-full rounded-lg border px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-200"
               placeholder="이 문제의 해설을 입력하세요..."
@@ -529,6 +553,7 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
             const oldUrl = imageUrl;
             uploadMutation.mutate(file, {
               onSuccess: (url) => {
+                markDirty();
                 setImageUrl(url);
                 setShowCropModal(false);
                 // Delete old image from R2

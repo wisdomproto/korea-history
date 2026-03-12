@@ -40,7 +40,9 @@ export const QuestionController = {
 
   bulkAnswers: asyncHandler(async (req, res) => {
     const { examId, answers } = req.body;
+    console.log(`[BulkAnswers] examId=${examId}, count=${answers?.length}, first3=`, JSON.stringify(answers?.slice(0, 3)));
     const questions = await QuestionService.bulkUpdateAnswers(examId, answers);
+    console.log(`[BulkAnswers] saved ${questions.length} questions, q1.correctAnswer=${questions[0]?.correctAnswer}`);
     res.json({ success: true, data: questions });
   }),
 
