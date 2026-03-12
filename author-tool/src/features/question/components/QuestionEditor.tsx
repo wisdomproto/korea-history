@@ -49,21 +49,40 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
     if (saveTimer.current) { clearTimeout(saveTimer.current); saveTimer.current = undefined; }
   };
 
+  // Build save payload from current state
+  const buildPayload = useCallback(() => {
+    const hasChoiceImages = choiceImages.some(ci => ci);
+    return {
+      content, imageUrl: imageUrl || undefined,
+      choiceImages: hasChoiceImages ? choiceImages : undefined,
+      choices, correctAnswer, era, category, difficulty, points,
+      explanation: explanation || undefined,
+    };
+  }, [content, imageUrl, choiceImages, choices, correctAnswer, era, category, difficulty, points, explanation]);
+
+  // Flush pending save immediately (used when switching questions)
+  const flushRef = useRef(buildPayload);
+  flushRef.current = buildPayload;
+  const onSaveRef = useRef(onSave);
+  onSaveRef.current = onSave;
+
+  const flushSave = useCallback(() => {
+    cancelAutoSave();
+    if (dirtyRef.current) {
+      dirtyRef.current = false;
+      onSaveRef.current(flushRef.current());
+    }
+  }, []);
+
   // Schedule auto-save (only when dirty)
   const scheduleSave = useCallback(() => {
     if (!dirtyRef.current) return;
     cancelAutoSave();
     saveTimer.current = setTimeout(() => {
       dirtyRef.current = false;
-      const hasChoiceImages = choiceImages.some(ci => ci);
-      onSave({
-        content, imageUrl: imageUrl || undefined,
-        choiceImages: hasChoiceImages ? choiceImages : undefined,
-        choices, correctAnswer, era, category, difficulty, points,
-        explanation: explanation || undefined,
-      });
+      onSave(buildPayload());
     }, 800);
-  }, [content, imageUrl, choiceImages, choices, correctAnswer, era, category, difficulty, points, explanation, onSave]);
+  }, [buildPayload, onSave]);
 
   // Trigger save check whenever fields change
   useEffect(() => { scheduleSave(); return cancelAutoSave; }, [scheduleSave]);
@@ -71,10 +90,11 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
   // Mark dirty helper — call from all user-initiated onChange handlers
   const markDirty = useCallback(() => { dirtyRef.current = true; }, []);
 
-  // Reset all fields when switching to a different question
+  // Flush pending save & reset all fields when switching to a different question
   useEffect(() => {
+    // flushSave uses refs, so it captures the PREVIOUS question's state correctly
+    flushSave();
     dirtyRef.current = false;
-    cancelAutoSave();
     setContent(question.content);
     setChoices(question.choices);
     setCorrectAnswer(question.correctAnswer);

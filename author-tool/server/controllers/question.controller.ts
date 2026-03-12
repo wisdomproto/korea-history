@@ -16,6 +16,9 @@ export const QuestionController = {
 
   update: asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id, 10);
+    if (req.body.correctAnswer !== undefined) {
+      console.log(`[QuestionUpdate] id=${id}, correctAnswer=${req.body.correctAnswer}, points=${req.body.points}`);
+    }
     const question = await QuestionService.update(id, req.body);
     res.json({ success: true, data: question });
   }),
