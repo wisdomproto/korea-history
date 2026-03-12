@@ -37,8 +37,7 @@ function parseAnswerText(input: string, expectedCount: number): ParsedAnswer[] {
   );
   const cleaned = lines.join(' ');
 
-  // Strategy 1: Table format — (number)(circle)(number) repeating
-  // Pattern: questionNumber circleChar points
+  // Strategy 1a: Table format with circle chars — (number)(circle)(number) repeating
   const tablePattern = /(\d+)\s*([①②③④⑤])\s*(\d+)/g;
   const tableResults: ParsedAnswer[] = [];
   let m;
@@ -51,13 +50,33 @@ function parseAnswerText(input: string, expectedCount: number): ParsedAnswer[] {
     }
   }
   if (tableResults.length >= expectedCount * 0.5) {
-    // Deduplicate by questionNumber (keep first)
     const seen = new Set<number>();
     return tableResults.filter((r) => {
       if (seen.has(r.questionNumber)) return false;
       seen.add(r.questionNumber);
       return true;
     }).sort((a, b) => a.questionNumber - b.questionNumber);
+  }
+
+  // Strategy 1b: Numeric table — repeating (questionNumber answer points) all as digits
+  // e.g. "1 2 1 11 5 2 21 3 2 ..." from pasted answer sheets
+  const nums = cleaned.split(/\s+/).map(Number).filter((n) => !isNaN(n));
+  if (nums.length >= 9 && nums.length % 3 === 0) {
+    const numResults: ParsedAnswer[] = [];
+    for (let i = 0; i < nums.length; i += 3) {
+      const qNum = nums[i], answer = nums[i + 1], pts = nums[i + 2];
+      if (qNum >= 1 && qNum <= 100 && answer >= 1 && answer <= 5 && pts >= 1 && pts <= 3) {
+        numResults.push({ questionNumber: qNum, correctAnswer: answer, points: pts });
+      }
+    }
+    if (numResults.length >= expectedCount * 0.5) {
+      const seen = new Set<number>();
+      return numResults.filter((r) => {
+        if (seen.has(r.questionNumber)) return false;
+        seen.add(r.questionNumber);
+        return true;
+      }).sort((a, b) => a.questionNumber - b.questionNumber);
+    }
   }
 
   // Strategy 2: Circle numbers only ①②③④⑤
@@ -124,7 +143,7 @@ export function BulkAnswerModal({ open, onClose, examId, questionCount }: BulkAn
             onChange={(e) => setText(e.target.value)}
             rows={8}
             className="w-full rounded-lg border px-3 py-2 text-sm font-mono focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-200"
-            placeholder={`정답표를 붙여넣으세요.\n\n예시 1 (정답표 테이블):\n1 ② 1  11 ③ 3  21 ④ 3\n2 ⑤ 2  12 ① 2  22 ③ 1\n\n예시 2 (원문자만):\n②⑤②①③③②⑤③④...\n\n예시 3 (숫자만):\n2 5 2 1 3 3 2 5 3 4...`}
+            placeholder={`정답표를 붙여넣으세요.\n\n예시 1 (원문자 테이블):\n1 ② 1  11 ③ 3  21 ④ 3\n\n예시 2 (숫자 테이블 — 번호 정답 배점):\n1 2 1  11 5 2  21 3 2\n\n예시 3 (원문자만): ②⑤②①③...\n\n예시 4 (숫자만): 2 5 2 1 3...`}
           />
         </div>
 
