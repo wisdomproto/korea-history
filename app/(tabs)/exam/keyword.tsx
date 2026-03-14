@@ -310,6 +310,7 @@ export default function KeywordStudyScreen() {
         selectedAnswer={study.selectedAnswer}
         showResult={study.showResult}
         onSelect={study.handleSelect}
+        onConfirm={study.handleConfirm}
         onNext={study.handleNext}
         isLastQuestion={study.currentIndex >= study.questions.length - 1}
         progressRight={

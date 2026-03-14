@@ -120,6 +120,7 @@ export default function ReviewScreen() {
         selectedAnswer={study.selectedAnswer}
         showResult={study.showResult}
         onSelect={study.handleSelect}
+        onConfirm={study.handleConfirm}
         onNext={study.handleNext}
         isLastQuestion={study.currentIndex >= study.questions.length - 1}
         progressSuffix={currentReview ? `(틀린 횟수: ${currentReview.wrongNote.wrongCount}회)` : undefined}

@@ -4353,6 +4353,43 @@ body{background:#fff;color:#000}
 function toggleAll(open){document.querySelectorAll('details').forEach(d=>d.open=open)}
 function toggleTheme(){const t=document.body.getAttribute('data-theme')==='dark'?'light':'dark';document.body.setAttribute('data-theme',t);localStorage.setItem('theme',t)}
 (function(){const t=localStorage.getItem('theme');if(t)document.body.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.body.setAttribute('data-theme','dark')})();
+// Deep-link via postMessage from parent app
+window.addEventListener('message',function(e){
+  if(!e.data)return;
+  if(e.data.type==='scrollToSection'){
+    var id=e.data.sectionId;
+    var keywords=e.data.keywords||[];
+    var section=document.getElementById(id);
+    if(!section)return;
+    // Try keyword match within the section's details
+    var bestMatch=null;
+    if(keywords.length>0){
+      var allDetails=section.querySelectorAll('details');
+      var bestScore=0;
+      allDetails.forEach(function(d){
+        var text=(d.querySelector('summary')||{}).textContent||'';
+        var content=(d.querySelector('.content')||{}).textContent||'';
+        var full=text+' '+content;
+        var score=0;
+        keywords.forEach(function(kw){if(full.indexOf(kw)!==-1)score++});
+        if(score>bestScore){bestScore=score;bestMatch=d}
+      });
+    }
+    if(bestMatch){
+      // Open ancestors up to section
+      var p=bestMatch;
+      while(p&&p!==section){if(p.tagName==='DETAILS')p.open=true;p=p.parentElement}
+      bestMatch.open=true;
+      // Open children too
+      bestMatch.querySelectorAll('details').forEach(function(d){d.open=true});
+      bestMatch.scrollIntoView({behavior:'smooth',block:'start'});
+    }else{
+      // Fallback: open all in section, scroll to section
+      section.querySelectorAll('details').forEach(function(d){d.open=true});
+      section.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  }
+});
 </script>
 </body>
 </html>

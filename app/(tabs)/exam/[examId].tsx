@@ -1,6 +1,7 @@
 import { useCallback, useRef, useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Pressable, ScrollView, Alert, AppState, ActivityIndicator } from 'react-native';
 import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 import { COLORS, RADIUS, SHADOWS } from '@/lib/constants';
 import { useExamWithQuestions } from '@/hooks/useExamData';
 import { useExam } from '@/hooks/useExam';
@@ -11,6 +12,7 @@ import QuestionCard from '@/components/exam/QuestionCard';
 import ChoiceList from '@/components/exam/ChoiceList';
 import QuestionNav from '@/components/exam/QuestionNav';
 import Timer from '@/components/exam/Timer';
+import NotesModal, { eraSectionId, extractKeywords } from '@/components/NotesModal';
 
 export default function ExamScreen() {
   const { examId, resume: resumeParam } = useLocalSearchParams<{
@@ -19,8 +21,12 @@ export default function ExamScreen() {
   }>();
   const router = useRouter();
   const hasSubmittedRef = useRef(false);
+  const scrollRef = useRef<ScrollView>(null);
   const [savedState, setSavedState] = useState<SavedExamState | null>(null);
   const [isReady, setIsReady] = useState(false);
+  // Track which questions have had their answer revealed
+  const [revealedSet, setRevealedSet] = useState<Set<number>>(new Set());
+  const [notesVisible, setNotesVisible] = useState(false);
 
   const { data: { exam, questions }, isLoading: dataLoading } = useExamWithQuestions(Number(examId));
 
@@ -66,6 +72,13 @@ export default function ExamScreen() {
     initialAnswers,
     initialIndex: savedState?.currentIndex,
   });
+
+  const isRevealed = revealedSet.has(currentIndex);
+
+  const handleReveal = useCallback(() => {
+    setRevealedSet((prev) => new Set(prev).add(currentIndex));
+    setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 100);
+  }, [currentIndex]);
 
   const doSubmit = useCallback((isAutoSubmit = false) => {
     if (hasSubmittedRef.current) return;
@@ -208,6 +221,7 @@ export default function ExamScreen() {
         </View>
 
         <ScrollView
+          ref={scrollRef}
           style={styles.scrollArea}
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
@@ -222,36 +236,93 @@ export default function ExamScreen() {
             choiceImages={currentQuestion.choiceImages}
             selectedAnswer={currentAnswer}
             onSelect={selectAnswer}
+            correctAnswer={isRevealed ? currentQuestion.correctAnswer : undefined}
+            showResult={isRevealed}
           />
+
+          {/* Answer reveal section */}
+          {isRevealed && (() => {
+            const isCorrect = currentAnswer === currentQuestion.correctAnswer;
+            return (
+              <>
+                <View style={[styles.feedbackBox, isCorrect ? styles.correctFeedback : styles.wrongFeedback]}>
+                  <Ionicons
+                    name={isCorrect ? 'checkmark-circle' : 'close-circle'}
+                    size={20}
+                    color={isCorrect ? '#16A34A' : '#DC2626'}
+                  />
+                  <Text style={[styles.feedbackText, { color: isCorrect ? '#16A34A' : '#DC2626' }]}>
+                    {isCorrect ? '정답!' : `오답! 정답은 ${currentQuestion.correctAnswer}번`}
+                  </Text>
+                </View>
+
+                {currentQuestion.explanation ? (
+                  <View style={styles.explanationBox}>
+                    <View style={styles.explanationHeader}>
+                      <Ionicons name="bulb" size={18} color={COLORS.primary} />
+                      <Text style={styles.explanationTitle}>해설</Text>
+                    </View>
+                    <Text style={styles.explanationText}>{currentQuestion.explanation}</Text>
+                  </View>
+                ) : null}
+
+                <Pressable
+                  style={styles.notesLink}
+                  onPress={() => setNotesVisible(true)}
+                >
+                  <Ionicons name="newspaper-outline" size={18} color={COLORS.primary} />
+                  <Text style={styles.notesLinkText}>요약노트 바로가기</Text>
+                  <Ionicons name="chevron-forward" size={16} color={COLORS.textLight} />
+                </Pressable>
+              </>
+            );
+          })()}
         </ScrollView>
 
         <View style={styles.bottomBar}>
-          <Pressable
-            style={[styles.navButton, currentIndex === 0 && styles.navButtonDisabled]}
-            onPress={goPrev}
-            disabled={currentIndex === 0}
-          >
-            <Text style={[styles.navButtonText, currentIndex === 0 && styles.navButtonTextDisabled]}>
-              ◀ 이전
-            </Text>
-          </Pressable>
-
-          <Text style={styles.progress}>
-            {answeredCount} / {totalQuestions} 답변
-          </Text>
-
-          {currentIndex < totalQuestions - 1 ? (
-            <Pressable style={styles.navButton} onPress={goNext}>
-              <Text style={styles.navButtonText}>다음 ▶</Text>
+          {/* Show "정답 확인" button when answer selected but not revealed */}
+          {currentAnswer != null && !isRevealed ? (
+            <Pressable style={styles.confirmBtn} onPress={handleReveal}>
+              <Ionicons name="eye" size={18} color="#fff" />
+              <Text style={styles.confirmBtnText}>정답 확인</Text>
             </Pressable>
           ) : (
-            <Pressable style={styles.submitButton} onPress={handleSubmit}>
-              <Text style={styles.submitButtonText}>제출하기</Text>
-            </Pressable>
+            <>
+              <Pressable
+                style={[styles.navButton, currentIndex === 0 && styles.navButtonDisabled]}
+                onPress={goPrev}
+                disabled={currentIndex === 0}
+              >
+                <Text style={[styles.navButtonText, currentIndex === 0 && styles.navButtonTextDisabled]}>
+                  ◀ 이전
+                </Text>
+              </Pressable>
+
+              <Text style={styles.progress}>
+                {answeredCount} / {totalQuestions} 답변
+              </Text>
+
+              {currentIndex < totalQuestions - 1 ? (
+                <Pressable style={styles.navButton} onPress={goNext}>
+                  <Text style={styles.navButtonText}>다음 ▶</Text>
+                </Pressable>
+              ) : (
+                <Pressable style={styles.submitButton} onPress={handleSubmit}>
+                  <Text style={styles.submitButtonText}>제출하기</Text>
+                </Pressable>
+              )}
+            </>
           )}
         </View>
        </View>
       </View>
+
+      <NotesModal
+        visible={notesVisible}
+        onClose={() => setNotesVisible(false)}
+        sectionId={currentQuestion ? eraSectionId(currentQuestion.era) : undefined}
+        keywords={currentQuestion ? extractKeywords(currentQuestion) : undefined}
+      />
     </>
   );
 }
@@ -337,5 +408,88 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '700',
     color: '#fff',
+  },
+
+  // Confirm button
+  confirmBtn: {
+    flex: 1,
+    paddingVertical: 12,
+    borderRadius: RADIUS.sm,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F59E0B',
+    flexDirection: 'row',
+    gap: 6,
+  },
+  confirmBtnText: {
+    color: '#fff',
+    fontSize: 15,
+    fontWeight: '700',
+  },
+
+  // Feedback
+  feedbackBox: {
+    marginTop: 16,
+    padding: 14,
+    borderRadius: RADIUS.sm,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  correctFeedback: {
+    backgroundColor: '#F0FDF4',
+  },
+  wrongFeedback: {
+    backgroundColor: '#FEF2F2',
+  },
+  feedbackText: {
+    fontSize: 14,
+    fontWeight: '700',
+  },
+
+  // Explanation
+  explanationBox: {
+    marginTop: 12,
+    padding: 16,
+    backgroundColor: '#F8F7FF',
+    borderRadius: RADIUS.md,
+    borderWidth: 1,
+    borderColor: '#E8E8F4',
+  },
+  explanationHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    marginBottom: 10,
+  },
+  explanationTitle: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: COLORS.primary,
+  },
+  explanationText: {
+    fontSize: 14,
+    color: COLORS.text,
+    lineHeight: 22,
+  },
+
+  // Notes link
+  notesLink: {
+    marginTop: 12,
+    padding: 14,
+    backgroundColor: COLORS.surface,
+    borderRadius: RADIUS.md,
+    borderWidth: 1,
+    borderColor: '#E8E8F4',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    ...SHADOWS.sm,
+  },
+  notesLinkText: {
+    flex: 1,
+    fontSize: 14,
+    fontWeight: '600',
+    color: COLORS.primary,
   },
 });

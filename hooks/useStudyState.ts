@@ -20,14 +20,19 @@ export function useStudyState(options: UseStudyStateOptions = {}) {
     (choice: number) => {
       if (showResult) return;
       setSelectedAnswer(choice);
-      setShowResult(true);
-      if (current && choice === current.correctAnswer) {
-        setCorrectCount((c) => c + 1);
-        options.onCorrect?.(current);
-      }
     },
-    [showResult, current, options.onCorrect],
+    [showResult],
   );
+
+  /** Reveal the correct answer and show feedback */
+  const handleConfirm = useCallback(() => {
+    if (showResult || selectedAnswer == null) return;
+    setShowResult(true);
+    if (current && selectedAnswer === current.correctAnswer) {
+      setCorrectCount((c) => c + 1);
+      options.onCorrect?.(current);
+    }
+  }, [showResult, selectedAnswer, current, options.onCorrect]);
 
   const handleNext = useCallback(() => {
     if (currentIndex < questions.length - 1) {
@@ -58,6 +63,7 @@ export function useStudyState(options: UseStudyStateOptions = {}) {
     correctCount,
     completed,
     handleSelect,
+    handleConfirm,
     handleNext,
     startStudy,
   };
