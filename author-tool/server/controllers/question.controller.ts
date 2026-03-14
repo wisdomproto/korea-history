@@ -16,6 +16,10 @@ export const QuestionController = {
 
   update: asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id, 10);
+    const hasChoiceImages = req.body.choiceImages?.some((ci: string | null) => ci);
+    if (hasChoiceImages) {
+      console.log(`[QuestionUpdate] id=${id}, choiceImages=`, req.body.choiceImages?.map((ci: string | null) => ci ? '✓' : '✗'));
+    }
     if (req.body.correctAnswer !== undefined) {
       console.log(`[QuestionUpdate] id=${id}, correctAnswer=${req.body.correctAnswer}, points=${req.body.points}`);
     }

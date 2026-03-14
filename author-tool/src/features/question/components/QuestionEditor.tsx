@@ -37,6 +37,10 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
   const dropRef = useRef<HTMLDivElement>(null);
   const saveTimer = useRef<ReturnType<typeof setTimeout>>();
   const dirtyRef = useRef(false);
+  const questionIdRef = useRef(question.id);
+  questionIdRef.current = question.id;
+  const choiceImagesRef = useRef(choiceImages);
+  choiceImagesRef.current = choiceImages;
 
   // Load models
   const { data: models } = useQuery<ModelsResponse>({
@@ -120,15 +124,21 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
   // Choice image upload
   const uploadChoiceImage = async (file: File, index: number) => {
     if (!file.type.startsWith('image/')) return;
+    const capturedId = question.id;
     try {
       const url = await imageApi.upload(file);
-      const newChoiceImages = [...choiceImages];
+      // Use ref for latest choiceImages (avoids stale closure when multiple uploads overlap)
+      const newChoiceImages = [...choiceImagesRef.current];
       newChoiceImages[index] = url;
-      setChoiceImages(newChoiceImages);
-      // Save immediately (don't rely on auto-save which may miss if question switches)
+      // Only update UI state if still on the same question
+      if (questionIdRef.current === capturedId) {
+        setChoiceImages(newChoiceImages);
+        choiceImagesRef.current = newChoiceImages;
+      }
+      // Always save to server with correct questionId
       dirtyRef.current = false;
       cancelAutoSave();
-      onSaveRef.current({ ...buildPayload(), choiceImages: newChoiceImages }, question.id);
+      onSaveRef.current({ ...flushRef.current(), choiceImages: newChoiceImages }, capturedId);
     } catch (err) { console.error('Choice image upload failed:', err); }
   };
 
@@ -632,9 +642,12 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
             const capturedPayload = buildPayload();
             uploadMutation.mutate(file, {
               onSuccess: (url) => {
-                setImageUrl(url);
-                setShowCropModal(false);
-                // Save immediately with captured questionId + payload (survives question switch)
+                // Only update UI state if still on the same question
+                if (questionIdRef.current === capturedQuestionId) {
+                  setImageUrl(url);
+                  setShowCropModal(false);
+                }
+                // Always save to server with correct questionId
                 dirtyRef.current = false;
                 cancelAutoSave();
                 onSaveRef.current({ ...capturedPayload, imageUrl: url }, capturedQuestionId);

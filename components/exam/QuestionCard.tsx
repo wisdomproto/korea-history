@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Image, ActivityIndicator } from 'react-native';
 import { Question } from '@/lib/types';
 import { COLORS, IMAGE_BASE_URL, RADIUS, SHADOWS } from '@/lib/constants';
@@ -17,6 +17,12 @@ function resolveImageUrl(url: string): string {
 export default function QuestionCard({ question, questionIndex, totalQuestions }: Props) {
   const [imgLoading, setImgLoading] = useState(true);
   const [imgError, setImgError] = useState(false);
+
+  // Reset image state when question changes
+  useEffect(() => {
+    setImgLoading(true);
+    setImgError(false);
+  }, [question.id]);
 
   const hasImage = question.imageUrl && question.imageUrl !== 'TODO_ADD_IMAGE';
 

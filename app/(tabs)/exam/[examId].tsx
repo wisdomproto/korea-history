@@ -280,38 +280,34 @@ export default function ExamScreen() {
         </ScrollView>
 
         <View style={styles.bottomBar}>
-          {/* Show "정답 확인" button when answer selected but not revealed */}
+          {/* Navigation + optional reveal button */}
+          <Pressable
+            style={[styles.navButton, currentIndex === 0 && styles.navButtonDisabled]}
+            onPress={goPrev}
+            disabled={currentIndex === 0}
+          >
+            <Text style={[styles.navButtonText, currentIndex === 0 && styles.navButtonTextDisabled]}>
+              ◀ 이전
+            </Text>
+          </Pressable>
+
           {currentAnswer != null && !isRevealed ? (
             <Pressable style={styles.confirmBtn} onPress={handleReveal}>
               <Ionicons name="eye" size={18} color="#fff" />
               <Text style={styles.confirmBtnText}>정답 확인</Text>
             </Pressable>
           ) : (
-            <>
-              <Pressable
-                style={[styles.navButton, currentIndex === 0 && styles.navButtonDisabled]}
-                onPress={goPrev}
-                disabled={currentIndex === 0}
-              >
-                <Text style={[styles.navButtonText, currentIndex === 0 && styles.navButtonTextDisabled]}>
-                  ◀ 이전
-                </Text>
-              </Pressable>
+            <View style={{ width: 1 }} />
+          )}
 
-              <Text style={styles.progress}>
-                {answeredCount} / {totalQuestions} 답변
-              </Text>
-
-              {currentIndex < totalQuestions - 1 ? (
-                <Pressable style={styles.navButton} onPress={goNext}>
-                  <Text style={styles.navButtonText}>다음 ▶</Text>
-                </Pressable>
-              ) : (
-                <Pressable style={styles.submitButton} onPress={handleSubmit}>
-                  <Text style={styles.submitButtonText}>제출하기</Text>
-                </Pressable>
-              )}
-            </>
+          {currentIndex < totalQuestions - 1 ? (
+            <Pressable style={styles.navButton} onPress={goNext}>
+              <Text style={styles.navButtonText}>다음 ▶</Text>
+            </Pressable>
+          ) : (
+            <Pressable style={styles.submitButton} onPress={handleSubmit}>
+              <Text style={styles.submitButtonText}>제출하기</Text>
+            </Pressable>
           )}
         </View>
        </View>
