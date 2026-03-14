@@ -192,9 +192,18 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
     if (!items) return;
     for (const item of items) {
       if (item.type.startsWith('image/')) {
-        // Determine effective target: explicit pasteTarget, or auto-detect main if no image yet
-        const target = pasteTarget ?? (!imageUrl ? 'main' : null);
-        if (!target) return; // No target — let browser handle paste normally
+        // Determine effective target: explicit pasteTarget, or auto-detect
+        let target: number | 'main' | null = pasteTarget;
+        if (target == null) {
+          if (!imageUrl) {
+            target = 'main';
+          } else {
+            // Auto-detect first empty choice slot
+            const emptyIdx = choiceImages.findIndex((img) => !img);
+            if (emptyIdx !== -1) target = emptyIdx;
+          }
+        }
+        if (target == null) return; // No target — let browser handle paste normally
         e.preventDefault();
         const file = item.getAsFile();
         if (!file) return;
@@ -207,7 +216,7 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
         return;
       }
     }
-  }, [pasteTarget, imageUrl]);
+  }, [pasteTarget, imageUrl, choiceImages]);
 
   useEffect(() => {
     document.addEventListener('paste', handlePaste);
