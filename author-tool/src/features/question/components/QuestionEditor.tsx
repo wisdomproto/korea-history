@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Button } from '@/components/Button';
 import { MetadataSelector } from './MetadataSelector';
 import { imageApi } from '../api/image.api';
@@ -153,6 +153,15 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
         setCorrectAnswer(q.correctAnswer);
         setShowAIGen(false);
       }
+    },
+  });
+
+  const explanationMutation = useMutation({
+    mutationFn: (req: { content: string; choices: [string, string, string, string, string]; correctAnswer: number; era: string; category: string }) =>
+      generatorApi.generateExplanation(req),
+    onSuccess: (data: string) => {
+      markDirty();
+      setExplanation(data);
     },
   });
 
@@ -551,7 +560,29 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
 
           {/* Explanation */}
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-700">해설</label>
+            <div className="mb-1 flex items-center justify-between">
+              <label className="block text-sm font-medium text-gray-700">해설</label>
+              <button
+                type="button"
+                onClick={() => {
+                  if (explanationMutation.isPending) return;
+                  explanationMutation.mutate({
+                    content, choices, correctAnswer, era, category,
+                  });
+                }}
+                disabled={explanationMutation.isPending || !content.trim()}
+                className="flex items-center gap-1 rounded-md bg-violet-50 px-2.5 py-1 text-xs font-medium text-violet-700 hover:bg-violet-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                {explanationMutation.isPending ? (
+                  <>
+                    <span className="inline-block h-3 w-3 animate-spin rounded-full border-2 border-violet-300 border-t-violet-600" />
+                    생성 중...
+                  </>
+                ) : (
+                  <>✨ AI 해설 생성</>
+                )}
+              </button>
+            </div>
             <textarea
               value={explanation}
               onChange={(e) => { markDirty(); setExplanation(e.target.value); }}

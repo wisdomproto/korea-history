@@ -6,4 +6,9 @@ export const GeneratorController = {
     const questions = await GeneratorService.generate(req.body);
     res.json({ success: true, data: questions });
   }),
+
+  generateExplanation: asyncHandler(async (req, res) => {
+    const explanation = await GeneratorService.generateExplanation(req.body);
+    res.json({ success: true, data: explanation });
+  }),
 };

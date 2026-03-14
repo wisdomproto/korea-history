@@ -8,6 +8,7 @@ import { COLORS } from '@/lib/constants';
 const TAB_ICONS: Record<string, { active: keyof typeof Ionicons.glyphMap; inactive: keyof typeof Ionicons.glyphMap }> = {
   index: { active: 'home', inactive: 'home-outline' },
   study: { active: 'book', inactive: 'book-outline' },
+  notes: { active: 'newspaper', inactive: 'newspaper-outline' },
   analysis: { active: 'bar-chart', inactive: 'bar-chart-outline' },
   mypage: { active: 'person', inactive: 'person-outline' },
 };
@@ -15,11 +16,12 @@ const TAB_ICONS: Record<string, { active: keyof typeof Ionicons.glyphMap; inacti
 const TAB_LABELS: Record<string, string> = {
   index: '홈',
   study: '학습',
+  notes: '노트',
   analysis: '분석',
   mypage: 'MY',
 };
 
-const VISIBLE_TABS = new Set(['index', 'study', 'analysis', 'mypage']);
+const VISIBLE_TABS = new Set(['index', 'study', 'notes', 'analysis', 'mypage']);
 
 function CustomTabBar({ state, descriptors, navigation }: any) {
   const insets = useSafeAreaInsets();
@@ -106,6 +108,10 @@ export default function TabLayout() {
       <Tabs.Screen
         name="study"
         options={{ headerTitle: '학습' }}
+      />
+      <Tabs.Screen
+        name="notes"
+        options={{ headerTitle: '요약노트', headerShown: false }}
       />
       <Tabs.Screen
         name="analysis"

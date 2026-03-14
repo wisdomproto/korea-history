@@ -6,7 +6,8 @@
     "totalQuestions": 50,
     "timeLimitMinutes": 80,
     "isFree": true,
-    "id": 18
+    "id": 18,
+    "name": "제24회 - 미완성"
   },
   "questions": []
 }

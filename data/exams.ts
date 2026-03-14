@@ -69,7 +69,6 @@ import exam11Data from './questions/exam-11.json';
 import exam10Data from './questions/exam-10.json';
 import exam9Data from './questions/exam-9.json';
 import exam8Data from './questions/exam-8.json';
-import exam6Data from './questions/exam-6.json';
 
 // Auto-generated — do not edit manually
 // 회차 목록 (최신순)
@@ -144,7 +143,6 @@ export const EXAMS: Exam[] = [
   exam10Data.exam as Exam,
   exam9Data.exam as Exam,
   exam8Data.exam as Exam,
-  exam6Data.exam as Exam,
 ];
 
 const questionsMap: Record<number, Question[]> = {
@@ -218,7 +216,6 @@ const questionsMap: Record<number, Question[]> = {
   [exam10Data.exam.id]: exam10Data.questions as Question[],
   [exam9Data.exam.id]: exam9Data.questions as Question[],
   [exam8Data.exam.id]: exam8Data.questions as Question[],
-  [exam6Data.exam.id]: exam6Data.questions as Question[],
 };
 
 export function getExamById(examId: number): Exam | undefined {

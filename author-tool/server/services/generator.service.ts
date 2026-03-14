@@ -63,6 +63,42 @@ JSON 배열로만 응답하세요 (설명 없이):
 ]`;
 }
 
+interface ExplanationRequest {
+  content: string;
+  choices: [string, string, string, string, string];
+  correctAnswer: number;
+  era: string;
+  category: string;
+}
+
+function buildExplanationPrompt(req: ExplanationRequest): string {
+  const choiceLabels = ['①', '②', '③', '④', '⑤'];
+  const choicesText = req.choices.map((c, i) => `${choiceLabels[i]} ${c}`).join('\n');
+
+  return `당신은 한국사능력검정시험 해설 전문가입니다.
+아래 문제에 대한 해설을 작성하세요.
+
+[문제]
+${req.content}
+
+[선지]
+${choicesText}
+
+[정답]
+${choiceLabels[req.correctAnswer - 1]}
+
+[시대] ${req.era}
+[분야] ${req.category}
+
+[해설 작성 규칙]
+1. 정답인 이유를 먼저 명확히 설명
+2. 주요 오답 선지가 틀린 이유를 간략히 설명
+3. 관련 역사적 배경·맥락을 포함
+4. 2~4문장으로 간결하게 작성
+5. 한국어로 작성
+6. JSON 없이, 해설 텍스트만 출력`;
+}
+
 export const GeneratorService = {
   async generate(req: GenerateRequest): Promise<GeneratedQuestion[]> {
     const { era, category, difficulty, points, count, topic, model } = req;
@@ -75,5 +111,11 @@ export const GeneratorService = {
     const result = await GeneratorService.generate({ ...req, count: 1 });
     if (!result.length) throw new Error('문제가 생성되지 않았습니다.');
     return result[0];
+  },
+
+  async generateExplanation(req: ExplanationRequest): Promise<string> {
+    const prompt = buildExplanationPrompt(req);
+    const raw = await generateText(prompt, 'gemini-2.5-flash');
+    return raw.trim();
   },
 };
