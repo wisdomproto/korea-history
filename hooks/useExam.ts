@@ -18,6 +18,9 @@ export function useExam(questions: Question[], options?: UseExamOptions) {
     }))
   );
 
+  // Track whether initial answers have been applied (for async resume)
+  const appliedInitialRef = useRef(false);
+
   // Re-initialize answers when questions load asynchronously
   useEffect(() => {
     if (questions.length > 0 && answers.length === 0 && !options?.initialAnswers) {
@@ -30,6 +33,17 @@ export function useExam(questions: Question[], options?: UseExamOptions) {
       );
     }
   }, [questions.length]);
+
+  // Apply initialAnswers when they become available (async resume from saved state)
+  useEffect(() => {
+    if (options?.initialAnswers && options.initialAnswers.length > 0 && !appliedInitialRef.current) {
+      appliedInitialRef.current = true;
+      setAnswers(options.initialAnswers);
+      if (options.initialIndex != null) {
+        setCurrentIndex(options.initialIndex);
+      }
+    }
+  }, [options?.initialAnswers, options?.initialIndex]);
 
   const examIdRef = useRef<number | null>(null);
   const answersRef = useRef(answers);
