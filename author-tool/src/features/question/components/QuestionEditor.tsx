@@ -272,7 +272,6 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
           </div>
         </div>
         <div className="flex items-center gap-2">
-          {saving && <span className="text-xs text-gray-400">저장 중...</span>}
           {tab === 'edit' && (
             <>
               <Button size="sm" variant="secondary" onClick={() => setShowAIGen(!showAIGen)}>
@@ -286,8 +285,9 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
                   onSave(buildPayload());
                 }}
                 disabled={saving}
+                loading={saving}
               >
-                💾 저장
+                {saving ? '저장 중...' : '💾 저장'}
               </Button>
             </>
           )}
