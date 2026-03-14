@@ -43,7 +43,12 @@ export const QuestionService = {
       const examFile = await ExamService.getById(exam.id);
       const idx = examFile.questions.findIndex((q) => q.id === questionId);
       if (idx !== -1) {
-        examFile.questions[idx] = { ...examFile.questions[idx], ...updates };
+        const merged = { ...examFile.questions[idx], ...updates };
+        // Clean up: remove choiceImages if all null/empty
+        if (merged.choiceImages && !merged.choiceImages.some((ci: string | null) => ci)) {
+          delete merged.choiceImages;
+        }
+        examFile.questions[idx] = merged;
         await ExamService.save(exam.id, examFile);
         return examFile.questions[idx];
       }

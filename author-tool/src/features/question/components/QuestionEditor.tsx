@@ -51,10 +51,9 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
 
   // Build save payload from current state
   const buildPayload = useCallback(() => {
-    const hasChoiceImages = choiceImages.some(ci => ci);
     return {
       content, imageUrl: imageUrl || undefined,
-      choiceImages: hasChoiceImages ? choiceImages : undefined,
+      choiceImages,
       choices, correctAnswer, era, category, difficulty, points,
       explanation: explanation || undefined,
     };
@@ -130,7 +129,7 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
       dirtyRef.current = false;
       cancelAutoSave();
       onSaveRef.current({ ...buildPayload(), choiceImages: newChoiceImages }, question.id);
-    } catch { /* ignore */ }
+    } catch (err) { console.error('Choice image upload failed:', err); }
   };
 
   const removeChoiceImage = (index: number) => {
