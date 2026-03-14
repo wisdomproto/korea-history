@@ -132,7 +132,7 @@ export default function NotesModal({ visible, onClose, sectionId, keywords }: Pr
           <View style={styles.iframeWrap}>
             <iframe
               ref={(el: any) => { iframeRef.current = el; }}
-              src="/notes.html"
+              src="/summary-notes.html"
               onLoad={sendScrollMessage}
               style={{
                 width: '100%',

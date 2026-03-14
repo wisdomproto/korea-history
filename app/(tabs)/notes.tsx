@@ -5,7 +5,7 @@ export default function NotesScreen() {
     return (
       <View style={styles.container}>
         <iframe
-          src="/notes.html"
+          src="/summary-notes.html"
           style={{
             width: '100%',
             height: '100%',
