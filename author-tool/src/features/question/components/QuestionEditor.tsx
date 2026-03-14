@@ -613,9 +613,12 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
             const oldUrl = imageUrl;
             uploadMutation.mutate(file, {
               onSuccess: (url) => {
-                markDirty();
                 setImageUrl(url);
                 setShowCropModal(false);
+                // Save immediately with the new URL (don't rely on auto-save timer)
+                dirtyRef.current = false;
+                cancelAutoSave();
+                onSave({ ...buildPayload(), imageUrl: url });
                 // Delete old image from R2
                 if (oldUrl) imageApi.delete(oldUrl).catch(() => {});
               },
