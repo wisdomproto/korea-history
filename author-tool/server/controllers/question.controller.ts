@@ -19,7 +19,8 @@ export const QuestionController = {
     if (req.body.correctAnswer !== undefined) {
       console.log(`[QuestionUpdate] id=${id}, correctAnswer=${req.body.correctAnswer}, points=${req.body.points}`);
     }
-    const question = await QuestionService.update(id, req.body);
+    const { examId, ...updates } = req.body;
+    const question = await QuestionService.update(id, updates, examId);
     res.json({ success: true, data: question });
   }),
 

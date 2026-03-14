@@ -18,7 +18,7 @@ export function useUpdateQuestion() {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: ({ id, updates, examId }: { id: number; updates: Partial<Question>; examId: number }) =>
-      questionApi.update(id, updates),
+      questionApi.update(id, updates, examId),
     onSuccess: (_, vars) => {
       qc.invalidateQueries({ queryKey: ['exam', vars.examId] });
       qc.invalidateQueries({ queryKey: ['exams'] });

@@ -2,6 +2,18 @@ import { ExamService } from './exam.service.js';
 import type { Question } from './exam.service.js';
 import { AppError } from '../middleware.js';
 
+// Per-exam write lock to prevent concurrent read-modify-write race conditions
+const examLocks = new Map<number, Promise<any>>();
+
+function withExamLock<T>(examId: number, fn: () => Promise<T>): Promise<T> {
+  const prev = examLocks.get(examId) ?? Promise.resolve();
+  const next = prev.then(fn, fn); // chain even if previous failed
+  examLocks.set(examId, next);
+  // Clean up after completion to prevent memory leak
+  next.finally(() => { if (examLocks.get(examId) === next) examLocks.delete(examId); });
+  return next;
+}
+
 export const QuestionService = {
   async listByExam(examId: number): Promise<Question[]> {
     const examFile = await ExamService.getById(examId);
@@ -37,14 +49,29 @@ export const QuestionService = {
     return newQuestion;
   },
 
-  async update(questionId: number, updates: Partial<Omit<Question, 'id' | 'examId'>>): Promise<Question> {
+  async update(questionId: number, updates: Partial<Omit<Question, 'id' | 'examId'>>, examId?: number): Promise<Question> {
+    // If examId is known, use lock to serialize concurrent writes to the same exam
+    if (examId) {
+      return withExamLock(examId, async () => {
+        const examFile = await ExamService.getById(examId);
+        const idx = examFile.questions.findIndex((q) => q.id === questionId);
+        if (idx === -1) throw new AppError(404, `문제 ID ${questionId}을 찾을 수 없습니다.`);
+        const merged = { ...examFile.questions[idx], ...updates };
+        if (merged.choiceImages && !merged.choiceImages.some((ci: string | null) => ci)) {
+          delete merged.choiceImages;
+        }
+        examFile.questions[idx] = merged;
+        await ExamService.save(examId, examFile);
+        return examFile.questions[idx];
+      });
+    }
+    // Fallback: scan all exams (no lock, legacy path)
     const exams = await ExamService.list();
     for (const exam of exams) {
       const examFile = await ExamService.getById(exam.id);
       const idx = examFile.questions.findIndex((q) => q.id === questionId);
       if (idx !== -1) {
         const merged = { ...examFile.questions[idx], ...updates };
-        // Clean up: remove choiceImages if all null/empty
         if (merged.choiceImages && !merged.choiceImages.some((ci: string | null) => ci)) {
           delete merged.choiceImages;
         }
