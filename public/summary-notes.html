@@ -32,9 +32,16 @@ header p{font-size:.9rem;opacity:.85}
 .search-icon{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:1.1rem;pointer-events:none;color:#94a3b8}
 .search-clear{position:absolute;right:36px;top:50%;transform:translateY(-50%);background:none;border:none;font-size:1rem;cursor:pointer;color:#94a3b8;display:none;padding:4px}
 .search-clear:hover{color:var(--text)}
-.search-stats{font-size:.8rem;color:#64748b;text-align:center;margin:4px 0 8px}
-mark.search-hl{background:#fbbf24;color:#1e293b;padding:0 2px;border-radius:3px}
+.search-stats{font-size:.8rem;color:#64748b;text-align:center;margin:4px 0 8px;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.search-nav{display:none;align-items:center;gap:4px}
+.search-nav button{background:var(--accent);color:#fff;border:none;border-radius:6px;width:28px;height:28px;cursor:pointer;font-size:.85rem;font-weight:700;display:flex;align-items:center;justify-content:center;transition:opacity .15s}
+.search-nav button:hover{opacity:.85}
+.search-nav button:disabled{opacity:.3;cursor:default}
+.search-nav .search-pos{font-size:.8rem;color:var(--text);min-width:50px;text-align:center}
+mark.search-hl{background:#fbbf24;color:#1e293b;padding:0 2px;border-radius:3px;transition:background .2s}
+mark.search-hl.current{background:#f97316;outline:2px solid #f97316;outline-offset:1px}
 [data-theme=dark] mark.search-hl{background:#f59e0b;color:#0f172a}
+[data-theme=dark] mark.search-hl.current{background:#ea580c;outline-color:#ea580c}
 .no-match{display:none}
 .search-active .no-match{display:none}
 .search-active details.search-hidden{display:none}
@@ -122,7 +129,7 @@ body{background:#fff;color:#000}
 <button class="search-clear" id="searchClear" onclick="clearSearch()">&times;</button>
 <span class="search-icon">🔍</span>
 </div>
-<div class="search-stats" id="searchStats"></div>
+<div class="search-stats" id="searchStats"><span id="searchCount"></span><div class="search-nav" id="searchNav"><button onclick="goMatch(-1)" id="prevMatch" title="이전">▲</button><span class="search-pos" id="searchPos"></span><button onclick="goMatch(1)" id="nextMatch" title="다음">▼</button></div></div>
 <nav class="toc">
 <h2>📋 목차</h2>
 <a href="#s1">1. 고대/중세의 한국사 (삼국시대, 발해, 통일신라)</a>
@@ -4374,17 +4381,42 @@ function toggleTheme(){const t=document.body.getAttribute('data-theme')==='dark'
 (function(){const t=localStorage.getItem('theme');if(t)document.body.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme:dark)').matches)document.body.setAttribute('data-theme','dark')})();
 // ── Search ──
 var searchTimer=null;
+var currentMatchIdx=-1;
+var totalMatches=0;
 document.getElementById('searchInput').addEventListener('input',function(){
   clearTimeout(searchTimer);
   var q=this.value.trim();
   document.getElementById('searchClear').style.display=q?'block':'none';
   searchTimer=setTimeout(function(){doSearch(q)},250);
 });
+document.getElementById('searchInput').addEventListener('keydown',function(e){
+  if(totalMatches<=0)return;
+  if(e.key==='Enter'){e.preventDefault();goMatch(e.shiftKey?-1:1)}
+});
 function clearSearch(){
   document.getElementById('searchInput').value='';
   document.getElementById('searchClear').style.display='none';
-  document.getElementById('searchStats').textContent='';
+  document.getElementById('searchCount').textContent='';
+  document.getElementById('searchNav').style.display='none';
   doSearch('');
+}
+function goMatch(dir){
+  if(totalMatches===0)return;
+  currentMatchIdx+=dir;
+  if(currentMatchIdx>=totalMatches)currentMatchIdx=0;
+  if(currentMatchIdx<0)currentMatchIdx=totalMatches-1;
+  highlightCurrent();
+}
+function highlightCurrent(){
+  var marks=document.querySelectorAll('mark.search-hl');
+  marks.forEach(function(m){m.classList.remove('current')});
+  if(marks[currentMatchIdx]){
+    marks[currentMatchIdx].classList.add('current');
+    marks[currentMatchIdx].scrollIntoView({behavior:'smooth',block:'center'});
+  }
+  document.getElementById('searchPos').textContent=(currentMatchIdx+1)+' / '+totalMatches;
+  document.getElementById('prevMatch').disabled=false;
+  document.getElementById('nextMatch').disabled=false;
 }
 function doSearch(query){
   var stats=document.getElementById('searchStats');
@@ -4406,7 +4438,7 @@ function doSearch(query){
   // Remove search-active class and hidden
   document.body.classList.remove('search-active');
   document.querySelectorAll('.search-hidden').forEach(function(d){d.classList.remove('search-hidden')});
-  if(!query){stats.textContent='';return}
+  if(!query){document.getElementById('searchCount').textContent='';document.getElementById('searchNav').style.display='none';totalMatches=0;currentMatchIdx=-1;return}
   document.body.classList.add('search-active');
   var escaped=query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
   var re=new RegExp('('+escaped+')','gi');
@@ -4460,10 +4492,19 @@ function doSearch(query){
     var has=s.querySelector('details:not(.search-hidden)');
     if(!has)s.style.display='none';else s.style.display='';
   });
-  stats.textContent=matchCount>0?'\"'+query+'\" '+matchCount+'건 발견':'\"'+query+'\" 검색 결과 없음';
-  // Scroll to first match
-  var firstHl=document.querySelector('mark.search-hl');
-  if(firstHl)firstHl.scrollIntoView({behavior:'smooth',block:'center'});
+  var countEl=document.getElementById('searchCount');
+  var navEl=document.getElementById('searchNav');
+  totalMatches=document.querySelectorAll('mark.search-hl').length;
+  if(totalMatches>0){
+    countEl.textContent='\"'+query+'\" '+totalMatches+'건';
+    navEl.style.display='flex';
+    currentMatchIdx=0;
+    highlightCurrent();
+  }else{
+    countEl.textContent='\"'+query+'\" 검색 결과 없음';
+    navEl.style.display='none';
+    currentMatchIdx=-1;
+  }
 }
 function highlightNode(el,re){
   // Walk text nodes and wrap matches
