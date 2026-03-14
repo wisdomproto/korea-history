@@ -274,9 +274,22 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
         <div className="flex items-center gap-2">
           {saving && <span className="text-xs text-gray-400">저장 중...</span>}
           {tab === 'edit' && (
-            <Button size="sm" variant="secondary" onClick={() => setShowAIGen(!showAIGen)}>
-              AI 문제 생성
-            </Button>
+            <>
+              <Button size="sm" variant="secondary" onClick={() => setShowAIGen(!showAIGen)}>
+                AI 문제 생성
+              </Button>
+              <Button
+                size="sm"
+                onClick={() => {
+                  cancelAutoSave();
+                  dirtyRef.current = false;
+                  onSave(buildPayload());
+                }}
+                disabled={saving}
+              >
+                💾 저장
+              </Button>
+            </>
           )}
         </div>
       </div>
