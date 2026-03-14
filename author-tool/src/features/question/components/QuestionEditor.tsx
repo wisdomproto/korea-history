@@ -10,7 +10,7 @@ import type { Question, Era, Category, ModelsResponse, GeneratedQuestion } from 
 interface QuestionEditorProps {
   question: Question;
   examId: number;
-  onSave: (data: Partial<Question>) => void;
+  onSave: (data: Partial<Question>, questionId?: number) => void;
   saving?: boolean;
 }
 
@@ -123,8 +123,13 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
     if (!file.type.startsWith('image/')) return;
     try {
       const url = await imageApi.upload(file);
-      markDirty();
-      setChoiceImages(prev => { const next = [...prev]; next[index] = url; return next; });
+      const newChoiceImages = [...choiceImages];
+      newChoiceImages[index] = url;
+      setChoiceImages(newChoiceImages);
+      // Save immediately (don't rely on auto-save which may miss if question switches)
+      dirtyRef.current = false;
+      cancelAutoSave();
+      onSaveRef.current({ ...buildPayload(), choiceImages: newChoiceImages }, question.id);
     } catch { /* ignore */ }
   };
 
@@ -624,14 +629,16 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
           onClose={() => setShowCropModal(false)}
           onCropped={(file) => {
             const oldUrl = imageUrl;
+            const capturedQuestionId = question.id;
+            const capturedPayload = buildPayload();
             uploadMutation.mutate(file, {
               onSuccess: (url) => {
                 setImageUrl(url);
                 setShowCropModal(false);
-                // Save immediately with the new URL (don't rely on auto-save timer)
+                // Save immediately with captured questionId + payload (survives question switch)
                 dirtyRef.current = false;
                 cancelAutoSave();
-                onSave({ ...buildPayload(), imageUrl: url });
+                onSaveRef.current({ ...capturedPayload, imageUrl: url }, capturedQuestionId);
                 // Delete old image from R2
                 if (oldUrl) imageApi.delete(oldUrl).catch(() => {});
               },

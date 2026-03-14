@@ -39,9 +39,10 @@ export function Layout() {
     deleteExamMutation.mutate(selectedExamId, { onSuccess: () => setSelectedExamId(null) });
   };
 
-  const handleSaveQuestion = (data: Partial<Question>) => {
-    if (editingQuestionId && selectedExamId) {
-      updateQuestionMutation.mutate({ id: editingQuestionId, updates: data, examId: selectedExamId });
+  const handleSaveQuestion = (data: Partial<Question>, questionId?: number) => {
+    const qId = questionId ?? editingQuestionId;
+    if (qId && selectedExamId) {
+      updateQuestionMutation.mutate({ id: qId, updates: data, examId: selectedExamId });
     }
   };
 
