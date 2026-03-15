@@ -113,21 +113,41 @@ function parseExplanations(rawText) {
     // Remove [해설작성자 : ...] patterns (keep content before and after)
     explanation = explanation.replace(/\[해설작성자\s*:\s*[^\]]*\]/g, '');
 
-    // Cut at the next question start — only match the specific next question number
-    const nextQNum = qNum + 1;
     explanation = normalizeText(explanation);
+
+    // Cut at the next actual question text (not choice-by-choice explanation).
+    // Real questions have: "N. " followed by question text AND "[N점]" point marker.
+    // We look for "N. " where N >= nextQNum, followed eventually by [N점] on the same or nearby line.
+    const nextQNum = qNum + 1;
     if (nextQNum <= 50) {
-      // Cut at "NEXT_Q_NUM. " at start of line (the next question's text)
-      const nextQPattern = new RegExp(`\\n${nextQNum}\\.\\s`);
-      const nextQMatch = explanation.match(nextQPattern);
-      if (nextQMatch) {
-        explanation = explanation.substring(0, nextQMatch.index);
+      // Strategy: find [N점] (point marker) which only appears in real question text,
+      // then backtrack to find the "N. " question start before it.
+      // This handles PDF line wrapping where [2점] may be on a different line than "3. ".
+      const pointMarkerMatch = explanation.match(/\[\d점\]/);
+      let cutIndex = -1;
+      if (pointMarkerMatch) {
+        const beforeMarker = explanation.substring(0, pointMarkerMatch.index);
+        const lines = beforeMarker.split('\n');
+        let charCount = 0;
+        for (let li = 0; li < lines.length; li++) {
+          const line = lines[li].trim();
+          const m = line.match(/^(\d{1,2})\.\s/);
+          if (m) {
+            const n = parseInt(m[1]);
+            if (n >= nextQNum && n <= 50) {
+              // Remember the LAST "N. " before [N점] — closest to the marker
+              cutIndex = charCount;
+            }
+          }
+          charCount += lines[li].length + 1;
+        }
+      }
+      if (cutIndex > 0) {
+        explanation = explanation.substring(0, cutIndex);
       }
     }
 
-    // Also remove any trailing choice markers from the next question (①~⑤ lines at the end)
     explanation = explanation
-      .replace(/\n\s*[①②③④⑤]\s.*$/s, '')
       .replace(/\n{3,}/g, '\n\n')
       .trim();
 

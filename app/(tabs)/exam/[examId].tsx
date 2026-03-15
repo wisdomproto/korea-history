@@ -1,5 +1,5 @@
 import { useCallback, useRef, useEffect, useState } from 'react';
-import { StyleSheet, View, Text, Pressable, ScrollView, Alert, AppState, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, Text, Pressable, ScrollView, Alert, AppState, ActivityIndicator, Platform } from 'react-native';
 import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS, RADIUS, SHADOWS } from '@/lib/constants';
@@ -116,15 +116,24 @@ export default function ExamScreen() {
   }, [submitExam, questions, totalQuestions, exam, router]);
 
   const handleTimeUp = useCallback(() => {
-    Alert.alert(
-      '시간 종료',
-      '시험 시간이 종료되었습니다.\n답안이 자동 제출됩니다.',
-      [{ text: '확인', onPress: () => doSubmit(true) }],
-    );
+    if (Platform.OS === 'web') {
+      window.alert('시험 시간이 종료되었습니다.\n답안이 자동 제출됩니다.');
+      doSubmit(true);
+    } else {
+      Alert.alert(
+        '시간 종료',
+        '시험 시간이 종료되었습니다.\n답안이 자동 제출됩니다.',
+        [{ text: '확인', onPress: () => doSubmit(true) }],
+      );
+    }
   }, [doSubmit]);
 
   const handleWarning = useCallback(() => {
-    Alert.alert('잔여 시간 알림', '남은 시간이 5분입니다.');
+    if (Platform.OS === 'web') {
+      window.alert('남은 시간이 5분입니다.');
+    } else {
+      Alert.alert('잔여 시간 알림', '남은 시간이 5분입니다.');
+    }
   }, []);
 
   const { formattedTime, isWarning, progress, remainingSeconds } = useTimer({
@@ -185,10 +194,16 @@ export default function ExamScreen() {
       ? `아직 ${unanswered}문항을 풀지 않았습니다.\n그래도 제출하시겠습니까?`
       : '모의고사를 제출하시겠습니까?';
 
-    Alert.alert('제출 확인', message, [
-      { text: '취소', style: 'cancel' },
-      { text: '제출하기', onPress: () => doSubmit(false) },
-    ]);
+    if (Platform.OS === 'web') {
+      if (window.confirm(message)) {
+        doSubmit(false);
+      }
+    } else {
+      Alert.alert('제출 확인', message, [
+        { text: '취소', style: 'cancel' },
+        { text: '제출하기', onPress: () => doSubmit(false) },
+      ]);
+    }
   };
 
   return (

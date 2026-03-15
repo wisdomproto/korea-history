@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef, useMemo, useEffect } from 'react';
-import { StyleSheet, View, Text, Pressable, ScrollView, Alert, SafeAreaView, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, Text, Pressable, ScrollView, Alert, SafeAreaView, ActivityIndicator, Platform } from 'react-native';
 import { useRouter, Stack } from 'expo-router';
 import { COLORS, ERAS, RADIUS, SHADOWS } from '@/lib/constants';
 import { useAllQuestions } from '@/hooks/useExamData';
@@ -108,11 +108,16 @@ export default function DiagnosticScreen() {
   }, [submitExam, questions]);
 
   const handleTimeUp = useCallback(() => {
-    Alert.alert(
-      '시간 종료',
-      '진단 시간이 종료되었습니다.\n결과를 확인합니다.',
-      [{ text: '확인', onPress: doSubmit }],
-    );
+    if (Platform.OS === 'web') {
+      window.alert('진단 시간이 종료되었습니다.\n결과를 확인합니다.');
+      doSubmit();
+    } else {
+      Alert.alert(
+        '시간 종료',
+        '진단 시간이 종료되었습니다.\n결과를 확인합니다.',
+        [{ text: '확인', onPress: doSubmit }],
+      );
+    }
   }, [doSubmit]);
 
   const { formattedTime, isWarning, progress } = useTimer({
@@ -222,10 +227,14 @@ export default function DiagnosticScreen() {
     const message = unanswered > 0
       ? `아직 ${unanswered}문항을 풀지 않았습니다.\n제출하시겠습니까?`
       : '진단 테스트를 제출하시겠습니까?';
-    Alert.alert('제출', message, [
-      { text: '취소', style: 'cancel' },
-      { text: '제출', onPress: doSubmit },
-    ]);
+    if (Platform.OS === 'web') {
+      if (window.confirm(message)) doSubmit();
+    } else {
+      Alert.alert('제출', message, [
+        { text: '취소', style: 'cancel' },
+        { text: '제출', onPress: doSubmit },
+      ]);
+    }
   };
 
   return (
