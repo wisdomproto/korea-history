@@ -57,6 +57,8 @@ export const QuestionService = {
         const idx = examFile.questions.findIndex((q) => q.id === questionId);
         if (idx === -1) throw new AppError(404, `문제 ID ${questionId}을 찾을 수 없습니다.`);
         const merged = { ...examFile.questions[idx], ...updates };
+        // Clean up null/empty optional fields
+        if (!merged.imageUrl) delete merged.imageUrl;
         if (merged.choiceImages && !merged.choiceImages.some((ci: string | null) => ci)) {
           delete merged.choiceImages;
         }
@@ -72,6 +74,7 @@ export const QuestionService = {
       const idx = examFile.questions.findIndex((q) => q.id === questionId);
       if (idx !== -1) {
         const merged = { ...examFile.questions[idx], ...updates };
+        if (!merged.imageUrl) delete merged.imageUrl;
         if (merged.choiceImages && !merged.choiceImages.some((ci: string | null) => ci)) {
           delete merged.choiceImages;
         }

@@ -26,15 +26,8 @@
       "id": 55001,
       "examId": 49,
       "questionNumber": 1,
-      "keywords": [
-        "명도전",
-        "반량전",
-        "반달 돌칼",
-        "세형 동검",
-        "빗살무늬 토기"
-      ],
-      "explanation": "정답은 4번입니다. (가) 시대는 구석기 시",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773415590827_hduwa7.png"
+      "explanation": "(가) 구석기\n1. 철기",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544023989_kv187h.png"
     },
     {
       "content": "(가), (나) 나라에 대한 설명으로 옳은 것은?",
@@ -53,17 +46,8 @@
       "id": 55002,
       "examId": 49,
       "questionNumber": 2,
-      "keywords": [
-        "소도",
-        "삼로",
-        "사출도",
-        "단궁",
-        "과하마",
-        "반어피",
-        "한 무제"
-      ],
-      "explanation": "이 문제는 선사·고조선 시대의 여러 나라에 대한 이해를 묻",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773415591148_qvm1jl.png"
+      "explanation": "(가) 민며느리제, 옥저\n(나) 삼한\n1. 삼한\n2. 군장국가 옥저, 동예",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544034118_a5pyhg.png"
     },
     {
       "content": "(가)~(마) 문화유산에 대한 설명으로 옳은 것은?",
@@ -82,17 +66,8 @@
       "id": 55003,
       "examId": 49,
       "questionNumber": 3,
-      "keywords": [
-        "관구검",
-        "고구려",
-        "매지권",
-        "지석",
-        "석수",
-        "대가야",
-        "돌무지덧널무덤"
-      ],
-      "explanation": "정답은 1번입니다. (가)는 고구려의 환도",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773415591533_tf9rdt.png"
+      "explanation": "고구려의 도읍\n졸본 : 오녀산성 -> 국내성 : 환도산성 -> 평양성\n1. 동천왕 (환도산성)\n2. 졸본\n3. 백제 무령왕릉",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544042492_geo8c2.png"
     },
     {
       "content": "(가), (나) 사이의 시기에 있었던 사실로 옳은 것은?",
@@ -111,15 +86,8 @@
       "id": 55004,
       "examId": 49,
       "questionNumber": 4,
-      "keywords": [
-        "익산 미륵사",
-        "흑치상지",
-        "임존성",
-        "마라난타",
-        "계백 황산벌"
-      ],
-      "explanation": "이 문제는 (가)와 (나) 사이에 있었던 사실을 묻고 있습니다. 정",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773415591870_88a0y0.png"
+      "explanation": "(가) 고구려의 장수왕이 백제의 한성을 공격하여 개로왕이 전사,\n그 후 문주왕이 웅진(공주)로 천도 <475년>\n(나) 나.제 동맹이 결렬된 후 발생한 관산성 전투 (신라는 진흥\n왕), 백제는(성왕)\n1. 백제 무왕 (나 이후)\n2. 백제\n3. 백제 초기(침류왕)\n4. 무령왕",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544050528_e7ezmd.png"
     },
     {
       "content": "밑줄 그은 '이 제도'에 대한 설명으로 옳은 것은?",
@@ -138,14 +106,8 @@
       "id": 55005,
       "examId": 49,
       "questionNumber": 5,
-      "keywords": [
-        "원화",
-        "을파소",
-        "서얼",
-        "골품제"
-      ],
-      "explanation": "정답은 4번입니다. 밑줄 그은 '이 제도'는 신라의",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478403924_iqeo2m.png"
+      "explanation": "신라 골품제\n1. 신라 진흥왕 화랑\n2. 고구려 고국천왕 진대법\n3. 조선 태종\n5. 고려 음서",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544059507_2uezib.png"
     },
     {
       "content": "다음 자료의 상황이 나타난 시기를 연표에서 옳게 고른 것은?",
@@ -164,9 +126,8 @@
       "id": 55006,
       "examId": 49,
       "questionNumber": 6,
-      "keywords": [],
-      "explanation": "제시된 자료가 없으므로, 정답과 시대 정보를 바탕으로 일반적인",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478404325_r5h8nq.png"
+      "explanation": "고구려 부흥운동\n\n※ 고구려 부흥운동 문제지만, 신라의 삼국통일 과정을\n이해하면 쉽게 풀리는 문제입니다.(특히 연표 관련 문제는)\n※ 신라의 삼국통일 순서 간편정리\n나.당 동맹(648)->무열왕 김춘추 즉위->백제 멸망(660년:황\n산벌 전투,사비성 함락)->백제 부흥운동\n->고구려 멸망(668년:평양성 함락)->고구려 부흥운동->나.\n당 전쟁(매소성.기벌포 전투)\n->신라의 삼국통일(676년:문무왕)--- /강동구 미미꽃집/\n※ 안시성 전투(양만춘,연개소문 vs 당태종 이세민 -> 고구려\n승리)",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544068087_ojv75b.png"
     },
     {
       "content": "(가) 국가에 대한 설명으로 옳은 것은?",
@@ -185,15 +146,8 @@
       "id": 55007,
       "examId": 49,
       "questionNumber": 7,
-      "keywords": [
-        "칠지도",
-        "2군 6위",
-        "신라도",
-        "광평성",
-        "9주 5소경"
-      ],
-      "explanation": "정답은 3번입니다.\n\n(가) 국가는 남북국 시대",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478404686_xayu3h.png"
+      "explanation": "발해 이불병좌상, 동경 용원부\n1. 백제\n2. 고려\n3. 발해\n4. 궁예\n\n5. 통일 신라",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544078654_v4habh.png"
     },
     {
       "content": "(가) 인물에 대한 설명으로 옳은 것은?",
@@ -212,15 +166,8 @@
       "id": 55008,
       "examId": 49,
       "questionNumber": 8,
-      "keywords": [
-        "삼대목",
-        "세속 5계",
-        "무애가",
-        "왕오천축국전",
-        "화엄일승법계도"
-      ],
-      "explanation": "정답: 4번\n\n**해설:**\n제시된 문제의 (가",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478405066_uicj2t.png"
+      "explanation": "신라 혜초 왕오천축국전\n1.위홍, 대구화상\n2.원광\n3.원효\n4.혜초\n5.의상",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544086385_fgqbev.png"
     },
     {
       "content": "밑줄 그은 '이 시기'에 있었던 사실로 옳은 것은?",
@@ -239,15 +186,8 @@
       "id": 55009,
       "examId": 49,
       "questionNumber": 9,
-      "keywords": [
-        "김흠돌의 난",
-        "거칠부 국사",
-        "김춘추",
-        "황룡사 9층 목탑",
-        "체징 가지산문"
-      ],
-      "explanation": "주어진 문제에서 밑줄 그은 '이 시기'는 정답과 시대 정보",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478405409_djuj61.png"
+      "explanation": "김헌창의 난 이후 신라하대\n1. 신문왕\n2. 진흥왕\n3. 무열왕\n4. 선덕여왕\n5. 선종 신라하대",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544095140_yn9ltj.png"
     },
     {
       "content": "(가) 왕에 대한 설명으로 옳은 것은?",
@@ -266,15 +206,8 @@
       "id": 55010,
       "examId": 49,
       "questionNumber": 10,
-      "keywords": [
-        "경애왕",
-        "국자감 7재",
-        "마진",
-        "무태",
-        "정계 계백료서"
-      ],
-      "explanation": "정답은 4번입니다. (가) 왕은 고려 태조 왕건",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478405806_t3y5wr.png"
+      "explanation": "고창 전투, 왕건\n1. 견훤\n2. 예종\n3. 궁예\n4. 훈요 10조\n5. 광종",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544102747_8lrdpr.png"
     },
     {
       "content": "(가)~(다)를 일어난 순서대로 옳게 나열한 것은?",
@@ -293,9 +226,8 @@
       "id": 55011,
       "examId": 49,
       "questionNumber": 11,
-      "keywords": [],
-      "explanation": "정답은 2번 (가) - (다) - (나)입니다.",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478406132_oupbmz.png"
+      "explanation": "고려 초기\n(가) 왕규의 난 왕건 죽음 이후 혜종\n(나) 성종\n(다) 광종 과거제",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544110594_04ytf3.png"
     },
     {
       "content": "(가) 국가의 경제 상황으로 옳은 것은?",
@@ -314,15 +246,8 @@
       "id": 55012,
       "examId": 49,
       "questionNumber": 12,
-      "keywords": [
-        "동시전",
-        "해동통보",
-        "활구",
-        "청해진",
-        "계해약조"
-      ],
-      "explanation": "정답 2번은 고려 시대의 경제 상황을 정확히 설명합니다. 고려",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478406614_nd1my7.png"
+      "explanation": "고려 후기무신정권\n1. 신라\n2. 고려\n3. 조선후기\n4. 신라후기\n5. 조선 세종\n\n1. 동시전 설치는 신라 지증왕\n3. 구황작물 재배는 조선후기\n4. 청해진은 신라의 하대 장보고\n5. 계해약조는 조선 세종",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544118888_21x73e.png"
     },
     {
       "content": "(가), (나) 사이의 시기에 있었던 사실로 옳은 것은?",
@@ -341,15 +266,8 @@
       "id": 55013,
       "examId": 49,
       "questionNumber": 13,
-      "keywords": [
-        "저고여",
-        "화통도감",
-        "강조 정변",
-        "진포 왜구",
-        "망이 망소이 난"
-      ],
-      "explanation": "주어진 문제에서 (가)와 (나)가 제시되지 않았지만,",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478406961_nfkw81.png"
+      "explanation": "고려-거란\n(가) 고려 성종 강동6주 (1차)\n(나) 강감찬 귀주대첩 이후 천리장성 (3차)\n1. 몽골\n2. 최무선\n3. 2차 침입\n4. 일본 고려말 진포해전\n5. 초기무신집권기\n\n거란의 2차침입은 고려 현종때로\n강조의 정변을 계기로 거란이 쳐들어옴\n양규 - 흥화진 전투\n\n1: 고려 고종\n2: 고려 우왕\n4: 고려 우왕\n5: 고려 명종",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544133376_ikc1ty.png"
     },
     {
       "content": "다음 상황 이후에 전개된 사실로 옳은 것은?",
@@ -368,15 +286,8 @@
       "id": 55014,
       "examId": 49,
       "questionNumber": 14,
-      "keywords": [
-        "만적의 난",
-        "이자겸",
-        "쌍성총관부",
-        "최충 9재 학당",
-        "교정도감"
-      ],
-      "explanation": "주어진 문제의 '다음 상황'이 명시되지 않았지만, 정답이 3",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478407326_rnmbog.png"
+      "explanation": "반원자주정책\n1. 무신집권\n2. 문벌귀족\n3. 공민왕\n5. 무신정권, 최충헌\n\n변발 , 호복(오랑캐 옷), 족두리 같은 원나라와 관련된 뭄풀들이\n나올 시\n원 간섭기 시절 공민왕!\n\n4. 최충은 고려 전기 문신으로 보기의 9재 학당을 설립하며 유\n교 교육을 한 유학자입니다.\n최소 무신정권 이전의 인물이어서 정답이 되지 않습니다.",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544142662_dbvt84.png"
     },
     {
       "content": "다음 대화에 나타난 사건에 대한 설명으로 옳은 것은?",
@@ -395,14 +306,8 @@
       "id": 55015,
       "examId": 49,
       "questionNumber": 15,
-      "keywords": [
-        "초조 대장경",
-        "김부식",
-        "이성계",
-        "별무반"
-      ],
-      "explanation": "제시된 대화 내용이 묘청의 서경 천도 운동과 관련된 것이라고",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478407700_sqfdsd.png"
+      "explanation": "묘청 서경천도운동\n1 고려-거란 2차\n2 거란 침입\n3 서경천도운동\n4 위화도회군\n\n1.현종의 나주 피난\n\n5. 별무반 윤관",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544152393_rmitjn.png"
     },
     {
       "content": "(가)~(마)에 들어갈 내용으로 옳은 것은?",
@@ -421,15 +326,8 @@
       "id": 55016,
       "examId": 49,
       "questionNumber": 16,
-      "keywords": [
-        "삼국유사",
-        "조선왕조실록",
-        "삼국사기",
-        "제왕운기",
-        "동국통감"
-      ],
-      "explanation": "주어진 문제의 (가)~(마)가 어떤 역사서인지는 제시되지 않았",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478408069_lxt5ej.png"
+      "explanation": "1. 삼국유사 일연\n2. 조선왕조실록\n3. 삼국사기 김부식\n4. 제왕운기 이승휴\n5. 동사강목 안정복",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544160605_8wecv5.png"
     },
     {
       "content": "(가)에 해당하는 문화유산으로 옳은 것은?",
@@ -448,9 +346,15 @@
       "id": 55017,
       "examId": 49,
       "questionNumber": 17,
-      "keywords": [],
-      "explanation": "## 한능검 문제 해설\n\n**문제:** (가)에 해당하는 문화유",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478408431_kim9t7.png"
+      "explanation": "그림은 파주 용미리 마애 이불 입상\n1.파주 용미리 마애이불 입상\n2.경산 팔공산 관봉 석조여래좌상\n3.안동 이천동 마애여래입상\n4.논산 관촉사 석조미륵보살입상\n5.충주 중원 미륵사지 석불",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544173090_dwhh3d.png",
+      "choiceImages": [
+        "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544539490_giuqbi.png",
+        "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544552002_l8eogu.png",
+        "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544560926_2wopte.png",
+        "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544569538_cdjhmp.png",
+        "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544579488_vyy641.png"
+      ]
     },
     {
       "content": "밑줄 그은 '왕'의 재위 시기에 있었던 사실로 옳은 것은?",
@@ -469,15 +373,8 @@
       "id": 55018,
       "examId": 49,
       "questionNumber": 18,
-      "keywords": [
-        "악학궤범",
-        "설점수세제",
-        "농사직설",
-        "직전법",
-        "동의보감"
-      ],
-      "explanation": "밑줄 그은 '왕'은 농사직설을 편찬하게 한 **세종",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478408800_rm8990.png"
+      "explanation": "세종\n1 성종\n2 효종\n3 세종\n4 세조\n5 광해군",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544181243_i7yb73.png"
     },
     {
       "content": "다음 검색창에 들어갈 왕이 추진한 정책으로 옳은 것은?",
@@ -496,15 +393,8 @@
       "id": 55019,
       "examId": 49,
       "questionNumber": 19,
-      "keywords": [
-        "나선 정벌",
-        "4군 6진",
-        "집현전",
-        "국조오례의",
-        "현량과"
-      ],
-      "explanation": "정답은 5번입니다.\n\n제시된 검색창에 들어갈",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478409149_gekxrg.png"
+      "explanation": "중종\n1 효종\n2 세종\n3 세조\n4 성종\n5 중종",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544188705_60ldyj.png"
     },
     {
       "content": "다음 상황 이후에 전개된 사실로 옳은 것은?",
@@ -523,15 +413,8 @@
       "id": 55020,
       "examId": 49,
       "questionNumber": 20,
-      "keywords": [
-        "이시애의 난",
-        "기축옥사",
-        "양재역 벽서 사건",
-        "수양대군",
-        "이조 전랑"
-      ],
-      "explanation": "주어진 문제의 '다음 상황'은 이조 전랑 임명을 둘러싸고 사",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478409511_uz6ktp.png"
+      "explanation": "정여립 모반사건\n1. 세조\n2. 기축옥사 : 정여립 모반사건을 계기로 동인들 처형\n3. 을사사화 이후\n4. 계유정난\n5. 붕당발생 선조\n\n* 정여립 모반사건으로 기축옥사가 일어난 것은 선조 22년이다.",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544197202_ocigyq.png"
     },
     {
       "content": "(가) 기구에 대한 설명으로 옳은 것은?",
@@ -550,15 +433,8 @@
       "id": 55021,
       "examId": 49,
       "questionNumber": 21,
-      "keywords": [
-        "을묘왜변",
-        "은대",
-        "후원",
-        "서경권",
-        "초계문신제"
-      ],
-      "explanation": "정답은 5번입니다. (가) 기구는 정조가 왕권 강화",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478409834_gwoqaq.png"
+      "explanation": "규장각\n1 비변사\n2 승정원\n3 사간원, 사헌부\n4 성균관\n5 규장각",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544206284_r4m7yr.png"
     },
     {
       "content": "(가)에 대한 설명으로 옳은 것은?",
@@ -577,15 +453,8 @@
       "id": 55022,
       "examId": 49,
       "questionNumber": 22,
-      "keywords": [
-        "수원 화성",
-        "외영",
-        "용호군",
-        "후금",
-        "삼수병"
-      ],
-      "explanation": "제시된 문제의 (가)는 '포수, 사수, 살수의 삼수",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478410165_cr7xnk.png"
+      "explanation": "훈련도감\n1 정조 장용영\n2 고려 2군6위\n3 어영청\n4 훈련도감\n5 별기군\n\n1.정조\n2.고려\n3.인조\n4.선조\n5.고종",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544215524_hfgllf.png"
     },
     {
       "content": "다음 기사에 보도된 전투 이후의 사실로 옳지 않은 것은?",
@@ -604,15 +473,8 @@
       "id": 55023,
       "examId": 49,
       "questionNumber": 23,
-      "keywords": [
-        "김시민 진주성",
-        "조명 연합군 평양성",
-        "이순신 한산도",
-        "송상현 동래성",
-        "권율 행주산성"
-      ],
-      "explanation": "제시된 문제는 임진왜란 시기의 사건들을 시간 순서대로 파악하는",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478410541_67wihw.png"
+      "explanation": "임진왜란 탄금대전투\n부산진, 동래성 -> 충주 -> 선조 의주로 피난 -> 왜군 한양점\n령, 평양성 진출 -> 한산도 대첩 -> 조명연합 평양성탈환 >진\n주대첩, 행주대첩 -> 휴전협상 결렬 -> 명량대첩 -> 도요토미\n히데요시 사망\n\n아래와 같은 오류 신고가 있었습니다.\n여러분들의 많은 의견 부탁 드립니다.\n추후 여러분들의 의견을 반영하여 정답을 수정하도록 하겠습니\n다.\n참고로 정답 변경은 오류 신고 5회 이상일 경우 수정합니다.\n[오류 신고 내용]\n평양성 탈환 >진주대첩 아니라\n진주대첩 >조-명 평양성 탈환 >행주대첩 입니다",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544228151_s642uj.png"
     },
     {
       "content": "밑줄 그은 '이 왕'에 대한 설명으로 옳은 것은?",
@@ -631,15 +493,8 @@
       "id": 55024,
       "examId": 49,
       "questionNumber": 24,
-      "keywords": [
-        "경국대전",
-        "탕평비",
-        "신해통공",
-        "영정법",
-        "공노비 해방"
-      ],
-      "explanation": "문제의 밑줄 그은 '이 왕'은 붕당의 폐해를 경계",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478410915_pbk505.png"
+      "explanation": "영조\n1 성종\n2 영조\n3 정조\n4 인조\n5 순조",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544240289_3nal1r.png"
     },
     {
       "content": "다음 글을 쓴 인물에 대한 설명으로 옳은 것은?",
@@ -658,15 +513,8 @@
       "id": 55025,
       "examId": 49,
       "questionNumber": 25,
-      "keywords": [
-        "담헌서",
-        "추사체",
-        "북학의",
-        "연려실기술",
-        "구수략"
-      ],
-      "explanation": "제시된 글은 김정희의 저술로 추정되며, 김정희는",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478411312_zo9lq8.png"
+      "explanation": "완당, 추사 김정희\n1 담헌 홍대용\n2 추사 김정희\n3 박제가\n4 이긍익\n5 최석정",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544249661_p488tb.png"
     },
     {
       "content": "(가) 국가에 대한 조선의 정책으로 옳은 것을 <보기>에서 고른 것은?",
@@ -685,12 +533,8 @@
       "id": 55026,
       "examId": 49,
       "questionNumber": 26,
-      "keywords": [
-        "조선",
-        "국가"
-      ],
-      "explanation": "주어진 문제와 선지, 그리고 (가) 국가와 <보기>의 구",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478411624_ag0p8o.png"
+      "explanation": "(가) 일본\nㄱ,ㄴ : 일본\nㄷ : 명,청\nㄹ : 청\n\n기유 약조를 통해 광해군 시기 일본과 한 약조를 알 수있다\n(세종은 계해약조)",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544267656_v7oa76.png"
     },
     {
       "content": "(가)에 해당하는 문화유산으로 옳은 것은?",
@@ -709,11 +553,15 @@
       "id": 55027,
       "examId": 49,
       "questionNumber": 27,
-      "keywords": [
-        "문화유산"
-      ],
-      "explanation": "제시된 문제에서 (가)에 해당하는 문화유산 이미지와 선지",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478411944_adoqtt.png"
+      "explanation": "충청북도 보은군 법주사에 있는 목조 5층 건물. 신라 진흥왕 때\n에 창건되었고 조선 인조 2년(1624)에 벽암 선사가 재건하였다\n가 최근에 해체하여 복원하였다..석가모니의 팔상을 봉안하였으\n며 우리나라에 현존하는 유일한 목탑이다..\n\n2. 전남 구례 화엄사\n3. 전북 김제 금산사\n4. 충남 부여 무량사\n5. 충남 공주 마곡사",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544276303_r7hz3i.png",
+      "choiceImages": [
+        "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544601679_04qmvi.png",
+        "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544610644_6sj1lm.png",
+        "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544618715_zm5big.png",
+        "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544629153_xrwtkw.png",
+        "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544637450_ijm2kw.png"
+      ]
     },
     {
       "content": "(가) 시기에 있었던 사실로 옳은 것은?",
@@ -732,15 +580,8 @@
       "id": 55028,
       "examId": 49,
       "questionNumber": 28,
-      "keywords": [
-        "공산성",
-        "오페르트",
-        "남연군 묘",
-        "홍경래",
-        "삼례 집회"
-      ],
-      "explanation": "주어진 문제에서 (가) 시기가 명시되지 않았지만, 정답",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478412314_oe65s8.png"
+      "explanation": "신유박해(순조) - (가) - 동학 탄압(고종)\n1 이괄의 난, 인조\n2 흥선대원군\n3 홍경래의 난\n4 이후 고종\n5 이전 이인좌의 난, 영조\n\n(가) 이전은 순조 시기 있었던 신유박해(1801)\n(가) 이후는 흥선대원군 시기 최제우가 처형(효수)당한 사건\n(1864)\n오페르트 도굴 사건도 흥선대원군 시기에 있었으나 1868년이므\n로 정답이 아님\n홍경래의 난은 1811년 경",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544285002_n7yui4.png"
     },
     {
       "content": "밑줄 그은 ‘중건' 시기에 있었던 사실로 옳은 것을 <보기>에서 고른 것은?",
@@ -759,12 +600,8 @@
       "id": 55029,
       "examId": 49,
       "questionNumber": 29,
-      "keywords": [
-        "중건",
-        "시기"
-      ],
-      "explanation": "주어진 정보만으로는 '보기'의 구체적인 내용과 밑줄 그은 '",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478412704_6jpiwf.png"
+      "explanation": "경복궁 중건, 흥선대원군\n비변사 폐지, 사창제, 의정부 강화, 삼군부, 대전회통, 경복궁중\n건-원납전, 당백전\nㄹ. 정조\n\nㄱ. 비변사는 중종때 3포왜란으로 임시로 설치되었고 그 후 명\n종때 을묘왜변으로 상설기구가 됨.\n\nㄱ. 비변사는 흥선대원군 때 철폐",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544294805_dux6aj.png"
     },
     {
       "content": "밑줄 그은 ㉠이 원인이 되어 발생한 사건에 대한 설명으로 옳은 것은?",
@@ -783,15 +620,8 @@
       "id": 55030,
       "examId": 49,
       "questionNumber": 30,
-      "keywords": [
-        "운요호",
-        "강화도",
-        "양헌수",
-        "정족산성",
-        "흥선 대원군"
-      ],
-      "explanation": "주어진 정보만으로는 밑줄 그은 ㉠이 무엇인지 알 수",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478413073_8qni32.png"
+      "explanation": "ㄱ. 병인박해 - 병인양요의 원인\n1 강화도조약 체결 원인\n2 병인양요\n3 임오군란\n4 임술농민봉기\n5 임오군란",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544303525_hr37px.png"
     },
     {
       "content": "밑줄 그은 ‘이 사건'에 대한 설명으로 옳은 것은?",
@@ -810,15 +640,8 @@
       "id": 55031,
       "examId": 49,
       "questionNumber": 31,
-      "keywords": [
-        "전주 화약",
-        "통리기무아문",
-        "우정총국",
-        "홍범 14조",
-        "일본 공사관"
-      ],
-      "explanation": "문제: 밑줄 그은 ‘이 사건'에 대한 설명으로 옳은 것은?",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478413430_2wndkl.png"
+      "explanation": "임오군란\n1 동학농민운동\n2 강화도조약\n3 갑신정변\n4 2차갑오개혁\n5 임오군란\n\n임오군란 결과\n1. 제물포 조약 (일본군의 경비병 주둔 허용)\n2. 조 청 수륙~ (내지 통상권 -최초)",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544313950_5arfhi.png"
     },
     {
       "content": "다음 가상 대화의 상황이 나타난 시기를 연표에서 옳게 고른 것은?",
@@ -837,12 +660,8 @@
       "id": 55032,
       "examId": 49,
       "questionNumber": 32,
-      "keywords": [
-        "연표",
-        "시기"
-      ],
-      "explanation": "## 문제 해설\n\n제시된 가상 대화는 **갑신정",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478413794_7o4z9e.png"
+      "explanation": "영국의 거문도 불법 점령 사건은 1885년에 일어났다.\n\n갑신정변을 제압하기 위해 청을 끌어들임 -> 청의 도움을 받고\n내정간섭이 심해짐 -> 내정간섭을 벗어나기 위해 러시아의 도움\n을 받으려 함 -> 러시아의 라이벌 국가인 영국이 소식을 듣고\n러이사의 남진을 막기 위해 거문도를 불법 점령함",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544324309_n5agfy.png"
     },
     {
       "content": "(가)에 들어갈 내용으로 옳은 것은?",
@@ -861,15 +680,8 @@
       "id": 55033,
       "examId": 49,
       "questionNumber": 33,
-      "keywords": [
-        "지계 발급",
-        "태양력 사용",
-        "한성순보 발행",
-        "공사 노비법 폐지",
-        "교육 입국 조서"
-      ],
-      "explanation": "정답은 5번, 교육 입국 조서 반포입니다. 교육 입",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478414168_m26jfd.png"
+      "explanation": "2차갑오개혁\n1 광무개혁\n2 을미개혁\n4 1차갑오개혁\n5 2차갑오개혁\n\n5. 교육입국조서 반포 -> 한성 사범 학교 설립 (세트로 외우자)\n\n3: 한성순보는 1883(고종20) 박문국",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544332921_0g5d3u.png"
     },
     {
       "content": "(가) 시기에 볼 수 있는 모습으로 적절한 것은?",
@@ -888,15 +700,8 @@
       "id": 55034,
       "examId": 49,
       "questionNumber": 34,
-      "keywords": [
-        "간도 관리사",
-        "영화 아리랑",
-        "육영 공원",
-        "제너럴 셔먼호",
-        "조사 시찰단"
-      ],
-      "explanation": "주어진 정보만으로는 \"(가) 시기\"가 명확하지 않지만, 정",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478414593_trex7m.png"
+      "explanation": "대한제국 1897~\n1.간도 관리사 임명(대한제국 시기 1903이범윤)\n2.영화 아리렁(1926)\n3.육영공원(1886)\n4.제너럴 셔먼호(1866)\n5.조사 시찰단(1881.4)",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544342247_k6sm7h.png"
     },
     {
       "content": "(가)~(다) 학생이 발표한 내용을 일어난 순서대로 옳게 나열한 것은?",
@@ -915,12 +720,8 @@
       "id": 55035,
       "examId": 49,
       "questionNumber": 35,
-      "keywords": [
-        "발표 내용",
-        "순서"
-      ],
-      "explanation": "주어진 정보만으로는 (가), (나), (다) 학생이 발표한 구",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478414974_q3g0em.png"
+      "explanation": "(가) 을사의병\n(나) 을미의병\n(다) 정미의병\n\n(가) 을사의병(1905)\n(나) 을미의병(1895)\n(다) 정미의병(정미7조약으로 대한제국 군대 해산에 대응, 1907)\n참고로 60갑자의 앞 글자 십간으로 끝 연도를 파악할 수 있습니\n다.\n갑 - 을 - 병 - 정 - 무 - 기 - 경 - 신 - 임 - 계\n4 5 6 7 8 9 0 1 2 3",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544357448_mou8mt.png"
     },
     {
       "content": "(가) 신문에 대한 설명으로 옳은 것은?",
@@ -939,15 +740,8 @@
       "id": 55036,
       "examId": 49,
       "questionNumber": 36,
-      "keywords": [
-        "천도교",
-        "민간 신문",
-        "국채 보상 운동",
-        "손기정",
-        "일장기 삭제"
-      ],
-      "explanation": "제시된 문제에서 (가) 신문이 무엇인지 명확히 알 수",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478415266_1ate3y.png"
+      "explanation": "대한매일신보\n1 한성주보\n2 만세보\n3 독립신문\n4 대한매일신보\n5 동아일보",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544367243_amb7ii.png"
     },
     {
       "content": "다음 상소가 올려진 이후의 사실로 옳은 것은?",
@@ -966,15 +760,8 @@
       "id": 55037,
       "examId": 49,
       "questionNumber": 37,
-      "keywords": [
-        "영일 동맹",
-        "경인선",
-        "묄렌도르프",
-        "통감부",
-        "용암포"
-      ],
-      "explanation": "제시된 문제에서 '상소'의 구체적인 내용이 없지만,",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478415651_ulv1pe.png"
+      "explanation": "을사늑약\n\n3. 묄렌도르프 기기창, 스티븐스랑 메가타는 제1차 한일 협약(고\n문정치)\n\n묄렌도르프는 임오군란결과\n기기창은 영선사\n\n1: 1902년\n2: 광무개혁 시기\n3: 묄렌도르프 가 외교 고문으로 파견된 건 임오군란 이후\n1차 한일 협악엔 스티븐스가 외교 고문으로 옴\n5: 1903년",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544376069_5z9p0k.png"
     },
     {
       "content": "다음 인물에 대한 설명으로 옳은 것은?",
@@ -993,15 +780,8 @@
       "id": 55038,
       "examId": 49,
       "questionNumber": 38,
-      "keywords": [
-        "진단 학회",
-        "여유당전서",
-        "헤이그 만국 평화 회의",
-        "조선 물산 장려회",
-        "유교구신론"
-      ],
-      "explanation": "## 해설\n\n**정답: 5번**\n\n**정답인 이유",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478416010_h8ltw2.png"
+      "explanation": "박은식\n1 손진태, 이병도\n2 정인보\n3 이준, 이상설, 이위종\n4 조만식\n5 박은식\n\n2. 문일평, 정인보, 안재홍",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544386887_1il92w.png"
     },
     {
       "content": "(가), (나) 발표 사이의 시기에 있었던 사실로 옳은 것은?",
@@ -1020,15 +800,8 @@
       "id": 55039,
       "examId": 49,
       "questionNumber": 39,
-      "keywords": [
-        "미곡 공출제",
-        "조선 태형령",
-        "국민 징용령",
-        "경성 제국 대학",
-        "황국 신민 서사"
-      ],
-      "explanation": "주어진 문제에서 (가)와 (나) 발표 내용이 누락되어 정확한 시",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478416355_srgf8q.png"
+      "explanation": "(가) 1910년대 무단통치\n(나) 1920년대 문화통치\n1 1930년대 민족말살통치\n2 무단통치\n3 민족말살\n4 1920년대\n5 민족말살\n\n(가)는 한일합방(1910)이고\n(나)는 문화통치의 시작(1920년대)입니다.",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544395868_1cn5xp.png"
     },
     {
       "content": "(가) 단체에 대한 설명으로 옳은 것은?",
@@ -1047,15 +820,8 @@
       "id": 55040,
       "examId": 49,
       "questionNumber": 40,
-      "keywords": [
-        "조선 혁명 선언",
-        "연통제",
-        "고종",
-        "이봉창 의거",
-        "신흥 무관 학교"
-      ],
-      "explanation": "(가) 단체는 의열단이며, 의열단은 신채호",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478416697_hwd08l.png"
+      "explanation": "의열단\n1 의열단\n2 대한민국 임시정부\n3 독립의군부\n4 한인애국단\n5 신민회\n\n●1번은 빈출 선택지입니다..2.3번은 가끔 출제됨\n●의열단(의열단은 당연히 나온다고 생각하고 공부해야 함)\n1.단장:김원봉(조선의용대 결성,한국광복군 부 사령관,임시정부\n군무부장)\n2.의열단의 방향 전환(의열단->조선의용대 창설)\n3.신채효의 조선 혁명 선언을 행동 강령으로 삼았다\n4.의열단은 폭탄 투척,여인 암살 등을 목표로 함\n■빈출 선택지 위주로 정리했습니다",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544403125_pjdr89.png"
     },
     {
       "content": "밑줄 그은 '이 운동'에 대한 설명으로 옳은 것은?",
@@ -1074,15 +840,8 @@
       "id": 55041,
       "examId": 49,
       "questionNumber": 41,
-      "keywords": [
-        "조선 형평사",
-        "순종 인산일",
-        "대한민국 임시 정부",
-        "민족 유일당 운동",
-        "신간회"
-      ],
-      "explanation": "정답: 5번\n\n**해설:**\n밑줄 그은 '",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478417010_ch8r1z.png"
+      "explanation": "광주학생항일운동\n1 형평운동\n2 6.10만세운동\n3 3.1운동\n4 6.10만세운동\n5 광주학생항일운동",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544410528_gayqqu.png"
     },
     {
       "content": "(가) 단체에 대한 설명으로 옳은 것은?",
@@ -1101,15 +860,8 @@
       "id": 55042,
       "examId": 49,
       "questionNumber": 42,
-      "keywords": [
-        "우리말 큰 사전",
-        "제국신문",
-        "한글 띄어쓰기",
-        "언문지",
-        "학부"
-      ],
-      "explanation": "정답: 1번\n\n**해설:**\n(가) 단체",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478417420_aolfnp.png"
+      "explanation": "조선어학회\n1 조선어학회\n2 이종일\n3 존 로스\n4 유희\n5 국문연구소",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544419275_a56r46.png"
     },
     {
       "content": "다음 자료를 활용한 탐구 활동으로 가장 적절한 것은?",
@@ -1128,15 +880,8 @@
       "id": 55043,
       "examId": 49,
       "questionNumber": 43,
-      "keywords": [
-        "산미 증식 계획",
-        "화폐 정리 사업",
-        "보안회",
-        "방곡령",
-        "동양 척식 주식회사"
-      ],
-      "explanation": "## 문제 해설\n\n제시된 자료가 '산미 증식 계획'과 관련된",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478417813_hra756.png"
+      "explanation": "1920년대 산미증식계획\n\n2: 1905년\n3: 1904년\n4: 강화도조약 1876년부터 1905년까지 100여차례 방공력 선포\n5:1908년",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544427789_wmv5we.png"
     },
     {
       "content": "(가) 종교에 대한 설명으로 옳은 것은?",
@@ -1155,15 +900,8 @@
       "id": 55044,
       "examId": 49,
       "questionNumber": 44,
-      "keywords": [
-        "사찰령 폐지 운동",
-        "개벽",
-        "중광단",
-        "배재 학당",
-        "박중빈"
-      ],
-      "explanation": "주어진 문제에서 (가) 종교가 명시되지 않았으나, 정",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478418162_y60d3g.png"
+      "explanation": "대종교\n1 불교\n2 천도교\n3 대종교\n4 개신교\n5 원뷸교\n\n나철 , 오기호 => 자신회\n나철 => 대종교\n대종교 => 중광단 = >북로군정서\n\n참고로 대종교는 단군계열\n천도교는 동학계열입니다.",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544437581_375gnv.png"
     },
     {
       "content": "밑줄 그은 '시기'에 있었던 사실로 옳은 것은?",
@@ -1182,15 +920,8 @@
       "id": 55045,
       "examId": 49,
       "questionNumber": 45,
-      "keywords": [
-        "한국 독립군",
-        "쌍성보 전투",
-        "미쓰야 협정",
-        "국민 대표 회의",
-        "정우회 선언"
-      ],
-      "explanation": "밑줄 그은 '시기'는 정답 선지인 '조선 사상범",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478418584_z65e25.png"
+      "explanation": "대일선전포고 1941년\n대한민국임시정부 충칭시기 1940-1945년\n1. 쌍성보전투 1930년대\n2. 미쓰야협정 - 중일전쟁 이전 1939년 이전\n3. 국민대표회의 1923년\n4. 정우회선언 -> 신간회 결성 1927년 이전\n5. 일제 예방 구금령 1941년\n\n2. 미쓰야 협정 : 1925\n4. 정우회 선언 : 1926",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544446544_806zte.png"
     },
     {
       "content": "(가), (나) 발표 사이의 시기에 있었던 사실로 옳은 것은?",
@@ -1209,15 +940,8 @@
       "id": 55046,
       "examId": 49,
       "questionNumber": 46,
-      "keywords": [
-        "미소 공동 위원회",
-        "모스크바 삼국 외상 회의",
-        "좌우 합작 7원칙",
-        "농지 개혁법",
-        "5·10 총선거"
-      ],
-      "explanation": "주어진 문제에서 (가), (나) 발표의 구체적인 내용이",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478418966_65i37c.png"
+      "explanation": "대한민국정부수립과정\n(가) 유엔 한국 임시 위원단\n(나) 여순사건\n\n제주 4.3사건(1948.04.03) - 남북 정치협상(1948.04.19) -\n5.10 총선거(1948.05.10) - 정부수립선포(1948.8.15) - 여순사\n건(1948.10.19)\n\n(가) 유엔 한국 임시 위원단 : 1947년 -> 5·10 총선거의 공정한\n감시 및 관리를 위해 입국함\n(나) 여순사건 : 1948년\n1. 제 1차 미소 공동 위원회 결렬 : 1946년\n2. 모스크바 삼국 외상 회의 개최 : 1945년\n3. 좌우 합작 7원칙 : 1946년\n4. 농지 개혁법 : 1949년\n5. 5.10 총 선거 : 1948년",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544455604_wsc3ab.png"
     },
     {
       "content": "교사의 질문에 대한 학생의 답변으로 옳은 것을 <보기>에서 고른 것은?",
@@ -1236,8 +960,8 @@
       "id": 55047,
       "examId": 49,
       "questionNumber": 47,
-      "keywords": [],
-      "explanation": "주어진 정보만으로는 교사의 질문과 학생의 답변 <보기> 내용이 없어 정확한"
+      "explanation": "6.25 전쟁\n애치슨 선언 - 북한 남침, 정부 부산 피난 - 유엔군 참전, 다부\n동 전투(낙동강) - 인천상륙작전, 서울수복 - 압록강까지 진격\n- 중국군 참전, 흥남철수작전, 서울 재함락 - 38도선에서 교착\n- 소련제의로 휴전 회담 - 정전협정",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544479098_jq4i2z.png"
     },
     {
       "content": "밑줄 그은 '선거' 이후의 사실로 옳은 것은?",
@@ -1256,15 +980,8 @@
       "id": 55048,
       "examId": 49,
       "questionNumber": 48,
-      "keywords": [
-        "내각 책임제",
-        "진보당",
-        "조봉암",
-        "3선 개헌안",
-        "유신 선포"
-      ],
-      "explanation": "주어진 문제에서 밑줄 그은 '선거'가 어떤 선거인지",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478419345_kx9lbp.png"
+      "explanation": "1 허정 과도정부\n2 이승만 정부\n3 이전 박정희\n4 이전 박정희\n5 10월유신\n\n참고로 그림의 선거는 1971년\n10월 유신은 1972년 시작입니다.",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544490231_v0yu1q.png"
     },
     {
       "content": "다음 자료에 나타난 민주화 운동에 대한 설명으로 옳은 것은?",
@@ -1283,15 +1000,8 @@
       "id": 55049,
       "examId": 49,
       "questionNumber": 49,
-      "keywords": [
-        "호헌 철폐",
-        "야당 총재 제명",
-        "시민군",
-        "경무대",
-        "박종철 고문치사 사건"
-      ],
-      "explanation": "이 문제는 5.18 민주화운동에 대한 설명으로 옳은 것을 고르는 문제입니다",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478419664_wlox36.png"
+      "explanation": "5.18 민주화 운동\n1 6월민주항쟁\n2 부.마항쟁\n3 5.18민주화운동\n4 4.19혁명\n5 6월민주항쟁",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544500069_4f4d95.png"
     },
     {
       "content": "다음 연설문을 발표한 정부 시기에 있었던 사실로 옳은 것은?",
@@ -1310,15 +1020,8 @@
       "id": 55050,
       "examId": 49,
       "questionNumber": 50,
-      "keywords": [
-        "G20 서울 정상 회의",
-        "자유 무역 협정",
-        "금융 실명제",
-        "8·3 조치",
-        "경의선 복원"
-      ],
-      "explanation": "제시된 문제에서 '연설문'의 구체적인 내용은 없지만,",
-      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773478420031_v9b0fd.png"
+      "explanation": "김대중 정부\n1 이명박\n2 노무현\n3 김영삼\n4 박정희\n5 김대중",
+      "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773544509280_ffdaj9.png"
     }
   ]
 }

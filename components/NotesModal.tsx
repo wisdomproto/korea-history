@@ -26,58 +26,95 @@ export function eraSectionId(era: string): string {
 
 /**
  * Extract search keywords from a question for sub-section matching.
- * Pulls key terms from content, explanation, and correct choice.
+ * Only uses the passage (content) and correct answer choice to extract
+ * historically meaningful terms (names, events, institutions, etc.).
  */
+
+const STOP_WORDS = new Set([
+  // Question template words
+  '다음', '중', '에서', '대한', '것은', '것을', '가장', '적절한',
+  '옳은', '옳지', '않은', '밑줄', '그은', '이것', '이', '그', '저',
+  '무엇', '어떤', '모두', '고른', '보기', '설명', '내용', '자료',
+  '활동', '시기', '인물', '사건', '대해', '관한', '관련', '해당',
+  '있었던', '사실로', '나타난', '전개된', '일어난', '들어갈', '해당하는',
+  '배경으로', '탐구', '순서대로', '나열한', '연표', '재위',
+  // Common verbs/particles
+  '하였다', '되었다', '있었다', '하다', '되다', '있다', '없다',
+  '위해', '통해', '대해', '따라', '의해', '위한', '통한',
+  // Filler
+  '문화유산으로', '모습으로', '작품으로', '제도에', '왕의', '왕에',
+  '국가에', '국가의', '단체에', '정부의', '정부에', '전쟁',
+]);
+
+function extractHistoricalTerms(text: string): string[] {
+  if (!text) return [];
+
+  const terms: string[] = [];
+
+  // 1. Extract quoted terms (e.g., '이 나라', '이 왕')
+  const quoted = text.match(/[''](.*?)['']/g);
+  if (quoted) {
+    quoted.forEach((q) => {
+      const cleaned = q.replace(/['']/g, '').trim();
+      if (cleaned.length >= 2) terms.push(cleaned);
+    });
+  }
+
+  // 2. Extract parenthesized terms (e.g., (가), (나) — skip, but (발해), (고려) — keep)
+  const parens = text.match(/\(([가-힣]{2,})\)/g);
+  if (parens) {
+    parens.forEach((p) => {
+      const inner = p.replace(/[()]/g, '');
+      if (!['가', '나', '다', '라', '마'].includes(inner)) terms.push(inner);
+    });
+  }
+
+  // 3. Extract meaningful words (2+ chars, not stop words)
+  const words = text
+    .replace(/[^가-힣a-zA-Z0-9\s]/g, ' ')
+    .split(/\s+/)
+    .filter((w) => w.length >= 2 && !STOP_WORDS.has(w));
+
+  // Prioritize longer words (more likely proper nouns: 광개토대왕, 별무반, 집현전)
+  words.sort((a, b) => b.length - a.length);
+  terms.push(...words.slice(0, 5));
+
+  return terms;
+}
+
 export function extractKeywords(question: {
   content: string;
+  passage?: string;
   explanation?: string;
   choices?: string[];
   correctAnswer?: number;
   category?: string;
 }): string[] {
-  const parts: string[] = [];
+  const keywords: string[] = [];
 
-  // Add category
-  if (question.category) parts.push(question.category);
+  // 1. From passage/content (지문) — the question stem
+  keywords.push(...extractHistoricalTerms(question.content));
 
-  // Extract quoted terms from content (e.g., '이 시대', '밑줄 그은')
-  const quoted = question.content.match(/[''](.*?)['']/g);
-  if (quoted) {
-    quoted.forEach((q) => parts.push(q.replace(/['']/g, '')));
+  // 2. From passage field if exists
+  if (question.passage) {
+    keywords.push(...extractHistoricalTerms(question.passage));
   }
 
-  // Key historical terms — extract nouns/proper nouns from content
-  // Remove common filler words and keep substantive terms
-  const STOP_WORDS = new Set([
-    '다음', '중', '에서', '대한', '것은', '것을', '가장', '적절한',
-    '옳은', '옳지', '않은', '밑줄', '그은', '이것', '이', '그', '저',
-    '무엇', '어떤', '모두', '고른', '보기', '설명', '내용', '자료',
-    '활동', '시기', '인물', '사건', '대해', '관한', '관련', '해당',
-  ]);
-
-  const contentWords = question.content
-    .replace(/[^가-힣a-zA-Z0-9\s]/g, ' ')
-    .split(/\s+/)
-    .filter((w) => w.length >= 2 && !STOP_WORDS.has(w));
-
-  // Take top meaningful words (longer words are more likely to be proper nouns)
-  const sorted = contentWords.sort((a, b) => b.length - a.length);
-  parts.push(...sorted.slice(0, 5));
-
-  // Add correct answer choice text
+  // 3. From correct answer choice (정답 선지)
   if (question.choices && question.correctAnswer) {
     const correctChoice = question.choices[question.correctAnswer - 1];
     if (correctChoice) {
-      const choiceWords = correctChoice
-        .replace(/[^가-힣a-zA-Z0-9\s]/g, ' ')
-        .split(/\s+/)
-        .filter((w) => w.length >= 2 && !STOP_WORDS.has(w));
-      parts.push(...choiceWords.slice(0, 3));
+      keywords.push(...extractHistoricalTerms(correctChoice));
     }
   }
 
-  // Deduplicate
-  return [...new Set(parts)].filter(Boolean);
+  // 4. From explanation (해설)
+  if (question.explanation) {
+    keywords.push(...extractHistoricalTerms(question.explanation));
+  }
+
+  // Deduplicate, filter empty
+  return [...new Set(keywords)].filter(Boolean);
 }
 
 interface Props {

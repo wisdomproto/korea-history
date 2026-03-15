@@ -37,38 +37,6 @@ import exam43Data from './questions/exam-43.json';
 import exam42Data from './questions/exam-42.json';
 import exam41Data from './questions/exam-41.json';
 import exam40Data from './questions/exam-40.json';
-import exam39Data from './questions/exam-39.json';
-import exam38Data from './questions/exam-38.json';
-import exam37Data from './questions/exam-37.json';
-import exam36Data from './questions/exam-36.json';
-import exam35Data from './questions/exam-35.json';
-import exam34Data from './questions/exam-34.json';
-import exam33Data from './questions/exam-33.json';
-import exam32Data from './questions/exam-32.json';
-import exam31Data from './questions/exam-31.json';
-import exam30Data from './questions/exam-30.json';
-import exam29Data from './questions/exam-29.json';
-import exam28Data from './questions/exam-28.json';
-import exam27Data from './questions/exam-27.json';
-import exam26Data from './questions/exam-26.json';
-import exam25Data from './questions/exam-25.json';
-import exam24Data from './questions/exam-24.json';
-import exam23Data from './questions/exam-23.json';
-import exam22Data from './questions/exam-22.json';
-import exam21Data from './questions/exam-21.json';
-import exam20Data from './questions/exam-20.json';
-import exam19Data from './questions/exam-19.json';
-import exam18Data from './questions/exam-18.json';
-import exam17Data from './questions/exam-17.json';
-import exam16Data from './questions/exam-16.json';
-import exam15Data from './questions/exam-15.json';
-import exam14Data from './questions/exam-14.json';
-import exam13Data from './questions/exam-13.json';
-import exam12Data from './questions/exam-12.json';
-import exam11Data from './questions/exam-11.json';
-import exam10Data from './questions/exam-10.json';
-import exam9Data from './questions/exam-9.json';
-import exam8Data from './questions/exam-8.json';
 
 // Auto-generated — do not edit manually
 // 회차 목록 (최신순)
@@ -111,38 +79,6 @@ export const EXAMS: Exam[] = [
   exam42Data.exam as Exam,
   exam41Data.exam as Exam,
   exam40Data.exam as Exam,
-  exam39Data.exam as Exam,
-  exam38Data.exam as Exam,
-  exam37Data.exam as Exam,
-  exam36Data.exam as Exam,
-  exam35Data.exam as Exam,
-  exam34Data.exam as Exam,
-  exam33Data.exam as Exam,
-  exam32Data.exam as Exam,
-  exam31Data.exam as Exam,
-  exam30Data.exam as Exam,
-  exam29Data.exam as Exam,
-  exam28Data.exam as Exam,
-  exam27Data.exam as Exam,
-  exam26Data.exam as Exam,
-  exam25Data.exam as Exam,
-  exam24Data.exam as Exam,
-  exam23Data.exam as Exam,
-  exam22Data.exam as Exam,
-  exam21Data.exam as Exam,
-  exam20Data.exam as Exam,
-  exam19Data.exam as Exam,
-  exam18Data.exam as Exam,
-  exam17Data.exam as Exam,
-  exam16Data.exam as Exam,
-  exam15Data.exam as Exam,
-  exam14Data.exam as Exam,
-  exam13Data.exam as Exam,
-  exam12Data.exam as Exam,
-  exam11Data.exam as Exam,
-  exam10Data.exam as Exam,
-  exam9Data.exam as Exam,
-  exam8Data.exam as Exam,
 ];
 
 const questionsMap: Record<number, Question[]> = {
@@ -184,38 +120,6 @@ const questionsMap: Record<number, Question[]> = {
   [exam42Data.exam.id]: exam42Data.questions as Question[],
   [exam41Data.exam.id]: exam41Data.questions as Question[],
   [exam40Data.exam.id]: exam40Data.questions as Question[],
-  [exam39Data.exam.id]: exam39Data.questions as Question[],
-  [exam38Data.exam.id]: exam38Data.questions as Question[],
-  [exam37Data.exam.id]: exam37Data.questions as Question[],
-  [exam36Data.exam.id]: exam36Data.questions as Question[],
-  [exam35Data.exam.id]: exam35Data.questions as Question[],
-  [exam34Data.exam.id]: exam34Data.questions as Question[],
-  [exam33Data.exam.id]: exam33Data.questions as Question[],
-  [exam32Data.exam.id]: exam32Data.questions as Question[],
-  [exam31Data.exam.id]: exam31Data.questions as Question[],
-  [exam30Data.exam.id]: exam30Data.questions as Question[],
-  [exam29Data.exam.id]: exam29Data.questions as Question[],
-  [exam28Data.exam.id]: exam28Data.questions as Question[],
-  [exam27Data.exam.id]: exam27Data.questions as Question[],
-  [exam26Data.exam.id]: exam26Data.questions as Question[],
-  [exam25Data.exam.id]: exam25Data.questions as Question[],
-  [exam24Data.exam.id]: exam24Data.questions as Question[],
-  [exam23Data.exam.id]: exam23Data.questions as Question[],
-  [exam22Data.exam.id]: exam22Data.questions as Question[],
-  [exam21Data.exam.id]: exam21Data.questions as Question[],
-  [exam20Data.exam.id]: exam20Data.questions as Question[],
-  [exam19Data.exam.id]: exam19Data.questions as Question[],
-  [exam18Data.exam.id]: exam18Data.questions as Question[],
-  [exam17Data.exam.id]: exam17Data.questions as Question[],
-  [exam16Data.exam.id]: exam16Data.questions as Question[],
-  [exam15Data.exam.id]: exam15Data.questions as Question[],
-  [exam14Data.exam.id]: exam14Data.questions as Question[],
-  [exam13Data.exam.id]: exam13Data.questions as Question[],
-  [exam12Data.exam.id]: exam12Data.questions as Question[],
-  [exam11Data.exam.id]: exam11Data.questions as Question[],
-  [exam10Data.exam.id]: exam10Data.questions as Question[],
-  [exam9Data.exam.id]: exam9Data.questions as Question[],
-  [exam8Data.exam.id]: exam8Data.questions as Question[],
 };
 
 export function getExamById(examId: number): Exam | undefined {

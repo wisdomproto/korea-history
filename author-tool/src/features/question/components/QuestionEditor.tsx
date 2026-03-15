@@ -56,7 +56,7 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
   // Build save payload from current state
   const buildPayload = useCallback(() => {
     return {
-      content, imageUrl: imageUrl || undefined,
+      content, imageUrl: imageUrl || null,
       choiceImages,
       choices, correctAnswer, era, category, difficulty, points,
       explanation: explanation || undefined,
@@ -110,10 +110,20 @@ export function QuestionEditor({ question, examId, onSave, saving }: QuestionEdi
     setExplanation(question.explanation ?? '');
   }, [question.id]);
 
-  // Sync fields from external changes (bulk update) — no dirtyRef, just sync state
-  useEffect(() => { cancelAutoSave(); setCorrectAnswer(question.correctAnswer); }, [question.correctAnswer]);
-  useEffect(() => { cancelAutoSave(); setPoints(question.points); }, [question.points]);
-  useEffect(() => { cancelAutoSave(); setExplanation(question.explanation ?? ''); }, [question.explanation]);
+  // Sync fields from external changes (bulk update) — skip if user has pending edits
+  useEffect(() => {
+    if (dirtyRef.current) return;
+    setCorrectAnswer(prev => { if (prev !== question.correctAnswer) { cancelAutoSave(); return question.correctAnswer; } return prev; });
+  }, [question.correctAnswer]);
+  useEffect(() => {
+    if (dirtyRef.current) return;
+    setPoints(prev => { if (prev !== question.points) { cancelAutoSave(); return question.points; } return prev; });
+  }, [question.points]);
+  useEffect(() => {
+    if (dirtyRef.current) return;
+    const val = question.explanation ?? '';
+    setExplanation(prev => { if (prev !== val) { cancelAutoSave(); return val; } return prev; });
+  }, [question.explanation]);
 
   // Image upload mutation
   const uploadMutation = useMutation({

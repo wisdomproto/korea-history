@@ -68,7 +68,7 @@ export function QuestionList({ questions, selectedId, examId, onSelect, onDelete
           onDragStart={() => handleDragStart(idx)}
           onDragOver={(e) => handleDragOver(e, idx)}
           onDragEnd={() => { setDragIdx(null); setOverIdx(null); }}
-          onDrop={() => handleDrop(idx)}
+          onDrop={(e) => { e.preventDefault(); e.stopPropagation(); handleDrop(idx); }}
           onClick={() => onSelect(q.id)}
           className={`group flex items-center gap-2 border-b px-3 py-2 cursor-pointer transition-all text-sm ${
             selectedId === q.id ? 'bg-primary-50 border-l-4 border-l-primary-500' : 'hover:bg-gray-50 border-l-4 border-l-transparent'
