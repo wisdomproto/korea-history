@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Pressable, ScrollView, Alert } from 'react-native';
+import { StyleSheet, View, Text, Pressable, ScrollView } from 'react-native';
+import { showConfirm, showAlert } from '@/lib/alert';
 import { useRouter, Stack } from 'expo-router';
 import { COLORS } from '@/lib/constants';
 import { getSubscription, saveSubscription, SubscriptionState } from '@/lib/storage';
@@ -25,32 +26,22 @@ export default function PremiumScreen() {
   }, []);
 
   const handleSubscribe = () => {
-    Alert.alert(
-      '구독 확인',
-      selectedPlan === 'monthly'
-        ? '월 3,900원 프리미엄을 시작합니다.\n7일 무료 체험이 제공됩니다.'
-        : '연 29,900원 프리미엄을 시작합니다.\n7일 무료 체험이 제공됩니다.',
-      [
-        { text: '취소', style: 'cancel' },
-        {
-          text: '구독 시작',
-          onPress: async () => {
-            // MVP에서는 로컬 상태만 변경 (실제로는 인앱결제 연동)
-            const expiresAt = new Date();
-            expiresAt.setDate(expiresAt.getDate() + (selectedPlan === 'monthly' ? 37 : 372)); // 7일 무료 + 기간
-            const newSub: SubscriptionState = {
-              isPremium: true,
-              plan: selectedPlan,
-              expiresAt: expiresAt.toISOString(),
-              freeExplanationsUsed: {},
-            };
-            await saveSubscription(newSub);
-            Alert.alert('🎉 구독 완료!', '7일 무료 체험이 시작되었습니다.\n모든 기능을 자유롭게 이용하세요!');
-            router.back();
-          },
-        },
-      ],
-    );
+    const message = selectedPlan === 'monthly'
+      ? '월 3,900원 프리미엄을 시작합니다.\n7일 무료 체험이 제공됩니다.'
+      : '연 29,900원 프리미엄을 시작합니다.\n7일 무료 체험이 제공됩니다.';
+    showConfirm('구독 확인', message, async () => {
+      const expiresAt = new Date();
+      expiresAt.setDate(expiresAt.getDate() + (selectedPlan === 'monthly' ? 37 : 372));
+      const newSub: SubscriptionState = {
+        isPremium: true,
+        plan: selectedPlan,
+        expiresAt: expiresAt.toISOString(),
+        freeExplanationsUsed: {},
+      };
+      await saveSubscription(newSub);
+      showAlert('구독 완료', '7일 무료 체험이 시작되었습니다.\n모든 기능을 자유롭게 이용하세요!');
+      router.back();
+    }, '구독 시작');
   };
 
   const isPremium = subscription?.isPremium ?? false;

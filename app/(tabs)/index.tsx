@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
-import { StyleSheet, View, Text, Pressable, Modal, TextInput, Alert, Linking, Platform } from 'react-native';
+import { StyleSheet, View, Text, Pressable, Modal, TextInput, Linking, Platform } from 'react-native';
+import { showAlert } from '@/lib/alert';
 import { useRouter } from 'expo-router';
 import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -79,7 +80,7 @@ export default function HomeScreen() {
       }
     } else {
       setPwInput('');
-      Alert.alert('오류', '비밀번호가 틀렸습니다.');
+      showAlert('오류', '비밀번호가 틀렸습니다.');
     }
   };
 

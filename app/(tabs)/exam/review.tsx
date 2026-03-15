@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { StyleSheet, View, Text, Pressable } from 'react-native';
 import { useRouter, Stack } from 'expo-router';
-import { Ionicons } from '@expo/vector-icons';
 import { COLORS, RADIUS } from '@/lib/constants';
 import { Question } from '@/lib/types';
 import { getWrongNotes, resolveWrongNote, WrongNote } from '@/lib/storage';
@@ -95,21 +94,6 @@ export default function ReviewScreen() {
   // Find the current review question for wrongCount info
   const currentReview = reviewQuestions[study.currentIndex];
 
-  const renderFeedback = (isCorrect: boolean, correctAnswer: number) => (
-    <View style={[styles.feedbackBox, isCorrect ? styles.correctFeedback : styles.wrongFeedback]}>
-      <Ionicons
-        name={isCorrect ? 'checkmark-circle' : 'close-circle'}
-        size={20}
-        color={isCorrect ? '#16A34A' : '#DC2626'}
-      />
-      <Text style={[styles.feedbackText, { color: isCorrect ? '#16A34A' : '#DC2626' }]}>
-        {isCorrect
-          ? '정답! 이 문제는 해결 처리되었습니다.'
-          : `오답! 정답은 ${correctAnswer}번`}
-      </Text>
-    </View>
-  );
-
   return (
     <>
       <Stack.Screen options={{ title: '오답 복습' }} />
@@ -124,7 +108,7 @@ export default function ReviewScreen() {
         onNext={study.handleNext}
         isLastQuestion={study.currentIndex >= study.questions.length - 1}
         progressSuffix={currentReview ? `(틀린 횟수: ${currentReview.wrongNote.wrongCount}회)` : undefined}
-        renderFeedback={renderFeedback}
+        correctFeedbackMessage="정답! 이 문제는 해결 처리되었습니다."
       />
     </>
   );
@@ -137,14 +121,6 @@ const styles = StyleSheet.create({
   emptyDesc: { fontSize: 14, color: COLORS.textSecondary, textAlign: 'center', marginBottom: 20 },
   backBtn: { paddingHorizontal: 24, paddingVertical: 10, backgroundColor: COLORS.primary, borderRadius: RADIUS.sm },
   backBtnText: { color: '#fff', fontWeight: '600', fontSize: 15 },
-
-  feedbackBox: {
-    marginTop: 16, padding: 14, borderRadius: RADIUS.sm,
-    flexDirection: 'row', alignItems: 'center', gap: 8,
-  },
-  correctFeedback: { backgroundColor: '#F0FDF4' },
-  wrongFeedback: { backgroundColor: '#FEF2F2' },
-  feedbackText: { fontSize: 14, fontWeight: '700' },
 
   resultContainer: { flex: 1, backgroundColor: COLORS.background, justifyContent: 'center', alignItems: 'center', padding: 20 },
   resultIcon: { fontSize: 56, marginBottom: 16 },

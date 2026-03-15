@@ -1,5 +1,6 @@
 import { useCallback, useRef, useEffect, useState } from 'react';
-import { StyleSheet, View, Text, Pressable, ScrollView, Alert, AppState, ActivityIndicator, Platform } from 'react-native';
+import { StyleSheet, View, Text, Pressable, ScrollView, AppState, ActivityIndicator } from 'react-native';
+import { showConfirm, showAlertWithCallback, showAlert } from '@/lib/alert';
 import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS, RADIUS, SHADOWS } from '@/lib/constants';
@@ -13,6 +14,7 @@ import ChoiceList from '@/components/exam/ChoiceList';
 import QuestionNav from '@/components/exam/QuestionNav';
 import Timer from '@/components/exam/Timer';
 import NotesModal, { eraSectionId, extractKeywords } from '@/components/NotesModal';
+import ExplanationSection from '@/components/exam/ExplanationSection';
 
 export default function ExamScreen() {
   const { examId, resume: resumeParam } = useLocalSearchParams<{
@@ -116,24 +118,11 @@ export default function ExamScreen() {
   }, [submitExam, questions, totalQuestions, exam, router]);
 
   const handleTimeUp = useCallback(() => {
-    if (Platform.OS === 'web') {
-      window.alert('시험 시간이 종료되었습니다.\n답안이 자동 제출됩니다.');
-      doSubmit(true);
-    } else {
-      Alert.alert(
-        '시간 종료',
-        '시험 시간이 종료되었습니다.\n답안이 자동 제출됩니다.',
-        [{ text: '확인', onPress: () => doSubmit(true) }],
-      );
-    }
+    showAlertWithCallback('시간 종료', '시험 시간이 종료되었습니다.\n답안이 자동 제출됩니다.', () => doSubmit(true));
   }, [doSubmit]);
 
   const handleWarning = useCallback(() => {
-    if (Platform.OS === 'web') {
-      window.alert('남은 시간이 5분입니다.');
-    } else {
-      Alert.alert('잔여 시간 알림', '남은 시간이 5분입니다.');
-    }
+    showAlert('잔여 시간 알림', '남은 시간이 5분입니다.');
   }, []);
 
   const { formattedTime, isWarning, progress, remainingSeconds } = useTimer({
@@ -194,16 +183,7 @@ export default function ExamScreen() {
       ? `아직 ${unanswered}문항을 풀지 않았습니다.\n그래도 제출하시겠습니까?`
       : '모의고사를 제출하시겠습니까?';
 
-    if (Platform.OS === 'web') {
-      if (window.confirm(message)) {
-        doSubmit(false);
-      }
-    } else {
-      Alert.alert('제출 확인', message, [
-        { text: '취소', style: 'cancel' },
-        { text: '제출하기', onPress: () => doSubmit(false) },
-      ]);
-    }
+    showConfirm('제출 확인', message, () => doSubmit(false), '제출하기');
   };
 
   return (
@@ -256,42 +236,14 @@ export default function ExamScreen() {
           />
 
           {/* Answer reveal section */}
-          {isRevealed && (() => {
-            const isCorrect = currentAnswer === currentQuestion.correctAnswer;
-            return (
-              <>
-                <View style={[styles.feedbackBox, isCorrect ? styles.correctFeedback : styles.wrongFeedback]}>
-                  <Ionicons
-                    name={isCorrect ? 'checkmark-circle' : 'close-circle'}
-                    size={20}
-                    color={isCorrect ? '#16A34A' : '#DC2626'}
-                  />
-                  <Text style={[styles.feedbackText, { color: isCorrect ? '#16A34A' : '#DC2626' }]}>
-                    {isCorrect ? '정답!' : `오답! 정답은 ${currentQuestion.correctAnswer}번`}
-                  </Text>
-                </View>
-
-                {currentQuestion.explanation ? (
-                  <View style={styles.explanationBox}>
-                    <View style={styles.explanationHeader}>
-                      <Ionicons name="bulb" size={18} color={COLORS.primary} />
-                      <Text style={styles.explanationTitle}>해설</Text>
-                    </View>
-                    <Text style={styles.explanationText}>{currentQuestion.explanation}</Text>
-                  </View>
-                ) : null}
-
-                <Pressable
-                  style={styles.notesLink}
-                  onPress={() => setNotesVisible(true)}
-                >
-                  <Ionicons name="newspaper-outline" size={18} color={COLORS.primary} />
-                  <Text style={styles.notesLinkText}>요약노트 바로가기</Text>
-                  <Ionicons name="chevron-forward" size={16} color={COLORS.textLight} />
-                </Pressable>
-              </>
-            );
-          })()}
+          {isRevealed && (
+            <ExplanationSection
+              isCorrect={currentAnswer === currentQuestion.correctAnswer}
+              correctAnswer={currentQuestion.correctAnswer}
+              explanation={currentQuestion.explanation}
+              onNotesPress={() => setNotesVisible(true)}
+            />
+          )}
         </ScrollView>
 
         <View style={styles.bottomBar}>
@@ -438,69 +390,4 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 
-  // Feedback
-  feedbackBox: {
-    marginTop: 16,
-    padding: 14,
-    borderRadius: RADIUS.sm,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  correctFeedback: {
-    backgroundColor: '#F0FDF4',
-  },
-  wrongFeedback: {
-    backgroundColor: '#FEF2F2',
-  },
-  feedbackText: {
-    fontSize: 14,
-    fontWeight: '700',
-  },
-
-  // Explanation
-  explanationBox: {
-    marginTop: 12,
-    padding: 16,
-    backgroundColor: '#F8F7FF',
-    borderRadius: RADIUS.md,
-    borderWidth: 1,
-    borderColor: '#E8E8F4',
-  },
-  explanationHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    marginBottom: 10,
-  },
-  explanationTitle: {
-    fontSize: 14,
-    fontWeight: '700',
-    color: COLORS.primary,
-  },
-  explanationText: {
-    fontSize: 14,
-    color: COLORS.text,
-    lineHeight: 22,
-  },
-
-  // Notes link
-  notesLink: {
-    marginTop: 12,
-    padding: 14,
-    backgroundColor: COLORS.surface,
-    borderRadius: RADIUS.md,
-    borderWidth: 1,
-    borderColor: '#E8E8F4',
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    ...SHADOWS.sm,
-  },
-  notesLinkText: {
-    flex: 1,
-    fontSize: 14,
-    fontWeight: '600',
-    color: COLORS.primary,
-  },
 });

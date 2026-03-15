@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
-import { StyleSheet, View, Text, FlatList, Pressable, Alert, ActivityIndicator, Platform } from 'react-native';
+import { StyleSheet, View, Text, FlatList, Pressable, ActivityIndicator } from 'react-native';
+import { showConfirm, showThreeOption } from '@/lib/alert';
 import { useRouter, Stack } from 'expo-router';
 import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -52,24 +53,13 @@ export default function ExamSelectScreen() {
         return;
       }
 
-      Alert.alert(
+      showThreeOption(
         '진행 중인 모의고사',
         `이전에 풀던 시험이 있습니다.\n(${answeredCount}문항 답변, 잔여 ${minutes}분)\n\n이어서 풀까요?`,
-        [
-          {
-            text: '처음부터',
-            style: 'destructive',
-            onPress: () => {
-              clearSavedExam();
-              setSavedExam(null);
-              pushToExam(exam.id);
-            },
-          },
-          {
-            text: '이어서 풀기',
-            onPress: () => pushToExam(exam.id, true),
-          },
-        ],
+        {
+          option1: { text: '이어서 풀기', onPress: () => pushToExam(exam.id, true) },
+          option2: { text: '처음부터', onPress: () => { clearSavedExam(); setSavedExam(null); pushToExam(exam.id); } },
+        },
       );
       return;
     }
@@ -78,33 +68,11 @@ export default function ExamSelectScreen() {
     if (savedExam && savedExam.examId !== exam.id) {
       const savedExamData = EXAMS.find((e) => e.id === savedExam.examId);
 
-      if (Platform.OS === 'web') {
-        const start = window.confirm(
-          `제${savedExamData?.examNumber ?? '?'}회 모의고사가 진행 중입니다.\n새 모의고사를 시작하면 기존 진행이 삭제됩니다.\n\n새로 시작하시겠습니까?`,
-        );
-        if (start) {
-          clearSavedExam();
-          setSavedExam(null);
-          pushToExam(exam.id);
-        }
-        return;
-      }
-
-      Alert.alert(
+      showConfirm(
         '진행 중인 다른 모의고사',
         `제${savedExamData?.examNumber ?? '?'}회 모의고사가 진행 중입니다.\n새 모의고사를 시작하면 기존 진행이 삭제됩니다.`,
-        [
-          { text: '취소', style: 'cancel' },
-          {
-            text: '새로 시작',
-            style: 'destructive',
-            onPress: () => {
-              clearSavedExam();
-              setSavedExam(null);
-              pushToExam(exam.id);
-            },
-          },
-        ],
+        () => { clearSavedExam(); setSavedExam(null); pushToExam(exam.id); },
+        '새로 시작',
       );
       return;
     }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Pressable, ScrollView, Alert } from 'react-native';
+import { StyleSheet, View, Text, Pressable, ScrollView } from 'react-native';
+import { showAlert, showConfirm } from '@/lib/alert';
 import { useRouter, Stack } from 'expo-router';
 import { COLORS, ERAS } from '@/lib/constants';
 import { getUserProfile, saveUserProfile, saveStudyPlan } from '@/lib/storage';
@@ -35,35 +36,30 @@ export default function SettingsScreen() {
 
   const handleSave = () => {
     if (!goalGrade || !examDate) {
-      Alert.alert('알림', '목표 급수와 시험일을 선택해주세요.');
+      showAlert('알림', '목표 급수와 시험일을 선택해주세요.');
       return;
     }
 
-    Alert.alert(
+    showConfirm(
       '학습 플랜 재생성',
       '설정을 변경하면 학습 플랜이 자동으로 재생성됩니다.\n기존 학습 기록은 유지됩니다.\n\n진행하시겠습니까?',
-      [
-        { text: '취소', style: 'cancel' },
-        {
-          text: '저장',
-          onPress: async () => {
-            const updatedProfile: UserProfile = {
-              goalGrade,
-              examDate,
-              dailyStudyMinutes: dailyMinutes,
-              onboardingCompleted: true,
-              createdAt: profile?.createdAt || new Date().toISOString(),
-            };
-            await saveUserProfile(updatedProfile);
+      async () => {
+        const updatedProfile: UserProfile = {
+          goalGrade,
+          examDate,
+          dailyStudyMinutes: dailyMinutes,
+          onboardingCompleted: true,
+          createdAt: profile?.createdAt || new Date().toISOString(),
+        };
+        await saveUserProfile(updatedProfile);
 
-            const newPlan = generateStudyPlan(updatedProfile);
-            await saveStudyPlan(newPlan);
+        const newPlan = generateStudyPlan(updatedProfile);
+        await saveStudyPlan(newPlan);
 
-            Alert.alert('✅ 저장 완료', '학습 플랜이 업데이트되었습니다.');
-            router.back();
-          },
-        },
-      ],
+        showAlert('저장 완료', '학습 플랜이 업데이트되었습니다.');
+        router.back();
+      },
+      '저장',
     );
   };
 

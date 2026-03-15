@@ -50,6 +50,19 @@ export default function ExplanationScreen() {
     setFeedbackState(null);
     setIsLocked(false);
 
+    // 1. 문제에 저장된 해설이 있으면 바로 사용
+    if (question.explanation) {
+      setExplanation({
+        correctExplanation: question.explanation,
+        wrongExplanations: {},
+        cachedAt: new Date().toISOString(),
+      });
+      const fb = await getFeedback(question.id);
+      setFeedbackState(fb);
+      setIsLoading(false);
+      return;
+    }
+
     // US-22: 프리미엄 접근 제한 확인
     const examIdNum = Number(params.examId);
     const allowed = await canViewExplanation(examIdNum, question.id);
@@ -70,7 +83,7 @@ export default function ExplanationScreen() {
       return;
     }
 
-    // API 호출
+    // API 호출 (해설이 없는 경우만)
     const result = await generateExplanation(question, answer?.selectedAnswer ?? null);
     const explanationData: CachedExplanation = {
       ...result,
@@ -243,7 +256,7 @@ export default function ExplanationScreen() {
             ) : isLoading ? (
               <View style={styles.loadingContainer}>
                 <ActivityIndicator size="small" color={COLORS.primary} />
-                <Text style={styles.loadingText}>AI 해설을 생성하고 있습니다...</Text>
+                <Text style={styles.loadingText}>해설을 불러오는 중...</Text>
               </View>
             ) : (
               <Text style={styles.explanationText}>

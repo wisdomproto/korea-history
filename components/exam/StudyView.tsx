@@ -13,6 +13,7 @@ import { Question } from '@/lib/types';
 import QuestionCard from './QuestionCard';
 import ChoiceList from './ChoiceList';
 import NotesModal, { eraSectionId, extractKeywords } from '@/components/NotesModal';
+import ExplanationSection from './ExplanationSection';
 
 interface StudyViewProps {
   /** Current question to display */
@@ -43,7 +44,8 @@ interface StudyViewProps {
   /** Extra text appended to the default progress text (e.g., wrong count) */
   progressSuffix?: string;
   /** Custom feedback renderer. When omitted, uses the default feedback box. */
-  renderFeedback?: (isCorrect: boolean, correctAnswer: number) => React.ReactNode;
+  /** Custom feedback message for correct answers (e.g., "정답! 이 문제는 해결 처리되었습니다.") */
+  correctFeedbackMessage?: string;
 }
 
 export default function StudyView({
@@ -59,7 +61,7 @@ export default function StudyView({
   progressColor = COLORS.primary,
   progressRight,
   progressSuffix,
-  renderFeedback,
+  correctFeedbackMessage,
 }: StudyViewProps) {
   const router = useRouter();
   const scrollRef = useRef<ScrollView>(null);
@@ -118,53 +120,13 @@ export default function StudyView({
 
           {/* Feedback + Explanation */}
           {showResult && (
-            <>
-              {renderFeedback ? (
-                renderFeedback(isCorrect, current.correctAnswer)
-              ) : (
-                <View
-                  style={[
-                    styles.feedbackBox,
-                    isCorrect ? styles.correctFeedback : styles.wrongFeedback,
-                  ]}
-                >
-                  <Ionicons
-                    name={isCorrect ? 'checkmark-circle' : 'close-circle'}
-                    size={20}
-                    color={isCorrect ? '#16A34A' : '#DC2626'}
-                  />
-                  <Text
-                    style={[
-                      styles.feedbackText,
-                      { color: isCorrect ? '#16A34A' : '#DC2626' },
-                    ]}
-                  >
-                    {isCorrect ? '정답!' : `오답! 정답은 ${current.correctAnswer}번`}
-                  </Text>
-                </View>
-              )}
-
-              {/* AI Explanation */}
-              {current.explanation ? (
-                <View style={styles.explanationBox}>
-                  <View style={styles.explanationHeader}>
-                    <Ionicons name="bulb" size={18} color={COLORS.primary} />
-                    <Text style={styles.explanationTitle}>해설</Text>
-                  </View>
-                  <Text style={styles.explanationText}>{current.explanation}</Text>
-                </View>
-              ) : null}
-
-              {/* Notes shortcut */}
-              <Pressable
-                style={styles.notesLink}
-                onPress={() => setNotesVisible(true)}
-              >
-                <Ionicons name="newspaper-outline" size={18} color={COLORS.primary} />
-                <Text style={styles.notesLinkText}>요약노트 바로가기</Text>
-                <Ionicons name="chevron-forward" size={16} color={COLORS.textLight} />
-              </Pressable>
-            </>
+            <ExplanationSection
+              isCorrect={isCorrect}
+              correctAnswer={current.correctAnswer}
+              explanation={current.explanation}
+              onNotesPress={() => setNotesVisible(true)}
+              feedbackMessage={isCorrect && correctFeedbackMessage ? correctFeedbackMessage : undefined}
+            />
           )}
         </ScrollView>
 
@@ -250,71 +212,6 @@ const styles = StyleSheet.create({
   },
 
   // Feedback
-  feedbackBox: {
-    marginTop: 16,
-    padding: 14,
-    borderRadius: RADIUS.sm,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  correctFeedback: {
-    backgroundColor: '#F0FDF4',
-  },
-  wrongFeedback: {
-    backgroundColor: '#FEF2F2',
-  },
-  feedbackText: {
-    fontSize: 14,
-    fontWeight: '700',
-  },
-
-  // Explanation
-  explanationBox: {
-    marginTop: 12,
-    padding: 16,
-    backgroundColor: '#F8F7FF',
-    borderRadius: RADIUS.md,
-    borderWidth: 1,
-    borderColor: '#E8E8F4',
-  },
-  explanationHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    marginBottom: 10,
-  },
-  explanationTitle: {
-    fontSize: 14,
-    fontWeight: '700',
-    color: COLORS.primary,
-  },
-  explanationText: {
-    fontSize: 14,
-    color: COLORS.text,
-    lineHeight: 22,
-  },
-
-  // Notes link
-  notesLink: {
-    marginTop: 12,
-    padding: 14,
-    backgroundColor: COLORS.surface,
-    borderRadius: RADIUS.md,
-    borderWidth: 1,
-    borderColor: '#E8E8F4',
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    ...SHADOWS.sm,
-  },
-  notesLinkText: {
-    flex: 1,
-    fontSize: 14,
-    fontWeight: '600',
-    color: COLORS.primary,
-  },
-
   // Bottom
   bottomBar: {
     backgroundColor: COLORS.surface,

@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
-import { StyleSheet, View, Text, Pressable, Alert } from 'react-native';
+import { StyleSheet, View, Text, Pressable } from 'react-native';
+import { showConfirm } from '@/lib/alert';
 import { useRouter } from 'expo-router';
 import { useFocusEffect } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -32,22 +33,16 @@ export default function MyPageScreen() {
   const dday = profile?.examDate ? getDday(profile.examDate) : null;
 
   const handleResetOnboarding = () => {
-    Alert.alert(
+    showConfirm(
       '학습 설정 초기화',
       '온보딩 설정을 초기화하고 다시 설정하시겠습니까?\n(학습 기록은 유지됩니다)',
-      [
-        { text: '취소', style: 'cancel' },
-        {
-          text: '초기화',
-          style: 'destructive',
-          onPress: async () => {
-            await AsyncStorage.removeItem('@user_profile');
-            await AsyncStorage.removeItem('@study_plan');
-            setProfile(null);
-            router.push('/onboarding/step1');
-          },
-        },
-      ],
+      async () => {
+        await AsyncStorage.removeItem('@user_profile');
+        await AsyncStorage.removeItem('@study_plan');
+        setProfile(null);
+        router.push('/onboarding/step1');
+      },
+      '초기화',
     );
   };
 
