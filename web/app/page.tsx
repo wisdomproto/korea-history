@@ -26,10 +26,10 @@ const SECTION_ERA: Record<string, { label: string; color: string; dot: string }>
 
 export default function HomePage() {
   const exams = getAllExams();
-  const totalQuestions = exams.reduce((sum, e) => sum + e.questions.length, 0);
   const eraData = getQuestionsByEra();
-  const notesGrouped = getNotesGroupedBySection();
   const keywords = getAllKeywords();
+  const totalQuestions = exams.reduce((sum, e) => sum + e.questions.length, 0);
+  const notesGrouped = getNotesGroupedBySection();
   const latestExams = exams.slice(0, 4);
   const topKeywords = keywords.slice(0, 24);
   const totalNotes = Object.values(notesGrouped).flat().length;

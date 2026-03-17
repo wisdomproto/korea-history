@@ -10,8 +10,9 @@ interface Props {
   params: Promise<{ examNumber: string; questionNumber: string }>;
 }
 
-export async function generateStaticParams() {
-  return getAllQuestionParams().map((p) => ({
+export function generateStaticParams() {
+  const params = getAllQuestionParams();
+  return params.map((p) => ({
     examNumber: String(p.examNumber),
     questionNumber: String(p.questionNumber),
   }));

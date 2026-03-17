@@ -8,4 +8,5 @@ export const examApi = {
   update: (id: number, updates: Partial<Exam>) => apiPut<ExamFile>(`/exams/${id}`, updates),
   delete: (id: number) => apiDelete<null>(`/exams/${id}`),
   reorder: (examIds: number[]) => apiPost<null>('/exams/reorder', { examIds }),
+  deploy: () => apiPost<{ message: string; vercel: any }>('/exams/deploy', {}),
 };

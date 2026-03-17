@@ -291,13 +291,54 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
         )}
       </div>
 
-      {/* Stats footer */}
+      {/* Stats footer + Deploy */}
       {exams && (
-        <div className="border-t bg-gray-50 px-4 py-2 text-xs text-gray-500">
-          총 {exams.length}개 시험 / {exams.reduce((s, e) => s + e.questionCount, 0)}문제
+        <div className="border-t bg-gray-50 px-4 py-2">
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-gray-500">
+              총 {exams.length}개 시험 / {exams.reduce((s, e) => s + e.questionCount, 0)}문제
+            </span>
+            <DeployButton />
+          </div>
         </div>
       )}
     </aside>
+  );
+}
+
+function DeployButton() {
+  const [status, setStatus] = useState<'idle' | 'deploying' | 'success' | 'error'>('idle');
+
+  const handleDeploy = async () => {
+    if (status === 'deploying') return;
+    setStatus('deploying');
+    try {
+      await examApi.deploy();
+      setStatus('success');
+      setTimeout(() => setStatus('idle'), 3000);
+    } catch {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 3000);
+    }
+  };
+
+  return (
+    <button
+      onClick={handleDeploy}
+      disabled={status === 'deploying'}
+      className={`rounded-lg px-2.5 py-1 text-xs font-medium transition-all ${
+        status === 'deploying' ? 'bg-amber-100 text-amber-700 cursor-wait' :
+        status === 'success' ? 'bg-green-100 text-green-700' :
+        status === 'error' ? 'bg-red-100 text-red-700' :
+        'bg-primary-100 text-primary-700 hover:bg-primary-200'
+      }`}
+      title="웹사이트에 최신 데이터 배포"
+    >
+      {status === 'deploying' ? '배포 중...' :
+       status === 'success' ? '배포 완료 ✓' :
+       status === 'error' ? '배포 실패' :
+       '웹 배포'}
+    </button>
   );
 }
 

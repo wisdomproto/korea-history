@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 
 export default function StudyPage() {
   const exams = getAllExams();
+  const keywords = getAllKeywords();
   const totalQuestions = exams.reduce(
     (sum, e) => sum + e.questions.length,
     0
   );
-  const keywords = getAllKeywords();
 
   return (
     <div>

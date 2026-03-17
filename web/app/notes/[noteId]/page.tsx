@@ -6,7 +6,7 @@ import {
   getNoteById,
   getAdjacentNotes,
 } from "@/lib/notes";
-import { getQuestion } from "@/lib/data";
+import { getQuestionsByIds } from "@/lib/data";
 import { breadcrumbJsonLd } from "@/lib/seo";
 import BreadCrumb from "@/components/BreadCrumb";
 import PrevNextNav from "@/components/PrevNextNav";
@@ -47,23 +47,10 @@ export default async function NotePage({ params }: Props) {
 
   const { prev, next } = getAdjacentNotes(noteId);
 
-  // Get sample related questions (first 20)
-  const relatedQuestions = note.relatedQuestionIds
-    .slice(0, 20)
-    .map((qId) => {
-      const examNumber = Math.floor(qId / 1000);
-      const questionNumber = qId % 1000;
-      const data = getQuestion(examNumber, questionNumber);
-      if (!data) return null;
-      return {
-        examNumber: data.exam.examNumber,
-        questionNumber: data.question.questionNumber,
-        content: data.question.content,
-        points: data.question.points,
-        era: data.question.era,
-      };
-    })
-    .filter(Boolean);
+  // Get sample related questions (first 20) — uses cached bulk lookup
+  const relatedQuestions = getQuestionsByIds(
+    note.relatedQuestionIds.slice(0, 20)
+  );
 
   const breadcrumbs = [
     { name: "홈", href: "/" },

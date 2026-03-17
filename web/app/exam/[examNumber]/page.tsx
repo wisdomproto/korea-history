@@ -7,8 +7,9 @@ interface Props {
   params: Promise<{ examNumber: string }>;
 }
 
-export async function generateStaticParams() {
-  return getAllExamNumbers().map((n) => ({ examNumber: String(n) }));
+export function generateStaticParams() {
+  const numbers = getAllExamNumbers();
+  return numbers.map((n) => ({ examNumber: String(n) }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

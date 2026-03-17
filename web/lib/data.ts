@@ -2,7 +2,14 @@ import fs from "fs";
 import path from "path";
 import { ExamFile, Exam, Question, Era } from "./types";
 
-const DATA_DIR = path.join(process.cwd(), "..", "data", "questions");
+/**
+ * Data is read from .data-cache/ (populated by scripts/fetch-data.ts prebuild).
+ * Falls back to ../data/questions/ for local dev without R2.
+ */
+const CACHE_DIR = path.join(process.cwd(), ".data-cache");
+const LOCAL_DIR = path.join(process.cwd(), "..", "data", "questions");
+const DATA_DIR = fs.existsSync(CACHE_DIR) ? CACHE_DIR : LOCAL_DIR;
+const USE_CACHE = DATA_DIR === CACHE_DIR;
 
 const ERA_ORDER: Era[] = [
   "선사·고조선",
@@ -15,18 +22,33 @@ const ERA_ORDER: Era[] = [
   "현대",
 ];
 
-function readExamFile(filePath: string): ExamFile {
-  const raw = fs.readFileSync(filePath, "utf-8");
-  return JSON.parse(raw) as ExamFile;
+function readJson<T>(filePath: string): T {
+  return JSON.parse(fs.readFileSync(filePath, "utf-8"));
+}
+
+function getExamNumbers(): number[] {
+  if (USE_CACHE) {
+    const manifest = readJson<{ exams: { examNumber: number }[] }>(
+      path.join(CACHE_DIR, "manifest.json")
+    );
+    return manifest.exams.map((e) => e.examNumber);
+  }
+  // Local fallback: scan files
+  return fs
+    .readdirSync(DATA_DIR)
+    .filter((f) => /^exam-\d+\.json$/.test(f))
+    .map((f) => parseInt(f.replace("exam-", "").replace(".json", ""), 10));
+}
+
+function readExamFile(examNumber: number): ExamFile {
+  const filePath = path.join(DATA_DIR, `exam-${examNumber}.json`);
+  return readJson<ExamFile>(filePath);
 }
 
 /** Get all exam files sorted by examNumber descending (newest first). */
 export function getAllExams(): ExamFile[] {
-  const files = fs
-    .readdirSync(DATA_DIR)
-    .filter((f) => /^exam-\d+\.json$/.test(f));
-
-  const exams = files.map((f) => readExamFile(path.join(DATA_DIR, f)));
+  const numbers = getExamNumbers();
+  const exams = numbers.map((n) => readExamFile(n));
   exams.sort((a, b) => b.exam.examNumber - a.exam.examNumber);
   return exams;
 }
@@ -35,17 +57,12 @@ export function getAllExams(): ExamFile[] {
 export function getExamByNumber(examNumber: number): ExamFile | null {
   const filePath = path.join(DATA_DIR, `exam-${examNumber}.json`);
   if (!fs.existsSync(filePath)) return null;
-  return readExamFile(filePath);
+  return readJson<ExamFile>(filePath);
 }
 
 /** Get all exam numbers that have data files, sorted descending. */
 export function getAllExamNumbers(): number[] {
-  const files = fs
-    .readdirSync(DATA_DIR)
-    .filter((f) => /^exam-\d+\.json$/.test(f));
-  return files
-    .map((f) => parseInt(f.replace("exam-", "").replace(".json", ""), 10))
-    .sort((a, b) => b - a);
+  return getExamNumbers().sort((a, b) => b - a);
 }
 
 /** Get a specific question from an exam. */
@@ -141,17 +158,22 @@ export function getAllKeywords(): {
 }[] {
   const kwPath = path.join(DATA_DIR, "keywords.json");
   if (!fs.existsSync(kwPath)) return [];
-  const raw = JSON.parse(fs.readFileSync(kwPath, "utf-8"));
-  const kwData: Record<string, number[]> = raw.keywords || raw;
+  const raw = readJson<{ keywords?: Record<string, number[]> } | Record<string, number[]>>(kwPath);
+  const kwData: Record<string, number[]> = (raw as any).keywords || raw;
+
+  // Build era lookup
+  const allExams = getAllExams();
+  const eraLookup = new Map<number, string>();
+  for (const { exam, questions } of allExams) {
+    for (const q of questions) {
+      eraLookup.set(exam.examNumber * 1000 + q.questionNumber, q.era);
+    }
+  }
 
   return Object.entries(kwData)
     .map(([keyword, questionIds]) => {
-      // Determine era from first question
       const firstQid = questionIds[0];
-      const examNumber = Math.floor(firstQid / 1000);
-      const questionNumber = firstQid % 1000;
-      const data = getQuestion(examNumber, questionNumber);
-      const era = data?.question.era || "기타";
+      const era = eraLookup.get(firstQid) || "기타";
       return { keyword, questionIds, era };
     })
     .sort((a, b) => b.questionIds.length - a.questionIds.length);
@@ -180,6 +202,26 @@ export function getQuestionsByKeyword(
       };
     })
     .filter(Boolean) as { examNumber: number; questionNumber: number; content: string; points: number; era: string }[];
+}
+
+/** Bulk-resolve question IDs from cached exam data. */
+export function getQuestionsByIds(
+  questionIds: number[]
+): { examNumber: number; questionNumber: number; content: string; points: number; era: string }[] {
+  const allExams = getAllExams();
+  const lookup = new Map<number, { examNumber: number; questionNumber: number; content: string; points: number; era: string }>();
+  for (const { exam, questions } of allExams) {
+    for (const q of questions) {
+      lookup.set(exam.examNumber * 1000 + q.questionNumber, {
+        examNumber: exam.examNumber,
+        questionNumber: q.questionNumber,
+        content: q.content,
+        points: q.points,
+        era: q.era,
+      });
+    }
+  }
+  return questionIds.map((qId) => lookup.get(qId)).filter(Boolean) as any[];
 }
 
 /** Get all questions across all exams (for sitemap / static params). */

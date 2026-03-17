@@ -19,4 +19,7 @@ export const config = {
     bucketName: process.env.R2_BUCKET_NAME ?? 'korea-history-data',
     publicUrl: process.env.R2_PUBLIC_URL ?? '',
   },
+  vercel: {
+    deployHookUrl: process.env.VERCEL_DEPLOY_HOOK_URL ?? '',
+  },
 } as const;

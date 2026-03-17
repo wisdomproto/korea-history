@@ -1,8 +1,9 @@
 import { getAllExamNumbers } from "@/lib/data";
 import ExamResult from "./ExamResult";
 
-export async function generateStaticParams() {
-  return getAllExamNumbers().map((n) => ({ examNumber: String(n) }));
+export function generateStaticParams() {
+  const numbers = getAllExamNumbers();
+  return numbers.map((n) => ({ examNumber: String(n) }));
 }
 
 interface Props {

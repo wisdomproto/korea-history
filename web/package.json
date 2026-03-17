@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
+    "prebuild": "npx tsx scripts/fetch-data.ts",
     "build": "next build",
     "start": "next start"
   },
@@ -23,6 +24,7 @@
     "@types/react": "^19.2.14",
     "postcss": "^8.5.8",
     "tailwindcss": "^4.2.1",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
 }
