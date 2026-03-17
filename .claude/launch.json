@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "expo-web",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["node_modules/expo/bin/cli", "start", "--web", "--port", "8081"],
+      "port": 8081,
+      "autoPort": false
+    },
+    {
+      "name": "author-tool",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["node_modules/tsx/dist/cli.mjs", "server/index.ts"],
+      "port": 3001,
+      "cwd": "author-tool",
+      "autoPort": false
+    },
+    {
+      "name": "web-dev",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["next", "dev"],
+      "port": 3000,
+      "cwd": "web",
+      "autoPort": false
+    }
+  ],
+  "autoVerify": false
+}
