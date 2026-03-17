@@ -18,8 +18,8 @@
     },
     {
       "name": "web-dev",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["next", "dev"],
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["node_modules/next/dist/bin/next", "dev"],
       "port": 3000,
       "cwd": "web",
       "autoPort": false

@@ -1,0 +1,785 @@
+[
+  {
+    "id": "s1-01",
+    "title": "시대별 유물/유적지",
+    "era": "삼국",
+    "eraLabel": "고대/중세 (삼국·남북국)",
+    "sectionId": "s1",
+    "order": 0,
+    "questionCount": 89
+  },
+  {
+    "id": "s1-02",
+    "title": "연맹국가 (부여, 고구려, 옥저, 동예, 삼한)",
+    "era": "삼국",
+    "eraLabel": "고대/중세 (삼국·남북국)",
+    "sectionId": "s1",
+    "order": 1,
+    "questionCount": 141
+  },
+  {
+    "id": "s1-03",
+    "title": "고조선 및 위만조선",
+    "era": "삼국",
+    "eraLabel": "고대/중세 (삼국·남북국)",
+    "sectionId": "s1",
+    "order": 2,
+    "questionCount": 79
+  },
+  {
+    "id": "s1-04",
+    "title": "️ 삼국시대 왕업적",
+    "era": "삼국",
+    "eraLabel": "고대/중세 (삼국·남북국)",
+    "sectionId": "s1",
+    "order": 3,
+    "questionCount": 371
+  },
+  {
+    "id": "s1-05",
+    "title": "️ 가야",
+    "era": "삼국",
+    "eraLabel": "고대/중세 (삼국·남북국)",
+    "sectionId": "s1",
+    "order": 4,
+    "questionCount": 61
+  },
+  {
+    "id": "s1-06",
+    "title": "️ 삼국의 통치체제",
+    "era": "삼국",
+    "eraLabel": "고대/중세 (삼국·남북국)",
+    "sectionId": "s1",
+    "order": 5,
+    "questionCount": 175
+  },
+  {
+    "id": "s1-07",
+    "title": "통일신라 왕업적표",
+    "era": "삼국",
+    "eraLabel": "고대/중세 (삼국·남북국)",
+    "sectionId": "s1",
+    "order": 6,
+    "questionCount": 246
+  },
+  {
+    "id": "s1-08",
+    "title": "통일신라 말기 및 후삼국",
+    "era": "삼국",
+    "eraLabel": "고대/중세 (삼국·남북국)",
+    "sectionId": "s1",
+    "order": 7,
+    "questionCount": 201
+  },
+  {
+    "id": "s1-09",
+    "title": "️ 발해 (698~)",
+    "era": "삼국",
+    "eraLabel": "고대/중세 (삼국·남북국)",
+    "sectionId": "s1",
+    "order": 8,
+    "questionCount": 105
+  },
+  {
+    "id": "s1-10",
+    "title": "종교",
+    "era": "삼국",
+    "eraLabel": "고대/중세 (삼국·남북국)",
+    "sectionId": "s1",
+    "order": 9,
+    "questionCount": 175
+  },
+  {
+    "id": "s1-11",
+    "title": "고대 국가의 고분",
+    "era": "삼국",
+    "eraLabel": "고대/중세 (삼국·남북국)",
+    "sectionId": "s1",
+    "order": 10,
+    "questionCount": 101
+  },
+  {
+    "id": "s1-12",
+    "title": "석탑 (백제~조선)",
+    "era": "삼국",
+    "eraLabel": "고대/중세 (삼국·남북국)",
+    "sectionId": "s1",
+    "order": 11,
+    "questionCount": 163
+  },
+  {
+    "id": "s1-13",
+    "title": "불상",
+    "era": "삼국",
+    "eraLabel": "고대/중세 (삼국·남북국)",
+    "sectionId": "s1",
+    "order": 12,
+    "questionCount": 70
+  },
+  {
+    "id": "s2-01",
+    "title": "️ 삼국시대 주요 전투",
+    "era": "고려",
+    "eraLabel": "고려",
+    "sectionId": "s2",
+    "order": 13,
+    "questionCount": 107
+  },
+  {
+    "id": "s2-02",
+    "title": "️ 고려의 후삼국 통일 과정",
+    "era": "고려",
+    "eraLabel": "고려",
+    "sectionId": "s2",
+    "order": 14,
+    "questionCount": 108
+  },
+  {
+    "id": "s2-03",
+    "title": "고려 왕업적",
+    "era": "고려",
+    "eraLabel": "고려",
+    "sectionId": "s2",
+    "order": 15,
+    "questionCount": 228
+  },
+  {
+    "id": "s2-04",
+    "title": "별무반과 여진 정벌",
+    "era": "고려",
+    "eraLabel": "고려",
+    "sectionId": "s2",
+    "order": 16,
+    "questionCount": 52
+  },
+  {
+    "id": "s2-05",
+    "title": "️ 고려 중앙 정치 조직",
+    "era": "고려",
+    "eraLabel": "고려",
+    "sectionId": "s2",
+    "order": 17,
+    "questionCount": 119
+  },
+  {
+    "id": "s2-06",
+    "title": "️ 무신정변과 원간섭기",
+    "era": "고려",
+    "eraLabel": "고려",
+    "sectionId": "s2",
+    "order": 18,
+    "questionCount": 292
+  },
+  {
+    "id": "s2-07",
+    "title": "고려 토지 제도",
+    "era": "고려",
+    "eraLabel": "고려",
+    "sectionId": "s2",
+    "order": 19,
+    "questionCount": 61
+  },
+  {
+    "id": "s2-08",
+    "title": "고려 경제",
+    "era": "고려",
+    "eraLabel": "고려",
+    "sectionId": "s2",
+    "order": 20,
+    "questionCount": 146
+  },
+  {
+    "id": "s2-09",
+    "title": "고려 사회·신분 구조",
+    "era": "고려",
+    "eraLabel": "고려",
+    "sectionId": "s2",
+    "order": 21,
+    "questionCount": 59
+  },
+  {
+    "id": "s2-10",
+    "title": "경제, 토지, 신분",
+    "era": "고려",
+    "eraLabel": "고려",
+    "sectionId": "s2",
+    "order": 22,
+    "questionCount": 119
+  },
+  {
+    "id": "s2-11",
+    "title": "문화 (역사서, 유학, 불교)",
+    "era": "고려",
+    "eraLabel": "고려",
+    "sectionId": "s2",
+    "order": 23,
+    "questionCount": 183
+  },
+  {
+    "id": "s3-01",
+    "title": "️ 조선의 건국과정",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 24,
+    "questionCount": 104
+  },
+  {
+    "id": "s3-02",
+    "title": "조선 왕업적 (태조~성종)",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 25,
+    "questionCount": 297
+  },
+  {
+    "id": "s3-03",
+    "title": "사화 (무오/갑자/기묘/을사)",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 26,
+    "questionCount": 150
+  },
+  {
+    "id": "s3-04",
+    "title": "️ 중앙 행정 조직",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 27,
+    "questionCount": 115
+  },
+  {
+    "id": "s3-05",
+    "title": "️ 지방 행정 조직",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 28,
+    "questionCount": 40
+  },
+  {
+    "id": "s3-06",
+    "title": "️ 조선 군사 제도",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 29,
+    "questionCount": 46
+  },
+  {
+    "id": "s3-07",
+    "title": "사림 등장과 붕당 정치 성립",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 30,
+    "questionCount": 186
+  },
+  {
+    "id": "s3-08",
+    "title": "️ 임진왜란과 정유재란",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 31,
+    "questionCount": 175
+  },
+  {
+    "id": "s3-09",
+    "title": "광해군 중립외교와 호란",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 32,
+    "questionCount": 150
+  },
+  {
+    "id": "s3-10",
+    "title": "토지 제도",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 33,
+    "questionCount": 68
+  },
+  {
+    "id": "s3-11",
+    "title": "수취 체제 (전세·공납·역)",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 34,
+    "questionCount": 106
+  },
+  {
+    "id": "s3-12",
+    "title": "신분 구조",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 35,
+    "questionCount": 35
+  },
+  {
+    "id": "s3-13",
+    "title": "조선 과거제·교육 제도",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 36,
+    "questionCount": 128
+  },
+  {
+    "id": "s3-14",
+    "title": "서원과 향약",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 37,
+    "questionCount": 60
+  },
+  {
+    "id": "s3-15",
+    "title": "문화, 성리학, 예술",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 38,
+    "questionCount": 153
+  },
+  {
+    "id": "s3-16",
+    "title": "붕당 분화 계보도",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 39,
+    "questionCount": 106
+  },
+  {
+    "id": "s3-17",
+    "title": "예송논쟁 (1차·2차)",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 40,
+    "questionCount": 41
+  },
+  {
+    "id": "s3-18",
+    "title": "환국 (경신/기사/갑술)",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 41,
+    "questionCount": 70
+  },
+  {
+    "id": "s3-19",
+    "title": "경제 활동",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 42,
+    "questionCount": 50
+  },
+  {
+    "id": "s3-20",
+    "title": "대외 사절",
+    "era": "조선 전기",
+    "eraLabel": "조선 전기",
+    "sectionId": "s3",
+    "order": 43,
+    "questionCount": 60
+  },
+  {
+    "id": "s4-01",
+    "title": "왕정과 정치체제",
+    "era": "조선 후기",
+    "eraLabel": "조선 후기",
+    "sectionId": "s4",
+    "order": 44,
+    "questionCount": 346
+  },
+  {
+    "id": "s4-02",
+    "title": "경제와 사회",
+    "era": "조선 후기",
+    "eraLabel": "조선 후기",
+    "sectionId": "s4",
+    "order": 45,
+    "questionCount": 344
+  },
+  {
+    "id": "s4-03",
+    "title": "️ 정치체제와 군사",
+    "era": "조선 후기",
+    "eraLabel": "조선 후기",
+    "sectionId": "s4",
+    "order": 46,
+    "questionCount": 134
+  },
+  {
+    "id": "s4-04",
+    "title": "종교와 학문",
+    "era": "조선 후기",
+    "eraLabel": "조선 후기",
+    "sectionId": "s4",
+    "order": 47,
+    "questionCount": 493
+  },
+  {
+    "id": "s4-05",
+    "title": "문화와 예술",
+    "era": "조선 후기",
+    "eraLabel": "조선 후기",
+    "sectionId": "s4",
+    "order": 48,
+    "questionCount": 157
+  },
+  {
+    "id": "s5-01",
+    "title": "흥선대원군과 개항기",
+    "era": "근대",
+    "eraLabel": "근대",
+    "sectionId": "s5",
+    "order": 49,
+    "questionCount": 362
+  },
+  {
+    "id": "s5-02",
+    "title": "️ 개화정책과 개화 반대 운동",
+    "era": "근대",
+    "eraLabel": "근대",
+    "sectionId": "s5",
+    "order": 50,
+    "questionCount": 219
+  },
+  {
+    "id": "s5-03",
+    "title": "동학농민운동과 갑오개혁/을미개혁",
+    "era": "근대",
+    "eraLabel": "근대",
+    "sectionId": "s5",
+    "order": 51,
+    "questionCount": 177
+  },
+  {
+    "id": "s5-04",
+    "title": "️ 대한제국과 국권 피탈",
+    "era": "근대",
+    "eraLabel": "근대",
+    "sectionId": "s5",
+    "order": 52,
+    "questionCount": 423
+  },
+  {
+    "id": "s5-05",
+    "title": "근대 문화와 시설",
+    "era": "근대",
+    "eraLabel": "근대",
+    "sectionId": "s5",
+    "order": 53,
+    "questionCount": 332
+  },
+  {
+    "id": "s6-01",
+    "title": "일제의 통치방식",
+    "era": "근대",
+    "eraLabel": "일제 강점기",
+    "sectionId": "s6",
+    "order": 54,
+    "questionCount": 205
+  },
+  {
+    "id": "s6-02",
+    "title": "3·1운동 이전 민족운동 (1910년대)",
+    "era": "근대",
+    "eraLabel": "일제 강점기",
+    "sectionId": "s6",
+    "order": 55,
+    "questionCount": 162
+  },
+  {
+    "id": "s6-03",
+    "title": "3·1운동 (1919)",
+    "era": "근대",
+    "eraLabel": "일제 강점기",
+    "sectionId": "s6",
+    "order": 56,
+    "questionCount": 56
+  },
+  {
+    "id": "s6-04",
+    "title": "대동단결선언서",
+    "era": "근대",
+    "eraLabel": "일제 강점기",
+    "sectionId": "s6",
+    "order": 57,
+    "questionCount": 145
+  },
+  {
+    "id": "s6-05",
+    "title": "실력양성운동",
+    "era": "근대",
+    "eraLabel": "일제 강점기",
+    "sectionId": "s6",
+    "order": 58,
+    "questionCount": 55
+  },
+  {
+    "id": "s6-06",
+    "title": "6·10만세운동 (1926)",
+    "era": "근대",
+    "eraLabel": "일제 강점기",
+    "sectionId": "s6",
+    "order": 59,
+    "questionCount": 47
+  },
+  {
+    "id": "s6-07",
+    "title": "광주 학생 항일 운동 (1929)",
+    "era": "근대",
+    "eraLabel": "일제 강점기",
+    "sectionId": "s6",
+    "order": 60,
+    "questionCount": 54
+  },
+  {
+    "id": "s6-08",
+    "title": "사회적 민족운동",
+    "era": "근대",
+    "eraLabel": "일제 강점기",
+    "sectionId": "s6",
+    "order": 61,
+    "questionCount": 113
+  },
+  {
+    "id": "s6-09",
+    "title": "신간회 (1927~1931)",
+    "era": "근대",
+    "eraLabel": "일제 강점기",
+    "sectionId": "s6",
+    "order": 62,
+    "questionCount": 70
+  },
+  {
+    "id": "s6-10",
+    "title": "무장 독립 투쟁",
+    "era": "근대",
+    "eraLabel": "일제 강점기",
+    "sectionId": "s6",
+    "order": 63,
+    "questionCount": 222
+  },
+  {
+    "id": "s6-11",
+    "title": "조선 민족 혁명당과 조선의용대",
+    "era": "근대",
+    "eraLabel": "일제 강점기",
+    "sectionId": "s6",
+    "order": 64,
+    "questionCount": 68
+  },
+  {
+    "id": "s6-12",
+    "title": "한국광복군 (1940)",
+    "era": "근대",
+    "eraLabel": "일제 강점기",
+    "sectionId": "s6",
+    "order": 65,
+    "questionCount": 97
+  },
+  {
+    "id": "s6-13",
+    "title": "일제의 식민지교육정책",
+    "era": "근대",
+    "eraLabel": "일제 강점기",
+    "sectionId": "s6",
+    "order": 66,
+    "questionCount": 26
+  },
+  {
+    "id": "s6-14",
+    "title": "국어 연구",
+    "era": "근대",
+    "eraLabel": "일제 강점기",
+    "sectionId": "s6",
+    "order": 67,
+    "questionCount": 69
+  },
+  {
+    "id": "s6-15",
+    "title": "민족사학",
+    "era": "근대",
+    "eraLabel": "일제 강점기",
+    "sectionId": "s6",
+    "order": 68,
+    "questionCount": 96
+  },
+  {
+    "id": "s6-16",
+    "title": "️ 종교활동",
+    "era": "근대",
+    "eraLabel": "일제 강점기",
+    "sectionId": "s6",
+    "order": 69,
+    "questionCount": 96
+  },
+  {
+    "id": "s6-17",
+    "title": "주요 사건 및 참고",
+    "era": "근대",
+    "eraLabel": "일제 강점기",
+    "sectionId": "s6",
+    "order": 70,
+    "questionCount": 58
+  },
+  {
+    "id": "s7-01",
+    "title": "️ 광복과 국내정세 변화",
+    "era": "현대",
+    "eraLabel": "현대",
+    "sectionId": "s7",
+    "order": 71,
+    "questionCount": 45
+  },
+  {
+    "id": "s7-02",
+    "title": "모스크바 삼국 외상 회의 (1945.12)",
+    "era": "현대",
+    "eraLabel": "현대",
+    "sectionId": "s7",
+    "order": 72,
+    "questionCount": 48
+  },
+  {
+    "id": "s7-03",
+    "title": "좌·우합작 운동 (1946)",
+    "era": "현대",
+    "eraLabel": "현대",
+    "sectionId": "s7",
+    "order": 73,
+    "questionCount": 41
+  },
+  {
+    "id": "s7-04",
+    "title": "️ 5·10 총선거 (1948.5)",
+    "era": "현대",
+    "eraLabel": "현대",
+    "sectionId": "s7",
+    "order": 74,
+    "questionCount": 80
+  },
+  {
+    "id": "s7-05",
+    "title": "️ 대한민국 정부 수립 (제1공화국)",
+    "era": "현대",
+    "eraLabel": "현대",
+    "sectionId": "s7",
+    "order": 75,
+    "questionCount": 55
+  },
+  {
+    "id": "s7-06",
+    "title": "한국 전쟁 (1950~1953)",
+    "era": "현대",
+    "eraLabel": "현대",
+    "sectionId": "s7",
+    "order": 76,
+    "questionCount": 21
+  },
+  {
+    "id": "s7-07",
+    "title": "이승만 정권 시대 개헌과 정치",
+    "era": "현대",
+    "eraLabel": "현대",
+    "sectionId": "s7",
+    "order": 77,
+    "questionCount": 90
+  },
+  {
+    "id": "s7-08",
+    "title": "️ 제2공화국 (1960.6~1961.5)",
+    "era": "현대",
+    "eraLabel": "현대",
+    "sectionId": "s7",
+    "order": 78,
+    "questionCount": 61
+  },
+  {
+    "id": "s7-09",
+    "title": "제3공화국",
+    "era": "현대",
+    "eraLabel": "현대",
+    "sectionId": "s7",
+    "order": 79,
+    "questionCount": 84
+  },
+  {
+    "id": "s7-10",
+    "title": "제4공화국 (유신체제, 1972~1979)",
+    "era": "현대",
+    "eraLabel": "현대",
+    "sectionId": "s7",
+    "order": 80,
+    "questionCount": 60
+  },
+  {
+    "id": "s7-11",
+    "title": "제5공화국",
+    "era": "현대",
+    "eraLabel": "현대",
+    "sectionId": "s7",
+    "order": 81,
+    "questionCount": 58
+  },
+  {
+    "id": "s7-12",
+    "title": "6월민주항쟁 (1987)",
+    "era": "현대",
+    "eraLabel": "현대",
+    "sectionId": "s7",
+    "order": 82,
+    "questionCount": 56
+  },
+  {
+    "id": "s7-13",
+    "title": "️ 제6공화국",
+    "era": "현대",
+    "eraLabel": "현대",
+    "sectionId": "s7",
+    "order": 83,
+    "questionCount": 119
+  },
+  {
+    "id": "s7-14",
+    "title": "남북관계",
+    "era": "현대",
+    "eraLabel": "현대",
+    "sectionId": "s7",
+    "order": 84,
+    "questionCount": 38
+  },
+  {
+    "id": "s7-15",
+    "title": "주요 사건 및 정책",
+    "era": "현대",
+    "eraLabel": "현대",
+    "sectionId": "s7",
+    "order": 85,
+    "questionCount": 64
+  },
+  {
+    "id": "s7-16",
+    "title": "유네스코 세계유산·기록유산",
+    "era": "현대",
+    "eraLabel": "현대",
+    "sectionId": "s7",
+    "order": 86,
+    "questionCount": 197
+  }
+]

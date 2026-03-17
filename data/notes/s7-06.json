@@ -1,0 +1,43 @@
+{
+  "id": "s7-06",
+  "title": "한국 전쟁 (1950~1953)",
+  "era": "현대",
+  "eraLabel": "현대",
+  "sectionId": "s7",
+  "content": "  <details open>\r\n    <summary>💥 한국 전쟁 (1950~1953)</summary>\r\n    <div class=\"content\">\r\n      <p><strong>전개 과정</strong></p>\r\n\r\n      <p><strong>① 북한의 남침과 초기 전황</strong></p>\r\n      <ul>\r\n        <li><span class=\"badge\">1950.6.25</span> 북한의 남침</li>\r\n        <li><span class=\"badge\">1950.6.28</span> 서울함락</li>\r\n        <li><span class=\"badge\">1950.6.27~7.1</span> 유엔군, 미지상군 참전</li>\r\n        <li><span class=\"badge\">1950.7.14</span> 국군 작전 지휘권 이양</li>\r\n        <li><span class=\"badge\">1950.8~9월</span> 낙동강 방어선 구축</li>\r\n      </ul>\r\n\r\n      <p><strong>② 국군/유엔군 반격</strong></p>\r\n      <ul>\r\n        <li><span class=\"badge\">1950.9.15</span> 인천상륙작전</li>\r\n        <li><span class=\"badge\">1950.9.28</span> 서울 수복</li>\r\n        <li><span class=\"badge\">1950.10.19</span> 평양 탈환</li>\r\n        <li><span class=\"badge\">1950.11월 중순</span> 압록강 최대 진격</li>\r\n      </ul>\r\n\r\n      <p><strong>③ 중공군 개입</strong></p>\r\n      <ul>\r\n        <li><span class=\"badge\">1950.12</span> 흥남 철수 작전</li>\r\n        <li><span class=\"badge\">1951.1.4 이후</span> 서울 함락 및 후퇴</li>\r\n        <li><span class=\"badge\">1951.3월</span> 서울 재탈환</li>\r\n        <li><span class=\"badge\">1951.6</span> 휴전 제의</li>\r\n        <li><span class=\"badge\">1953.10</span> 한·미상호 방위 조약 체결</li>\r\n      </ul>\r\n    </div>\r\n  </details>\r",
+  "relatedKeywords": [
+    "평양",
+    "조약",
+    "흥남 철수 작전",
+    "전쟁",
+    "인천",
+    "압록강",
+    "체결",
+    "유엔",
+    "전황"
+  ],
+  "relatedQuestionIds": [
+    8030,
+    11031,
+    18046,
+    25039,
+    27045,
+    29005,
+    34005,
+    34035,
+    37034,
+    38027,
+    42047,
+    47042,
+    51047,
+    52010,
+    53037,
+    56009,
+    61046,
+    66004,
+    68008,
+    69042,
+    70029
+  ],
+  "order": 76
+}

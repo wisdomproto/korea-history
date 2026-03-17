@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { getAllExams, getAllQuestionParams } from "@/lib/data";
+import { getAllNoteIds } from "@/lib/notes";
 
 export const dynamic = "force-static";
 
@@ -14,6 +15,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly",
       priority: 1.0,
+    },
+    {
+      url: `${BASE_URL}/study`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/study/custom`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/study/keyword`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: `${BASE_URL}/exam`,
@@ -63,5 +82,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...examPages, ...questionPages];
+  const noteIds = getAllNoteIds();
+  const notePages: MetadataRoute.Sitemap = noteIds.map((id) => ({
+    url: `${BASE_URL}/notes/${id}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...examPages, ...questionPages, ...notePages];
 }
