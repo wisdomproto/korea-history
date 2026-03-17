@@ -75,7 +75,7 @@ export default function ExamResultScreen() {
       totalQuestions: totalNum,
       completedAt: new Date().toISOString(),
     });
-  }, []);
+  }, [exam, userAnswers.length, questions]);
 
   // 시대별 통계
   const eraStats: Record<string, { correct: number; total: number }> = {};

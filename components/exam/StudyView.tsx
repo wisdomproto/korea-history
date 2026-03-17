@@ -46,6 +46,8 @@ interface StudyViewProps {
   /** Custom feedback renderer. When omitted, uses the default feedback box. */
   /** Custom feedback message for correct answers (e.g., "정답! 이 문제는 해결 처리되었습니다.") */
   correctFeedbackMessage?: string;
+  /** When provided, shows a "제출하기" button to finish study early */
+  onSubmit?: () => void;
 }
 
 export default function StudyView({
@@ -62,6 +64,7 @@ export default function StudyView({
   progressRight,
   progressSuffix,
   correctFeedbackMessage,
+  onSubmit,
 }: StudyViewProps) {
   const router = useRouter();
   const scrollRef = useRef<ScrollView>(null);
@@ -139,23 +142,47 @@ export default function StudyView({
 
         {/* Bottom bar */}
         <View style={styles.bottomBar}>
-          {showResult ? (
-            <Pressable style={styles.nextBtn} onPress={onNext}>
-              <Text style={styles.nextBtnText}>
-                {isLastQuestion ? '결과 보기' : '다음 문항'}
-              </Text>
-              {!isLastQuestion && (
-                <Ionicons name="arrow-forward" size={18} color="#fff" />
-              )}
-            </Pressable>
-          ) : hasSelected ? (
-            <Pressable style={styles.confirmBtn} onPress={onConfirm}>
-              <Ionicons name="eye" size={18} color="#fff" />
-              <Text style={styles.confirmBtnText}>정답 확인</Text>
-            </Pressable>
-          ) : (
-            <Text style={styles.hintText}>선지를 선택해주세요</Text>
-          )}
+          <View style={styles.bottomRow}>
+            {/* Left: confirm (small) or hint */}
+            {hasSelected && !showResult ? (
+              <Pressable style={styles.confirmBtn} onPress={onConfirm}>
+                <Ionicons name="eye" size={16} color="#fff" />
+                <Text style={styles.confirmBtnText}>정답 확인</Text>
+              </Pressable>
+            ) : !showResult ? (
+              <Text style={styles.hintText}>선지를 선택해주세요</Text>
+            ) : null}
+
+            {/* Center: submit (when available and not shown result) */}
+            {onSubmit && !showResult && (
+              <Pressable style={styles.submitMidBtn} onPress={onSubmit}>
+                <Text style={styles.submitMidBtnText}>제출하기</Text>
+              </Pressable>
+            )}
+
+            {/* Right: next/result */}
+            {showResult ? (
+              <Pressable style={styles.nextBtn} onPress={onNext}>
+                <Text style={styles.nextBtnText}>
+                  {isLastQuestion ? '결과 보기' : '다음 문항'}
+                </Text>
+                {!isLastQuestion && (
+                  <Ionicons name="arrow-forward" size={18} color="#fff" />
+                )}
+              </Pressable>
+            ) : (
+              <Pressable
+                style={[styles.skipBtn, !hasSelected && styles.skipBtnDisabled]}
+                onPress={onNext}
+                disabled={!hasSelected}
+              >
+                <Text style={[styles.skipBtnText, !hasSelected && styles.skipBtnTextDisabled]}>
+                  {isLastQuestion ? '결과 보기' : '다음'}
+                </Text>
+                <Ionicons name="arrow-forward" size={16} color={hasSelected ? COLORS.primary : COLORS.textLight} />
+              </Pressable>
+            )}
+          </View>
         </View>
       </View>
     </View>
@@ -211,33 +238,70 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
 
-  // Feedback
   // Bottom
   bottomBar: {
     backgroundColor: COLORS.surface,
     borderTopWidth: 1,
     borderTopColor: COLORS.border,
     paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingVertical: 10,
+  },
+  bottomRow: {
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 8,
   },
   confirmBtn: {
-    width: '100%',
-    paddingVertical: 14,
+    paddingVertical: 8,
+    paddingHorizontal: 14,
     borderRadius: RADIUS.sm,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#F59E0B',
     flexDirection: 'row',
-    gap: 6,
+    gap: 4,
   },
   confirmBtnText: {
     color: '#fff',
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: '700',
   },
+  skipBtn: {
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+    borderRadius: RADIUS.sm,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    backgroundColor: '#F1F0FF',
+  },
+  skipBtnDisabled: {
+    opacity: 0.4,
+  },
+  skipBtnText: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: COLORS.primary,
+  },
+  skipBtnTextDisabled: {
+    color: COLORS.textLight,
+  },
+  submitMidBtn: {
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+    borderRadius: RADIUS.sm,
+    backgroundColor: COLORS.surface,
+    borderWidth: 1,
+    borderColor: COLORS.primary,
+  },
+  submitMidBtnText: {
+    fontSize: 13,
+    fontWeight: '600',
+    color: COLORS.primary,
+  },
   nextBtn: {
-    width: '100%',
+    flex: 1,
     paddingVertical: 14,
     borderRadius: RADIUS.sm,
     alignItems: 'center',

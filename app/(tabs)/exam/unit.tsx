@@ -157,6 +157,7 @@ export default function UnitStudyScreen() {
         onConfirm={study.handleConfirm}
         onNext={study.handleNext}
         isLastQuestion={study.currentIndex >= study.questions.length - 1}
+        onSubmit={study.handleSubmit}
         progressColor={eraInfo?.color}
       />
     </>

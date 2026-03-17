@@ -40,6 +40,7 @@ export async function addWrongAnswers(
 
   for (const answer of answers) {
     if (answer.isCorrect) continue; // 맞은 문제는 스킵
+    if (answer.selectedAnswer == null) continue; // 미응답은 스킵
 
     const q = questionsData.find((q) => q.id === answer.questionId);
     if (!q) continue;
@@ -79,6 +80,30 @@ export async function resolveWrongNote(questionId: number, examId: number): Prom
     note.isResolved = true;
     await saveWrongNotes(notes);
   }
+}
+
+/** Batch update resolved status */
+export async function batchUpdateResolved(
+  keys: { questionId: number; examId: number }[],
+  isResolved: boolean,
+): Promise<void> {
+  const notes = await getWrongNotes();
+  for (const key of keys) {
+    const note = notes.find((n) => n.questionId === key.questionId && n.examId === key.examId);
+    if (note) note.isResolved = isResolved;
+  }
+  await saveWrongNotes(notes);
+}
+
+/** Batch delete wrong notes */
+export async function batchDeleteWrongNotes(
+  keys: { questionId: number; examId: number }[],
+): Promise<void> {
+  const notes = await getWrongNotes();
+  const filtered = notes.filter(
+    (n) => !keys.some((k) => k.questionId === n.questionId && k.examId === n.examId),
+  );
+  await saveWrongNotes(filtered);
 }
 
 // ─── 해설 캐시 ───

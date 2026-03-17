@@ -1,9 +1,12 @@
 import { useState, useCallback } from 'react';
 import { Question } from '@/lib/types';
+import { addWrongAnswers } from '@/lib/storage';
 
 interface UseStudyStateOptions {
   /** Called when the user answers correctly (e.g., resolve a wrong note) */
   onCorrect?: (question: Question) => void;
+  /** Set to false to skip automatic wrong-answer recording (default: true) */
+  recordWrong?: boolean;
 }
 
 export function useStudyState(options: UseStudyStateOptions = {}) {
@@ -31,8 +34,24 @@ export function useStudyState(options: UseStudyStateOptions = {}) {
     if (current && selectedAnswer === current.correctAnswer) {
       setCorrectCount((c) => c + 1);
       options.onCorrect?.(current);
+    } else if (current && selectedAnswer !== current.correctAnswer && options.recordWrong !== false) {
+      // Record wrong answer automatically
+      addWrongAnswers(current.examId, [
+        {
+          questionId: current.id,
+          questionNumber: current.questionNumber,
+          selectedAnswer,
+          isCorrect: false,
+        },
+      ], [{
+        id: current.id,
+        questionNumber: current.questionNumber,
+        correctAnswer: current.correctAnswer,
+        era: current.era,
+        category: current.category,
+      }]);
     }
-  }, [showResult, selectedAnswer, current, options.onCorrect]);
+  }, [showResult, selectedAnswer, current, options.onCorrect, options.recordWrong]);
 
   const handleNext = useCallback(() => {
     if (currentIndex < questions.length - 1) {
@@ -43,6 +62,11 @@ export function useStudyState(options: UseStudyStateOptions = {}) {
       setCompleted(true);
     }
   }, [currentIndex, questions.length]);
+
+  /** End study early — mark as completed */
+  const handleSubmit = useCallback(() => {
+    setCompleted(true);
+  }, []);
 
   /** Initialize or restart study with a new set of questions */
   const startStudy = useCallback((qs: Question[]) => {
@@ -65,6 +89,7 @@ export function useStudyState(options: UseStudyStateOptions = {}) {
     handleSelect,
     handleConfirm,
     handleNext,
+    handleSubmit,
     startStudy,
   };
 }

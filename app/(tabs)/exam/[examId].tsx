@@ -240,7 +240,9 @@ export default function ExamScreen() {
               <Text style={styles.confirmBtnText}>정답 확인</Text>
             </Pressable>
           ) : (
-            <View style={{ width: 1 }} />
+            <Pressable style={styles.submitButton} onPress={handleSubmit}>
+              <Text style={styles.submitButtonText}>제출하기</Text>
+            </Pressable>
           )}
 
           {currentIndex < totalQuestions - 1 ? (

@@ -340,6 +340,7 @@ export default function CustomStudyScreen() {
         onConfirm={study.handleConfirm}
         onNext={study.handleNext}
         isLastQuestion={study.currentIndex >= study.questions.length - 1}
+        onSubmit={study.handleSubmit}
       />
     </>
   );
