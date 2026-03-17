@@ -100,9 +100,9 @@ export default function ExamResultScreen() {
     }
   });
 
-  // 오답 문제 목록
+  // 오답 문제 목록 (미응답 제외)
   const wrongAnswers = userAnswers
-    .filter((a) => !a.isCorrect)
+    .filter((a) => !a.isCorrect && a.selectedAnswer != null)
     .map((a) => {
       const q = questions.find((q) => q.id === a.questionId);
       return { ...a, question: q };
