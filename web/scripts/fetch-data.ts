@@ -11,8 +11,8 @@ import path from "path";
 
 const R2_PUBLIC_URL = process.env.R2_PUBLIC_URL;
 if (!R2_PUBLIC_URL) {
-  console.error("ERROR: R2_PUBLIC_URL environment variable is required");
-  process.exit(1);
+  console.warn("WARN: R2_PUBLIC_URL not set — skipping R2 data fetch, using local fallback");
+  process.exit(0);
 }
 
 const CACHE_DIR = path.join(process.cwd(), ".data-cache");
