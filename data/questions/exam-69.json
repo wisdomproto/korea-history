@@ -81,7 +81,12 @@
       "id": 69003,
       "examId": 63,
       "questionNumber": 3,
-      "keywords": [],
+      "keywords": [
+        "동예",
+        "부여",
+        "삼한",
+        "옥저"
+      ],
       "explanation": "(가) : 동예\n(나) : 삼한\nㄱ. 옥저 ㄴ. 동예 ㄷ. 삼한 ㄹ. 부여",
       "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773490359735_31g555.png"
     },
@@ -156,7 +161,14 @@
       "id": 69006,
       "examId": 63,
       "questionNumber": 6,
-      "keywords": [],
+      "keywords": [
+        "고구려",
+        "고려",
+        "발해",
+        "백제",
+        "신라",
+        "통일"
+      ],
       "explanation": "3번- 경주 구황동 금제 여래 좌상, 통일신라시대 불상\n2번- 금동 연가 7년명 여래 입상, 고구려 대표 불상\n5번- 이불 병좌상, 고구려의 영향을 받은 발해 불상\n\n4번 백제의 청동여래 입상,15cm의 작은 불상\n\n1. 영주 부석사 소조여래좌상(고려)",
       "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773490395558_gt4bl8.png",
       "choiceImages": [
@@ -184,7 +196,10 @@
       "id": 69007,
       "examId": 63,
       "questionNumber": 7,
-      "keywords": [],
+      "keywords": [
+        "고구려",
+        "백제"
+      ],
       "explanation": "가 - 기벌포 전투\n나 - 백제 부흥 운동\n다 - 고구려 부흥 운동\n백제멸망 후 부흥 운동 → 고구려 멸망 후 부흥운동 → 매소성\n전투 기벌포 전투",
       "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773490458718_dhj40e.png"
     },
@@ -394,7 +409,10 @@
       "id": 69015,
       "examId": 63,
       "questionNumber": 15,
-      "keywords": [],
+      "keywords": [
+        "고려",
+        "공민왕"
+      ],
       "explanation": "조일신은 고려 공민왕 시기의 인물이고 해당 사건은 조일신의\n난에 대해 설명하는 글임\n따라서 공민왕 시기인 (마)가 정답\n\n공민왕 때 친원파 기철 숙청 (1356)",
       "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773490577645_hvcg98.png"
     },
@@ -415,7 +433,10 @@
       "id": 69016,
       "examId": 63,
       "questionNumber": 16,
-      "keywords": [],
+      "keywords": [
+        "고려",
+        "백제"
+      ],
       "explanation": "보기 - 고려후기\n1. 백제 금동대향로",
       "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773490589455_6tqpu2.png",
       "choiceImages": [
@@ -1263,7 +1284,18 @@
       "id": 69047,
       "examId": 63,
       "questionNumber": 47,
-      "keywords": [],
+      "keywords": [
+        "고려",
+        "고종",
+        "금위영",
+        "신라",
+        "어영청",
+        "장용영",
+        "정조",
+        "조선",
+        "통일",
+        "흥선대원군"
+      ],
       "explanation": "금위영(1682, 숙종)\n어영청 총융청 수어청(인조)\n\n(가):9서당 10정(통일 신라)\n(나):2군 6위(고려)\n(다):2영(조선 고종)\n(라):금위영(조선 숙종)\n\n정조때 조직된 국왕 친위부대는 <장용영>이며 흥선대원군때 통\n리기무아문 정책의 일환으로 5군영을 2영으로 통폐합하면서 생\n긴 것이 <무위영>과 <장어영>입니다.",
       "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773491040372_o6nrnr.png"
     },
