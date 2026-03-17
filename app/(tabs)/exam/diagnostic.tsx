@@ -1,15 +1,13 @@
 import { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 import { StyleSheet, View, Text, Pressable, ScrollView, SafeAreaView, ActivityIndicator } from 'react-native';
-import { showConfirm, showAlertWithCallback } from '@/lib/alert';
+import { showConfirm } from '@/lib/alert';
 import { useRouter, Stack } from 'expo-router';
 import { COLORS, ERAS, RADIUS, SHADOWS } from '@/lib/constants';
 import { useAllQuestions } from '@/hooks/useExamData';
 import { useExam } from '@/hooks/useExam';
-import { useTimer } from '@/hooks/useTimer';
 import { Question, Era } from '@/lib/types';
 import QuestionCard from '@/components/exam/QuestionCard';
 import ChoiceList from '@/components/exam/ChoiceList';
-import Timer from '@/components/exam/Timer';
 
 /** 시대별 균등 배분으로 20문항 선택 */
 function selectDiagnosticQuestions(allQuestions: Question[]): Question[] {
@@ -108,15 +106,6 @@ export default function DiagnosticScreen() {
     setShowResult(true);
   }, [submitExam, questions]);
 
-  const handleTimeUp = useCallback(() => {
-    showAlertWithCallback('시간 종료', '진단 시간이 종료되었습니다.\n결과를 확인합니다.', doSubmit);
-  }, [doSubmit]);
-
-  const { formattedTime, isWarning, progress } = useTimer({
-    totalMinutes: 5,
-    warningMinutes: 1,
-    onTimeUp: handleTimeUp,
-  });
 
   // 로딩 중
   if (allLoading || questions.length === 0) {
@@ -237,11 +226,10 @@ export default function DiagnosticScreen() {
       />
       <View style={styles.container}>
        <View style={styles.contentWrap}>
-        <Timer formattedTime={formattedTime} isWarning={isWarning} progress={progress} />
 
         <View style={styles.infoBar}>
           <Text style={styles.infoText}>
-            ⏱ 5분 진단 · 시대별 균등 출제 · {answeredCount}/{totalQuestions} 답변
+            시대별 균등 출제 · {answeredCount}/{totalQuestions} 답변
           </Text>
         </View>
 

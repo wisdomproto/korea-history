@@ -37,11 +37,10 @@ export default function ExamSelectScreen() {
     // 중간 저장 상태가 있는 경우 (US-08)
     if (savedExam && savedExam.examId === exam.id) {
       const answeredCount = savedExam.answers.filter((a) => a.selectedAnswer !== null).length;
-      const minutes = Math.floor(savedExam.remainingSeconds / 60);
 
       if (Platform.OS === 'web') {
         const resume = window.confirm(
-          `이전에 풀던 시험이 있습니다.\n(${answeredCount}문항 답변, 잔여 ${minutes}분)\n\n이어서 풀까요?\n\n확인 = 이어서 풀기 / 취소 = 처음부터`,
+          `이전에 풀던 시험이 있습니다.\n(${answeredCount}문항 답변)\n\n이어서 풀까요?\n\n확인 = 이어서 풀기 / 취소 = 처음부터`,
         );
         if (resume) {
           pushToExam(exam.id, true);
@@ -55,7 +54,7 @@ export default function ExamSelectScreen() {
 
       showThreeOption(
         '진행 중인 모의고사',
-        `이전에 풀던 시험이 있습니다.\n(${answeredCount}문항 답변, 잔여 ${minutes}분)\n\n이어서 풀까요?`,
+        `이전에 풀던 시험이 있습니다.\n(${answeredCount}문항 답변)\n\n이어서 풀까요?`,
         {
           option1: { text: '이어서 풀기', onPress: () => pushToExam(exam.id, true) },
           option2: { text: '처음부터', onPress: () => { clearSavedExam(); setSavedExam(null); pushToExam(exam.id); } },
@@ -106,7 +105,7 @@ export default function ExamSelectScreen() {
           </View>
           <Text style={styles.examDate}>{item.examDate}</Text>
           <Text style={styles.examMeta}>
-            {item.totalQuestions}문항 · {item.timeLimitMinutes}분
+            {item.totalQuestions}문항
           </Text>
         </View>
         {item.isFree ? (

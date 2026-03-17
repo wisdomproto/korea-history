@@ -33,7 +33,6 @@ export default function ExamResultScreen() {
     earnedPoints: string;
     totalPoints: string;
     answers: string;
-    autoSubmit: string;
   }>();
   const router = useRouter();
   const { data: { exam, questions }, isLoading: dataLoading } = useExamWithQuestions(Number(params.examId));
@@ -43,7 +42,6 @@ export default function ExamResultScreen() {
   const totalNum = Number(params.total);
   const earnedPoints = Number(params.earnedPoints || 0);
   const totalPoints = Number(params.totalPoints || 100);
-  const isAutoSubmit = params.autoSubmit === '1';
   const grade = exam ? getGrade(scoreNum, exam.examType) : '—';
   const isPassed = grade !== '불합격';
 
@@ -131,13 +129,6 @@ export default function ExamResultScreen() {
         style={styles.container}
         contentContainerStyle={styles.content}
       >
-        {/* 자동 제출 알림 */}
-        {isAutoSubmit && (
-          <View style={styles.autoSubmitBanner}>
-            <Text style={styles.autoSubmitText}>⏱ 시간 초과로 자동 제출되었습니다</Text>
-          </View>
-        )}
-
         {/* 점수 카드 */}
         <View style={styles.scoreCard}>
           <Text style={styles.examTitle}>
@@ -317,18 +308,6 @@ const styles = StyleSheet.create({
     maxWidth: 640,
     width: '100%',
     alignSelf: 'center',
-  },
-  autoSubmitBanner: {
-    backgroundColor: '#FFF3E0',
-    borderRadius: 10,
-    padding: 12,
-    marginBottom: 12,
-    alignItems: 'center',
-  },
-  autoSubmitText: {
-    fontSize: 13,
-    color: '#E65100',
-    fontWeight: '600',
   },
   scoreCard: {
     backgroundColor: COLORS.primary,

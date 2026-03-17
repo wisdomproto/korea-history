@@ -1,18 +1,16 @@
 import { useCallback, useRef, useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Pressable, ScrollView, AppState, ActivityIndicator } from 'react-native';
-import { showConfirm, showAlertWithCallback, showAlert } from '@/lib/alert';
+import { showConfirm } from '@/lib/alert';
 import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS, RADIUS, SHADOWS } from '@/lib/constants';
 import { useExamWithQuestions } from '@/hooks/useExamData';
 import { useExam } from '@/hooks/useExam';
-import { useTimer } from '@/hooks/useTimer';
 import { Question, UserAnswer } from '@/lib/types';
 import { getSavedExam, clearSavedExam, SavedExamState } from '@/lib/storage';
 import QuestionCard from '@/components/exam/QuestionCard';
 import ChoiceList from '@/components/exam/ChoiceList';
 import QuestionNav from '@/components/exam/QuestionNav';
-import Timer from '@/components/exam/Timer';
 import NotesModal, { eraSectionId, extractKeywords } from '@/components/NotesModal';
 import ExplanationSection from '@/components/exam/ExplanationSection';
 
@@ -82,7 +80,7 @@ export default function ExamScreen() {
     setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 100);
   }, [currentIndex]);
 
-  const doSubmit = useCallback((isAutoSubmit = false) => {
+  const doSubmit = useCallback(() => {
     if (hasSubmittedRef.current) return;
     hasSubmittedRef.current = true;
 
@@ -112,26 +110,10 @@ export default function ExamScreen() {
         earnedPoints: String(earnedPoints),
         totalPoints: String(totalPoints),
         answers: JSON.stringify(results),
-        autoSubmit: isAutoSubmit ? '1' : '0',
       },
     });
   }, [submitExam, questions, totalQuestions, exam, router]);
 
-  const handleTimeUp = useCallback(() => {
-    showAlertWithCallback('시간 종료', '시험 시간이 종료되었습니다.\n답안이 자동 제출됩니다.', () => doSubmit(true));
-  }, [doSubmit]);
-
-  const handleWarning = useCallback(() => {
-    showAlert('잔여 시간 알림', '남은 시간이 5분입니다.');
-  }, []);
-
-  const { formattedTime, isWarning, progress, remainingSeconds } = useTimer({
-    totalMinutes: exam?.timeLimitMinutes ?? 15,
-    initialSeconds: savedState?.remainingSeconds,
-    warningMinutes: 5,
-    onTimeUp: handleTimeUp,
-    onWarning: handleWarning,
-  });
 
   // 시험 ID 설정 + 자동 저장
   useEffect(() => {
@@ -143,22 +125,22 @@ export default function ExamScreen() {
     const subscription = AppState.addEventListener('change', (nextAppState) => {
       if (nextAppState === 'background' || nextAppState === 'inactive') {
         if (!hasSubmittedRef.current) {
-          saveState(remainingSeconds);
+          saveState(0);
         }
       }
     });
     return () => subscription.remove();
-  }, [saveState, remainingSeconds]);
+  }, [saveState]);
 
   // 30초마다 자동 저장
   useEffect(() => {
     const interval = setInterval(() => {
       if (!hasSubmittedRef.current) {
-        saveState(remainingSeconds);
+        saveState(0);
       }
     }, 30000);
     return () => clearInterval(interval);
-  }, [saveState, remainingSeconds]);
+  }, [saveState]);
 
   if (!isReady || dataLoading) {
     return (
@@ -183,7 +165,7 @@ export default function ExamScreen() {
       ? `아직 ${unanswered}문항을 풀지 않았습니다.\n그래도 제출하시겠습니까?`
       : '모의고사를 제출하시겠습니까?';
 
-    showConfirm('제출 확인', message, () => doSubmit(false), '제출하기');
+    showConfirm('제출 확인', message, () => doSubmit(), '제출하기');
   };
 
   return (
@@ -201,12 +183,6 @@ export default function ExamScreen() {
       />
       <View style={styles.container}>
        <View style={styles.contentWrap}>
-        <Timer
-          formattedTime={formattedTime}
-          isWarning={isWarning}
-          progress={progress}
-        />
-
         <View style={styles.navBar}>
           <QuestionNav
             answers={answers}
