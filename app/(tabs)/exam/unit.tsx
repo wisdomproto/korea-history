@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, ScrollView, Pressable, ActivityIndicator } from 'react-native';
 import { useRouter, useLocalSearchParams, Stack } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 import { COLORS, ERAS, RADIUS, SHADOWS } from '@/lib/constants';
 import { Era } from '@/lib/types';
 import { fetchAllQuestions } from '@/lib/examData';
@@ -44,7 +45,11 @@ export default function UnitStudyScreen() {
     if (!eraCountsLoaded) {
       return (
         <>
-          <Stack.Screen options={{ title: '단원별 학습' }} />
+          <Stack.Screen options={{ title: '단원별 학습', headerLeft: () => (
+            <Pressable onPress={() => router.navigate('/study')} style={{ padding: 4 }}>
+              <Ionicons name="chevron-back" size={24} color={COLORS.primary} />
+            </Pressable>
+          ) }} />
           <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: COLORS.background }}>
             <ActivityIndicator size="large" color={COLORS.primary} />
           </View>
@@ -54,7 +59,11 @@ export default function UnitStudyScreen() {
 
     return (
       <>
-        <Stack.Screen options={{ title: '단원별 학습' }} />
+        <Stack.Screen options={{ title: '단원별 학습', headerLeft: () => (
+            <Pressable onPress={() => router.navigate('/study')} style={{ padding: 4 }}>
+              <Ionicons name="chevron-back" size={24} color={COLORS.primary} />
+            </Pressable>
+          ) }} />
         <ScrollView style={styles.container} contentContainerStyle={styles.eraListContent}>
           <Text style={styles.eraHeader}>학습할 시대를 선택하세요</Text>
           <Text style={styles.eraSubheader}>
@@ -91,7 +100,11 @@ export default function UnitStudyScreen() {
   if (study.questions.length === 0) {
     return (
       <>
-        <Stack.Screen options={{ title: '단원별 학습' }} />
+        <Stack.Screen options={{ title: '단원별 학습', headerLeft: () => (
+            <Pressable onPress={() => router.navigate('/study')} style={{ padding: 4 }}>
+              <Ionicons name="chevron-back" size={24} color={COLORS.primary} />
+            </Pressable>
+          ) }} />
         <View style={styles.emptyContainer}>
           <Text style={styles.emptyIcon}>📭</Text>
           <Text style={styles.emptyTitle}>이 시대의 문제가 없습니다</Text>
@@ -108,7 +121,11 @@ export default function UnitStudyScreen() {
     const rate = Math.round((study.correctCount / study.questions.length) * 100);
     return (
       <>
-        <Stack.Screen options={{ title: '학습 완료' }} />
+        <Stack.Screen options={{ title: '학습 완료', headerLeft: () => (
+            <Pressable onPress={() => setSelectedEra(null)} style={{ padding: 4 }}>
+              <Ionicons name="chevron-back" size={24} color={COLORS.primary} />
+            </Pressable>
+          ) }} />
         <View style={styles.resultContainer}>
           <Text style={styles.resultIcon}>{rate >= 80 ? '🎉' : rate >= 60 ? '👍' : '💪'}</Text>
           <Text style={styles.resultTitle}>{eraInfo?.label} 학습 완료!</Text>
@@ -146,7 +163,11 @@ export default function UnitStudyScreen() {
   // ─── 문제 풀이 화면 ───
   return (
     <>
-      <Stack.Screen options={{ title: `${eraInfo?.label || '단원별'} 학습` }} />
+      <Stack.Screen options={{ title: `${eraInfo?.label || '단원별'} 학습`, headerLeft: () => (
+            <Pressable onPress={() => setSelectedEra(null)} style={{ padding: 4 }}>
+              <Ionicons name="chevron-back" size={24} color={COLORS.primary} />
+            </Pressable>
+          ) }} />
       <StudyView
         current={study.current!}
         currentIndex={study.currentIndex}

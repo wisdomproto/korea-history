@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { StyleSheet, View, Text, Pressable, TextInput, ActivityIndicator, SectionList } from 'react-native';
-import { Stack } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS, RADIUS, SHADOWS, ERAS } from '@/lib/constants';
 import { Question, Era } from '@/lib/types';
@@ -48,6 +48,7 @@ function koreanCompare(a: string, b: string): number {
 }
 
 export default function KeywordStudyScreen() {
+  const router = useRouter();
   const [step, setStep] = useState<Step>('select');
   const [keywordsMap, setKeywordsMap] = useState<Record<string, number[]>>({});
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
@@ -129,7 +130,11 @@ export default function KeywordStudyScreen() {
   if (loading) {
     return (
       <>
-        <Stack.Screen options={{ title: '키워드별 학습' }} />
+        <Stack.Screen options={{ title: '키워드별 학습', headerLeft: () => (
+            <Pressable onPress={() => router.navigate('/study')} style={{ padding: 4 }}>
+              <Ionicons name="chevron-back" size={24} color={COLORS.primary} />
+            </Pressable>
+          ) }} />
         <View style={styles.center}>
           <ActivityIndicator size="large" color={COLORS.primary} />
           <Text style={styles.loadingText}>키워드 불러오는 중...</Text>
@@ -142,7 +147,11 @@ export default function KeywordStudyScreen() {
   if (step === 'select') {
     return (
       <>
-        <Stack.Screen options={{ title: '키워드별 학습' }} />
+        <Stack.Screen options={{ title: '키워드별 학습', headerLeft: () => (
+            <Pressable onPress={() => router.navigate('/study')} style={{ padding: 4 }}>
+              <Ionicons name="chevron-back" size={24} color={COLORS.primary} />
+            </Pressable>
+          ) }} />
         <View style={styles.container}>
           <View style={styles.wrap}>
             {/* 검색바 */}
@@ -237,7 +246,11 @@ export default function KeywordStudyScreen() {
     const rate = Math.round((study.correctCount / study.questions.length) * 100);
     return (
       <>
-        <Stack.Screen options={{ title: '학습 완료' }} />
+        <Stack.Screen options={{ title: '학습 완료', headerLeft: () => (
+            <Pressable onPress={() => setStep('select')} style={{ padding: 4 }}>
+              <Ionicons name="chevron-back" size={24} color={COLORS.primary} />
+            </Pressable>
+          ) }} />
         <View style={styles.resultContainer}>
           <View style={styles.resultWrap}>
             <View style={styles.resultIconWrap}>
@@ -302,7 +315,11 @@ export default function KeywordStudyScreen() {
 
   return (
     <>
-      <Stack.Screen options={{ title: `'${selectedKeyword}' 학습` }} />
+      <Stack.Screen options={{ title: `'${selectedKeyword}' 학습`, headerLeft: () => (
+            <Pressable onPress={() => setStep('select')} style={{ padding: 4 }}>
+              <Ionicons name="chevron-back" size={24} color={COLORS.primary} />
+            </Pressable>
+          ) }} />
       <StudyView
         current={study.current}
         currentIndex={study.currentIndex}

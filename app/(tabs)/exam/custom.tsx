@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { StyleSheet, View, Text, ScrollView, Pressable, ActivityIndicator } from 'react-native';
-import { Stack } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS, ERAS, CATEGORIES, RADIUS, SHADOWS } from '@/lib/constants';
 import { Era, Category, Question } from '@/lib/types';
@@ -19,6 +19,7 @@ function parseLeaf(key: string): { era: Era; category: Category } {
 }
 
 export default function CustomStudyScreen() {
+  const router = useRouter();
   const [step, setStep] = useState<Step>('select');
   const [viewMode, setViewMode] = useState<ViewMode>('byEra');
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
@@ -131,7 +132,11 @@ export default function CustomStudyScreen() {
   if (loading) {
     return (
       <>
-        <Stack.Screen options={{ title: '맞춤형 학습' }} />
+        <Stack.Screen options={{ title: '맞춤형 학습', headerLeft: () => (
+            <Pressable onPress={() => router.navigate('/study')} style={{ padding: 4 }}>
+              <Ionicons name="chevron-back" size={24} color={COLORS.primary} />
+            </Pressable>
+          ) }} />
         <View style={styles.center}>
           <ActivityIndicator size="large" color={COLORS.primary} />
         </View>
@@ -151,7 +156,11 @@ export default function CustomStudyScreen() {
 
     return (
       <>
-        <Stack.Screen options={{ title: '맞춤형 학습' }} />
+        <Stack.Screen options={{ title: '맞춤형 학습', headerLeft: () => (
+            <Pressable onPress={() => router.navigate('/study')} style={{ padding: 4 }}>
+              <Ionicons name="chevron-back" size={24} color={COLORS.primary} />
+            </Pressable>
+          ) }} />
         <View style={styles.container}>
           {/* Mode toggle */}
           <View style={styles.modeToggle}>
@@ -290,7 +299,11 @@ export default function CustomStudyScreen() {
     const rate = Math.round((study.correctCount / study.questions.length) * 100);
     return (
       <>
-        <Stack.Screen options={{ title: '학습 완료' }} />
+        <Stack.Screen options={{ title: '학습 완료', headerLeft: () => (
+            <Pressable onPress={() => setStep('select')} style={{ padding: 4 }}>
+              <Ionicons name="chevron-back" size={24} color={COLORS.primary} />
+            </Pressable>
+          ) }} />
         <View style={styles.resultContainer}>
           <Ionicons
             name={rate >= 80 ? 'trophy' : rate >= 60 ? 'thumbs-up' : 'fitness'}
@@ -329,7 +342,11 @@ export default function CustomStudyScreen() {
 
   return (
     <>
-      <Stack.Screen options={{ title: '맞춤형 학습' }} />
+      <Stack.Screen options={{ title: '맞춤형 학습', headerLeft: () => (
+            <Pressable onPress={() => setStep('select')} style={{ padding: 4 }}>
+              <Ionicons name="chevron-back" size={24} color={COLORS.primary} />
+            </Pressable>
+          ) }} />
       <StudyView
         current={study.current}
         currentIndex={study.currentIndex}

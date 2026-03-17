@@ -133,10 +133,6 @@ export default function ReviewScreen() {
           if (!map.has(kw)) map.set(kw, []);
           map.get(kw)!.push(rq);
         });
-      } else {
-        const key = '키워드 없음';
-        if (!map.has(key)) map.set(key, []);
-        map.get(key)!.push(rq);
       }
     });
     return Array.from(map.entries())
@@ -437,6 +433,27 @@ export default function ReviewScreen() {
                 )}
               </View>
 
+              {/* Selection action bar */}
+              {selectMode && selected.size > 0 && (
+                <View style={styles.selectionBar}>
+                  <Text style={styles.selectionCount}>{selected.size}개 선택</Text>
+                  <View style={styles.selectionActions}>
+                    <Pressable style={styles.selActionBtn} onPress={handleBatchResolve}>
+                      <Ionicons name="checkmark-circle" size={18} color="#22C55E" />
+                      <Text style={[styles.selActionText, { color: '#22C55E' }]}>해결</Text>
+                    </Pressable>
+                    <Pressable style={styles.selActionBtn} onPress={handleBatchUnresolve}>
+                      <Ionicons name="close-circle" size={18} color="#EF4444" />
+                      <Text style={[styles.selActionText, { color: '#EF4444' }]}>미해결</Text>
+                    </Pressable>
+                    <Pressable style={styles.selActionBtn} onPress={handleBatchDelete}>
+                      <Ionicons name="trash" size={18} color="#EF4444" />
+                      <Text style={[styles.selActionText, { color: '#EF4444' }]}>삭제</Text>
+                    </Pressable>
+                  </View>
+                </View>
+              )}
+
               {/* Question list */}
               <ScrollView style={styles.listScroll} contentContainerStyle={styles.listContent}>
                 {filteredQuestions.length === 0 ? (
@@ -503,27 +520,6 @@ export default function ReviewScreen() {
                   })
                 )}
               </ScrollView>
-
-              {/* Selection action bar */}
-              {selectMode && selected.size > 0 && (
-                <View style={styles.selectionBar}>
-                  <Text style={styles.selectionCount}>{selected.size}개 선택</Text>
-                  <View style={styles.selectionActions}>
-                    <Pressable style={styles.selActionBtn} onPress={handleBatchResolve}>
-                      <Ionicons name="checkmark-circle" size={18} color="#22C55E" />
-                      <Text style={[styles.selActionText, { color: '#22C55E' }]}>해결</Text>
-                    </Pressable>
-                    <Pressable style={styles.selActionBtn} onPress={handleBatchUnresolve}>
-                      <Ionicons name="close-circle" size={18} color="#EF4444" />
-                      <Text style={[styles.selActionText, { color: '#EF4444' }]}>미해결</Text>
-                    </Pressable>
-                    <Pressable style={styles.selActionBtn} onPress={handleBatchDelete}>
-                      <Ionicons name="trash" size={18} color="#EF4444" />
-                      <Text style={[styles.selActionText, { color: '#EF4444' }]}>삭제</Text>
-                    </Pressable>
-                  </View>
-                </View>
-              )}
             </>
           )}
 
