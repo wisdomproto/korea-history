@@ -225,10 +225,8 @@
       "questionNumber": 8,
       "keywords": [
         "백제 문화",
-        "신라",
         "서역",
-        "가야 문화",
-        "발해"
+        "가야 문화"
       ],
       "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773563284351_2rmnqg.png",
       "explanation": "크리스키노 성 유적 출토 연꽃무늬 수막새 -> 고구려의 수막새\n무늬와 유사함\n콕사로프카 평지성 온돌 유적 -> 고구려 온돌과 유사함\n=> 이를 통해 고구려와 발해의 연관성을 확인 가능함\n*참고*\n크리스키노 성 -> 현재 러시아 연해주 크리스키노 지역이며 과\n거 발해 영토\n콕샤로프카 평지성 -> 현재 러시아 연해주 중북부 지역이며 과\n거 발해 영토"
@@ -304,7 +302,6 @@
       "questionNumber": 11,
       "keywords": [
         "강감찬",
-        "고려",
         "귀주대첩",
         "서희"
       ],
@@ -354,9 +351,6 @@
       "id": 66013,
       "examId": 60,
       "questionNumber": 13,
-      "keywords": [
-        "고려"
-      ],
       "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773563326210_twx9r4.png",
       "explanation": "강화도 천도는 몽골(원) 침략에 의한 것이다.\n양규: 거란(요)\n윤관: 여진(금)\n김윤후, 송문주: 몽골(원)\n따라서 정답은 3번"
     },
@@ -576,7 +570,6 @@
       "keywords": [
         "왜란",
         "정묘호란",
-        "조선",
         "호란"
       ],
       "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773563396591_s221al.png",
@@ -1117,7 +1110,6 @@
       "keywords": [
         "신민회",
         "의열단",
-        "임시정부",
         "한인애국단"
       ]
     },
@@ -1270,7 +1262,6 @@
       "id": 66046,
       "examId": 60,
       "questionNumber": 47,
-      "keywords": [],
       "explanation": "IMF외환위기 1997",
       "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773564506995_qhbs5u.png"
     },

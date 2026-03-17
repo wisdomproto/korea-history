@@ -304,9 +304,6 @@
       "id": 65011,
       "examId": 59,
       "questionNumber": 11,
-      "keywords": [
-        "고려"
-      ],
       "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773570515724_x2244q.png",
       "explanation": "고려 성종 - 12목 설치\n\n성종 → 목종 → 현종\n1009년 강조의 정변으로 현종이 즉위합니다."
     },
@@ -707,8 +704,6 @@
       "examId": 59,
       "questionNumber": 26,
       "keywords": [
-        "고려",
-        "발해",
         "삼별초",
         "세종",
         "왜란",
@@ -892,8 +887,7 @@
       "keywords": [
         "고종",
         "의병",
-        "의열단",
-        "조선"
+        "의열단"
       ]
     },
     {

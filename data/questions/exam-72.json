@@ -812,7 +812,6 @@
       "id": 72029,
       "examId": 66,
       "questionNumber": 29,
-      "keywords": [],
       "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773477801500_kq4ah8.png",
       "explanation": "ㄷ = 동아일보\nㄹ = 한성주보"
     },
@@ -1045,7 +1044,6 @@
       "id": 72038,
       "examId": 66,
       "questionNumber": 38,
-      "keywords": [],
       "imageUrl": "https://pub-777d764118c647a2a715fb0b17072419.r2.dev/images/img_1773477890739_oql3bs.png",
       "explanation": "키워드= 신한촌\n신한촌은 연해주(러시아)에서 권업회-대한광복군 정부(이상설)-\n대한국민의회\n세울스키야= 러시아말이 떠오르죠? 그럼 연해주(러시아) 고르시\n면 됩니다."
     },
@@ -1281,11 +1279,8 @@
       "examId": 66,
       "questionNumber": 47,
       "keywords": [
-        "고려",
         "과전법",
-        "신라",
         "전시과",
-        "조선",
         "직전법",
         "통일"
       ],
@@ -1362,10 +1357,8 @@
       "examId": 66,
       "questionNumber": 50,
       "keywords": [
-        "고려",
         "고인돌",
         "공민왕",
-        "백제",
         "삼별초",
         "서원",
         "이성계",
