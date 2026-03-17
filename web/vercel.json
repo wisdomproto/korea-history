@@ -1,5 +1,0 @@
-{
-  "buildCommand": "node scripts/fetch-data.mjs && next build",
-  "outputDirectory": "out",
-  "framework": "nextjs"
-}
