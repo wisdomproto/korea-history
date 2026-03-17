@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "prebuild": "npx tsx scripts/fetch-data.ts",
-    "build": "npx tsx scripts/fetch-data.ts && next build",
+    "build": "node scripts/fetch-data.mjs && next build",
     "start": "next start"
   },
   "keywords": [],
