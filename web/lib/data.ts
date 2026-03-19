@@ -224,6 +224,75 @@ export function getQuestionsByIds(
   return questionIds.map((qId) => lookup.get(qId)).filter(Boolean) as any[];
 }
 
+/** Get era×category cross-tabulation for custom study selector. */
+export function getEraCategoryCounts(): {
+  eras: Era[];
+  categories: string[];
+  /** counts[era][category] = number of questions */
+  counts: Record<string, Record<string, number>>;
+  /** questionIds[era][category] = [examNumber*1000+questionNumber, ...] */
+  questionIds: Record<string, Record<string, number[]>>;
+  totalByEra: Record<string, number>;
+  totalByCategory: Record<string, number>;
+} {
+  const allExams = getAllExams();
+  const counts: Record<string, Record<string, number>> = {};
+  const questionIds: Record<string, Record<string, number[]>> = {};
+  const totalByEra: Record<string, number> = {};
+  const totalByCategory: Record<string, number> = {};
+
+  for (const era of ERA_ORDER) {
+    counts[era] = {};
+    questionIds[era] = {};
+    totalByEra[era] = 0;
+    for (const cat of CATEGORY_ORDER) {
+      counts[era][cat] = 0;
+      questionIds[era][cat] = [];
+    }
+  }
+  for (const cat of CATEGORY_ORDER) {
+    totalByCategory[cat] = 0;
+  }
+
+  for (const { exam, questions } of allExams) {
+    for (const q of questions) {
+      const qId = exam.examNumber * 1000 + q.questionNumber;
+      if (counts[q.era] && counts[q.era][q.category] !== undefined) {
+        counts[q.era][q.category]++;
+        questionIds[q.era][q.category].push(qId);
+        totalByEra[q.era]++;
+        totalByCategory[q.category]++;
+      }
+    }
+  }
+
+  return {
+    eras: [...ERA_ORDER],
+    categories: [...CATEGORY_ORDER],
+    counts,
+    questionIds,
+    totalByEra,
+    totalByCategory,
+  };
+}
+
+/** Get full Question objects by composite IDs (examNumber*1000+questionNumber). */
+export function getFullQuestionsByIds(
+  ids: number[]
+): { question: Question; examNumber: number }[] {
+  const allExams = getAllExams();
+  const lookup = new Map<number, { question: Question; examNumber: number }>();
+  for (const { exam, questions } of allExams) {
+    for (const q of questions) {
+      lookup.set(exam.examNumber * 1000 + q.questionNumber, {
+        question: q,
+        examNumber: exam.examNumber,
+      });
+    }
+  }
+  return ids.map((id) => lookup.get(id)).filter(Boolean) as { question: Question; examNumber: number }[];
+}
+
 /** Get all questions across all exams (for sitemap / static params). */
 export function getAllQuestionParams(): {
   examNumber: number;
