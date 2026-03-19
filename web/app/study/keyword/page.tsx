@@ -12,13 +12,11 @@ export const metadata: Metadata = {
 export default function KeywordStudyPage() {
   const keywords = getAllKeywords();
 
-  // Serialize for client component
   const keywordsData = keywords.map((k) => ({
     keyword: k.keyword,
     era: k.era,
     count: k.questionIds.length,
-    firstExamNumber: Math.floor(k.questionIds[0] / 1000),
-    firstQuestionNumber: k.questionIds[0] % 1000,
+    questionIds: k.questionIds,
   }));
 
   return (
@@ -32,7 +30,7 @@ export default function KeywordStudyPage() {
 
       <h1 className="text-xl font-extrabold text-slate-900 mb-0.5">키워드별 풀기</h1>
       <p className="text-slate-500 text-[13px] mb-4">
-        {keywords.length.toLocaleString()}개 키워드 중 선택하여 관련 문제를 풀어보세요
+        키워드를 선택하여 관련 문제를 풀어보세요 ({keywords.length.toLocaleString()}개)
       </p>
 
       <KeywordList keywords={keywordsData} />

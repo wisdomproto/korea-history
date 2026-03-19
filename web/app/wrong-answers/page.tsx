@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo, useCallback } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   getWrongAnswers,
   saveWrongAnswers,
@@ -13,6 +14,7 @@ type StatusFilter = "all" | "unresolved" | "resolved";
 type AnalysisTab = "era" | "category";
 
 export default function WrongAnswersPage() {
+  const router = useRouter();
   const [answers, setAnswers] = useState<WrongAnswer[]>([]);
   const [mounted, setMounted] = useState(false);
   const [mainTab, setMainTab] = useState<MainTab>("all");
@@ -142,12 +144,22 @@ export default function WrongAnswersPage() {
           </span>
         </div>
         {unresolvedCount > 0 && (
-          <Link
-            href="/study"
+          <button
+            onClick={() => {
+              const unresolved = answers.filter((a) => !a.resolved);
+              const ids = unresolved.map((a) => a.examNumber * 1000 + a.questionNumber);
+              const shuffled = ids.sort(() => Math.random() - 0.5).slice(0, 100);
+              sessionStorage.setItem("studySession", JSON.stringify({
+                ids: shuffled,
+                title: "오답 복습",
+                totalAvailable: ids.length,
+              }));
+              router.push("/study/session");
+            }}
             className="ml-auto rounded-full bg-indigo-500 px-3 py-1.5 text-xs font-semibold text-white hover:bg-indigo-600 transition-colors"
           >
             미해결 복습 ({unresolvedCount})
-          </Link>
+          </button>
         )}
       </div>
 
@@ -305,14 +317,19 @@ export default function WrongAnswersPage() {
                     </button>
                   )}
 
-                  <Link
-                    href={`/exam/${answer.examNumber}/${answer.questionNumber}`}
-                    className="flex flex-1 items-center p-3 min-w-0"
-                    onClick={(e) => {
+                  <button
+                    className="flex flex-1 items-center p-3 min-w-0 text-left"
+                    onClick={() => {
                       if (editMode) {
-                        e.preventDefault();
                         toggleSelect(answer.questionId);
+                        return;
                       }
+                      const id = answer.examNumber * 1000 + answer.questionNumber;
+                      sessionStorage.setItem("studySession", JSON.stringify({
+                        ids: [id],
+                        title: `오답 복습 — 제${answer.examNumber}회 ${answer.questionNumber}번`,
+                      }));
+                      router.push("/study/session");
                     }}
                   >
                     <div className="flex-1 min-w-0">
@@ -345,7 +362,7 @@ export default function WrongAnswersPage() {
                         {answer.resolved ? "해결" : "미해결"}
                       </span>
                     </div>
-                  </Link>
+                  </button>
                 </div>
               );
             })}
@@ -413,13 +430,20 @@ export default function WrongAnswersPage() {
                   {/* Preview questions */}
                   <div className="space-y-1">
                     {items.slice(0, 3).map((a) => (
-                      <Link
+                      <button
                         key={a.questionId}
-                        href={`/exam/${a.examNumber}/${a.questionNumber}`}
-                        className="block text-xs text-slate-500 hover:text-indigo-600 line-clamp-1 transition-colors"
+                        onClick={() => {
+                          const id = a.examNumber * 1000 + a.questionNumber;
+                          sessionStorage.setItem("studySession", JSON.stringify({
+                            ids: [id],
+                            title: `오답 복습 — 제${a.examNumber}회 ${a.questionNumber}번`,
+                          }));
+                          router.push("/study/session");
+                        }}
+                        className="block w-full text-left text-xs text-slate-500 hover:text-indigo-600 line-clamp-1 transition-colors"
                       >
                         {a.examNumber}회 {a.questionNumber}번: {a.questionContent}
-                      </Link>
+                      </button>
                     ))}
                     {count > 3 && (
                       <p className="text-[10px] text-slate-400">
