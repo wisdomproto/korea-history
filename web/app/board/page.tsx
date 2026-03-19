@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Metadata } from "next";
 import BoardTabs from "./BoardTabs";
 
@@ -7,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function BoardPage() {
-  return <BoardTabs />;
+  return (
+    <Suspense fallback={<div className="py-20 text-center text-slate-400">불러오는 중...</div>}>
+      <BoardTabs />
+    </Suspense>
+  );
 }
