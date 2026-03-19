@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { href: "/study", label: "학습하기" },
   { href: "/notes", label: "요약노트" },
   { href: "/wrong-answers", label: "오답노트" },
+  { href: "/board", label: "게시판" },
 ];
 
 export default function Header() {
