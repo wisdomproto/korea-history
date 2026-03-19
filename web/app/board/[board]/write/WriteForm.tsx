@@ -63,114 +63,121 @@ export default function WriteForm({ board, label }: Props) {
         ]}
       />
 
-      <h1 className="text-xl font-black text-slate-800 mt-2 mb-5">글쓰기</h1>
+      <div className="mt-3 mb-5">
+        <h1 className="text-xl font-black text-slate-800">글쓰기</h1>
+        <p className="text-sm text-slate-400 mt-0.5">{label}</p>
+      </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Nickname */}
-        <div>
-          <label className="block text-sm font-semibold text-slate-600 mb-1.5">
-            닉네임
-          </label>
-          <input
-            type="text"
-            value={nickname}
-            onChange={(e) => setNickname(e.target.value)}
-            placeholder="닉네임을 입력하세요"
-            maxLength={20}
-            required
-            disabled={isNotice}
-            className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-[15px] text-slate-800 placeholder:text-slate-300 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100 disabled:bg-slate-50"
-          />
-        </div>
-
-        {/* Title */}
-        <div>
-          <label className="block text-sm font-semibold text-slate-600 mb-1.5">
-            제목
-          </label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="제목을 입력하세요"
-            maxLength={100}
-            required
-            className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-[15px] text-slate-800 placeholder:text-slate-300 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100"
-          />
-        </div>
-
-        {/* Content */}
-        <div>
-          <label className="block text-sm font-semibold text-slate-600 mb-1.5">
-            내용
-          </label>
-          <textarea
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            placeholder="내용을 입력하세요"
-            maxLength={5000}
-            required
-            rows={10}
-            className="w-full rounded-xl border border-slate-200 px-4 py-3 text-[15px] text-slate-800 placeholder:text-slate-300 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100 resize-y"
-          />
-          <p className="text-xs text-slate-400 mt-1 text-right">
-            {content.length}/5000
-          </p>
-        </div>
-
-        {/* Password */}
-        {isNotice ? (
+        <div className="rounded-2xl border border-slate-200/80 bg-white p-5 space-y-4 card-shadow">
+          {/* Nickname */}
           <div>
-            <label className="block text-sm font-semibold text-slate-600 mb-1.5">
-              관리자 비밀번호
+            <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wide">
+              닉네임
             </label>
             <input
-              type="password"
-              value={adminPassword}
-              onChange={(e) => setAdminPassword(e.target.value)}
-              placeholder="관리자 비밀번호를 입력하세요"
+              type="text"
+              value={nickname}
+              onChange={(e) => setNickname(e.target.value)}
+              placeholder="닉네임을 입력하세요"
+              maxLength={20}
               required
-              className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-[15px] text-slate-800 placeholder:text-slate-300 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+              disabled={isNotice}
+              className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-[15px] text-slate-800 placeholder:text-slate-300 focus:bg-white focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100 disabled:bg-slate-100 disabled:text-slate-400 transition-colors"
             />
           </div>
-        ) : (
+
+          {/* Title */}
           <div>
-            <label className="block text-sm font-semibold text-slate-600 mb-1.5">
-              글 비밀번호
-              <span className="font-normal text-slate-400 ml-1">
-                (삭제 시 필요)
-              </span>
+            <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wide">
+              제목
             </label>
             <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="4자 이상"
-              minLength={4}
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="제목을 입력하세요"
+              maxLength={100}
               required
-              className="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-[15px] text-slate-800 placeholder:text-slate-300 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+              className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-[15px] text-slate-800 placeholder:text-slate-300 focus:bg-white focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100 transition-colors"
             />
           </div>
-        )}
+
+          {/* Content */}
+          <div>
+            <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wide">
+              내용
+            </label>
+            <textarea
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              placeholder="내용을 입력하세요"
+              maxLength={5000}
+              required
+              rows={10}
+              className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-3 text-[15px] text-slate-800 placeholder:text-slate-300 focus:bg-white focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100 resize-y transition-colors"
+            />
+            <p className="text-[11px] text-slate-300 mt-1 text-right font-medium">
+              {content.length} / 5,000
+            </p>
+          </div>
+        </div>
+
+        {/* Password section */}
+        <div className="rounded-2xl border border-slate-200/80 bg-white p-5 card-shadow">
+          {isNotice ? (
+            <div>
+              <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wide">
+                관리자 비밀번호
+              </label>
+              <input
+                type="password"
+                value={adminPassword}
+                onChange={(e) => setAdminPassword(e.target.value)}
+                placeholder="관리자 비밀번호를 입력하세요"
+                required
+                className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-[15px] text-slate-800 placeholder:text-slate-300 focus:bg-white focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100 transition-colors"
+              />
+            </div>
+          ) : (
+            <div>
+              <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wide">
+                글 비밀번호
+              </label>
+              <p className="text-[11px] text-slate-400 mb-2">
+                나중에 글을 삭제할 때 필요합니다
+              </p>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="4자 이상 입력"
+                minLength={4}
+                required
+                className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-[15px] text-slate-800 placeholder:text-slate-300 focus:bg-white focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100 transition-colors"
+              />
+            </div>
+          )}
+        </div>
 
         {error && (
-          <p className="text-sm font-medium text-red-500 bg-red-50 rounded-xl px-4 py-2.5">
-            {error}
-          </p>
+          <div className="rounded-xl bg-red-50 border border-red-200 px-4 py-3">
+            <p className="text-sm font-medium text-red-600">{error}</p>
+          </div>
         )}
 
-        <div className="flex gap-2 pt-2">
+        <div className="flex gap-2.5 pt-1">
           <button
             type="button"
             onClick={() => router.back()}
-            className="flex-1 rounded-xl border border-slate-200 py-3 text-[15px] font-bold text-slate-500 hover:bg-slate-50 transition-colors"
+            className="flex-1 rounded-xl border border-slate-200 py-3.5 text-[15px] font-bold text-slate-400 hover:bg-slate-50 transition-colors"
           >
             취소
           </button>
           <button
             type="submit"
             disabled={submitting}
-            className="flex-1 btn-primary !rounded-xl !py-3 text-[15px] disabled:opacity-50"
+            className="flex-1 btn-primary !rounded-xl !py-3.5 text-[15px] disabled:opacity-50"
           >
             {submitting ? "등록 중..." : "등록"}
           </button>
