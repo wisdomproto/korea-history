@@ -136,15 +136,12 @@ export default function StudySession() {
       </div>
 
       {/* Question info */}
-      <div className="flex items-center gap-2 mb-2">
-        <span className="rounded-md bg-indigo-50 px-2 py-0.5 text-[11px] font-bold text-indigo-600">
-          {q.era}
+      <div className="flex items-baseline gap-2 mb-2">
+        <span className="text-xl font-black text-indigo-500">
+          {q.questionNumber}.
         </span>
-        <span className="rounded-md bg-slate-100 px-2 py-0.5 text-[11px] font-bold text-slate-500">
-          {q.category}
-        </span>
-        <span className="text-[11px] text-slate-300 ml-auto">
-          제{q.examNumber}회 {q.questionNumber}번 · {q.points}점
+        <span className="text-sm font-medium text-slate-400">
+          [{q.points}점]
         </span>
       </div>
 

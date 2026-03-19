@@ -78,22 +78,14 @@ export default async function QuestionPage({ params }: Props) {
       />
 
       {/* Question header */}
-      <div className="flex items-baseline gap-2 mb-1 mt-4">
+      <div className="flex items-baseline gap-2 mb-4 mt-4">
         <span className="text-2xl font-black text-indigo-500">
-          Q{questionNumber}
+          {questionNumber}.
         </span>
         <span className="text-sm font-medium text-slate-400">
-          / {totalQuestions}
-        </span>
-        <span className="ml-auto rounded-full bg-indigo-50 px-2.5 py-0.5 text-[11px] font-semibold text-indigo-600">
-          {question.era}
+          [{question.points}점]
         </span>
       </div>
-      <p className="text-xs text-slate-400 mb-4">
-        제{examNumber}회 &middot;{" "}
-        {exam.examType === "advanced" ? "심화" : "기본"} &middot;{" "}
-        {question.points}점 &middot; {question.category}
-      </p>
 
       {/* Question card */}
       <QuestionWithTracking
