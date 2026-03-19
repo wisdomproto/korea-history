@@ -43,6 +43,11 @@ export default function QuestionCard({
 
   return (
     <div>
+      {/* Question content */}
+      <p className="mb-4 text-[15px] font-medium leading-[26px] text-slate-800">
+        {question.content}
+      </p>
+
       {/* Passage image */}
       {question.imageUrl && (
         <div className="passage-box mb-4">
@@ -54,11 +59,6 @@ export default function QuestionCard({
           />
         </div>
       )}
-
-      {/* Question content */}
-      <p className="mb-4 text-[15px] font-medium leading-[26px] text-slate-800">
-        {question.content}
-      </p>
 
       {/* Choices */}
       <div className="space-y-2.5 mb-4">
