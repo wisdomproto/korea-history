@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
@@ -6,11 +5,12 @@ import {
   getNoteById,
   getAdjacentNotes,
 } from "@/lib/notes";
-import { getQuestionsByIds } from "@/lib/data";
+import { getNoteLectures } from "@/lib/note-lectures";
 import { breadcrumbJsonLd } from "@/lib/seo";
 import BreadCrumb from "@/components/BreadCrumb";
 import PrevNextNav from "@/components/PrevNextNav";
 import NoteContent from "./NoteContent";
+import NoteActions from "./NoteActions";
 
 interface Props {
   params: Promise<{ noteId: string }>;
@@ -47,10 +47,7 @@ export default async function NotePage({ params }: Props) {
 
   const { prev, next } = getAdjacentNotes(noteId);
 
-  // Get sample related questions (first 20) — uses cached bulk lookup
-  const relatedQuestions = getQuestionsByIds(
-    note.relatedQuestionIds.slice(0, 20)
-  );
+  const lectures = getNoteLectures(noteId);
 
   const breadcrumbs = [
     { name: "홈", href: "/" },
@@ -90,53 +87,49 @@ export default async function NotePage({ params }: Props) {
       {/* Note content with expand/collapse */}
       <NoteContent html={note.content} />
 
-      {/* Ad placeholder 1 - mid content */}
-      <div className="ad-placeholder my-5" data-ad-slot="note-mid">
-        광고 영역
-      </div>
-
-      {/* Related questions */}
-      {relatedQuestions.length > 0 && (
+      {/* Lecture videos */}
+      {lectures.length > 0 && (
         <div className="mt-6">
           <h2 className="text-sm font-bold text-slate-800 mb-3 flex items-center gap-1.5">
-            <span className="text-base">📝</span>
-            관련 기출문제 ({note.relatedQuestionIds.length}문제)
+            <svg className="w-4 h-4 text-red-500" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>
+              <path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="white"/>
+            </svg>
+            관련 강의
+            <span className="text-xs font-normal text-slate-400">최태성 1TV</span>
           </h2>
-          <div className="space-y-1.5">
-            {relatedQuestions.map((q) =>
-              q ? (
-                <Link
-                  key={`${q.examNumber}-${q.questionNumber}`}
-                  href={`/exam/${q.examNumber}/${q.questionNumber}`}
-                  className="card card-interactive flex items-center justify-between !rounded-xl px-3.5 py-2.5 text-sm"
-                >
-                  <div className="flex items-center gap-2 min-w-0">
-                    <span className="shrink-0 text-xs font-medium text-slate-400">
-                      {q.examNumber}회 {q.questionNumber}번
-                    </span>
-                    <span className="text-slate-700 line-clamp-1">
-                      {q.content}
-                    </span>
-                  </div>
-                  <span className="text-xs text-slate-400 shrink-0 ml-2">
-                    {q.points}점
-                  </span>
-                </Link>
-              ) : null
-            )}
-            {note.relatedQuestionIds.length > 20 && (
-              <p className="text-center text-xs text-slate-400 mt-2">
-                외 {note.relatedQuestionIds.length - 20}문제 더
-              </p>
-            )}
+          <div className="space-y-2">
+            {lectures.map((lec, i) => (
+              <div key={i} className="rounded-2xl overflow-hidden border border-slate-200 bg-white">
+                <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                  <iframe
+                    className="absolute inset-0 w-full h-full"
+                    src={`https://www.youtube.com/embed/${lec.videoId}?rel=0`}
+                    title={lec.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+                <div className="px-4 py-2.5 flex items-center justify-between">
+                  <span className="text-sm font-semibold text-slate-700">{lec.title}</span>
+                  <span className="text-xs text-slate-400">{Math.floor(lec.duration / 60)}분</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}
 
-      {/* Ad placeholder 2 - bottom */}
-      <div className="ad-placeholder my-5" data-ad-slot="note-bottom">
+      {/* Ad placeholder */}
+      <div className="ad-placeholder my-5" data-ad-slot="note-mid">
         광고 영역
       </div>
+
+      {/* Related questions — study session button */}
+      <NoteActions
+        questionIds={note.relatedQuestionIds}
+        noteTitle={note.title}
+      />
 
       <PrevNextNav
         prev={
