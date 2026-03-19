@@ -142,7 +142,7 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
             한국사 저작도구
           </h1>
           <a
-            href="http://localhost:8081"
+            href={window.location.hostname === 'localhost' ? 'http://localhost:8081' : 'https://korea-history.vercel.app/'}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-lg bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600 transition-colors hover:bg-primary-100 hover:text-primary-700"
