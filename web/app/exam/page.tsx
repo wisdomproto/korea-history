@@ -34,17 +34,13 @@ export default function ExamListPage() {
             className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white p-4 card-shadow hover:card-shadow-md hover:border-indigo-300 transition-all"
           >
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-sm font-black text-indigo-600">
-                {exam.examNumber}
-              </div>
-              <div>
-                <span className="font-bold text-[15px] text-slate-900">
-                  제{exam.examNumber}회
-                </span>
-                <span className="ml-2 rounded-full bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">
-                  {exam.examType === "advanced" ? "심화" : "기본"}
-                </span>
-              </div>
+              <span className="text-2xl">📝</span>
+              <span className="font-bold text-[15px] text-slate-900">
+                제{exam.examNumber}회
+              </span>
+              <span className="rounded-full bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">
+                {exam.examType === "advanced" ? "심화" : "기본"}
+              </span>
             </div>
             <div className="flex items-center">
               <svg className="h-4 w-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
