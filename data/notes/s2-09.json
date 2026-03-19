@@ -4,7 +4,7 @@
   "era": "고려",
   "eraLabel": "고려",
   "sectionId": "s2",
-  "content": "  <details>\r\n    <summary><strong>👥 고려 사회·신분 구조</strong></summary>\r\n    <div class=\"content\">\r\n      <ul>\r\n        <li><strong>문벌귀족:</strong> 과거 + 음서로 관직 독점, 대토지 소유, 혼인 관계로 권력 유지</li>\r\n        <li><strong>중류층:</strong> 향리·서리·남반·잡류 (실무 행정 담당, 과거 응시 가능)</li>\r\n        <li><strong>양민(백정):</strong> 일반 농민 (고려의 백정 = 일반 양인, 조선과 다름). 조세·공납·역 부담</li>\r\n        <li><strong>향·부곡·소 주민:</strong> 특수 행정구역 거주, 일반 양민보다 낮은 지위, 거주이전 제한</li>\r\n        <li><strong>노비:</strong> 공노비(관청 소속)/사노비(개인 소속), 솔거노비(주인집 거주)/외거노비(독립 거주, 신공 납부)</li>\r\n        <li><strong>일천즉천:</strong> 부모 중 한쪽이 노비면 자녀도 노비 (노비 증가 원인)</li>\r\n      </ul>\r\n    </div>\r\n  </details>\r",
+  "content": "<details><summary><strong>👥 고려 사회·신분 구조 및 시대 변화</strong></summary><div class=\"content\">\n\n    <details class=\"sub-details\"><summary>고려 시대 구분 및 지배 세력</summary><div class=\"content\">\n        <div class=\"note\">⚡ 고려 500년 역사는 <span class=\"keyword\">무신정변</span>(1170년)을 기점으로 전기/후기로 크게 나뉘며, 각 시기별 <span class=\"highlight\">역사 주도 세력</span>을 중심으로 이해하는 것이 중요합니다.</div>\n        <table>\n            <thead>\n                <tr>\n                    <th>시기</th>\n                    <th>기간</th>\n                    <th>주요 지배 세력</th>",
   "relatedKeywords": [
     "고려",
     "백정",

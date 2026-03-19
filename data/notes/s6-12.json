@@ -4,7 +4,7 @@
   "era": "근대",
   "eraLabel": "일제 강점기",
   "sectionId": "s6",
-  "content": "  <details open>\r\n    <summary>🏆 한국광복군 (1940)</summary>\r\n    <div class=\"content\">\r\n      <p><strong>조직</strong></p>\r\n      <ul>\r\n        <li>임시정부 산하</li>\r\n        <li><strong>총사령관</strong>: 지청천</li>\r\n        <li><strong>김원봉</strong>: 조선의용대 흡수/통합 (1942)</li>\r\n      </ul>\r\n\r\n      <p><strong>정파 통합</strong></p>\r\n      <ul>\r\n        <li>한국국민당 (김구)</li>\r\n        <li>한국독립당 (조소앙)</li>\r\n        <li>조선혁명당 (지청천) - 잔여세력</li>\r\n        <li>의열단 중심 세력 (김원봉)</li>\r\n      </ul>\r\n\r\n      <p><strong>주요 활동</strong></p>\r\n      <ul>\r\n        <li>대일/대독 선전포고문 발표</li>\r\n        <li>영국군의 요청으로 인도/미얀마 전선 활동</li>\r\n        <li>국내 진공 작전: 미국 부대 (OSS)와 연합 → 일본 항복으로 실패</li>\r\n      </ul>\r\n\r\n      <p><span class=\"note\">충칭, 조소앙의 '삼균주의' (개인, 민족, 국가)</span></p>\r\n\r\n      <p><strong>특별 활동</strong></p>\r\n      <ul>\r\n        <li><span class=\"badge\">1928</span> 조명하 의사: 타이완에서 일본 육군 대장 저격</li>\r\n        <li><span class=\"badge\">1941.12</span> 호가장 전투</li>\r\n      </ul>\r\n    </div>\r\n  </details>\r",
+  "content": "<details><summary><strong>🚫 한국광복군 (1940)</strong></summary><div class=\"content\">\n    <div class=\"note\">⚡ 제공된 강의 자막에는 '한국광복군 (1940)'에 대한 내용이 포함되어 있지 않습니다. 자막 내용은 1910년대 일제강점기 무단통치(헌병 경찰, 토지 조사 사업, 회사령 등)에 관한 것입니다.</div>\n</div></details>",
   "relatedKeywords": [
     "삼균주의",
     "의열단",

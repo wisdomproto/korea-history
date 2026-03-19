@@ -4,7 +4,7 @@
   "era": "조선 전기",
   "eraLabel": "조선 전기",
   "sectionId": "s3",
-  "content": "  <details>\r\n    <summary><strong>💰 수취 체제 (전세·공납·역)</strong></summary>\r\n    <div class=\"content\">\r\n      <h4>전세 (토지세)</h4>\r\n      <ul>\r\n        <li>과전법 → 직전법 → 관수관급제로 변화</li>\r\n        <li><strong>공법 (세종):</strong> 전분 6등법(토지 비옥도) + 연분 9등법(풍흉) → 세금 차등 징수</li>\r\n      </ul>\r\n      <h4>공납 (특산물)</h4>\r\n      <ul>\r\n        <li>각 지역 특산물을 현물로 납부</li>\r\n        <li><strong>방납의 폐해:</strong> 중간 상인(방납업자)이 특산물을 대신 납부하고 농민에게 수십 배 이익 취함</li>\r\n        <li>→ 해결책: <span class=\"keyword\">대동법</span> (쌀로 통일 납부)</li>\r\n      </ul>\r\n      <h4>역 (노동력)</h4>\r\n      <ul>\r\n        <li><strong>군역:</strong> 정군(현역 복무) + 보인(군포 부담)</li>\r\n        <li><strong>요역:</strong> 토목공사 등 노동력 징발</li>\r\n        <li><strong>방군수포:</strong> 군역 대신 포(布)를 납부하는 관행 → 군정 문란의 원인</li>\r\n        <li><strong>대립:</strong> 타인에게 군역을 대신시키는 관행</li>\r\n        <li>→ 해결책: <span class=\"keyword\">균역법</span> (군포 2필→1필 감소)</li>\r\n      </ul>\r\n      <h4>조운제</h4>\r\n      <ul>\r\n        <li>지방에서 거둔 조세를 서울로 운반하기 위한 교통로 (조창 → 경창)</li>\r\n      </ul>\r\n    </div>\r\n  </details>\r",
+  "content": "<details><summary><strong>💰 수취 체제 (전세·공납·역)</strong></summary><div class=\"content\">\n    <div class=\"note\">⚡ 본 요약노트는 제공된 \"현재 노트 내용 (참고용)\" 및 \"관련 키워드\"를 기반으로 작성되었습니다. 제공된 YouTube 강의 자막은 해당 주제를 다루지 않습니다.</div>\n\n    <details class=\"sub-details\"><summary>전세 (<span class=\"keyword\">토지세</span>)</summary><div class=\"content\">\n        <p>토지에 부과되는 세금으로, 시대에 따라 <span class=\"keyword\">변화</span>했습니다.</p>\n        <table>\n            <thead>\n                <tr>\n                    <th>시기",
   "relatedKeywords": [
     "균역법",
     "대동법",

@@ -4,7 +4,7 @@
   "era": "조선 전기",
   "eraLabel": "조선 전기",
   "sectionId": "s3",
-  "content": "  <details>\r\n    <summary><strong>⚔️ 조선 군사 제도</strong></summary>\r\n    <div class=\"content\">\r\n      <h4>중앙군 - 5위</h4>\r\n      <ul>\r\n        <li>의흥위·용양위·호분위·충좌위·충무위 (5위)</li>\r\n        <li><span class=\"keyword\">양인개병제</span>: 16~60세 양인 남자의 군역 의무</li>\r\n        <li>정군(현역) + 보인(비용 부담) 체제</li>\r\n      </ul>\r\n      <h4>지방군</h4>\r\n      <ul>\r\n        <li><strong>병마절도사</strong> (육군) / <strong>수군절도사</strong> (수군) 지휘</li>\r\n        <li><strong><span class=\"keyword\">진관 체제</span>:</strong> 각 고을 단위로 방어 체제 구축 (세조)</li>\r\n        <li><strong><span class=\"keyword\">제승방략 체제</span>:</strong> 유사시 지역별 장수가 지정 지역에 집결하는 방어 체계 → 임진왜란 때 한계 노출</li>\r\n        <li><strong>잡색군:</strong> 예비군 성격 (일종의 향토 방위)</li>\r\n      </ul>\r\n      <h4>교통·통신</h4>\r\n      <ul>\r\n        <li><strong>봉수제:</strong> 봉화로 변방 정보를 한양(남산)까지 전달</li>\r\n        <li><strong>역원제:</strong> 전국에 역참 설치, 마패를 이용한 공문서·물자 전달</li>\r\n        <li><strong>조운제:</strong> 조세를 배로 운반 (조창 → 경창)</li>\r\n      </ul>\r\n    </div>\r\n  </details>\r",
+  "content": "<details><summary><strong>⚔️ 조선 군사 제도</strong></summary><div class=\"content\">\n    <p>⚡ <strong>주의:</strong> 제공된 강의 자막은 '조선 군사 제도'가 아닌 '조선 전기 외교 정책' 및 '광해군 대외 정책'에 대한 내용입니다. 아래 요약은 자막 내용에 따라 작성되었습니다.</p>\n\n    <details class=\"sub-details\"><summary>조선 전기 외교 정책: 사대교린</summary><div class=\"content\">\n        <p><span class=\"keyword\">조선</span> 전기의 외교 정책은 크게 <span class=\"highlight\">사대(事大)</span>와 <span class=\"highlight\">교린(交隣",
   "relatedKeywords": [
     "임진왜란",
     "조선",

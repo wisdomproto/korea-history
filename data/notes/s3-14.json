@@ -4,7 +4,7 @@
   "era": "조선 전기",
   "eraLabel": "조선 전기",
   "sectionId": "s3",
-  "content": "  <details>\r\n    <summary><strong>🏫 서원과 향약</strong></summary>\r\n    <div class=\"content\">\r\n      <details class=\"sub-details\">\r\n        <summary>서원</summary>\r\n        <div class=\"content\">\r\n          <ul>\r\n            <li><strong>시작:</strong> 주세붕의 백운동 서원 → 이황의 건의로 소수서원으로 사액</li>\r\n            <li><strong>기능:</strong> 사림세력의 후진 양성 (교육), 사림의 여론 형성 주도, 선현 제사, 유학교육 담당</li>\r\n          </ul>\r\n        </div>\r\n      </details>\r\n      <details class=\"sub-details\">\r\n        <summary>향약</summary>\r\n        <div class=\"content\">\r\n          <ul>\r\n            <li><strong>시행:</strong> 중종 때 조광조가 처음 시행 (4대덕목) → 이황/이이에 의해 널리 보급</li>\r\n            <li><strong>목표:</strong> 향촌 사회의 질서 유지, 사림 세력의 지위 강화 (지방 농민 지배 강화)</li>\r\n            <li><strong>직위:</strong> 도약정 (향약의 수장), 부약정, 약문/약계/약법</li>\r\n          </ul>\r\n        </div>\r\n      </details>\r\n    </div>\r\n  </details>\r",
+  "content": "<details><summary><strong>🏫 서원과 향약</strong></summary><div class=\"content\">\n    <div class=\"note\">⚡ 제공된 YouTube 강의 자막에는 <span class=\"keyword\">서원</span>과 <span class=\"keyword\">향약</span>에 대한 내용이 포함되어 있지 않습니다. 따라서 해당 주제에 대한 요약 노트는 강의 자막을 기반으로 작성할 수 없습니다.</div>\n</div></details>\n<details><summary><strong>🔑 시험 핵심 키워드</strong></summary><div class=\"content\">\n    <table>\n        <thead>\n            <tr>\n                <th>키워드</th>\n                <th>강의 자막 내용</th>\n            </tr>\n        </thead>\n        <tbody>\n            <tr>\n                <td><span class=\"keyword\">조광조</span></td>\n                <td>강의 자막에",
   "relatedKeywords": [
     "조광조",
     "백운동 서원",

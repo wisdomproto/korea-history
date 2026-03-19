@@ -4,7 +4,7 @@
   "era": "조선 전기",
   "eraLabel": "조선 전기",
   "sectionId": "s3",
-  "content": "  <details>\r\n    <summary><strong>🗺️ 지방 행정 조직</strong></summary>\r\n    <div class=\"content\">\r\n      <ul>\r\n        <li><strong>행정구역:</strong> 전국 8도 / 부·목·군·현 설치 (향·소·부곡 등 특수행정 구역 폐지)</li>\r\n        <li><strong>관찰사:</strong> 각 도의 최고 책임자, 감찰·포평권 보유, 행정/사법/군사권 행사, <span class=\"keyword\">임기 1년</span></li>\r\n        <li><strong>수령:</strong> 모든 군현에 파견 (행정/사법/군사권 보유), <span class=\"keyword\">임기 5년</span>, <span class=\"keyword\">상피제</span>(본적지 부임 금지)</li>\r\n        <li><strong><span class=\"keyword\">수령칠사</span>:</strong> 수령의 7가지 임무 — 농업·호구·학교·군정·부역·소송·간활</li>\r\n        <li><strong>향리:</strong> 수령의 행정 실무 보조, 이·호·예·병·형·공 <span class=\"keyword\">육방</span> 구성</li>\r\n        <li><strong>유향소:</strong> 향촌 자치 기구 (이시애의 난 후 폐지되었다가 성종 때 다시 부활)</li>\r\n        <li><strong>경재소:</strong> 정부와 유향소의 연락 기구 (수령 보좌/향리 비리 감찰)</li>\r\n      </ul>\r\n    </div>\r\n  </details>\r",
+  "content": "<details>\n    <summary><strong>🗺️ 지방 행정 조직</strong></summary>\n    <div class=\"content\">\n        <p><span class=\"highlight\">조선 시대</span>는 <span class=\"highlight\">중앙집권 체제 강화</span>를 목표로 지방 행정 조직을 정비했습니다. 고려 시대의 특수 행정 구역을 폐지하고 모든 군현에 지방관을 파견하여 국가의 통제력을 높였습니다.</p>\n\n        <details class=\"sub-details\">\n            <summary>조선 시대 지방 행정 체제</summary>\n            <div class=\"content\">\n                <table>\n                    <thead>\n                        <tr>\n                            <th>구분</th>\n                            <th>내용</th>\n                        </tr>",
   "relatedKeywords": [
     "유향소",
     "이시애의 난",
