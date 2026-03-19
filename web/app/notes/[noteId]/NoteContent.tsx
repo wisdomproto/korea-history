@@ -13,6 +13,13 @@ export default function NoteContent({ html }: NoteContentProps) {
   const [currentMatch, setCurrentMatch] = useState(0);
   const [showSearch, setShowSearch] = useState(false);
 
+  // Auto-expand all on mount
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.querySelectorAll("details").forEach((d) => d.setAttribute("open", ""));
+    }
+  }, []);
+
   const expandAll = useCallback(() => {
     if (!contentRef.current) return;
     contentRef.current.querySelectorAll("details").forEach((d) => d.setAttribute("open", ""));
