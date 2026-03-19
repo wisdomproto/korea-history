@@ -6,6 +6,7 @@ import { questionMeta, questionJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import BreadCrumb from "@/components/BreadCrumb";
 import QuestionWithTracking from "@/components/QuestionWithTracking";
 import QuestionNav from "@/components/QuestionNav";
+import PrevNextNav from "@/components/PrevNextNav";
 
 interface Props {
   params: Promise<{ examNumber: string; questionNumber: string }>;
@@ -99,6 +100,21 @@ export default async function QuestionPage({ params }: Props) {
         question={question}
         exam={exam}
         youtube={getYouTubeTimestamp(examNumber, questionNumber)}
+      />
+
+      {/* Bottom prev/next navigation */}
+      <PrevNextNav
+        prev={
+          questionNumber > 1
+            ? { href: `/exam/${examNumber}/${questionNumber - 1}`, label: `${questionNumber - 1}번` }
+            : undefined
+        }
+        next={
+          questionNumber < totalQuestions
+            ? { href: `/exam/${examNumber}/${questionNumber + 1}`, label: `${questionNumber + 1}번` }
+            : undefined
+        }
+        center={{ href: `/exam/${examNumber}/1`, label: `제${examNumber}회 전체` }}
       />
     </div>
   );
