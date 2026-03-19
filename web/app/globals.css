@@ -454,28 +454,50 @@
   }
 
   .note-content table {
-    font-size: 12px;
-    border-collapse: collapse;
+    font-size: 13px;
+    border-collapse: separate;
+    border-spacing: 0;
     width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(120, 100, 80, 0.1);
+    margin: 12px 0;
   }
 
   .note-content th {
     background: linear-gradient(135deg, #FF9800 0%, #FFB74D 100%);
     color: white;
-    padding: 10px 12px;
+    padding: 10px 14px;
     font-weight: 700;
     font-size: 12px;
-    text-transform: uppercase;
     letter-spacing: 0.02em;
+    text-align: center;
+    white-space: nowrap;
+    border-bottom: 2px solid rgba(230, 81, 0, 0.2);
   }
 
   .note-content td {
-    padding: 8px 10px;
-    border: 1px solid rgba(120, 100, 80, 0.08);
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(120, 100, 80, 0.06);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  .note-content tr:last-child td {
+    border-bottom: none;
   }
 
   .note-content tr:nth-child(even) td {
-    background: rgba(120, 100, 80, 0.02);
+    background: rgba(255, 248, 240, 0.5);
+  }
+
+  .note-content tr:hover td {
+    background: rgba(255, 243, 224, 0.6);
+  }
+
+  .note-content td:first-child {
+    font-weight: 600;
+    color: #4A3728;
   }
 
   .note-content .badge {
