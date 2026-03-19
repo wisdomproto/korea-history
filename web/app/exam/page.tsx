@@ -41,20 +41,12 @@ export default function ExamListPage() {
                 <span className="font-bold text-[15px] text-slate-900">
                   제{exam.examNumber}회
                 </span>
-                <div className="flex items-center gap-2 mt-0.5">
-                  <span className="text-xs text-slate-400">
-                    {exam.examDate}
-                  </span>
-                  <span className="rounded-full bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">
-                    {exam.examType === "advanced" ? "심화" : "기본"}
-                  </span>
-                </div>
+                <span className="ml-2 rounded-full bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">
+                  {exam.examType === "advanced" ? "심화" : "기본"}
+                </span>
               </div>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-400 font-medium">
-                {exam.totalQuestions}문제
-              </span>
+            <div className="flex items-center">
               <svg className="h-4 w-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
