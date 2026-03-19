@@ -4,7 +4,7 @@
   "era": "조선 전기",
   "eraLabel": "조선 전기",
   "sectionId": "s3",
-  "content": "<details><summary><strong>🔄 환국 (경신/기사/갑술)</strong></summary><div class=\"content\">\n<details class=\"sub-details\"><summary>환국(換局)이란?</summary><div class=\"content\">\n<ul>\n    <li><span class=\"highlight\">숙종</span>이 <span class=\"keyword\">왕권 강화</span>를 위해 <span class=\"keyword\">집권 붕당</span>을 일시에 교체한 정치적 <span class=\"keyword\">사건</span>.</li>\n    <li><span class=\"highlight\">일당 전제 형태의 정국 운영</span>을 특징으로 함.</li>\n</ul>\n</div></details>\n\n<details class=\"sub-details\"><summary>주요 환국 사건",
+  "content": "<details>\n    <summary><strong>🔄 환국 (경신/기사/갑술)</strong></summary>\n    <div class=\"content\">\n        <p>\n            <span class=\"keyword\">환국</span>은 조선 후기 <span class=\"keyword\">숙종</span> 대에 발생한 정치적 <span class=\"keyword\">사건</span>으로, 국왕이 특정 <span class=\"keyword\">붕당</span>을 일시에 제거하고 다른 붕당을 집권시키는 방식으로 정국을 전환한 것을 의미합니다. 이는 <span class=\"keyword\">왕권 강화</span>를 위한 국왕의 주도적인 정치 행위였으나, 결과적으로는 붕당 간의 대립을 격화시키고 정치가 파벌 싸움으로 변질되는 계기가 되었습니다.\n        </p>\n\n        <div class=\"note\">\n            ⚡ <span class=\"keyword\">환국</span>은 <span class",
   "relatedKeywords": [
     "서인",
     "사건",

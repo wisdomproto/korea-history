@@ -54,9 +54,19 @@
     ],
     "s1-06": [
       {
-        "videoId": "jCb3qpAgmtE",
-        "title": "Paleolithic and Neolithic Ages",
-        "duration": 1196
+        "videoId": "xLLKlOotHOI",
+        "title": "고구려의 건국",
+        "duration": 1442
+      },
+      {
+        "videoId": "hkn_kdFTZjA",
+        "title": "백제",
+        "duration": 1778
+      },
+      {
+        "videoId": "OLJluLGCV5g",
+        "title": "신라",
+        "duration": 1297
       }
     ],
     "s1-07": [
@@ -97,40 +107,45 @@
     ],
     "s1-10": [
       {
-        "videoId": "jCb3qpAgmtE",
-        "title": "Paleolithic and Neolithic Ages",
-        "duration": 1196
+        "videoId": "MsHxozx2WWM",
+        "title": "유학",
+        "duration": 1008
+      },
+      {
+        "videoId": "HHTWSVdbd68",
+        "title": "불교",
+        "duration": 1073
       }
     ],
     "s1-11": [
       {
-        "videoId": "OWWiWQsn_cE",
-        "title": "가야",
-        "duration": 439
-      },
-      {
-        "videoId": "hkn_kdFTZjA",
-        "title": "백제",
-        "duration": 1778
-      },
-      {
-        "videoId": "iWEvjMOOUMY",
-        "title": "통일신라(전기)",
-        "duration": 1475
+        "videoId": "RUGqfW-3lX0",
+        "title": "고분",
+        "duration": 762
       }
     ],
     "s1-12": [
       {
-        "videoId": "jCb3qpAgmtE",
-        "title": "Paleolithic and Neolithic Ages",
-        "duration": 1196
+        "videoId": "0A60xaCDMpg",
+        "title": "불상·불탑",
+        "duration": 1142
+      },
+      {
+        "videoId": "cgeegBCUfjo",
+        "title": "탑",
+        "duration": 428
       }
     ],
     "s1-13": [
       {
-        "videoId": "jCb3qpAgmtE",
-        "title": "Paleolithic and Neolithic Ages",
-        "duration": 1196
+        "videoId": "0A60xaCDMpg",
+        "title": "불상·불탑",
+        "duration": 1142
+      },
+      {
+        "videoId": "QfTmhGIuNLs",
+        "title": "불상·회화",
+        "duration": 917
       }
     ],
     "s2-01": [
