@@ -402,38 +402,48 @@
 
   /* ─── Note content styling ─── */
   .note-content {
-    background: white;
-    border: 1px solid rgba(120, 100, 80, 0.08);
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 0 1px 3px rgba(120, 100, 80, 0.04), 0 4px 12px rgba(120, 100, 80, 0.06);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
   }
 
   .note-content details {
-    margin: 8px 0;
-    border-radius: 12px;
-    border: 1px solid rgba(120, 100, 80, 0.08);
+    margin: 10px 0;
+    border-radius: 14px;
+    border: 1px solid rgba(120, 100, 80, 0.1);
     overflow: hidden;
     transition: all 0.2s ease;
+    background: white;
   }
 
   .note-content details[open] {
-    border-color: rgba(120, 100, 80, 0.15);
-    box-shadow: 0 2px 8px rgba(120, 100, 80, 0.06);
+    border-color: rgba(255, 152, 0, 0.2);
+    box-shadow: 0 2px 12px rgba(255, 152, 0, 0.08);
+  }
+
+  .note-content details[open] > summary {
+    background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+    border-bottom: 1px solid rgba(255, 152, 0, 0.15);
+    border-radius: 14px 14px 0 0;
+    color: #E65100;
   }
 
   .note-content summary {
-    padding: 12px 14px;
+    padding: 14px 16px;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 14px;
     color: #1E293B;
+    border-radius: 14px;
     background: linear-gradient(135deg, rgba(120, 100, 80, 0.03) 0%, rgba(129, 140, 248, 0.05) 100%);
     transition: all 0.15s ease;
   }
 
   .note-content summary:hover {
-    background: linear-gradient(135deg, rgba(120, 100, 80, 0.06) 0%, rgba(129, 140, 248, 0.08) 100%);
+    background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
   }
 
   .note-content .content {
@@ -450,10 +460,13 @@
   }
 
   .note-content th {
-    background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%);
+    background: linear-gradient(135deg, #FF9800 0%, #FFB74D 100%);
     color: white;
-    padding: 8px 10px;
-    font-weight: 600;
+    padding: 10px 12px;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
   }
 
   .note-content td {
@@ -467,17 +480,18 @@
 
   .note-content .badge {
     display: inline-block;
-    background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%);
+    background: linear-gradient(135deg, #FF9800 0%, #FFB74D 100%);
     color: white;
-    padding: 2px 8px;
-    border-radius: 6px;
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-size: 12px;
     font-size: 11px;
     font-weight: 600;
     margin-right: 4px;
   }
 
   .note-content .keyword {
-    color: #4F46E5;
+    color: #E65100;
     font-weight: 700;
   }
 
@@ -498,7 +512,7 @@
   }
 
   .note-content .timeline {
-    border-left: 3px solid #818CF8;
+    border-left: 3px solid #FFB74D;
     padding-left: 16px;
     margin: 8px 0;
   }

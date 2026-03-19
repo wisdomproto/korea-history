@@ -95,17 +95,17 @@ export default function NotesSidebar({ notes, grouped }: Props) {
                 <div className={`h-2 w-2 rounded-full ${meta.dotColor}`} />
                 <span className="text-[11px] font-bold text-slate-600">{eraLabel}</span>
               </div>
-              <div className="space-y-0.5">
+              <div className="space-y-1">
                 {sectionNotes.map((note) => {
                   const isActive = pathname === `/notes/${note.id}`;
                   return (
                     <Link
                       key={note.id}
                       href={`/notes/${note.id}`}
-                      className={`block rounded-lg border-l-3 px-2.5 py-1.5 text-xs transition-all ${
+                      className={`block rounded-xl px-3 py-2 text-xs font-medium transition-all ${
                         isActive
-                          ? `${meta.borderColor} bg-indigo-50 font-bold text-indigo-700`
-                          : "border-l-transparent text-slate-600 hover:bg-slate-50 hover:text-slate-800"
+                          ? "bg-gradient-to-r from-amber-100 to-yellow-50 text-amber-900 font-bold shadow-sm border border-amber-200/60"
+                          : "bg-white/60 text-slate-600 hover:bg-white hover:text-slate-800 hover:shadow-sm border border-transparent"
                       }`}
                     >
                       {note.title}
