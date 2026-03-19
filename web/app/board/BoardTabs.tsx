@@ -65,6 +65,31 @@ export default function BoardTabs() {
     router.replace(`/board?tab=${tab}`, { scroll: false });
   };
 
+  const [showAdminModal, setShowAdminModal] = useState(false);
+  const [adminPw, setAdminPw] = useState("");
+  const [adminError, setAdminError] = useState("");
+
+  const handleWriteClick = () => {
+    if (activeTab === "notice") {
+      setShowAdminModal(true);
+      setAdminPw("");
+      setAdminError("");
+    } else {
+      router.push(`/board/${activeTab}/write`);
+    }
+  };
+
+  const handleAdminSubmit = () => {
+    if (!adminPw) {
+      setAdminError("비밀번호를 입력해주세요.");
+      return;
+    }
+    // Pass admin password via sessionStorage so write form can use it
+    sessionStorage.setItem("adminPassword", adminPw);
+    setShowAdminModal(false);
+    router.push(`/board/notice/write`);
+  };
+
   const activeTabInfo = TABS.find((t) => t.id === activeTab)!;
 
   return (
@@ -100,15 +125,15 @@ export default function BoardTabs() {
         <span className="text-xs font-semibold text-slate-400">
           {!loading && `총 ${total}개`}
         </span>
-        <Link
-          href={`/board/${activeTab}/write`}
+        <button
+          onClick={handleWriteClick}
           className="flex items-center gap-1 rounded-xl bg-indigo-500 px-3.5 py-2 text-xs font-bold text-white shadow-sm hover:bg-indigo-600 transition-colors"
         >
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
           </svg>
           글쓰기
-        </Link>
+        </button>
       </div>
 
       {/* Post list */}
@@ -171,6 +196,39 @@ export default function BoardTabs() {
           >
             다음
           </button>
+        </div>
+      )}
+      {/* Admin password modal */}
+      {showAdminModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4" onClick={() => setShowAdminModal(false)}>
+          <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
+            <h3 className="text-base font-black text-slate-800 mb-1">관리자 인증</h3>
+            <p className="text-sm text-slate-400 mb-4">공지사항 작성을 위해 비밀번호를 입력하세요.</p>
+            <input
+              type="password"
+              value={adminPw}
+              onChange={(e) => { setAdminPw(e.target.value); setAdminError(""); }}
+              onKeyDown={(e) => e.key === "Enter" && handleAdminSubmit()}
+              placeholder="관리자 비밀번호"
+              autoFocus
+              className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-[15px] text-slate-800 placeholder:text-slate-300 focus:bg-white focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100 transition-colors"
+            />
+            {adminError && <p className="text-xs text-red-500 mt-2 font-medium">{adminError}</p>}
+            <div className="flex gap-2 mt-4">
+              <button
+                onClick={() => setShowAdminModal(false)}
+                className="flex-1 rounded-xl border border-slate-200 py-2.5 text-sm font-bold text-slate-400 hover:bg-slate-50 transition-colors"
+              >
+                취소
+              </button>
+              <button
+                onClick={handleAdminSubmit}
+                className="flex-1 btn-primary !rounded-xl !py-2.5 text-sm"
+              >
+                확인
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

@@ -17,7 +17,14 @@ export default function WriteForm({ board, label }: Props) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [password, setPassword] = useState("");
-  const [adminPassword, setAdminPassword] = useState("");
+  const [adminPassword, setAdminPassword] = useState(() => {
+    if (typeof window !== "undefined" && isNotice) {
+      const stored = sessionStorage.getItem("adminPassword") || "";
+      sessionStorage.removeItem("adminPassword");
+      return stored;
+    }
+    return "";
+  });
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
@@ -127,17 +134,14 @@ export default function WriteForm({ board, label }: Props) {
         <div className="rounded-2xl border border-slate-200/80 bg-white p-5 card-shadow">
           {isNotice ? (
             <div>
-              <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wide">
-                관리자 비밀번호
-              </label>
-              <input
-                type="password"
-                value={adminPassword}
-                onChange={(e) => setAdminPassword(e.target.value)}
-                placeholder="관리자 비밀번호를 입력하세요"
-                required
-                className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-[15px] text-slate-800 placeholder:text-slate-300 focus:bg-white focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100 transition-colors"
-              />
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center">
+                  <svg className="w-3 h-3 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span className="text-sm font-semibold text-emerald-600">관리자 인증 완료</span>
+              </div>
             </div>
           ) : (
             <div>
