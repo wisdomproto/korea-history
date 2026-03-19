@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllExams, getQuestionsByEra, getAllKeywords } from "@/lib/data";
 import { getNotesGroupedBySection } from "@/lib/notes";
+import BannerCarousel from "@/components/BannerCarousel";
 
 const ERA_COLORS: Record<string, string> = {
   "선사·고조선": "from-stone-400 to-stone-500",
@@ -38,6 +39,9 @@ export default function HomePage() {
 
   return (
     <div className="space-y-8">
+      {/* ─── Banner Carousel ─── */}
+      <BannerCarousel />
+
       {/* ─── Hero ─── */}
       <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-500 via-indigo-600 to-purple-600 px-6 py-10 text-center text-white shadow-lg">
         {/* Decorative circles */}
