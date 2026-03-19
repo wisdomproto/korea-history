@@ -3,14 +3,22 @@
 import { useState, useRef, useEffect } from "react";
 import { Question } from "@/lib/types";
 
+interface YouTubeData {
+  videoId: string;
+  startSeconds: number;
+  channelName: string;
+}
+
 interface QuestionCardProps {
   question: Question;
   onAnswerSubmit?: (selectedAnswer: number, isCorrect: boolean) => void;
+  youtube?: YouTubeData | null;
 }
 
 export default function QuestionCard({
   question,
   onAnswerSubmit,
+  youtube,
 }: QuestionCardProps) {
   const [selected, setSelected] = useState<number | null>(null);
   const [revealed, setRevealed] = useState(false);
@@ -158,6 +166,28 @@ export default function QuestionCard({
               <p className="text-[13px] text-slate-700 leading-[22px] whitespace-pre-line">
                 {question.explanation}
               </p>
+            </div>
+          )}
+
+          {youtube && (
+            <div className="rounded-2xl overflow-hidden border border-slate-200 bg-white">
+              <div className="flex items-center gap-2 px-4 py-2.5 bg-slate-50 border-b border-slate-100">
+                <svg className="w-5 h-5 text-red-500" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>
+                  <path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="white"/>
+                </svg>
+                <span className="text-sm font-bold text-slate-700">영상 해설</span>
+                <span className="text-xs text-slate-400 ml-auto">{youtube.channelName}</span>
+              </div>
+              <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src={`https://www.youtube.com/embed/${youtube.videoId}?start=${youtube.startSeconds}&rel=0`}
+                  title="영상 해설"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
             </div>
           )}
 

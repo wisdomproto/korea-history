@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllQuestionParams, getQuestion } from "@/lib/data";
+import { getYouTubeTimestamp } from "@/lib/youtube";
 import { questionMeta, questionJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import BreadCrumb from "@/components/BreadCrumb";
 import QuestionWithTracking from "@/components/QuestionWithTracking";
@@ -94,7 +95,11 @@ export default async function QuestionPage({ params }: Props) {
       </p>
 
       {/* Question card */}
-      <QuestionWithTracking question={question} exam={exam} />
+      <QuestionWithTracking
+        question={question}
+        exam={exam}
+        youtube={getYouTubeTimestamp(examNumber, questionNumber)}
+      />
     </div>
   );
 }

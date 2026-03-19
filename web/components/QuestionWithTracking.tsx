@@ -5,16 +5,23 @@ import { handleAnswerResult } from "@/lib/wrong-answers";
 import { markAnswered } from "./QuestionNav";
 import QuestionCard from "./QuestionCard";
 
+interface YouTubeData {
+  videoId: string;
+  startSeconds: number;
+  channelName: string;
+}
+
 interface Props {
   question: Question;
   exam: Exam;
+  youtube?: YouTubeData | null;
 }
 
 /**
  * Wraps QuestionCard and auto-saves wrong answers to localStorage.
  * Also marks the question as answered for the nav dot coloring.
  */
-export default function QuestionWithTracking({ question, exam }: Props) {
+export default function QuestionWithTracking({ question, exam, youtube }: Props) {
   const handleSubmit = (selectedAnswer: number, isCorrect: boolean) => {
     // Save wrong answer / auto-resolve
     handleAnswerResult(
@@ -38,5 +45,5 @@ export default function QuestionWithTracking({ question, exam }: Props) {
     window.dispatchEvent(new Event("answer-revealed"));
   };
 
-  return <QuestionCard question={question} onAnswerSubmit={handleSubmit} />;
+  return <QuestionCard question={question} onAnswerSubmit={handleSubmit} youtube={youtube} />;
 }
