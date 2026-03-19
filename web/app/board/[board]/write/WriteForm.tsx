@@ -58,8 +58,7 @@ export default function WriteForm({ board, label }: Props) {
     <div>
       <BreadCrumb
         items={[
-          { label: "게시판", href: "/board" },
-          { label, href: `/board/${board}` },
+          { label: "게시판", href: `/board?tab=${board}` },
           { label: "글쓰기" },
         ]}
       />

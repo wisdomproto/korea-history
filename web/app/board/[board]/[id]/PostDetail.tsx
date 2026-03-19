@@ -50,7 +50,7 @@ export default function PostDetail({ board, id }: { board: string; id: string })
         return;
       }
 
-      router.push(`/board/${board}`);
+      router.push(`/board?tab=${board}`);
     } catch {
       setDeleteError("네트워크 오류가 발생했습니다.");
     } finally {
@@ -77,7 +77,7 @@ export default function PostDetail({ board, id }: { board: string; id: string })
     <div>
       <BreadCrumb
         items={[
-          { label: "게시판", href: "/board" },
+          { label: "게시판", href: `/board?tab=${board}` },
           { label, href: `/board/${board}` },
           { label: post.title },
         ]}
@@ -109,7 +109,7 @@ export default function PostDetail({ board, id }: { board: string; id: string })
       {/* Actions */}
       <div className="flex items-center justify-between">
         <Link
-          href={`/board/${board}`}
+          href={`/board?tab=${board}`}
           className="rounded-xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-500 hover:bg-slate-50 transition-colors"
         >
           목록
