@@ -460,7 +460,7 @@
     width: 100%;
     border-radius: 12px;
     overflow: hidden;
-    border: 1px solid rgba(120, 100, 80, 0.1);
+    border: 1px solid rgba(120, 100, 80, 0.2);
     margin: 12px 0;
   }
 
@@ -473,14 +473,24 @@
     letter-spacing: 0.02em;
     text-align: center;
     white-space: nowrap;
-    border-bottom: 2px solid rgba(230, 81, 0, 0.2);
+    border-bottom: 2px solid rgba(230, 81, 0, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .note-content th:last-child {
+    border-right: none;
   }
 
   .note-content td {
     padding: 10px 14px;
-    border-bottom: 1px solid rgba(120, 100, 80, 0.06);
+    border-bottom: 1px solid rgba(120, 100, 80, 0.15);
+    border-right: 1px solid rgba(120, 100, 80, 0.1);
     vertical-align: top;
     line-height: 1.6;
+  }
+
+  .note-content td:last-child {
+    border-right: none;
   }
 
   .note-content tr:last-child td {
