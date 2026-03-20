@@ -69,8 +69,8 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-black/[0.06] bg-white/80 backdrop-blur-xl">
-        <div className="mx-auto flex h-14 max-w-4xl items-center justify-between px-4">
+      <header className="sticky top-0 z-50 border-b border-gray-200/80 bg-white/95 backdrop-blur-xl">
+        <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 shadow-sm shadow-emerald-200">
@@ -140,7 +140,7 @@ export default function Header() {
           />
           {/* Menu Panel */}
           <nav className="absolute top-14 left-0 right-0 bg-white border-b border-gray-100 shadow-lg shadow-black/5 animate-fade-in">
-            <div className="mx-auto max-w-4xl px-4 py-2">
+            <div className="mx-auto max-w-6xl px-4 py-2">
               {NAV_ITEMS.map(({ href, label, icon }) => {
                 const isActive =
                   pathname === href ||

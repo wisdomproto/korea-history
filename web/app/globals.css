@@ -9,8 +9,7 @@
 
   body {
     @apply text-gray-900 antialiased;
-    background: linear-gradient(135deg, #E8D5F2 0%, #D4E8E4 40%, #B8E6E1 70%, #A8E6CF 100%);
-    background-attachment: fixed;
+    background: #FAFAF8;
     font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Pretendard', 'Malgun Gothic', sans-serif;
     font-feature-settings: "ss01", "cv01";
   }
