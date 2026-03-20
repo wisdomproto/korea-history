@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Exam, Question } from "./types";
 
 const SITE_NAME = "한국사기출";
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://gcnote.co.kr";
 
 /** Generate metadata for individual question page. */
 export function questionMeta(exam: Exam, question: Question): Metadata {

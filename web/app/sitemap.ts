@@ -4,7 +4,7 @@ import { getAllNoteIds } from "@/lib/notes";
 
 export const dynamic = "force-static";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://gcnote.co.kr";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString();
@@ -48,6 +48,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/wrong-answers`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 0.5,
+    },
+    {
+      url: `${BASE_URL}/board`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 0.6,
+    },
+    {
+      url: `${BASE_URL}/my-record`,
       lastModified: now,
       changeFrequency: "daily",
       priority: 0.5,
