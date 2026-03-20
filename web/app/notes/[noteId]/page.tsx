@@ -72,13 +72,13 @@ export default async function NotePage({ params }: Props) {
         ]}
       />
 
-      <h1 className="text-xl font-extrabold text-slate-900 mb-1">{note.title}</h1>
+      <h1 className="text-2xl font-extrabold text-gray-900 mb-2">{note.title}</h1>
       <div className="mb-5 flex gap-2 text-xs">
-        <span className="rounded-full bg-indigo-500 px-2.5 py-0.5 text-white font-semibold">
+        <span className="rounded-full bg-emerald-600 px-2.5 py-0.5 text-white font-semibold">
           {note.eraLabel}
         </span>
         {note.relatedQuestionIds.length > 0 && (
-          <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-slate-600 font-medium">
+          <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-gray-600 font-medium">
             관련 기출 {note.relatedQuestionIds.length}문제
           </span>
         )}
@@ -90,17 +90,16 @@ export default async function NotePage({ params }: Props) {
       {/* Lecture videos */}
       {lectures.length > 0 && (
         <div className="mt-6">
-          <h2 className="text-sm font-bold text-slate-800 mb-3 flex items-center gap-1.5">
-            <svg className="w-4 h-4 text-red-500" viewBox="0 0 24 24" fill="currentColor">
+          <h2 className="text-base font-bold text-gray-900 mb-3 flex items-center gap-2">
+            <svg className="w-5 h-5 text-red-500" viewBox="0 0 24 24" fill="currentColor">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>
               <path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="white"/>
             </svg>
             관련 강의
-            <span className="text-xs font-normal text-slate-400">최태성 1TV</span>
           </h2>
-          <div className="space-y-2">
+          <div className="space-y-3">
             {lectures.map((lec, i) => (
-              <div key={i} className="rounded-2xl overflow-hidden border border-slate-200 bg-white">
+              <div key={i} className="rounded-2xl overflow-hidden border border-gray-200/80 bg-white">
                 <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
                   <iframe
                     className="absolute inset-0 w-full h-full"

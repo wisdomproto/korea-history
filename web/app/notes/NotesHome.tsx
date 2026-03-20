@@ -48,13 +48,18 @@ export default function NotesHome({ notes, grouped }: Props) {
 
   return (
     <div>
-      <h1 className="text-xl font-extrabold text-slate-900 mb-0.5">요약노트</h1>
-      <p className="text-slate-500 text-[13px] mb-4">
-        시대별 핵심 정리 · {notes.length}개 주제
-      </p>
+      <div className="flex items-center gap-3 mb-6">
+        <svg className="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+        </svg>
+        <div>
+          <h1 className="text-2xl font-extrabold text-gray-900">요약노트</h1>
+          <p className="text-sm text-gray-400">시대별 핵심 정리 · {notes.length}개 주제</p>
+        </div>
+      </div>
 
       {/* Search */}
-      <div className="flex items-center gap-2.5 rounded-2xl border border-slate-200 bg-white px-4 py-3 card-shadow mb-5">
+      <div className="flex items-center gap-2.5 rounded-2xl border border-gray-200/80 bg-white px-4 py-3 mb-5">
         <svg className="h-4 w-4 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
@@ -97,12 +102,12 @@ export default function NotesHome({ notes, grouped }: Props) {
                 <Link
                   key={note.id}
                   href={`/notes/${note.id}`}
-                  className={`flex items-center justify-between rounded-2xl border-l-4 bg-white p-4 card-shadow hover:card-shadow-md transition-all ${meta.color}`}
+                  className={`flex items-center justify-between rounded-2xl border-l-4 bg-white border border-gray-200/80 p-4 hover:shadow-md hover:-translate-y-0.5 transition-all ${meta.color}`}
                 >
                   <span className="font-semibold text-sm text-slate-800">{note.title}</span>
                   <div className="flex items-center gap-2 shrink-0 ml-3">
                     {note.questionCount > 0 && (
-                      <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-[10px] font-bold text-indigo-600">
+                      <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-600">
                         기출 {note.questionCount}
                       </span>
                     )}
