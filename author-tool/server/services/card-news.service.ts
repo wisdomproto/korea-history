@@ -151,7 +151,7 @@ function buildSlide3(q: QuestionData, explanation: string, colors: any) {
   return makeSlide([
     textNode(`정답: ${num}`, { fontSize: '44px', fontWeight: 800, color: 'white', marginBottom: '8px' }),
     textNode(shortAnswer, { fontSize: '28px', color: 'rgba(255,255,255,0.85)', marginBottom: '40px' }),
-    { type: 'div', props: { style: { background: 'rgba(255,255,255,0.15)', borderRadius: '20px', padding: '32px', flex: 1 }, children: [
+    { type: 'div', props: { style: { background: 'rgba(255,255,255,0.15)', borderRadius: '20px', padding: '32px', flex: 1, display: 'flex', flexDirection: 'column' }, children: [
       textNode('해설', { fontSize: '20px', fontWeight: 700, color: 'rgba(255,255,255,0.7)', marginBottom: '12px' }),
       textNode(shortExpl, { fontSize: '24px', color: 'white', lineHeight: '1.6' }),
     ]}},
@@ -160,11 +160,17 @@ function buildSlide3(q: QuestionData, explanation: string, colors: any) {
 }
 
 function buildSlide4(ctaText: string, ctaUrl: string, colors: any) {
+  // Split ctaText by newlines into separate textNodes
+  const ctaLines = ctaText.split('\n').filter(Boolean);
+  const ctaElements = ctaLines.map((line) =>
+    textNode(line, { fontSize: '36px', fontWeight: 800, color: 'white', textAlign: 'center', lineHeight: '1.4' })
+  );
+
   return makeSlide([
     { type: 'div', props: { style: { flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }, children: [
       textNode('📲', { fontSize: '64px', marginBottom: '24px' }),
-      textNode(ctaText, { fontSize: '36px', fontWeight: 800, color: 'white', textAlign: 'center', lineHeight: '1.4', marginBottom: '32px' }),
-      { type: 'div', props: { style: { background: 'rgba(255,255,255,0.2)', borderRadius: '16px', padding: '20px 40px' }, children: [
+      { type: 'div', props: { style: { display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '32px' }, children: ctaElements } },
+      { type: 'div', props: { style: { background: 'rgba(255,255,255,0.2)', borderRadius: '16px', padding: '20px 40px', display: 'flex' }, children: [
         textNode(ctaUrl, { fontSize: '28px', fontWeight: 700, color: 'white' }),
       ]}},
       textNode('1,900+ 기출문제 · 87개 요약노트 · 무료', { fontSize: '20px', color: 'rgba(255,255,255,0.7)', marginTop: '24px' }),
@@ -174,12 +180,12 @@ function buildSlide4(ctaText: string, ctaUrl: string, colors: any) {
 }
 
 async function generateHookText(q: QuestionData, model?: string): Promise<string> {
-  // 지문이 이미지라서 content만으로는 맥락 부족 → 기존 해설 데이터를 참고해서 후킹 문구 생성
-  const context = q.explanation
-    ? `기존 해설: ${q.explanation}`
-    : `보기: ${q.choices.join(' / ')}`;
+  try {
+    const context = q.explanation
+      ? `기존 해설: ${q.explanation}`
+      : `보기: ${q.choices.join(' / ')}`;
 
-  const prompt = `한국사능력검정시험 기출문제를 인스타그램 카드뉴스로 만들려고 합니다.
+    const prompt = `한국사능력검정시험 기출문제를 인스타그램 카드뉴스로 만들려고 합니다.
 아래 문제의 후킹 문구를 1줄로 작성해주세요. MZ세대가 관심을 가질 만한 도발적이고 재미있는 문구여야 합니다.
 
 시대: ${q.era}
@@ -192,39 +198,42 @@ ${context}
 - 20자 이내
 - 이모지 1개 포함
 - 질문형 또는 도발형
-- 해설 내용을 참고해서 문제의 핵심 포인트를 반영
 - 예시: "🔥 이거 맞히면 1급!", "😤 정답률 23%의 함정", "💡 5초 안에 풀 수 있나요?"
 
 후킹 문구만 출력하세요:`;
 
-  const text = await generateText(prompt, model);
-  return text.trim().replace(/^["']|["']$/g, '');
+    const text = await generateText(prompt, model);
+    return text.trim().replace(/^["']|["']$/g, '');
+  } catch (err) {
+    console.error('[CardNews] Hook text generation failed, using fallback:', err);
+    return `🔥 이 문제 맞히면 ${q.era} 마스터!`;
+  }
 }
 
 async function generateCardExplanation(q: QuestionData, model?: string): Promise<string> {
-  // 지문이 이미지이므로, 기존 해설 데이터를 기반으로 카드뉴스용 짧은 해설을 만듦
-  if (!q.explanation) {
-    // 해설이 아예 없는 경우: 보기 정보라도 활용
-    const prompt = `한국사능력검정시험 기출문제의 해설을 인스타그램 카드뉴스용으로 작성해주세요.
+  // 기존 해설이 있으면 먼저 그걸 짧게 잘라서 사용 (AI 없이도 동작)
+  const fallback = q.explanation
+    ? q.explanation.slice(0, 150) + (q.explanation.length > 150 ? '...' : '')
+    : `정답은 ${q.correctAnswer}번 ${q.choices[q.correctAnswer - 1]}입니다.`;
+
+  try {
+    if (!q.explanation) {
+      const prompt = `한국사능력검정시험 기출문제의 해설을 인스타그램 카드뉴스용으로 작성해주세요.
 
 문제 제목: ${q.content}
 보기: ${q.choices.map((c, i) => `${i + 1}. ${c}`).join(' / ')}
 정답: ${q.correctAnswer}번 (${q.choices[q.correctAnswer - 1]})
 시대: ${q.era}
-유형: ${q.category}
 
 규칙:
 - 3~4문장으로 간결하게
 - 핵심 사실만 포함
 
 해설만 출력하세요:`;
+      return (await generateText(prompt, model)).trim();
+    }
 
-    const text = await generateText(prompt, model);
-    return text.trim();
-  }
-
-  // 기존 해설이 있는 경우: 카드뉴스용으로 요약
-  const prompt = `아래 한국사능력검정시험 해설을 인스타그램 카드뉴스 슬라이드에 넣을 수 있도록 짧게 요약해주세요.
+    const prompt = `아래 한국사능력검정시험 해설을 인스타그램 카드뉴스 슬라이드에 넣을 수 있도록 짧게 요약해주세요.
 
 원본 해설:
 ${q.explanation}
@@ -232,13 +241,13 @@ ${q.explanation}
 규칙:
 - 3~4문장, 150자 이내
 - 핵심 사실과 정답 이유만
-- "~입니다", "~합니다" 문체
-- 불필요한 수식어 제거
 
 요약 해설만 출력하세요:`;
-
-  const text = await generateText(prompt, model);
-  return text.trim();
+    return (await generateText(prompt, model)).trim();
+  } catch (err) {
+    console.error('[CardNews] Explanation generation failed, using fallback:', err);
+    return fallback;
+  }
 }
 
 export async function generateCardNews(req: CardNewsRequest, onProgress?: (msg: string) => void): Promise<SlideResult[]> {
@@ -265,6 +274,7 @@ export async function generateCardNews(req: CardNewsRequest, onProgress?: (msg: 
     onProgress?.(`[${i + 1}/${req.questions.length}] 슬라이드 렌더링 중...`);
 
     const slides: Buffer[] = [];
+    const slideNames = ['hook', 'question', 'answer', 'cta'];
     const slideNodes = [
       buildSlide1(q, hookText, colors),
       buildSlide2(q, colors),
@@ -272,14 +282,20 @@ export async function generateCardNews(req: CardNewsRequest, onProgress?: (msg: 
       buildSlide4(ctaText, ctaUrl, colors),
     ];
 
-    for (const node of slideNodes) {
-      const svg = await satori(node as any, {
-        width: 1080,
-        height: 1080,
-        fonts: [{ name: 'NotoSansKR', data: font, weight: 400, style: 'normal' }],
-      });
-      const png = await renderSvgToPng(svg);
-      slides.push(png);
+    for (let si = 0; si < slideNodes.length; si++) {
+      try {
+        const svg = await satori(slideNodes[si] as any, {
+          width: 1080,
+          height: 1080,
+          fonts: [{ name: 'NotoSansKR', data: font, weight: 400, style: 'normal' }],
+        });
+        const png = await renderSvgToPng(svg);
+        slides.push(png);
+      } catch (err: any) {
+        console.error(`[CardNews] Slide ${slideNames[si]} render failed:`, err.message);
+        console.error(`[CardNews] hookText="${hookText}", explanation="${explanation?.slice(0, 50)}..."`);
+        throw err;
+      }
     }
 
     results.push({

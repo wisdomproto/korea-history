@@ -26,23 +26,28 @@ router.get('/models', asyncHandler(async (_req, res) => {
 }));
 
 /** POST /api/card-news/generate — generate card news (SSE progress) */
-router.post('/generate', asyncHandler(async (req, res) => {
-  const { questions, ctaText, ctaUrl, useAiExplanation, model } = req.body;
+router.post('/generate', async (req, res) => {
+  console.log('[CardNews] Generate request:', req.body.questions?.length, 'questions');
+  const { questions, ctaText, ctaUrl, model } = req.body;
 
   // SSE setup
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
   res.setHeader('Connection', 'keep-alive');
+  res.flushHeaders();
 
   const sendEvent = (type: string, data: any) => {
-    res.write(`data: ${JSON.stringify({ type, ...data })}\n\n`);
+    const payload = JSON.stringify({ type, ...data });
+    res.write(`data: ${payload}\n\n`);
   };
 
   try {
     const results = await generateCardNews(
-      { questions, ctaText, ctaUrl, useAiExplanation, model },
-      (msg) => sendEvent('progress', { message: msg }),
+      { questions, ctaText, ctaUrl, model },
+      (msg) => { console.log('[CardNews]', msg); sendEvent('progress', { message: msg }); },
     );
+
+    console.log('[CardNews] Done! Generated', results.length, 'sets');
 
     // Convert to base64 for SSE transport
     const base64Results = results.map((r) => ({
@@ -53,11 +58,12 @@ router.post('/generate', asyncHandler(async (req, res) => {
 
     sendEvent('complete', { results: base64Results });
   } catch (err: any) {
+    console.error('[CardNews] Error:', err);
     sendEvent('error', { message: err.message || '생성 중 오류 발생' });
   }
 
   res.end();
-}));
+});
 
 /** POST /api/card-news/download — download ZIP of generated PNGs */
 router.post('/download', asyncHandler(async (req, res) => {
