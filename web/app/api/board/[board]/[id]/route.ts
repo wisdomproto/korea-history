@@ -7,7 +7,7 @@ interface RouteContext {
   params: Promise<{ board: string; id: string }>;
 }
 
-// GET /api/board/[board]/[id] — get single post
+// GET /api/board/[board]/[id] — get single post + increment view count
 export async function GET(_req: NextRequest, ctx: RouteContext) {
   const { board, id } = await ctx.params;
   if (!VALID_BOARDS.has(board)) {
@@ -16,7 +16,7 @@ export async function GET(_req: NextRequest, ctx: RouteContext) {
 
   const { data, error } = await supabase
     .from("posts")
-    .select("id, board, nickname, title, content, created_at")
+    .select("id, board, nickname, title, content, view_count, like_count, pinned, created_at")
     .eq("id", id)
     .eq("board", board)
     .single();
@@ -25,7 +25,62 @@ export async function GET(_req: NextRequest, ctx: RouteContext) {
     return NextResponse.json({ error: "게시글을 찾을 수 없습니다." }, { status: 404 });
   }
 
-  return NextResponse.json(data);
+  // Increment view count (fire and forget)
+  supabase
+    .from("posts")
+    .update({ view_count: (data.view_count || 0) + 1 })
+    .eq("id", id)
+    .then();
+
+  return NextResponse.json({ ...data, view_count: (data.view_count || 0) + 1 });
+}
+
+// PATCH /api/board/[board]/[id] — like or pin toggle
+export async function PATCH(req: NextRequest, ctx: RouteContext) {
+  const { board, id } = await ctx.params;
+  if (!VALID_BOARDS.has(board)) {
+    return NextResponse.json({ error: "Invalid board" }, { status: 400 });
+  }
+
+  const body = await req.json();
+  const { action, adminPassword } = body;
+
+  if (action === "like") {
+    // Increment like count
+    const { data } = await supabase
+      .from("posts")
+      .select("like_count")
+      .eq("id", id)
+      .single();
+
+    const { error } = await supabase
+      .from("posts")
+      .update({ like_count: ((data?.like_count) || 0) + 1 })
+      .eq("id", id);
+
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+    return NextResponse.json({ like_count: ((data?.like_count) || 0) + 1 });
+  }
+
+  if (action === "pin" || action === "unpin") {
+    const masterPassword = process.env.ADMIN_PASSWORD || "8054";
+    if (adminPassword !== masterPassword) {
+      return NextResponse.json({ error: "관리자 비밀번호가 틀렸습니다." }, { status: 403 });
+    }
+    const { error } = await supabase
+      .from("posts")
+      .update({ pinned: action === "pin" })
+      .eq("id", id);
+
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+    return NextResponse.json({ pinned: action === "pin" });
+  }
+
+  return NextResponse.json({ error: "Invalid action" }, { status: 400 });
 }
 
 // DELETE /api/board/[board]/[id] — delete post with password

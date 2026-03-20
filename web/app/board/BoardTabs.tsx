@@ -160,15 +160,37 @@ export default function BoardTabs() {
               href={`/board/${activeTab}/${post.id}`}
               className="block rounded-xl border border-slate-200/80 bg-white px-4 py-3.5 hover:border-indigo-200 hover:shadow-sm transition-all"
             >
-              <p className="text-[15px] font-semibold text-slate-800 truncate leading-snug">
-                {post.title}
-              </p>
+              <div className="flex items-center gap-1.5">
+                {post.pinned && (
+                  <span className="text-[11px] text-red-500 font-bold shrink-0">📌</span>
+                )}
+                <p className="text-[15px] font-semibold text-slate-800 truncate leading-snug">
+                  {post.title}
+                </p>
+                {(post.comment_count ?? 0) > 0 && (
+                  <span className="text-[12px] font-bold text-indigo-500 shrink-0">[{post.comment_count}]</span>
+                )}
+              </div>
               <div className="flex items-center gap-2 mt-1.5">
                 <span className={`inline-flex items-center rounded-md ${activeTabInfo.bg} px-1.5 py-0.5 text-[11px] font-bold ${activeTabInfo.color}`}>
                   {post.nickname}
                 </span>
                 <span className="text-[11px] text-slate-300">
                   {formatDate(post.created_at)}
+                </span>
+                <span className="text-[11px] text-slate-300 ml-auto flex items-center gap-2">
+                  {(post.view_count ?? 0) > 0 && (
+                    <span className="flex items-center gap-0.5">
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                      {post.view_count}
+                    </span>
+                  )}
+                  {(post.like_count ?? 0) > 0 && (
+                    <span className="flex items-center gap-0.5">
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                      {post.like_count}
+                    </span>
+                  )}
                 </span>
               </div>
             </Link>

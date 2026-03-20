@@ -25,5 +25,17 @@ export interface Post {
   nickname: string;
   title: string;
   content: string;
+  view_count: number;
+  like_count: number;
+  pinned: boolean;
+  comment_count?: number;
+  created_at: string;
+}
+
+export interface Comment {
+  id: string;
+  post_id: string;
+  nickname: string;
+  content: string;
   created_at: string;
 }
