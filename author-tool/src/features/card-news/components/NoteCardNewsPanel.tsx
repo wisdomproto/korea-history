@@ -66,40 +66,30 @@ export function NoteCardNewsPanel() {
     setSelectedIds(new Set(shuffled.slice(0, n).map((x) => x.id)));
   };
 
-  const handleGenerate = useCallback(() => {
+  const handleGenerate = useCallback(async () => {
     if (selectedIds.size === 0) return;
     setGenerating(true);
-    setProgress('생성 시작...');
+    setProgress('AI 요약 중... (노트당 10~30초 소요)');
     setResults([]);
 
-    const controller = new AbortController();
-    fetch('/api/card-news/notes/generate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ noteIds: [...selectedIds], slideCount, model: model || undefined, ctaUrl }),
-      signal: controller.signal,
-    }).then(async (res) => {
-      const reader = res.body?.getReader();
-      if (!reader) { setGenerating(false); return; }
-      const decoder = new TextDecoder();
-      let buffer = '';
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split('\n\n');
-        buffer = lines.pop() || '';
-        for (const line of lines) {
-          if (!line.startsWith('data: ')) continue;
-          try {
-            const data = JSON.parse(line.slice(6));
-            if (data.type === 'progress') setProgress(data.message);
-            else if (data.type === 'complete') { setResults(data.results); setGenerating(false); setProgress(''); }
-            else if (data.type === 'error') { setProgress(`오류: ${data.message}`); setGenerating(false); }
-          } catch {}
-        }
+    try {
+      const res = await fetch('/api/card-news/notes/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ noteIds: [...selectedIds], slideCount, model: model || undefined, ctaUrl }),
+      });
+      const json = await res.json();
+      if (json.success) {
+        setResults(json.data);
+        setProgress('완료!');
+      } else {
+        setProgress(`오류: ${json.error || '생성 실패'}`);
       }
-    }).catch(() => setGenerating(false));
+    } catch (err: any) {
+      setProgress(`오류: ${err.message || '네트워크 오류'}`);
+    } finally {
+      setGenerating(false);
+    }
   }, [selectedIds, slideCount, model, ctaUrl]);
 
   const downloadSlide = (result: NoteSlideResult, slideIdx: number) => {

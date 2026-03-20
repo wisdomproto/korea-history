@@ -58,21 +58,33 @@ export function CardNewsPanel() {
     setSelectedIds(new Set(shuffled.slice(0, n).map((q) => q.questionNumber)));
   };
 
-  const handleGenerate = useCallback(() => {
+  const handleGenerate = useCallback(async () => {
     if (!questions || selectedIds.size === 0) return;
     const selected = questions.filter((q) => selectedIds.has(q.questionNumber));
 
     setGenerating(true);
-    setProgress('생성 시작...');
+    setProgress('AI 생성 중... (문제당 10~30초 소요)');
     setError('');
     setResults([]);
 
-    cardNewsApi.generate(
-      { questions: selected, ctaText, ctaUrl, model: model || undefined },
-      (msg) => setProgress(msg),
-      (res) => { setResults(res); setGenerating(false); setProgress('완료!'); },
-      (msg) => { setError(msg); setGenerating(false); setProgress(''); },
-    );
+    try {
+      const res = await fetch('/api/card-news/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ questions: selected, ctaText, ctaUrl, model: model || undefined }),
+      });
+      const json = await res.json();
+      if (json.success) {
+        setResults(json.data);
+        setProgress('완료!');
+      } else {
+        setError(json.error || '생성 실패');
+      }
+    } catch (err: any) {
+      setError(err.message || '네트워크 오류');
+    } finally {
+      setGenerating(false);
+    }
   }, [questions, selectedIds, ctaText, ctaUrl, model]);
 
   const handleDownloadAll = () => {

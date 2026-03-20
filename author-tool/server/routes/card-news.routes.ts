@@ -25,45 +25,26 @@ router.get('/models', asyncHandler(async (_req, res) => {
   res.json({ success: true, data: TEXT_MODELS });
 }));
 
-/** POST /api/card-news/generate — generate card news (SSE progress) */
-router.post('/generate', async (req, res) => {
+/** POST /api/card-news/generate — generate card news (JSON response) */
+router.post('/generate', asyncHandler(async (req, res) => {
   console.log('[CardNews] Generate request:', req.body.questions?.length, 'questions');
   const { questions, ctaText, ctaUrl, model } = req.body;
 
-  // SSE setup
-  res.setHeader('Content-Type', 'text/event-stream');
-  res.setHeader('Cache-Control', 'no-cache');
-  res.setHeader('Connection', 'keep-alive');
-  res.flushHeaders();
+  const results = await generateCardNews(
+    { questions, ctaText, ctaUrl, model },
+    (msg) => console.log('[CardNews]', msg),
+  );
 
-  const sendEvent = (type: string, data: any) => {
-    const payload = JSON.stringify({ type, ...data });
-    res.write(`data: ${payload}\n\n`);
-  };
+  console.log('[CardNews] Done! Generated', results.length, 'sets');
 
-  try {
-    const results = await generateCardNews(
-      { questions, ctaText, ctaUrl, model },
-      (msg) => { console.log('[CardNews]', msg); sendEvent('progress', { message: msg }); },
-    );
+  const base64Results = results.map((r) => ({
+    examNumber: r.examNumber,
+    questionNumber: r.questionNumber,
+    slides: r.slides.map((buf) => buf.toString('base64')),
+  }));
 
-    console.log('[CardNews] Done! Generated', results.length, 'sets');
-
-    // Convert to base64 for SSE transport
-    const base64Results = results.map((r) => ({
-      examNumber: r.examNumber,
-      questionNumber: r.questionNumber,
-      slides: r.slides.map((buf) => buf.toString('base64')),
-    }));
-
-    sendEvent('complete', { results: base64Results });
-  } catch (err: any) {
-    console.error('[CardNews] Error:', err);
-    sendEvent('error', { message: err.message || '생성 중 오류 발생' });
-  }
-
-  res.end();
-});
+  res.json({ success: true, data: base64Results });
+}));
 
 /** POST /api/card-news/download — download ZIP of generated PNGs */
 router.post('/download', asyncHandler(async (req, res) => {
@@ -91,42 +72,26 @@ router.post('/download', asyncHandler(async (req, res) => {
   await archive.finalize();
 }));
 
-/** POST /api/card-news/notes/generate — generate note card news (SSE progress) */
-router.post('/notes/generate', async (req, res) => {
+/** POST /api/card-news/notes/generate — generate note card news (JSON response) */
+router.post('/notes/generate', asyncHandler(async (req, res) => {
   console.log('[NoteCardNews] Generate request:', req.body.noteIds?.length, 'notes');
   const { noteIds, slideCount, model, ctaUrl } = req.body;
 
-  res.setHeader('Content-Type', 'text/event-stream');
-  res.setHeader('Cache-Control', 'no-cache');
-  res.setHeader('Connection', 'keep-alive');
-  res.flushHeaders();
+  const results = await generateNoteCardNews(
+    { noteIds, slideCount, model, ctaUrl },
+    (msg) => console.log('[NoteCardNews]', msg),
+  );
 
-  const sendEvent = (type: string, data: any) => {
-    res.write(`data: ${JSON.stringify({ type, ...data })}\n\n`);
-  };
+  console.log('[NoteCardNews] Done! Generated', results.length, 'sets');
 
-  try {
-    const results = await generateNoteCardNews(
-      { noteIds, slideCount, model, ctaUrl },
-      (msg) => { console.log('[NoteCardNews]', msg); sendEvent('progress', { message: msg }); },
-    );
+  const base64Results = results.map((r) => ({
+    noteId: r.noteId,
+    title: r.title,
+    era: r.era,
+    slides: r.slides.map((buf) => buf.toString('base64')),
+  }));
 
-    console.log('[NoteCardNews] Done! Generated', results.length, 'sets');
-
-    const base64Results = results.map((r) => ({
-      noteId: r.noteId,
-      title: r.title,
-      era: r.era,
-      slides: r.slides.map((buf) => buf.toString('base64')),
-    }));
-
-    sendEvent('complete', { results: base64Results });
-  } catch (err: any) {
-    console.error('[NoteCardNews] Error:', err);
-    sendEvent('error', { message: err.message || '생성 중 오류 발생' });
-  }
-
-  res.end();
-});
+  res.json({ success: true, data: base64Results });
+}));
 
 export default router;
