@@ -25,8 +25,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const note = getNoteById(noteId);
   if (!note) return {};
 
-  const title = `${note.title} - ${note.eraLabel} 요약노트`;
-  const description = `한국사능력검정시험 ${note.eraLabel} - ${note.title}. 핵심 정리와 관련 기출 ${note.relatedQuestionIds.length}문제.`;
+  const title = `${note.title} 요약정리 - 한능검 필수 암기`;
+  const description = `한능검 ${note.eraLabel} - ${note.title} 핵심 요약. 관련 기출 ${note.relatedQuestionIds.length}문제, 영상강의 포함.`;
 
   return {
     title,

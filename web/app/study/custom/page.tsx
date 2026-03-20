@@ -4,8 +4,8 @@ import BreadCrumb from "@/components/BreadCrumb";
 import CustomSelector from "./CustomSelector";
 
 export const metadata: Metadata = {
-  title: "맞춤형 학습 - 한국사능력검정시험",
-  description: "시대별, 유형별로 한국사 기출문제를 선택하여 집중 학습하세요.",
+  title: "한능검 시대별 유형별 맞춤 학습",
+  description: "한능검 기출문제를 시대별, 유형별로 선택하여 집중 학습하세요. 원하는 조합으로 문제 풀기.",
 };
 
 export default function CustomStudyPage() {

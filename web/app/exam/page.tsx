@@ -4,9 +4,9 @@ import { getAllExams } from "@/lib/data";
 import BreadCrumb from "@/components/BreadCrumb";
 
 export const metadata: Metadata = {
-  title: "한국사능력검정시험 기출문제 전체 회차",
+  title: "한능검 기출문제 전체 회차 (40~77회)",
   description:
-    "한국사능력검정시험 전체 기출문제 회차 목록. 최신순 정렬, 무료 풀기.",
+    "한능검 기출문제 전체 회차 목록. 40~77회 최신순, 정답 해설 포함, 무료 풀기.",
 };
 
 export default function ExamListPage() {

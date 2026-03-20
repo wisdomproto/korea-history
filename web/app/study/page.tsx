@@ -3,9 +3,9 @@ import { Metadata } from "next";
 import { getAllExams, getAllKeywords } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "학습하기 - 한국사능력검정시험",
+  title: "한능검 기출문제 학습 - 회차별·시대별·키워드별",
   description:
-    "회차별, 맞춤형, 키워드별로 한국사능력검정시험 기출문제를 학습하세요.",
+    "한능검 기출문제를 회차별, 시대별, 키워드별로 학습하세요. 맞춤형 학습과 오답 복습으로 1급 합격!",
 };
 
 export default function StudyPage() {

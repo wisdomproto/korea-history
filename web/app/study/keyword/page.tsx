@@ -4,9 +4,9 @@ import BreadCrumb from "@/components/BreadCrumb";
 import KeywordList from "./KeywordList";
 
 export const metadata: Metadata = {
-  title: "키워드별 풀기 - 한국사능력검정시험",
+  title: "한능검 키워드별 기출문제 - 3,800개 핵심 키워드",
   description:
-    "핵심 키워드를 선택해 관련 기출문제를 모아 풀어보세요. 3,800개+ 키워드.",
+    "한능검 핵심 키워드를 선택해 관련 기출문제를 모아 풀어보세요. 3,800개+ 키워드별 문제 풀기.",
 };
 
 export default function KeywordStudyPage() {

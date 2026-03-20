@@ -6,9 +6,9 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://gcnote.co.kr";
 
 /** Generate metadata for individual question page. */
 export function questionMeta(exam: Exam, question: Question): Metadata {
-  const title = `제${exam.examNumber}회 한국사능력검정시험 ${question.questionNumber}번 정답 해설`;
+  const title = `제${exam.examNumber}회 한능검 ${question.questionNumber}번 정답·해설·영상강의`;
   const keywordStr = question.keywords?.slice(0, 3).join(", ") || "";
-  const description = `제${exam.examNumber}회 한국사능력검정시험 ${question.questionNumber}번 정답과 해설. ${question.era} ${question.category}, ${question.points}점.${keywordStr ? ` 키워드: ${keywordStr}` : ""}`;
+  const description = `제${exam.examNumber}회 한능검 ${question.questionNumber}번 정답과 해설. ${question.era} ${question.category}, ${question.points}점. 최태성 영상강의 포함.${keywordStr ? ` 키워드: ${keywordStr}` : ""}`;
 
   return {
     title,
@@ -24,8 +24,8 @@ export function questionMeta(exam: Exam, question: Question): Metadata {
 
 /** Generate metadata for exam detail page. */
 export function examMeta(exam: Exam): Metadata {
-  const title = `제${exam.examNumber}회 한국사능력검정시험 기출문제`;
-  const description = `제${exam.examNumber}회 한국사능력검정시험 (${exam.examDate}) ${exam.totalQuestions}문제 정답과 해설. 시대별·분야별 분석.`;
+  const title = `제${exam.examNumber}회 한능검 기출문제 풀기 - 정답 및 해설`;
+  const description = `제${exam.examNumber}회 한능검 기출문제 ${exam.totalQuestions}문항 풀기. 정답, AI 해설, 최태성 영상강의 포함. 무료.`;
 
   return {
     title,

@@ -3,8 +3,8 @@ import { Metadata } from "next";
 import BoardTabs from "./BoardTabs";
 
 export const metadata: Metadata = {
-  title: "게시판 - 기출노트 한능검",
-  description: "한국사능력검정시험 학습 커뮤니티 게시판",
+  title: "한능검 커뮤니티 게시판 - 질문·건의·공지",
+  description: "한능검 학습 커뮤니티. 자유 게시판, 건의사항, 공지사항. 함께 공부해요!",
 };
 
 export default function BoardPage() {

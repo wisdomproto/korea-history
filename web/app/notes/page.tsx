@@ -3,9 +3,9 @@ import { getNotesIndex, getNotesGroupedBySection } from "@/lib/notes";
 import NotesHome from "./NotesHome";
 
 export const metadata: Metadata = {
-  title: "요약노트 - 시대별 한국사 핵심 정리",
+  title: "한능검 요약노트 - 시대별 핵심 정리 87개",
   description:
-    "한국사능력검정시험 시대별 핵심 요약노트. 선사시대부터 현대까지 87개 주제별 정리.",
+    "한능검 시대별 핵심 요약노트. 선사시대부터 현대까지 87개 주제별 정리. 최태성 영상강의 연동.",
 };
 
 export default function NotesPage() {
