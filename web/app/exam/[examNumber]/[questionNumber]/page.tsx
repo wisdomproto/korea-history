@@ -7,6 +7,7 @@ import BreadCrumb from "@/components/BreadCrumb";
 import QuestionWithTracking from "@/components/QuestionWithTracking";
 import QuestionNav from "@/components/QuestionNav";
 import PrevNextNav from "@/components/PrevNextNav";
+import ShareButtons from "@/components/ShareButtons";
 
 interface Props {
   params: Promise<{ examNumber: string; questionNumber: string }>;
@@ -77,14 +78,21 @@ export default async function QuestionPage({ params }: Props) {
         totalQuestions={totalQuestions}
       />
 
-      {/* Question header */}
-      <div className="flex items-baseline gap-2 mb-4 mt-4">
-        <span className="text-2xl font-black text-indigo-500">
-          {questionNumber}.
-        </span>
-        <span className="text-sm font-medium text-slate-400">
-          [{question.points}점]
-        </span>
+      {/* Question header + share */}
+      <div className="flex items-center justify-between mb-4 mt-4">
+        <div className="flex items-baseline gap-2">
+          <span className="text-2xl font-black text-indigo-500">
+            {questionNumber}.
+          </span>
+          <span className="text-sm font-medium text-slate-400">
+            [{question.points}점]
+          </span>
+        </div>
+        <ShareButtons
+          title={`제${examNumber}회 한능검 ${questionNumber}번 — 정답은?`}
+          description={`${question.era} · ${question.category} | 정답과 해설 보기`}
+          buttonText="문제 풀어보기"
+        />
       </div>
 
       {/* Question card */}

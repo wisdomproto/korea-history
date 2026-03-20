@@ -5,6 +5,7 @@ import Link from "next/link";
 import { getWrongAnswers } from "@/lib/wrong-answers";
 import { saveExamRecord } from "@/lib/exam-history";
 import AdSlot from "@/components/AdSlot";
+import ShareButtons from "@/components/ShareButtons";
 
 interface Props {
   examNumber: number;
@@ -131,6 +132,15 @@ export default function ExamResult({ examNumber }: Props) {
 
       {/* Ad: after score, before actions — high engagement moment */}
       <AdSlot size="rectangle" slot={process.env.NEXT_PUBLIC_AD_SLOT_RESULT} className="mb-6" />
+
+      {/* Share result */}
+      <div className="flex justify-center mb-6">
+        <ShareButtons
+          title={`제${examNumber}회 한능검 ${percentage >= 80 ? "1급" : percentage >= 70 ? "2급" : percentage >= 60 ? "3급" : ""} — ${percentage}점!`}
+          description={`${stats.total}문제 중 ${stats.correct}문제 정답 | 기출노트 한능검에서 무료로 풀어보세요`}
+          buttonText="나도 풀어보기"
+        />
+      </div>
 
       {/* Actions */}
       <div className="space-y-2">

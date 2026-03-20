@@ -46,6 +46,12 @@ export default function RootLayout({
             __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CJ7V236NQV');`,
           }}
         />
+        <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js" async />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.addEventListener('load',function(){if(window.Kakao&&!window.Kakao.isInitialized()){window.Kakao.init('${process.env.NEXT_PUBLIC_KAKAO_JS_KEY || ""}');}});`,
+          }}
+        />
       </head>
       <body className="antialiased">
         <div className="flex min-h-screen flex-col">

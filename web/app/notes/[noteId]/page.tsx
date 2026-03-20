@@ -12,6 +12,7 @@ import PrevNextNav from "@/components/PrevNextNav";
 import NoteContent from "./NoteContent";
 import NoteActions from "./NoteActions";
 import AdSlot from "@/components/AdSlot";
+import ShareButtons from "@/components/ShareButtons";
 
 interface Props {
   params: Promise<{ noteId: string }>;
@@ -73,7 +74,16 @@ export default async function NotePage({ params }: Props) {
         ]}
       />
 
-      <h1 className="text-2xl font-extrabold text-gray-900 mb-2">{note.title}</h1>
+      <div className="flex items-start justify-between gap-4 mb-2">
+        <h1 className="text-2xl font-extrabold text-gray-900">{note.title}</h1>
+        <div className="shrink-0 mt-1">
+          <ShareButtons
+            title={`${note.title} — 한능검 요약노트`}
+            description={`${note.eraLabel} 핵심 요약 | 관련 기출 ${note.relatedQuestionIds.length}문제`}
+            buttonText="요약노트 보기"
+          />
+        </div>
+      </div>
       <div className="mb-5 flex gap-2 text-xs">
         <span className="rounded-full bg-emerald-600 px-2.5 py-0.5 text-white font-semibold">
           {note.eraLabel}
