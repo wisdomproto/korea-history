@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Question } from "@/lib/types";
+import AdSlot from "@/components/AdSlot";
 
 interface YouTubeData {
   videoId: string;
@@ -201,6 +202,9 @@ export default function QuestionCard({
               </p>
             </div>
           )}
+
+          {/* Ad: after explanation, before youtube */}
+          <AdSlot size="rectangle" slot={process.env.NEXT_PUBLIC_AD_SLOT_QUESTION} className="my-2" />
 
           {youtube && (
             <div className="rounded-2xl overflow-hidden border border-slate-200/60 bg-white shadow-md">

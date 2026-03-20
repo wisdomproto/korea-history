@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getAllExams, getAllKeywords } from "@/lib/data";
 import BannerCarousel from "@/components/BannerCarousel";
+import AdSlot from "@/components/AdSlot";
 
 const QUICK_ACTIONS = [
   {
@@ -83,6 +84,9 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* Ad: between quick actions and exams */}
+      <AdSlot size="leaderboard" slot={process.env.NEXT_PUBLIC_AD_SLOT_HOME} className="my-2" />
 
       {/* ─── Latest Exams ─── */}
       <section>

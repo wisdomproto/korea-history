@@ -11,6 +11,7 @@ import BreadCrumb from "@/components/BreadCrumb";
 import PrevNextNav from "@/components/PrevNextNav";
 import NoteContent from "./NoteContent";
 import NoteActions from "./NoteActions";
+import AdSlot from "@/components/AdSlot";
 
 interface Props {
   params: Promise<{ noteId: string }>;
@@ -119,10 +120,8 @@ export default async function NotePage({ params }: Props) {
         </div>
       )}
 
-      {/* Ad placeholder */}
-      <div className="ad-placeholder my-5" data-ad-slot="note-mid">
-        광고 영역
-      </div>
+      {/* Ad: after lectures or after content */}
+      <AdSlot size="rectangle" slot={process.env.NEXT_PUBLIC_AD_SLOT_NOTE} className="my-6" />
 
       {/* Related questions — study session button */}
       <NoteActions

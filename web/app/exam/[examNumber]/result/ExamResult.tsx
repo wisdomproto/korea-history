@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { getWrongAnswers } from "@/lib/wrong-answers";
 import { saveExamRecord } from "@/lib/exam-history";
+import AdSlot from "@/components/AdSlot";
 
 interface Props {
   examNumber: number;
@@ -127,6 +128,9 @@ export default function ExamResult({ examNumber }: Props) {
           </div>
         </div>
       )}
+
+      {/* Ad: after score, before actions — high engagement moment */}
+      <AdSlot size="rectangle" slot={process.env.NEXT_PUBLIC_AD_SLOT_RESULT} className="mb-6" />
 
       {/* Actions */}
       <div className="space-y-2">
