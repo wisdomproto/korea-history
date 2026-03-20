@@ -38,6 +38,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+        <meta name="google-adsense-account" content="ca-pub-2578049345462911" />
         <meta name="naver-site-verification" content="e79f5c36354d88f45d3cd7b622df34f3d570a336" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-CJ7V236NQV" />
         <script
