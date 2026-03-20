@@ -22,7 +22,7 @@ function formatDate(dateStr: string) {
   if (hours < 24) return `${hours}시간 전`;
   const days = Math.floor(hours / 24);
   if (days < 7) return `${days}일 전`;
-  return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}`;
+  return `${d.getMonth() + 1}/${d.getDate()}`;
 }
 
 export default function BoardTabs() {
@@ -37,9 +37,15 @@ export default function BoardTabs() {
   const [totalPages, setTotalPages] = useState(1);
   const [total, setTotal] = useState(0);
 
-  const fetchPosts = (tab: string, p: number) => {
+  // Search
+  const [searchInput, setSearchInput] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const fetchPosts = (tab: string, p: number, search: string) => {
     setLoading(true);
-    fetch(`/api/board/${tab}?page=${p}`)
+    const params = new URLSearchParams({ page: String(p) });
+    if (search) params.set("search", search);
+    fetch(`/api/board/${tab}?${params}`)
       .then((r) => r.json())
       .then((data) => {
         setPosts(data.posts || []);
@@ -52,17 +58,29 @@ export default function BoardTabs() {
 
   useEffect(() => {
     setPage(1);
-    fetchPosts(activeTab, 1);
+    setSearchInput("");
+    setSearchQuery("");
+    fetchPosts(activeTab, 1, "");
   }, [activeTab]);
 
   useEffect(() => {
-    if (page === 1) return;
-    fetchPosts(activeTab, page);
-  }, [page]);
+    fetchPosts(activeTab, page, searchQuery);
+  }, [page, searchQuery]);
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
     router.replace(`/board?tab=${tab}`, { scroll: false });
+  };
+
+  const handleSearch = () => {
+    setPage(1);
+    setSearchQuery(searchInput);
+  };
+
+  const clearSearch = () => {
+    setSearchInput("");
+    setSearchQuery("");
+    setPage(1);
   };
 
   const [showAdminModal, setShowAdminModal] = useState(false);
@@ -80,11 +98,7 @@ export default function BoardTabs() {
   };
 
   const handleAdminSubmit = () => {
-    if (!adminPw) {
-      setAdminError("비밀번호를 입력해주세요.");
-      return;
-    }
-    // Pass admin password via sessionStorage so write form can use it
+    if (!adminPw) { setAdminError("비밀번호를 입력해주세요."); return; }
     sessionStorage.setItem("adminPassword", adminPw);
     setShowAdminModal(false);
     router.push(`/board/notice/write`);
@@ -97,9 +111,7 @@ export default function BoardTabs() {
       {/* Header */}
       <div className="rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 p-5 mb-5 text-white">
         <h1 className="text-xl font-black">게시판</h1>
-        <p className="text-sm text-indigo-100 mt-0.5">
-          한국사능력검정시험 학습 커뮤니티
-        </p>
+        <p className="text-sm text-indigo-100 mt-0.5">한국사능력검정시험 학습 커뮤니티</p>
       </div>
 
       {/* Tabs */}
@@ -120,10 +132,40 @@ export default function BoardTabs() {
         ))}
       </div>
 
+      {/* Search bar */}
+      <div className="flex gap-2 mb-3">
+        <div className="relative flex-1">
+          <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            type="text"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+            placeholder="제목, 내용, 닉네임 검색"
+            className="w-full rounded-xl border border-slate-200 bg-white pl-9 pr-3 py-2.5 text-sm text-slate-700 placeholder:text-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-300 transition-colors"
+          />
+          {searchQuery && (
+            <button onClick={clearSearch} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-300 hover:text-slate-500">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          )}
+        </div>
+        <button
+          onClick={handleSearch}
+          className="rounded-xl bg-slate-100 px-4 py-2.5 text-sm font-semibold text-slate-500 hover:bg-slate-200 transition-colors shrink-0"
+        >
+          검색
+        </button>
+      </div>
+
       {/* Sub header */}
-      <div className="flex items-center justify-between mb-3">
+      <div className="flex items-center justify-between mb-2">
         <span className="text-xs font-semibold text-slate-400">
-          {!loading && `총 ${total}개`}
+          {!loading && (searchQuery ? `"${searchQuery}" 검색 결과 ${total}개` : `총 ${total}개`)}
         </span>
         <button
           onClick={handleWriteClick}
@@ -136,90 +178,146 @@ export default function BoardTabs() {
         </button>
       </div>
 
-      {/* Post list */}
+      {/* Post list — table style */}
       {loading ? (
         <div className="py-16 text-center">
           <div className="inline-block w-6 h-6 border-2 border-indigo-200 border-t-indigo-500 rounded-full animate-spin" />
         </div>
       ) : posts.length === 0 ? (
         <div className="py-16 text-center">
-          <p className="text-4xl mb-3">{activeTabInfo.icon}</p>
-          <p className="text-sm text-slate-400">아직 게시글이 없습니다.</p>
-          <Link
-            href={`/board/${activeTab}/write`}
-            className="inline-block mt-3 text-sm font-semibold text-indigo-500 hover:text-indigo-600"
-          >
-            첫 번째 글을 작성해보세요
-          </Link>
+          <p className="text-4xl mb-3">{searchQuery ? "🔍" : activeTabInfo.icon}</p>
+          <p className="text-sm text-slate-400">
+            {searchQuery ? "검색 결과가 없습니다." : "아직 게시글이 없습니다."}
+          </p>
+          {!searchQuery && (
+            <Link
+              href={`/board/${activeTab}/write`}
+              className="inline-block mt-3 text-sm font-semibold text-indigo-500 hover:text-indigo-600"
+            >
+              첫 번째 글을 작성해보세요
+            </Link>
+          )}
         </div>
       ) : (
-        <div className="space-y-2">
-          {posts.map((post) => (
-            <Link
-              key={post.id}
-              href={`/board/${activeTab}/${post.id}`}
-              className="block rounded-xl border border-slate-200/80 bg-white px-4 py-3.5 hover:border-indigo-200 hover:shadow-sm transition-all"
-            >
-              <div className="flex items-center gap-1.5">
-                {post.pinned && (
-                  <span className="text-[11px] text-red-500 font-bold shrink-0">📌</span>
-                )}
-                <p className="text-[15px] font-semibold text-slate-800 truncate leading-snug">
-                  {post.title}
-                </p>
-                {(post.comment_count ?? 0) > 0 && (
-                  <span className="text-[12px] font-bold text-indigo-500 shrink-0">[{post.comment_count}]</span>
-                )}
-              </div>
-              <div className="flex items-center gap-2 mt-1.5">
-                <span className={`inline-flex items-center rounded-md ${activeTabInfo.bg} px-1.5 py-0.5 text-[11px] font-bold ${activeTabInfo.color}`}>
-                  {post.nickname}
-                </span>
-                <span className="text-[11px] text-slate-300">
-                  {formatDate(post.created_at)}
-                </span>
-                <span className="text-[11px] text-slate-300 ml-auto flex items-center gap-2">
-                  {(post.view_count ?? 0) > 0 && (
-                    <span className="flex items-center gap-0.5">
-                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-                      {post.view_count}
+        <>
+          {/* Table header */}
+          <div className="hidden sm:grid grid-cols-[1fr_80px_48px_48px_48px] gap-2 px-4 py-2 text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-200">
+            <span>제목</span>
+            <span className="text-center">작성자</span>
+            <span className="text-center">
+              <svg className="w-3.5 h-3.5 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            </span>
+            <span className="text-center">
+              <svg className="w-3.5 h-3.5 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+            </span>
+            <span className="text-center">날짜</span>
+          </div>
+
+          {/* Post rows */}
+          <div className="divide-y divide-slate-100">
+            {posts.map((post) => (
+              <Link
+                key={post.id}
+                href={`/board/${activeTab}/${post.id}`}
+                className={`block px-4 py-3 hover:bg-slate-50/80 transition-colors ${post.pinned ? "bg-amber-50/30" : ""}`}
+              >
+                {/* Desktop — table row */}
+                <div className="hidden sm:grid grid-cols-[1fr_80px_48px_48px_48px] gap-2 items-center">
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    {post.pinned && <span className="text-[11px] shrink-0">📌</span>}
+                    <span className="text-[14px] font-semibold text-slate-800 truncate">{post.title}</span>
+                    {(post.comment_count ?? 0) > 0 && (
+                      <span className="text-[12px] font-bold text-indigo-500 shrink-0">[{post.comment_count}]</span>
+                    )}
+                  </div>
+                  <span className="text-[12px] font-medium text-slate-500 text-center truncate">{post.nickname}</span>
+                  <span className="text-[12px] text-slate-400 text-center">{post.view_count ?? 0}</span>
+                  <span className="text-[12px] text-slate-400 text-center">{post.like_count ?? 0}</span>
+                  <span className="text-[11px] text-slate-400 text-center">{formatDate(post.created_at)}</span>
+                </div>
+
+                {/* Mobile — card style */}
+                <div className="sm:hidden">
+                  <div className="flex items-center gap-1.5">
+                    {post.pinned && <span className="text-[11px] shrink-0">📌</span>}
+                    <p className="text-[14px] font-semibold text-slate-800 truncate">{post.title}</p>
+                    {(post.comment_count ?? 0) > 0 && (
+                      <span className="text-[12px] font-bold text-indigo-500 shrink-0">[{post.comment_count}]</span>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-3 mt-1.5 text-[11px] text-slate-400">
+                    <span className="font-medium text-slate-500">{post.nickname}</span>
+                    <span>{formatDate(post.created_at)}</span>
+                    <span className="ml-auto flex items-center gap-2.5">
+                      <span className="flex items-center gap-0.5">
+                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                        {post.view_count ?? 0}
+                      </span>
+                      <span className="flex items-center gap-0.5">
+                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                        {post.like_count ?? 0}
+                      </span>
                     </span>
-                  )}
-                  {(post.like_count ?? 0) > 0 && (
-                    <span className="flex items-center gap-0.5">
-                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
-                      {post.like_count}
-                    </span>
-                  )}
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </>
       )}
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-3 mt-6">
+        <div className="flex items-center justify-center gap-1 mt-6">
+          <button
+            onClick={() => setPage(1)}
+            disabled={page === 1}
+            className="rounded-lg px-2.5 py-2 text-xs font-semibold text-slate-400 hover:bg-slate-100 disabled:opacity-20 transition-colors"
+          >
+            «
+          </button>
           <button
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page === 1}
-            className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-500 hover:bg-slate-50 disabled:opacity-30 transition-colors"
+            className="rounded-lg px-2.5 py-2 text-xs font-semibold text-slate-400 hover:bg-slate-100 disabled:opacity-20 transition-colors"
           >
-            이전
+            ‹
           </button>
-          <span className="text-sm font-bold text-slate-600">
-            {page} <span className="text-slate-300">/</span> {totalPages}
-          </span>
+          {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+            const start = Math.max(1, Math.min(page - 2, totalPages - 4));
+            const n = start + i;
+            if (n > totalPages) return null;
+            return (
+              <button
+                key={n}
+                onClick={() => setPage(n)}
+                className={`rounded-lg px-3 py-2 text-xs font-bold transition-colors ${
+                  page === n
+                    ? "bg-indigo-500 text-white"
+                    : "text-slate-500 hover:bg-slate-100"
+                }`}
+              >
+                {n}
+              </button>
+            );
+          })}
           <button
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             disabled={page === totalPages}
-            className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-500 hover:bg-slate-50 disabled:opacity-30 transition-colors"
+            className="rounded-lg px-2.5 py-2 text-xs font-semibold text-slate-400 hover:bg-slate-100 disabled:opacity-20 transition-colors"
           >
-            다음
+            ›
+          </button>
+          <button
+            onClick={() => setPage(totalPages)}
+            disabled={page === totalPages}
+            className="rounded-lg px-2.5 py-2 text-xs font-semibold text-slate-400 hover:bg-slate-100 disabled:opacity-20 transition-colors"
+          >
+            »
           </button>
         </div>
       )}
+
       {/* Admin password modal */}
       {showAdminModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4" onClick={() => setShowAdminModal(false)}>

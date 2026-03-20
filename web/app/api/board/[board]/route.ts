@@ -16,13 +16,20 @@ export async function GET(req: NextRequest, ctx: RouteContext) {
   }
 
   const page = Number(req.nextUrl.searchParams.get("page") || "1");
+  const search = req.nextUrl.searchParams.get("search") || "";
   const limit = 20;
   const offset = (page - 1) * limit;
 
-  const { data, error, count } = await supabase
+  let query = supabase
     .from("posts")
     .select("id, board, nickname, title, view_count, like_count, pinned, created_at", { count: "exact" })
-    .eq("board", board)
+    .eq("board", board);
+
+  if (search.trim()) {
+    query = query.or(`title.ilike.%${search.trim()}%,content.ilike.%${search.trim()}%,nickname.ilike.%${search.trim()}%`);
+  }
+
+  const { data, error, count } = await query
     .order("pinned", { ascending: false })
     .order("created_at", { ascending: false })
     .range(offset, offset + limit - 1);
