@@ -134,7 +134,7 @@ Content:
 - Clean, professional design
 - 1080x1080 square format`;
 
-  return await generateImage(prompt, ctaUrl);
+  return await generateImage(prompt, imageModel);
 }
 
 export async function generateNoteCardNews(req: NoteCardRequest, onProgress?: (msg: string) => void): Promise<NoteSlideResult[]> {
@@ -164,27 +164,40 @@ export async function generateNoteCardNews(req: NoteCardRequest, onProgress?: (m
       throw new AppError(500, `타이틀 이미지 생성 실패: ${(err as Error).message}`);
     }
 
-    // Step 3: Generate content slides
+    // Step 3: Generate content slides (with retry)
     for (let j = 0; j < scenes.length; j++) {
       const scene = scenes[j];
       if (!scene?.subtitle) continue;
-      onProgress?.(`[${i + 1}/${req.noteIds.length}] 웹툰 ${j + 2}/${slideCount} 생성 중: ${scene.subtitle}`);
-      try {
-        slides.push(await generateWebtoonSlide(note, scene.subtitle, scene.description, j + 2, slideCount, imageModel));
-      } catch (err) {
-        console.error(`[NoteCardNews] Content slide ${j + 2} failed:`, err);
-        // Skip failed slides instead of crashing
-        continue;
+
+      let success = false;
+      for (let attempt = 1; attempt <= 2; attempt++) {
+        onProgress?.(`[${i + 1}/${req.noteIds.length}] 웹툰 ${j + 2}/${slideCount} 생성 중: ${scene.subtitle}${attempt > 1 ? ' (재시도)' : ''}`);
+        try {
+          slides.push(await generateWebtoonSlide(note, scene.subtitle, scene.description, j + 2, slideCount, imageModel));
+          success = true;
+          break;
+        } catch (err) {
+          console.error(`[NoteCardNews] Content slide ${j + 2} attempt ${attempt} failed:`, (err as Error).message);
+          if (attempt < 2) {
+            await new Promise((r) => setTimeout(r, 2000)); // wait before retry
+          }
+        }
+      }
+      if (!success) {
+        onProgress?.(`[${i + 1}/${req.noteIds.length}] ⚠️ "${scene.subtitle}" 이미지 생성 실패 — 건너뜀`);
       }
     }
 
-    // Step 4: Generate CTA slide
-    onProgress?.(`[${i + 1}/${req.noteIds.length}] CTA 슬라이드 생성 중...`);
-    try {
-      slides.push(await generateCtaSlide(note, ctaUrl, imageModel));
-    } catch (err) {
-      console.error('[NoteCardNews] CTA slide failed:', err);
-      // CTA is optional, continue without it
+    // Step 4: Generate CTA slide (with retry)
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      onProgress?.(`[${i + 1}/${req.noteIds.length}] CTA 슬라이드 생성 중...${attempt > 1 ? ' (재시도)' : ''}`);
+      try {
+        slides.push(await generateCtaSlide(note, ctaUrl, imageModel));
+        break;
+      } catch (err) {
+        console.error(`[NoteCardNews] CTA slide attempt ${attempt} failed:`, (err as Error).message);
+        if (attempt < 2) await new Promise((r) => setTimeout(r, 2000));
+      }
     }
 
     results.push({ noteId: note.id, title: note.title, era: note.era, slides });
