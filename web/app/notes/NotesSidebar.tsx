@@ -104,8 +104,8 @@ export default function NotesSidebar({ notes, grouped }: Props) {
                       href={`/notes/${note.id}`}
                       className={`block rounded-xl px-3 py-2 text-xs font-medium transition-all ${
                         isActive
-                          ? "bg-gradient-to-r from-amber-100 to-yellow-50 text-amber-900 font-bold shadow-sm border border-amber-200/60"
-                          : "bg-white/60 text-slate-600 hover:bg-white hover:text-slate-800 hover:shadow-sm border border-transparent"
+                          ? "bg-emerald-50 text-emerald-700 font-bold border border-emerald-200/60"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-800 border border-transparent"
                       }`}
                     >
                       {note.title}

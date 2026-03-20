@@ -196,7 +196,7 @@ export default function QuestionCard({
                 </div>
                 <span className="text-sm font-black text-slate-800">해설</span>
               </div>
-              <p className="text-[13px] text-slate-600 leading-[24px] whitespace-pre-line">
+              <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-line">
                 {question.explanation}
               </p>
             </div>
