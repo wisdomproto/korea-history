@@ -37,6 +37,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
+      <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CJ7V236NQV" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CJ7V236NQV');`,
+          }}
+        />
+      </head>
       <body className="antialiased">
         <div className="flex min-h-screen flex-col">
           <Header />
