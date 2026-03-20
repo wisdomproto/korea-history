@@ -92,12 +92,14 @@ router.post('/download', asyncHandler(async (req, res) => {
 }));
 
 /** POST /api/card-news/notes/generate — generate note card news (SSE progress) */
-router.post('/notes/generate', asyncHandler(async (req, res) => {
+router.post('/notes/generate', async (req, res) => {
+  console.log('[NoteCardNews] Generate request:', req.body.noteIds?.length, 'notes');
   const { noteIds, slideCount, model, ctaUrl } = req.body;
 
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
   res.setHeader('Connection', 'keep-alive');
+  res.flushHeaders();
 
   const sendEvent = (type: string, data: any) => {
     res.write(`data: ${JSON.stringify({ type, ...data })}\n\n`);
@@ -106,8 +108,10 @@ router.post('/notes/generate', asyncHandler(async (req, res) => {
   try {
     const results = await generateNoteCardNews(
       { noteIds, slideCount, model, ctaUrl },
-      (msg) => sendEvent('progress', { message: msg }),
+      (msg) => { console.log('[NoteCardNews]', msg); sendEvent('progress', { message: msg }); },
     );
+
+    console.log('[NoteCardNews] Done! Generated', results.length, 'sets');
 
     const base64Results = results.map((r) => ({
       noteId: r.noteId,
@@ -118,10 +122,11 @@ router.post('/notes/generate', asyncHandler(async (req, res) => {
 
     sendEvent('complete', { results: base64Results });
   } catch (err: any) {
+    console.error('[NoteCardNews] Error:', err);
     sendEvent('error', { message: err.message || '생성 중 오류 발생' });
   }
 
   res.end();
-}));
+});
 
 export default router;

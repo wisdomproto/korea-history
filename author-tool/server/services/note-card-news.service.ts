@@ -177,11 +177,14 @@ function buildCtaSlide(ctaUrl: string, note: Note, colors: any) {
   return makeSlide([
     { type: 'div', props: { style: { flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }, children: [
       textNode('📚', { fontSize: '64px', marginBottom: '24px' }),
-      textNode(`${note.title}\n전체 내용이 궁금하다면?`, { fontSize: '32px', fontWeight: 800, color: 'white', textAlign: 'center', lineHeight: '1.4', marginBottom: '32px' }),
-      { type: 'div', props: { style: { background: 'rgba(255,255,255,0.2)', borderRadius: '16px', padding: '20px 40px' }, children: [
+      { type: 'div', props: { style: { display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '32px' }, children: [
+        textNode(note.title, { fontSize: '32px', fontWeight: 800, color: 'white', textAlign: 'center', lineHeight: '1.4' }),
+        textNode('전체 내용이 궁금하다면?', { fontSize: '32px', fontWeight: 800, color: 'white', textAlign: 'center', lineHeight: '1.4' }),
+      ]}},
+      { type: 'div', props: { style: { background: 'rgba(255,255,255,0.2)', borderRadius: '16px', padding: '20px 40px', display: 'flex' }, children: [
         textNode(ctaUrl, { fontSize: '28px', fontWeight: 700, color: 'white' }),
       ]}},
-      textNode(`87개 요약노트 · 1,900+ 기출문제 · 무료`, { fontSize: '20px', color: 'rgba(255,255,255,0.7)', marginTop: '24px' }),
+      textNode('87개 요약노트 · 1,900+ 기출문제 · 무료', { fontSize: '20px', color: 'rgba(255,255,255,0.7)', marginTop: '24px' }),
     ]}},
     textNode('기출노트 한능검', { fontSize: '18px', color: 'rgba(255,255,255,0.4)', textAlign: 'right' }),
   ], colors);
