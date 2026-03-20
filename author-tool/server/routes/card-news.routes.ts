@@ -2,7 +2,7 @@ import { Router } from 'express';
 import archiver from 'archiver';
 import { asyncHandler } from '../middleware.js';
 import { generateCardNews, getAvailableExams, getExamQuestions } from '../services/card-news.service.js';
-import { generateNoteCardNews } from '../services/note-card-news.service.js';
+import { generateNoteCardNews, IMAGE_MODELS } from '../services/note-card-news.service.js';
 import { TEXT_MODELS } from '../services/gemini.provider.js';
 
 const router = Router();
@@ -22,16 +22,16 @@ router.get('/questions/:examNumber', asyncHandler(async (req, res) => {
 
 /** GET /api/card-news/models — available AI models */
 router.get('/models', asyncHandler(async (_req, res) => {
-  res.json({ success: true, data: TEXT_MODELS });
+  res.json({ success: true, data: { text: TEXT_MODELS, image: IMAGE_MODELS } });
 }));
 
 /** POST /api/card-news/generate — generate card news (JSON response) */
 router.post('/generate', asyncHandler(async (req, res) => {
-  console.log('[CardNews] Generate request:', req.body.questions?.length, 'questions');
-  const { questions, ctaText, ctaUrl, model } = req.body;
+  console.log('[CardNews] Generate request:', req.body.questions?.length, 'questions, bgImage:', !!req.body.bgImageBase64);
+  const { questions, ctaText, ctaUrl, model, bgImageBase64 } = req.body;
 
   const results = await generateCardNews(
-    { questions, ctaText, ctaUrl, model },
+    { questions, ctaText, ctaUrl, model, bgImageBase64 },
     (msg) => console.log('[CardNews]', msg),
   );
 
@@ -75,10 +75,10 @@ router.post('/download', asyncHandler(async (req, res) => {
 /** POST /api/card-news/notes/generate — generate note card news (JSON response) */
 router.post('/notes/generate', asyncHandler(async (req, res) => {
   console.log('[NoteCardNews] Generate request:', req.body.noteIds?.length, 'notes');
-  const { noteIds, slideCount, model, ctaUrl } = req.body;
+  const { noteIds, slideCount, model, imageModel, ctaUrl } = req.body;
 
   const results = await generateNoteCardNews(
-    { noteIds, slideCount, model, ctaUrl },
+    { noteIds, slideCount, model, imageModel, ctaUrl },
     (msg) => console.log('[NoteCardNews]', msg),
   );
 

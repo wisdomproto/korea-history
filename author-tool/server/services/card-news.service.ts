@@ -61,8 +61,9 @@ interface CardNewsRequest {
   questions: QuestionData[];
   ctaText?: string;
   ctaUrl?: string;
-  useAiExplanation?: boolean;
   model?: string;
+  /** Base64-encoded background image (uploaded by user) */
+  bgImageBase64?: string;
 }
 
 interface SlideResult {
@@ -79,7 +80,36 @@ async function renderSvgToPng(svg: string): Promise<Buffer> {
   return Buffer.from(pngData.asPng());
 }
 
-function makeSlide(elements: any, colors: { bg1: string; bg2: string }) {
+function makeSlide(elements: any, colors: { bg1: string; bg2: string }, bgImageBase64?: string) {
+  const children: any[] = [];
+
+  // Background image (absolute positioned)
+  if (bgImageBase64) {
+    children.push({
+      type: 'img',
+      props: {
+        src: `data:image/jpeg;base64,${bgImageBase64}`,
+        style: { position: 'absolute', top: 0, left: 0, width: '1080px', height: '1080px', objectFit: 'cover' },
+      },
+    });
+    // Dark overlay for text readability
+    children.push({
+      type: 'div',
+      props: {
+        style: { position: 'absolute', top: 0, left: 0, width: '1080px', height: '1080px', background: 'rgba(0,0,0,0.5)' },
+      },
+    });
+  }
+
+  // Content wrapper (on top of background)
+  children.push({
+    type: 'div',
+    props: {
+      style: { display: 'flex', flexDirection: 'column', flex: 1, padding: '60px', position: 'relative', zIndex: 1 },
+      children: elements,
+    },
+  });
+
   return {
     type: 'div',
     props: {
@@ -88,12 +118,12 @@ function makeSlide(elements: any, colors: { bg1: string; bg2: string }) {
         height: '1080px',
         display: 'flex',
         flexDirection: 'column',
-        background: `linear-gradient(135deg, ${colors.bg1} 0%, ${colors.bg2} 100%)`,
+        background: bgImageBase64 ? '#000' : `linear-gradient(135deg, ${colors.bg1} 0%, ${colors.bg2} 100%)`,
         fontFamily: 'NotoSansKR',
-        padding: '60px',
         position: 'relative',
+        overflow: 'hidden',
       },
-      children: elements,
+      children,
     },
   };
 }
@@ -102,7 +132,7 @@ function textNode(text: string, style: any) {
   return { type: 'div', props: { style, children: text } };
 }
 
-function buildSlide1(q: QuestionData, hookText: string, colors: any) {
+function buildSlide1(q: QuestionData, hookText: string, colors: any, bg?: string) {
   return makeSlide([
     // Tags
     { type: 'div', props: { style: { display: 'flex', gap: '12px', marginBottom: '40px' }, children: [
@@ -116,10 +146,10 @@ function buildSlide1(q: QuestionData, hookText: string, colors: any) {
       textNode(`제${q.examNumber}회 ${q.questionNumber}번`, { fontSize: '22px', color: 'rgba(255,255,255,0.7)' }),
       textNode('기출노트 한능검', { fontSize: '20px', color: 'rgba(255,255,255,0.5)' }),
     ]}},
-  ], colors);
+  ], colors, bg);
 }
 
-function buildSlide2(q: QuestionData, colors: any) {
+function buildSlide2(q: QuestionData, colors: any, bg?: string) {
   const contentText = q.content.length > 80 ? q.content.slice(0, 80) + '...' : q.content;
   const choiceElements = q.choices.map((c, i) => {
     const num = ['①', '②', '③', '④', '⑤'][i];
@@ -139,10 +169,10 @@ function buildSlide2(q: QuestionData, colors: any) {
     textNode(contentText, { fontSize: '28px', fontWeight: 700, color: 'white', marginBottom: '32px', lineHeight: '1.5' }),
     { type: 'div', props: { style: { display: 'flex', flexDirection: 'column', flex: 1 }, children: choiceElements } },
     textNode('댓글에 정답 남겨보세요!', { fontSize: '20px', color: 'rgba(255,255,255,0.6)', textAlign: 'center', marginTop: '16px' }),
-  ], colors);
+  ], colors, bg);
 }
 
-function buildSlide3(q: QuestionData, explanation: string, colors: any) {
+function buildSlide3(q: QuestionData, explanation: string, colors: any, bg?: string) {
   const num = ['①', '②', '③', '④', '⑤'][q.correctAnswer - 1];
   const answerText = q.choices[q.correctAnswer - 1];
   const shortAnswer = answerText.length > 30 ? answerText.slice(0, 30) + '...' : answerText;
@@ -156,10 +186,10 @@ function buildSlide3(q: QuestionData, explanation: string, colors: any) {
       textNode(shortExpl, { fontSize: '24px', color: 'white', lineHeight: '1.6' }),
     ]}},
     textNode('기출노트 한능검', { fontSize: '20px', color: 'rgba(255,255,255,0.5)', textAlign: 'right', marginTop: '16px' }),
-  ], colors);
+  ], colors, bg);
 }
 
-function buildSlide4(ctaText: string, ctaUrl: string, colors: any) {
+function buildSlide4(ctaText: string, ctaUrl: string, colors: any, bg?: string) {
   // Split ctaText by newlines into separate textNodes
   const ctaLines = ctaText.split('\n').filter(Boolean);
   const ctaElements = ctaLines.map((line) =>
@@ -176,7 +206,7 @@ function buildSlide4(ctaText: string, ctaUrl: string, colors: any) {
       textNode('1,900+ 기출문제 · 87개 요약노트 · 무료', { fontSize: '20px', color: 'rgba(255,255,255,0.7)', marginTop: '24px' }),
     ]}},
     textNode('기출노트 한능검', { fontSize: '20px', color: 'rgba(255,255,255,0.5)', textAlign: 'right' }),
-  ], colors);
+  ], colors, bg);
 }
 
 async function generateHookText(q: QuestionData, model?: string): Promise<string> {
@@ -276,10 +306,10 @@ export async function generateCardNews(req: CardNewsRequest, onProgress?: (msg: 
     const slides: Buffer[] = [];
     const slideNames = ['hook', 'question', 'answer', 'cta'];
     const slideNodes = [
-      buildSlide1(q, hookText, colors),
-      buildSlide2(q, colors),
-      buildSlide3(q, explanation, colors),
-      buildSlide4(ctaText, ctaUrl, colors),
+      buildSlide1(q, hookText, colors, req.bgImageBase64),
+      buildSlide2(q, colors, req.bgImageBase64),
+      buildSlide3(q, explanation, colors, req.bgImageBase64),
+      buildSlide4(ctaText, ctaUrl, colors, req.bgImageBase64),
     ];
 
     for (let si = 0; si < slideNodes.length; si++) {

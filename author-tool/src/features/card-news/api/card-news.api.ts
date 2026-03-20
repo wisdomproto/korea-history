@@ -33,7 +33,7 @@ export interface CardNewsSlideResult {
 export const cardNewsApi = {
   getExams: () => apiGet<ExamInfo[]>('/card-news/exams'),
   getQuestions: (examNumber: number) => apiGet<QuestionData[]>(`/card-news/questions/${examNumber}`),
-  getModels: () => apiGet<ModelInfo[]>('/card-news/models'),
+  getModels: () => apiGet<{ text: ModelInfo[]; image: ModelInfo[] }>('/card-news/models'),
 
   /** SSE-based generation with progress */
   generate: (

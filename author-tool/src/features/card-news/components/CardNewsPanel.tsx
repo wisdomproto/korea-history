@@ -26,7 +26,8 @@ export function CardNewsPanel() {
   const [model, setModel] = useState<string>('');
   const [ctaText, setCtaText] = useState('더 많은 기출문제를\n풀어보고 싶다면?');
   const [ctaUrl, setCtaUrl] = useState('gcnote.co.kr');
-  // explanation is always AI-summarized from existing data
+  const [bgImageBase64, setBgImageBase64] = useState<string>('');
+  const [bgPreview, setBgPreview] = useState<string>('');
 
   const [generating, setGenerating] = useState(false);
   const [progress, setProgress] = useState('');
@@ -71,7 +72,7 @@ export function CardNewsPanel() {
       const res = await fetch('/api/card-news/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ questions: selected, ctaText, ctaUrl, model: model || undefined }),
+        body: JSON.stringify({ questions: selected, ctaText, ctaUrl, model: model || undefined, bgImageBase64: bgImageBase64 || undefined }),
       });
       const json = await res.json();
       if (json.success) {
@@ -186,7 +187,7 @@ export function CardNewsPanel() {
                 className="w-full rounded-lg border px-2 py-1.5 text-sm"
               >
                 <option value="">기본 (Flash)</option>
-                {models?.map((m) => <option key={m.id} value={m.id}>{m.label}</option>)}
+                {models?.text?.map((m) => <option key={m.id} value={m.id}>{m.label}</option>)}
               </select>
             </div>
             <div>
@@ -208,7 +209,40 @@ export function CardNewsPanel() {
               />
             </div>
             <div className="col-span-2">
-              <p className="text-xs text-gray-500">💡 기존 해설 데이터를 AI가 카드뉴스용으로 요약합니다.</p>
+              <label className="text-xs font-medium text-gray-600 mb-1 block">배경 이미지 (선택)</label>
+              <div className="flex items-center gap-3">
+                <label className="cursor-pointer rounded-lg border border-dashed border-gray-300 px-4 py-2 text-xs text-gray-500 hover:border-primary-400 hover:text-primary-600 transition-colors">
+                  {bgPreview ? '변경' : '이미지 업로드'}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (!file) return;
+                      const reader = new FileReader();
+                      reader.onload = () => {
+                        const result = reader.result as string;
+                        setBgPreview(result);
+                        setBgImageBase64(result.split(',')[1]); // strip data:... prefix
+                      };
+                      reader.readAsDataURL(file);
+                    }}
+                  />
+                </label>
+                {bgPreview && (
+                  <>
+                    <img src={bgPreview} alt="bg" className="h-10 w-10 rounded object-cover border" />
+                    <button
+                      onClick={() => { setBgPreview(''); setBgImageBase64(''); }}
+                      className="text-xs text-red-500 hover:text-red-700"
+                    >
+                      제거
+                    </button>
+                  </>
+                )}
+                {!bgPreview && <span className="text-xs text-gray-400">없으면 시대별 그라데이션 사용</span>}
+              </div>
             </div>
           </div>
 

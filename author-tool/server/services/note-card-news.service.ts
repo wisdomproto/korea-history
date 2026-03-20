@@ -1,70 +1,12 @@
-import satori from 'satori';
-import { Resvg } from '@resvg/resvg-js';
-import fs from 'fs';
-import { generateText } from './gemini.provider.js';
-import { getNoteById, getAllNotes, type Note } from './notes.service.js';
+import { generateText, generateImage, IMAGE_MODELS } from './gemini.provider.js';
+import { getNoteById, type Note } from './notes.service.js';
 import { AppError } from '../middleware.js';
-
-// Reuse font loading from card-news service
-let fontData: ArrayBuffer | null = null;
-
-async function getFont(): Promise<ArrayBuffer> {
-  if (fontData) return fontData;
-  const candidates = [
-    'C:/Windows/Fonts/malgun.ttf',
-    'C:/Windows/Fonts/NanumGothic.ttf',
-    '/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc',
-    '/System/Library/Fonts/AppleSDGothicNeo.ttc',
-  ];
-  for (const p of candidates) {
-    if (fs.existsSync(p)) {
-      fontData = fs.readFileSync(p).buffer as ArrayBuffer;
-      return fontData;
-    }
-  }
-  const res = await fetch('https://fonts.gstatic.com/s/notosanskr/v36/PbyxFmXiEBPT4ITbgNA5Cgms3VYcOA-vvnIzzuoyeLTq8H4hfeE.ttf');
-  fontData = await res.arrayBuffer();
-  return fontData;
-}
-
-const ERA_COLORS: Record<string, { bg1: string; bg2: string }> = {
-  '선사·고조선': { bg1: '#F59E0B', bg2: '#D97706' },
-  '삼국':       { bg1: '#EF4444', bg2: '#DC2626' },
-  '남북국':     { bg1: '#F97316', bg2: '#EA580C' },
-  '고려':       { bg1: '#10B981', bg2: '#059669' },
-  '조선 전기':  { bg1: '#3B82F6', bg2: '#2563EB' },
-  '조선 후기':  { bg1: '#6366F1', bg2: '#4F46E5' },
-  '근대':       { bg1: '#8B5CF6', bg2: '#7C3AED' },
-  '현대':       { bg1: '#EC4899', bg2: '#DB2777' },
-};
-
-async function renderSvgToPng(svg: string): Promise<Buffer> {
-  const resvg = new Resvg(svg, { fitTo: { mode: 'width', value: 1080 } });
-  return Buffer.from(resvg.render().asPng());
-}
-
-function textNode(text: string, style: any) {
-  return { type: 'div', props: { style, children: text } };
-}
-
-function makeSlide(elements: any, colors: { bg1: string; bg2: string }) {
-  return {
-    type: 'div',
-    props: {
-      style: {
-        width: '1080px', height: '1080px', display: 'flex', flexDirection: 'column',
-        background: `linear-gradient(135deg, ${colors.bg1} 0%, ${colors.bg2} 100%)`,
-        fontFamily: 'NotoSansKR', padding: '60px', position: 'relative',
-      },
-      children: elements,
-    },
-  };
-}
 
 interface NoteCardRequest {
   noteIds: string[];
-  slideCount?: number; // 3~5 slides per note (default 5)
-  model?: string;
+  slideCount?: number; // 3~5 slides (default 4)
+  model?: string;      // text model for summarization
+  imageModel?: string; // image model for webtoon generation
   ctaUrl?: string;
 }
 
@@ -72,10 +14,10 @@ interface NoteSlideResult {
   noteId: string;
   title: string;
   era: string;
-  slides: Buffer[];
+  slides: Buffer[]; // PNGs from Gemini
 }
 
-/** Extract plain text from HTML content, removing tags. */
+/** Extract plain text from HTML content. */
 function stripHtml(html: string): string {
   return html
     .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
@@ -89,36 +31,33 @@ function stripHtml(html: string): string {
     .trim();
 }
 
-async function generateNoteSummarySlides(note: Note, slideCount: number, model?: string): Promise<string[]> {
-  const plainText = stripHtml(note.content).slice(0, 3000); // limit context
+async function generateSlideContents(note: Note, slideCount: number, model?: string): Promise<{ subtitle: string; description: string }[]> {
+  const plainText = stripHtml(note.content).slice(0, 3000);
 
-  const prompt = `한국사능력검정시험 요약노트를 인스타그램 카드뉴스(1080x1080 인포그래픽)로 만들려고 합니다.
+  const prompt = `한국사능력검정시험 요약노트를 인스타그램 카드뉴스(웹툰 스타일 일러스트)로 만들려고 합니다.
 
 노트 제목: ${note.title}
 시대: ${note.eraLabel}
-관련 기출: ${note.relatedQuestionIds.length}문제
 
-노트 내용 (일부):
+노트 내용:
 ${plainText}
 
-이 내용을 ${slideCount - 2}개의 슬라이드로 나눠서 핵심 포인트를 정리해주세요.
+이 내용을 ${slideCount}개의 장면으로 나눠서, 각 장면의 소제목과 핵심 내용을 한 줄로 정리해주세요.
 
 규칙:
-- 각 슬라이드마다 소제목 1개 + 핵심 포인트 3~5개
-- 각 포인트는 15자 이내로 간결하게
+- 각 장면마다 소제목 1개 + 핵심 내용 1문장 (30자 이내)
 - 시험에 자주 나오는 핵심만
+- 시각적으로 표현할 수 있는 장면 위주
 - "자막", "유튜브", "강의", "영상" 단어 절대 사용 금지
 
-JSON 형식으로 출력:
+JSON 형식:
 [
-  { "subtitle": "소제목1", "points": ["포인트1", "포인트2", "포인트3"] },
-  { "subtitle": "소제목2", "points": ["포인트1", "포인트2", "포인트3"] }
+  { "subtitle": "소제목", "description": "핵심 내용 한 줄" }
 ]
 
-JSON만 출력하세요:`;
+JSON만 출력:`;
 
   const text = await generateText(prompt, model);
-  // Parse JSON from response
   const jsonMatch = text.match(/\[[\s\S]*\]/);
   if (!jsonMatch) return [];
   try {
@@ -128,110 +67,131 @@ JSON만 출력하세요:`;
   }
 }
 
-function buildTitleSlide(note: Note, colors: any) {
-  return makeSlide([
-    { type: 'div', props: { style: { display: 'flex', gap: '12px', marginBottom: '24px' }, children: [
-      textNode(`#한능검`, { background: 'rgba(255,255,255,0.2)', borderRadius: '20px', padding: '8px 20px', fontSize: '22px', fontWeight: 700, color: 'white' }),
-      textNode(`#${note.era}`, { background: 'rgba(255,255,255,0.2)', borderRadius: '20px', padding: '8px 20px', fontSize: '22px', fontWeight: 700, color: 'white' }),
-      textNode(`#요약정리`, { background: 'rgba(255,255,255,0.2)', borderRadius: '20px', padding: '8px 20px', fontSize: '22px', fontWeight: 700, color: 'white' }),
-    ]}},
-    { type: 'div', props: { style: { flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }, children: [
-      textNode(note.eraLabel, { fontSize: '24px', color: 'rgba(255,255,255,0.7)', marginBottom: '16px' }),
-      textNode(note.title, { fontSize: '48px', fontWeight: 800, color: 'white', textAlign: 'center', lineHeight: '1.3', marginBottom: '24px' }),
-      textNode(`핵심 요약 · 저장 필수!`, { fontSize: '24px', color: 'rgba(255,255,255,0.8)' }),
-    ]}},
-    { type: 'div', props: { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }, children: [
-      textNode(`관련 기출 ${note.relatedQuestionIds.length}문제`, { fontSize: '18px', color: 'rgba(255,255,255,0.5)' }),
-      textNode('기출노트 한능검', { fontSize: '18px', color: 'rgba(255,255,255,0.5)' }),
-    ]}},
-  ], colors);
+async function generateWebtoonSlide(
+  note: Note,
+  subtitle: string,
+  description: string,
+  slideNum: number,
+  totalSlides: number,
+  imageModel?: string,
+): Promise<Buffer> {
+  const prompt = `Create a 1080x1080 pixel Instagram card-news illustration in Korean webtoon (manhwa) style.
+
+Topic: Korean History - ${note.eraLabel} - ${note.title}
+Scene: ${subtitle}
+Key point: ${description}
+
+Style requirements:
+- Clean, modern Korean webtoon illustration style
+- Soft pastel colors, warm tones
+- Historical Korean characters in traditional clothing (hanbok, armor, etc.)
+- Text overlay at top: "${subtitle}" in bold white Korean text with dark shadow
+- Text overlay at bottom-left: "${slideNum}/${totalSlides}" in small text
+- Text overlay at bottom-right: "기출노트 한능검" watermark in small text
+- NO speech bubbles, NO manga style, NO Japanese style
+- Educational and clean, suitable for Instagram
+- 1080x1080 square format`;
+
+  try {
+    return await generateImage(prompt, imageModel);
+  } catch (err) {
+    console.error(`[NoteCardNews] Image generation failed for "${subtitle}":`, err);
+    throw err;
+  }
 }
 
-function buildContentSlide(subtitle: string, points: string[], slideNum: number, totalSlides: number, colors: any) {
-  const pointElements = points.map((p, i) => ({
-    type: 'div',
-    props: {
-      style: {
-        display: 'flex', alignItems: 'flex-start', gap: '16px',
-        background: 'rgba(255,255,255,0.1)', borderRadius: '14px',
-        padding: '16px 20px', marginBottom: '10px',
-      },
-      children: [
-        textNode(`${i + 1}`, { fontSize: '20px', fontWeight: 800, color: 'rgba(255,255,255,0.5)', width: '28px', textAlign: 'center' }),
-        textNode(p, { fontSize: '26px', fontWeight: 600, color: 'white', lineHeight: '1.5', flex: 1 }),
-      ],
-    },
-  }));
+async function generateTitleSlide(note: Note, imageModel?: string): Promise<Buffer> {
+  const prompt = `Create a 1080x1080 pixel Instagram card-news title slide in Korean webtoon style.
 
-  return makeSlide([
-    { type: 'div', props: { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }, children: [
-      textNode(subtitle, { fontSize: '36px', fontWeight: 800, color: 'white' }),
-      textNode(`${slideNum}/${totalSlides}`, { fontSize: '18px', color: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.1)', borderRadius: '8px', padding: '4px 12px' }),
-    ]}},
-    { type: 'div', props: { style: { display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'center' }, children: pointElements } },
-    textNode('기출노트 한능검', { fontSize: '18px', color: 'rgba(255,255,255,0.4)', textAlign: 'right' }),
-  ], colors);
+Topic: Korean History - ${note.eraLabel}
+Title: "${note.title}"
+
+Style requirements:
+- Beautiful Korean historical scene as background
+- Large centered title text: "${note.title}" in bold white Korean text
+- Subtitle: "${note.eraLabel}" in smaller text above the title
+- Bottom text: "핵심 요약 · 저장 필수!" in small text
+- Tags: "#한능검 #${note.era} #요약정리" at the top
+- Soft gradient overlay for text readability
+- Modern, clean Korean webtoon illustration style
+- 1080x1080 square format`;
+
+  return await generateImage(prompt, imageModel);
 }
 
-function buildCtaSlide(ctaUrl: string, note: Note, colors: any) {
-  return makeSlide([
-    { type: 'div', props: { style: { flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }, children: [
-      textNode('📚', { fontSize: '64px', marginBottom: '24px' }),
-      { type: 'div', props: { style: { display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '32px' }, children: [
-        textNode(note.title, { fontSize: '32px', fontWeight: 800, color: 'white', textAlign: 'center', lineHeight: '1.4' }),
-        textNode('전체 내용이 궁금하다면?', { fontSize: '32px', fontWeight: 800, color: 'white', textAlign: 'center', lineHeight: '1.4' }),
-      ]}},
-      { type: 'div', props: { style: { background: 'rgba(255,255,255,0.2)', borderRadius: '16px', padding: '20px 40px', display: 'flex' }, children: [
-        textNode(ctaUrl, { fontSize: '28px', fontWeight: 700, color: 'white' }),
-      ]}},
-      textNode('87개 요약노트 · 1,900+ 기출문제 · 무료', { fontSize: '20px', color: 'rgba(255,255,255,0.7)', marginTop: '24px' }),
-    ]}},
-    textNode('기출노트 한능검', { fontSize: '18px', color: 'rgba(255,255,255,0.4)', textAlign: 'right' }),
-  ], colors);
+async function generateCtaSlide(note: Note, ctaUrl: string, imageModel?: string): Promise<Buffer> {
+  const prompt = `Create a 1080x1080 pixel Instagram CTA (call-to-action) slide.
+
+Style: Modern Korean educational app promotion
+Content:
+- Center icon: 📚 book emoji or stack of books illustration
+- Main text: "${note.title}" in bold
+- Sub text: "전체 내용이 궁금하다면?"
+- URL box: "${ctaUrl}" in a rounded rectangle
+- Bottom text: "87개 요약노트 · 1,900+ 기출문제 · 무료"
+- Watermark: "기출노트 한능검"
+- Soft pastel gradient background
+- Clean, professional design
+- 1080x1080 square format`;
+
+  return await generateImage(prompt, ctaUrl);
 }
 
 export async function generateNoteCardNews(req: NoteCardRequest, onProgress?: (msg: string) => void): Promise<NoteSlideResult[]> {
   if (!req.noteIds.length) throw new AppError(400, '노트를 선택해주세요.');
 
-  const font = await getFont();
   const results: NoteSlideResult[] = [];
-  const slideCount = req.slideCount || 5;
+  const slideCount = req.slideCount || 4;
   const ctaUrl = req.ctaUrl || 'gcnote.co.kr';
+  const imageModel = req.imageModel || IMAGE_MODELS[0].id;
 
   for (let i = 0; i < req.noteIds.length; i++) {
     const note = getNoteById(req.noteIds[i]);
     if (!note) continue;
 
-    const colors = ERA_COLORS[note.era] || ERA_COLORS['고려'];
+    // Step 1: AI summarize into scenes
+    onProgress?.(`[${i + 1}/${req.noteIds.length}] "${note.title}" — AI 장면 구성 중...`);
+    const scenes = await generateSlideContents(note, slideCount - 2, req.model);
 
-    onProgress?.(`[${i + 1}/${req.noteIds.length}] "${note.title}" — AI 요약 중...`);
-    const contentSlides = await generateNoteSummarySlides(note, slideCount, req.model);
+    const slides: Buffer[] = [];
 
-    onProgress?.(`[${i + 1}/${req.noteIds.length}] 슬라이드 렌더링 중...`);
+    // Step 2: Generate title slide
+    onProgress?.(`[${i + 1}/${req.noteIds.length}] 타이틀 웹툰 생성 중...`);
+    try {
+      slides.push(await generateTitleSlide(note, imageModel));
+    } catch (err) {
+      console.error('[NoteCardNews] Title slide failed:', err);
+      throw new AppError(500, `타이틀 이미지 생성 실패: ${(err as Error).message}`);
+    }
 
-    const slideNodes: any[] = [buildTitleSlide(note, colors)];
-
-    for (let j = 0; j < contentSlides.length; j++) {
-      const cs = contentSlides[j] as any;
-      if (cs.subtitle && cs.points) {
-        slideNodes.push(buildContentSlide(cs.subtitle, cs.points, j + 2, slideCount, colors));
+    // Step 3: Generate content slides
+    for (let j = 0; j < scenes.length; j++) {
+      const scene = scenes[j];
+      if (!scene?.subtitle) continue;
+      onProgress?.(`[${i + 1}/${req.noteIds.length}] 웹툰 ${j + 2}/${slideCount} 생성 중: ${scene.subtitle}`);
+      try {
+        slides.push(await generateWebtoonSlide(note, scene.subtitle, scene.description, j + 2, slideCount, imageModel));
+      } catch (err) {
+        console.error(`[NoteCardNews] Content slide ${j + 2} failed:`, err);
+        // Skip failed slides instead of crashing
+        continue;
       }
     }
 
-    slideNodes.push(buildCtaSlide(ctaUrl, note, colors));
-
-    const pngs: Buffer[] = [];
-    for (const node of slideNodes) {
-      const svg = await satori(node as any, {
-        width: 1080, height: 1080,
-        fonts: [{ name: 'NotoSansKR', data: font, weight: 400, style: 'normal' }],
-      });
-      pngs.push(await renderSvgToPng(svg));
+    // Step 4: Generate CTA slide
+    onProgress?.(`[${i + 1}/${req.noteIds.length}] CTA 슬라이드 생성 중...`);
+    try {
+      slides.push(await generateCtaSlide(note, ctaUrl, imageModel));
+    } catch (err) {
+      console.error('[NoteCardNews] CTA slide failed:', err);
+      // CTA is optional, continue without it
     }
 
-    results.push({ noteId: note.id, title: note.title, era: note.era, slides: pngs });
-    onProgress?.(`[${i + 1}/${req.noteIds.length}] "${note.title}" 완료!`);
+    results.push({ noteId: note.id, title: note.title, era: note.era, slides });
+    onProgress?.(`[${i + 1}/${req.noteIds.length}] "${note.title}" 완료! (${slides.length}장)`);
   }
 
   return results;
 }
+
+export { IMAGE_MODELS };

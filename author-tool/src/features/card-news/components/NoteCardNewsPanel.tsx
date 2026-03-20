@@ -38,7 +38,8 @@ export function NoteCardNewsPanel() {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [sectionFilter, setSectionFilter] = useState('');
   const [model, setModel] = useState('');
-  const [slideCount, setSlideCount] = useState(5);
+  const [imageModel, setImageModel] = useState('');
+  const [slideCount, setSlideCount] = useState(4);
   const [ctaUrl, setCtaUrl] = useState('gcnote.co.kr');
 
   const [generating, setGenerating] = useState(false);
@@ -76,7 +77,7 @@ export function NoteCardNewsPanel() {
       const res = await fetch('/api/card-news/notes/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ noteIds: [...selectedIds], slideCount, model: model || undefined, ctaUrl }),
+        body: JSON.stringify({ noteIds: [...selectedIds], slideCount, model: model || undefined, imageModel: imageModel || undefined, ctaUrl }),
       });
       const json = await res.json();
       if (json.success) {
@@ -102,7 +103,7 @@ export function NoteCardNewsPanel() {
   return (
     <div>
       <h2 className="text-xl font-bold mb-1">📝 요약노트 카드뉴스</h2>
-      <p className="text-sm text-gray-500 mb-6">요약노트 → AI 핵심 추출 → 시대별 인포그래픽 → PNG</p>
+      <p className="text-sm text-gray-500 mb-6">요약노트 → AI 핵심 추출 → Gemini 웹툰 이미지 생성 → PNG</p>
 
       {/* Note selector */}
       <div className="rounded-xl border bg-white p-5 mb-4">
@@ -155,21 +156,27 @@ export function NoteCardNewsPanel() {
       {selectedIds.size > 0 && (
         <div className="rounded-xl border bg-white p-5 mb-4">
           <h3 className="text-sm font-bold text-gray-700 mb-3">생성 옵션</h3>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="text-xs font-medium text-gray-600 mb-1 block">AI 모델</label>
+              <label className="text-xs font-medium text-gray-600 mb-1 block">텍스트 AI</label>
               <select value={model} onChange={(e) => setModel(e.target.value)} className="w-full rounded-lg border px-2 py-1.5 text-sm">
                 <option value="">기본 (Flash)</option>
-                {models?.map((m) => <option key={m.id} value={m.id}>{m.label}</option>)}
+                {models?.text?.map((m) => <option key={m.id} value={m.id}>{m.label}</option>)}
+              </select>
+            </div>
+            <div>
+              <label className="text-xs font-medium text-gray-600 mb-1 block">이미지 AI (웹툰)</label>
+              <select value={imageModel} onChange={(e) => setImageModel(e.target.value)} className="w-full rounded-lg border px-2 py-1.5 text-sm">
+                <option value="">기본 (Flash Image)</option>
+                {models?.image?.map((m) => <option key={m.id} value={m.id}>{m.label}</option>)}
               </select>
             </div>
             <div>
               <label className="text-xs font-medium text-gray-600 mb-1 block">슬라이드 수</label>
               <select value={slideCount} onChange={(e) => setSlideCount(Number(e.target.value))} className="w-full rounded-lg border px-2 py-1.5 text-sm">
                 <option value={3}>3장 (간단)</option>
-                <option value={4}>4장</option>
+                <option value={4}>4장 (추천)</option>
                 <option value={5}>5장 (상세)</option>
-                <option value={6}>6장 (최상세)</option>
               </select>
             </div>
             <div>
