@@ -42,6 +42,16 @@ export async function DELETE(req: NextRequest, ctx: RouteContext) {
     return NextResponse.json({ error: "비밀번호를 입력해주세요." }, { status: 400 });
   }
 
+  // Master password allows deleting any post
+  const masterPassword = process.env.ADMIN_PASSWORD || "8054";
+  if (password === masterPassword) {
+    const { error } = await supabase.from("posts").delete().eq("id", id).eq("board", board);
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+    return NextResponse.json({ success: true });
+  }
+
   const { data, error } = await supabase.rpc("delete_post_with_password", {
     p_id: id,
     p_password: password,

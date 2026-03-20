@@ -141,14 +141,12 @@ export default function PostDetail({ board, id }: { board: string; id: string })
           목록
         </Link>
 
-        {board !== "notice" && (
-          <button
-            onClick={() => setShowDelete(!showDelete)}
-            className="rounded-xl px-4 py-2.5 text-sm font-medium text-slate-400 hover:text-red-500 hover:bg-red-50 transition-colors"
-          >
-            삭제
-          </button>
-        )}
+        <button
+          onClick={() => setShowDelete(!showDelete)}
+          className="rounded-xl px-4 py-2.5 text-sm font-medium text-slate-400 hover:text-red-500 hover:bg-red-50 transition-colors"
+        >
+          삭제
+        </button>
       </div>
 
       {/* Delete confirmation */}
