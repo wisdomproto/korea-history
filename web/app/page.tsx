@@ -14,27 +14,23 @@ export default function HomePage() {
       {/* ─── Banner ─── */}
       <BannerCarousel />
 
-      {/* ─── Quick Actions ─── */}
-      <section className="grid grid-cols-2 gap-3">
-        <Link href="/study/custom" className="group rounded-2xl bg-white/90 border border-emerald-200/50 p-4 hover:shadow-lg hover:-translate-y-1 transition-all" style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.04)" }}>
-          <span className="text-2xl block mb-2">🎯</span>
-          <p className="text-sm font-black text-slate-800">맞춤형 학습</p>
-          <p className="text-[11px] text-slate-400 mt-0.5">시대 × 유형 선택</p>
+      {/* ─── Main Nav ─── */}
+      <section className="grid grid-cols-4 gap-2">
+        <Link href="/study" className="rounded-2xl bg-white/90 p-3 text-center hover:shadow-md hover:-translate-y-0.5 transition-all" style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
+          <span className="text-2xl block mb-1">📚</span>
+          <p className="text-xs font-black text-slate-700">학습하기</p>
         </Link>
-        <Link href="/study/keyword" className="group rounded-2xl bg-white/90 border border-amber-200/50 p-4 hover:shadow-lg hover:-translate-y-1 transition-all" style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.04)" }}>
-          <span className="text-2xl block mb-2">🔑</span>
-          <p className="text-sm font-black text-slate-800">키워드 학습</p>
-          <p className="text-[11px] text-slate-400 mt-0.5">{keywords.length.toLocaleString()}개 키워드</p>
+        <Link href="/wrong-answers" className="rounded-2xl bg-white/90 p-3 text-center hover:shadow-md hover:-translate-y-0.5 transition-all" style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
+          <span className="text-2xl block mb-1">🔄</span>
+          <p className="text-xs font-black text-slate-700">오답복습</p>
         </Link>
-        <Link href="/wrong-answers" className="group rounded-2xl bg-white/90 border border-red-200/50 p-4 hover:shadow-lg hover:-translate-y-1 transition-all" style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.04)" }}>
-          <span className="text-2xl block mb-2">📝</span>
-          <p className="text-sm font-black text-slate-800">오답 복습</p>
-          <p className="text-[11px] text-slate-400 mt-0.5">틀린 문제 다시 풀기</p>
+        <Link href="/notes" className="rounded-2xl bg-white/90 p-3 text-center hover:shadow-md hover:-translate-y-0.5 transition-all" style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
+          <span className="text-2xl block mb-1">📝</span>
+          <p className="text-xs font-black text-slate-700">요약노트</p>
         </Link>
-        <Link href="/board" className="group rounded-2xl bg-white/90 border border-violet-200/50 p-4 hover:shadow-lg hover:-translate-y-1 transition-all" style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.04)" }}>
-          <span className="text-2xl block mb-2">💬</span>
-          <p className="text-sm font-black text-slate-800">게시판</p>
-          <p className="text-[11px] text-slate-400 mt-0.5">질문 · 건의 · 공지</p>
+        <Link href="/my-record" className="rounded-2xl bg-white/90 p-3 text-center hover:shadow-md hover:-translate-y-0.5 transition-all" style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
+          <span className="text-2xl block mb-1">📊</span>
+          <p className="text-xs font-black text-slate-700">내 기록</p>
         </Link>
       </section>
 
