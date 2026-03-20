@@ -11,6 +11,7 @@ import imageRoutes from './routes/image.routes.js';
 import pdfImportRoutes from './routes/pdf-import.routes.js';
 import keywordRoutes from './routes/keyword.routes.js';
 import cardNewsRoutes from './routes/card-news.routes.js';
+import notesRoutes from './routes/notes.routes.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isDev = process.env.NODE_ENV !== 'production';
@@ -54,6 +55,7 @@ async function startServer() {
   app.use('/api/pdf', pdfImportRoutes);
   app.use('/api/keywords', keywordRoutes);
   app.use('/api/card-news', cardNewsRoutes);
+  app.use('/api/notes', notesRoutes);
 
   app.use(errorMiddleware as express.ErrorRequestHandler);
 

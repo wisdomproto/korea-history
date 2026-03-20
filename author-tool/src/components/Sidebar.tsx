@@ -174,6 +174,7 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
         <div className="flex gap-2">
           <Button size="sm" className="flex-1" onClick={onCreateExam}>+ 새 시험</Button>
           <Button size="sm" variant="secondary" onClick={() => setActiveView('generator')}>AI 생성</Button>
+          <Button size="sm" variant="secondary" onClick={() => setActiveView('notes')}>📝 노트</Button>
           <Button size="sm" variant="secondary" onClick={() => setActiveView('card-news')}>📸 카드뉴스</Button>
         </div>
       </div>

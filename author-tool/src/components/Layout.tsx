@@ -9,6 +9,7 @@ import { QuestionList } from '@/features/question/components/QuestionList';
 import { QuestionEditor } from '@/features/question/components/QuestionEditor';
 import { GeneratorPanel } from '@/features/generator/components/GeneratorPanel';
 import { CardNewsPanel } from '@/features/card-news/components/CardNewsPanel';
+import { NotesPanel } from '@/features/notes/components/NotesPanel';
 import { pdfImportApi } from '@/features/exam/api/pdf-import.api';
 import { Button } from './Button';
 import { BulkAnswerModal } from '@/features/question/components/BulkAnswerModal';
@@ -163,6 +164,11 @@ export function Layout() {
               <CardNewsPanel />
             </div>
           </div>
+        )}
+
+        {/* Notes */}
+        {activeView === 'notes' && (
+          <NotesPanel />
         )}
 
         {/* Exam loading */}
