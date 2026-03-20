@@ -128,7 +128,21 @@ export default function WrongAnswersPage() {
 
   return (
     <div>
-      <h1 className="text-xl font-extrabold text-slate-900 mb-1">오답노트</h1>
+      <div className="flex items-center justify-between mb-1">
+        <h1 className="text-xl font-extrabold text-slate-900">오답노트</h1>
+        {answers.length > 0 && (
+          <button
+            onClick={() => {
+              if (!confirm("오답 기록을 모두 초기화하시겠습니까?")) return;
+              saveWrongAnswers([]);
+              setAnswers([]);
+            }}
+            className="text-[11px] font-semibold text-slate-400 hover:text-red-500 transition-colors"
+          >
+            초기화
+          </button>
+        )}
+      </div>
 
       {/* Summary stats bar */}
       <div className="flex items-center gap-4 mb-4">
@@ -348,6 +362,12 @@ export default function WrongAnswersPage() {
                         <span className="text-slate-400">
                           내 답: {answer.selectedAnswer}번 → 정답:{" "}
                           {answer.correctAnswer}번
+                        </span>
+                        <span className="text-slate-300">
+                          {(() => {
+                            const d = new Date(answer.createdAt);
+                            return `${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`;
+                          })()}
                         </span>
                       </div>
                     </div>

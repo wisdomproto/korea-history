@@ -63,7 +63,21 @@ export default function MyRecord() {
 
   return (
     <div>
-      <h1 className="text-xl font-black text-slate-800 mb-1">내 기록</h1>
+      <div className="flex items-center justify-between mb-1">
+        <h1 className="text-xl font-black text-slate-800">내 기록</h1>
+        {history.length > 0 && (
+          <button
+            onClick={() => {
+              if (!confirm("모든 풀이 기록을 초기화하시겠습니까?")) return;
+              localStorage.removeItem("exam-history");
+              setHistory([]);
+            }}
+            className="text-[11px] font-semibold text-slate-400 hover:text-red-500 transition-colors"
+          >
+            초기화
+          </button>
+        )}
+      </div>
       <p className="text-sm text-slate-400 mb-5">학습 현황과 약점 분석</p>
 
       {/* No data */}
