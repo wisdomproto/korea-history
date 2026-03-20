@@ -1,5 +1,11 @@
 # 기출노트 한능검 — 한국사능력검정시험 학습 플랫폼
 
+## 도메인
+- **웹사이트**: https://gcnote.co.kr (Vercel)
+- **저작도구**: Railway 배포
+- **데이터**: Cloudflare R2
+- **게시판 DB**: Supabase PostgreSQL
+
 ## 프로젝트 구조
 
 모노레포 — Expo 앱(메인), 저작도구(author-tool), SEO 웹사이트(web) 세 개의 앱이 공존.
@@ -7,58 +13,45 @@
 ```
 korea_history/
 ├── app/                   # Expo Router 페이지 (메인 앱)
-│   ├── _layout.tsx        # 루트 레이아웃 (Stack → (tabs)만 포함)
-│   └── (tabs)/            # 모든 화면이 탭 그룹 안에 존재
-│       ├── _layout.tsx    # 커스텀 탭바 + 숨김 스크린 등록
-│       ├── index.tsx      # 홈
-│       ├── study.tsx      # 학습
-│       ├── analysis.tsx   # 분석
-│       ├── mypage.tsx     # MY
-│       ├── settings.tsx   # 학습 설정 (탭바 숨김)
-│       ├── premium.tsx    # 프리미엄 (탭바 숨김)
-│       ├── exam/          # 시험 관련 화면 (Stack, 탭바 숨김)
-│       └── onboarding/    # 온보딩 (Stack, 탭바 숨김)
 ├── components/            # Expo 공용 컴포넌트
 ├── hooks/                 # Expo 커스텀 훅
-├── public/                # 정적 파일 (Expo web에서 서빙)
 ├── lib/                   # Expo 유틸리티
 ├── data/questions/        # 시험 데이터 JSON (로컬 + R2 동기화)
-│   ├── exam-{N}.json      # { exam: Exam, questions: Question[] }
+│   ├── exam-{N}.json      # { exam: Exam, questions: Question[] } (40~77회)
 │   ├── exam-order.json    # 시험 순서 (ID 배열)
-│   └── keywords.json      # 키워드 → 문제 ID 매핑
-├── data/notes/            # 요약노트 JSON (40~87개)
+│   └── keywords.json      # 키워드 → 문제 ID 매핑 (3,800+)
+├── data/notes/            # 요약노트 JSON (87개)
 │   ├── index.json         # 노트 메타데이터 인덱스
-│   └── {sectionId}.json   # 개별 노트 (s1-01 ~ s7-xx)
+│   └── {sectionId}.json   # 개별 노트 (s1-01 ~ s7-16)
 ├── data/images/           # 문제 이미지 (R2 업로드 + 로컬 백업)
 ├── scripts/               # 유틸리티 스크립트
+│   ├── build-youtube-timestamps.py  # 회차별 YouTube 해설 타임스탬프 추출
+│   ├── match-notes-lectures.py      # 노트↔강의 매칭
+│   ├── enrich-notes.py              # Gemini 기반 노트 보강
+│   ├── fix-notes.py                 # 노트 문제 수정
+│   └── clean-explanations.py        # 해설 정리
+├── design/                # 디자인 참고 파일 (index.html, style.css)
 ├── author-tool/           # 저작도구 (별도 앱, Railway 배포)
 │   ├── server/            # Express API
-│   │   ├── index.ts       # Express + Vite 통합 서버
-│   │   ├── config.ts      # 환경설정 (dataDir, gemini, R2, vercel)
-│   │   ├── controllers/   # exam, question, generator, image, pdf-import
-│   │   ├── services/      # 비즈니스 로직 (R2 업로드, PDF 이미지 추출)
-│   │   └── routes/        # Express 라우트
 │   └── src/               # React + Vite 프론트엔드
-│       ├── features/      # exam, question, generator, dashboard
-│       ├── components/    # Layout, Sidebar (+ DeployButton), Button, Modal
-│       ├── lib/           # axios, types, query-client
-│       └── store/         # zustand (editor.store)
-├── web/                   # SEO 웹사이트 (Next.js SSG, Vercel 배포)
-│   ├── scripts/           # fetch-data.ts (prebuild: R2 → .data-cache/)
+├── web/                   # SEO 웹사이트 (Next.js, Vercel 배포)
 │   ├── app/               # App Router 페이지
-│   │   ├── layout.tsx     # 공통 레이아웃 (Header, Footer, GA, AdSense)
-│   │   ├── page.tsx       # 메인 랜딩 (콘텐츠 허브)
-│   │   ├── exam/          # 기출문제 (SSG, 2,076 페이지)
-│   │   ├── notes/         # 요약노트 (SSG, 87 페이지)
-│   │   ├── study/         # 학습하기 (회차별, 맞춤형, 키워드별)
+│   │   ├── layout.tsx     # 루트 레이아웃 (GA4, 네이버 인증)
+│   │   ├── page.tsx       # 메인 (배너 + 퀵액션 + 최신기출 + 키워드)
+│   │   ├── exam/          # 기출문제 (SSG, 1,900+ 페이지)
+│   │   ├── notes/         # 요약노트 (SSG, 87 페이지, 사이드바)
+│   │   ├── study/         # 학습하기 (맞춤형, 키워드별, 학습세션)
 │   │   ├── wrong-answers/ # 오답노트 (CSR, localStorage)
+│   │   ├── my-record/     # 내 기록 (점수, 급수, 약점 분석)
+│   │   ├── board/         # 게시판 (Supabase, 자유/건의/공지)
+│   │   ├── admin/banners/ # 배너 관리 (비밀번호 보호)
+│   │   ├── api/           # API Routes (board, banners, study)
 │   │   ├── privacy/       # 개인정보처리방침
 │   │   └── terms/         # 이용약관
-│   ├── components/        # Header, Footer, QuestionCard, BreadCrumb 등
-│   └── lib/               # data.ts, notes.ts, seo.ts, wrong-answers.ts, types.ts
-├── docs/                  # 프로젝트 문서
-│   └── archive/           # 이전 버전 문서 백업
-└── .claude/launch.json    # 서버 실행 설정
+│   ├── components/        # Header, Footer, QuestionCard, BannerCarousel 등
+│   ├── lib/               # data.ts, notes.ts, seo.ts, supabase.ts, youtube.ts 등
+│   └── data/              # youtube-videos.json, note-lectures.json
+└── docs/                  # 프로젝트 문서
 ```
 
 ## 배포 아키텍처
@@ -68,105 +61,74 @@ korea_history/
 │  저작도구    │────▶│ Cloudflare R2│◀────│  웹사이트   │
 │  (Railway)  │     │ (데이터+이미지)│     │  (Vercel)   │
 └─────────────┘     └──────────────┘     └─────────────┘
-       │                                        ▲
-       │         "웹 배포" 버튼                   │
-       └──── Vercel Deploy Hook ────────────────┘
+                                               │
+                    ┌──────────────┐            │
+                    │  Supabase    │◀───────────┘
+                    │ (게시판+배너) │
+                    └──────────────┘
 ```
 
-- **저작도구** (Railway): 문제 수정 → R2에 JSON/이미지 저장
-- **웹사이트** (Vercel): prebuild에서 R2 데이터 다운로드 → SSG 생성
-- **데이터** (Cloudflare R2): 시험 JSON + 이미지 (이그레스 무료)
-- **배포 흐름**:
-  - 코드 변경 → `git push` → Vercel/Railway 자동 재배포
-  - 데이터 변경 → 저작도구 "웹 배포" 버튼 → Vercel 재빌드 (push 불필요)
+## 핵심 기능 (웹사이트)
 
-## 서버 실행
+### 학습 시스템
+- **회차별 풀기**: 40~77회 시험 (1,900+ 문항)
+- **맞춤형 학습**: 시대 × 유형 체크박스 선택 → 학습 세션
+- **키워드 학습**: 3,800개 키워드 체크박스 → 학습 세션
+- **학습 세션** (`/study/session`): 선택한 문제 랜덤 셔플, 진행률, 네비게이터
 
-```
-# .claude/launch.json에 정의됨
-expo-web    → port 8081  (Expo 메인 앱)
-author-tool → port 3001  (저작도구: Express API + Vite 통합)
-web-dev     → port 3000  (Next.js SEO 웹사이트)
-```
+### 문제 풀이 UX
+- MZ 감성 디자인: 선지 3D 프레스 효과, 정답 confetti, 오답 shake
+- 정답 확인 시 AI 해설 + YouTube 영상 해설 (최태성 1TV, 37개 회차)
+- 문제 → 지문 이미지 → 선지 순서 (실제 시험지 형식)
 
-- 저작도구: `cd author-tool && npm run dev` (tsx watch)
-- Expo 앱: 루트에서 `npx expo start --web --port 8081`
-- 웹사이트: `cd web && npm run dev` (Next.js dev server)
+### 요약노트
+- 87개 시대별 노트 (203,922자, 웹검색 기반 보강)
+- 최태성 강의 영상 embed (124개 영상 매칭)
+- "관련 기출 풀기" 버튼 → 학습 세션
+- 데스크톱: 왼쪽 사이드바 + 본문, 모바일: 토글
+
+### YouTube 연동
+- **해설 영상**: 37개 회차 × 50문제 = 1,850개 타임스탬프 (auto-caption DP 정렬)
+- **강의 영상**: 124개 최태성 강의 → 87개 노트에 매칭
+- 데이터: `web/data/youtube-videos.json`, `web/data/note-lectures.json`
+
+### 게시판 (Supabase)
+- 자유/건의/공지 3개 탭
+- 공지: 관리자 비밀번호 모달로 인증
+- 글 삭제: 작성 시 설정한 비밀번호로
+
+### 배너 시스템
+- 메인 페이지 롤링 캐러셀 (16:9, 자동 회전)
+- `/admin/banners`에서 관리 (이미지 업로드, 순서, 속도 조절)
+- Supabase Storage + DB
+
+### 기록 시스템 (localStorage)
+- **오답노트**: 틀린 문제 자동 수집, 날짜/시간 표시, 복습 세션
+- **내 기록**: 회차별 점수/급수/날짜, 약점 분석 (시대/유형)
+- **시험 기록**: 결과 페이지에서 자동 저장, 급수 판정 (80%=1급, 70%=2급, 60%=3급)
 
 ## 기술 스택
 
-### 메인 앱 (Expo)
-- Expo SDK 55, expo-router, React Native Web
-- AsyncStorage, expo-haptics, Ionicons
-- TanStack Query, react-native-safe-area-context
+### 웹사이트 (web/) — Vercel 배포
+- Next.js 16+ (App Router), Tailwind CSS v4
+- Supabase (게시판 PostgreSQL + Storage)
+- Google Analytics 4 (G-CJ7V236NQV)
+- 네이버 서치어드바이저 인증 완료
 
-### 저작도구 (author-tool) — Railway 배포
-- **Server**: Express + Vite middleware mode (단일 프로세스)
-- **Frontend**: React 18, Vite, TailwindCSS, TanStack Query
-- **State**: Zustand (editor.store)
-- **AI**: Gemini API — `@google/generative-ai` (텍스트), `@google/genai` (이미지)
-- **PDF text**: pdf-parse v2 (클래스 기반 API)
-- **PDF image**: Python subprocess — PyMuPDF + Gemini 3.1 Pro bbox 감지
-- **Image Storage**: Cloudflare R2 (S3 호환) — `@aws-sdk/client-s3`
-- **Deploy**: Vercel Deploy Hook 호출 (`POST /api/exams/deploy`)
-
-### SEO 웹사이트 (web/) — Vercel 배포
-- Next.js 16+ (App Router, SSG), Tailwind CSS v4
-- `output: "export"` (정적 HTML 내보내기)
-- Prebuild: `scripts/fetch-data.ts` → R2에서 .data-cache/로 다운로드
-- `lib/data.ts`: .data-cache/ 우선, 없으면 ../data/questions/ fallback
-- localStorage (오답노트), Google AdSense, GA4
-
-## 웹사이트 데이터 흐름
-
-```
-1. prebuild (scripts/fetch-data.ts):
-   R2 manifest.json → exam numbers 파악
-   R2 questions/exam-{N}.json → .data-cache/exam-{N}.json (배치 5개씩)
-   R2 questions/keywords.json → .data-cache/keywords.json
-
-2. build (next build):
-   lib/data.ts → .data-cache/ 에서 동기적 파일 읽기
-   lib/notes.ts → ../data/notes/ 에서 동기적 파일 읽기 (노트는 로컬)
-   SSG로 2,076 페이지 생성
-
-3. 이미지:
-   question.imageUrl이 R2 풀 URL을 직접 가리킴 → 빌드 시 다운로드 불필요
-```
-
-## 핵심 데이터 모델
-
-```typescript
-// R2: questions/exam-{N}.json, 로컬: data/questions/exam-{N}.json
-interface ExamFile {
-  exam: Exam;        // id, examNumber, examDate, examType, totalQuestions, timeLimitMinutes, isFree
-  questions: Question[];  // id, examId, questionNumber, content, passage?, imageUrl?,
-                          // choices[5], choiceImages?[], correctAnswer(1-5), points,
-                          // era, category, difficulty(1-3), explanation?, keywords?
-}
-```
-
-- Era: 선사·고조선 | 삼국 | 남북국 | 고려 | 조선 전기 | 조선 후기 | 근대 | 현대
-- Category: 정치 | 경제 | 사회 | 문화
-
-## 저작도구 API 엔드포인트
-
-- `GET/POST /api/exams` — 시험 목록/생성
-- `POST /api/exams/reorder` — 시험 순서 변경
-- `POST /api/exams/sync` — R2 → 로컬 동기화
-- `POST /api/exams/deploy` — Vercel Deploy Hook 트리거 (웹사이트 재빌드)
-- `GET/PUT/DELETE /api/exams/:id` — 시험 CRUD
-- `GET/POST /api/questions` — 문제 목록/생성
-- `POST /api/questions/batch` — 문제 일괄 추가
-- `POST /api/questions/reorder` — 문제 순서 변경
-- `PUT/DELETE /api/questions/:id` — 문제 수정/삭제
-- `POST /api/generate` — AI 문제 생성
-- `POST /api/images/generate` — AI 이미지 생성
-- `POST /api/images/upload` — 이미지 업로드 (R2)
-- `DELETE /api/images/:key` — 이미지 삭제 (R2)
-- `POST /api/pdf/parse` — PDF 문제 추출 + 이미지 추출
+### 저작도구 (author-tool/) — Railway 배포
+- Express + Vite middleware, React 18, TailwindCSS
+- Gemini API, Cloudflare R2, Vercel Deploy Hook
 
 ## 환경변수
+
+### 웹사이트 (Vercel)
+```
+R2_PUBLIC_URL=
+NEXT_PUBLIC_SUPABASE_URL=https://uonznnypdnerdigfyfci.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+NEXT_PUBLIC_SITE_URL=https://gcnote.co.kr
+ADMIN_PASSWORD=
+```
 
 ### 저작도구 (author-tool/.env)
 ```
@@ -180,23 +142,21 @@ R2_PUBLIC_URL=
 VERCEL_DEPLOY_HOOK_URL=
 ```
 
-### 웹사이트 (Vercel Environment Variables)
-```
-R2_PUBLIC_URL=   # prebuild 시 R2에서 데이터 다운로드용
-```
+## SEO
+- 도메인: gcnote.co.kr
+- sitemap.xml 자동 생성 (2,100+ URL)
+- robots.txt (/admin, /api, /study/session 차단)
+- 모든 페이지 "한능검" 키워드 포함 타이틀
+- Google Search Console + 네이버 서치어드바이저 등록
+- JSON-LD (Quiz, BreadcrumbList)
 
 ## 주의사항
-
-- pdf-parse v2: `new PDFParse({ data: buffer })` → `.load()` → `.getText()` → `.text`
-- PDF 이미지 추출에 Python 필요: `pip install PyMuPDF Pillow`
-- Gemini 3.1 Pro bbox 감지: 반드시 `gemini-3.1-pro-preview` 모델 사용
-- 웹사이트 빌드 시 R2_PUBLIC_URL 필수 (Vercel 환경변수)
-- 웹사이트 로컬 dev: .data-cache/ 없으면 ../data/questions/ fallback
+- 요약노트에 "자막", "YouTube", "강의" 등 출처 언급 절대 금지
+- Tailwind CSS v4: `@layer base/components` 안에 작성, `@keyframes`는 밖에
+- 웹사이트 빌드 시 R2_PUBLIC_URL 필수
 - 노트 데이터는 R2에 없음, data/notes/에서만 읽음 (로컬/git)
-- Tailwind CSS v4: 커스텀 CSS는 반드시 `@layer base` 또는 `@layer components` 안에 작성
-- `@keyframes`는 `@layer` 밖에 배치 (CSS 스펙)
+- YouTube 타임스탬프 데이터는 git으로 관리 (web/data/)
 
 ## 언어
-
 - 사용자 인터페이스: 한국어
 - 코드/커밋: 영어
