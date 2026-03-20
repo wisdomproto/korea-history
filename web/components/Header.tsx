@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { href: "/study", label: "학습하기", icon: "📚" },
   { href: "/wrong-answers", label: "오답복습", icon: "🔄" },
   { href: "/notes", label: "요약노트", icon: "📝" },
+  { href: "/my-record", label: "내 기록", icon: "📊" },
   { href: "/board", label: "게시판", icon: "💬" },
 ];
 

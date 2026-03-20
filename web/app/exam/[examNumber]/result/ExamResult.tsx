@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { getWrongAnswers } from "@/lib/wrong-answers";
+import { saveExamRecord } from "@/lib/exam-history";
 
 interface Props {
   examNumber: number;
@@ -35,9 +36,17 @@ export default function ExamResult({ examNumber }: Props) {
     }
 
     const total = Math.max(answeredCount, examWrong.length);
+    const correct = Math.max(total - examWrong.length, 0);
+    const percentage = total > 0 ? Math.round((correct / total) * 100) : 0;
+
+    // Save to exam history
+    if (total > 0) {
+      saveExamRecord({ examNumber, score: correct, total, percentage, wrongByEra });
+    }
+
     setStats({
       total: total || 1,
-      correct: Math.max(total - examWrong.length, 0),
+      correct,
       wrong: examWrong.length,
       wrongByEra,
     });
