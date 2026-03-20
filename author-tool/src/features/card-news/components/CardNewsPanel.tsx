@@ -26,7 +26,7 @@ export function CardNewsPanel() {
   const [model, setModel] = useState<string>('');
   const [ctaText, setCtaText] = useState('더 많은 기출문제를\n풀어보고 싶다면?');
   const [ctaUrl, setCtaUrl] = useState('gcnote.co.kr');
-  const [useAiExplanation, setUseAiExplanation] = useState(true);
+  // explanation is always AI-summarized from existing data
 
   const [generating, setGenerating] = useState(false);
   const [progress, setProgress] = useState('');
@@ -66,17 +66,17 @@ export function CardNewsPanel() {
     setResults([]);
 
     cardNewsApi.generate(
-      { questions: selected, ctaText, ctaUrl, useAiExplanation, model: model || undefined },
+      { questions: selected, ctaText, ctaUrl, model: model || undefined },
       (msg) => setProgress(msg),
       (res) => { setResults(res); setGenerating(false); setProgress(''); },
       (msg) => { setProgress(`오류: ${msg}`); setGenerating(false); },
     );
-  }, [questions, selectedIds, ctaText, ctaUrl, useAiExplanation, model]);
+  }, [questions, selectedIds, ctaText, ctaUrl, model]);
 
   const handleDownloadAll = () => {
     if (!questions || selectedIds.size === 0) return;
     const selected = questions.filter((q) => selectedIds.has(q.questionNumber));
-    cardNewsApi.downloadZip({ questions: selected, ctaText, ctaUrl, useAiExplanation, model: model || undefined });
+    cardNewsApi.downloadZip({ questions: selected, ctaText, ctaUrl, model: model || undefined });
   };
 
   const downloadSingleSlide = (result: CardNewsSlideResult, slideIdx: number) => {
@@ -194,15 +194,7 @@ export function CardNewsPanel() {
               />
             </div>
             <div className="col-span-2">
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={useAiExplanation}
-                  onChange={(e) => setUseAiExplanation(e.target.checked)}
-                  className="rounded border-gray-300 text-primary-600"
-                />
-                <span className="text-sm text-gray-700">AI로 해설 새로 생성 (기존 해설 무시)</span>
-              </label>
+              <p className="text-xs text-gray-500">💡 기존 해설 데이터를 AI가 카드뉴스용으로 요약합니다.</p>
             </div>
           </div>
 

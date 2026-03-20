@@ -174,17 +174,25 @@ function buildSlide4(ctaText: string, ctaUrl: string, colors: any) {
 }
 
 async function generateHookText(q: QuestionData, model?: string): Promise<string> {
+  // 지문이 이미지라서 content만으로는 맥락 부족 → 기존 해설 데이터를 참고해서 후킹 문구 생성
+  const context = q.explanation
+    ? `기존 해설: ${q.explanation}`
+    : `보기: ${q.choices.join(' / ')}`;
+
   const prompt = `한국사능력검정시험 기출문제를 인스타그램 카드뉴스로 만들려고 합니다.
 아래 문제의 후킹 문구를 1줄로 작성해주세요. MZ세대가 관심을 가질 만한 도발적이고 재미있는 문구여야 합니다.
 
 시대: ${q.era}
-문제: ${q.content}
+유형: ${q.category}
+문제 제목: ${q.content}
 정답: ${q.choices[q.correctAnswer - 1]}
+${context}
 
 규칙:
 - 20자 이내
 - 이모지 1개 포함
 - 질문형 또는 도발형
+- 해설 내용을 참고해서 문제의 핵심 포인트를 반영
 - 예시: "🔥 이거 맞히면 1급!", "😤 정답률 23%의 함정", "💡 5초 안에 풀 수 있나요?"
 
 후킹 문구만 출력하세요:`;
@@ -193,20 +201,41 @@ async function generateHookText(q: QuestionData, model?: string): Promise<string
   return text.trim().replace(/^["']|["']$/g, '');
 }
 
-async function generateExplanation(q: QuestionData, model?: string): Promise<string> {
-  const prompt = `한국사능력검정시험 기출문제의 해설을 인스타그램 카드뉴스용으로 작성해주세요.
+async function generateCardExplanation(q: QuestionData, model?: string): Promise<string> {
+  // 지문이 이미지이므로, 기존 해설 데이터를 기반으로 카드뉴스용 짧은 해설을 만듦
+  if (!q.explanation) {
+    // 해설이 아예 없는 경우: 보기 정보라도 활용
+    const prompt = `한국사능력검정시험 기출문제의 해설을 인스타그램 카드뉴스용으로 작성해주세요.
 
-문제: ${q.content}
+문제 제목: ${q.content}
 보기: ${q.choices.map((c, i) => `${i + 1}. ${c}`).join(' / ')}
 정답: ${q.correctAnswer}번 (${q.choices[q.correctAnswer - 1]})
 시대: ${q.era}
+유형: ${q.category}
 
 규칙:
 - 3~4문장으로 간결하게
 - 핵심 사실만 포함
-- 왜 정답인지, 왜 다른 보기가 아닌지 간단히
 
 해설만 출력하세요:`;
+
+    const text = await generateText(prompt, model);
+    return text.trim();
+  }
+
+  // 기존 해설이 있는 경우: 카드뉴스용으로 요약
+  const prompt = `아래 한국사능력검정시험 해설을 인스타그램 카드뉴스 슬라이드에 넣을 수 있도록 짧게 요약해주세요.
+
+원본 해설:
+${q.explanation}
+
+규칙:
+- 3~4문장, 150자 이내
+- 핵심 사실과 정답 이유만
+- "~입니다", "~합니다" 문체
+- 불필요한 수식어 제거
+
+요약 해설만 출력하세요:`;
 
   const text = await generateText(prompt, model);
   return text.trim();
@@ -229,12 +258,9 @@ export async function generateCardNews(req: CardNewsRequest, onProgress?: (msg: 
     // Generate hook text
     const hookText = await generateHookText(q, req.model);
 
-    // Generate explanation
-    let explanation = q.explanation || '';
-    if (!explanation || req.useAiExplanation) {
-      onProgress?.(`[${i + 1}/${req.questions.length}] 해설 생성 중...`);
-      explanation = await generateExplanation(q, req.model);
-    }
+    // Generate card-news explanation (always AI-summarized from existing explanation)
+    onProgress?.(`[${i + 1}/${req.questions.length}] 카드뉴스 해설 생성 중...`);
+    const explanation = await generateCardExplanation(q, req.model);
 
     onProgress?.(`[${i + 1}/${req.questions.length}] 슬라이드 렌더링 중...`);
 
