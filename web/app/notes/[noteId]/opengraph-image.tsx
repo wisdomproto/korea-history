@@ -17,14 +17,6 @@ const ERA_COLORS: Record<string, { bg: string; accent: string }> = {
   "현대": { bg: "#EC4899", accent: "#DB2777" },
 };
 
-export async function generateImageMetadata({
-  params,
-}: {
-  params: { noteId: string };
-}) {
-  return [{ id: "og", alt: `한능검 요약노트`, contentType: "image/png", size }];
-}
-
 export default async function Image({
   params,
 }: {

@@ -6,14 +6,6 @@ export const alt = "한능검 기출문제";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export async function generateImageMetadata({
-  params,
-}: {
-  params: { examNumber: string };
-}) {
-  return [{ id: "og", alt: `제${params.examNumber}회 한능검 기출문제`, contentType: "image/png", size }];
-}
-
 export default async function Image({
   params,
 }: {
