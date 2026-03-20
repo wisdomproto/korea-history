@@ -30,6 +30,7 @@ export function CardNewsPanel() {
 
   const [generating, setGenerating] = useState(false);
   const [progress, setProgress] = useState('');
+  const [error, setError] = useState('');
   const [results, setResults] = useState<CardNewsSlideResult[]>([]);
   const [previewIdx, setPreviewIdx] = useState<number | null>(null);
   const [previewSlide, setPreviewSlide] = useState(0);
@@ -63,13 +64,14 @@ export function CardNewsPanel() {
 
     setGenerating(true);
     setProgress('생성 시작...');
+    setError('');
     setResults([]);
 
     cardNewsApi.generate(
       { questions: selected, ctaText, ctaUrl, model: model || undefined },
       (msg) => setProgress(msg),
-      (res) => { setResults(res); setGenerating(false); setProgress(''); },
-      (msg) => { setProgress(`오류: ${msg}`); setGenerating(false); },
+      (res) => { setResults(res); setGenerating(false); setProgress('완료!'); },
+      (msg) => { setError(msg); setGenerating(false); setProgress(''); },
     );
   }, [questions, selectedIds, ctaText, ctaUrl, model]);
 
@@ -207,12 +209,20 @@ export function CardNewsPanel() {
       )}
 
       {/* Progress */}
-      {generating && (
+      {(generating || progress) && (
         <div className="rounded-xl border bg-white p-5 mb-4">
           <div className="flex items-center gap-3">
-            <div className="h-5 w-5 animate-spin rounded-full border-2 border-primary-200 border-t-primary-600" />
+            {generating && <div className="h-5 w-5 animate-spin rounded-full border-2 border-primary-200 border-t-primary-600" />}
             <span className="text-sm text-gray-700">{progress}</span>
           </div>
+        </div>
+      )}
+
+      {/* Error */}
+      {error && (
+        <div className="rounded-xl border border-red-200 bg-red-50 p-5 mb-4">
+          <div className="text-sm text-red-700 font-medium">오류 발생</div>
+          <div className="text-xs text-red-600 mt-1">{error}</div>
         </div>
       )}
 
