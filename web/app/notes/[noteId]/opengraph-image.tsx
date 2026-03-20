@@ -20,9 +20,10 @@ const ERA_COLORS: Record<string, { bg: string; accent: string }> = {
 export default async function Image({
   params,
 }: {
-  params: { noteId: string };
+  params: Promise<{ noteId: string }>;
 }) {
-  const note = getNoteById(params.noteId);
+  const { noteId } = await params;
+  const note = getNoteById(noteId);
 
   const title = note?.title || "요약노트";
   const eraLabel = note?.eraLabel || "한국사";

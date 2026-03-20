@@ -9,9 +9,10 @@ export const contentType = "image/png";
 export default async function Image({
   params,
 }: {
-  params: { examNumber: string };
+  params: Promise<{ examNumber: string }>;
 }) {
-  const examNumber = Number(params.examNumber);
+  const { examNumber: en } = await params;
+  const examNumber = Number(en);
   const examFile = getExamByNumber(examNumber);
 
   const totalQuestions = examFile?.exam.totalQuestions || 50;

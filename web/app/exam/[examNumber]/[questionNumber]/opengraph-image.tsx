@@ -20,10 +20,11 @@ const ERA_COLORS: Record<string, { bg: string; accent: string }> = {
 export default async function Image({
   params,
 }: {
-  params: { examNumber: string; questionNumber: string };
+  params: Promise<{ examNumber: string; questionNumber: string }>;
 }) {
-  const examNumber = Number(params.examNumber);
-  const questionNumber = Number(params.questionNumber);
+  const { examNumber: en, questionNumber: qn } = await params;
+  const examNumber = Number(en);
+  const questionNumber = Number(qn);
   const data = getQuestion(examNumber, questionNumber);
 
   const era = data?.question.era || "고려";
