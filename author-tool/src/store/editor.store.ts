@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-type ActiveView = 'dashboard' | 'exam' | 'question' | 'generator';
+type ActiveView = 'dashboard' | 'exam' | 'question' | 'generator' | 'card-news';
 
 interface EditorStore {
   selectedExamId: number | null;

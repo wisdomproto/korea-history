@@ -8,6 +8,7 @@ import { ExamForm } from '@/features/exam/components/ExamForm';
 import { QuestionList } from '@/features/question/components/QuestionList';
 import { QuestionEditor } from '@/features/question/components/QuestionEditor';
 import { GeneratorPanel } from '@/features/generator/components/GeneratorPanel';
+import { CardNewsPanel } from '@/features/card-news/components/CardNewsPanel';
 import { pdfImportApi } from '@/features/exam/api/pdf-import.api';
 import { Button } from './Button';
 import { BulkAnswerModal } from '@/features/question/components/BulkAnswerModal';
@@ -151,6 +152,15 @@ export function Layout() {
           <div className="flex-1 overflow-y-auto p-6">
             <div className="mx-auto max-w-4xl">
               <GeneratorPanel />
+            </div>
+          </div>
+        )}
+
+        {/* Card News */}
+        {activeView === 'card-news' && (
+          <div className="flex-1 overflow-y-auto p-6">
+            <div className="mx-auto max-w-4xl">
+              <CardNewsPanel />
             </div>
           </div>
         )}
