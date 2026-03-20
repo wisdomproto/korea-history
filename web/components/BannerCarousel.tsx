@@ -47,7 +47,7 @@ export default function BannerCarousel() {
         className="block relative rounded-2xl overflow-hidden"
         style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}
       >
-        <div className="relative aspect-[3/1] sm:aspect-[4/1] bg-slate-100">
+        <div className="relative aspect-video bg-slate-100">
           {banners.map((b, i) => (
             <img
               key={b.id}

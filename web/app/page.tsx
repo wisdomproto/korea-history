@@ -14,39 +14,6 @@ export default function HomePage() {
       {/* ─── Banner ─── */}
       <BannerCarousel />
 
-      {/* ─── Hero ─── */}
-      <section className="relative overflow-hidden rounded-3xl px-6 py-10 text-center text-white" style={{
-        background: "linear-gradient(135deg, #2D3436 0%, #4A6741 50%, #2D3436 100%)",
-      }}>
-        <div className="pointer-events-none absolute -top-10 -right-10 h-40 w-40 rounded-full bg-white/5 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-8 -left-8 h-32 w-32 rounded-full bg-emerald-400/10 blur-3xl" />
-
-        <div className="relative">
-          <span className="text-4xl mb-3 block">👨‍🎓</span>
-          <h1 className="text-2xl font-black tracking-tight sm:text-3xl">
-            기출노트 한능검
-          </h1>
-          <p className="mt-2 text-white/60 text-sm">
-            {exams.length}개 회차 · {totalQuestions.toLocaleString()}문항 · AI 해설
-          </p>
-
-          <div className="mt-6 flex justify-center gap-3">
-            <Link
-              href="/study"
-              className="rounded-2xl bg-white px-6 py-3 text-sm font-black text-slate-800 shadow-lg hover:scale-105 transition-transform"
-            >
-              학습 시작 →
-            </Link>
-            <Link
-              href="/notes"
-              className="rounded-2xl bg-white/10 px-6 py-3 text-sm font-bold text-white border border-white/20 hover:bg-white/20 transition-colors"
-            >
-              요약노트
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* ─── Quick Actions ─── */}
       <section className="grid grid-cols-2 gap-3">
         <Link href="/study/custom" className="group rounded-2xl bg-white/90 border border-emerald-200/50 p-4 hover:shadow-lg hover:-translate-y-1 transition-all" style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.04)" }}>
