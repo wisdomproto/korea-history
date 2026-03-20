@@ -25,7 +25,7 @@ function timeAgo(dateStr: string) {
 
 const BOARD_COLORS: Record<string, { bg: string; text: string }> = {
   notice: { bg: "bg-amber-50", text: "text-amber-600" },
-  free: { bg: "bg-indigo-50", text: "text-indigo-600" },
+  free: { bg: "bg-emerald-50", text: "text-emerald-700" },
   suggestion: { bg: "bg-emerald-50", text: "text-emerald-600" },
 };
 
@@ -226,7 +226,7 @@ export default function PostDetail({ board, id }: { board: string; id: string })
   if (loading) {
     return (
       <div className="py-20 text-center">
-        <div className="inline-block w-6 h-6 border-2 border-indigo-200 border-t-indigo-500 rounded-full animate-spin" />
+        <div className="inline-block w-6 h-6 border-2 border-emerald-200 border-t-emerald-600 rounded-full animate-spin" />
       </div>
     );
   }
@@ -236,7 +236,7 @@ export default function PostDetail({ board, id }: { board: string; id: string })
       <div className="py-20 text-center">
         <p className="text-4xl mb-3">😢</p>
         <p className="text-slate-400 mb-4">게시글을 찾을 수 없습니다.</p>
-        <Link href={`/board?tab=${board}`} className="text-indigo-500 font-semibold text-sm">목록으로 돌아가기</Link>
+        <Link href={`/board?tab=${board}`} className="text-emerald-600 font-semibold text-sm">목록으로 돌아가기</Link>
       </div>
     );
   }
@@ -269,7 +269,7 @@ export default function PostDetail({ board, id }: { board: string; id: string })
               )}
               <button
                 onClick={() => actionMode === "edit" ? closeAction() : openAction("edit")}
-                className={`p-2 rounded-lg transition-colors ${actionMode === "edit" ? "text-indigo-500 bg-indigo-50" : "text-slate-300 hover:text-indigo-500 hover:bg-indigo-50"}`}
+                className={`p-2 rounded-lg transition-colors ${actionMode === "edit" ? "text-emerald-600 bg-emerald-50" : "text-slate-300 hover:text-emerald-600 hover:bg-emerald-50"}`}
                 title="수정"
               >
                 <IconEdit />
@@ -286,7 +286,7 @@ export default function PostDetail({ board, id }: { board: string; id: string })
 
           {/* Edit / Delete password panel */}
           {actionMode && (
-            <div className={`rounded-xl p-3 mb-3 animate-fade-in ${actionMode === "delete" ? "bg-red-50/70 border border-red-200" : "bg-indigo-50/70 border border-indigo-200"}`}>
+            <div className={`rounded-xl p-3 mb-3 animate-fade-in ${actionMode === "delete" ? "bg-red-50/70 border border-red-200" : "bg-emerald-50/70 border border-emerald-200"}`}>
               {actionMode === "edit" && (
                 <div className="space-y-2 mb-2">
                   <input
@@ -295,7 +295,7 @@ export default function PostDetail({ board, id }: { board: string; id: string })
                     onChange={(e) => setEditTitle(e.target.value)}
                     placeholder="제목"
                     maxLength={100}
-                    className="w-full rounded-lg border border-indigo-200 bg-white px-3 py-2 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-100"
+                    className="w-full rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-100"
                   />
                   <textarea
                     value={editContent}
@@ -303,7 +303,7 @@ export default function PostDetail({ board, id }: { board: string; id: string })
                     placeholder="내용"
                     maxLength={5000}
                     rows={5}
-                    className="w-full rounded-lg border border-indigo-200 bg-white px-3 py-2 text-sm leading-relaxed focus:outline-none focus:ring-2 focus:ring-indigo-100 resize-none"
+                    className="w-full rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm leading-relaxed focus:outline-none focus:ring-2 focus:ring-emerald-100 resize-none"
                   />
                 </div>
               )}
@@ -315,7 +315,7 @@ export default function PostDetail({ board, id }: { board: string; id: string })
                   onKeyDown={(e) => e.key === "Enter" && (actionMode === "edit" ? handleEdit() : handleDelete())}
                   placeholder="비밀번호"
                   className={`flex-1 rounded-lg border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 ${
-                    actionMode === "delete" ? "border-red-200 focus:ring-red-100" : "border-indigo-200 focus:ring-indigo-100"
+                    actionMode === "delete" ? "border-red-200 focus:ring-red-100" : "border-emerald-200 focus:ring-emerald-100"
                   }`}
                 />
                 <button
@@ -328,7 +328,7 @@ export default function PostDetail({ board, id }: { board: string; id: string })
                   onClick={actionMode === "edit" ? handleEdit : handleDelete}
                   disabled={actionLoading}
                   className={`rounded-lg px-4 py-2 text-sm font-bold text-white disabled:opacity-50 transition-colors ${
-                    actionMode === "delete" ? "bg-red-500 hover:bg-red-600" : "bg-indigo-500 hover:bg-indigo-600"
+                    actionMode === "delete" ? "bg-red-500 hover:bg-red-600" : "bg-emerald-600 hover:bg-emerald-700"
                   }`}
                 >
                   {actionLoading ? "..." : actionMode === "edit" ? "수정" : "삭제"}
@@ -340,7 +340,7 @@ export default function PostDetail({ board, id }: { board: string; id: string })
 
           <h1 className="text-lg font-black text-slate-800 leading-snug">{post.title}</h1>
           <div className="flex items-center gap-2 mt-2.5">
-            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-400 to-purple-400 flex items-center justify-center">
+            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-emerald-400 to-purple-400 flex items-center justify-center">
               <span className="text-[10px] font-bold text-white">{post.nickname.charAt(0)}</span>
             </div>
             <span className="text-sm font-semibold text-slate-700">{post.nickname}</span>
@@ -408,7 +408,7 @@ export default function PostDetail({ board, id }: { board: string; id: string })
               onKeyDown={(e) => e.key === "Enter" && handlePin()}
               placeholder="관리자 비밀번호"
               autoFocus
-              className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-[15px] focus:bg-white focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100 transition-colors"
+              className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-[15px] focus:bg-white focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-100 transition-colors"
             />
             {pinError && <p className="text-xs text-red-500 mt-2 font-medium">{pinError}</p>}
             <div className="flex gap-2 mt-4">
@@ -425,7 +425,7 @@ export default function PostDetail({ board, id }: { board: string; id: string })
           <svg className="w-5 h-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
           </svg>
-          댓글 {comments.length > 0 && <span className="text-indigo-500">{comments.length}</span>}
+          댓글 {comments.length > 0 && <span className="text-emerald-600">{comments.length}</span>}
         </h2>
 
         {comments.length > 0 && (
@@ -478,12 +478,12 @@ export default function PostDetail({ board, id }: { board: string; id: string })
         {/* Comment form */}
         <div className="rounded-2xl border border-slate-200/80 bg-white p-4">
           <div className="flex gap-2 mb-2">
-            <input type="text" value={commentNickname} onChange={(e) => setCommentNickname(e.target.value)} placeholder="닉네임" maxLength={20} className="w-28 rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-300" />
-            <input type="password" value={commentPassword} onChange={(e) => setCommentPassword(e.target.value)} placeholder="비밀번호 (4자 이상)" className="w-36 rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-300" />
+            <input type="text" value={commentNickname} onChange={(e) => setCommentNickname(e.target.value)} placeholder="닉네임" maxLength={20} className="w-28 rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-300" />
+            <input type="password" value={commentPassword} onChange={(e) => setCommentPassword(e.target.value)} placeholder="비밀번호 (4자 이상)" className="w-36 rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-300" />
           </div>
           <div className="flex gap-2">
-            <input type="text" value={commentContent} onChange={(e) => setCommentContent(e.target.value)} onKeyDown={(e) => e.key === "Enter" && !submittingComment && handleCommentSubmit()} placeholder="댓글을 입력하세요" maxLength={1000} className="flex-1 rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-300" />
-            <button onClick={handleCommentSubmit} disabled={submittingComment} className="rounded-lg bg-indigo-500 px-4 py-2 text-sm font-bold text-white hover:bg-indigo-600 disabled:opacity-50 transition-colors shrink-0">
+            <input type="text" value={commentContent} onChange={(e) => setCommentContent(e.target.value)} onKeyDown={(e) => e.key === "Enter" && !submittingComment && handleCommentSubmit()} placeholder="댓글을 입력하세요" maxLength={1000} className="flex-1 rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-300" />
+            <button onClick={handleCommentSubmit} disabled={submittingComment} className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-bold text-white hover:bg-emerald-700 disabled:opacity-50 transition-colors shrink-0">
               {submittingComment ? "..." : "등록"}
             </button>
           </div>

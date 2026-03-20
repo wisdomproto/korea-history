@@ -7,7 +7,7 @@ import type { Post } from "@/lib/supabase";
 
 const TABS = [
   { id: "notice", label: "공지", icon: "📢", color: "text-amber-600", bg: "bg-amber-50" },
-  { id: "free", label: "자유", icon: "💬", color: "text-indigo-600", bg: "bg-indigo-50" },
+  { id: "free", label: "자유", icon: "💬", color: "text-blue-600", bg: "bg-blue-50" },
   { id: "suggestion", label: "건의", icon: "💡", color: "text-emerald-600", bg: "bg-emerald-50" },
 ] as const;
 
@@ -109,21 +109,26 @@ export default function BoardTabs() {
   return (
     <div>
       {/* Header */}
-      <div className="rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 p-5 mb-5 text-white">
-        <h1 className="text-xl font-black">게시판</h1>
-        <p className="text-sm text-indigo-100 mt-0.5">한국사능력검정시험 학습 커뮤니티</p>
+      <div className="flex items-center gap-3 mb-6">
+        <svg className="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+        <div>
+          <h1 className="text-2xl font-extrabold text-gray-900">게시판</h1>
+          <p className="text-sm text-gray-400">한국사능력검정시험 학습 커뮤니티</p>
+        </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1.5 rounded-2xl bg-slate-100/80 p-1.5 mb-4">
+      <div className="flex gap-1.5 rounded-2xl bg-gray-100 p-1.5 mb-4">
         {TABS.map((tab) => (
           <button
             key={tab.id}
             onClick={() => handleTabChange(tab.id)}
             className={`flex-1 flex items-center justify-center gap-1.5 rounded-xl py-2.5 text-[13px] font-bold transition-all ${
               activeTab === tab.id
-                ? "bg-white text-slate-800 shadow-sm card-shadow"
-                : "text-slate-400 hover:text-slate-600"
+                ? "bg-white text-gray-800 shadow-sm"
+                : "text-gray-400 hover:text-gray-600"
             }`}
           >
             <span>{tab.icon}</span>
@@ -144,7 +149,7 @@ export default function BoardTabs() {
             onChange={(e) => setSearchInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSearch()}
             placeholder="제목, 내용, 닉네임 검색"
-            className="w-full rounded-xl border border-slate-200 bg-white pl-9 pr-3 py-2.5 text-sm text-slate-700 placeholder:text-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-300 transition-colors"
+            className="w-full rounded-xl border border-gray-200 bg-white pl-9 pr-3 py-2.5 text-sm text-gray-700 placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:border-emerald-300 transition-colors"
           />
           {searchQuery && (
             <button onClick={clearSearch} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-300 hover:text-slate-500">
@@ -156,7 +161,7 @@ export default function BoardTabs() {
         </div>
         <button
           onClick={handleSearch}
-          className="rounded-xl bg-slate-100 px-4 py-2.5 text-sm font-semibold text-slate-500 hover:bg-slate-200 transition-colors shrink-0"
+          className="rounded-xl bg-gray-100 px-4 py-2.5 text-sm font-semibold text-gray-500 hover:bg-gray-200 transition-colors shrink-0"
         >
           검색
         </button>
@@ -169,7 +174,7 @@ export default function BoardTabs() {
         </span>
         <button
           onClick={handleWriteClick}
-          className="flex items-center gap-1 rounded-xl bg-indigo-500 px-3.5 py-2 text-xs font-bold text-white shadow-sm hover:bg-indigo-600 transition-colors"
+          className="flex items-center gap-1 rounded-xl bg-emerald-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm hover:bg-emerald-700 transition-colors"
         >
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -181,7 +186,7 @@ export default function BoardTabs() {
       {/* Post list — table style */}
       {loading ? (
         <div className="py-16 text-center">
-          <div className="inline-block w-6 h-6 border-2 border-indigo-200 border-t-indigo-500 rounded-full animate-spin" />
+          <div className="inline-block w-6 h-6 border-2 border-emerald-200 border-t-emerald-500 rounded-full animate-spin" />
         </div>
       ) : posts.length === 0 ? (
         <div className="py-16 text-center">
@@ -192,7 +197,7 @@ export default function BoardTabs() {
           {!searchQuery && (
             <Link
               href={`/board/${activeTab}/write`}
-              className="inline-block mt-3 text-sm font-semibold text-indigo-500 hover:text-indigo-600"
+              className="inline-block mt-3 text-sm font-semibold text-emerald-600 hover:text-emerald-700"
             >
               첫 번째 글을 작성해보세요
             </Link>
@@ -227,7 +232,7 @@ export default function BoardTabs() {
                     {post.pinned && <span className="text-[11px] shrink-0">📌</span>}
                     <span className="text-[14px] font-semibold text-slate-800 truncate">{post.title}</span>
                     {(post.comment_count ?? 0) > 0 && (
-                      <span className="text-[12px] font-bold text-indigo-500 shrink-0">[{post.comment_count}]</span>
+                      <span className="text-[12px] font-bold text-emerald-600 shrink-0">[{post.comment_count}]</span>
                     )}
                   </div>
                   <span className="text-[12px] font-medium text-slate-500 text-center truncate">{post.nickname}</span>
@@ -242,7 +247,7 @@ export default function BoardTabs() {
                     {post.pinned && <span className="text-[11px] shrink-0">📌</span>}
                     <p className="text-[14px] font-semibold text-slate-800 truncate">{post.title}</p>
                     {(post.comment_count ?? 0) > 0 && (
-                      <span className="text-[12px] font-bold text-indigo-500 shrink-0">[{post.comment_count}]</span>
+                      <span className="text-[12px] font-bold text-emerald-600 shrink-0">[{post.comment_count}]</span>
                     )}
                   </div>
                   <div className="flex items-center gap-3 mt-1.5 text-[11px] text-slate-400">
@@ -293,7 +298,7 @@ export default function BoardTabs() {
                 onClick={() => setPage(n)}
                 className={`rounded-lg px-3 py-2 text-xs font-bold transition-colors ${
                   page === n
-                    ? "bg-indigo-500 text-white"
+                    ? "bg-emerald-600 text-white"
                     : "text-slate-500 hover:bg-slate-100"
                 }`}
               >
@@ -331,7 +336,7 @@ export default function BoardTabs() {
               onKeyDown={(e) => e.key === "Enter" && handleAdminSubmit()}
               placeholder="관리자 비밀번호"
               autoFocus
-              className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-[15px] text-slate-800 placeholder:text-slate-300 focus:bg-white focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100 transition-colors"
+              className="w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-[15px] text-slate-800 placeholder:text-slate-300 focus:bg-white focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-100 transition-colors"
             />
             {adminError && <p className="text-xs text-red-500 mt-2 font-medium">{adminError}</p>}
             <div className="flex gap-2 mt-4">
