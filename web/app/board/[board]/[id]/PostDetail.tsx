@@ -29,17 +29,39 @@ const BOARD_COLORS: Record<string, { bg: string; text: string }> = {
   suggestion: { bg: "bg-emerald-50", text: "text-emerald-600" },
 };
 
+// SVG icon components
+const IconEdit = () => (
+  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+  </svg>
+);
+const IconTrash = () => (
+  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+  </svg>
+);
+const IconPin = () => (
+  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+  </svg>
+);
+
 export default function PostDetail({ board, id }: { board: string; id: string }) {
   const router = useRouter();
   const [post, setPost] = useState<Post | null>(null);
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Delete post
-  const [showDelete, setShowDelete] = useState(false);
-  const [deletePassword, setDeletePassword] = useState("");
-  const [deleteError, setDeleteError] = useState("");
-  const [deleting, setDeleting] = useState(false);
+  // Action mode: null | "edit" | "delete"
+  const [actionMode, setActionMode] = useState<"edit" | "delete" | null>(null);
+  const [actionPassword, setActionPassword] = useState("");
+  const [actionError, setActionError] = useState("");
+  const [actionLoading, setActionLoading] = useState(false);
+
+  // Edit fields
+  const [editTitle, setEditTitle] = useState("");
+  const [editContent, setEditContent] = useState("");
 
   // Like
   const [liked, setLiked] = useState(false);
@@ -66,7 +88,6 @@ export default function PostDetail({ board, id }: { board: string; id: string })
   const colors = BOARD_COLORS[board] || BOARD_COLORS.free;
 
   useEffect(() => {
-    // Check if already liked
     const likedPosts = JSON.parse(localStorage.getItem("liked-posts") || "[]");
     if (likedPosts.includes(id)) setLiked(true);
 
@@ -84,21 +105,56 @@ export default function PostDetail({ board, id }: { board: string; id: string })
       .catch(() => {});
   }, [board, id]);
 
+  const openAction = (mode: "edit" | "delete") => {
+    setActionMode(mode);
+    setActionPassword("");
+    setActionError("");
+    if (mode === "edit" && post) {
+      setEditTitle(post.title);
+      setEditContent(post.content);
+    }
+  };
+
+  const closeAction = () => {
+    setActionMode(null);
+    setActionPassword("");
+    setActionError("");
+  };
+
+  const handleEdit = async () => {
+    if (!actionPassword) { setActionError("비밀번호를 입력해주세요."); return; }
+    if (!editTitle.trim() || !editContent.trim()) { setActionError("제목과 내용을 입력해주세요."); return; }
+    setActionLoading(true);
+    setActionError("");
+    try {
+      const res = await fetch(`/api/board/${board}/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "edit", password: actionPassword, title: editTitle, content: editContent }),
+      });
+      const data = await res.json();
+      if (!res.ok) { setActionError(data.error); return; }
+      setPost((p) => p ? { ...p, title: editTitle.trim(), content: editContent.trim() } : p);
+      closeAction();
+    } catch { setActionError("네트워크 오류가 발생했습니다."); }
+    finally { setActionLoading(false); }
+  };
+
   const handleDelete = async () => {
-    if (!deletePassword) { setDeleteError("비밀번호를 입력해주세요."); return; }
-    setDeleting(true);
-    setDeleteError("");
+    if (!actionPassword) { setActionError("비밀번호를 입력해주세요."); return; }
+    setActionLoading(true);
+    setActionError("");
     try {
       const res = await fetch(`/api/board/${board}/${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password: deletePassword }),
+        body: JSON.stringify({ password: actionPassword }),
       });
       const data = await res.json();
-      if (!res.ok) { setDeleteError(data.error || "삭제에 실패했습니다."); return; }
+      if (!res.ok) { setActionError(data.error || "삭제에 실패했습니다."); return; }
       router.push(`/board?tab=${board}`);
-    } catch { setDeleteError("네트워크 오류가 발생했습니다."); }
-    finally { setDeleting(false); }
+    } catch { setActionError("네트워크 오류가 발생했습니다."); }
+    finally { setActionLoading(false); }
   };
 
   const handleLike = async () => {
@@ -115,25 +171,15 @@ export default function PostDetail({ board, id }: { board: string; id: string })
   };
 
   const handleCommentSubmit = async () => {
-    if (!commentNickname.trim() || !commentContent.trim()) {
-      setCommentError("닉네임과 내용을 입력해주세요.");
-      return;
-    }
-    if (!commentPassword || commentPassword.length < 4) {
-      setCommentError("비밀번호는 4자 이상 입력해주세요.");
-      return;
-    }
+    if (!commentNickname.trim() || !commentContent.trim()) { setCommentError("닉네임과 내용을 입력해주세요."); return; }
+    if (!commentPassword || commentPassword.length < 4) { setCommentError("비밀번호는 4자 이상 입력해주세요."); return; }
     setSubmittingComment(true);
     setCommentError("");
     try {
       const res = await fetch(`/api/comments/${id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          nickname: commentNickname,
-          content: commentContent,
-          password: commentPassword,
-        }),
+        body: JSON.stringify({ nickname: commentNickname, content: commentContent, password: commentPassword }),
       });
       const data = await res.json();
       if (!res.ok) { setCommentError(data.error); return; }
@@ -190,35 +236,108 @@ export default function PostDetail({ board, id }: { board: string; id: string })
       <div className="py-20 text-center">
         <p className="text-4xl mb-3">😢</p>
         <p className="text-slate-400 mb-4">게시글을 찾을 수 없습니다.</p>
-        <Link href={`/board?tab=${board}`} className="text-indigo-500 font-semibold text-sm">
-          목록으로 돌아가기
-        </Link>
+        <Link href={`/board?tab=${board}`} className="text-indigo-500 font-semibold text-sm">목록으로 돌아가기</Link>
       </div>
     );
   }
 
   return (
     <div>
-      <BreadCrumb
-        items={[
-          { label: "게시판", href: `/board?tab=${board}` },
-          { label: post.title },
-        ]}
-      />
+      <BreadCrumb items={[{ label: "게시판", href: `/board?tab=${board}` }, { label: post.title }]} />
 
       {/* Post card */}
       <div className="mt-3 rounded-2xl border border-slate-200/80 bg-white overflow-hidden card-shadow">
-        <div className="px-5 pt-5 pb-4 border-b border-slate-100">
-          <div className="flex items-center gap-2 mb-2.5">
-            <span className={`rounded-lg ${colors.bg} px-2 py-0.5 text-[11px] font-bold ${colors.text}`}>
-              {label}
-            </span>
-            {post.pinned && (
-              <span className="rounded-lg bg-red-50 px-2 py-0.5 text-[11px] font-bold text-red-500">
-                📌 고정
-              </span>
-            )}
+        {/* Header with action icons */}
+        <div className="px-5 pt-4 pb-3 border-b border-slate-100">
+          <div className="flex items-center justify-between mb-2.5">
+            <div className="flex items-center gap-2">
+              <span className={`rounded-lg ${colors.bg} px-2 py-0.5 text-[11px] font-bold ${colors.text}`}>{label}</span>
+              {post.pinned && (
+                <span className="rounded-lg bg-red-50 px-2 py-0.5 text-[11px] font-bold text-red-500">📌 고정</span>
+              )}
+            </div>
+            {/* Action icons */}
+            <div className="flex items-center gap-0.5">
+              {board === "suggestion" && (
+                <button
+                  onClick={() => { setShowPinModal(true); setPinAdminPw(""); setPinError(""); }}
+                  className="p-2 rounded-lg text-slate-300 hover:text-amber-500 hover:bg-amber-50 transition-colors"
+                  title={post.pinned ? "고정 해제" : "상단 고정"}
+                >
+                  <IconPin />
+                </button>
+              )}
+              <button
+                onClick={() => actionMode === "edit" ? closeAction() : openAction("edit")}
+                className={`p-2 rounded-lg transition-colors ${actionMode === "edit" ? "text-indigo-500 bg-indigo-50" : "text-slate-300 hover:text-indigo-500 hover:bg-indigo-50"}`}
+                title="수정"
+              >
+                <IconEdit />
+              </button>
+              <button
+                onClick={() => actionMode === "delete" ? closeAction() : openAction("delete")}
+                className={`p-2 rounded-lg transition-colors ${actionMode === "delete" ? "text-red-500 bg-red-50" : "text-slate-300 hover:text-red-500 hover:bg-red-50"}`}
+                title="삭제"
+              >
+                <IconTrash />
+              </button>
+            </div>
           </div>
+
+          {/* Edit / Delete password panel */}
+          {actionMode && (
+            <div className={`rounded-xl p-3 mb-3 animate-fade-in ${actionMode === "delete" ? "bg-red-50/70 border border-red-200" : "bg-indigo-50/70 border border-indigo-200"}`}>
+              {actionMode === "edit" && (
+                <div className="space-y-2 mb-2">
+                  <input
+                    type="text"
+                    value={editTitle}
+                    onChange={(e) => setEditTitle(e.target.value)}
+                    placeholder="제목"
+                    maxLength={100}
+                    className="w-full rounded-lg border border-indigo-200 bg-white px-3 py-2 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-100"
+                  />
+                  <textarea
+                    value={editContent}
+                    onChange={(e) => setEditContent(e.target.value)}
+                    placeholder="내용"
+                    maxLength={5000}
+                    rows={5}
+                    className="w-full rounded-lg border border-indigo-200 bg-white px-3 py-2 text-sm leading-relaxed focus:outline-none focus:ring-2 focus:ring-indigo-100 resize-none"
+                  />
+                </div>
+              )}
+              <div className="flex gap-2">
+                <input
+                  type="password"
+                  value={actionPassword}
+                  onChange={(e) => { setActionPassword(e.target.value); setActionError(""); }}
+                  onKeyDown={(e) => e.key === "Enter" && (actionMode === "edit" ? handleEdit() : handleDelete())}
+                  placeholder="비밀번호"
+                  className={`flex-1 rounded-lg border bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 ${
+                    actionMode === "delete" ? "border-red-200 focus:ring-red-100" : "border-indigo-200 focus:ring-indigo-100"
+                  }`}
+                />
+                <button
+                  onClick={() => setActionMode(null)}
+                  className="rounded-lg border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-400 hover:bg-slate-50 transition-colors"
+                >
+                  취소
+                </button>
+                <button
+                  onClick={actionMode === "edit" ? handleEdit : handleDelete}
+                  disabled={actionLoading}
+                  className={`rounded-lg px-4 py-2 text-sm font-bold text-white disabled:opacity-50 transition-colors ${
+                    actionMode === "delete" ? "bg-red-500 hover:bg-red-600" : "bg-indigo-500 hover:bg-indigo-600"
+                  }`}
+                >
+                  {actionLoading ? "..." : actionMode === "edit" ? "수정" : "삭제"}
+                </button>
+              </div>
+              {actionError && <p className="text-xs font-medium text-red-500 mt-2">{actionError}</p>}
+            </div>
+          )}
+
           <h1 className="text-lg font-black text-slate-800 leading-snug">{post.title}</h1>
           <div className="flex items-center gap-2 mt-2.5">
             <div className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-400 to-purple-400 flex items-center justify-center">
@@ -239,6 +358,7 @@ export default function PostDetail({ board, id }: { board: string; id: string })
           </div>
         </div>
 
+        {/* Content */}
         <div className="px-5 py-5">
           <p className="text-[15px] text-slate-700 leading-[28px] whitespace-pre-wrap">{post.content}</p>
         </div>
@@ -262,64 +382,24 @@ export default function PostDetail({ board, id }: { board: string; id: string })
         </div>
       </div>
 
-      {/* Actions */}
-      <div className="flex items-center justify-between mt-4">
+      {/* Back to list */}
+      <div className="mt-4">
         <Link
           href={`/board?tab=${board}`}
-          className="flex items-center gap-1.5 rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-500 hover:bg-slate-50 transition-colors"
+          className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-500 hover:bg-slate-50 transition-colors"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
           목록
         </Link>
-
-        <div className="flex items-center gap-2">
-          {board === "suggestion" && (
-            <button
-              onClick={() => { setShowPinModal(true); setPinAdminPw(""); setPinError(""); }}
-              className="rounded-xl px-4 py-2.5 text-sm font-medium text-slate-400 hover:text-amber-600 hover:bg-amber-50 transition-colors"
-            >
-              {post.pinned ? "고정 해제" : "📌 고정"}
-            </button>
-          )}
-          <button
-            onClick={() => setShowDelete(!showDelete)}
-            className="rounded-xl px-4 py-2.5 text-sm font-medium text-slate-400 hover:text-red-500 hover:bg-red-50 transition-colors"
-          >
-            삭제
-          </button>
-        </div>
       </div>
-
-      {/* Delete confirmation */}
-      {showDelete && (
-        <div className="mt-3 rounded-2xl border border-red-200 bg-red-50/50 p-4 animate-fade-in">
-          <p className="text-sm font-bold text-red-600 mb-2.5">비밀번호를 입력하세요</p>
-          <div className="flex gap-2">
-            <input
-              type="password"
-              value={deletePassword}
-              onChange={(e) => setDeletePassword(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleDelete()}
-              placeholder="비밀번호"
-              className="flex-1 rounded-xl border border-red-200 bg-white px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-red-100"
-            />
-            <button onClick={handleDelete} disabled={deleting} className="rounded-xl bg-red-500 px-5 py-2.5 text-sm font-bold text-white hover:bg-red-600 disabled:opacity-50 transition-colors">
-              {deleting ? "..." : "삭제"}
-            </button>
-          </div>
-          {deleteError && <p className="text-xs font-medium text-red-500 mt-2">{deleteError}</p>}
-        </div>
-      )}
 
       {/* Pin modal */}
       {showPinModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4" onClick={() => setShowPinModal(false)}>
           <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-base font-black text-slate-800 mb-1">
-              {post.pinned ? "고정 해제" : "상단 고정"}
-            </h3>
+            <h3 className="text-base font-black text-slate-800 mb-1">{post.pinned ? "고정 해제" : "상단 고정"}</h3>
             <p className="text-sm text-slate-400 mb-4">관리자 비밀번호를 입력하세요.</p>
             <input
               type="password"
@@ -348,7 +428,6 @@ export default function PostDetail({ board, id }: { board: string; id: string })
           댓글 {comments.length > 0 && <span className="text-indigo-500">{comments.length}</span>}
         </h2>
 
-        {/* Comment list */}
         {comments.length > 0 && (
           <div className="space-y-2 mb-4">
             {comments.map((comment) => (
@@ -365,9 +444,12 @@ export default function PostDetail({ board, id }: { board: string; id: string })
                       setDeleteCommentPw("");
                       setDeleteCommentError("");
                     }}
-                    className="ml-auto text-[11px] text-slate-300 hover:text-red-400 transition-colors"
+                    className="ml-auto p-1 rounded text-slate-300 hover:text-red-400 transition-colors"
+                    title="댓글 삭제"
                   >
-                    삭제
+                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                    </svg>
                   </button>
                 </div>
                 <p className="text-[14px] text-slate-600 mt-1.5 leading-relaxed">{comment.content}</p>
@@ -382,12 +464,7 @@ export default function PostDetail({ board, id }: { board: string; id: string })
                       placeholder="비밀번호"
                       className="flex-1 rounded-lg border border-red-200 bg-white px-3 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-red-100"
                     />
-                    <button
-                      onClick={() => handleDeleteComment(comment.id)}
-                      className="rounded-lg bg-red-500 px-3 py-1.5 text-xs font-bold text-white hover:bg-red-600"
-                    >
-                      삭제
-                    </button>
+                    <button onClick={() => handleDeleteComment(comment.id)} className="rounded-lg bg-red-500 px-3 py-1.5 text-xs font-bold text-white hover:bg-red-600">삭제</button>
                   </div>
                 )}
                 {deletingCommentId === comment.id && deleteCommentError && (
@@ -401,37 +478,12 @@ export default function PostDetail({ board, id }: { board: string; id: string })
         {/* Comment form */}
         <div className="rounded-2xl border border-slate-200/80 bg-white p-4">
           <div className="flex gap-2 mb-2">
-            <input
-              type="text"
-              value={commentNickname}
-              onChange={(e) => setCommentNickname(e.target.value)}
-              placeholder="닉네임"
-              maxLength={20}
-              className="w-28 rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-300"
-            />
-            <input
-              type="password"
-              value={commentPassword}
-              onChange={(e) => setCommentPassword(e.target.value)}
-              placeholder="비밀번호 (4자 이상)"
-              className="w-36 rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-300"
-            />
+            <input type="text" value={commentNickname} onChange={(e) => setCommentNickname(e.target.value)} placeholder="닉네임" maxLength={20} className="w-28 rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-300" />
+            <input type="password" value={commentPassword} onChange={(e) => setCommentPassword(e.target.value)} placeholder="비밀번호 (4자 이상)" className="w-36 rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-300" />
           </div>
           <div className="flex gap-2">
-            <input
-              type="text"
-              value={commentContent}
-              onChange={(e) => setCommentContent(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && !submittingComment && handleCommentSubmit()}
-              placeholder="댓글을 입력하세요"
-              maxLength={1000}
-              className="flex-1 rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-300"
-            />
-            <button
-              onClick={handleCommentSubmit}
-              disabled={submittingComment}
-              className="rounded-lg bg-indigo-500 px-4 py-2 text-sm font-bold text-white hover:bg-indigo-600 disabled:opacity-50 transition-colors shrink-0"
-            >
+            <input type="text" value={commentContent} onChange={(e) => setCommentContent(e.target.value)} onKeyDown={(e) => e.key === "Enter" && !submittingComment && handleCommentSubmit()} placeholder="댓글을 입력하세요" maxLength={1000} className="flex-1 rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-300" />
+            <button onClick={handleCommentSubmit} disabled={submittingComment} className="rounded-lg bg-indigo-500 px-4 py-2 text-sm font-bold text-white hover:bg-indigo-600 disabled:opacity-50 transition-colors shrink-0">
               {submittingComment ? "..." : "등록"}
             </button>
           </div>

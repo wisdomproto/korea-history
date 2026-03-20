@@ -43,7 +43,36 @@ export async function PATCH(req: NextRequest, ctx: RouteContext) {
   }
 
   const body = await req.json();
-  const { action, adminPassword } = body;
+  const { action, adminPassword, password, title, content } = body;
+
+  if (action === "edit") {
+    if (!password) {
+      return NextResponse.json({ error: "비밀번호를 입력해주세요." }, { status: 400 });
+    }
+    if (!title?.trim() || !content?.trim()) {
+      return NextResponse.json({ error: "제목과 내용을 입력해주세요." }, { status: 400 });
+    }
+    // Check password: master or post password
+    const masterPassword = process.env.ADMIN_PASSWORD || "8054";
+    if (password !== masterPassword) {
+      const { data: post } = await supabase
+        .from("posts")
+        .select("password")
+        .eq("id", id)
+        .single();
+      if (!post || post.password !== password) {
+        return NextResponse.json({ error: "비밀번호가 틀렸습니다." }, { status: 403 });
+      }
+    }
+    const { error } = await supabase
+      .from("posts")
+      .update({ title: title.trim(), content: content.trim() })
+      .eq("id", id);
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+    return NextResponse.json({ success: true });
+  }
 
   if (action === "like") {
     // Increment like count
