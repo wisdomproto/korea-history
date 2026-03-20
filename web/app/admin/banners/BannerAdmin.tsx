@@ -22,6 +22,8 @@ export default function BannerAdmin() {
   const [error, setError] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
 
+  const [speed, setSpeed] = useState(4000);
+
   const fetchBanners = () => {
     fetch("/api/banners")
       .then((r) => r.json())
@@ -29,8 +31,19 @@ export default function BannerAdmin() {
   };
 
   useEffect(() => {
-    if (authenticated) fetchBanners();
+    if (authenticated) {
+      fetchBanners();
+      try {
+        const saved = localStorage.getItem("banner-speed");
+        if (saved) setSpeed(Number(saved));
+      } catch {}
+    }
   }, [authenticated]);
+
+  const handleSpeedChange = (ms: number) => {
+    setSpeed(ms);
+    localStorage.setItem("banner-speed", String(ms));
+  };
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -169,6 +182,33 @@ export default function BannerAdmin() {
       </div>
 
       {/* Banner list */}
+      {/* Speed control */}
+      <div className="rounded-2xl border border-slate-200 bg-white p-4 mb-6" style={{ boxShadow: "0 4px 20px rgba(0,0,0,0.08)" }}>
+        <h2 className="text-sm font-bold text-slate-700 mb-2">롤링 속도</h2>
+        <div className="flex gap-2">
+          {[
+            { ms: 2000, label: "2초" },
+            { ms: 3000, label: "3초" },
+            { ms: 4000, label: "4초" },
+            { ms: 5000, label: "5초" },
+            { ms: 7000, label: "7초" },
+            { ms: 10000, label: "10초" },
+          ].map(({ ms, label }) => (
+            <button
+              key={ms}
+              onClick={() => handleSpeedChange(ms)}
+              className={`rounded-lg px-3 py-1.5 text-xs font-bold transition-all ${
+                speed === ms
+                  ? "bg-green-500 text-white shadow-sm"
+                  : "bg-slate-100 text-slate-500 hover:bg-slate-200"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <h2 className="text-sm font-bold text-slate-700 mb-3">현재 배너 ({banners.length}개)</h2>
       {banners.length === 0 ? (
         <p className="text-sm text-slate-400 text-center py-10">등록된 배너가 없습니다.</p>

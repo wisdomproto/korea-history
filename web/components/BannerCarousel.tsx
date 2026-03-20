@@ -20,12 +20,17 @@ export default function BannerCarousel() {
       .catch(() => {});
   }, []);
 
-  // Auto-rotate every 4 seconds
+  // Auto-rotate
   useEffect(() => {
     if (banners.length <= 1) return;
+    let speed = 4000;
+    try {
+      const saved = localStorage.getItem("banner-speed");
+      if (saved) speed = Number(saved);
+    } catch {}
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % banners.length);
-    }, 4000);
+    }, speed);
     return () => clearInterval(timer);
   }, [banners.length]);
 
