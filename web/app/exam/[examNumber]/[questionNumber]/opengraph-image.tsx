@@ -5,12 +5,11 @@ export const alt = "한능검 기출문제";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default async function Image({
-  params,
-}: {
-  params: Promise<{ examNumber: string; questionNumber: string }>;
-}) {
-  const { examNumber, questionNumber } = await params;
+export default function Image(props: any) {
+  // Next.js 16: params may be sync or async depending on context
+  const p = props.params || {};
+  const examNumber = p.examNumber || "?";
+  const questionNumber = p.questionNumber || "?";
 
   return new ImageResponse(
     (
@@ -56,43 +55,18 @@ export default async function Image({
             flex: 1,
           }}
         >
-          <div
-            style={{
-              fontSize: "28px",
-              fontWeight: 600,
-              color: "rgba(255,255,255,0.8)",
-              marginBottom: "8px",
-            }}
-          >
+          <div style={{ fontSize: "28px", fontWeight: 600, color: "rgba(255,255,255,0.8)", marginBottom: "8px" }}>
             제{examNumber}회 한국사능력검정시험
           </div>
-          <div
-            style={{
-              fontSize: "72px",
-              fontWeight: 800,
-              color: "white",
-              marginBottom: "16px",
-            }}
-          >
+          <div style={{ fontSize: "72px", fontWeight: 800, color: "white", marginBottom: "16px" }}>
             {questionNumber}번 문제
           </div>
-          <div
-            style={{
-              fontSize: "28px",
-              fontWeight: 600,
-              color: "rgba(255,255,255,0.85)",
-            }}
-          >
+          <div style={{ fontSize: "28px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
             정답과 해설 보기
           </div>
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-          }}
-        >
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
           <div style={{ fontSize: "18px", color: "rgba(255,255,255,0.6)" }}>
             gcnote.co.kr
           </div>
