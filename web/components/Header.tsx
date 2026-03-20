@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
   { href: "/study", label: "학습하기", icon: "📚" },
+  { href: "/wrong-answers", label: "오답복습", icon: "🔄" },
   { href: "/notes", label: "요약노트", icon: "📝" },
-  { href: "/wrong-answers", label: "오답노트", icon: "🔄" },
   { href: "/board", label: "게시판", icon: "💬" },
 ];
 
