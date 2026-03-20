@@ -342,43 +342,35 @@ export async function generateCardNews(req: CardNewsRequest, onProgress?: (msg: 
 
 export function getAvailableExams(): { examNumber: number; questionCount: number }[] {
   const dataDir = config.dataDir;
-  const orderPath = path.join(dataDir, 'exam-order.json');
-  if (!fs.existsSync(orderPath)) return [];
-
-  const order: number[] = JSON.parse(fs.readFileSync(orderPath, 'utf-8'));
-  return order.map((id) => {
-    const filePath = path.join(dataDir, `exam-${id}.json`);
-    if (!fs.existsSync(filePath)) return null;
-    const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-    return { examNumber: data.exam.examNumber, questionCount: data.questions.length };
-  }).filter(Boolean) as any[];
+  // Scan directory for exam-*.json files directly
+  const files = fs.readdirSync(dataDir).filter((f) => f.match(/^exam-\d+\.json$/));
+  const results = files.map((f) => {
+    try {
+      const data = JSON.parse(fs.readFileSync(path.join(dataDir, f), 'utf-8'));
+      return { examNumber: data.exam.examNumber, questionCount: data.questions.length };
+    } catch { return null; }
+  }).filter(Boolean) as { examNumber: number; questionCount: number }[];
+  return results.sort((a, b) => b.examNumber - a.examNumber);
 }
 
 export function getExamQuestions(examNumber: number): QuestionData[] {
   const dataDir = config.dataDir;
-  // Find exam file by examNumber
-  const orderPath = path.join(dataDir, 'exam-order.json');
-  if (!fs.existsSync(orderPath)) return [];
+  const filePath = path.join(dataDir, `exam-${examNumber}.json`);
+  if (!fs.existsSync(filePath)) return [];
 
-  const order: number[] = JSON.parse(fs.readFileSync(orderPath, 'utf-8'));
-  for (const id of order) {
-    const filePath = path.join(dataDir, `exam-${id}.json`);
-    if (!fs.existsSync(filePath)) continue;
+  try {
     const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-    if (data.exam.examNumber === examNumber) {
-      return data.questions.map((q: any) => ({
-        examNumber: data.exam.examNumber,
-        questionNumber: q.questionNumber,
-        content: q.content,
-        choices: q.choices,
-        correctAnswer: q.correctAnswer,
-        era: q.era,
-        category: q.category,
-        points: q.points,
-        keywords: q.keywords,
-        explanation: q.explanation,
-      }));
-    }
-  }
-  return [];
+    return data.questions.map((q: any) => ({
+      examNumber: data.exam.examNumber,
+      questionNumber: q.questionNumber,
+      content: q.content,
+      choices: q.choices,
+      correctAnswer: q.correctAnswer,
+      era: q.era,
+      category: q.category,
+      points: q.points,
+      keywords: q.keywords,
+      explanation: q.explanation,
+    }));
+  } catch { return []; }
 }

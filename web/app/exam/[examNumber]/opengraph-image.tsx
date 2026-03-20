@@ -1,7 +1,6 @@
 import { ImageResponse } from "next/og";
-import { getExamByNumber } from "@/lib/data";
 
-export const runtime = "nodejs";
+export const runtime = "edge";
 export const alt = "한능검 기출문제";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -11,12 +10,7 @@ export default async function Image({
 }: {
   params: Promise<{ examNumber: string }>;
 }) {
-  const { examNumber: en } = await params;
-  const examNumber = Number(en);
-  const examFile = getExamByNumber(examNumber);
-
-  const totalQuestions = examFile?.exam.totalQuestions || 50;
-  const examType = examFile?.exam.examType === "basic" ? "기본" : "심화";
+  const { examNumber } = await params;
 
   return new ImageResponse(
     (
@@ -31,7 +25,6 @@ export default async function Image({
           padding: "48px 60px",
         }}
       >
-        {/* Top bar */}
         <div
           style={{
             display: "flex",
@@ -50,23 +43,10 @@ export default async function Image({
               color: "white",
             }}
           >
-            📚 기출노트 한능검
-          </div>
-          <div
-            style={{
-              background: "rgba(255,255,255,0.2)",
-              borderRadius: "10px",
-              padding: "6px 16px",
-              fontSize: "18px",
-              fontWeight: 700,
-              color: "white",
-            }}
-          >
-            {examType}
+            기출노트 한능검
           </div>
         </div>
 
-        {/* Center */}
         <div
           style={{
             display: "flex",
@@ -98,45 +78,16 @@ export default async function Image({
           </div>
           <div
             style={{
-              display: "flex",
-              gap: "24px",
+              fontSize: "24px",
+              fontWeight: 600,
+              color: "rgba(255,255,255,0.8)",
             }}
           >
-            <div
-              style={{
-                background: "rgba(255,255,255,0.15)",
-                borderRadius: "12px",
-                padding: "10px 24px",
-                fontSize: "20px",
-                fontWeight: 600,
-                color: "rgba(255,255,255,0.9)",
-              }}
-            >
-              {totalQuestions}문항
-            </div>
-            <div
-              style={{
-                background: "rgba(255,255,255,0.15)",
-                borderRadius: "12px",
-                padding: "10px 24px",
-                fontSize: "20px",
-                fontWeight: 600,
-                color: "rgba(255,255,255,0.9)",
-              }}
-            >
-              정답 · 해설 · 영상강의
-            </div>
+            기출문제 풀기 · 정답 · 해설
           </div>
         </div>
 
-        {/* Bottom */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "flex-end",
-          }}
-        >
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
           <div style={{ fontSize: "18px", color: "rgba(255,255,255,0.6)" }}>
             gcnote.co.kr
           </div>
