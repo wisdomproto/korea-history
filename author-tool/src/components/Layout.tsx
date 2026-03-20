@@ -9,6 +9,7 @@ import { QuestionList } from '@/features/question/components/QuestionList';
 import { QuestionEditor } from '@/features/question/components/QuestionEditor';
 import { GeneratorPanel } from '@/features/generator/components/GeneratorPanel';
 import { CardNewsPanel } from '@/features/card-news/components/CardNewsPanel';
+import { NoteCardNewsPanel } from '@/features/card-news/components/NoteCardNewsPanel';
 import { NotesPanel } from '@/features/notes/components/NotesPanel';
 import { pdfImportApi } from '@/features/exam/api/pdf-import.api';
 import { Button } from './Button';
@@ -162,6 +163,15 @@ export function Layout() {
           <div className="flex-1 overflow-y-auto p-6">
             <div className="mx-auto max-w-4xl">
               <CardNewsPanel />
+            </div>
+          </div>
+        )}
+
+        {/* Note Card News */}
+        {activeView === 'note-card-news' && (
+          <div className="flex-1 overflow-y-auto p-6">
+            <div className="mx-auto max-w-4xl">
+              <NoteCardNewsPanel />
             </div>
           </div>
         )}

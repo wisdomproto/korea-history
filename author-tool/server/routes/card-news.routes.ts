@@ -2,6 +2,7 @@ import { Router } from 'express';
 import archiver from 'archiver';
 import { asyncHandler } from '../middleware.js';
 import { generateCardNews, getAvailableExams, getExamQuestions } from '../services/card-news.service.js';
+import { generateNoteCardNews } from '../services/note-card-news.service.js';
 import { TEXT_MODELS } from '../services/gemini.provider.js';
 
 const router = Router();
@@ -82,6 +83,39 @@ router.post('/download', asyncHandler(async (req, res) => {
   }
 
   await archive.finalize();
+}));
+
+/** POST /api/card-news/notes/generate — generate note card news (SSE progress) */
+router.post('/notes/generate', asyncHandler(async (req, res) => {
+  const { noteIds, slideCount, model, ctaUrl } = req.body;
+
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+
+  const sendEvent = (type: string, data: any) => {
+    res.write(`data: ${JSON.stringify({ type, ...data })}\n\n`);
+  };
+
+  try {
+    const results = await generateNoteCardNews(
+      { noteIds, slideCount, model, ctaUrl },
+      (msg) => sendEvent('progress', { message: msg }),
+    );
+
+    const base64Results = results.map((r) => ({
+      noteId: r.noteId,
+      title: r.title,
+      era: r.era,
+      slides: r.slides.map((buf) => buf.toString('base64')),
+    }));
+
+    sendEvent('complete', { results: base64Results });
+  } catch (err: any) {
+    sendEvent('error', { message: err.message || '생성 중 오류 발생' });
+  }
+
+  res.end();
 }));
 
 export default router;
