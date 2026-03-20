@@ -93,10 +93,11 @@ export function NoteCardNewsPanel() {
     }
   }, [selectedIds, slideCount, model, ctaUrl]);
 
-  const downloadSlide = (result: NoteSlideResult, slideIdx: number) => {
+  const downloadSlide = (url: string, filename: string) => {
     const a = document.createElement('a');
-    a.href = `data:image/png;base64,${result.slides[slideIdx]}`;
-    a.download = `note-${result.noteId}-slide${slideIdx + 1}.png`;
+    a.href = url;
+    a.download = filename;
+    a.target = '_blank';
     a.click();
   };
 
@@ -216,14 +217,14 @@ export function NoteCardNewsPanel() {
                   <span className="text-sm font-bold">{r.title}</span>
                 </div>
                 <div className="flex gap-2 overflow-x-auto">
-                  {r.slides.map((b64, si) => (
+                  {r.slides.map((url: string, si: number) => (
                     <div
                       key={si}
                       className="relative cursor-pointer rounded-lg overflow-hidden border hover:ring-2 hover:ring-pink-400 transition-all shrink-0"
                       style={{ width: '100px', height: '100px' }}
                       onClick={() => { setPreviewIdx(idx); setPreviewSlide(si); }}
                     >
-                      <img src={`data:image/png;base64,${b64}`} alt={`slide-${si + 1}`} className="w-full h-full object-cover" />
+                      <img src={url} alt={`slide-${si + 1}`} className="w-full h-full object-cover" />
                       <div className="absolute top-1 left-1 bg-black/40 text-white text-xs rounded px-1">{si + 1}</div>
                     </div>
                   ))}
@@ -242,7 +243,7 @@ export function NoteCardNewsPanel() {
               <span className="text-sm font-bold">{results[previewIdx].title} — {previewSlide + 1}/{results[previewIdx].slides.length}</span>
               <button onClick={() => setPreviewIdx(null)} className="text-gray-400 hover:text-gray-600 text-lg">✕</button>
             </div>
-            <img src={`data:image/png;base64,${results[previewIdx].slides[previewSlide]}`} alt="preview" className="w-full rounded-lg" />
+            <img src={results[previewIdx].slides[previewSlide]} alt="preview" className="w-full rounded-lg" />
             <div className="flex items-center justify-between mt-4">
               <div className="flex gap-2">
                 {results[previewIdx].slides.map((_, i) => (
@@ -255,7 +256,7 @@ export function NoteCardNewsPanel() {
                 ))}
               </div>
               <button
-                onClick={() => downloadSlide(results[previewIdx!], previewSlide)}
+                onClick={() => downloadSlide(results[previewIdx!].slides[previewSlide], `${results[previewIdx!].id}-slide${previewSlide + 1}.png`)}
                 className="rounded-lg bg-pink-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-pink-700"
               >
                 📥 PNG 다운로드

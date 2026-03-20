@@ -32,7 +32,7 @@ export function CardNewsPanel() {
   const [generating, setGenerating] = useState(false);
   const [progress, setProgress] = useState('');
   const [error, setError] = useState('');
-  const [results, setResults] = useState<CardNewsSlideResult[]>([]);
+  const [results, setResults] = useState<any[]>([]);
   const [previewIdx, setPreviewIdx] = useState<number | null>(null);
   const [previewSlide, setPreviewSlide] = useState(0);
 
@@ -94,12 +94,11 @@ export function CardNewsPanel() {
     cardNewsApi.downloadZip({ questions: selected, ctaText, ctaUrl, model: model || undefined });
   };
 
-  const downloadSingleSlide = (result: CardNewsSlideResult, slideIdx: number) => {
-    const names = ['hook', 'question', 'answer', 'cta'];
-    const b64 = result.slides[slideIdx];
+  const downloadSlide = (url: string, filename: string) => {
     const a = document.createElement('a');
-    a.href = `data:image/png;base64,${b64}`;
-    a.download = `exam${result.examNumber}-Q${result.questionNumber}-${names[slideIdx]}.png`;
+    a.href = url;
+    a.download = filename;
+    a.target = '_blank';
     a.click();
   };
 
@@ -276,8 +275,7 @@ export function CardNewsPanel() {
       {results.length > 0 && (
         <div className="rounded-xl border bg-white p-5 mb-4">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-sm font-bold text-gray-700">생성 완료! ({results.length}세트)</h3>
-            <Button size="sm" onClick={handleDownloadAll}>📦 전체 ZIP 다운로드</Button>
+            <h3 className="text-sm font-bold text-gray-700">생성 완료! ({results.length}세트) — R2에 저장됨</h3>
           </div>
 
           <div className="space-y-4">
@@ -287,7 +285,7 @@ export function CardNewsPanel() {
                   <span className="text-sm font-bold">제{r.examNumber}회 Q{r.questionNumber}</span>
                 </div>
                 <div className="flex gap-2">
-                  {r.slides.map((b64, si) => (
+                  {r.slides.map((url: string, si: number) => (
                     <div
                       key={si}
                       className="relative cursor-pointer rounded-lg overflow-hidden border hover:ring-2 hover:ring-primary-400 transition-all"
@@ -295,7 +293,7 @@ export function CardNewsPanel() {
                       onClick={() => { setPreviewIdx(idx); setPreviewSlide(si); }}
                     >
                       <img
-                        src={`data:image/png;base64,${b64}`}
+                        src={url}
                         alt={`slide-${si + 1}`}
                         className="w-full h-full object-cover"
                       />
@@ -317,18 +315,18 @@ export function CardNewsPanel() {
           <div className="bg-white rounded-2xl p-6 max-w-lg w-full mx-4" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-4">
               <span className="text-sm font-bold">
-                제{results[previewIdx].examNumber}회 Q{results[previewIdx].questionNumber} — 슬라이드 {previewSlide + 1}/4
+                {results[previewIdx].title} — {previewSlide + 1}/{results[previewIdx].slides.length}
               </span>
               <button onClick={() => setPreviewIdx(null)} className="text-gray-400 hover:text-gray-600 text-lg">✕</button>
             </div>
             <img
-              src={`data:image/png;base64,${results[previewIdx].slides[previewSlide]}`}
+              src={results[previewIdx].slides[previewSlide]}
               alt="preview"
               className="w-full rounded-lg"
             />
             <div className="flex items-center justify-between mt-4">
               <div className="flex gap-2">
-                {[0, 1, 2, 3].map((i) => (
+                {results[previewIdx].slides.map((_: string, i: number) => (
                   <button
                     key={i}
                     onClick={() => setPreviewSlide(i)}
@@ -341,7 +339,7 @@ export function CardNewsPanel() {
                 ))}
               </div>
               <button
-                onClick={() => downloadSingleSlide(results[previewIdx!], previewSlide)}
+                onClick={() => downloadSlide(results[previewIdx!].slides[previewSlide], `${results[previewIdx!].id}-slide${previewSlide + 1}.png`)}
                 className="rounded-lg bg-primary-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-primary-700"
               >
                 📥 PNG 다운로드

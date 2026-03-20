@@ -290,9 +290,26 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
       {tab === 'marketing' && (
         <>
           <div className="flex-1 overflow-y-auto">
+            {/* Gallery */}
+            <div className="border-b px-4 py-3">
+              <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">저장된 콘텐츠</h3>
+              <button
+                onClick={() => setActiveView('card-news-gallery')}
+                className={`w-full flex items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors ${
+                  activeView === 'card-news-gallery' ? 'bg-primary-50 text-primary-700' : 'hover:bg-gray-50 text-gray-700'
+                }`}
+              >
+                <span className="text-lg">📂</span>
+                <div>
+                  <div className="text-sm font-semibold">카드뉴스 갤러리</div>
+                  <div className="text-xs text-gray-400">R2에 저장된 콘텐츠 보기</div>
+                </div>
+              </button>
+            </div>
+
             {/* Card News */}
             <div className="border-b px-4 py-3">
-              <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">카드뉴스</h3>
+              <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">카드뉴스 생성</h3>
               <div className="space-y-1">
                 <button
                   onClick={() => setActiveView('card-news')}

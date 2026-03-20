@@ -4,6 +4,7 @@ import { asyncHandler } from '../middleware.js';
 import { generateCardNews, getAvailableExams, getExamQuestions } from '../services/card-news.service.js';
 import { generateNoteCardNews, IMAGE_MODELS } from '../services/note-card-news.service.js';
 import { TEXT_MODELS } from '../services/gemini.provider.js';
+import { saveCardNews, getAllCardNews, deleteCardNews } from '../services/card-news-storage.service.js';
 
 const router = Router();
 
@@ -35,15 +36,21 @@ router.post('/generate', asyncHandler(async (req, res) => {
     (msg) => console.log('[CardNews]', msg),
   );
 
-  console.log('[CardNews] Done! Generated', results.length, 'sets');
+  console.log('[CardNews] Done! Generated', results.length, 'sets, saving to R2...');
 
-  const base64Results = results.map((r) => ({
-    examNumber: r.examNumber,
-    questionNumber: r.questionNumber,
-    slides: r.slides.map((buf) => buf.toString('base64')),
-  }));
+  const saved = [];
+  for (const r of results) {
+    const item = await saveCardNews({
+      type: 'exam',
+      title: `제${r.examNumber}회 ${r.questionNumber}번`,
+      sourceId: `${r.examNumber}-${r.questionNumber}`,
+      slides: r.slides,
+    });
+    saved.push({ ...item, examNumber: r.examNumber, questionNumber: r.questionNumber });
+  }
 
-  res.json({ success: true, data: base64Results });
+  console.log('[CardNews] Saved', saved.length, 'items to R2');
+  res.json({ success: true, data: saved });
 }));
 
 /** POST /api/card-news/download — download ZIP of generated PNGs */
@@ -82,16 +89,34 @@ router.post('/notes/generate', asyncHandler(async (req, res) => {
     (msg) => console.log('[NoteCardNews]', msg),
   );
 
-  console.log('[NoteCardNews] Done! Generated', results.length, 'sets');
+  console.log('[NoteCardNews] Done! Generated', results.length, 'sets, saving to R2...');
 
-  const base64Results = results.map((r) => ({
-    noteId: r.noteId,
-    title: r.title,
-    era: r.era,
-    slides: r.slides.map((buf) => buf.toString('base64')),
-  }));
+  const saved = [];
+  for (const r of results) {
+    const item = await saveCardNews({
+      type: 'note',
+      title: r.title,
+      era: r.era,
+      sourceId: r.noteId,
+      slides: r.slides,
+    });
+    saved.push(item);
+  }
 
-  res.json({ success: true, data: base64Results });
+  console.log('[NoteCardNews] Saved', saved.length, 'items to R2');
+  res.json({ success: true, data: saved });
+}));
+
+/** GET /api/card-news/saved — list all saved card news */
+router.get('/saved', asyncHandler(async (_req, res) => {
+  const items = getAllCardNews();
+  res.json({ success: true, data: items });
+}));
+
+/** DELETE /api/card-news/saved/:id — delete a saved card news */
+router.delete('/saved/:id', asyncHandler(async (req, res) => {
+  await deleteCardNews(req.params.id);
+  res.json({ success: true });
 }));
 
 export default router;
