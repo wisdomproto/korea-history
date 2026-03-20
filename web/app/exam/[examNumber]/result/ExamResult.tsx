@@ -17,6 +17,13 @@ export default function ExamResult({ examNumber }: Props) {
   } | null>(null);
 
   useEffect(() => {
+    // Get actually answered questions from localStorage
+    let answeredCount = 0;
+    try {
+      const raw = localStorage.getItem(`answered-${examNumber}`);
+      if (raw) answeredCount = JSON.parse(raw).length;
+    } catch {}
+
     const allWrong = getWrongAnswers();
     const examWrong = allWrong.filter(
       (a) => a.examNumber === examNumber && !a.resolved
@@ -27,9 +34,10 @@ export default function ExamResult({ examNumber }: Props) {
       wrongByEra[w.era] = (wrongByEra[w.era] || 0) + 1;
     }
 
+    const total = Math.max(answeredCount, examWrong.length);
     setStats({
-      total: 50,
-      correct: 50 - examWrong.length,
+      total: total || 1,
+      correct: Math.max(total - examWrong.length, 0),
       wrong: examWrong.length,
       wrongByEra,
     });
