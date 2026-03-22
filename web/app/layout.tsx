@@ -16,7 +16,6 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ko_KR",
     siteName: "기출노트 한능검",
-    url: "https://gcnote.co.kr",
   },
   twitter: {
     card: "summary_large_image",
@@ -24,9 +23,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-  },
-  alternates: {
-    canonical: "https://gcnote.co.kr",
   },
 };
 

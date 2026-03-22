@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "한능검 기출문제 학습 - 회차별·시대별·키워드별",
   description:
     "한능검 기출문제를 회차별, 시대별, 키워드별로 학습하세요. 맞춤형 학습과 오답 복습으로 1급 합격!",
+  alternates: { canonical: "/study" },
 };
 
 export default function StudyPage() {

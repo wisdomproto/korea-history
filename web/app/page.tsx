@@ -1,7 +1,13 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import { getAllExams, getAllKeywords } from "@/lib/data";
 import BannerCarousel from "@/components/BannerCarousel";
 import AdSlot from "@/components/AdSlot";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: { url: "/" },
+};
 
 const QUICK_ACTIONS = [
   {

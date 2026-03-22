@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${meta.label} - 기출노트 한능검`,
     description: meta.description,
+    alternates: { canonical: `/board/${board}` },
   };
 }
 

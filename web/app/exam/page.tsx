@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "한능검 기출문제 전체 회차 (40~77회)",
   description:
     "한능검 기출문제 전체 회차 목록. 40~77회 최신순, 정답 해설 포함, 무료 풀기.",
+  alternates: { canonical: "/exam" },
 };
 
 export default function ExamListPage() {

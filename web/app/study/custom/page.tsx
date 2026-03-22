@@ -6,6 +6,7 @@ import CustomSelector from "./CustomSelector";
 export const metadata: Metadata = {
   title: "한능검 시대별 유형별 맞춤 학습",
   description: "한능검 기출문제를 시대별, 유형별로 선택하여 집중 학습하세요. 원하는 조합으로 문제 풀기.",
+  alternates: { canonical: "/study/custom" },
 };
 
 export default function CustomStudyPage() {

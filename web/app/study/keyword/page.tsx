@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "한능검 키워드별 기출문제 - 3,800개 핵심 키워드",
   description:
     "한능검 핵심 키워드를 선택해 관련 기출문제를 모아 풀어보세요. 3,800개+ 키워드별 문제 풀기.",
+  alternates: { canonical: "/study/keyword" },
 };
 
 export default function KeywordStudyPage() {

@@ -30,12 +30,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = `${note.title} 요약정리 - 한능검 필수 암기`;
   const description = `한능검 ${note.eraLabel} - ${note.title} 핵심 요약. 관련 기출 ${note.relatedQuestionIds.length}문제, 영상강의 포함.`;
 
+  const path = `/notes/${noteId}`;
   return {
     title,
     description,
+    alternates: { canonical: path },
     openGraph: {
       title,
       description,
+      url: path,
       type: "article",
       siteName: "한국사기출",
     },
