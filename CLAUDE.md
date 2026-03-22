@@ -18,28 +18,33 @@ korea_history/
 ├── lib/                   # Expo 유틸리티
 ├── data/questions/        # 시험 데이터 JSON (로컬 + R2 동기화)
 │   ├── exam-{N}.json      # { exam: Exam, questions: Question[] } (40~77회)
-│   ├── exam-order.json    # 시험 순서 (ID 배열)
+│   ├── exam-order.json    # 시험 순서 (ID 배열) — 비어있을 수 있음
 │   └── keywords.json      # 키워드 → 문제 ID 매핑 (3,800+)
 ├── data/notes/            # 요약노트 JSON (87개)
 │   ├── index.json         # 노트 메타데이터 인덱스
 │   └── {sectionId}.json   # 개별 노트 (s1-01 ~ s7-16)
+├── data/card-news/        # 카드뉴스 저장 인덱스 (index.json)
 ├── data/images/           # 문제 이미지 (R2 업로드 + 로컬 백업)
 ├── scripts/               # 유틸리티 스크립트
-│   ├── build-youtube-timestamps.py  # 회차별 YouTube 해설 타임스탬프 추출
-│   ├── match-notes-lectures.py      # 노트↔강의 매칭
-│   ├── enrich-notes.py              # Gemini 기반 노트 보강
-│   ├── fix-notes.py                 # 노트 문제 수정
-│   └── clean-explanations.py        # 해설 정리
-├── design/                # 디자인 참고 파일 (index.html, style.css)
+├── design/                # 디자인 참고 파일
+├── docs/                  # 프로젝트 문서
+│   ├── marketing-strategy.html        # 마케팅 전략 보고서 v1
+│   ├── marketing-plan-community.html  # 커뮤니티 마케팅 종합 플랜
+│   └── card-news-feature-plan.html    # 카드뉴스 생성 기능 기획서
 ├── author-tool/           # 저작도구 (별도 앱, Railway 배포)
 │   ├── server/            # Express API
+│   │   ├── services/      # card-news, note-card-news, notes, r2, gemini 등
+│   │   └── routes/        # exam, question, card-news, notes 등
 │   └── src/               # React + Vite 프론트엔드
+│       ├── features/      # exam, question, generator, card-news, notes
+│       └── components/    # Layout, Sidebar (탭: 시험/마케팅)
 ├── web/                   # SEO 웹사이트 (Next.js, Vercel 배포)
 │   ├── app/               # App Router 페이지
-│   │   ├── layout.tsx     # 루트 레이아웃 (GA4, 네이버 인증)
+│   │   ├── layout.tsx     # 루트 레이아웃 (GA4, 카카오 SDK, 네이버 인증)
 │   │   ├── page.tsx       # 메인 (배너 + 퀵액션 + 최신기출 + 키워드)
-│   │   ├── exam/          # 기출문제 (SSG, 1,900+ 페이지)
-│   │   ├── notes/         # 요약노트 (SSG, 87 페이지, 사이드바)
+│   │   ├── opengraph-image.tsx  # 메인 OG 이미지 (정적)
+│   │   ├── exam/          # 기출문제 (SSG, 1,900+ 페이지 + OG 이미지)
+│   │   ├── notes/         # 요약노트 (SSG, 87 페이지 + OG 이미지)
 │   │   ├── study/         # 학습하기 (맞춤형, 키워드별, 학습세션)
 │   │   ├── wrong-answers/ # 오답노트 (CSR, localStorage)
 │   │   ├── my-record/     # 내 기록 (점수, 급수, 약점 분석)
@@ -48,7 +53,7 @@ korea_history/
 │   │   ├── api/           # API Routes (board, banners, study)
 │   │   ├── privacy/       # 개인정보처리방침
 │   │   └── terms/         # 이용약관
-│   ├── components/        # Header, Footer, QuestionCard, BannerCarousel 등
+│   ├── components/        # Header, Footer, QuestionCard, ShareButtons 등
 │   ├── lib/               # data.ts, notes.ts, seo.ts, supabase.ts, youtube.ts 등
 │   └── data/              # youtube-videos.json, note-lectures.json
 └── docs/                  # 프로젝트 문서
@@ -59,7 +64,8 @@ korea_history/
 ```
 ┌─────────────┐     ┌──────────────┐     ┌─────────────┐
 │  저작도구    │────▶│ Cloudflare R2│◀────│  웹사이트   │
-│  (Railway)  │     │ (데이터+이미지)│     │  (Vercel)   │
+│  (Railway)  │     │ (데이터+이미지│     │  (Vercel)   │
+│             │     │  +카드뉴스)   │     │             │
 └─────────────┘     └──────────────┘     └─────────────┘
                                                │
                     ┌──────────────┐            │
@@ -80,6 +86,7 @@ korea_history/
 - MZ 감성 디자인: 선지 3D 프레스 효과, 정답 confetti, 오답 shake
 - 정답 확인 시 AI 해설 + YouTube 영상 해설 (최태성 1TV, 37개 회차)
 - 문제 → 지문 이미지 → 선지 순서 (실제 시험지 형식)
+- **공유 버튼**: 카카오톡 공유, 링크 복사, 네이티브 공유 (모바일)
 
 ### 요약노트
 - 87개 시대별 노트 (203,922자, 웹검색 기반 보강)
@@ -107,17 +114,46 @@ korea_history/
 - **내 기록**: 회차별 점수/급수/날짜, 약점 분석 (시대/유형)
 - **시험 기록**: 결과 페이지에서 자동 저장, 급수 판정 (80%=1급, 70%=2급, 60%=3급)
 
+### OG 이미지 (SNS 공유 썸네일)
+- **빌드 시 정적 생성** (SSG, 4,100+ 이미지)
+- 메인/시험/문제/노트 페이지별 OG 이미지
+- satori (Next.js ImageResponse) 사용
+- 주의: JSX에서 `제{n}회` → `` {`제${n}회`} `` 템플릿 리터럴 필수 (satori multi-children 에러 방지)
+
+## 핵심 기능 (저작도구)
+
+### 사이드바 탭 구조
+- **📚 시험 탭**: 시험 목록, 검색/정렬, + 새 시험, AI 생성
+- **📢 마케팅 탭**: 카드뉴스 생성/갤러리, 요약노트 관리
+
+### 카드뉴스 생성
+- **기출 카드뉴스**: 문제 선택 → AI 후킹/해설 → satori PNG 4장 (후킹→문제→정답→CTA)
+  - 배경 이미지 업로드 가능 (없으면 시대별 그라데이션)
+  - 기존 해설 데이터를 AI에 전달 (지문이 이미지라서 content만으로 부족)
+- **요약노트 카드뉴스**: 노트 선택 → AI 장면 구성 → Gemini 웹툰 이미지 생성
+  - 이미지 모델 선택 가능 (Flash Image / Pro Image)
+- **카드뉴스 갤러리**: R2에 자동 저장, 목록/미리보기/삭제
+
+### 요약노트 관리
+- 87개 노트 목록 (시대 필터, 검색)
+- HTML 미리보기 + 키워드 표시
+- 제목 편집 (더블클릭)
+
 ## 기술 스택
 
 ### 웹사이트 (web/) — Vercel 배포
 - Next.js 16+ (App Router), Tailwind CSS v4
 - Supabase (게시판 PostgreSQL + Storage)
 - Google Analytics 4 (G-CJ7V236NQV)
+- Kakao JS SDK (공유 기능)
 - 네이버 서치어드바이저 인증 완료
 
 ### 저작도구 (author-tool/) — Railway 배포
-- Express + Vite middleware, React 18, TailwindCSS
-- Gemini API, Cloudflare R2, Vercel Deploy Hook
+- Express + Vite middleware, React 18, TailwindCSS, Zustand
+- Gemini API (텍스트 + 이미지 생성)
+- satori + @resvg/resvg-js (텍스트 카드뉴스 PNG)
+- Cloudflare R2 (카드뉴스 저장)
+- Vercel Deploy Hook
 
 ## 환경변수
 
@@ -127,6 +163,7 @@ R2_PUBLIC_URL=
 NEXT_PUBLIC_SUPABASE_URL=https://uonznnypdnerdigfyfci.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 NEXT_PUBLIC_SITE_URL=https://gcnote.co.kr
+NEXT_PUBLIC_KAKAO_JS_KEY=
 ADMIN_PASSWORD=
 ```
 
@@ -149,6 +186,7 @@ VERCEL_DEPLOY_HOOK_URL=
 - 모든 페이지 "한능검" 키워드 포함 타이틀
 - Google Search Console + 네이버 서치어드바이저 등록
 - JSON-LD (Quiz, BreadcrumbList)
+- OG 이미지 (4,100+ 정적 생성)
 
 ## 주의사항
 - 요약노트에 "자막", "YouTube", "강의" 등 출처 언급 절대 금지
@@ -156,6 +194,10 @@ VERCEL_DEPLOY_HOOK_URL=
 - 웹사이트 빌드 시 R2_PUBLIC_URL 필수
 - 노트 데이터는 R2에 없음, data/notes/에서만 읽음 (로컬/git)
 - YouTube 타임스탬프 데이터는 git으로 관리 (web/data/)
+- OG 이미지 JSX에서 변수 삽입 시 반드시 템플릿 리터럴 사용 (satori 제약)
+- satori에서 children 배열이 있는 div에는 반드시 `display: flex` 필요
+- exam-order.json이 비어있을 수 있음 → 카드뉴스는 디렉토리 스캔으로 시험 목록 로드
+- Next.js 16: params는 Promise → `await params` 필수 (page.tsx, opengraph-image.tsx)
 
 ## 언어
 - 사용자 인터페이스: 한국어
