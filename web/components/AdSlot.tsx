@@ -19,7 +19,7 @@ interface AdSlotProps {
 }
 
 const ADSENSE_ENABLED = process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true";
-const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "";
+const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "ca-pub-6002059361162458";
 
 export default function AdSlot({ size, slot, className = "" }: AdSlotProps) {
   const adRef = useRef<HTMLModElement>(null);
