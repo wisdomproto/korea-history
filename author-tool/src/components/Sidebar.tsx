@@ -425,8 +425,10 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
                                 selectedNoteId === note.id ? 'bg-primary-50 border-l-4 border-l-primary-500' : 'border-l-4 border-l-transparent'
                               }`}
                             >
-                              <div className="truncate font-medium">{note.title}</div>
-                              <div className="mt-0.5 text-[10px] text-gray-400">{note.sectionId}</div>
+                              <div className="truncate font-medium">
+                                <span className={`inline-block mr-1 rounded px-1 py-0 text-[9px] ${ERA_COLORS[era] || 'bg-gray-100 text-gray-600'}`}>{era}</span>
+                                {note.title}
+                              </div>
                             </div>
                           ))}
                         </div>
