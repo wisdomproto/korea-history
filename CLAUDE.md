@@ -23,7 +23,8 @@ korea_history/
 ├── data/notes/            # 요약노트 JSON (87개)
 │   ├── index.json         # 노트 메타데이터 인덱스
 │   └── {sectionId}.json   # 개별 노트 (s1-01 ~ s7-16)
-├── data/card-news/        # 카드뉴스 저장 인덱스 (index.json)
+├── data/contents/         # 멀티채널 컨텐츠 JSON (index.json + ct-{id}.json)
+├── data/card-news/        # 카드뉴스 저장 인덱스 (index.json, 레거시)
 ├── data/images/           # 문제 이미지 (R2 업로드 + 로컬 백업)
 ├── scripts/               # 유틸리티 스크립트
 ├── design/                # 디자인 참고 파일
@@ -33,11 +34,11 @@ korea_history/
 │   └── card-news-feature-plan.html    # 카드뉴스 생성 기능 기획서
 ├── author-tool/           # 저작도구 (별도 앱, Railway 배포)
 │   ├── server/            # Express API
-│   │   ├── services/      # card-news, note-card-news, notes, r2, gemini 등
-│   │   └── routes/        # exam, question, card-news, notes 등
+│   │   ├── services/      # card-news, note-card-news, notes, r2, gemini, content, prompt-builder 등
+│   │   └── routes/        # exam, question, card-news, notes, content 등
 │   └── src/               # React + Vite 프론트엔드
-│       ├── features/      # exam, question, generator, card-news, notes
-│       └── components/    # Layout, Sidebar (탭: 시험/마케팅)
+│       ├── features/      # exam, question, generator, card-news, notes, content
+│       └── components/    # Layout, Sidebar (탭: 시험/컨텐츠)
 ├── web/                   # SEO 웹사이트 (Next.js, Vercel 배포)
 │   ├── app/               # App Router 페이지
 │   │   ├── layout.tsx     # 루트 레이아웃 (GA4, 카카오 SDK, 네이버 인증)
@@ -124,15 +125,36 @@ korea_history/
 
 ### 사이드바 탭 구조
 - **📚 시험 탭**: 시험 목록, 검색/정렬, + 새 시험, AI 생성
-- **📢 마케팅 탭**: 카드뉴스 생성/갤러리, 요약노트 관리
+- **✏️ 컨텐츠 탭**: 멀티채널 컨텐츠 생성 (기출/노트/자유 소스 → 5채널)
 
-### 카드뉴스 생성
-- **기출 카드뉴스**: 문제 선택 → AI 후킹/해설 → satori PNG 4장 (후킹→문제→정답→CTA)
-  - 배경 이미지 업로드 가능 (없으면 시대별 그라데이션)
-  - 기존 해설 데이터를 AI에 전달 (지문이 이미지라서 content만으로 부족)
-- **요약노트 카드뉴스**: 노트 선택 → AI 장면 구성 → Gemini 웹툰 이미지 생성
-  - 이미지 모델 선택 가능 (Flash Image / Pro Image)
-- **카드뉴스 갤러리**: R2에 자동 저장, 목록/미리보기/삭제
+### 멀티채널 컨텐츠 시스템 (NEW)
+한 주제로 여러 채널용 컨텐츠를 동시 생성하는 시스템.
+
+**워크플로우**: 소스 선택 → 기본글 작성/AI 생성 → 채널별 AI 변환
+- **소스 타입**: 기출문제, 요약노트, 자유 주제
+- **채널**: 블로그(네이버 SEO), 인스타 카드뉴스, 스레드, 롱폼 대본, 숏폼 대본
+- **AI 생성**: Gemini API + SSE 스트리밍, 채널별 모델 선택 가능
+- **저장**: `data/contents/` (JSON) + R2 (이미지)
+
+**데이터 구조**: Content → BaseArticle(1:1) → ChannelContent[](1:N × 5채널)
+- 스펙: `docs/superpowers/specs/2026-03-23-multi-channel-content-design.md`
+- 플랜: `docs/superpowers/plans/2026-03-23-multi-channel-content.md`
+
+**서버 파일**:
+- `server/services/content.service.ts` — CRUD (index.json + ct-{id}.json)
+- `server/services/prompt-builder.ts` — 6개 채널별 프롬프트 템플릿
+- `server/services/content-generator.service.ts` — AI 생성 오케스트레이션 + SSE
+- `server/routes/content.routes.ts` — `/api/contents` REST API
+
+**프론트엔드 파일**:
+- `src/features/content/` — api, hooks, components
+- 6개 탭 패널: BaseArticle, Blog, CardNews, Threads, LongForm, ShortForm
+
+### 레거시 카드뉴스 (기존, 유지)
+- **기출 카드뉴스**: satori PNG 4장 (card-news.service.ts)
+- **요약노트 카드뉴스**: Gemini 웹툰 이미지 (note-card-news.service.ts)
+- **카드뉴스 갤러리**: R2 저장 (card-news-storage.service.ts)
+- 기존 API 라우트(`/api/card-news/`)는 소스 데이터 조회용으로도 재활용
 
 ### 요약노트 관리
 - 87개 노트 목록 (시대 필터, 검색)
@@ -189,7 +211,7 @@ VERCEL_DEPLOY_HOOK_URL=
 - OG 이미지 (4,100+ 정적 생성)
 
 ## 주의사항
-- 요약노트에 "자막", "YouTube", "강의" 등 출처 언급 절대 금지
+- 요약노트 및 컨텐츠 생성 프롬프트에 "자막", "YouTube", "강의" 등 출처 언급 절대 금지
 - Tailwind CSS v4: `@layer base/components` 안에 작성, `@keyframes`는 밖에
 - 웹사이트 빌드 시 R2_PUBLIC_URL 필수
 - 노트 데이터는 R2에 없음, data/notes/에서만 읽음 (로컬/git)
@@ -198,6 +220,9 @@ VERCEL_DEPLOY_HOOK_URL=
 - satori에서 children 배열이 있는 div에는 반드시 `display: flex` 필요
 - exam-order.json이 비어있을 수 있음 → 카드뉴스는 디렉토리 스캔으로 시험 목록 로드
 - Next.js 16: params는 Promise → `await params` 필수 (page.tsx, opengraph-image.tsx)
+- 컨텐츠 데이터는 `data/contents/`에 저장 (index.json + ct-{id}.json), 이미지는 R2 `contents/{id}/` 경로
+- 컨텐츠 SSE 생성: `POST /api/contents/:id/generate/:channel` → `data: {"type":"chunk|complete|error",...}`
+- 컨텐츠 서비스의 서버 타입(content.service.ts)은 `any[]` — 프론트 타입(content-types.ts)이 정확한 타입 정의
 
 ## 언어
 - 사용자 인터페이스: 한국어

@@ -6,6 +6,9 @@ import { useQueryClient } from '@tanstack/react-query';
 import { Button } from './Button';
 import { useState, useRef } from 'react';
 import type { ExamCompleteness } from '@/lib/types';
+import { useContents } from '@/features/content/hooks/useContent';
+import { NewContentDialog } from '@/features/content/components/NewContentDialog';
+import type { ContentMeta } from '@/lib/content-types';
 
 const ERA_COLORS: Record<string, string> = {
   '선사·고조선': 'bg-amber-100 text-amber-800',
@@ -28,7 +31,7 @@ function getStatusTooltip(c: ExamCompleteness): string {
   return issues.length === 0 ? '완료' : issues.join(' · ');
 }
 
-type SidebarTab = 'exam' | 'marketing';
+type SidebarTab = 'exam' | 'content';
 
 interface SidebarProps {
   onCreateExam: () => void;
@@ -38,10 +41,14 @@ interface SidebarProps {
 export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
   const { data: exams, isLoading } = useExams();
   const { data: notes } = useNotes();
-  const { selectedExamId, setSelectedExamId, activeView, setActiveView } = useEditorStore();
+  const { data: contents } = useContents();
+  const { selectedExamId, setSelectedExamId, selectedContentId, setSelectedContentId, activeView, setActiveView } = useEditorStore();
   const qc = useQueryClient();
   const [tab, setTab] = useState<SidebarTab>('exam');
   const [search, setSearch] = useState('');
+  const [showNewContent, setShowNewContent] = useState(false);
+  const [contentFilter, setContentFilter] = useState<'all' | 'exam' | 'note' | 'free'>('all');
+  const [contentSearch, setContentSearch] = useState('');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | null>(null);
 
   // Inline edit state
@@ -138,14 +145,14 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
           📚 시험
         </button>
         <button
-          onClick={() => setTab('marketing')}
+          onClick={() => setTab('content')}
           className={`flex-1 py-2.5 text-sm font-semibold transition-colors ${
-            tab === 'marketing'
-              ? 'border-b-2 border-pink-500 text-pink-700 bg-pink-50/50'
+            tab === 'content'
+              ? 'border-b-2 border-primary-600 text-primary-700 bg-primary-50/50'
               : 'text-gray-400 hover:text-gray-600'
           }`}
         >
-          📢 마케팅
+          ✏️ 컨텐츠
         </button>
       </div>
 
@@ -286,100 +293,73 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
         </>
       )}
 
-      {/* ═══ Marketing Tab ═══ */}
-      {tab === 'marketing' && (
+      {/* ═══ Content Tab ═══ */}
+      {tab === 'content' && (
         <>
+          <div className="space-y-2 border-b px-4 py-3">
+            <button
+              className="w-full rounded-lg border border-gray-200 py-1.5 text-xs font-medium hover:bg-gray-50"
+              onClick={() => setShowNewContent(true)}
+            >
+              + 새 컨텐츠
+            </button>
+            <input
+              type="text"
+              placeholder="🔍 검색..."
+              value={contentSearch}
+              onChange={(e) => setContentSearch(e.target.value)}
+              className="w-full rounded-lg border px-3 py-1.5 text-xs focus:border-primary-500 focus:outline-none"
+            />
+            <div className="flex gap-1 flex-wrap">
+              {(['all', 'exam', 'note', 'free'] as const).map((f) => (
+                <button
+                  key={f}
+                  onClick={() => setContentFilter(f)}
+                  className={`px-2 py-0.5 rounded-full text-[10px] transition-colors ${
+                    contentFilter === f ? 'bg-primary-500 text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                  }`}
+                >
+                  {f === 'all' ? '전체' : f === 'exam' ? '기출' : f === 'note' ? '노트' : '자유'}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="flex-1 overflow-y-auto">
-            {/* Gallery */}
-            <div className="border-b px-4 py-3">
-              <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">저장된 콘텐츠</h3>
-              <button
-                onClick={() => setActiveView('card-news-gallery')}
-                className={`w-full flex items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors ${
-                  activeView === 'card-news-gallery' ? 'bg-primary-50 text-primary-700' : 'hover:bg-gray-50 text-gray-700'
+            {contents?.filter((c: ContentMeta) => {
+              if (contentFilter !== 'all' && c.sourceType !== contentFilter) return false;
+              if (contentSearch && !c.title.includes(contentSearch)) return false;
+              return true;
+            }).map((c: ContentMeta) => (
+              <div
+                key={c.id}
+                onClick={() => setSelectedContentId(c.id)}
+                className={`cursor-pointer px-4 py-2 border-b transition-colors hover:bg-gray-50 ${
+                  selectedContentId === c.id ? 'bg-primary-50 border-l-4 border-l-primary-500' : 'border-l-4 border-l-transparent'
                 }`}
               >
-                <span className="text-lg">📂</span>
-                <div>
-                  <div className="text-sm font-semibold">카드뉴스 갤러리</div>
-                  <div className="text-xs text-gray-400">R2에 저장된 콘텐츠 보기</div>
-                </div>
-              </button>
-            </div>
-
-            {/* Card News */}
-            <div className="border-b px-4 py-3">
-              <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">카드뉴스 생성</h3>
-              <div className="space-y-1">
-                <button
-                  onClick={() => setActiveView('card-news')}
-                  className={`w-full flex items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors ${
-                    activeView === 'card-news' ? 'bg-pink-50 text-pink-700' : 'hover:bg-gray-50 text-gray-700'
-                  }`}
-                >
-                  <span className="text-lg">📸</span>
-                  <div>
-                    <div className="text-sm font-semibold">기출 카드뉴스</div>
-                    <div className="text-xs text-gray-400">기출문제 → 4장 캐러셀</div>
-                  </div>
-                </button>
-                <button
-                  onClick={() => setActiveView('note-card-news')}
-                  className={`w-full flex items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors ${
-                    activeView === 'note-card-news' ? 'bg-pink-50 text-pink-700' : 'hover:bg-gray-50 text-gray-700'
-                  }`}
-                >
-                  <span className="text-lg">📝</span>
-                  <div>
-                    <div className="text-sm font-semibold">요약노트 카드뉴스</div>
-                    <div className="text-xs text-gray-400">시대별 요약 → 인포그래픽</div>
-                  </div>
-                </button>
-              </div>
-            </div>
-
-            {/* Content Management */}
-            <div className="border-b px-4 py-3">
-              <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">콘텐츠 관리</h3>
-              <div className="space-y-1">
-                <button
-                  onClick={() => setActiveView('notes')}
-                  className={`w-full flex items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors ${
-                    activeView === 'notes' ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-50 text-gray-700'
-                  }`}
-                >
-                  <span className="text-lg">📖</span>
-                  <div>
-                    <div className="text-sm font-semibold">요약노트 관리</div>
-                    <div className="text-xs text-gray-400">{notes?.length || 0}개 노트 · 보기/편집</div>
-                  </div>
-                </button>
-              </div>
-            </div>
-
-            {/* Stats */}
-            <div className="px-4 py-3">
-              <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">마케팅 자산</h3>
-              <div className="space-y-2 text-xs text-gray-500">
-                <div className="flex justify-between">
-                  <span>기출문제</span>
-                  <span className="font-bold text-gray-700">{exams?.reduce((s, e) => s + e.questionCount, 0) || 0}문항</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>요약노트</span>
-                  <span className="font-bold text-gray-700">{notes?.length || 0}개</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>카드뉴스 소스</span>
-                  <span className="font-bold text-pink-600">{(exams?.reduce((s, e) => s + e.questionCount, 0) || 0) + (notes?.length || 0)}개</span>
+                <div className="text-xs font-bold truncate">{c.title}</div>
+                <div className="flex items-center gap-2 mt-0.5 text-[10px] text-gray-400">
+                  <span>
+                    {c.sourceType === 'exam' ? '📋 기출' : c.sourceType === 'note' ? '📝 노트' : '✍️ 자유'}
+                  </span>
+                  <span>{new Date(c.createdAt).toLocaleDateString('ko-KR', { month: 'numeric', day: 'numeric' })}</span>
                 </div>
               </div>
-            </div>
+            ))}
+            {contents?.length === 0 && (
+              <div className="p-4 text-center text-xs text-gray-400">컨텐츠가 없습니다</div>
+            )}
           </div>
 
           <div className="border-t bg-gray-50 px-4 py-2">
-            <DeployButton />
+            <div className="flex items-center justify-between">
+              <span className="text-xs text-gray-500">총 {contents?.length || 0}개 컨텐츠</span>
+              <DeployButton />
+            </div>
           </div>
+
+          <NewContentDialog open={showNewContent} onClose={() => setShowNewContent(false)} />
         </>
       )}
     </aside>

@@ -12,6 +12,7 @@ import { CardNewsPanel } from '@/features/card-news/components/CardNewsPanel';
 import { NoteCardNewsPanel } from '@/features/card-news/components/NoteCardNewsPanel';
 import { CardNewsGallery } from '@/features/card-news/components/CardNewsGallery';
 import { NotesPanel } from '@/features/notes/components/NotesPanel';
+import { ContentPanel } from '@/features/content/components/ContentPanel';
 import { pdfImportApi } from '@/features/exam/api/pdf-import.api';
 import { Button } from './Button';
 import { BulkAnswerModal } from '@/features/question/components/BulkAnswerModal';
@@ -189,6 +190,11 @@ export function Layout() {
         {/* Notes */}
         {activeView === 'notes' && (
           <NotesPanel />
+        )}
+
+        {/* Content */}
+        {activeView === 'content' && (
+          <ContentPanel />
         )}
 
         {/* Exam loading */}
