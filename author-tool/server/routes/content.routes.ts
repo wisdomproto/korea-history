@@ -80,6 +80,7 @@ router.post('/:id/generate/:channel', async (req, res, next) => {
         channel: req.params.channel,
         modelId: req.body.modelId,
         targetDuration: req.body.targetDuration,
+        keywords: req.body.keywords,
       },
       res,
     );

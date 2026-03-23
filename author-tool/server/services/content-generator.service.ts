@@ -15,6 +15,7 @@ interface GenerateOptions {
   channel: string;
   modelId?: string;
   targetDuration?: string;
+  keywords?: string[];
 }
 
 // Get source data from content file
@@ -71,6 +72,9 @@ export async function generateChannelContent(
   switch (opts.channel) {
     case 'blog':
       prompt = prompts.buildBlogPrompt(baseHtml, source);
+      if (opts.keywords?.length) {
+        prompt += `\n\n[SEO 타겟 키워드]\n메인 키워드: ${opts.keywords[0]}\n보조 키워드: ${opts.keywords.slice(1).join(', ')}\n\n위 키워드를 제목과 본문에 자연스럽게 포함시키세요. 메인 키워드는 제목 앞부분에 배치하고, 본문에 5~6회 포함하세요.`;
+      }
       break;
     case 'instagram':
       prompt = prompts.buildCardNewsPrompt(baseHtml, source);
