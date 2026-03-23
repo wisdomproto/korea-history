@@ -39,12 +39,18 @@ export function BaseArticlePanel({ contentFile }: Props) {
     path: 'base-article/generate',
   });
 
-  // Initialize editor content
+  // Sync editor content when baseArticle changes (content switch or AI generation)
+  const lastSyncedHtml = useRef<string>('');
   useEffect(() => {
-    if (editorRef.current && baseArticle?.html) {
-      editorRef.current.innerHTML = baseArticle.html;
+    if (editorRef.current && baseArticle?.html && baseArticle.html !== lastSyncedHtml.current) {
+      // Don't overwrite if user is actively typing (check focus)
+      const isUserEditing = document.activeElement === editorRef.current;
+      if (!isUserEditing || lastSyncedHtml.current === '') {
+        editorRef.current.innerHTML = baseArticle.html;
+      }
+      lastSyncedHtml.current = baseArticle.html;
     }
-  }, [content.id]); // Only on content switch
+  }, [content.id, baseArticle?.html]);
 
   // Auto-save with debounce
   const handleInput = useCallback(() => {

@@ -23,6 +23,7 @@ export function LongFormPanel({ contentFile }: Props) {
   const { content, longForm } = contentFile;
   const current = longForm[0] as LongFormContent | undefined;
   const [modelId, setModelId] = useState('gemini-2.5-flash');
+  const [imageModelId, setImageModelId] = useState('gemini-2.5-flash-image');
   const [expandedScene, setExpandedScene] = useState<string | null>(null);
 
   const { save } = useDebouncedSave(content.id, 'longform');
@@ -72,7 +73,8 @@ export function LongFormPanel({ contentFile }: Props) {
         </button>
         <button className="px-3 py-1.5 border border-gray-200 rounded-md text-xs hover:bg-gray-50" onClick={handleCopy}>📋 복사</button>
         <span className="text-[10px] text-gray-400 ml-auto">목표: {current?.targetDuration || '8~12분'}</span>
-        <ChannelModelSelector type="text" value={modelId} onChange={setModelId} />
+        <ChannelModelSelector type="text" value={modelId} onChange={setModelId} label="글:" />
+        <ChannelModelSelector type="image" value={imageModelId} onChange={setImageModelId} label="이미지:" />
       </div>
 
       {current && (
@@ -120,7 +122,7 @@ export function LongFormPanel({ contentFile }: Props) {
                           <button
                             className="px-2 py-1 bg-amber-500 text-white rounded text-[10px] hover:bg-amber-600 disabled:opacity-50"
                             disabled={genImage.isPending}
-                            onClick={() => genImage.mutate({ contentId: content.id, channel: 'longform', targetId: scene.id, imagePrompt: scene.imagePrompt! })}
+                            onClick={() => genImage.mutate({ contentId: content.id, channel: 'longform', targetId: scene.id, imagePrompt: scene.imagePrompt!, modelId: imageModelId })}
                           >
                             {genImage.isPending ? '⏳ 생성 중...' : '🎨 씬 이미지 생성'}
                           </button>

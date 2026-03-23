@@ -26,7 +26,7 @@ export function ContentPanel() {
 
   if (!contentId) {
     return (
-      <div className="flex items-center justify-center h-full text-gray-400">
+      <div className="flex items-center justify-center h-full w-full text-gray-400">
         왼쪽에서 컨텐츠를 선택하거나 새로 만드세요
       </div>
     );
@@ -34,13 +34,13 @@ export function ContentPanel() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-full text-gray-400">로딩 중...</div>
+      <div className="flex items-center justify-center h-full w-full text-gray-400">로딩 중...</div>
     );
   }
 
   if (!contentFile) {
     return (
-      <div className="flex items-center justify-center h-full text-gray-400">
+      <div className="flex items-center justify-center h-full w-full text-gray-400">
         컨텐츠를 찾을 수 없습니다
       </div>
     );
@@ -56,7 +56,7 @@ export function ContentPanel() {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full w-full">
       {/* Header */}
       <div className="px-5 py-3 border-b border-gray-200 flex items-center justify-between">
         <div>
