@@ -1,5 +1,5 @@
 // author-tool/src/features/content/components/BlogPanel.tsx
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import type { ContentFile, BlogContent, BlogCard } from '../../../lib/content-types';
 import { useGenerateImage } from '../hooks/useContent';
 import { useDebouncedSave } from '../hooks/useDebouncedSave';
@@ -17,8 +17,10 @@ export function BlogPanel({ contentFile }: Props) {
   const [imageModelId, setImageModelId] = useState('gemini-2.5-flash-image');
   const [showPreview, setShowPreview] = useState(false);
 
-  const { save } = useDebouncedSave(content.id, 'blog');
+  const { save, saveNow } = useDebouncedSave(content.id, 'blog');
   const genImage = useGenerateImage();
+  const dragRef = useRef<number | null>(null);
+  const [dragOver, setDragOver] = useState<number | null>(null);
   const { isGenerating, generate } = useChannelGeneration({
     contentId: content.id,
     path: 'generate/blog',
@@ -51,6 +53,14 @@ export function BlogPanel({ contentFile }: Props) {
       cards: current.cards.map((c) => (c.id === cardId ? { ...c, ...updates } : c)),
     };
     save(current.id, updated);
+  };
+
+  const reorderCards = (fromIdx: number, toIdx: number) => {
+    if (!current || fromIdx === toIdx) return;
+    const cards = [...current.cards];
+    const [moved] = cards.splice(fromIdx, 1);
+    cards.splice(toIdx, 0, moved);
+    saveNow(current.id, { ...current, cards });
   };
 
   // SEO score badge helper
@@ -131,9 +141,18 @@ export function BlogPanel({ contentFile }: Props) {
           </div>
 
           {/* Cards */}
-          {current.cards.map((card) => (
-            <div key={card.id} className="border border-gray-200 rounded-lg mb-2 overflow-hidden">
+          {current.cards.map((card, idx) => (
+            <div
+              key={card.id}
+              draggable
+              onDragStart={() => { dragRef.current = idx; }}
+              onDragOver={(e) => { e.preventDefault(); setDragOver(idx); }}
+              onDragEnd={() => { setDragOver(null); }}
+              onDrop={() => { if (dragRef.current !== null) reorderCards(dragRef.current, idx); dragRef.current = null; setDragOver(null); }}
+              className={`border border-gray-200 rounded-lg mb-2 overflow-hidden transition-all ${dragOver === idx ? 'border-t-2 border-t-blue-400' : ''}`}
+            >
               <div className="px-3 py-2 bg-gray-50 flex items-center gap-2 border-b border-gray-100">
+                <span className="cursor-grab text-gray-300 hover:text-gray-500 text-xs select-none">⠿</span>
                 <span className={`text-[11px] px-1.5 py-0.5 rounded ${
                   card.type === 'text' ? 'bg-blue-100' :
                   card.type === 'image' ? 'bg-pink-100' :

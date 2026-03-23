@@ -1,5 +1,5 @@
 // author-tool/src/features/content/components/ThreadsPanel.tsx
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import type { ContentFile, ThreadsContent } from '../../../lib/content-types';
 import { useDebouncedSave } from '../hooks/useDebouncedSave';
 import { useChannelGeneration } from '../hooks/useChannelGeneration';
@@ -20,7 +20,9 @@ export function ThreadsPanel({ contentFile }: Props) {
   const current = threads[0] as ThreadsContent | undefined;
   const [modelId, setModelId] = useState('gemini-2.5-flash');
 
-  const { save } = useDebouncedSave(content.id, 'threads');
+  const { save, saveNow } = useDebouncedSave(content.id, 'threads');
+  const dragRef = useRef<number | null>(null);
+  const [dragOver, setDragOver] = useState<number | null>(null);
   const { isGenerating, generate } = useChannelGeneration({
     contentId: content.id,
     path: 'generate/threads',
@@ -40,6 +42,14 @@ export function ThreadsPanel({ contentFile }: Props) {
   const updatePost = (postId: string, text: string) => {
     if (!current) return;
     save(current.id, { ...current, posts: current.posts.map((p) => (p.id === postId ? { ...p, text } : p)) });
+  };
+
+  const reorderPosts = (fromIdx: number, toIdx: number) => {
+    if (!current || fromIdx === toIdx) return;
+    const posts = [...current.posts];
+    const [moved] = posts.splice(fromIdx, 1);
+    posts.splice(toIdx, 0, moved);
+    saveNow(current.id, { ...current, posts });
   };
 
   if (!current && !isGenerating) {
@@ -73,8 +83,16 @@ export function ThreadsPanel({ contentFile }: Props) {
           {current.posts.map((post, i) => {
             const style = ROLE_STYLES[post.role] || ROLE_STYLES.content;
             return (
-              <div key={post.id} className="flex gap-3 mb-4">
-                <div className="flex flex-col items-center">
+              <div
+                key={post.id}
+                draggable
+                onDragStart={() => { dragRef.current = i; }}
+                onDragOver={(e) => { e.preventDefault(); setDragOver(i); }}
+                onDragEnd={() => { setDragOver(null); }}
+                onDrop={() => { if (dragRef.current !== null) reorderPosts(dragRef.current, i); dragRef.current = null; setDragOver(null); }}
+                className={`flex gap-3 mb-4 transition-all ${dragOver === i ? 'border-t-2 border-t-indigo-400 pt-1' : ''}`}
+              >
+                <div className="flex flex-col items-center cursor-grab">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${style.bg} ${style.color}`}>
                     {i + 1}
                   </div>
