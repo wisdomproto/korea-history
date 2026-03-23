@@ -100,6 +100,8 @@ export function BlogPanel({ contentFile }: Props) {
         const map = new Map(keywordDataMap);
         data.forEach((d) => map.set(d.keyword, d));
         setKeywordDataMap(map);
+        // Update selectedKeywords to match server-returned keywords (spaces stripped)
+        setSelectedKeywords(new Set(data.map((d) => d.keyword)));
       }
     } catch (err: unknown) {
       alert(`검색량 조회 실패: ${err instanceof Error ? err.message : err}`);
@@ -118,9 +120,7 @@ export function BlogPanel({ contentFile }: Props) {
   };
 
   const getSortedKeywordsWithData = (): KeywordData[] => {
-    const entries = suggestedKeywords
-      .filter((kw) => keywordDataMap.has(kw))
-      .map((kw) => keywordDataMap.get(kw)!);
+    const entries = Array.from(keywordDataMap.values());
     entries.sort((a, b) => {
       const { key, asc } = keywordSort;
       if (key === 'keyword') return asc ? a.keyword.localeCompare(b.keyword) : b.keyword.localeCompare(a.keyword);
@@ -265,6 +265,26 @@ export function BlogPanel({ contentFile }: Props) {
               {kw}
             </label>
           ))}
+          {/* Add keyword inline input */}
+          <form
+            className="inline-flex"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const input = (e.target as HTMLFormElement).elements.namedItem('newkw') as HTMLInputElement;
+              const val = input.value.trim();
+              if (val) {
+                setSuggestedKeywords((prev) => prev.includes(val) ? prev : [...prev, val]);
+                setSelectedKeywords((prev) => new Set([...prev, val]));
+                input.value = '';
+              }
+            }}
+          >
+            <input
+              name="newkw"
+              placeholder="+ 키워드 추가"
+              className="px-3 py-1.5 rounded-full text-xs border border-dashed border-blue-300 bg-white text-blue-600 placeholder-blue-400 w-28 focus:outline-none focus:border-blue-500"
+            />
+          </form>
         </div>
       )}
 
@@ -277,9 +297,9 @@ export function BlogPanel({ contentFile }: Props) {
                 <th className="px-3 py-2 text-left w-8">
                   <input
                     type="checkbox"
-                    checked={suggestedKeywords.filter((kw) => keywordDataMap.has(kw)).every((kw) => selectedKeywords.has(kw))}
+                    checked={Array.from(keywordDataMap.keys()).every((kw) => selectedKeywords.has(kw))}
                     onChange={(e) => {
-                      const dataKeywords = suggestedKeywords.filter((kw) => keywordDataMap.has(kw));
+                      const dataKeywords = Array.from(keywordDataMap.keys());
                       if (e.target.checked) {
                         setSelectedKeywords((prev) => { const next = new Set(prev); dataKeywords.forEach((kw) => next.add(kw)); return next; });
                       } else {
