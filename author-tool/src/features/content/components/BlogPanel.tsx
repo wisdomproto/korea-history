@@ -58,6 +58,7 @@ export function BlogPanel({ contentFile }: Props) {
   const [seoResult, setSeoResult] = useState<SeoResult | null>(null);
   const [isLoadingSeo, setIsLoadingSeo] = useState(false);
   const [showSeoPanel, setShowSeoPanel] = useState(false);
+  const [showKeywordPanel, setShowKeywordPanel] = useState(!blog[0]);
 
   const { save, saveNow } = useDebouncedSave(content.id, 'blog');
   const genImage = useGenerateImage();
@@ -206,157 +207,114 @@ export function BlogPanel({ contentFile }: Props) {
     score >= 80 ? 'bg-green-100 text-green-700' : score >= 50 ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700';
 
   // ════════════════════════════════════════════════
-  // Phase 1: Keyword Research (no blog content yet)
+  // Keyword Research Panel (reusable block)
   // ════════════════════════════════════════════════
 
-  if (!current && !isGenerating) {
-    return (
-      <div className="p-5 space-y-4">
-        {/* Keyword research panel */}
-        <div className="bg-blue-50 rounded-lg p-4 space-y-4">
-          <div className="flex items-center gap-2">
-            <h3 className="text-sm font-semibold text-blue-800">키워드 연구</h3>
-            <button
-              className="px-3 py-1.5 bg-blue-500 text-white rounded-md text-xs font-medium hover:bg-blue-600 disabled:opacity-50"
-              onClick={handleSuggestKeywords}
-              disabled={isLoadingKeywords}
-            >
-              {isLoadingKeywords ? (
-                <span className="flex items-center gap-1">
-                  <Spinner /> 분석 중...
-                </span>
-              ) : (
-                '🔍 키워드 추천'
-              )}
-            </button>
-          </div>
-
-          {/* Suggested keywords as chips */}
-          {suggestedKeywords.length > 0 && (
-            <div className="space-y-3">
-              <div className="flex flex-wrap gap-2">
-                {suggestedKeywords.map((kw) => (
-                  <label
-                    key={kw}
-                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs cursor-pointer transition-colors ${
-                      selectedKeywords.has(kw)
-                        ? 'bg-blue-500 text-white'
-                        : 'bg-white text-blue-700 border border-blue-200 hover:bg-blue-100'
-                    }`}
-                  >
-                    <input
-                      type="checkbox"
-                      checked={selectedKeywords.has(kw)}
-                      onChange={() => toggleKeyword(kw)}
-                      className="sr-only"
-                    />
-                    {kw}
-                  </label>
-                ))}
-              </div>
-
-              {/* Fetch keyword data */}
-              <div className="flex items-center gap-2">
-                <button
-                  className="px-3 py-1.5 bg-white text-blue-600 border border-blue-300 rounded-md text-xs font-medium hover:bg-blue-100 disabled:opacity-50"
-                  onClick={handleFetchKeywordData}
-                  disabled={isLoadingKeywordData || selectedKeywords.size === 0}
-                >
-                  {isLoadingKeywordData ? (
-                    <span className="flex items-center gap-1">
-                      <Spinner /> 조회 중...
-                    </span>
-                  ) : (
-                    '📊 검색량 조회'
-                  )}
-                </button>
-                <span className="text-[10px] text-blue-500">{selectedKeywords.size}개 선택</span>
-              </div>
-
-              {/* Keyword data table */}
-              {keywordDataMap.size > 0 && (
-                <div className="bg-white rounded-lg border border-blue-100 overflow-hidden">
-                  <table className="w-full text-xs">
-                    <thead>
-                      <tr className="bg-blue-50 text-blue-700">
-                        <th className="px-3 py-2 text-left w-8">
-                          <input
-                            type="checkbox"
-                            checked={suggestedKeywords.filter((kw) => keywordDataMap.has(kw)).every((kw) => selectedKeywords.has(kw))}
-                            onChange={(e) => {
-                              const dataKeywords = suggestedKeywords.filter((kw) => keywordDataMap.has(kw));
-                              if (e.target.checked) {
-                                setSelectedKeywords((prev) => { const next = new Set(prev); dataKeywords.forEach((kw) => next.add(kw)); return next; });
-                              } else {
-                                setSelectedKeywords((prev) => { const next = new Set(prev); dataKeywords.forEach((kw) => next.delete(kw)); return next; });
-                              }
-                            }}
-                          />
-                        </th>
-                        <th className="px-3 py-2 text-left cursor-pointer hover:text-blue-900" onClick={() => handleSortToggle('keyword')}>
-                          키워드 {keywordSort.key === 'keyword' ? (keywordSort.asc ? '▲' : '▼') : ''}
-                        </th>
-                        <th className="px-3 py-2 text-right cursor-pointer hover:text-blue-900" onClick={() => handleSortToggle('totalSearchVolume')}>
-                          검색량 {keywordSort.key === 'totalSearchVolume' ? (keywordSort.asc ? '▲' : '▼') : ''}
-                        </th>
-                        <th className="px-3 py-2 text-right">PC</th>
-                        <th className="px-3 py-2 text-right">모바일</th>
-                        <th className="px-3 py-2 text-center cursor-pointer hover:text-blue-900" onClick={() => handleSortToggle('competition')}>
-                          경쟁률 {keywordSort.key === 'competition' ? (keywordSort.asc ? '▲' : '▼') : ''}
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {getSortedKeywordsWithData().map((d) => (
-                        <tr key={d.keyword} className="border-t border-blue-50 hover:bg-blue-50/50">
-                          <td className="px-3 py-1.5">
-                            <input
-                              type="checkbox"
-                              checked={selectedKeywords.has(d.keyword)}
-                              onChange={() => toggleKeyword(d.keyword)}
-                            />
-                          </td>
-                          <td className="px-3 py-1.5 font-medium">{d.keyword}</td>
-                          <td className="px-3 py-1.5 text-right tabular-nums">{d.totalSearchVolume.toLocaleString()}</td>
-                          <td className="px-3 py-1.5 text-right tabular-nums text-gray-500">{d.pcSearchVolume.toLocaleString()}</td>
-                          <td className="px-3 py-1.5 text-right tabular-nums text-gray-500">{d.mobileSearchVolume.toLocaleString()}</td>
-                          <td className="px-3 py-1.5 text-center">
-                            <span className={`px-1.5 py-0.5 rounded text-[10px] font-medium ${
-                              d.competition === '높음' ? 'bg-red-100 text-red-600' :
-                              d.competition === '중간' ? 'bg-yellow-100 text-yellow-600' :
-                              'bg-green-100 text-green-600'
-                            }`}>
-                              {d.competition}
-                            </span>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-
-        {/* Generate button */}
-        <div className="flex items-center gap-3">
+  const keywordPanel = (
+    <div className="bg-blue-50 rounded-lg p-4 space-y-4">
+      <div className="flex items-center gap-2">
+        <h3 className="text-sm font-semibold text-blue-800">🔍 키워드 연구</h3>
+        <button
+          className="px-3 py-1.5 bg-blue-500 text-white rounded-md text-xs font-medium hover:bg-blue-600 disabled:opacity-50"
+          onClick={handleSuggestKeywords}
+          disabled={isLoadingKeywords}
+        >
+          {isLoadingKeywords ? <span className="flex items-center gap-1"><Spinner /> 분석 중...</span> : '키워드 추천'}
+        </button>
+        {suggestedKeywords.length > 0 && selectedKeywords.size > 0 && (
           <button
-            className="px-4 py-2 bg-blue-500 text-white rounded-md text-xs font-medium hover:bg-blue-600 disabled:opacity-50"
-            onClick={handleGenerate}
-            disabled={isGenerating}
+            className="px-3 py-1.5 bg-white text-blue-600 border border-blue-300 rounded-md text-xs font-medium hover:bg-blue-100 disabled:opacity-50"
+            onClick={handleFetchKeywordData}
+            disabled={isLoadingKeywordData}
           >
-            ✨ AI 블로그 생성
+            {isLoadingKeywordData ? <span className="flex items-center gap-1"><Spinner /> 조회 중...</span> : '📊 검색량 조회'}
           </button>
-          <ChannelModelSelector type="text" value={modelId} onChange={setModelId} label="모델:" />
-        </div>
-        <p className="text-xs text-gray-400">키워드를 선택한 후 AI 블로그를 생성하면 SEO에 최적화된 포스트가 만들어집니다.</p>
+        )}
+        <span className="text-[10px] text-blue-500 ml-auto">{selectedKeywords.size}개 선택</span>
       </div>
-    );
-  }
+
+      {/* Suggested keywords as chips */}
+      {suggestedKeywords.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          {suggestedKeywords.map((kw) => (
+            <label
+              key={kw}
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs cursor-pointer transition-colors ${
+                selectedKeywords.has(kw)
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-white text-blue-700 border border-blue-200 hover:bg-blue-100'
+              }`}
+            >
+              <input type="checkbox" checked={selectedKeywords.has(kw)} onChange={() => toggleKeyword(kw)} className="sr-only" />
+              {kw}
+            </label>
+          ))}
+        </div>
+      )}
+
+      {/* Keyword data table */}
+      {keywordDataMap.size > 0 && (
+        <div className="bg-white rounded-lg border border-blue-100 overflow-hidden">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="bg-blue-50 text-blue-700">
+                <th className="px-3 py-2 text-left w-8">
+                  <input
+                    type="checkbox"
+                    checked={suggestedKeywords.filter((kw) => keywordDataMap.has(kw)).every((kw) => selectedKeywords.has(kw))}
+                    onChange={(e) => {
+                      const dataKeywords = suggestedKeywords.filter((kw) => keywordDataMap.has(kw));
+                      if (e.target.checked) {
+                        setSelectedKeywords((prev) => { const next = new Set(prev); dataKeywords.forEach((kw) => next.add(kw)); return next; });
+                      } else {
+                        setSelectedKeywords((prev) => { const next = new Set(prev); dataKeywords.forEach((kw) => next.delete(kw)); return next; });
+                      }
+                    }}
+                  />
+                </th>
+                <th className="px-3 py-2 text-left cursor-pointer hover:text-blue-900" onClick={() => handleSortToggle('keyword')}>
+                  키워드 {keywordSort.key === 'keyword' ? (keywordSort.asc ? '▲' : '▼') : ''}
+                </th>
+                <th className="px-3 py-2 text-right cursor-pointer hover:text-blue-900" onClick={() => handleSortToggle('totalSearchVolume')}>
+                  검색량 {keywordSort.key === 'totalSearchVolume' ? (keywordSort.asc ? '▲' : '▼') : ''}
+                </th>
+                <th className="px-3 py-2 text-right">PC</th>
+                <th className="px-3 py-2 text-right">모바일</th>
+                <th className="px-3 py-2 text-center cursor-pointer hover:text-blue-900" onClick={() => handleSortToggle('competition')}>
+                  경쟁률 {keywordSort.key === 'competition' ? (keywordSort.asc ? '▲' : '▼') : ''}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {getSortedKeywordsWithData().map((d) => (
+                <tr key={d.keyword} className="border-t border-blue-50 hover:bg-blue-50/50">
+                  <td className="px-3 py-1.5">
+                    <input type="checkbox" checked={selectedKeywords.has(d.keyword)} onChange={() => toggleKeyword(d.keyword)} />
+                  </td>
+                  <td className="px-3 py-1.5 font-medium">{d.keyword}</td>
+                  <td className="px-3 py-1.5 text-right tabular-nums">{d.totalSearchVolume.toLocaleString()}</td>
+                  <td className="px-3 py-1.5 text-right tabular-nums text-gray-500">{d.pcSearchVolume.toLocaleString()}</td>
+                  <td className="px-3 py-1.5 text-right tabular-nums text-gray-500">{d.mobileSearchVolume.toLocaleString()}</td>
+                  <td className="px-3 py-1.5 text-center">
+                    <span className={`px-1.5 py-0.5 rounded text-[10px] font-medium ${
+                      d.competition === '높음' ? 'bg-red-100 text-red-600' :
+                      d.competition === '중간' ? 'bg-yellow-100 text-yellow-600' :
+                      'bg-green-100 text-green-600'
+                    }`}>
+                      {d.competition}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
 
   // ════════════════════════════════════════════════
-  // Phase 2 & 3: Content Editor + SEO Analysis
+  // Main Render
   // ════════════════════════════════════════════════
 
   return (
@@ -377,6 +335,12 @@ export function BlogPanel({ contentFile }: Props) {
           📋 복사
         </button>
         <button
+          className={`px-3 py-1.5 border rounded-md text-xs hover:bg-gray-50 ${showKeywordPanel ? 'border-blue-400 bg-blue-50 text-blue-700' : 'border-gray-200'}`}
+          onClick={() => setShowKeywordPanel(!showKeywordPanel)}
+        >
+          🔍 키워드
+        </button>
+        <button
           className="px-3 py-1.5 border border-gray-200 rounded-md text-xs hover:bg-gray-50 disabled:opacity-50"
           onClick={handleSeoAnalysis}
           disabled={isLoadingSeo}
@@ -393,6 +357,23 @@ export function BlogPanel({ contentFile }: Props) {
           <ChannelModelSelector type="image" value={imageModelId} onChange={setImageModelId} label="이미지:" />
         </div>
       </div>
+
+      {/* Keyword Research Panel (collapsible) */}
+      {showKeywordPanel && (
+        <div className="px-5 py-3 border-b border-gray-200">
+          {keywordPanel}
+          <div className="flex items-center gap-3 mt-3">
+            <button
+              className="px-4 py-1.5 bg-blue-500 text-white rounded-md text-xs font-medium hover:bg-blue-600 disabled:opacity-50"
+              onClick={() => { handleGenerate(); setShowKeywordPanel(false); }}
+              disabled={isGenerating || selectedKeywords.size === 0}
+            >
+              {isGenerating ? '⏳ 생성 중...' : `✨ 선택 키워드로 블로그 ${current ? '재생성' : '생성'}`}
+            </button>
+            <span className="text-[10px] text-gray-400">선택한 키워드 기반으로 SEO 최적화된 블로그를 생성합니다</span>
+          </div>
+        </div>
+      )}
 
       {/* SEO Analysis Panel (collapsible) */}
       {showSeoPanel && (
