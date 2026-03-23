@@ -37,11 +37,11 @@ interface EditorStore {
 export const useEditorStore = create<EditorStore>((set) => ({
   // Project
   selectedProjectId: 'proj-default',
-  setSelectedProjectId: (id) => set({ selectedProjectId: id, activeView: 'dashboard', selectedExamId: null, selectedContentId: null, selectedNoteId: null }),
+  setSelectedProjectId: (id) => set({ selectedProjectId: id || 'proj-default', activeView: 'dashboard', selectedExamId: null, selectedContentId: null, selectedNoteId: null, sidebarSection: 'exam' }),
 
   // Sidebar section
   sidebarSection: 'exam',
-  setSidebarSection: (section) => set((s) => ({ sidebarSection: s.sidebarSection === section ? null : section })),
+  setSidebarSection: (section) => set({ sidebarSection: section }),
 
   // Exam
   selectedExamId: null,

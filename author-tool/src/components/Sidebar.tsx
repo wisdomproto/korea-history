@@ -198,9 +198,10 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
         </div>
       </div>
 
-      {/* ═══ 2. Project Selector ═══ */}
-      <div className="border-b bg-gray-50 px-3 py-2">
-        <div className="mb-1.5 flex items-center justify-between">
+      {/* ═══ 2. Projects (collapsible) ═══ */}
+      <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
+        {/* Add project button */}
+        <div className="border-b bg-gray-50 px-3 py-1.5 flex items-center justify-between">
           <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-400">프로젝트</span>
           <button
             onClick={() => setAddingProject(!addingProject)}
@@ -211,7 +212,7 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
         </div>
 
         {addingProject && (
-          <div className="mb-1.5 flex gap-1">
+          <div className="flex gap-1 border-b bg-gray-50 px-3 py-1.5">
             <input
               type="text"
               placeholder="프로젝트 이름"
@@ -225,85 +226,90 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
           </div>
         )}
 
-        <div className="max-h-[100px] overflow-y-auto">
-          {projects?.map((p) => (
-            <div
-              key={p.id}
-              onClick={() => setSelectedProjectId(p.id)}
-              className={`group flex cursor-pointer items-center justify-between rounded px-2 py-1.5 text-xs transition-colors ${
-                selectedProjectId === p.id
-                  ? 'bg-emerald-500 text-white'
-                  : 'text-gray-700 hover:bg-gray-100'
-              }`}
-            >
-              <span className="truncate">
-                <span className="mr-1">{p.icon}</span>
-                {p.name}
-              </span>
-              {p.id !== 'proj-default' && (
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    if (confirm(`프로젝트 "${p.name}"을 삭제하시겠습니까?`)) {
-                      deleteProjectMutation.mutate(p.id);
-                      if (selectedProjectId === p.id) setSelectedProjectId('proj-default');
-                    }
-                  }}
-                  className={`ml-1 shrink-0 rounded p-0.5 opacity-0 transition-opacity group-hover:opacity-100 ${
-                    selectedProjectId === p.id ? 'hover:bg-emerald-600 text-white/70 hover:text-white' : 'hover:bg-red-50 text-gray-300 hover:text-red-500'
-                  }`}
-                >
-                  ✕
-                </button>
-              )}
-            </div>
-          ))}
-          {!projects?.length && (
-            <div className="px-2 py-1.5 text-xs text-gray-400">프로젝트 없음</div>
-          )}
-        </div>
-      </div>
-
-      {/* ═══ 3. Accordion Sections ═══ */}
-      <div className="flex min-h-0 flex-1 flex-col">
-        {/* ─── 📋 시험 Section ─── */}
-        <div className="flex flex-col" style={{ maxHeight: sidebarSection === 'exam' ? 'calc(100% - 76px)' : undefined }}>
-          <button
-            onClick={() => setSidebarSection('exam')}
-            className="flex w-full items-center justify-between px-3 py-2 text-left text-sm font-bold text-gray-700 transition-colors hover:bg-gray-50"
-          >
-            <span>📋 시험 {exams ? <span className="ml-1 text-xs font-normal text-gray-400">{exams.length}</span> : null}</span>
-            <span className="text-[10px] text-gray-400">{sidebarSection === 'exam' ? '▾' : '▸'}</span>
-          </button>
-
-          {sidebarSection === 'exam' && (
-            <div className="flex min-h-0 flex-1 flex-col">
-              {/* Exam controls */}
-              <div className="space-y-2 border-b px-3 py-2">
-                <div className="flex gap-1.5">
-                  <input
-                    type="text"
-                    placeholder="시험 검색..."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    className="flex-1 rounded-lg border px-3 py-1.5 text-xs focus:border-primary-500 focus:outline-none"
-                  />
+        {/* Project list — each project is collapsible */}
+        {projects?.map((p) => {
+          const isOpen = selectedProjectId === p.id;
+          return (
+            <div key={p.id} className="border-b">
+              {/* Project header (click to toggle) */}
+              <div
+                onClick={() => setSelectedProjectId(isOpen ? '' : p.id)}
+                className={`group flex cursor-pointer items-center justify-between px-3 py-2 transition-colors ${
+                  isOpen ? 'bg-emerald-50' : 'hover:bg-gray-50'
+                }`}
+              >
+                <div className="flex items-center gap-1.5 min-w-0">
+                  <span className="text-[10px] text-gray-400">{isOpen ? '▾' : '▸'}</span>
+                  <span className="text-sm">{p.icon}</span>
+                  <span className={`text-xs font-bold truncate ${isOpen ? 'text-emerald-700' : 'text-gray-700'}`}>{p.name}</span>
+                </div>
+                {p.id !== 'proj-default' && (
                   <button
-                    onClick={() => setSortOrder((prev) => prev === null ? 'asc' : prev === 'asc' ? 'desc' : null)}
-                    className={`rounded-lg border px-2 py-1.5 text-xs transition-colors ${sortOrder ? 'border-primary-300 bg-primary-50 text-primary-700' : 'text-gray-400 hover:text-gray-600'}`}
-                    title={sortOrder === 'asc' ? '이름 오름차순' : sortOrder === 'desc' ? '이름 내림차순' : '정렬 없음 (드래그 순서)'}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (confirm(`프로젝트 "${p.name}"을 삭제하시겠습니까?`)) {
+                        deleteProjectMutation.mutate(p.id);
+                        if (selectedProjectId === p.id) setSelectedProjectId('proj-default');
+                      }
+                    }}
+                    className="ml-1 shrink-0 rounded p-0.5 text-gray-300 opacity-0 transition-opacity group-hover:opacity-100 hover:bg-red-50 hover:text-red-500"
                   >
-                    {sortOrder === 'desc' ? '↓' : sortOrder === 'asc' ? '↑' : '↕'}
+                    <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
                   </button>
-                </div>
-                <div className="flex gap-2">
-                  <Button size="sm" className="flex-1" onClick={onCreateExam}>+ 새 시험</Button>
-                  <Button size="sm" variant="secondary" onClick={() => setActiveView('generator')}>AI 생성</Button>
-                </div>
+                )}
               </div>
 
-              {/* Exam list */}
-              <div className="flex-1 overflow-y-auto" style={{ maxHeight: 'calc(33vh)' }}>
+              {/* Project content: tabs + tab content */}
+              {isOpen && (
+                <div className="flex flex-col">
+                  {/* Tabs */}
+                  <div className="flex border-b border-t bg-white">
+                    {[
+                      { key: 'exam' as const, label: '📋 시험', count: exams?.length },
+                      { key: 'notes' as const, label: '📝 노트', count: notes?.length },
+                      { key: 'content' as const, label: '✏️ 컨텐츠', count: contents?.length },
+                    ].map((t) => (
+                      <button
+                        key={t.key}
+                        onClick={() => setSidebarSection(t.key)}
+                        className={`flex-1 py-2 text-[11px] font-semibold transition-colors ${
+                          sidebarSection === t.key
+                            ? 'border-b-2 border-emerald-500 text-emerald-700'
+                            : 'text-gray-400 hover:text-gray-600'
+                        }`}
+                      >
+                        {t.label} <span className="text-[9px] font-normal">{t.count ?? ''}</span>
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* ─── 📋 시험 Tab ─── */}
+                  {sidebarSection === 'exam' && (
+                    <>
+                      <div className="space-y-2 border-b px-3 py-2">
+                        <div className="flex gap-1.5">
+                          <input
+                            type="text"
+                            placeholder="시험 검색..."
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                            className="flex-1 rounded-lg border px-3 py-1.5 text-xs focus:border-primary-500 focus:outline-none"
+                          />
+                          <button
+                            onClick={() => setSortOrder((prev) => prev === null ? 'asc' : prev === 'asc' ? 'desc' : null)}
+                            className={`rounded-lg border px-2 py-1.5 text-xs transition-colors ${sortOrder ? 'border-primary-300 bg-primary-50 text-primary-700' : 'text-gray-400 hover:text-gray-600'}`}
+                          >
+                            {sortOrder === 'desc' ? '↓' : sortOrder === 'asc' ? '↑' : '↕'}
+                          </button>
+                        </div>
+                        <div className="flex gap-2">
+                          <Button size="sm" className="flex-1" onClick={onCreateExam}>+ 새 시험</Button>
+                          <Button size="sm" variant="secondary" onClick={() => setActiveView('generator')}>AI 생성</Button>
+                        </div>
+                      </div>
+                      <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 350px)' }}>
                 {isLoading ? (
                   <div className="p-4 text-center text-sm text-gray-400">로딩 중...</div>
                 ) : !filtered?.length ? (
@@ -398,122 +404,105 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
                     </div>
                   ))
                 )}
-              </div>
-            </div>
-          )}
-        </div>
+                      </div>
+                    </>
+                  )}
 
-        {/* ─── 📝 요약노트 Section ─── */}
-        <div className="flex flex-col border-t" style={{ maxHeight: sidebarSection === 'notes' ? 'calc(100% - 76px)' : undefined }}>
-          <button
-            onClick={() => setSidebarSection('notes')}
-            className="flex w-full items-center justify-between px-3 py-2 text-left text-sm font-bold text-gray-700 transition-colors hover:bg-gray-50"
-          >
-            <span>📝 요약노트 {notes ? <span className="ml-1 text-xs font-normal text-gray-400">{notes.length}</span> : null}</span>
-            <span className="text-[10px] text-gray-400">{sidebarSection === 'notes' ? '▾' : '▸'}</span>
-          </button>
-
-          {sidebarSection === 'notes' && (
-            <div className="flex-1 overflow-y-auto" style={{ maxHeight: 'calc(33vh)' }}>
-              {Object.entries(groupedNotes).map(([era, eraItems]) => (
-                <div key={era}>
-                  <div className="sticky top-0 bg-white px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-gray-400 border-b">
-                    <span className={`mr-1 inline-block rounded px-1.5 py-0.5 text-[10px] ${ERA_COLORS[era] || 'bg-gray-100 text-gray-600'}`}>{era}</span>
-                    <span>{eraItems.length}</span>
-                  </div>
-                  {eraItems.map((note) => (
-                    <div
-                      key={note.id}
-                      onClick={() => setSelectedNoteId(note.id)}
-                      className={`cursor-pointer px-4 py-2 text-xs transition-colors hover:bg-gray-50 ${
-                        selectedNoteId === note.id ? 'bg-primary-50 border-l-4 border-l-primary-500' : 'border-l-4 border-l-transparent'
-                      }`}
-                    >
-                      <div className="truncate font-medium">{note.title}</div>
-                      <div className="mt-0.5 text-[10px] text-gray-400">{note.sectionId} · 관련 {note.questionCount}문제</div>
+                  {/* ─── 📝 요약노트 Tab ─── */}
+                  {sidebarSection === 'notes' && (
+                    <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 350px)' }}>
+                      {Object.entries(groupedNotes).map(([era, eraItems]) => (
+                        <div key={era}>
+                          <div className="sticky top-0 bg-white px-3 py-1.5 text-[10px] font-semibold text-gray-400 border-b">
+                            <span className={`mr-1 inline-block rounded px-1.5 py-0.5 text-[10px] ${ERA_COLORS[era] || 'bg-gray-100 text-gray-600'}`}>{era}</span>
+                            <span>{eraItems.length}</span>
+                          </div>
+                          {eraItems.map((note) => (
+                            <div
+                              key={note.id}
+                              onClick={() => setSelectedNoteId(note.id)}
+                              className={`cursor-pointer px-4 py-2 text-xs transition-colors hover:bg-gray-50 ${
+                                selectedNoteId === note.id ? 'bg-primary-50 border-l-4 border-l-primary-500' : 'border-l-4 border-l-transparent'
+                              }`}
+                            >
+                              <div className="truncate font-medium">{note.title}</div>
+                              <div className="mt-0.5 text-[10px] text-gray-400">{note.sectionId}</div>
+                            </div>
+                          ))}
+                        </div>
+                      ))}
+                      {!notes?.length && (
+                        <div className="p-4 text-center text-xs text-gray-400">노트가 없습니다</div>
+                      )}
                     </div>
-                  ))}
+                  )}
+
+                  {/* ─── ✏️ 컨텐츠 Tab ─── */}
+                  {sidebarSection === 'content' && (
+                    <>
+                      <div className="space-y-2 border-b px-3 py-2">
+                        <button
+                          className="w-full rounded-lg border border-gray-200 py-1.5 text-xs font-medium hover:bg-gray-50"
+                          onClick={() => setShowNewContent(true)}
+                        >
+                          + 새 컨텐츠
+                        </button>
+                        <input
+                          type="text"
+                          placeholder="검색..."
+                          value={contentSearch}
+                          onChange={(e) => setContentSearch(e.target.value)}
+                          className="w-full rounded-lg border px-3 py-1.5 text-xs focus:border-primary-500 focus:outline-none"
+                        />
+                        <div className="flex gap-1 flex-wrap">
+                          {(['all', 'exam', 'note', 'free'] as const).map((f) => (
+                            <button
+                              key={f}
+                              onClick={() => setContentFilter(f)}
+                              className={`px-2 py-0.5 rounded-full text-[10px] transition-colors ${
+                                contentFilter === f ? 'bg-primary-500 text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                              }`}
+                            >
+                              {f === 'all' ? '전체' : f === 'exam' ? '기출' : f === 'note' ? '노트' : '자유'}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 420px)' }}>
+                        {contents?.filter((c: ContentMeta) => {
+                          if (contentFilter !== 'all' && c.sourceType !== contentFilter) return false;
+                          if (contentSearch && !c.title.includes(contentSearch)) return false;
+                          return true;
+                        }).map((c: ContentMeta) => (
+                          <div
+                            key={c.id}
+                            onClick={() => setSelectedContentId(c.id)}
+                            className={`cursor-pointer px-4 py-2 border-b transition-colors hover:bg-gray-50 ${
+                              selectedContentId === c.id ? 'bg-primary-50 border-l-4 border-l-primary-500' : 'border-l-4 border-l-transparent'
+                            }`}
+                          >
+                            <div className="text-xs font-bold truncate">{c.title}</div>
+                            <div className="flex items-center gap-2 mt-0.5 text-[10px] text-gray-400">
+                              <span>{c.sourceType === 'exam' ? '📋 기출' : c.sourceType === 'note' ? '📝 노트' : '✍️ 자유'}</span>
+                              <span>{new Date(c.createdAt).toLocaleDateString('ko-KR', { month: 'numeric', day: 'numeric' })}</span>
+                            </div>
+                          </div>
+                        ))}
+                        {contents?.length === 0 && (
+                          <div className="p-4 text-center text-xs text-gray-400">컨텐츠가 없습니다</div>
+                        )}
+                      </div>
+                    </>
+                  )}
                 </div>
-              ))}
-              {!notes?.length && (
-                <div className="p-4 text-center text-xs text-gray-400">노트가 없습니다</div>
               )}
             </div>
-          )}
-        </div>
+          );
+        })}
 
-        {/* ─── ✏️ 컨텐츠 Section ─── */}
-        <div className="flex flex-col border-t" style={{ maxHeight: sidebarSection === 'content' ? 'calc(100% - 76px)' : undefined }}>
-          <button
-            onClick={() => setSidebarSection('content')}
-            className="flex w-full items-center justify-between px-3 py-2 text-left text-sm font-bold text-gray-700 transition-colors hover:bg-gray-50"
-          >
-            <span>✏️ 컨텐츠 {contents ? <span className="ml-1 text-xs font-normal text-gray-400">{contents.length}</span> : null}</span>
-            <span className="text-[10px] text-gray-400">{sidebarSection === 'content' ? '▾' : '▸'}</span>
-          </button>
-
-          {sidebarSection === 'content' && (
-            <div className="flex min-h-0 flex-1 flex-col">
-              {/* Content controls */}
-              <div className="space-y-2 border-b px-3 py-2">
-                <button
-                  className="w-full rounded-lg border border-gray-200 py-1.5 text-xs font-medium hover:bg-gray-50"
-                  onClick={() => setShowNewContent(true)}
-                >
-                  + 새 컨텐츠
-                </button>
-                <input
-                  type="text"
-                  placeholder="검색..."
-                  value={contentSearch}
-                  onChange={(e) => setContentSearch(e.target.value)}
-                  className="w-full rounded-lg border px-3 py-1.5 text-xs focus:border-primary-500 focus:outline-none"
-                />
-                <div className="flex gap-1 flex-wrap">
-                  {(['all', 'exam', 'note', 'free'] as const).map((f) => (
-                    <button
-                      key={f}
-                      onClick={() => setContentFilter(f)}
-                      className={`px-2 py-0.5 rounded-full text-[10px] transition-colors ${
-                        contentFilter === f ? 'bg-primary-500 text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                      }`}
-                    >
-                      {f === 'all' ? '전체' : f === 'exam' ? '기출' : f === 'note' ? '노트' : '자유'}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Content list */}
-              <div className="flex-1 overflow-y-auto" style={{ maxHeight: 'calc(33vh)' }}>
-                {contents?.filter((c: ContentMeta) => {
-                  if (contentFilter !== 'all' && c.sourceType !== contentFilter) return false;
-                  if (contentSearch && !c.title.includes(contentSearch)) return false;
-                  return true;
-                }).map((c: ContentMeta) => (
-                  <div
-                    key={c.id}
-                    onClick={() => setSelectedContentId(c.id)}
-                    className={`cursor-pointer px-4 py-2 border-b transition-colors hover:bg-gray-50 ${
-                      selectedContentId === c.id ? 'bg-primary-50 border-l-4 border-l-primary-500' : 'border-l-4 border-l-transparent'
-                    }`}
-                  >
-                    <div className="text-xs font-bold truncate">{c.title}</div>
-                    <div className="flex items-center gap-2 mt-0.5 text-[10px] text-gray-400">
-                      <span>
-                        {c.sourceType === 'exam' ? '📋 기출' : c.sourceType === 'note' ? '📝 노트' : '✍️ 자유'}
-                      </span>
-                      <span>{new Date(c.createdAt).toLocaleDateString('ko-KR', { month: 'numeric', day: 'numeric' })}</span>
-                    </div>
-                  </div>
-                ))}
-                {contents?.length === 0 && (
-                  <div className="p-4 text-center text-xs text-gray-400">컨텐츠가 없습니다</div>
-                )}
-              </div>
-            </div>
-          )}
-        </div>
+        {!projects?.length && (
+          <div className="p-4 text-center text-xs text-gray-400">프로젝트가 없습니다</div>
+        )}
       </div>
 
       {/* ═══ 4. Footer ═══ */}
