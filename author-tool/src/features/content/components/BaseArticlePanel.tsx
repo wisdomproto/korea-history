@@ -21,7 +21,7 @@ interface SourceQuestion {
 
 interface SourceNote {
   title: string;
-  html: string;
+  content: string; // HTML content
 }
 
 export function BaseArticlePanel({ contentFile }: Props) {
@@ -101,7 +101,8 @@ export function BaseArticlePanel({ contentFile }: Props) {
         const note = await apiGet<SourceNote>(`/notes/${content.sourceId}`);
         setSourceData(note);
       }
-    } catch {
+    } catch (err) {
+      console.error('[소스 보기] 로드 실패:', err);
       setSourceData(null);
     } finally {
       setSourceLoading(false);
@@ -254,7 +255,7 @@ export function BaseArticlePanel({ contentFile }: Props) {
                   <div className="text-xs font-bold text-gray-500 mb-1">내용</div>
                   <div
                     className="prose prose-sm max-w-none max-h-[400px] overflow-y-auto border border-gray-100 rounded-lg p-4"
-                    dangerouslySetInnerHTML={{ __html: (sourceData as SourceNote).html }}
+                    dangerouslySetInnerHTML={{ __html: (sourceData as SourceNote).content }}
                   />
                 </div>
               </div>
