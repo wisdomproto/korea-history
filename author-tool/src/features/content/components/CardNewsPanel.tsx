@@ -1,7 +1,7 @@
 // author-tool/src/features/content/components/CardNewsPanel.tsx
 import { useState } from 'react';
 import type { ContentFile, InstagramContent } from '../../../lib/content-types';
-import { useSaveChannelContent } from '../hooks/useContent';
+import { useSaveChannelContent, useGenerateImage } from '../hooks/useContent';
 import { useChannelGeneration } from '../hooks/useChannelGeneration';
 import { ChannelModelSelector } from './ChannelModelSelector';
 
@@ -16,6 +16,7 @@ export function CardNewsPanel({ contentFile }: Props) {
   const [imageModelId, setImageModelId] = useState('gemini-2.5-flash-image');
 
   const saveChannel = useSaveChannelContent();
+  const genImage = useGenerateImage();
   const { isGenerating, generate } = useChannelGeneration({
     contentId: content.id,
     path: 'generate/instagram',
@@ -87,8 +88,17 @@ export function CardNewsPanel({ contentFile }: Props) {
                 <div className="aspect-square bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-white p-2 text-center">
                   <div className="text-[10px] leading-relaxed">{slide.textOverlay}</div>
                 </div>
-                <div className="p-2 text-center text-[10px] text-gray-500">
-                  {i + 1}. {slide.type}
+                <div className="p-2 text-center text-[10px] text-gray-500 flex items-center justify-center gap-1">
+                  <span>{i + 1}. {slide.type}</span>
+                  {slide.imagePrompt && (
+                    <button
+                      className="px-1 py-0.5 bg-pink-500 text-white rounded text-[9px] hover:bg-pink-600 disabled:opacity-50"
+                      disabled={genImage.isPending}
+                      onClick={() => genImage.mutate({ contentId: content.id, channel: 'instagram', targetId: slide.id, imagePrompt: slide.imagePrompt!, modelId: imageModelId })}
+                    >
+                      🎨
+                    </button>
+                  )}
                 </div>
               </div>
             ))}

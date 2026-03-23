@@ -1,7 +1,7 @@
 // author-tool/src/features/content/components/LongFormPanel.tsx
 import { useState } from 'react';
 import type { ContentFile, LongFormContent } from '../../../lib/content-types';
-import { useSaveChannelContent } from '../hooks/useContent';
+import { useSaveChannelContent, useGenerateImage } from '../hooks/useContent';
 import { useChannelGeneration } from '../hooks/useChannelGeneration';
 import { ChannelModelSelector } from './ChannelModelSelector';
 
@@ -24,6 +24,7 @@ export function LongFormPanel({ contentFile }: Props) {
   const [expandedScene, setExpandedScene] = useState<string | null>(null);
 
   const saveChannel = useSaveChannelContent();
+  const genImage = useGenerateImage();
   const { isGenerating, generate } = useChannelGeneration({
     contentId: content.id,
     path: 'generate/longform',
@@ -114,6 +115,22 @@ export function LongFormPanel({ contentFile }: Props) {
                       <div className="text-[10px] text-gray-400 mb-1">화면 지시</div>
                       <textarea className="w-full px-2 py-1 border border-gray-200 rounded text-xs resize-y min-h-[40px]" value={scene.direction} onChange={(e) => updateScene(scene.id, { direction: e.target.value })} />
                     </div>
+                    {(scene.imagePrompt || scene.imageUrl) && (
+                      <div className="flex items-center gap-3">
+                        {scene.imageUrl && (
+                          <img src={scene.imageUrl} alt="" className="w-[100px] h-[56px] object-cover rounded" />
+                        )}
+                        {scene.imagePrompt && (
+                          <button
+                            className="px-2 py-1 bg-amber-500 text-white rounded text-[10px] hover:bg-amber-600 disabled:opacity-50"
+                            disabled={genImage.isPending}
+                            onClick={() => genImage.mutate({ contentId: content.id, channel: 'longform', targetId: scene.id, imagePrompt: scene.imagePrompt! })}
+                          >
+                            {genImage.isPending ? '⏳ 생성 중...' : '🎨 씬 이미지 생성'}
+                          </button>
+                        )}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

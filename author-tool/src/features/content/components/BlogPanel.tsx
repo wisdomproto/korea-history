@@ -1,7 +1,7 @@
 // author-tool/src/features/content/components/BlogPanel.tsx
 import { useState } from 'react';
 import type { ContentFile, BlogContent, BlogCard } from '../../../lib/content-types';
-import { useSaveChannelContent } from '../hooks/useContent';
+import { useSaveChannelContent, useGenerateImage } from '../hooks/useContent';
 import { useChannelGeneration } from '../hooks/useChannelGeneration';
 import { ChannelModelSelector } from './ChannelModelSelector';
 
@@ -13,9 +13,11 @@ export function BlogPanel({ contentFile }: Props) {
   const { content, blog } = contentFile;
   const current = blog[0] as BlogContent | undefined;
   const [modelId, setModelId] = useState('gemini-2.5-flash');
+  const [imageModelId, setImageModelId] = useState('gemini-2.5-flash-image');
   const [showPreview, setShowPreview] = useState(false);
 
   const saveChannel = useSaveChannelContent();
+  const genImage = useGenerateImage();
   const { isGenerating, generate } = useChannelGeneration({
     contentId: content.id,
     path: 'generate/blog',
@@ -102,8 +104,9 @@ export function BlogPanel({ contentFile }: Props) {
           📋 복사
         </button>
         {renderSeoScore()}
-        <div className="ml-auto">
+        <div className="ml-auto flex items-center gap-2">
           <ChannelModelSelector type="text" value={modelId} onChange={setModelId} label="모델:" />
+          <ChannelModelSelector type="image" value={imageModelId} onChange={setImageModelId} label="이미지:" />
         </div>
       </div>
 
@@ -170,7 +173,18 @@ export function BlogPanel({ contentFile }: Props) {
                         이미지 없음
                       </div>
                     )}
-                    <div className="text-xs text-gray-400">{card.imagePrompt || '이미지 프롬프트 없음'}</div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-xs text-gray-400">{card.imagePrompt || '이미지 프롬프트 없음'}</div>
+                      {card.imagePrompt && (
+                        <button
+                          className="mt-1 px-2 py-1 bg-pink-500 text-white rounded text-[10px] hover:bg-pink-600 disabled:opacity-50"
+                          disabled={genImage.isPending}
+                          onClick={() => genImage.mutate({ contentId: content.id, channel: 'blog', targetId: card.id, imagePrompt: card.imagePrompt!, modelId: imageModelId })}
+                        >
+                          {genImage.isPending ? '⏳ 생성 중...' : '🎨 이미지 생성'}
+                        </button>
+                      )}
+                    </div>
                   </div>
                 ) : (
                   <textarea
