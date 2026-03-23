@@ -3,6 +3,7 @@ import { useState } from 'react';
 import type { ContentFile, ShortFormContent } from '../../../lib/content-types';
 import { useDebouncedSave } from '../hooks/useDebouncedSave';
 import { useChannelGeneration } from '../hooks/useChannelGeneration';
+import { copyToClipboard } from '../api/content.api';
 import { ChannelModelSelector } from './ChannelModelSelector';
 
 interface Props {
@@ -26,8 +27,7 @@ export function ShortFormPanel({ contentFile }: Props) {
 
   const handleCopy = () => {
     if (!current) return;
-    navigator.clipboard.writeText(`[Hook]\n${current.hook}\n\n[본문]\n${current.body}\n\n[CTA]\n${current.cta}\n\n[화면 지시]\n${current.direction}`);
-    alert('대본이 복사되었습니다!');
+    copyToClipboard(`[Hook]\n${current.hook}\n\n[본문]\n${current.body}\n\n[CTA]\n${current.cta}\n\n[화면 지시]\n${current.direction}`, '대본이 복사되었습니다!');
   };
 
   const updateField = (field: string, value: string) => {

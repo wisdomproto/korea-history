@@ -3,6 +3,7 @@ import { useState } from 'react';
 import type { ContentFile, LongFormContent } from '../../../lib/content-types';
 import { useGenerateImage } from '../hooks/useContent';
 import { useDebouncedSave } from '../hooks/useDebouncedSave';
+import { copyToClipboard } from '../api/content.api';
 import { useChannelGeneration } from '../hooks/useChannelGeneration';
 import { ChannelModelSelector } from './ChannelModelSelector';
 
@@ -40,8 +41,7 @@ export function LongFormPanel({ contentFile }: Props) {
     const text = current.scenes.map((s, i) =>
       `[씬 ${i + 1}: ${s.title}] (${s.sectionType})\n나레이션: ${s.narration}\n화면: ${s.direction}`
     ).join('\n\n');
-    navigator.clipboard.writeText(`${current.videoTitle}\n\n${text}`);
-    alert('대본이 복사되었습니다!');
+    copyToClipboard(`${current.videoTitle}\n\n${text}`, '대본이 복사되었습니다!');
   };
 
   const updateScene = (sceneId: string, updates: any) => {

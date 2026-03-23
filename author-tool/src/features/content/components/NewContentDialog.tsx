@@ -210,7 +210,12 @@ export function NewContentDialog({ open, onClose }: Props) {
         <button
           className="w-full py-2.5 bg-emerald-500 text-white rounded-lg text-sm font-bold hover:bg-emerald-600 disabled:opacity-50"
           onClick={handleCreate}
-          disabled={!title.trim() || createContent.isPending}
+          disabled={
+            !title.trim() ||
+            createContent.isPending ||
+            (sourceType === 'exam' && (!selectedExam || !selectedQuestion)) ||
+            (sourceType === 'note' && !selectedNote)
+          }
         >
           {createContent.isPending ? '생성 중...' : '컨텐츠 생성'}
         </button>

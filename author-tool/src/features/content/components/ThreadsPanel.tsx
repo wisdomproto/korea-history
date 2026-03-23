@@ -2,6 +2,7 @@
 import { useState, useRef } from 'react';
 import type { ContentFile, ThreadsContent } from '../../../lib/content-types';
 import { useDebouncedSave } from '../hooks/useDebouncedSave';
+import { copyToClipboard } from '../api/content.api';
 import { useChannelGeneration } from '../hooks/useChannelGeneration';
 import { ChannelModelSelector } from './ChannelModelSelector';
 
@@ -35,8 +36,7 @@ export function ThreadsPanel({ contentFile }: Props) {
   const handleCopyAll = () => {
     if (!current) return;
     const text = current.posts.map((p, i) => `[${i + 1}/${current.posts.length}]\n${p.text}`).join('\n\n---\n\n');
-    navigator.clipboard.writeText(text);
-    alert('전체 포스트가 복사되었습니다!');
+    copyToClipboard(text, '전체 포스트가 복사되었습니다!');
   };
 
   const updatePost = (postId: string, text: string) => {

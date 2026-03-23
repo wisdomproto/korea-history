@@ -2,6 +2,7 @@
 import { useState, useRef } from 'react';
 import type { ContentFile, BlogContent, BlogCard } from '../../../lib/content-types';
 import { useGenerateImage } from '../hooks/useContent';
+import { copyToClipboard } from '../api/content.api';
 import { useDebouncedSave } from '../hooks/useDebouncedSave';
 import { useChannelGeneration } from '../hooks/useChannelGeneration';
 import { ChannelModelSelector } from './ChannelModelSelector';
@@ -42,8 +43,7 @@ export function BlogPanel({ contentFile }: Props) {
         return '';
       })
       .join('\n');
-    navigator.clipboard.writeText(`<h2>${current.title}</h2>\n${html}`);
-    alert('클립보드에 복사되었습니다!');
+    copyToClipboard(`<h2>${current.title}</h2>\n${html}`);
   };
 
   const updateCard = (cardId: string, updates: Partial<BlogCard>) => {

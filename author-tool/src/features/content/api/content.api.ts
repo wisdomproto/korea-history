@@ -78,6 +78,25 @@ export async function generateImage(
   });
 }
 
+// ─── Clipboard ───
+export async function copyToClipboard(text: string, successMsg = '클립보드에 복사되었습니다!'): Promise<void> {
+  try {
+    await navigator.clipboard.writeText(text);
+    alert(successMsg);
+  } catch {
+    // Fallback for older browsers / iframe restrictions
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    alert(successMsg);
+  }
+}
+
 // ─── SSE Generation ───
 export function generateSSE(
   id: string,
@@ -90,6 +109,12 @@ export function generateSSE(
   },
 ): AbortController {
   const controller = new AbortController();
+
+  const SSE_TIMEOUT_MS = 90_000;
+  const timeout = setTimeout(() => {
+    controller.abort();
+    callbacks.onError?.('생성 시간이 초과되었습니다 (90초). 다시 시도해주세요.');
+  }, SSE_TIMEOUT_MS);
 
   fetch(`/api/contents/${id}/${path}`, {
     method: 'POST',
@@ -123,7 +148,9 @@ export function generateSSE(
         }
       }
     })
+    .finally(() => clearTimeout(timeout))
     .catch((err) => {
+      clearTimeout(timeout);
       if (err.name !== 'AbortError') {
         callbacks.onError?.(err.message);
       }
