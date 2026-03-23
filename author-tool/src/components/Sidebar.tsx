@@ -7,7 +7,7 @@ import { apiGet, apiPost, apiDelete } from '@/lib/axios';
 import { Button } from './Button';
 import { useState, useRef, useMemo } from 'react';
 import type { ExamCompleteness } from '@/lib/types';
-import { useContents } from '@/features/content/hooks/useContent';
+import { useContents, useDeleteContent } from '@/features/content/hooks/useContent';
 import { NewContentDialog } from '@/features/content/components/NewContentDialog';
 import type { ContentMeta } from '@/lib/content-types';
 import type { NoteIndex } from '@/features/notes/api/notes.api';
@@ -53,6 +53,7 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
   const { data: exams, isLoading } = useExams();
   const { data: notes } = useNotes();
   const { data: contents } = useContents();
+  const deleteContentMutation = useDeleteContent();
   const {
     selectedExamId, setSelectedExamId,
     selectedContentId, setSelectedContentId,
@@ -479,11 +480,28 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
                           <div
                             key={c.id}
                             onClick={() => setSelectedContentId(c.id)}
-                            className={`cursor-pointer px-4 py-2 border-b transition-colors hover:bg-gray-50 ${
+                            className={`group cursor-pointer px-4 py-2 border-b transition-colors hover:bg-gray-50 ${
                               selectedContentId === c.id ? 'bg-primary-50 border-l-4 border-l-primary-500' : 'border-l-4 border-l-transparent'
                             }`}
                           >
-                            <div className="text-xs font-bold truncate">{c.title}</div>
+                            <div className="flex items-center justify-between">
+                              <div className="text-xs font-bold truncate">{c.title}</div>
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  if (confirm(`"${c.title}" 컨텐츠를 삭제하시겠습니까?`)) {
+                                    deleteContentMutation.mutate(c.id);
+                                    if (selectedContentId === c.id) setSelectedContentId(null);
+                                  }
+                                }}
+                                className="shrink-0 rounded p-0.5 text-gray-300 opacity-0 transition-opacity group-hover:opacity-100 hover:bg-red-50 hover:text-red-500"
+                                title="컨텐츠 삭제"
+                              >
+                                <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                              </button>
+                            </div>
                             <div className="flex items-center gap-2 mt-0.5 text-[10px] text-gray-400">
                               <span>{c.sourceType === 'exam' ? '📋 기출' : c.sourceType === 'note' ? '📝 노트' : '✍️ 자유'}</span>
                               <span>{new Date(c.createdAt).toLocaleDateString('ko-KR', { month: 'numeric', day: 'numeric' })}</span>
