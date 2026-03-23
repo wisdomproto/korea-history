@@ -6,6 +6,7 @@ import { generateText, parseJSON } from './gemini.provider.js';
 import * as prompts from './prompt-builder.js';
 import type { SourceData } from './prompt-builder.js';
 import { readContentFile, writeContentFile } from './content.service.js';
+import { getChannelKey, DEFAULT_TEXT_MODEL, DEFAULT_IMAGE_MODEL } from './content-constants.js';
 import { AppError } from '../middleware.js';
 import { config } from '../config.js';
 
@@ -118,7 +119,7 @@ function buildChannelObject(opts: GenerateOptions, parsed: any): any {
           imageUrl: undefined,
           imagePrompt: c.imagePrompt,
         })),
-        modelId: opts.modelId || 'gemini-2.5-flash',
+        modelId: opts.modelId || DEFAULT_TEXT_MODEL,
       };
     case 'instagram':
       return {
@@ -133,7 +134,7 @@ function buildChannelObject(opts: GenerateOptions, parsed: any): any {
           backgroundColor: s.backgroundColor,
         })),
         textModelId: opts.modelId || 'gemini-2.5-flash',
-        imageModelId: 'gemini-2.5-flash-image',
+        imageModelId: DEFAULT_IMAGE_MODEL,
       };
     case 'threads':
       return {
@@ -143,7 +144,7 @@ function buildChannelObject(opts: GenerateOptions, parsed: any): any {
           role: p.role || 'content',
           text: p.text || '',
         })),
-        modelId: opts.modelId || 'gemini-2.5-flash',
+        modelId: opts.modelId || DEFAULT_TEXT_MODEL,
       };
     case 'longform':
       return {
@@ -158,8 +159,8 @@ function buildChannelObject(opts: GenerateOptions, parsed: any): any {
           direction: s.direction || '',
           imagePrompt: s.imagePrompt,
         })),
-        modelId: opts.modelId || 'gemini-2.5-flash',
-        imageModelId: 'gemini-2.5-flash-image',
+        modelId: opts.modelId || DEFAULT_TEXT_MODEL,
+        imageModelId: DEFAULT_IMAGE_MODEL,
       };
     case 'shortform':
       return {
@@ -169,7 +170,7 @@ function buildChannelObject(opts: GenerateOptions, parsed: any): any {
         body: parsed.body || '',
         cta: parsed.cta || '',
         direction: parsed.direction || '',
-        modelId: opts.modelId || 'gemini-2.5-flash',
+        modelId: opts.modelId || DEFAULT_TEXT_MODEL,
       };
     default:
       return { ...base, ...parsed };
@@ -245,16 +246,7 @@ async function buildSourceFromContent(file: any): Promise<SourceData> {
   return source;
 }
 
-function getChannelKey(channel: string): string | null {
-  const map: Record<string, string> = {
-    blog: 'blog',
-    instagram: 'instagram',
-    threads: 'threads',
-    longform: 'longForm',
-    shortform: 'shortForm',
-  };
-  return map[channel] ?? null;
-}
+// getChannelKey imported from content-constants.ts
 
 function sendSSE(res: Response | undefined, data: any): void {
   if (!res) return;

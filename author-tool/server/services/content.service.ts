@@ -3,30 +3,13 @@ import fs from 'fs/promises';
 import path from 'path';
 import { config } from '../config.js';
 import { deleteObject, listObjects } from './r2.service.js';
+import { getChannelKey } from './content-constants.js';
+import type { ContentMeta, ContentFile, ChannelContentItem } from './content-constants.js';
+
+export type { ContentMeta, ContentFile, ChannelContentItem };
 
 const CONTENTS_DIR = path.resolve(config.dataDir, '../contents');
 const INDEX_PATH = path.join(CONTENTS_DIR, 'index.json');
-
-// ─── Types (server-side, mirrors client types) ───
-export interface ContentMeta {
-  id: string;
-  title: string;
-  sourceType: 'exam' | 'note' | 'free';
-  sourceId?: string;
-  status: 'draft' | 'published';
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface ContentFile {
-  content: ContentMeta;
-  baseArticle: any | null;
-  blog: any[];
-  instagram: any[];
-  threads: any[];
-  longForm: any[];
-  shortForm: any[];
-}
 
 // ─── Helpers ───
 async function ensureDir() {
@@ -183,11 +166,12 @@ export async function saveChannelContent(
   const file = await readContentFile(id);
   if (!file) return null;
 
-  const channelKey = getChannelKey(channel);
+  const channelKey = getChannelKey(channel) as keyof ContentFile | null;
   if (!channelKey) return null;
 
-  const arr = file[channelKey] as any[];
-  const idx = arr.findIndex((c: any) => c.id === channelContentId);
+  const arr = file[channelKey] as ChannelContentItem[];
+  if (!Array.isArray(arr)) return null;
+  const idx = arr.findIndex((c) => c.id === channelContentId);
   if (idx >= 0) {
     arr[idx] = data;
   } else {
@@ -211,9 +195,9 @@ export async function deleteChannelContent(
   const channelKey = getChannelKey(channel);
   if (!channelKey) return null;
 
-  (file as any)[channelKey] = (file[channelKey] as any[]).filter(
-    (c: any) => c.id !== channelContentId,
-  );
+  const arr = file[channelKey] as ChannelContentItem[];
+  if (!Array.isArray(arr)) return null;
+  (file as Record<string, unknown>)[channelKey] = arr.filter((c) => c.id !== channelContentId);
 
   file.content.updatedAt = new Date().toISOString();
   await writeContentFile(id, file);
@@ -221,13 +205,4 @@ export async function deleteChannelContent(
   return file;
 }
 
-function getChannelKey(channel: string): keyof ContentFile | null {
-  const map: Record<string, keyof ContentFile> = {
-    blog: 'blog',
-    instagram: 'instagram',
-    threads: 'threads',
-    longform: 'longForm',
-    shortform: 'shortForm',
-  };
-  return map[channel] ?? null;
-}
+// getChannelKey imported from content-constants.ts
