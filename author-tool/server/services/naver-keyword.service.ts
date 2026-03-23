@@ -35,12 +35,9 @@ export async function fetchNaverKeywords(hintKeywords: string[]): Promise<NaverK
     .update(message)
     .digest('base64');
 
-  const params = new URLSearchParams({
-    hintKeywords: hintKeywords.join(','),
-    showDetail: '1',
-  });
-
-  const url = `https://api.naver.com${path}?${params.toString()}`;
+  // Encode keywords manually — Naver API needs proper UTF-8 encoding
+  const encodedKeywords = hintKeywords.map(k => encodeURIComponent(k)).join('%2C');
+  const url = `https://api.naver.com${path}?hintKeywords=${encodedKeywords}&showDetail=1`;
 
   const response = await fetch(url, {
     method: 'GET',
