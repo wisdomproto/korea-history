@@ -25,6 +25,30 @@ export async function fetchNaverKeywords(hintKeywords: string[]): Promise<NaverK
 
   if (hintKeywords.length === 0) return [];
 
+  // Naver hintKeywords API does not support spaces in keywords
+  // "한능검 가야" → "한능검가야" (remove spaces)
+  const cleanedKeywords = [...new Set(hintKeywords.map(k => k.trim().replace(/\s+/g, '')).filter(Boolean))];
+  if (cleanedKeywords.length === 0) return [];
+
+  // Naver API can fail with too many keywords — batch in chunks of 5
+  const BATCH_SIZE = 5;
+  const allResults: NaverKeywordData[] = [];
+
+  for (let i = 0; i < cleanedKeywords.length; i += BATCH_SIZE) {
+    const batch = cleanedKeywords.slice(i, i + BATCH_SIZE);
+    const results = await fetchBatch(batch, licenseKey, secretKey, customerId);
+    allResults.push(...results);
+  }
+
+  return allResults;
+}
+
+async function fetchBatch(
+  keywords: string[],
+  licenseKey: string,
+  secretKey: string,
+  customerId: string,
+): Promise<NaverKeywordData[]> {
   const timestamp = String(Date.now());
   const method = 'GET';
   const path = '/keywordstool';
@@ -35,9 +59,7 @@ export async function fetchNaverKeywords(hintKeywords: string[]): Promise<NaverK
     .update(message)
     .digest('base64');
 
-  // Naver API expects comma-separated keywords with commas NOT encoded
-  // Each keyword is encoded individually, then joined with raw comma
-  const encodedKeywords = hintKeywords.map(k => encodeURIComponent(k.trim())).join(',');
+  const encodedKeywords = keywords.map(k => encodeURIComponent(k.trim())).join(',');
   const url = `https://api.naver.com${path}?hintKeywords=${encodedKeywords}&showDetail=1`;
 
   const response = await fetch(url, {
@@ -52,7 +74,8 @@ export async function fetchNaverKeywords(hintKeywords: string[]): Promise<NaverK
 
   if (!response.ok) {
     const body = await response.text();
-    throw new Error(`Naver API error ${response.status}: ${body}`);
+    console.error(`[NaverKeyword] Batch failed (${keywords.join(',')}): ${response.status} ${body}`);
+    return []; // Skip failed batch instead of throwing
   }
 
   const data = await response.json() as {
