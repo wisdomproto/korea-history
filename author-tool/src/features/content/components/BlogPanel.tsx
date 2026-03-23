@@ -60,6 +60,7 @@ export function BlogPanel({ contentFile }: Props) {
   const [isLoadingSeo, setIsLoadingSeo] = useState(false);
   const [showSeoPanel, setShowSeoPanel] = useState(false);
   const [showKeywordPanel, setShowKeywordPanel] = useState(!blog[0]);
+  const [showKeywordTable, setShowKeywordTable] = useState(true);
 
   const { save, saveNow } = useDebouncedSave(content.id, 'blog');
   const genImage = useGenerateImage();
@@ -291,7 +292,14 @@ export function BlogPanel({ contentFile }: Props) {
       {/* Keyword data table */}
       {keywordDataMap.size > 0 && (
         <div className="bg-white rounded-lg border border-blue-100 overflow-hidden">
-          <table className="w-full text-xs">
+          <button
+            className="w-full flex items-center justify-between px-3 py-2 text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors"
+            onClick={() => setShowKeywordTable(!showKeywordTable)}
+          >
+            <span>📊 검색량 데이터 ({keywordDataMap.size}개)</span>
+            <span>{showKeywordTable ? '▾' : '▸'}</span>
+          </button>
+          {showKeywordTable && <table className="w-full text-xs">
             <thead>
               <tr className="bg-blue-50 text-blue-700">
                 <th className="px-3 py-2 text-left w-8">
@@ -343,7 +351,7 @@ export function BlogPanel({ contentFile }: Props) {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table>}
         </div>
       )}
     </div>
