@@ -90,13 +90,17 @@ export function BlogPanel({ contentFile }: Props) {
 
   const handleFetchKeywordData = async () => {
     const keywords = Array.from(selectedKeywords);
-    if (keywords.length === 0) return;
+    if (keywords.length === 0) { alert('키워드를 먼저 선택하세요.'); return; }
     setIsLoadingKeywordData(true);
     try {
       const data = await apiPost<KeywordData[]>('/blog-tools/keyword-data', { keywords });
-      const map = new Map(keywordDataMap);
-      data.forEach((d) => map.set(d.keyword, d));
-      setKeywordDataMap(map);
+      if (!data || data.length === 0) {
+        alert('네이버 API에서 검색량 데이터를 받지 못했습니다. API 키를 확인하세요.');
+      } else {
+        const map = new Map(keywordDataMap);
+        data.forEach((d) => map.set(d.keyword, d));
+        setKeywordDataMap(map);
+      }
     } catch (err: unknown) {
       alert(`검색량 조회 실패: ${err instanceof Error ? err.message : err}`);
     } finally {

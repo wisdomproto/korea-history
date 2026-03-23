@@ -54,8 +54,7 @@ export async function fetchNaverKeywords(hintKeywords: string[]): Promise<NaverK
 
   if (!response.ok) {
     const body = await response.text();
-    console.error(`[NaverKeyword] API error ${response.status}: ${body}`);
-    return [];
+    throw new Error(`Naver API error ${response.status}: ${body}`);
   }
 
   const data = await response.json() as {
