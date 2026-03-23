@@ -14,6 +14,7 @@ import cardNewsRoutes from './routes/card-news.routes.js';
 import notesRoutes from './routes/notes.routes.js';
 import contentRoutes from './routes/content.routes.js';
 import projectRoutes from './routes/project.routes.js';
+import blogToolsRoutes from './routes/blog-tools.routes.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isDev = process.env.NODE_ENV !== 'production';
@@ -60,6 +61,7 @@ async function startServer() {
   app.use('/api/notes', notesRoutes);
   app.use('/api/contents', contentRoutes);
   app.use('/api/projects', projectRoutes);
+  app.use('/api/blog-tools', blogToolsRoutes);
 
   app.use(errorMiddleware as express.ErrorRequestHandler);
 

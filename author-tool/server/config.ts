@@ -22,4 +22,9 @@ export const config = {
   vercel: {
     deployHookUrl: process.env.VERCEL_DEPLOY_HOOK_URL ?? '',
   },
+  naver: {
+    licenseKey: process.env.NAVER_API_LICENSE_KEY ?? '',
+    secretKey: process.env.NAVER_API_SECRET_KEY ?? '',
+    customerId: process.env.NAVER_API_CUSTOMER_ID ?? '',
+  },
 } as const;
