@@ -1,7 +1,8 @@
 // author-tool/src/features/content/components/BlogPanel.tsx
 import { useState } from 'react';
 import type { ContentFile, BlogContent, BlogCard } from '../../../lib/content-types';
-import { useSaveChannelContent, useGenerateImage } from '../hooks/useContent';
+import { useGenerateImage } from '../hooks/useContent';
+import { useDebouncedSave } from '../hooks/useDebouncedSave';
 import { useChannelGeneration } from '../hooks/useChannelGeneration';
 import { ChannelModelSelector } from './ChannelModelSelector';
 
@@ -16,7 +17,7 @@ export function BlogPanel({ contentFile }: Props) {
   const [imageModelId, setImageModelId] = useState('gemini-2.5-flash-image');
   const [showPreview, setShowPreview] = useState(false);
 
-  const saveChannel = useSaveChannelContent();
+  const { save } = useDebouncedSave(content.id, 'blog');
   const genImage = useGenerateImage();
   const { isGenerating, generate } = useChannelGeneration({
     contentId: content.id,
@@ -49,12 +50,7 @@ export function BlogPanel({ contentFile }: Props) {
       ...current,
       cards: current.cards.map((c) => (c.id === cardId ? { ...c, ...updates } : c)),
     };
-    saveChannel.mutate({
-      id: content.id,
-      channel: 'blog',
-      channelContentId: current.id,
-      data: updated,
-    });
+    save(current.id, updated);
   };
 
   // SEO score badge helper
@@ -120,14 +116,7 @@ export function BlogPanel({ contentFile }: Props) {
                 <input
                   className="w-full px-2 py-1.5 border border-gray-200 rounded text-xs"
                   value={current.title}
-                  onChange={(e) =>
-                    saveChannel.mutate({
-                      id: content.id,
-                      channel: 'blog',
-                      channelContentId: current.id,
-                      data: { ...current, title: e.target.value },
-                    })
-                  }
+                  onChange={(e) => save(current.id, { ...current, title: e.target.value })}
                 />
               </div>
               <div className="min-w-[150px]">
@@ -135,14 +124,7 @@ export function BlogPanel({ contentFile }: Props) {
                 <input
                   className="w-full px-2 py-1.5 border border-gray-200 rounded text-xs"
                   value={current.seoKeywords.join(', ')}
-                  onChange={(e) =>
-                    saveChannel.mutate({
-                      id: content.id,
-                      channel: 'blog',
-                      channelContentId: current.id,
-                      data: { ...current, seoKeywords: e.target.value.split(',').map((s) => s.trim()).filter(Boolean) },
-                    })
-                  }
+                  onChange={(e) => save(current.id, { ...current, seoKeywords: e.target.value.split(',').map((s) => s.trim()).filter(Boolean) })}
                 />
               </div>
             </div>

@@ -1,7 +1,7 @@
 // author-tool/src/features/content/components/ThreadsPanel.tsx
 import { useState } from 'react';
 import type { ContentFile, ThreadsContent } from '../../../lib/content-types';
-import { useSaveChannelContent } from '../hooks/useContent';
+import { useDebouncedSave } from '../hooks/useDebouncedSave';
 import { useChannelGeneration } from '../hooks/useChannelGeneration';
 import { ChannelModelSelector } from './ChannelModelSelector';
 
@@ -20,7 +20,7 @@ export function ThreadsPanel({ contentFile }: Props) {
   const current = threads[0] as ThreadsContent | undefined;
   const [modelId, setModelId] = useState('gemini-2.5-flash');
 
-  const saveChannel = useSaveChannelContent();
+  const { save } = useDebouncedSave(content.id, 'threads');
   const { isGenerating, generate } = useChannelGeneration({
     contentId: content.id,
     path: 'generate/threads',
@@ -39,12 +39,7 @@ export function ThreadsPanel({ contentFile }: Props) {
 
   const updatePost = (postId: string, text: string) => {
     if (!current) return;
-    saveChannel.mutate({
-      id: content.id,
-      channel: 'threads',
-      channelContentId: current.id,
-      data: { ...current, posts: current.posts.map((p) => (p.id === postId ? { ...p, text } : p)) },
-    });
+    save(current.id, { ...current, posts: current.posts.map((p) => (p.id === postId ? { ...p, text } : p)) });
   };
 
   if (!current && !isGenerating) {

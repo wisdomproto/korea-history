@@ -1,7 +1,7 @@
 // author-tool/src/features/content/components/ShortFormPanel.tsx
 import { useState } from 'react';
 import type { ContentFile, ShortFormContent } from '../../../lib/content-types';
-import { useSaveChannelContent } from '../hooks/useContent';
+import { useDebouncedSave } from '../hooks/useDebouncedSave';
 import { useChannelGeneration } from '../hooks/useChannelGeneration';
 import { ChannelModelSelector } from './ChannelModelSelector';
 
@@ -14,7 +14,7 @@ export function ShortFormPanel({ contentFile }: Props) {
   const current = shortForm[0] as ShortFormContent | undefined;
   const [modelId, setModelId] = useState('gemini-2.5-flash');
 
-  const saveChannel = useSaveChannelContent();
+  const { save } = useDebouncedSave(content.id, 'shortform');
   const { isGenerating, generate } = useChannelGeneration({
     contentId: content.id,
     path: 'generate/shortform',
@@ -32,12 +32,7 @@ export function ShortFormPanel({ contentFile }: Props) {
 
   const updateField = (field: string, value: string) => {
     if (!current) return;
-    saveChannel.mutate({
-      id: content.id,
-      channel: 'shortform',
-      channelContentId: current.id,
-      data: { ...current, [field]: value },
-    });
+    save(current.id, { ...current, [field]: value });
   };
 
   if (!current && !isGenerating) {

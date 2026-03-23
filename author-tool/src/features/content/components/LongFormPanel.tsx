@@ -1,7 +1,8 @@
 // author-tool/src/features/content/components/LongFormPanel.tsx
 import { useState } from 'react';
 import type { ContentFile, LongFormContent } from '../../../lib/content-types';
-import { useSaveChannelContent, useGenerateImage } from '../hooks/useContent';
+import { useGenerateImage } from '../hooks/useContent';
+import { useDebouncedSave } from '../hooks/useDebouncedSave';
 import { useChannelGeneration } from '../hooks/useChannelGeneration';
 import { ChannelModelSelector } from './ChannelModelSelector';
 
@@ -23,7 +24,7 @@ export function LongFormPanel({ contentFile }: Props) {
   const [modelId, setModelId] = useState('gemini-2.5-flash');
   const [expandedScene, setExpandedScene] = useState<string | null>(null);
 
-  const saveChannel = useSaveChannelContent();
+  const { save } = useDebouncedSave(content.id, 'longform');
   const genImage = useGenerateImage();
   const { isGenerating, generate } = useChannelGeneration({
     contentId: content.id,
@@ -45,12 +46,7 @@ export function LongFormPanel({ contentFile }: Props) {
 
   const updateScene = (sceneId: string, updates: any) => {
     if (!current) return;
-    saveChannel.mutate({
-      id: content.id,
-      channel: 'longform',
-      channelContentId: current.id,
-      data: { ...current, scenes: current.scenes.map((s) => (s.id === sceneId ? { ...s, ...updates } : s)) },
-    });
+    save(current.id, { ...current, scenes: current.scenes.map((s) => (s.id === sceneId ? { ...s, ...updates } : s)) });
   };
 
   if (!current && !isGenerating) {
