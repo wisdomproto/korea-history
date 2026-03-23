@@ -35,8 +35,9 @@ export async function fetchNaverKeywords(hintKeywords: string[]): Promise<NaverK
     .update(message)
     .digest('base64');
 
-  // Encode keywords manually — Naver API needs proper UTF-8 encoding
-  const encodedKeywords = hintKeywords.map(k => encodeURIComponent(k)).join('%2C');
+  // Naver API expects comma-separated keywords with commas NOT encoded
+  // Each keyword is encoded individually, then joined with raw comma
+  const encodedKeywords = hintKeywords.map(k => encodeURIComponent(k.trim())).join(',');
   const url = `https://api.naver.com${path}?hintKeywords=${encodedKeywords}&showDetail=1`;
 
   const response = await fetch(url, {
