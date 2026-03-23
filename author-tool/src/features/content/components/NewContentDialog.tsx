@@ -187,11 +187,22 @@ export function NewContentDialog({ open, onClose }: Props) {
               onChange={(e) => setSelectedNote(e.target.value)}
             >
               <option value="">선택...</option>
-              {notes?.map((n: any) => (
-                <option key={n.id} value={n.id}>
-                  {n.title}
-                </option>
-              ))}
+              {(() => {
+                const ERAS: Record<string, string> = { s1: '선사·고조선', s2: '삼국', s3: '남북국', s4: '고려', s5: '조선 전기', s6: '조선 후기', s7: '근대·현대' };
+                const groups: Record<string, any[]> = {};
+                notes?.forEach((n: any) => {
+                  const era = ERAS[n.sectionId?.split('-')[0]] || '기타';
+                  if (!groups[era]) groups[era] = [];
+                  groups[era].push(n);
+                });
+                return Object.entries(groups).map(([era, items]) => (
+                  <optgroup key={era} label={era}>
+                    {items.map((n: any) => (
+                      <option key={n.id} value={n.id}>[{era}] {n.title}</option>
+                    ))}
+                  </optgroup>
+                ));
+              })()}
             </select>
           </div>
         )}
