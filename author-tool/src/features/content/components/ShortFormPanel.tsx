@@ -1,8 +1,8 @@
 // author-tool/src/features/content/components/ShortFormPanel.tsx
 import { useState } from 'react';
 import type { ContentFile, ShortFormContent } from '../../../lib/content-types';
-import { useSaveChannelContent, useRefreshContent } from '../hooks/useContent';
-import { generateSSE } from '../api/content.api';
+import { useSaveChannelContent } from '../hooks/useContent';
+import { useChannelGeneration } from '../hooks/useChannelGeneration';
 import { ChannelModelSelector } from './ChannelModelSelector';
 
 interface Props {
@@ -12,18 +12,16 @@ interface Props {
 export function ShortFormPanel({ contentFile }: Props) {
   const { content, shortForm } = contentFile;
   const current = shortForm[0] as ShortFormContent | undefined;
-  const [isGenerating, setIsGenerating] = useState(false);
   const [modelId, setModelId] = useState('gemini-2.5-flash');
 
   const saveChannel = useSaveChannelContent();
-  const refreshContent = useRefreshContent();
+  const { isGenerating, generate } = useChannelGeneration({
+    contentId: content.id,
+    path: 'generate/shortform',
+  });
 
   const handleGenerate = () => {
-    setIsGenerating(true);
-    generateSSE(content.id, 'generate/shortform', { modelId, targetDuration: '30~60초' }, {
-      onComplete: () => { refreshContent(content.id); setIsGenerating(false); },
-      onError: (msg) => { alert(`생성 실패: ${msg}`); setIsGenerating(false); },
-    });
+    generate({ modelId, targetDuration: '30~60초' });
   };
 
   const handleCopy = () => {

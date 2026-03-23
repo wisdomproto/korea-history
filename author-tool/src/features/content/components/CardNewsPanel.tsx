@@ -1,8 +1,8 @@
 // author-tool/src/features/content/components/CardNewsPanel.tsx
 import { useState } from 'react';
 import type { ContentFile, InstagramContent } from '../../../lib/content-types';
-import { useSaveChannelContent, useRefreshContent } from '../hooks/useContent';
-import { generateSSE } from '../api/content.api';
+import { useSaveChannelContent } from '../hooks/useContent';
+import { useChannelGeneration } from '../hooks/useChannelGeneration';
 import { ChannelModelSelector } from './ChannelModelSelector';
 
 interface Props {
@@ -12,19 +12,17 @@ interface Props {
 export function CardNewsPanel({ contentFile }: Props) {
   const { content, instagram } = contentFile;
   const current = instagram[0] as InstagramContent | undefined;
-  const [isGenerating, setIsGenerating] = useState(false);
   const [textModelId, setTextModelId] = useState('gemini-2.5-flash');
   const [imageModelId, setImageModelId] = useState('gemini-2.5-flash-image');
 
   const saveChannel = useSaveChannelContent();
-  const refreshContent = useRefreshContent();
+  const { isGenerating, generate } = useChannelGeneration({
+    contentId: content.id,
+    path: 'generate/instagram',
+  });
 
   const handleGenerate = () => {
-    setIsGenerating(true);
-    generateSSE(content.id, 'generate/instagram', { modelId: textModelId }, {
-      onComplete: () => { refreshContent(content.id); setIsGenerating(false); },
-      onError: (msg) => { alert(`생성 실패: ${msg}`); setIsGenerating(false); },
-    });
+    generate({ modelId: textModelId });
   };
 
   if (!current && !isGenerating) {

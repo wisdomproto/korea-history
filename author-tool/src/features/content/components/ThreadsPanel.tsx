@@ -1,8 +1,8 @@
 // author-tool/src/features/content/components/ThreadsPanel.tsx
 import { useState } from 'react';
 import type { ContentFile, ThreadsContent } from '../../../lib/content-types';
-import { useSaveChannelContent, useRefreshContent } from '../hooks/useContent';
-import { generateSSE } from '../api/content.api';
+import { useSaveChannelContent } from '../hooks/useContent';
+import { useChannelGeneration } from '../hooks/useChannelGeneration';
 import { ChannelModelSelector } from './ChannelModelSelector';
 
 interface Props {
@@ -18,18 +18,16 @@ const ROLE_STYLES: Record<string, { bg: string; color: string }> = {
 export function ThreadsPanel({ contentFile }: Props) {
   const { content, threads } = contentFile;
   const current = threads[0] as ThreadsContent | undefined;
-  const [isGenerating, setIsGenerating] = useState(false);
   const [modelId, setModelId] = useState('gemini-2.5-flash');
 
   const saveChannel = useSaveChannelContent();
-  const refreshContent = useRefreshContent();
+  const { isGenerating, generate } = useChannelGeneration({
+    contentId: content.id,
+    path: 'generate/threads',
+  });
 
   const handleGenerate = () => {
-    setIsGenerating(true);
-    generateSSE(content.id, 'generate/threads', { modelId }, {
-      onComplete: () => { refreshContent(content.id); setIsGenerating(false); },
-      onError: (msg) => { alert(`생성 실패: ${msg}`); setIsGenerating(false); },
-    });
+    generate({ modelId });
   };
 
   const handleCopyAll = () => {

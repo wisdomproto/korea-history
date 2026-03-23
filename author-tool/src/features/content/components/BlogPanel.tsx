@@ -1,8 +1,8 @@
 // author-tool/src/features/content/components/BlogPanel.tsx
 import { useState } from 'react';
 import type { ContentFile, BlogContent, BlogCard } from '../../../lib/content-types';
-import { useSaveChannelContent, useRefreshContent } from '../hooks/useContent';
-import { generateSSE } from '../api/content.api';
+import { useSaveChannelContent } from '../hooks/useContent';
+import { useChannelGeneration } from '../hooks/useChannelGeneration';
 import { ChannelModelSelector } from './ChannelModelSelector';
 
 interface Props {
@@ -12,25 +12,17 @@ interface Props {
 export function BlogPanel({ contentFile }: Props) {
   const { content, blog } = contentFile;
   const current = blog[0] as BlogContent | undefined;
-  const [isGenerating, setIsGenerating] = useState(false);
   const [modelId, setModelId] = useState('gemini-2.5-flash');
   const [showPreview, setShowPreview] = useState(false);
 
   const saveChannel = useSaveChannelContent();
-  const refreshContent = useRefreshContent();
+  const { isGenerating, generate } = useChannelGeneration({
+    contentId: content.id,
+    path: 'generate/blog',
+  });
 
   const handleGenerate = () => {
-    setIsGenerating(true);
-    generateSSE(content.id, 'generate/blog', { modelId }, {
-      onComplete: () => {
-        refreshContent(content.id);
-        setIsGenerating(false);
-      },
-      onError: (msg) => {
-        alert(`생성 실패: ${msg}`);
-        setIsGenerating(false);
-      },
-    });
+    generate({ modelId });
   };
 
   const handleCopy = () => {

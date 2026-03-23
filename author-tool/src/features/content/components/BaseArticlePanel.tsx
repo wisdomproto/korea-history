@@ -1,8 +1,8 @@
 // author-tool/src/features/content/components/BaseArticlePanel.tsx
 import { useState, useRef, useCallback, useEffect } from 'react';
 import type { ContentFile } from '../../../lib/content-types';
-import { useSaveBaseArticle, useRefreshContent } from '../hooks/useContent';
-import { generateSSE } from '../api/content.api';
+import { useSaveBaseArticle } from '../hooks/useContent';
+import { useChannelGeneration } from '../hooks/useChannelGeneration';
 import { apiGet } from '../../../lib/axios';
 import { ChannelModelSelector } from './ChannelModelSelector';
 
@@ -28,14 +28,16 @@ export function BaseArticlePanel({ contentFile }: Props) {
   const { content, baseArticle } = contentFile;
   const editorRef = useRef<HTMLDivElement>(null);
   const saveTimeout = useRef<ReturnType<typeof setTimeout>>();
-  const [isGenerating, setIsGenerating] = useState(false);
   const [modelId, setModelId] = useState('gemini-2.5-flash');
   const [showSource, setShowSource] = useState(false);
   const [sourceData, setSourceData] = useState<SourceQuestion | SourceNote | null>(null);
   const [sourceLoading, setSourceLoading] = useState(false);
 
   const saveBase = useSaveBaseArticle();
-  const refreshContent = useRefreshContent();
+  const { isGenerating, generate } = useChannelGeneration({
+    contentId: content.id,
+    path: 'base-article/generate',
+  });
 
   // Initialize editor content
   useEffect(() => {
@@ -67,22 +69,7 @@ export function BaseArticlePanel({ contentFile }: Props) {
 
   // AI Generate
   const handleGenerate = () => {
-    setIsGenerating(true);
-    generateSSE(
-      content.id,
-      'base-article/generate',
-      { modelId },
-      {
-        onComplete: () => {
-          refreshContent(content.id);
-          setIsGenerating(false);
-        },
-        onError: (msg) => {
-          alert(`생성 실패: ${msg}`);
-          setIsGenerating(false);
-        },
-      },
-    );
+    generate({ modelId });
   };
 
   // View source data

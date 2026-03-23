@@ -1,8 +1,8 @@
 // author-tool/src/features/content/components/LongFormPanel.tsx
 import { useState } from 'react';
 import type { ContentFile, LongFormContent } from '../../../lib/content-types';
-import { useSaveChannelContent, useRefreshContent } from '../hooks/useContent';
-import { generateSSE } from '../api/content.api';
+import { useSaveChannelContent } from '../hooks/useContent';
+import { useChannelGeneration } from '../hooks/useChannelGeneration';
 import { ChannelModelSelector } from './ChannelModelSelector';
 
 interface Props {
@@ -20,19 +20,17 @@ const SECTION_STYLES: Record<string, { bg: string; color: string }> = {
 export function LongFormPanel({ contentFile }: Props) {
   const { content, longForm } = contentFile;
   const current = longForm[0] as LongFormContent | undefined;
-  const [isGenerating, setIsGenerating] = useState(false);
   const [modelId, setModelId] = useState('gemini-2.5-flash');
   const [expandedScene, setExpandedScene] = useState<string | null>(null);
 
   const saveChannel = useSaveChannelContent();
-  const refreshContent = useRefreshContent();
+  const { isGenerating, generate } = useChannelGeneration({
+    contentId: content.id,
+    path: 'generate/longform',
+  });
 
   const handleGenerate = () => {
-    setIsGenerating(true);
-    generateSSE(content.id, 'generate/longform', { modelId, targetDuration: '8~12분' }, {
-      onComplete: () => { refreshContent(content.id); setIsGenerating(false); },
-      onError: (msg) => { alert(`생성 실패: ${msg}`); setIsGenerating(false); },
-    });
+    generate({ modelId, targetDuration: '8~12분' });
   };
 
   const handleCopy = () => {
