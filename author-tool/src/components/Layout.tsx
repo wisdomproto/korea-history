@@ -13,14 +13,19 @@ import { NoteCardNewsPanel } from '@/features/card-news/components/NoteCardNewsP
 import { CardNewsGallery } from '@/features/card-news/components/CardNewsGallery';
 import { NotesPanel } from '@/features/notes/components/NotesPanel';
 import { ContentPanel } from '@/features/content/components/ContentPanel';
+import { NoteEditorPanel } from '@/features/notes/components/NoteEditorPanel';
 import { pdfImportApi } from '@/features/exam/api/pdf-import.api';
 import { Button } from './Button';
 import { BulkAnswerModal } from '@/features/question/components/BulkAnswerModal';
 import { BulkExplanationModal } from '@/features/question/components/BulkExplanationModal';
 import type { Question, Exam } from '@/lib/types';
+import { useQuery } from '@tanstack/react-query';
+import { apiGet } from '@/lib/axios';
 
 export function Layout() {
-  const { selectedExamId, activeView, editingQuestionId, setEditingQuestionId, setActiveView, setSelectedExamId } = useEditorStore();
+  const { selectedExamId, selectedProjectId, activeView, editingQuestionId, setEditingQuestionId, setActiveView, setSelectedExamId } = useEditorStore();
+  const { data: projects } = useQuery({ queryKey: ['projects'], queryFn: () => apiGet<any[]>('/projects') });
+  const currentProject = projects?.find((p: any) => p.id === selectedProjectId);
   const { data: allExams } = useExams();
   const { data: examFile, isLoading: examLoading, refetch: refetchExam } = useExam(selectedExamId);
   const createExamMutation = useCreateExam();
@@ -145,7 +150,7 @@ export function Layout() {
         {activeView === 'dashboard' && (
           <div className="flex-1 overflow-y-auto p-6">
             <div className="mx-auto max-w-5xl">
-              <h2 className="mb-6 text-xl font-bold">대시보드</h2>
+              <h2 className="mb-6 text-xl font-bold">{currentProject?.icon} {currentProject?.name || '프로젝트'} 대시보드</h2>
               <StatsPanel />
             </div>
           </div>
@@ -195,6 +200,11 @@ export function Layout() {
         {/* Content */}
         {activeView === 'content' && (
           <ContentPanel />
+        )}
+
+        {/* Notes Editor */}
+        {activeView === 'notes-editor' && (
+          <NoteEditorPanel />
         )}
 
         {/* Exam loading */}
