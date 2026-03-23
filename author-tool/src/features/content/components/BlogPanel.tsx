@@ -45,6 +45,7 @@ export function BlogPanel({ contentFile }: Props) {
   const [modelId, setModelId] = useState('gemini-2.5-flash');
   const [imageModelId, setImageModelId] = useState('gemini-2.5-flash-image');
   const [showPreview, setShowPreview] = useState(false);
+  const [imageStyle, setImageStyle] = useState('photorealistic');
 
   // Keyword research state
   const [suggestedKeywords, setSuggestedKeywords] = useState<string[]>([]);
@@ -185,6 +186,17 @@ export function BlogPanel({ contentFile }: Props) {
       cards: current.cards.map((c) => (c.id === cardId ? { ...c, ...updates } : c)),
     };
     save(current.id, updated);
+  };
+
+  const deleteCard = (cardId: string) => {
+    if (!current) return;
+    saveNow(current.id, { ...current, cards: current.cards.filter((c) => c.id !== cardId) });
+  };
+
+  const addCard = () => {
+    if (!current) return;
+    const newCard = { id: `bc-${Date.now()}`, type: 'text' as const, content: '', imagePrompt: '' };
+    saveNow(current.id, { ...current, cards: [...current.cards, newCard] });
   };
 
   const reorderCards = (fromIdx: number, toIdx: number) => {
@@ -464,6 +476,22 @@ export function BlogPanel({ contentFile }: Props) {
             )}
           </div>
 
+          {/* Image style selector */}
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-[10px] text-gray-400">이미지 스타일:</span>
+            <select
+              className="px-2 py-1 border border-gray-200 rounded text-xs"
+              value={imageStyle}
+              onChange={(e) => setImageStyle(e.target.value)}
+            >
+              <option value="photorealistic">사실적</option>
+              <option value="illustration">일러스트</option>
+              <option value="minimal flat design">미니멀</option>
+              <option value="watercolor">수채화</option>
+              <option value="cartoon anime">만화</option>
+            </select>
+          </div>
+
           {/* Cards */}
           {current.cards.map((card, idx) => (
             <div
@@ -477,50 +505,70 @@ export function BlogPanel({ contentFile }: Props) {
             >
               <div className="px-3 py-2 bg-gray-50 flex items-center gap-2 border-b border-gray-100">
                 <span className="cursor-grab text-gray-300 hover:text-gray-500 text-xs select-none">⠿</span>
-                <span className={`text-[11px] px-1.5 py-0.5 rounded ${
-                  card.type === 'text' ? 'bg-blue-100' :
-                  card.type === 'image' ? 'bg-pink-100' :
-                  card.type === 'quote' ? 'bg-purple-100' :
-                  card.type === 'list' ? 'bg-green-100' : 'bg-gray-100'
-                }`}>
+                <span className="text-[11px] px-1.5 py-0.5 rounded bg-blue-100">카드 {idx + 1}</span>
+                <span className="text-[10px] text-gray-400 ml-auto">
                   {card.type}
                 </span>
+                <button
+                  onClick={(e) => { e.stopPropagation(); deleteCard(card.id); }}
+                  className="text-gray-300 hover:text-red-500 transition-colors"
+                  title="카드 삭제"
+                >
+                  <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
               </div>
-              <div className="p-3">
-                {card.type === 'divider' ? (
+              {card.type === 'divider' ? (
+                <div className="p-3">
                   <hr className="border-gray-200" />
-                ) : card.type === 'image' ? (
+                </div>
+              ) : (
+                <div className="p-3 space-y-3">
+                  {/* Image section */}
                   <div className="flex items-center gap-3">
                     {card.imageUrl ? (
-                      <img src={card.imageUrl} alt="" className="w-[120px] h-[68px] object-cover rounded" />
+                      <img src={card.imageUrl} alt="" className="w-[160px] h-[90px] object-cover rounded" />
                     ) : (
-                      <div className="w-[120px] h-[68px] bg-gray-100 rounded flex items-center justify-center text-[10px] text-gray-400">
+                      <div className="w-[160px] h-[90px] bg-gray-100 rounded flex items-center justify-center text-[10px] text-gray-400">
                         이미지 없음
                       </div>
                     )}
-                    <div className="flex-1 min-w-0">
-                      <div className="text-xs text-gray-400">{card.imagePrompt || '이미지 프롬프트 없음'}</div>
-                      {card.imagePrompt && (
-                        <button
-                          className="mt-1 px-2 py-1 bg-pink-500 text-white rounded text-[10px] hover:bg-pink-600 disabled:opacity-50"
-                          disabled={genImage.isPending}
-                          onClick={() => genImage.mutate({ contentId: content.id, channel: 'blog', targetId: card.id, imagePrompt: card.imagePrompt!, modelId: imageModelId })}
-                        >
-                          {genImage.isPending ? '⏳ 생성 중...' : '🎨 이미지 생성'}
-                        </button>
-                      )}
+                    <div className="flex-1 space-y-1">
+                      <input
+                        className="w-full px-2 py-1 border border-gray-200 rounded text-[10px] text-gray-500"
+                        placeholder="이미지 프롬프트 (영어)"
+                        value={card.imagePrompt || ''}
+                        onChange={(e) => updateCard(card.id, { imagePrompt: e.target.value })}
+                      />
+                      <button
+                        className="px-2 py-1 bg-pink-500 text-white rounded text-[10px] hover:bg-pink-600 disabled:opacity-50"
+                        disabled={genImage.isPending || !card.imagePrompt}
+                        onClick={() => genImage.mutate({ contentId: content.id, channel: 'blog', targetId: card.id, imagePrompt: `${card.imagePrompt}. Style: ${imageStyle}`, modelId: imageModelId })}
+                      >
+                        {genImage.isPending ? '⏳' : '🎨 이미지 생성'}
+                      </button>
                     </div>
                   </div>
-                ) : (
+                  {/* Text section */}
                   <textarea
-                    className="w-full text-sm border-none resize-y min-h-[60px] focus:outline-none"
+                    className="w-full text-sm border border-gray-200 rounded-lg p-2 resize-y min-h-[60px] focus:outline-none focus:ring-1 focus:ring-blue-200"
+                    placeholder="텍스트 내용..."
                     value={card.content}
                     onChange={(e) => updateCard(card.id, { content: e.target.value })}
                   />
-                )}
-              </div>
+                </div>
+              )}
             </div>
           ))}
+
+          {/* Add card button */}
+          <button
+            className="w-full py-2 border-2 border-dashed border-gray-300 rounded-lg text-xs text-gray-400 hover:border-blue-400 hover:text-blue-500 transition-colors"
+            onClick={addCard}
+          >
+            + 카드 추가
+          </button>
         </div>
       )}
 
