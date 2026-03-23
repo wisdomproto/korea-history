@@ -27,6 +27,7 @@ async function getSourceData(contentId: string) {
 export async function generateBaseArticle(
   contentId: string,
   modelId?: string,
+  extraPrompt?: string,
   res?: Response,
 ): Promise<any> {
   const file = await getSourceData(contentId);
@@ -34,7 +35,10 @@ export async function generateBaseArticle(
 
   sendSSE(res, { type: 'chunk', content: '기본글 생성 중...' });
 
-  const prompt = prompts.buildBaseArticlePrompt(source);
+  let prompt = prompts.buildBaseArticlePrompt(source);
+  if (extraPrompt) {
+    prompt += `\n\n[추가 지시사항]\n${extraPrompt}`;
+  }
   const raw = await generateText(prompt, modelId);
   const result = parseJSON<{ html: string; keywords: string[]; summary: string }>(
     raw,

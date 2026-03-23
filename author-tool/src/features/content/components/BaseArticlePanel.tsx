@@ -29,6 +29,7 @@ export function BaseArticlePanel({ contentFile }: Props) {
   const editorRef = useRef<HTMLDivElement>(null);
   const saveTimeout = useRef<ReturnType<typeof setTimeout>>();
   const [modelId, setModelId] = useState('gemini-2.5-flash');
+  const [extraPrompt, setExtraPrompt] = useState('');
   const [showSource, setShowSource] = useState(false);
   const [sourceData, setSourceData] = useState<SourceQuestion | SourceNote | null>(null);
   const [sourceLoading, setSourceLoading] = useState(false);
@@ -75,7 +76,7 @@ export function BaseArticlePanel({ contentFile }: Props) {
 
   // AI Generate
   const handleGenerate = () => {
-    generate({ modelId });
+    generate({ modelId, extraPrompt: extraPrompt.trim() || undefined });
   };
 
   // View source data
@@ -127,6 +128,17 @@ export function BaseArticlePanel({ contentFile }: Props) {
             📄 소스 보기
           </button>
         )}
+      </div>
+
+      {/* Extra prompt */}
+      <div className="mb-3">
+        <textarea
+          className="w-full border border-gray-200 rounded-lg px-3 py-2 text-xs resize-none placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+          rows={2}
+          placeholder="AI에게 추가 지시사항 (예: 초보자 눈높이로 써줘, 핵심 키워드 3개 포함해줘, 2000자 이내로...)"
+          value={extraPrompt}
+          onChange={(e) => setExtraPrompt(e.target.value)}
+        />
       </div>
 
       {/* Toolbar */}

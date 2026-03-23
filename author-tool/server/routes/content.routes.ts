@@ -62,7 +62,7 @@ router.post('/:id/base-article/generate', async (req, res, next) => {
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
 
-    await generator.generateBaseArticle(req.params.id, req.body.modelId, res);
+    await generator.generateBaseArticle(req.params.id, req.body.modelId, req.body.extraPrompt, res);
     res.end();
   } catch (err) { next(err); }
 });
