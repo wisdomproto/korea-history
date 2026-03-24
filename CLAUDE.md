@@ -123,9 +123,11 @@ korea_history/
 
 ## 핵심 기능 (저작도구)
 
-### 사이드바 탭 구조
-- **📚 시험 탭**: 시험 목록, 검색/정렬, + 새 시험, AI 생성
-- **✏️ 컨텐츠 탭**: 멀티채널 컨텐츠 생성 (기출/노트/자유 소스 → 5채널)
+### 사이드바 구조
+- **헤더**: "기출노트 저작도구"
+- **프로젝트 셀렉터**: 프로젝트 추가/삭제, 열기/접기 (기본: 한국사능력검정시험)
+- **프로젝트 내 탭**: 📋 시험 | 📝 요약노트 | ✏️ 컨텐츠
+- 프로젝트 데이터: `data/projects/index.json`
 
 ### 멀티채널 컨텐츠 시스템 (NEW)
 한 주제로 여러 채널용 컨텐츠를 동시 생성하는 시스템.
@@ -136,6 +138,13 @@ korea_history/
 - **AI 생성**: Gemini API + SSE 스트리밍, 채널별 모델 선택 가능
 - **저장**: `data/contents/` (JSON) + R2 (이미지)
 
+**블로그 키워드 & SEO 시스템**:
+- 네이버 검색광고 API 연동 (키워드 검색량, 경쟁률 조회)
+- AI 키워드 추천 (Gemini) + 수동 키워드 추가
+- 키워드 선택 → SEO 최적화된 블로그 AI 생성
+- 생성 후 네이버 SEO 분석 (9개 카테고리, 100점 만점)
+- 블로그 카드: 이미지+텍스트 통합, 드래그 정렬, 추가/삭제, 이미지 스타일 선택
+
 **데이터 구조**: Content → BaseArticle(1:1) → ChannelContent[](1:N × 5채널)
 - 스펙: `docs/superpowers/specs/2026-03-23-multi-channel-content-design.md`
 - 플랜: `docs/superpowers/plans/2026-03-23-multi-channel-content.md`
@@ -145,10 +154,16 @@ korea_history/
 - `server/services/prompt-builder.ts` — 6개 채널별 프롬프트 템플릿
 - `server/services/content-generator.service.ts` — AI 생성 오케스트레이션 + SSE
 - `server/routes/content.routes.ts` — `/api/contents` REST API
+- `server/services/naver-keyword.service.ts` — 네이버 검색광고 API 연동
+- `server/services/seo-scorer.ts` — 네이버 SEO 점수 계산 (100점)
+- `server/routes/blog-tools.routes.ts` — `/api/blog-tools` (키워드 추천, 검색량, SEO 분석)
+- `server/services/project.service.ts` — 프로젝트 CRUD
+- `server/routes/project.routes.ts` — `/api/projects`
 
 **프론트엔드 파일**:
 - `src/features/content/` — api, hooks, components
-- 6개 탭 패널: BaseArticle, Blog, CardNews, Threads, LongForm, ShortForm
+- 6개 탭 패널: BaseArticle, Blog(키워드+SEO), CardNews, Threads, LongForm, ShortForm
+- `src/features/notes/components/NoteEditorPanel.tsx` — 요약노트 HTML 에디터
 
 ### 레거시 카드뉴스 (기존, 유지)
 - **기출 카드뉴스**: satori PNG 4장 (card-news.service.ts)
@@ -156,10 +171,11 @@ korea_history/
 - **카드뉴스 갤러리**: R2 저장 (card-news-storage.service.ts)
 - 기존 API 라우트(`/api/card-news/`)는 소스 데이터 조회용으로도 재활용
 
-### 요약노트 관리
-- 87개 노트 목록 (시대 필터, 검색)
-- HTML 미리보기 + 키워드 표시
-- 제목 편집 (더블클릭)
+### 요약노트 에디터
+- 87개 노트 (시대별 그룹, 검색)
+- 전체 HTML 편집기 (contentEditable + 툴바: B/I/H2/H3/UL/OL/이미지/링크)
+- 이미지 업로드/삭제, 키워드 뱃지 표시
+- 자동 저장 (500ms debounce), 문자수 표시
 
 ## 기술 스택
 
@@ -173,8 +189,9 @@ korea_history/
 ### 저작도구 (author-tool/) — Railway 배포
 - Express + Vite middleware, React 18, TailwindCSS, Zustand
 - Gemini API (텍스트 + 이미지 생성)
+- 네이버 검색광고 API (키워드 검색량/경쟁률)
 - satori + @resvg/resvg-js (텍스트 카드뉴스 PNG)
-- Cloudflare R2 (카드뉴스 저장)
+- Cloudflare R2 (카드뉴스 + 컨텐츠 이미지 저장)
 - Vercel Deploy Hook
 
 ## 환경변수
@@ -199,6 +216,9 @@ R2_SECRET_ACCESS_KEY=
 R2_BUCKET_NAME=korea-history-data
 R2_PUBLIC_URL=
 VERCEL_DEPLOY_HOOK_URL=
+NAVER_API_LICENSE_KEY=
+NAVER_API_SECRET_KEY=
+NAVER_API_CUSTOMER_ID=
 ```
 
 ## SEO
