@@ -30,5 +30,7 @@ export const config = {
   ga4: {
     propertyId: process.env.GA4_PROPERTY_ID ?? '',
     serviceAccountKey: process.env.GA4_SERVICE_ACCOUNT_KEY ?? '',
+    clientEmail: process.env.GA4_CLIENT_EMAIL ?? '',
+    privateKey: process.env.GA4_PRIVATE_KEY ?? '',
   },
 } as const;

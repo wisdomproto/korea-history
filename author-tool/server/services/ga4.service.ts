@@ -98,7 +98,13 @@ function getClient(): BetaAnalyticsDataClient {
   if (!keyValue) throw new Error('GA4_SERVICE_ACCOUNT_KEY not configured');
 
   let credentials: Record<string, string>;
-  if (keyValue.startsWith('{')) {
+  if (config.ga4.clientEmail && config.ga4.privateKey) {
+    // Individual env vars (Railway-friendly)
+    credentials = {
+      client_email: config.ga4.clientEmail,
+      private_key: config.ga4.privateKey.replace(/\\n/g, '\n'),
+    };
+  } else if (keyValue.startsWith('{')) {
     // Raw JSON string
     credentials = JSON.parse(keyValue);
   } else if (keyValue.endsWith('.json')) {
@@ -122,7 +128,9 @@ function getPropertyId(): string {
 }
 
 export function isConfigured(): boolean {
-  return !!(config.ga4.propertyId && config.ga4.serviceAccountKey);
+  const hasKeyFile = !!config.ga4.serviceAccountKey;
+  const hasIndividual = !!(config.ga4.clientEmail && config.ga4.privateKey);
+  return !!(config.ga4.propertyId && (hasKeyFile || hasIndividual));
 }
 
 // ─── Helpers ───
