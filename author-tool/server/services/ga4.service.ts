@@ -99,12 +99,17 @@ function getClient(): BetaAnalyticsDataClient {
 
   let credentials: Record<string, string>;
   if (keyValue.startsWith('{')) {
+    // Raw JSON string
     credentials = JSON.parse(keyValue);
-  } else {
+  } else if (keyValue.endsWith('.json')) {
+    // File path
     const keyPath = path.isAbsolute(keyValue)
       ? keyValue
       : path.resolve(__dirname, '../../', keyValue);
     credentials = JSON.parse(fs.readFileSync(keyPath, 'utf-8'));
+  } else {
+    // Base64 encoded JSON
+    credentials = JSON.parse(Buffer.from(keyValue, 'base64').toString('utf-8'));
   }
   client = new BetaAnalyticsDataClient({ credentials });
   return client;
