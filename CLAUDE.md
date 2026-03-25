@@ -264,16 +264,6 @@ GA4_SERVICE_ACCOUNT_KEY=./ga4-key.json
 - 컨텐츠 SSE 생성: `POST /api/contents/:id/generate/:channel` → `data: {"type":"chunk|complete|error",...}`
 - 컨텐츠 서비스의 서버 타입(content.service.ts)은 `any[]` — 프론트 타입(content-types.ts)이 정확한 타입 정의
 
-## 워크플로우: "업데이트 하자"
-사용자가 "업데이트 하자" 또는 작업 완료 후 정리를 요청하면, 아래를 **순서대로 모두** 실행:
-
-1. **CLAUDE.md 업데이트** — 새로 추가/변경된 기능, 파일, 구조를 반영
-2. **Memory 업데이트** — `memory/MEMORY.md` 및 관련 메모리 파일 업데이트 (완료 기능 이동, 진행 중 항목 갱신)
-3. **스펙/플랜 문서** — `docs/superpowers/specs/`, `docs/superpowers/plans/` 해당 문서가 있으면 상태 업데이트
-4. **Git commit + push** — 변경사항 커밋 후 `git push origin main`
-
-이 워크플로우는 **새 세션에서도** 동일하게 적용된다. 사용자가 별도 지시 없이 "업데이트" 또는 "정리"를 언급하면 위 4단계를 실행한다.
-
 ## 언어
 - 사용자 인터페이스: 한국어
 - 코드/커밋: 영어
