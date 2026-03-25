@@ -50,6 +50,7 @@ test.pdf
 # author-tool
 author-tool/node_modules/
 author-tool/dist-server/
+ga4-key.json
 
 # logs
 *.log

@@ -27,4 +27,8 @@ export const config = {
     secretKey: process.env.NAVER_API_SECRET_KEY ?? '',
     customerId: process.env.NAVER_API_CUSTOMER_ID ?? '',
   },
+  ga4: {
+    propertyId: process.env.GA4_PROPERTY_ID ?? '',
+    serviceAccountKey: process.env.GA4_SERVICE_ACCOUNT_KEY ?? '',
+  },
 } as const;
