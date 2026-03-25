@@ -14,6 +14,7 @@ import { CardNewsGallery } from '@/features/card-news/components/CardNewsGallery
 import { NotesPanel } from '@/features/notes/components/NotesPanel';
 import { ContentPanel } from '@/features/content/components/ContentPanel';
 import { NoteEditorPanel } from '@/features/notes/components/NoteEditorPanel';
+import AnalyticsDashboard from '@/features/analytics/components/AnalyticsDashboard';
 import { pdfImportApi } from '@/features/exam/api/pdf-import.api';
 import { Button } from './Button';
 import { BulkAnswerModal } from '@/features/question/components/BulkAnswerModal';
@@ -146,6 +147,11 @@ export function Layout() {
       />
 
       <main className="flex-1 flex overflow-hidden">
+        {/* Analytics Dashboard */}
+        {activeView === 'analytics' && (
+          <AnalyticsDashboard />
+        )}
+
         {/* Dashboard */}
         {activeView === 'dashboard' && (
           <div className="flex-1 overflow-y-auto p-6">

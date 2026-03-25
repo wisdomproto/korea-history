@@ -187,15 +187,26 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
           >
             기출노트 저작도구
           </h1>
-          <a
-            href={window.location.hostname === 'localhost' ? 'http://localhost:8081' : 'https://gcnote.co.kr'}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600 transition-colors hover:bg-primary-100 hover:text-primary-700"
-            title="웹사이트 열기"
-          >
-            사이트 &rarr;
-          </a>
+          <div className="flex items-center gap-1">
+            <button
+              onClick={() => setActiveView('analytics')}
+              className={`p-1.5 rounded-lg text-sm transition-colors ${
+                activeView === 'analytics' ? 'bg-emerald-100 text-emerald-700' : 'hover:bg-gray-100 text-gray-500'
+              }`}
+              title="사이트 분석"
+            >
+              📊
+            </button>
+            <a
+              href={window.location.hostname === 'localhost' ? 'http://localhost:8081' : 'https://gcnote.co.kr'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600 transition-colors hover:bg-primary-100 hover:text-primary-700"
+              title="웹사이트 열기"
+            >
+              사이트 &rarr;
+            </a>
+          </div>
         </div>
       </div>
 

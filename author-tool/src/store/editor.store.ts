@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-type ActiveView = 'dashboard' | 'exam' | 'question' | 'generator' | 'card-news' | 'note-card-news' | 'card-news-gallery' | 'notes' | 'content' | 'notes-editor';
+type ActiveView = 'analytics' | 'dashboard' | 'exam' | 'question' | 'generator' | 'card-news' | 'note-card-news' | 'card-news-gallery' | 'notes' | 'content' | 'notes-editor';
 type ContentTab = 'base' | 'blog' | 'instagram' | 'threads' | 'longform' | 'shortform';
 type SidebarSection = 'exam' | 'notes' | 'content' | null;
 
@@ -50,7 +50,7 @@ export const useEditorStore = create<EditorStore>((set) => ({
   setEditingQuestionId: (id) => set({ editingQuestionId: id, activeView: id ? 'question' : 'exam' }),
 
   // View
-  activeView: 'dashboard',
+  activeView: 'analytics',
   setActiveView: (view) => set({ activeView: view }),
 
   // Notes editor
