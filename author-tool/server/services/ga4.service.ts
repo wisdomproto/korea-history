@@ -407,6 +407,54 @@ export async function getHourlyPattern(
   return result;
 }
 
+// ─── Daily Trend ───
+
+export interface DailyData {
+  date: string; // YYYY-MM-DD
+  sessions: number;
+  users: number;
+  pageViews: number;
+}
+
+export async function getDailyTrend(
+  startDate: string,
+  endDate: string
+): Promise<DailyData[]> {
+  const cacheKey = `daily:${startDate}:${endDate}`;
+  const cached = getCached<DailyData[]>(cacheKey);
+  if (cached) return cached;
+
+  const [res] = await getClient().runReport({
+    property: getPropertyId(),
+    dateRanges: [{ startDate, endDate }],
+    dimensions: [{ name: 'date' }],
+    metrics: [
+      { name: 'sessions' },
+      { name: 'totalUsers' },
+      { name: 'screenPageViews' },
+    ],
+    orderBys: [{ dimension: { dimensionName: 'date' } }],
+  });
+
+  const result: DailyData[] = (res.rows ?? []).map((r) => {
+    const raw = r.dimensionValues?.[0]?.value ?? '';
+    // GA4 returns date as "YYYYMMDD" — format to YYYY-MM-DD
+    const date = raw.length === 8
+      ? `${raw.slice(0, 4)}-${raw.slice(4, 6)}-${raw.slice(6, 8)}`
+      : raw;
+    return {
+      date,
+      sessions: Number(r.metricValues?.[0]?.value ?? 0),
+      users: Number(r.metricValues?.[1]?.value ?? 0),
+      pageViews: Number(r.metricValues?.[2]?.value ?? 0),
+    };
+  });
+
+  const ttl = getCacheTtl(startDate, endDate);
+  if (ttl > 0) setCache(cacheKey, result, ttl);
+  return result;
+}
+
 // ─── Day of Week ───
 
 const DAY_NAMES = ['일', '월', '화', '수', '목', '금', '토'];

@@ -9,6 +9,7 @@ import CampaignTable from './CampaignTable';
 import DeviceChart from './DeviceChart';
 import HourlyChart from './HourlyChart';
 import DayOfWeekChart from './DayOfWeekChart';
+import DailyTrendChart from './DailyTrendChart';
 
 function getDefault7d(): DateRange {
   const today = new Date();
@@ -105,6 +106,7 @@ export default function AnalyticsDashboard() {
         ) : data ? (
           <>
             <KpiCards data={data.overview} />
+            <DailyTrendChart />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <ChannelChart data={data.channels} />
               <TopPagesTable data={data.topPages} />
