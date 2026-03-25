@@ -15,6 +15,7 @@ import notesRoutes from './routes/notes.routes.js';
 import contentRoutes from './routes/content.routes.js';
 import projectRoutes from './routes/project.routes.js';
 import blogToolsRoutes from './routes/blog-tools.routes.js';
+import analyticsRoutes from './routes/analytics.routes.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isDev = process.env.NODE_ENV !== 'production';
@@ -62,6 +63,7 @@ async function startServer() {
   app.use('/api/contents', contentRoutes);
   app.use('/api/projects', projectRoutes);
   app.use('/api/blog-tools', blogToolsRoutes);
+  app.use('/api/analytics', analyticsRoutes);
 
   app.use(errorMiddleware as express.ErrorRequestHandler);
 
