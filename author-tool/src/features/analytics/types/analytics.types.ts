@@ -1,0 +1,47 @@
+export type DatePreset = 'today' | '7d' | '30d' | '90d';
+
+export interface DateRange {
+  startDate: string;
+  endDate: string;
+}
+
+export interface SeasonPreset {
+  id: number;
+  name: string;
+  startDate: string;
+  endDate: string;
+}
+
+export interface PresetsData {
+  dates: Array<{ id: string; name: string; startDate: string; endDate: string }>;
+  seasons: SeasonPreset[];
+}
+
+export interface KpiData {
+  sessions: number;
+  users: number;
+  pageViews: number;
+  avgSessionDuration: number;
+  changes: {
+    sessions: number;
+    users: number;
+    pageViews: number;
+    avgSessionDuration: number;
+  };
+}
+
+export interface ChannelData { channel: string; sessions: number; percentage: number; }
+export interface PageData { path: string; pageViews: number; }
+export interface CampaignData { source: string; medium: string; campaign: string; sessions: number; }
+export interface DeviceData { device: string; sessions: number; percentage: number; }
+export interface HourlyData { hour: number; sessions: number; }
+
+export interface DashboardData {
+  overview: KpiData;
+  channels: ChannelData[];
+  topPages: PageData[];
+  campaigns: CampaignData[];
+  devices: DeviceData[];
+  hourly: HourlyData[];
+  cachedAt?: string;
+}
