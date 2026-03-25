@@ -95,7 +95,6 @@ let client: BetaAnalyticsDataClient | null = null;
 function getClient(): BetaAnalyticsDataClient {
   if (client) return client;
   const keyValue = config.ga4.serviceAccountKey;
-  if (!keyValue) throw new Error('GA4_SERVICE_ACCOUNT_KEY not configured');
 
   let credentials: Record<string, string>;
   if (config.ga4.clientEmail && config.ga4.privateKey) {
@@ -104,6 +103,8 @@ function getClient(): BetaAnalyticsDataClient {
       client_email: config.ga4.clientEmail,
       private_key: config.ga4.privateKey.replace(/\\n/g, '\n'),
     };
+  } else if (!keyValue) {
+    throw new Error('GA4 credentials not configured');
   } else if (keyValue.startsWith('{')) {
     // Raw JSON string
     credentials = JSON.parse(keyValue);
