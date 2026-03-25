@@ -50,6 +50,12 @@ export interface HourlyData {
   sessions: number;
 }
 
+export interface DayOfWeekData {
+  dayOfWeek: number;
+  name: string;
+  sessions: number;
+}
+
 export interface DashboardData {
   overview: KpiData;
   channels: ChannelData[];
@@ -57,6 +63,7 @@ export interface DashboardData {
   campaigns: CampaignData[];
   devices: DeviceData[];
   hourly: HourlyData[];
+  dayOfWeek: DayOfWeekData[];
   cachedAt?: string;
 }
 
@@ -400,6 +407,44 @@ export async function getHourlyPattern(
   return result;
 }
 
+// ─── Day of Week ───
+
+const DAY_NAMES = ['일', '월', '화', '수', '목', '금', '토'];
+
+export async function getDayOfWeekPattern(
+  startDate: string,
+  endDate: string
+): Promise<DayOfWeekData[]> {
+  const cacheKey = `dayOfWeek:${startDate}:${endDate}`;
+  const cached = getCached<DayOfWeekData[]>(cacheKey);
+  if (cached) return cached;
+
+  const [res] = await getClient().runReport({
+    property: getPropertyId(),
+    dateRanges: [{ startDate, endDate }],
+    dimensions: [{ name: 'dayOfWeek' }],
+    metrics: [{ name: 'sessions' }],
+    orderBys: [{ dimension: { dimensionName: 'dayOfWeek' } }],
+  });
+
+  const dayMap = new Map<number, number>();
+  for (const r of (res.rows ?? [])) {
+    const day = Number(r.dimensionValues?.[0]?.value ?? 0);
+    const sessions = Number(r.metricValues?.[0]?.value ?? 0);
+    dayMap.set(day, sessions);
+  }
+
+  const result: DayOfWeekData[] = Array.from({ length: 7 }, (_, i) => ({
+    dayOfWeek: i,
+    name: DAY_NAMES[i],
+    sessions: dayMap.get(i) ?? 0,
+  }));
+
+  const ttl = getCacheTtl(startDate, endDate);
+  if (ttl > 0) setCache(cacheKey, result, ttl);
+  return result;
+}
+
 // ─── Dashboard (all-in-one) ───
 
 export async function getDashboard(
@@ -410,7 +455,7 @@ export async function getDashboard(
   const cached = getCached<DashboardData>(cacheKey);
   if (cached) return cached;
 
-  const [overview, channels, topPages, campaigns, devices, hourly] =
+  const [overview, channels, topPages, campaigns, devices, hourly, dayOfWeek] =
     await Promise.all([
       getOverview(startDate, endDate),
       getChannelBreakdown(startDate, endDate),
@@ -418,6 +463,7 @@ export async function getDashboard(
       getCampaigns(startDate, endDate),
       getDeviceBreakdown(startDate, endDate),
       getHourlyPattern(startDate, endDate),
+      getDayOfWeekPattern(startDate, endDate),
     ]);
 
   const result: DashboardData = {
@@ -427,6 +473,7 @@ export async function getDashboard(
     campaigns,
     devices,
     hourly,
+    dayOfWeek,
     cachedAt: new Date().toISOString(),
   };
 

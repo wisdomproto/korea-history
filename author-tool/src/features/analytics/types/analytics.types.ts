@@ -35,6 +35,7 @@ export interface PageData { path: string; pageViews: number; }
 export interface CampaignData { source: string; medium: string; campaign: string; sessions: number; }
 export interface DeviceData { device: string; sessions: number; percentage: number; }
 export interface HourlyData { hour: number; sessions: number; }
+export interface DayOfWeekData { dayOfWeek: number; name: string; sessions: number; }
 
 export interface DashboardData {
   overview: KpiData;
@@ -43,5 +44,6 @@ export interface DashboardData {
   campaigns: CampaignData[];
   devices: DeviceData[];
   hourly: HourlyData[];
+  dayOfWeek: DayOfWeekData[];
   cachedAt?: string;
 }
