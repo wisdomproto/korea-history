@@ -61,6 +61,7 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
     sidebarSection, setSidebarSection,
     selectedNoteId, setSelectedNoteId,
     activeView, setActiveView,
+    sidebarCollapsed, toggleSidebar,
   } = useEditorStore();
   const qc = useQueryClient();
 
@@ -176,8 +177,49 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
     setAddingProject(false);
   };
 
+  // ─── Collapsed sidebar ───
+  if (sidebarCollapsed) {
+    return (
+      <aside className="flex h-screen w-12 flex-col border-r bg-white shrink-0">
+        <div className="flex flex-col items-center py-3 gap-2">
+          <button
+            onClick={toggleSidebar}
+            className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-500 transition-colors"
+            title="사이드바 펼치기"
+          >
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+        <div className="flex flex-col items-center gap-1 border-t py-2">
+          <button
+            onClick={() => { setActiveView('analytics'); }}
+            className={`p-1.5 rounded-lg text-sm transition-colors ${activeView === 'analytics' ? 'bg-emerald-100' : 'hover:bg-gray-100'}`}
+            title="사이트 분석"
+          >📊</button>
+          <button
+            onClick={() => { setSidebarSection('exam'); toggleSidebar(); }}
+            className={`p-1.5 rounded-lg text-sm transition-colors ${sidebarSection === 'exam' ? 'bg-emerald-100' : 'hover:bg-gray-100'}`}
+            title="시험"
+          >📋</button>
+          <button
+            onClick={() => { setSidebarSection('notes'); toggleSidebar(); }}
+            className={`p-1.5 rounded-lg text-sm transition-colors ${sidebarSection === 'notes' ? 'bg-emerald-100' : 'hover:bg-gray-100'}`}
+            title="노트"
+          >📝</button>
+          <button
+            onClick={() => { setSidebarSection('content'); toggleSidebar(); }}
+            className={`p-1.5 rounded-lg text-sm transition-colors ${sidebarSection === 'content' ? 'bg-emerald-100' : 'hover:bg-gray-100'}`}
+            title="컨텐츠"
+          >✏️</button>
+        </div>
+      </aside>
+    );
+  }
+
   return (
-    <aside className="flex h-screen w-72 flex-col border-r bg-white">
+    <aside className="flex h-screen w-72 flex-col border-r bg-white shrink-0">
       {/* ═══ 1. Header ═══ */}
       <div className="border-b px-4 py-3">
         <div className="flex items-center justify-between">
@@ -188,6 +230,15 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
             기출노트 저작도구
           </h1>
           <div className="flex items-center gap-1">
+            <button
+              onClick={toggleSidebar}
+              className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-500 transition-colors"
+              title="사이드바 접기"
+            >
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11 19l-7-7 7-7M19 19l-7-7 7-7" />
+              </svg>
+            </button>
             <button
               onClick={() => setActiveView('analytics')}
               className={`p-1.5 rounded-lg text-sm transition-colors ${

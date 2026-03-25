@@ -124,11 +124,13 @@ korea_history/
 ## 핵심 기능 (저작도구)
 
 ### 사이드바 구조
-- **헤더**: "기출노트 저작도구" + 📊 분석 버튼
+- **헤더**: "기출노트 저작도구" + « 접기 버튼 + 📊 분석 버튼
+- **접기/펼치기**: « 버튼으로 사이드바 토글 (접히면 아이콘만 보이는 미니바 w-12)
 - **기본 진입 화면**: GA4 Analytics Dashboard (프로젝트 선택 전)
 - **프로젝트 셀렉터**: 프로젝트 추가/삭제, 열기/접기 (기본: 한국사능력검정시험)
 - **프로젝트 내 탭**: 📋 시험 | 📝 요약노트 | ✏️ 컨텐츠
 - 프로젝트 데이터: `data/projects/index.json`
+- 상태: `editor.store.ts` (sidebarCollapsed)
 
 ### 멀티채널 컨텐츠 시스템 (NEW)
 한 주제로 여러 채널용 컨텐츠를 동시 생성하는 시스템.
@@ -238,7 +240,9 @@ NAVER_API_LICENSE_KEY=
 NAVER_API_SECRET_KEY=
 NAVER_API_CUSTOMER_ID=
 GA4_PROPERTY_ID=
-GA4_SERVICE_ACCOUNT_KEY=./ga4-key.json
+GA4_SERVICE_ACCOUNT_KEY=./ga4-key.json  # 로컬: 파일 경로, Railway: 개별 변수 사용
+GA4_CLIENT_EMAIL=                        # Railway용 (SERVICE_ACCOUNT_KEY 대체)
+GA4_PRIVATE_KEY=                         # Railway용 (SERVICE_ACCOUNT_KEY 대체)
 ```
 
 ## SEO

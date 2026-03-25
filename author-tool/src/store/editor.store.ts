@@ -5,6 +5,11 @@ type ContentTab = 'base' | 'blog' | 'instagram' | 'threads' | 'longform' | 'shor
 type SidebarSection = 'exam' | 'notes' | 'content' | null;
 
 interface EditorStore {
+  // Sidebar collapsed
+  sidebarCollapsed: boolean;
+  setSidebarCollapsed: (collapsed: boolean) => void;
+  toggleSidebar: () => void;
+
   // Project
   selectedProjectId: string;
   setSelectedProjectId: (id: string) => void;
@@ -35,6 +40,11 @@ interface EditorStore {
 }
 
 export const useEditorStore = create<EditorStore>((set) => ({
+  // Sidebar collapsed
+  sidebarCollapsed: false,
+  setSidebarCollapsed: (collapsed) => set({ sidebarCollapsed: collapsed }),
+  toggleSidebar: () => set((s) => ({ sidebarCollapsed: !s.sidebarCollapsed })),
+
   // Project
   selectedProjectId: 'proj-default',
   setSelectedProjectId: (id) => set({ selectedProjectId: id, activeView: 'dashboard', selectedExamId: null, selectedContentId: null, selectedNoteId: null, sidebarSection: 'exam' }),
