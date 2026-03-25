@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기출노트 한능검 — 카카오 오픈채팅 마케팅 심화 전략</title>
+<style>
+  :root { --emerald: #059669; --emerald-light: #d1fae5; --bg: #FAFAF8; --text: #1a1a1a; --gray: #6b7280; --border: #e5e7eb; --red: #dc2626; --amber: #d97706; --blue: #2563eb; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+  h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; color: var(--emerald); }
+  .subtitle { color: var(--gray); font-size: 15px; margin-bottom: 40px; }
+  h2 { font-size: 22px; font-weight: 700; margin: 48px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--emerald); }
+  h3 { font-size: 18px; font-weight: 700; margin: 32px 0 12px; color: var(--text); }
+  h4 { font-size: 16px; font-weight: 600; margin: 24px 0 8px; }
+  p, li { font-size: 15px; margin-bottom: 8px; }
+  ul, ol { padding-left: 24px; margin-bottom: 16px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 14px; }
+  th, td { padding: 10px 12px; border: 1px solid var(--border); text-align: left; }
+  th { background: var(--emerald-light); font-weight: 600; white-space: nowrap; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+  .badge-green { background: #dcfce7; color: #166534; }
+  .badge-amber { background: #fef3c7; color: #92400e; }
+  .badge-red { background: #fee2e2; color: #991b1b; }
+  .badge-blue { background: #dbeafe; color: #1e40af; }
+  .callout { padding: 16px 20px; border-radius: 8px; margin: 16px 0; font-size: 14px; }
+  .callout-green { background: #ecfdf5; border-left: 4px solid var(--emerald); }
+  .callout-amber { background: #fffbeb; border-left: 4px solid var(--amber); }
+  .callout-red { background: #fef2f2; border-left: 4px solid var(--red); }
+  .callout-blue { background: #eff6ff; border-left: 4px solid var(--blue); }
+  .funnel { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 16px 0; font-size: 14px; font-weight: 600; }
+  .funnel span { background: var(--emerald-light); padding: 8px 16px; border-radius: 8px; }
+  .funnel .arrow { background: none; padding: 0; color: var(--emerald); font-size: 18px; }
+  .card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin: 16px 0; }
+  .card-title { font-weight: 700; font-size: 16px; margin-bottom: 8px; }
+  .msg-example { background: #f3f4f6; border-radius: 12px; padding: 16px; margin: 8px 0; font-size: 14px; line-height: 1.8; white-space: pre-line; }
+  .timeline { border-left: 3px solid var(--emerald); padding-left: 20px; margin: 16px 0; }
+  .timeline-item { margin-bottom: 20px; position: relative; }
+  .timeline-item::before { content: ''; position: absolute; left: -26px; top: 6px; width: 10px; height: 10px; background: var(--emerald); border-radius: 50%; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } .funnel { flex-direction: column; align-items: flex-start; } }
+  .toc { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin: 24px 0; }
+  .toc a { color: var(--emerald); text-decoration: none; font-size: 14px; }
+  .toc a:hover { text-decoration: underline; }
+  .toc ol { margin-bottom: 0; }
+  .toc li { margin-bottom: 4px; }
+  strong { font-weight: 700; }
+  code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<h1>카카오 오픈채팅 마케팅 심화 전략</h1>
+<p class="subtitle">기출노트 한능검 (gcnote.co.kr) | 분석일: 2026-03-24 | 전략 유형: 커뮤니티 침투 + 자체 방 운영 병행</p>
+
+<div class="toc">
+  <strong>목차</strong>
+  <ol>
+    <li><a href="#overview">전략 개요 및 현황 분석</a></li>
+    <li><a href="#existing">기존 오픈채팅방 활용 전략 (7개 방, 9,800명+)</a></li>
+    <li><a href="#own-room">자체 "기출노트 한능검 스터디방" 개설 전략</a></li>
+    <li><a href="#natural-promo">자연스러운 홍보 메시지 설계</a></li>
+    <li><a href="#season">시험 시즌 집중 전술 (D-30 ~ D+7)</a></li>
+    <li><a href="#content-calendar">콘텐츠 캘린더 & 메시지 템플릿</a></li>
+    <li><a href="#funnel">전환 퍼널 설계</a></li>
+    <li><a href="#kpi">KPI 및 측정 기준</a></li>
+    <li><a href="#risk">리스크 관리 & 주의사항</a></li>
+    <li><a href="#action">실행 로드맵 (12주)</a></li>
+  </ol>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="overview">1. 전략 개요 및 현황 분석</h2>
+
+<h3>서비스 핵심 셀링 포인트 (오픈채팅용)</h3>
+<ul>
+  <li><strong>완전 무료 + 회원가입 불필요</strong> — 링크만 공유하면 즉시 사용 가능 (전환 마찰 제로)</li>
+  <li><strong>40~77회 기출 1,900+ 문항</strong> — 가장 방대한 무료 기출 DB</li>
+  <li><strong>AI 해설 + 최태성 강의 자동 연결</strong> — 문제별 YouTube 타임스탬프 1,850개</li>
+  <li><strong>요약노트 87개</strong> — 시대별 정리 + 관련 기출 즉시 풀기</li>
+  <li><strong>맞춤형 학습</strong> — 시대/유형/키워드 선택 학습, 오답노트 자동 수집</li>
+</ul>
+
+<div class="callout callout-green">
+  <strong>핵심 인사이트:</strong> "무료 + 회원가입 없음"이라는 특성은 오픈채팅방 마케팅에서 최고의 무기입니다. 홍보해도 "광고"가 아닌 "정보 공유"로 인식됩니다. 유료 서비스나 앱 설치를 권유하는 것과는 본질적으로 다릅니다.
+</div>
+
+<h3>타겟 오픈채팅방 현황 분석</h3>
+<table>
+  <tr>
+    <th>채팅방</th>
+    <th>멤버 수</th>
+    <th>유형</th>
+    <th>한능검 필요도</th>
+    <th>침투 우선순위</th>
+  </tr>
+  <tr>
+    <td><strong>한능검 Q&A</strong></td>
+    <td>1,150명</td>
+    <td>한능검 직접 관련</td>
+    <td><span class="badge badge-green">최상</span></td>
+    <td><span class="badge badge-green">1순위</span></td>
+  </tr>
+  <tr>
+    <td><strong>경찰최대</strong></td>
+    <td>2,447명</td>
+    <td>경찰 시험 준비</td>
+    <td><span class="badge badge-green">상</span></td>
+    <td><span class="badge badge-green">1순위</span></td>
+  </tr>
+  <tr>
+    <td><strong>경찰공무원</strong></td>
+    <td>1,361명</td>
+    <td>경찰 시험 준비</td>
+    <td><span class="badge badge-green">상</span></td>
+    <td><span class="badge badge-green">1순위</span></td>
+  </tr>
+  <tr>
+    <td><strong>계리직</strong></td>
+    <td>1,420명</td>
+    <td>우체국 계리직</td>
+    <td><span class="badge badge-amber">중상</span></td>
+    <td><span class="badge badge-amber">2순위</span></td>
+  </tr>
+  <tr>
+    <td><strong>소방공무원</strong></td>
+    <td>1,212명</td>
+    <td>소방 시험 준비</td>
+    <td><span class="badge badge-amber">중상</span></td>
+    <td><span class="badge badge-amber">2순위</span></td>
+  </tr>
+  <tr>
+    <td><strong>세무직</strong></td>
+    <td>1,118명</td>
+    <td>세무 공무원</td>
+    <td><span class="badge badge-amber">중</span></td>
+    <td><span class="badge badge-amber">2순위</span></td>
+  </tr>
+  <tr>
+    <td><strong>간호직</strong></td>
+    <td>1,088명</td>
+    <td>간호 공무원</td>
+    <td><span class="badge badge-amber">중</span></td>
+    <td><span class="badge badge-amber">2순위</span></td>
+  </tr>
+</table>
+
+<div class="callout callout-blue">
+  <strong>왜 이 7개 방인가:</strong> 경찰/소방/계리직/세무직/간호직 공무원 시험은 모두 한국사능력검정시험 2급 이상을 응시 자격으로 요구합니다. 즉 이 방의 멤버 전원이 한능검을 반드시 통과해야 하는 잠재 사용자입니다. "한능검 Q&A"는 직접 타겟이므로 최우선.
+</div>
+
+<h3>전략 방향: 이중 트랙</h3>
+<div class="grid-2">
+  <div class="card">
+    <div class="card-title">Track A: 기존 방 침투 (7개)</div>
+    <p>9,800+ 즉시 접근 가능한 타겟층. 신뢰 구축 후 자연스러운 링크 공유. <strong>단기 성과</strong> 중심.</p>
+  </div>
+  <div class="card">
+    <div class="card-title">Track B: 자체 방 개설 (1개)</div>
+    <p>"기출노트 한능검 스터디방" 개설. 브랜드 채널 + 충성 사용자 커뮤니티. <strong>장기 자산</strong> 구축.</p>
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<h2 id="existing">2. 기존 오픈채팅방 활용 전략</h2>
+
+<h3>2.1 침투 단계별 로드맵</h3>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <h4>1단계: 관찰 & 분석 (1~2주차)</h4>
+    <ul>
+      <li>7개 방 모두 입장 (같은 날 한꺼번에 들어가지 말것 — 2~3일 간격)</li>
+      <li>2주간 메시지 읽기만 수행. 절대 발언하지 않음</li>
+      <li>파악 항목: 주요 활동 시간대, 자주 나오는 질문 유형, 핵심 활동 멤버, 방장 성향, 홍보 허용 분위기</li>
+      <li>각 방별 관찰 노트 작성 (활동량, 분위기, 한능검 관련 질문 빈도)</li>
+    </ul>
+  </div>
+  <div class="timeline-item">
+    <h4>2단계: 전문가 포지셔닝 (3~4주차)</h4>
+    <ul>
+      <li>한능검 관련 질문에 <strong>정성스러운 텍스트 답변</strong> 제공 (링크 없이)</li>
+      <li>"몇 급 필요해요?" → 자격 요건 정리해서 답변</li>
+      <li>"어디서부터 공부해야 해요?" → 시대별 공부 순서 + 팁 제공</li>
+      <li>"기출 어디서 풀어요?" → 아직 링크 공유 안 함. "기출 많이 풀어보세요" 정도만</li>
+      <li>주 3~5회 이상 답변 → "한능검은 저 분한테 물어보면 됨" 인식 형성</li>
+    </ul>
+  </div>
+  <div class="timeline-item">
+    <h4>3단계: 자연스러운 링크 공유 시작 (5~6주차)</h4>
+    <ul>
+      <li>누군가 기출 관련 질문을 하면 답변 + "여기서 바로 풀어볼 수 있어요" 형태로 링크 추가</li>
+      <li><strong>반드시 질문에 대한 답변을 먼저 쓴 후</strong> 보조 자료로 링크 첨부</li>
+      <li>처음에는 특정 문제 링크 (gcnote.co.kr/exam/XX/YY) — 메인 페이지가 아닌 구체적 링크</li>
+      <li>주 1~2회로 제한. 매번 링크 붙이면 스팸 인식</li>
+    </ul>
+  </div>
+  <div class="timeline-item">
+    <h4>4단계: 정보 제공자 정착 (7주차~)</h4>
+    <ul>
+      <li>시험 시즌에 맞춘 유용한 정보 + 링크를 정기적으로 공유</li>
+      <li>"다음 시험 D-14입니다! 최근 3회 기출 많이 나온 키워드 정리" + 링크</li>
+      <li>가답안 발행 시 가장 먼저 공유 (가답안 기능 구현 시)</li>
+      <li>멤버들이 먼저 링크를 공유해주는 단계가 목표</li>
+    </ul>
+  </div>
+</div>
+
+<h3>2.2 방별 맞춤 접근법</h3>
+
+<div class="card">
+  <div class="card-title">한능검 Q&A (1,150명) — 직접 타겟</div>
+  <p><strong>접근:</strong> 가장 적극적으로 활동. 한능검 전문가로 포지셔닝.</p>
+  <p><strong>콘텐츠:</strong> 기출 해설, 시대별 핵심 정리, 공부법 팁, 시험 일정 안내</p>
+  <p><strong>링크 공유 타이밍:</strong> "이 문제 해설이 잘 나와있는 곳" 형태로 특정 문제 페이지 공유</p>
+  <p><strong>주의:</strong> 이 방은 경쟁 서비스도 활동할 가능성 높음. 노골적 홍보 절대 금지, 순수 도움 자세 유지</p>
+</div>
+
+<div class="card">
+  <div class="card-title">경찰공무원 + 경찰최대 (3,808명) — 최대 규모</div>
+  <p><strong>접근:</strong> 한능검은 경찰 시험의 "부수 과목". 본업(경찰 시험) 존중하면서 한능검 서포터 역할.</p>
+  <p><strong>콘텐츠:</strong> "경찰 시험 준비하시면서 한능검은 어떻게 하세요?" 대화 유도</p>
+  <p><strong>핵심 메시지:</strong> "한능검은 따로 시간 쓰지 말고 기출만 반복하면 됩니다" → 기출 사이트 자연 연결</p>
+  <p><strong>시즌 활용:</strong> 한능검 시험 전 "경찰 준비하시는 분들, 이번 한능검 접수 기간이에요!" 알림 역할</p>
+</div>
+
+<div class="card">
+  <div class="card-title">소방/세무/간호/계리직 (4,838명) — 안정적 보조 채널</div>
+  <p><strong>접근:</strong> 각 직군별 한능검 필요 급수를 정확히 알려주는 "한능검 가이드" 역할</p>
+  <p><strong>콘텐츠:</strong> "소방 시험 한능검 2급 커트라인 알려드릴게요", "세무직은 한능검 몇 급 필요해요?" 등</p>
+  <p><strong>빈도:</strong> 주 1~2회 활동. 경찰 방보다 낮은 빈도 (한능검 비중이 상대적으로 낮음)</p>
+</div>
+
+<h3>2.3 절대 하지 말아야 할 것 (레드라인)</h3>
+<div class="callout callout-red">
+  <ul>
+    <li><strong>입장 직후 링크 공유</strong> — 즉시 강퇴 + 스팸 신고 가능</li>
+    <li><strong>"기출노트 한능검 좋아요!" 식의 직접 홍보</strong> — 광고로 인식</li>
+    <li><strong>같은 링크 반복 공유</strong> — 3회 이상 같은 URL은 스팸</li>
+    <li><strong>다른 사람 질문 무시하고 링크만 투척</strong> — 텍스트 답변 없이 링크만 던지지 말 것</li>
+    <li><strong>여러 방에 동시에 같은 메시지 복붙</strong> — 발각 시 전체 신뢰 상실</li>
+    <li><strong>방장/운영자와 갈등</strong> — 방장이 불편해하면 즉시 중단</li>
+  </ul>
+</div>
+
+
+<!-- ============================================================ -->
+<h2 id="own-room">3. 자체 "기출노트 한능검 스터디방" 개설 전략</h2>
+
+<h3>3.1 개설 타당성 분석</h3>
+
+<table>
+  <tr>
+    <th>검토 항목</th>
+    <th>분석</th>
+    <th>판정</th>
+  </tr>
+  <tr>
+    <td>수요</td>
+    <td>한능검 Q&A방(1,150명) 존재 = 수요 입증. 하지만 스터디 목적의 방은 별도 니치</td>
+    <td><span class="badge badge-green">긍정</span></td>
+  </tr>
+  <tr>
+    <td>차별화</td>
+    <td>기존 방은 Q&A 중심. "기출 기반 스터디 + 시험 시즌 집중 운영"은 차별점</td>
+    <td><span class="badge badge-green">긍정</span></td>
+  </tr>
+  <tr>
+    <td>운영 리소스</td>
+    <td>1인 운영 → 매일 최소 15~30분 투자 필요. 비시즌 활성도 유지가 과제</td>
+    <td><span class="badge badge-amber">보통</span></td>
+  </tr>
+  <tr>
+    <td>초기 멤버 확보</td>
+    <td>기존 7개 방 활동으로 신뢰 쌓은 후 자연 유입 가능. 웹사이트에서도 유도 가능</td>
+    <td><span class="badge badge-green">긍정</span></td>
+  </tr>
+  <tr>
+    <td>브랜드 자산</td>
+    <td>자체 커뮤니티는 장기적으로 가장 가치 있는 마케팅 자산</td>
+    <td><span class="badge badge-green">긍정</span></td>
+  </tr>
+</table>
+
+<div class="callout callout-green">
+  <strong>결론: 개설 추천.</strong> 단, 기존 방 침투(Track A) 4~6주 활동으로 기반을 다진 후 개설하는 것이 최적. 초기 멤버 없이 방을 만들면 "죽은 방"이 되어 역효과.
+</div>
+
+<h3>3.2 방 설계</h3>
+
+<table>
+  <tr>
+    <th>항목</th>
+    <th>설정</th>
+    <th>이유</th>
+  </tr>
+  <tr>
+    <td>방 이름</td>
+    <td><strong>한능검 기출 스터디방 | 기출노트</strong></td>
+    <td>"한능검" + "기출" + "스터디" = 검색 핵심 키워드 3개 포함</td>
+  </tr>
+  <tr>
+    <td>방 설명</td>
+    <td>한국사능력검정시험 기출 풀이 + 시험 정보 공유방. 무료 기출 사이트(gcnote.co.kr) 운영진이 함께합니다. 질문 환영!</td>
+    <td>서비스 연결 + 질문 허들 낮추기</td>
+  </tr>
+  <tr>
+    <td>프로필 이미지</td>
+    <td>기출노트 로고 또는 "한능검 스터디" 텍스트 이미지</td>
+    <td>전문적 + 알아보기 쉽게</td>
+  </tr>
+  <tr>
+    <td>검색 허용</td>
+    <td>ON</td>
+    <td>카카오 검색 유입 필수</td>
+  </tr>
+  <tr>
+    <td>참여 코드</td>
+    <td>없음 (초기 3개월). 스팸 심해지면 간단한 코드 설정</td>
+    <td>진입 장벽 최소화</td>
+  </tr>
+  <tr>
+    <td>방 유형</td>
+    <td>그룹 채팅 (1:N)</td>
+    <td>커뮤니티형 운영</td>
+  </tr>
+</table>
+
+<h3>3.3 환영 메시지 & 규칙</h3>
+
+<div class="msg-example">
+<strong>[환영 메시지 — 방 고정 공지]</strong>
+
+안녕하세요! 한능검 기출 스터디방에 오신 걸 환영합니다.
+
+이 방은 한국사능력검정시험을 준비하는 분들이 함께 공부하는 공간입니다.
+
+[방 활용법]
+- 기출 관련 질문 자유롭게 올려주세요
+- 시험 일정/접수 정보 공유합니다
+- 시험 시즌에는 D-day 카운트 + 핵심 정리 올립니다
+
+[무료 기출 풀기]
+gcnote.co.kr (회원가입 없이 바로 풀 수 있어요)
+
+[규칙]
+1. 광고/스팸 금지 (경고 없이 강퇴)
+2. 서로 존중. 비하/욕설 금지
+3. 한능검 외 시험 질문도 OK (공무원 한국사 등)
+
+좋은 결과 함께 만들어요!
+</div>
+
+<h3>3.4 운영 콘텐츠 설계</h3>
+
+<table>
+  <tr>
+    <th>콘텐츠 유형</th>
+    <th>빈도</th>
+    <th>시간</th>
+    <th>예시</th>
+  </tr>
+  <tr>
+    <td><strong>오늘의 기출 1문제</strong></td>
+    <td>매일 (평일)</td>
+    <td>오전 8시</td>
+    <td>"오늘의 한능검 기출! 다음 중 임진왜란 당시 의병장이 아닌 사람은?" + 정답은 오후 공개</td>
+  </tr>
+  <tr>
+    <td><strong>오늘의 정답 + 해설</strong></td>
+    <td>매일 (평일)</td>
+    <td>오후 6시</td>
+    <td>"정답은 2번! 자세한 해설 → (링크)" 형태로 사이트 연결</td>
+  </tr>
+  <tr>
+    <td><strong>시험 정보 공유</strong></td>
+    <td>수시</td>
+    <td>-</td>
+    <td>접수 기간, 시험 일정, 성적 발표일, 준비물 등</td>
+  </tr>
+  <tr>
+    <td><strong>주간 핵심 키워드 정리</strong></td>
+    <td>주 1회 (일)</td>
+    <td>오전 10시</td>
+    <td>"이번 주 키워드: 동학농민운동. 최근 5회 출제 3회!" + 요약노트 링크</td>
+  </tr>
+  <tr>
+    <td><strong>Q&A 답변</strong></td>
+    <td>수시</td>
+    <td>-</td>
+    <td>멤버 질문에 성실 답변. 관련 기출/노트 링크 첨부</td>
+  </tr>
+  <tr>
+    <td><strong>시험 시즌 특별 콘텐츠</strong></td>
+    <td>D-14부터 매일</td>
+    <td>-</td>
+    <td>D-day 카운트다운, 직전 핵심 정리, 시험 후 가답안</td>
+  </tr>
+</table>
+
+<h3>3.5 멤버 유입 경로</h3>
+
+<table>
+  <tr>
+    <th>경로</th>
+    <th>방법</th>
+    <th>예상 월 유입</th>
+    <th>시작 시점</th>
+  </tr>
+  <tr>
+    <td><strong>기존 7개 오픈채팅방</strong></td>
+    <td>활동 중 "저희 한능검 스터디방도 있어요" 자연스럽게 언급 (방장 허락 시)</td>
+    <td>10~20명</td>
+    <td>개설 직후</td>
+  </tr>
+  <tr>
+    <td><strong>gcnote.co.kr 웹사이트</strong></td>
+    <td>Footer 또는 사이드에 오픈채팅 참여 링크. 시험 결과 페이지에 "스터디방 참여하기" CTA</td>
+    <td>20~40명</td>
+    <td>개설 직후</td>
+  </tr>
+  <tr>
+    <td><strong>네이버 블로그</strong></td>
+    <td>블로그 포스팅 하단에 오픈채팅 링크 (개설 후)</td>
+    <td>10~20명</td>
+    <td>블로그 개설 후</td>
+  </tr>
+  <tr>
+    <td><strong>인스타그램</strong></td>
+    <td>프로필 링크 + 스토리/릴스에서 언급</td>
+    <td>5~15명</td>
+    <td>인스타 운영 시작 후</td>
+  </tr>
+  <tr>
+    <td><strong>카카오 검색 자연 유입</strong></td>
+    <td>방 이름 SEO ("한능검", "기출", "스터디" 키워드 포함)</td>
+    <td>5~10명</td>
+    <td>자연 발생</td>
+  </tr>
+</table>
+
+<div class="callout callout-amber">
+  <strong>초기 목표:</strong> 개설 후 1개월 내 50명 달성이 관건. 50명 미만이면 방이 "죽은 느낌"을 줍니다. 웹사이트 유입 + 기존 방 활동을 통해 초기 50명을 빠르게 확보하세요.
+</div>
+
+<h3>3.6 웹사이트 연동 방안</h3>
+
+<div class="card">
+  <div class="card-title">웹사이트에서 오픈채팅방으로 유도하는 위치</div>
+  <ul>
+    <li><strong>Footer</strong>: "한능검 스터디방 참여하기" 링크 (전 페이지 노출)</li>
+    <li><strong>시험 결과 페이지</strong>: "같이 공부하실래요? 한능검 스터디방" CTA 버튼</li>
+    <li><strong>메인 페이지 배너</strong>: 시험 시즌에 "스터디방에서 함께 준비해요" 배너</li>
+    <li><strong>오답노트 페이지</strong>: "혼자 공부하기 힘들 때, 스터디방에서 질문하세요"</li>
+  </ul>
+</div>
+
+
+<!-- ============================================================ -->
+<h2 id="natural-promo">4. 자연스러운 홍보 메시지 설계</h2>
+
+<h3>4.1 상황별 메시지 템플릿</h3>
+
+<p>아래 템플릿은 기존 오픈채팅방에서 사용하는 것으로, <strong>반드시 해당 질문/상황이 발생했을 때만</strong> 사용합니다.</p>
+
+<div class="card">
+  <div class="card-title">상황 1: "한능검 기출 어디서 풀어요?"</div>
+  <div class="msg-example">기출은 많이 풀수록 좋아요! 최근 회차부터 역순으로 푸는 걸 추천해요.
+
+저는 gcnote.co.kr 여기서 풀고 있는데 무료에 회원가입도 없어서 편해요. 77회부터 40회까지 다 있고, 문제마다 해설도 나와요.
+
+근데 중요한 건 풀고 나서 틀린 문제 복습하는 거예요! 같은 유형이 계속 나오거든요.</div>
+  <p><strong>포인트:</strong> 답변(공부법 팁)이 메인, 링크는 보조. 마지막에 추가 팁으로 마무리.</p>
+</div>
+
+<div class="card">
+  <div class="card-title">상황 2: "한능검 독학으로 될까요? / 공부법 추천"</div>
+  <div class="msg-example">독학 충분해요! 저도 독학으로 1급 땄어요.
+
+순서 추천드리면:
+1. 요약노트로 시대별 흐름 잡기
+2. 기출 3회분 풀어보기 (최신 회차)
+3. 틀린 부분 다시 노트 복습
+4. 기출 5회분 더 풀기
+
+gcnote.co.kr 에서 요약노트 + 기출 다 무료로 볼 수 있어요. 노트 읽다가 바로 관련 기출 풀 수 있어서 편합니다.</div>
+  <p><strong>포인트:</strong> 구체적인 공부법을 먼저 제시. 사이트는 "도구"로 언급.</p>
+</div>
+
+<div class="card">
+  <div class="card-title">상황 3: "이 문제 해설 아시는 분?" (특정 문제 질문)</div>
+  <div class="msg-example">이 문제는 [구체적 해설 텍스트로 답변]
+
+...이런 맥락에서 정답이 3번이에요.
+
+자세한 해설은 여기 있어요:
+gcnote.co.kr/exam/72/15</div>
+  <p><strong>포인트:</strong> 텍스트로 답변을 먼저 완성한 후, "자세한 해설"로 특정 문제 링크 첨부. 메인 페이지가 아닌 해당 문제 직접 링크.</p>
+</div>
+
+<div class="card">
+  <div class="card-title">상황 4: "한능검 시험 언제예요?" (시험 정보 질문)</div>
+  <div class="msg-example">다음 시험은 X월 X일이에요! 접수는 X월 X일~X일까지.
+
+시험 준비 시작하시려면 최근 3회 기출부터 풀어보세요.
+gcnote.co.kr 에서 최신 회차 기출 바로 풀 수 있어요.</div>
+  <p><strong>포인트:</strong> 시험 정보를 정확히 전달 (날짜 등). 부가 정보로 기출 추천 + 링크.</p>
+</div>
+
+<div class="card">
+  <div class="card-title">상황 5: 대화 없이 먼저 정보 제공 (시험 시즌 한정)</div>
+  <div class="msg-example">한능검 X회 시험 D-14입니다!
+이번 시험 준비하시는 분들, 파이팅하세요!
+
+최근 3회에서 많이 나온 키워드 TOP 5:
+1. 동학농민운동 (3회 연속!)
+2. 일제강점기 독립운동
+3. 조선 세종 시대
+4. 6.25 전쟁
+5. 고려 무신정변
+
+기출로 복습하시려면 → gcnote.co.kr</div>
+  <p><strong>포인트:</strong> 시험 시즌 D-14 이내에만 사용. 유용한 정보(키워드 TOP 5)가 본체, 링크는 부록.</p>
+</div>
+
+<h3>4.2 메시지 톤 & 매너 가이드</h3>
+
+<table>
+  <tr>
+    <th>항목</th>
+    <th>DO</th>
+    <th>DON'T</th>
+  </tr>
+  <tr>
+    <td>톤</td>
+    <td>같이 공부하는 동료, 선배 느낌. 반말/존댓말은 방 분위기에 맞춤</td>
+    <td>비즈니스 어투, "저희 서비스에서는~" 공식적 홍보 톤</td>
+  </tr>
+  <tr>
+    <td>링크 빈도</td>
+    <td>1개 대화 스레드에 최대 1개 링크. 주 2~3회 이하</td>
+    <td>매 답변마다 링크, 같은 날 3개 이상 링크</td>
+  </tr>
+  <tr>
+    <td>링크 형태</td>
+    <td>구체적 페이지 (특정 문제, 특정 노트)</td>
+    <td>매번 메인 페이지만 반복</td>
+  </tr>
+  <tr>
+    <td>자기 소개</td>
+    <td>"한능검 공부하고 있어요" / "한능검 사이트 만들고 있어요" (물어보면)</td>
+    <td>처음부터 "기출노트 한능검 운영자입니다" 선언</td>
+  </tr>
+  <tr>
+    <td>타 서비스 언급</td>
+    <td>다른 좋은 자료도 추천 ("EBS 한능검 강의도 좋아요")</td>
+    <td>경쟁 서비스 깎아내리기</td>
+  </tr>
+</table>
+
+
+<!-- ============================================================ -->
+<h2 id="season">5. 시험 시즌 집중 전술 (D-30 ~ D+7)</h2>
+
+<h3>5.1 시험 시즌 타임라인</h3>
+
+<p>2026년 시험 일정: <strong>2월, 4월, 6월, 8월, 10월</strong> (연 5회)</p>
+
+<table>
+  <tr>
+    <th>시점</th>
+    <th>기존 방 활동</th>
+    <th>자체 방 활동</th>
+    <th>웹사이트 연동</th>
+  </tr>
+  <tr>
+    <td><strong>D-30</strong></td>
+    <td>"다음 시험 한 달 남았어요!" 정보 공유</td>
+    <td>"D-30 스터디 시작합니다!" 모집</td>
+    <td>메인 배너 교체</td>
+  </tr>
+  <tr>
+    <td><strong>D-21</strong></td>
+    <td>접수 안내 (기간, 방법, 비용)</td>
+    <td>접수 리마인더 + 급수별 커트라인 안내</td>
+    <td>접수 링크 안내 포스팅</td>
+  </tr>
+  <tr>
+    <td><strong>D-14</strong></td>
+    <td>최빈출 키워드 TOP 5 공유 + 기출 링크</td>
+    <td>"2주 완성 기출 풀기 챌린지" 시작</td>
+    <td>블로그 "D-14 핵심 정리" 포스팅</td>
+  </tr>
+  <tr>
+    <td><strong>D-7</strong></td>
+    <td>"일주일 남았어요! 기출 돌려야 해요"</td>
+    <td>매일 기출 1회분 풀기 챌린지 + 인증</td>
+    <td>맞춤형 학습 추천</td>
+  </tr>
+  <tr>
+    <td><strong>D-3</strong></td>
+    <td>시험장 준비물 체크리스트</td>
+    <td>직전 핵심 키워드 20개 정리 + 링크</td>
+    <td>직전 대비 페이지</td>
+  </tr>
+  <tr>
+    <td><strong>D-1</strong></td>
+    <td>"내일 시험 파이팅!" 응원</td>
+    <td>응원 + 수험 팁 (시간 배분 등)</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><strong>D-day</strong></td>
+    <td>"시험 보신 분들 수고하셨어요!"</td>
+    <td>시험 후기 공유 유도</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><strong>D+1~3</strong></td>
+    <td>가답안 공유 (가능 시 가장 빨리!)</td>
+    <td>가답안 + 체감 난이도 토론</td>
+    <td>가답안/해설 업데이트</td>
+  </tr>
+  <tr>
+    <td><strong>D+7</strong></td>
+    <td>성적 발표일 안내</td>
+    <td>"다음 시험 목표 세우기" + 약점 분석 안내</td>
+    <td>내 기록/약점 분석 안내</td>
+  </tr>
+</table>
+
+<h3>5.2 시험 시즌 집중 콘텐츠</h3>
+
+<div class="grid-2">
+  <div class="card">
+    <div class="card-title">D-14 "2주 완성 기출 챌린지"</div>
+    <ul>
+      <li>자체 방 + 기존 방(허용 시)에서 진행</li>
+      <li>매일 기출 1회분 풀기 → 인증 (점수 공유)</li>
+      <li>14일간 최근 14회분 완주가 목표</li>
+      <li>완주자에게 "한능검 마스터" 칭호 (방 내 인정)</li>
+      <li>매일 기출 링크 공유가 자연스러움</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">D-3 "직전 핵심 키워드 20"</div>
+    <ul>
+      <li>최근 5회 기출에서 가장 많이 나온 키워드 20개 정리</li>
+      <li>텍스트로 키워드 리스트 + 각각 요약노트 링크</li>
+      <li>"이 20개만 확실히 하면 60점(3급) 확보!"</li>
+      <li>기존 방에서도 공유 가치 높음 (순수 정보)</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">D+1 "가답안 속보"</div>
+    <ul>
+      <li>시험 당일 또는 익일 가답안 공유 (최대 트래픽 기회)</li>
+      <li>기존 방에서 가장 먼저 공유하면 신뢰도 급상승</li>
+      <li>"가답안 기준 점수 확인 → gcnote.co.kr"</li>
+      <li>이 순간은 모든 방에서 링크 공유가 자연스러움</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">비시즌 유지 콘텐츠</div>
+    <ul>
+      <li>"오늘의 기출 1문제" (주 3회로 줄임)</li>
+      <li>"이 시대 알고 가자" 시리즈 (주 1회)</li>
+      <li>다음 시험 일정 리마인더 (월 1회)</li>
+      <li>멤버 Q&A 답변 (수시)</li>
+    </ul>
+  </div>
+</div>
+
+<h3>5.3 시험 시즌 활동량 비교</h3>
+
+<table>
+  <tr>
+    <th>기간</th>
+    <th>기존 방 활동</th>
+    <th>자체 방 활동</th>
+    <th>총 투입 시간/일</th>
+  </tr>
+  <tr>
+    <td>비시즌</td>
+    <td>주 2~3회 답변</td>
+    <td>주 3회 콘텐츠 + 수시 Q&A</td>
+    <td>15~20분</td>
+  </tr>
+  <tr>
+    <td>시즌 D-30~D-15</td>
+    <td>주 3~4회 활동</td>
+    <td>주 5회 콘텐츠</td>
+    <td>20~30분</td>
+  </tr>
+  <tr>
+    <td><strong>시즌 D-14~D-day</strong></td>
+    <td><strong>매일 활동</strong></td>
+    <td><strong>매일 콘텐츠 + 챌린지 운영</strong></td>
+    <td><strong>30~45분</strong></td>
+  </tr>
+  <tr>
+    <td>시험 직후 D+1~D+7</td>
+    <td>가답안 공유 + 후기 참여</td>
+    <td>결과 분석 + 다음 시험 안내</td>
+    <td>20~30분</td>
+  </tr>
+</table>
+
+
+<!-- ============================================================ -->
+<h2 id="content-calendar">6. 콘텐츠 캘린더 & 메시지 템플릿</h2>
+
+<h3>6.1 주간 콘텐츠 캘린더 (비시즌 기준)</h3>
+
+<table>
+  <tr>
+    <th>요일</th>
+    <th>자체 방</th>
+    <th>기존 방</th>
+  </tr>
+  <tr>
+    <td><strong>월</strong></td>
+    <td>오늘의 기출 1문제 (오전 8시)</td>
+    <td>Q&A 답변 (발생 시)</td>
+  </tr>
+  <tr>
+    <td><strong>화</strong></td>
+    <td>오늘의 정답 + 해설 링크 (오후 6시)</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><strong>수</strong></td>
+    <td>오늘의 기출 1문제</td>
+    <td>Q&A 답변 + 유용한 정보 공유</td>
+  </tr>
+  <tr>
+    <td><strong>목</strong></td>
+    <td>오늘의 정답 + 해설 링크</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><strong>금</strong></td>
+    <td>오늘의 기출 1문제</td>
+    <td>Q&A 답변 (발생 시)</td>
+  </tr>
+  <tr>
+    <td><strong>토</strong></td>
+    <td>-</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><strong>일</strong></td>
+    <td>주간 핵심 키워드 정리 (오전 10시)</td>
+    <td>-</td>
+  </tr>
+</table>
+
+<h3>6.2 메시지 템플릿 모음</h3>
+
+<div class="card">
+  <div class="card-title">오늘의 기출 1문제 (자체 방)</div>
+  <div class="msg-example">[오늘의 한능검 기출]
+
+다음 설명에 해당하는 인물로 옳은 것은?
+
+- 조선 후기 실학자
+- 「목민심서」, 「경세유표」 저술
+- 18년간 유배 생활
+
+1) 이익  2) 정약용  3) 박지원  4) 김정희
+
+정답은 오후 6시에 공개합니다!
+(72회 15번 문제)</div>
+</div>
+
+<div class="card">
+  <div class="card-title">정답 공개 (자체 방)</div>
+  <div class="msg-example">[오늘의 정답]
+
+정답: 2) 정약용
+
+정약용은 조선 후기 대표적 실학자로, 유배 중에도 500여 권의 저서를 남겼습니다. 특히 목민심서는 지방관의 올바른 통치를 다룬 책이에요.
+
+자세한 해설 + 관련 기출 풀기 →
+gcnote.co.kr/exam/72/15</div>
+</div>
+
+<div class="card">
+  <div class="card-title">주간 핵심 키워드 (자체 방)</div>
+  <div class="msg-example">[이번 주 한능검 키워드] 동학농민운동
+
+최근 5회 시험에서 3번 출제! 자주 나오는 포인트:
+- 1894년 발생
+- 전봉준 → 고부 봉기 → 전주 화약 → 우금치 전투
+- 폐정개혁안 12개조
+- 일본의 내정간섭 → 2차 봉기
+
+요약노트로 정리 →
+gcnote.co.kr/notes/s5-08
+
+관련 기출 풀어보기 →
+gcnote.co.kr/study (키워드: 동학농민운동)</div>
+</div>
+
+<div class="card">
+  <div class="card-title">시험 D-14 챌린지 시작 (자체 방)</div>
+  <div class="msg-example">[D-14 기출 챌린지 시작!]
+
+XX회 한능검까지 딱 2주 남았습니다!
+
+오늘부터 매일 기출 1회분씩 풀어봐요.
+14일 동안 14회분 완주가 목표!
+
+오늘은 77회부터 시작 →
+gcnote.co.kr/exam/77
+
+풀고 나서 점수 인증해주세요!
+(몇 점 나왔는지 여기 공유)
+
+같이 하실 분 손 올려주세요!</div>
+</div>
+
+
+<!-- ============================================================ -->
+<h2 id="funnel">7. 전환 퍼널 설계</h2>
+
+<h3>7.1 기존 방 → 웹사이트 전환 퍼널</h3>
+
+<div class="funnel">
+  <span>기존 방에서 질문 발생</span>
+  <span class="arrow">→</span>
+  <span>텍스트로 답변</span>
+  <span class="arrow">→</span>
+  <span>관련 페이지 링크 첨부</span>
+  <span class="arrow">→</span>
+  <span>웹사이트 방문</span>
+  <span class="arrow">→</span>
+  <span>기출 풀기 / 노트 읽기</span>
+  <span class="arrow">→</span>
+  <span>재방문 (북마크)</span>
+</div>
+
+<table>
+  <tr>
+    <th>단계</th>
+    <th>전환율 목표</th>
+    <th>핵심 요소</th>
+  </tr>
+  <tr>
+    <td>링크 클릭</td>
+    <td>답변 본 사람의 15~25%</td>
+    <td>구체적 링크 (특정 문제/노트) + 흥미 유발 텍스트</td>
+  </tr>
+  <tr>
+    <td>사이트 체류</td>
+    <td>클릭한 사람의 60%+ 가 1문제 이상 풀기</td>
+    <td>로딩 속도, 즉시 풀 수 있는 UX (회원가입 없음이 핵심)</td>
+  </tr>
+  <tr>
+    <td>재방문</td>
+    <td>첫 방문자의 20%</td>
+    <td>학습 기록 자동 저장 (localStorage) → "이어서 풀기" 경험</td>
+  </tr>
+</table>
+
+<h3>7.2 자체 방 → 웹사이트 전환 퍼널</h3>
+
+<div class="funnel">
+  <span>카카오 검색 / 타 채널 유입</span>
+  <span class="arrow">→</span>
+  <span>스터디방 참여</span>
+  <span class="arrow">→</span>
+  <span>오늘의 기출 참여</span>
+  <span class="arrow">→</span>
+  <span>해설 링크 클릭</span>
+  <span class="arrow">→</span>
+  <span>웹사이트 학습</span>
+  <span class="arrow">→</span>
+  <span>매일 방문 습관화</span>
+</div>
+
+<h3>7.3 웹사이트 → 자체 방 역유입 퍼널</h3>
+
+<div class="funnel">
+  <span>gcnote.co.kr 방문</span>
+  <span class="arrow">→</span>
+  <span>기출 풀기 완료</span>
+  <span class="arrow">→</span>
+  <span>결과 페이지 "스터디방 참여" CTA</span>
+  <span class="arrow">→</span>
+  <span>오픈채팅방 참여</span>
+  <span class="arrow">→</span>
+  <span>커뮤니티 활동</span>
+</div>
+
+<div class="callout callout-green">
+  <strong>선순환 구조:</strong> 기존 방 활동 → 웹사이트 유입 → 웹사이트에서 자체 방 유입 → 자체 방에서 웹사이트 재방문 → 반복. 이 루프가 돌기 시작하면 오가닉 성장 엔진이 됩니다.
+</div>
+
+
+<!-- ============================================================ -->
+<h2 id="kpi">8. KPI 및 측정 기준</h2>
+
+<h3>8.1 오픈채팅 채널 KPI</h3>
+
+<table>
+  <tr>
+    <th>지표</th>
+    <th>1개월</th>
+    <th>3개월</th>
+    <th>6개월</th>
+    <th>측정 방법</th>
+  </tr>
+  <tr>
+    <td><strong>자체 방 멤버 수</strong></td>
+    <td>50명</td>
+    <td>200명</td>
+    <td>500명</td>
+    <td>오픈채팅 방 정보</td>
+  </tr>
+  <tr>
+    <td><strong>자체 방 일일 메시지</strong></td>
+    <td>5~10개</td>
+    <td>15~25개</td>
+    <td>25+개</td>
+    <td>직접 관찰</td>
+  </tr>
+  <tr>
+    <td><strong>기존 방 링크 공유 횟수</strong></td>
+    <td>8~12회/월</td>
+    <td>15~20회/월</td>
+    <td>20~25회/월</td>
+    <td>직접 기록</td>
+  </tr>
+  <tr>
+    <td><strong>오픈채팅 → 웹사이트 유입</strong></td>
+    <td>100 세션/월</td>
+    <td>500 세션/월</td>
+    <td>1,500 세션/월</td>
+    <td>GA4 UTM 추적 (utm_source=kakao_openchat)</td>
+  </tr>
+  <tr>
+    <td><strong>재방문율 (오픈채팅 유입)</strong></td>
+    <td>15%</td>
+    <td>22%</td>
+    <td>28%</td>
+    <td>GA4</td>
+  </tr>
+</table>
+
+<h3>8.2 활성도 판정 기준 (자체 방)</h3>
+
+<table>
+  <tr>
+    <th>지표</th>
+    <th><span class="badge badge-green">건강</span></th>
+    <th><span class="badge badge-amber">주의</span></th>
+    <th><span class="badge badge-red">위험</span></th>
+  </tr>
+  <tr>
+    <td>일일 메시지 수</td>
+    <td>15개 이상</td>
+    <td>5~14개</td>
+    <td>5개 미만</td>
+  </tr>
+  <tr>
+    <td>멤버 질문 빈도</td>
+    <td>매일 1건+</td>
+    <td>주 2~3건</td>
+    <td>주 1건 미만</td>
+  </tr>
+  <tr>
+    <td>신규 멤버 유입</td>
+    <td>주 10명+</td>
+    <td>주 3~9명</td>
+    <td>주 3명 미만</td>
+  </tr>
+  <tr>
+    <td>퇴장률</td>
+    <td>월 5% 미만</td>
+    <td>월 5~10%</td>
+    <td>월 10% 초과</td>
+  </tr>
+</table>
+
+<h3>8.3 UTM 추적 설정</h3>
+
+<p>오픈채팅 링크에는 반드시 UTM 파라미터를 붙여서 효과를 측정합니다.</p>
+
+<table>
+  <tr>
+    <th>용도</th>
+    <th>URL 형식</th>
+  </tr>
+  <tr>
+    <td>자체 방 콘텐츠</td>
+    <td><code>gcnote.co.kr/exam/77?utm_source=kakao&utm_medium=openchat&utm_campaign=study_room</code></td>
+  </tr>
+  <tr>
+    <td>기존 방 답변</td>
+    <td><code>gcnote.co.kr/exam/72/15?utm_source=kakao&utm_medium=openchat&utm_campaign=qa_answer</code></td>
+  </tr>
+  <tr>
+    <td>시험 시즌 콘텐츠</td>
+    <td><code>gcnote.co.kr/notes/s5-08?utm_source=kakao&utm_medium=openchat&utm_campaign=season_d14</code></td>
+  </tr>
+</table>
+
+<div class="callout callout-amber">
+  <strong>UTM 구현 참고:</strong> 현재 웹사이트에 UTM 추적이 미구현 상태입니다. GA4에서 자동 수집하지만, 체계적 분석을 위해 링크 공유 시 위 형식을 일관되게 사용하세요. 추후 UTM 기반 대시보드를 만들면 채널별 성과를 정확히 비교할 수 있습니다.
+</div>
+
+
+<!-- ============================================================ -->
+<h2 id="risk">9. 리스크 관리 & 주의사항</h2>
+
+<h3>9.1 리스크 매트릭스</h3>
+
+<table>
+  <tr>
+    <th>리스크</th>
+    <th>발생 확률</th>
+    <th>영향</th>
+    <th>대응 방안</th>
+  </tr>
+  <tr>
+    <td><strong>기존 방에서 강퇴</strong></td>
+    <td><span class="badge badge-amber">중</span></td>
+    <td><span class="badge badge-amber">중</span></td>
+    <td>홍보 빈도 엄격 준수. 강퇴 시 재입장 시도하지 않음. 다른 방에 집중</td>
+  </tr>
+  <tr>
+    <td><strong>방장이 홍보 금지 공지</strong></td>
+    <td><span class="badge badge-amber">중</span></td>
+    <td><span class="badge badge-green">낮</span></td>
+    <td>즉시 준수. 텍스트 답변만 제공하고 링크는 1:1 DM으로 전환</td>
+  </tr>
+  <tr>
+    <td><strong>자체 방 활성도 저하</strong></td>
+    <td><span class="badge badge-green">높</span></td>
+    <td><span class="badge badge-amber">중</span></td>
+    <td>비시즌 콘텐츠 유지 (최소 주 3회). "오늘의 기출" 자동화 검토</td>
+  </tr>
+  <tr>
+    <td><strong>스팸/광고봇 유입</strong></td>
+    <td><span class="badge badge-amber">중</span></td>
+    <td><span class="badge badge-green">낮</span></td>
+    <td>참여 코드 설정, 즉시 강퇴 + 신고. 일정 규모 이상 시 부방장 임명</td>
+  </tr>
+  <tr>
+    <td><strong>운영자 번아웃</strong></td>
+    <td><span class="badge badge-amber">중</span></td>
+    <td><span class="badge badge-red">높</span></td>
+    <td>콘텐츠 미리 작성 (주말에 1주치 준비). 비시즌 빈도 줄이기. 자동화 도구 활용</td>
+  </tr>
+  <tr>
+    <td><strong>카카오 정책 변경</strong></td>
+    <td><span class="badge badge-green">낮</span></td>
+    <td><span class="badge badge-red">높</span></td>
+    <td>정책 정기 확인. 오픈채팅 외 채널(블로그, 인스타)도 병행하여 의존도 분산</td>
+  </tr>
+</table>
+
+<h3>9.2 카카오 오픈채팅 운영 정책 핵심 준수사항</h3>
+
+<div class="callout callout-red">
+  <strong>반드시 지켜야 할 정책:</strong>
+  <ul>
+    <li>방 내 개인정보(전화번호, 이메일, 주소) 수집 금지</li>
+    <li>상업적 대량 메시지 발송 금지 (제재/방 삭제 가능)</li>
+    <li>허위/과장 정보 유포 금지</li>
+    <li>방장이 방을 나가면 방장 권한 자동 이전 — 항상 방에 남아있을 것</li>
+    <li>타인의 콘텐츠 무단 전재 금지 (EBS 강의 내용 등 복사 금지)</li>
+  </ul>
+</div>
+
+
+<!-- ============================================================ -->
+<h2 id="action">10. 실행 로드맵 (12주)</h2>
+
+<h3>Phase 1: 기반 구축 (1~4주차)</h3>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <h4>1주차: 기존 방 입장 시작</h4>
+    <ul>
+      <li>1순위 3개 방 입장: 한능검Q&A, 경찰최대, 경찰공무원</li>
+      <li>관찰 시작: 활동 시간대, 질문 유형, 방장 성향 파악</li>
+      <li>각 방별 관찰 노트 작성</li>
+    </ul>
+  </div>
+  <div class="timeline-item">
+    <h4>2주차: 나머지 방 입장 + 관찰 계속</h4>
+    <ul>
+      <li>2순위 4개 방 입장: 소방, 세무, 간호, 계리직</li>
+      <li>7개 방 모두 관찰 지속. 아직 발언하지 않음</li>
+      <li>각 방의 한능검 관련 질문 빈도와 유형 정리</li>
+    </ul>
+  </div>
+  <div class="timeline-item">
+    <h4>3~4주차: 답변 활동 시작</h4>
+    <ul>
+      <li>1순위 방부터 한능검 관련 질문에 텍스트 답변 시작</li>
+      <li>주 3~5회 이상 양질의 답변 제공 (링크 없이)</li>
+      <li>"한능검 잘 아는 사람" 인식 형성</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Phase 2: 링크 공유 + 자체 방 개설 (5~8주차)</h3>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <h4>5~6주차: 자연스러운 링크 공유 시작</h4>
+    <ul>
+      <li>1순위 방에서 답변 시 관련 페이지 링크 첨부 시작</li>
+      <li>주 1~2회, 반드시 텍스트 답변과 함께</li>
+      <li>반응 관찰: 클릭율, 방 분위기 변화, 방장 반응</li>
+    </ul>
+  </div>
+  <div class="timeline-item">
+    <h4>7주차: 자체 "한능검 기출 스터디방" 개설</h4>
+    <ul>
+      <li>방 이름: "한능검 기출 스터디방 | 기출노트"</li>
+      <li>환영 메시지 + 규칙 설정</li>
+      <li>웹사이트 Footer에 오픈채팅 링크 추가</li>
+      <li>"오늘의 기출 1문제" 운영 시작 (매일 평일)</li>
+    </ul>
+  </div>
+  <div class="timeline-item">
+    <h4>8주차: 초기 멤버 확보</h4>
+    <ul>
+      <li>웹사이트 유입 + 기존 방 활동에서 자연 유도</li>
+      <li>시험 결과 페이지에 "스터디방 참여하기" CTA 추가</li>
+      <li>목표: 50명 돌파</li>
+    </ul>
+  </div>
+</div>
+
+<h3>Phase 3: 안정화 + 시험 시즌 (9~12주차)</h3>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <h4>9~10주차: 콘텐츠 루틴 안정화</h4>
+    <ul>
+      <li>주간 캘린더 기반 콘텐츠 루틴 정착</li>
+      <li>기존 방 링크 공유 빈도 최적화 (반응 기반 조정)</li>
+      <li>자체 방 멤버 질문 대응 프로세스 안정화</li>
+    </ul>
+  </div>
+  <div class="timeline-item">
+    <h4>11~12주차: 시험 시즌 집중 실행</h4>
+    <ul>
+      <li>다음 시험 D-14부터 시즌 전술 실행</li>
+      <li>"2주 완성 기출 챌린지" 운영</li>
+      <li>기존 방 + 자체 방 동시 시즌 콘텐츠 배포</li>
+      <li>시험 후 가답안 속보 공유</li>
+      <li>KPI 리뷰 + 전략 보정</li>
+    </ul>
+  </div>
+</div>
+
+<h3>즉시 실행 체크리스트</h3>
+
+<table>
+  <tr>
+    <th>순서</th>
+    <th>항목</th>
+    <th>소요 시간</th>
+    <th>우선순위</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>한능검Q&A, 경찰최대, 경찰공무원 오픈채팅방 입장</td>
+    <td>10분</td>
+    <td><span class="badge badge-green">즉시</span></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>소방/세무/간호/계리직 방 입장 (2~3일 간격)</td>
+    <td>10분</td>
+    <td><span class="badge badge-green">1주 내</span></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>각 방 관찰 노트 작성 시작</td>
+    <td>매일 10분</td>
+    <td><span class="badge badge-green">즉시</span></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>"오늘의 기출 1문제" 콘텐츠 10일치 미리 작성</td>
+    <td>1시간</td>
+    <td><span class="badge badge-amber">2주 내</span></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>UTM 파라미터 포함 링크 템플릿 준비</td>
+    <td>30분</td>
+    <td><span class="badge badge-amber">2주 내</span></td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>자체 방 개설 (Phase 2, 7주차)</td>
+    <td>30분</td>
+    <td><span class="badge badge-blue">7주차</span></td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>웹사이트 Footer에 오픈채팅 링크 추가</td>
+    <td>30분 (개발)</td>
+    <td><span class="badge badge-blue">7주차</span></td>
+  </tr>
+</table>
+
+<br>
+
+<div class="callout callout-green">
+  <strong>핵심 원칙 요약:</strong>
+  <ol>
+    <li><strong>"도움 먼저, 홍보 나중"</strong> — 모든 활동의 기본 원칙. 답변이 메인, 링크는 보조.</li>
+    <li><strong>"무료 + 회원가입 없음"이 최강 무기</strong> — 링크를 공유해도 "광고"가 아닌 "정보 공유"로 인식되는 유일한 조건.</li>
+    <li><strong>시험 시즌에 집중</strong> — 비시즌은 최소 유지, 시즌 D-14부터 전력 투구. 연 5회 시험이 5번의 대규모 유입 기회.</li>
+    <li><strong>기존 방(단기) + 자체 방(장기) 병행</strong> — 기존 방에서 신뢰 쌓고, 자체 방으로 충성 사용자 모으는 이중 트랙.</li>
+    <li><strong>선순환 루프 구축</strong> — 오픈채팅 → 웹사이트 → 오픈채팅 → 웹사이트. 이 루프가 자동으로 돌면 성공.</li>
+  </ol>
+</div>
+
+<p style="color: var(--gray); font-size: 13px; margin-top: 40px; text-align: center;">
+  이 전략 보고서는 참고용이며, 실제 성과는 실행 품질과 시장 상황에 따라 달라질 수 있습니다.<br>
+  기출노트 한능검 마케팅 전략 시리즈 | 2026-03-24
+</p>
+
+</body>
+</html>

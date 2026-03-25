@@ -124,7 +124,8 @@ korea_history/
 ## 핵심 기능 (저작도구)
 
 ### 사이드바 구조
-- **헤더**: "기출노트 저작도구"
+- **헤더**: "기출노트 저작도구" + 📊 분석 버튼
+- **기본 진입 화면**: GA4 Analytics Dashboard (프로젝트 선택 전)
 - **프로젝트 셀렉터**: 프로젝트 추가/삭제, 열기/접기 (기본: 한국사능력검정시험)
 - **프로젝트 내 탭**: 📋 시험 | 📝 요약노트 | ✏️ 컨텐츠
 - 프로젝트 데이터: `data/projects/index.json`
@@ -177,6 +178,22 @@ korea_history/
 - 이미지 업로드/삭제, 키워드 뱃지 표시
 - 자동 저장 (500ms debounce), 문자수 표시
 
+### GA4 Analytics Dashboard (NEW)
+- **기본 진입 화면**: 저작도구 열면 바로 사이트 현황 표시
+- **GA4 Data API v1**: 서비스 계정 인증, 서버 사이드 호출
+- **KPI 카드**: 세션, 사용자, 페이지뷰, 평균 체류시간 (이전 기간 대비 변화율)
+- **날짜별 트래픽**: 7일/30일 토글, 일별 바 차트 (주말 파란색), 호버 툴팁
+- **채널별 유입**: Organic/Direct/Referral/Social/Paid 수평 바 차트
+- **인기 페이지 TOP 10**: 경로별 페이지뷰 테이블
+- **UTM 캠페인**: source/medium별 세션 테이블
+- **기기별**: 모바일/데스크톱/태블릿 비율 바 차트
+- **시간대별**: 24시간 바 차트 + 피크 시간 표시
+- **요일별**: 일~토 바 차트 (일=빨강, 토=파랑)
+- **기간 프리셋**: 오늘/7일/30일/90일 + 시험 시즌 프리셋 (🔥 N회 시즌)
+- **캐싱**: 하이브리드 (오늘=실시간, 과거=1시간 캐시), 수동 새로고침 지원
+- **서버 파일**: `server/services/ga4.service.ts`, `server/services/exam-season.service.ts`, `server/routes/analytics.routes.ts`
+- **프론트엔드**: `src/features/analytics/` (types, api, hooks, components 8개)
+
 ## 기술 스택
 
 ### 웹사이트 (web/) — Vercel 배포
@@ -190,6 +207,7 @@ korea_history/
 - Express + Vite middleware, React 18, TailwindCSS, Zustand
 - Gemini API (텍스트 + 이미지 생성)
 - 네이버 검색광고 API (키워드 검색량/경쟁률)
+- **Google Analytics Data API v1** (GA4 대시보드, 서비스 계정 인증)
 - satori + @resvg/resvg-js (텍스트 카드뉴스 PNG)
 - Cloudflare R2 (카드뉴스 + 컨텐츠 이미지 저장)
 - Vercel Deploy Hook
@@ -219,6 +237,8 @@ VERCEL_DEPLOY_HOOK_URL=
 NAVER_API_LICENSE_KEY=
 NAVER_API_SECRET_KEY=
 NAVER_API_CUSTOMER_ID=
+GA4_PROPERTY_ID=
+GA4_SERVICE_ACCOUNT_KEY=./ga4-key.json
 ```
 
 ## SEO
@@ -243,6 +263,16 @@ NAVER_API_CUSTOMER_ID=
 - 컨텐츠 데이터는 `data/contents/`에 저장 (index.json + ct-{id}.json), 이미지는 R2 `contents/{id}/` 경로
 - 컨텐츠 SSE 생성: `POST /api/contents/:id/generate/:channel` → `data: {"type":"chunk|complete|error",...}`
 - 컨텐츠 서비스의 서버 타입(content.service.ts)은 `any[]` — 프론트 타입(content-types.ts)이 정확한 타입 정의
+
+## 워크플로우: "업데이트 하자"
+사용자가 "업데이트 하자" 또는 작업 완료 후 정리를 요청하면, 아래를 **순서대로 모두** 실행:
+
+1. **CLAUDE.md 업데이트** — 새로 추가/변경된 기능, 파일, 구조를 반영
+2. **Memory 업데이트** — `memory/MEMORY.md` 및 관련 메모리 파일 업데이트 (완료 기능 이동, 진행 중 항목 갱신)
+3. **스펙/플랜 문서** — `docs/superpowers/specs/`, `docs/superpowers/plans/` 해당 문서가 있으면 상태 업데이트
+4. **Git commit + push** — 변경사항 커밋 후 `git push origin main`
+
+이 워크플로우는 **새 세션에서도** 동일하게 적용된다. 사용자가 별도 지시 없이 "업데이트" 또는 "정리"를 언급하면 위 4단계를 실행한다.
 
 ## 언어
 - 사용자 인터페이스: 한국어

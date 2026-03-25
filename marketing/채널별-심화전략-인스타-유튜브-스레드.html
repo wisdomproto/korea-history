@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기출노트 한능검 — 채널별 심화 전략 (인스타·유튜브·스레드)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+  :root {
+    --primary: #059669; --primary-l: #ECFDF5;
+    --blue: #2563EB; --blue-l: #EFF6FF;
+    --purple: #7C3AED; --purple-l: #F5F3FF;
+    --pink: #EC4899; --pink-l: #FDF2F8;
+    --red: #DC2626; --red-l: #FEF2F2;
+    --amber: #F59E0B; --amber-l: #FFFBEB;
+    --text: #111827; --muted: #6B7280; --border: #E5E7EB;
+    --bg: #F8FAFC; --surface: #FFFFFF;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans KR',sans-serif; background:var(--bg); color:var(--text); font-size:14px; line-height:1.7; }
+  .container { max-width:1000px; margin:0 auto; padding:40px 24px; }
+  .hero { background:linear-gradient(135deg,#E1306C 0%,#833AB4 50%,#405DE6 100%); color:white; padding:56px 40px; border-radius:20px; margin-bottom:32px; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; top:-50%; right:-15%; width:400px; height:400px; background:rgba(255,255,255,0.08); border-radius:50%; }
+  .hero-badge { display:inline-block; background:rgba(255,255,255,0.2); padding:5px 14px; border-radius:16px; font-size:12px; font-weight:700; margin-bottom:12px; }
+  .hero h1 { font-size:34px; font-weight:900; margin-bottom:8px; letter-spacing:-1px; }
+  .hero p { font-size:15px; opacity:0.9; max-width:600px; }
+  .hero-meta { margin-top:16px; font-size:12px; opacity:0.6; }
+
+  .section { background:var(--surface); border-radius:16px; padding:32px; margin-bottom:24px; border:1px solid var(--border); }
+  .section-header { display:flex; align-items:center; gap:12px; margin-bottom:24px; }
+  .section-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+  .section-title { font-size:22px; font-weight:900; }
+  .section-subtitle { font-size:13px; color:var(--muted); }
+
+  table { width:100%; border-collapse:collapse; margin:16px 0; font-size:13px; }
+  th { background:var(--bg); padding:10px 14px; text-align:left; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--muted); border-bottom:2px solid var(--border); }
+  td { padding:10px 14px; border-bottom:1px solid var(--border); vertical-align:top; }
+
+  .tag { display:inline-block; padding:2px 10px; border-radius:6px; font-size:11px; font-weight:700; }
+  .tag-green { background:var(--primary-l); color:var(--primary); }
+  .tag-blue { background:var(--blue-l); color:var(--blue); }
+  .tag-purple { background:var(--purple-l); color:var(--purple); }
+  .tag-pink { background:var(--pink-l); color:var(--pink); }
+  .tag-red { background:var(--red-l); color:var(--red); }
+  .tag-amber { background:var(--amber-l); color:var(--amber); }
+
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin:16px 0; }
+  .card { border:1px solid var(--border); border-radius:14px; padding:20px; }
+  .card-title { font-size:15px; font-weight:800; margin-bottom:8px; }
+  .card-desc { font-size:13px; color:var(--muted); }
+  .card ul { padding-left:18px; font-size:13px; }
+  .card li { margin-bottom:4px; }
+
+  .info-box { background:var(--primary-l); border-left:3px solid var(--primary); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; color:#065F46; }
+  .warn-box { background:var(--amber-l); border-left:3px solid var(--amber); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; color:#92400E; }
+
+  h3 { font-size:18px; font-weight:900; margin:28px 0 12px; padding-bottom:8px; border-bottom:2px solid var(--border); }
+  h4 { font-size:15px; font-weight:800; margin:20px 0 10px; }
+  h4:first-child { margin-top:0; }
+
+  .bio-box { background:#F8FAFC; border:2px solid var(--border); border-radius:12px; padding:16px 20px; font-size:13px; line-height:1.9; margin:12px 0; }
+  .template-box { background:#F0FDF4; border:1px solid #BBF7D0; border-radius:10px; padding:14px 18px; font-size:13px; line-height:1.8; margin:10px 0; }
+
+  footer { text-align:center; padding:32px; font-size:12px; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <div class="hero-badge">마케팅 전략 보충 문서 #1 — 2026.03.24</div>
+  <h1>채널별 심화 전략<br>인스타 · 유튜브 · 스레드</h1>
+  <p>기존 마케팅 전략서 v2.1의 채널별 전략을 프로필 브랜딩, 콘텐츠 전략, SEO/해시태그, 성장 전술까지 심화 확장.</p>
+  <div class="hero-meta">gcnote.co.kr | 기출노트 한능검 | 기준일: 2026-03-24</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PART 1: 인스타그램 -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="section" style="border-top:4px solid #E1306C;">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--pink-l);">📸</div>
+    <div><div class="section-title">Part 1. 인스타그램 심화 전략</div><div class="section-subtitle">프로필 브랜딩 → 콘텐츠 전략 → 해시태그 & SEO</div></div>
+  </div>
+
+  <!-- 1-1 프로필 브랜딩 -->
+  <h3>1-1. 프로필 브랜딩</h3>
+
+  <h4>계정 기본 세팅</h4>
+  <table>
+    <thead><tr><th>항목</th><th>세팅 내용</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Username</strong></td><td>@gcnote.kr</td><td>브랜드명+국가코드, 검색 용이, 짧고 기억하기 쉬움</td></tr>
+      <tr><td><strong>이름(Name) 필드</strong></td><td>기출노트 한능검 | 무료 기출 풀기</td><td>검색에 노출되는 필드 — "한능검" 키워드 필수 포함</td></tr>
+      <tr><td><strong>계정 유형</strong></td><td><span class="tag tag-blue">크리에이터 계정</span></td><td>전체 음원 사용(릴스), DM 3분류, 교육 카테고리 표시</td></tr>
+      <tr><td><strong>카테고리</strong></td><td>교육</td><td>프로필에 "교육" 라벨 표시</td></tr>
+      <tr><td><strong>프로필 사진</strong></td><td>기출노트 로고 (에메랄드 #059669 배경)</td><td>320×320px, 원형 잘림 고려, 여백 20% 확보</td></tr>
+    </tbody>
+  </table>
+
+  <h4>바이오 (150자)</h4>
+  <div class="bio-box">
+    📝 한능검 기출 1,900+ 무료 풀기<br>
+    🎯 기출 → 요약노트 → 강의 한 곳에서 연결<br>
+    ✅ 회원가입 없이 바로 시작<br>
+    👇 무료로 시작하기
+  </div>
+  <div style="font-size:12px; color:var(--muted); margin-top:4px;">136/150자 — USP(무료, 회원가입 없음) + 킬러 차별점(기출-요약-강의 연결) + CTA</div>
+
+  <h4>바이오 대안 (B/C안)</h4>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-title">B안 — 공시생 타겟 강조</div>
+      <div class="bio-box" style="margin:0;">
+        📚 공시생·취준생을 위한 한능검 무료 학습<br>
+        🔗 기출 풀다 모르면 → 요약노트 바로 연결<br>
+        🆓 가입 없이 1,900+ 문항 무한 풀기<br>
+        👇 지금 시작
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">C안 — 심플 버전</div>
+      <div class="bio-box" style="margin:0;">
+        한능검 기출 · 요약노트 · 해설<br>
+        전부 무료, 회원가입 없음<br>
+        기출-요약-강의가 한 곳에서 연결되는 유일한 사이트<br>
+        👇 gcnote.co.kr
+      </div>
+    </div>
+  </div>
+
+  <h4>링크인바이오</h4>
+  <table>
+    <thead><tr><th>도구</th><th>추천 이유</th><th>링크 구성</th></tr></thead>
+    <tbody>
+      <tr><td><strong>자체 랜딩(gcnote.co.kr)</strong></td><td>이미 모바일 최적화된 메인 페이지 보유. 별도 링크트리 불필요</td><td>
+        1. gcnote.co.kr (메인 — 바로 학습 시작)<br>
+        2. 필요 시 /exam 또는 /notes로 딥링크
+      </td></tr>
+    </tbody>
+  </table>
+
+  <h4>하이라이트 구성</h4>
+  <table>
+    <thead><tr><th>순서</th><th>카테고리</th><th>아이콘</th><th>포함 내용</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>기출 풀기</strong></td><td>📝</td><td>사이트 사용법, 기출 풀이 화면, "이렇게 풀어요" 튜토리얼</td></tr>
+      <tr><td>2</td><td><strong>요약노트</strong></td><td>📚</td><td>시대별 요약노트 미리보기, 스크린샷</td></tr>
+      <tr><td>3</td><td><strong>합격 후기</strong></td><td>🎉</td><td>사용자 후기 캡처, DM 후기 (허락 받고)</td></tr>
+      <tr><td>4</td><td><strong>공부 꿀팁</strong></td><td>💡</td><td>공부법, 시대별 팁, 오답 분석 스토리</td></tr>
+      <tr><td>5</td><td><strong>시험 일정</strong></td><td>📅</td><td>다음 시험 일정, 접수 기간, D-day</td></tr>
+    </tbody>
+  </table>
+  <div class="info-box">하이라이트 커버: 에메랄드(#059669) 배경 + 흰색 라인 아이콘으로 통일. Canva에서 1080×1920px 제작 후 원형 중앙 잘림 고려.</div>
+
+  <h4>피드 미학</h4>
+  <table>
+    <thead><tr><th>항목</th><th>설정</th></tr></thead>
+    <tbody>
+      <tr><td><strong>레이아웃</strong></td><td>컬러 통일형 — 에메랄드 + 오프화이트(#FAFAF8) 톤</td></tr>
+      <tr><td><strong>컬러 팔레트</strong></td><td>메인 #059669 / 보조 #10B981 / 배경 #FAFAF8 / 강조 #F59E0B</td></tr>
+      <tr><td><strong>폰트 스타일</strong></td><td>카드뉴스 제목: 고딕 Bold, 본문: 고딕 Regular</td></tr>
+      <tr><td><strong>이미지 비율</strong></td><td>캐러셀: 1:1 (1080×1080) 또는 4:5 (1080×1350)</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 1-2 콘텐츠 전략 -->
+  <h3>1-2. 콘텐츠 전략</h3>
+
+  <h4>콘텐츠 필라 (Content Pillars)</h4>
+  <table>
+    <thead><tr><th>필라</th><th>비율</th><th>목적</th><th>기출노트 적용</th><th>주요 포맷</th></tr></thead>
+    <tbody>
+      <tr><td>🎓 <strong>교육</strong></td><td>35%</td><td>전문성 어필, 저장 유도</td><td>기출 해설, 시대별 핵심 정리, 오답 패턴 분석</td><td>캐러셀, 릴스</td></tr>
+      <tr><td>🎉 <strong>재미/참여</strong></td><td>30%</td><td>공유/저장, 바이럴</td><td>"이 문제 맞히면 1급" 퀴즈, 한국사 밈, 투표</td><td>릴스, 스토리</td></tr>
+      <tr><td>💡 <strong>정보/동기부여</strong></td><td>20%</td><td>공감, 팔로우 유도</td><td>시험 일정, 공부법, 합격 후기, 응원</td><td>피드, 스토리</td></tr>
+      <tr><td>🔗 <strong>사이트 유도</strong></td><td>15%</td><td>gcnote.co.kr 유입</td><td>사이트 기능 소개, 사용법, 신규 기능 안내</td><td>릴스, 캐러셀</td></tr>
+    </tbody>
+  </table>
+  <div class="warn-box">사이트 유도(광고성) 콘텐츠가 연속 2회 이상 게시되면 팔로워 이탈 위험. 교육/재미 콘텐츠 사이에 배치.</div>
+
+  <h4>포맷별 제작 전략</h4>
+  <table>
+    <thead><tr><th>포맷</th><th>비율</th><th>규격</th><th>기출노트 적용</th><th>제작 방법</th></tr></thead>
+    <tbody>
+      <tr><td><strong>캐러셀</strong></td><td>40%</td><td>1:1 또는 4:5, 7~10장</td><td>기출 해설 카드뉴스 (저작도구 자동 생성), 시대별 핵심 정리</td><td>저작도구 → 카드뉴스 자동생성 + Canva 보정</td></tr>
+      <tr><td><strong>릴스</strong></td><td>35%</td><td>9:16, 15~30초</td><td>"이 문제 정답은?" 퀴즈형, 시대별 1분 요약</td><td>캡컷/Canva 간단 편집</td></tr>
+      <tr><td><strong>스토리</strong></td><td>20%</td><td>9:16</td><td>D-day 카운트다운, 퀴즈 스티커, 설문</td><td>인스타 내 직접 제작</td></tr>
+      <tr><td><strong>피드</strong></td><td>5%</td><td>1:1</td><td>시험 일정 공지, 마일스톤 공유</td><td>Canva 단일 이미지</td></tr>
+    </tbody>
+  </table>
+
+  <h4>릴스 제작 공식 (핵심 포맷)</h4>
+  <div class="template-box">
+    <strong>구조:</strong> 훅(3초) → 문제 제시(5초) → 생각 시간(5초) → 정답 공개(5초) → 해설(10초) → CTA(2초)<br><br>
+    <strong>예시 스크립트 (30초):</strong><br>
+    [0~3초] "이 문제 맞히면 한능검 1급 가능 🔥" (텍스트 오버레이)<br>
+    [3~8초] 문제 이미지 + 선지 표시<br>
+    [8~13초] "정답은..." (카운트다운 효과)<br>
+    [13~18초] 정답 공개 + confetti 효과<br>
+    [18~28초] AI 해설 핵심 1~2문장 텍스트<br>
+    [28~30초] "더 많은 기출 → 프로필 링크" (CTA)<br><br>
+    <strong>필수:</strong> 자막 ON (80%+ 무음 시청), 트렌딩 오디오 활용, 루프 구조 고려
+  </div>
+
+  <h4>캐러셀 (카드뉴스) 제작 공식</h4>
+  <div class="template-box">
+    <strong>7~10장 구성:</strong><br>
+    1장: 후킹 제목 — "한능검에서 가장 많이 틀리는 유형 TOP 5"<br>
+    2~8장: 핵심 정보 (1장 1포인트, 큰 텍스트, 시각 자료)<br>
+    9장: 요약 정리<br>
+    10장: CTA — "저장해두고 시험 전에 다시 보세요! 📌 무료 기출 풀기 → 프로필 링크"<br><br>
+    <strong>디자인:</strong> 에메랄드 배경 + 흰색 텍스트 or 오프화이트 배경 + 에메랄드 포인트
+  </div>
+
+  <h4>캡션 작성 공식</h4>
+  <div class="template-box">
+    <strong>[1줄 — 훅]</strong> 이 문제 3초 안에 맞히면 1급 확정 🔥<br><br>
+    <strong>[본문 — 가치 전달]</strong><br>
+    제75회 한능검 실제 출제 문제입니다.<br>
+    정답은 마지막 장에!<br><br>
+    💡 기출노트 한능검에서는<br>
+    ✅ 1,900+ 기출 무료 풀기<br>
+    ✅ 틀린 문제 → 요약노트 바로 연결<br>
+    ✅ 해설마다 최태성 강의 해당 구간 재생<br>
+    ✅ 회원가입 없이 바로 시작<br><br>
+    <strong>[CTA]</strong> 기출-요약-강의가 한 곳에서 연결되는 건 여기뿐!<br>
+    👉 링크 인 바이오<br><br>
+    <strong>[해시태그]</strong> 첫 번째 댓글에 배치 (15~20개)
+  </div>
+
+  <h4>주간 콘텐츠 캘린더 (기본 템플릿)</h4>
+  <table>
+    <thead><tr><th>요일</th><th>시간</th><th>포맷</th><th>필라</th><th>주제 예시</th></tr></thead>
+    <tbody>
+      <tr><td><strong>월</strong></td><td>07:30</td><td>릴스 🎬</td><td>🎉 재미</td><td>"이 문제 맞히면 1급" 퀴즈</td></tr>
+      <tr><td><strong>화</strong></td><td>12:00</td><td>캐러셀 📑</td><td>🎓 교육</td><td>"고려시대 핵심 키워드 7가지"</td></tr>
+      <tr><td><strong>수</strong></td><td>-</td><td>스토리 ×3~5</td><td>💡 정보</td><td>퀴즈 스티커, 시험 D-day, 설문</td></tr>
+      <tr><td><strong>목</strong></td><td>18:00</td><td>릴스 🎬</td><td>🎓 교육</td><td>"조선시대 1분 요약" 시리즈</td></tr>
+      <tr><td><strong>금</strong></td><td>12:00</td><td>캐러셀 📑</td><td>🎉 재미</td><td>"한능검 오답 패턴 TOP 5"</td></tr>
+      <tr><td><strong>토</strong></td><td>10:00</td><td>릴스 🎬</td><td>🔗 사이트</td><td>"이 사이트 무료로 한능검 풀 수 있음" 기능 소개</td></tr>
+      <tr><td><strong>일</strong></td><td>-</td><td>스토리 ×3</td><td>💡 동기부여</td><td>다음 주 예고, 응원 메시지</td></tr>
+    </tbody>
+  </table>
+  <div class="info-box"><strong>시험 시즌(D-14~D+3):</strong> 매일 릴스+캐러셀+스토리 전부 게시. 시험 당일: 가답안 캐러셀 즉시 업로드.</div>
+
+  <h4>게시 빈도 목표</h4>
+  <table>
+    <thead><tr><th>포맷</th><th>비시즌</th><th>시험 시즌</th></tr></thead>
+    <tbody>
+      <tr><td>릴스</td><td>주 3회</td><td>주 5~7회 (매일)</td></tr>
+      <tr><td>캐러셀</td><td>주 2회</td><td>주 3~4회</td></tr>
+      <tr><td>스토리</td><td>매일 2~3개</td><td>매일 5~7개</td></tr>
+      <tr><td>피드</td><td>월 1~2회</td><td>시험 전후 공지</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 1-3 해시태그 & SEO -->
+  <h3>1-3. 해시태그 & SEO</h3>
+
+  <h4>해시태그 세트 (4종 — 돌려 사용)</h4>
+
+  <h4 style="margin-top:16px;">세트 A — 기출 해설 / 퀴즈 (15개)</h4>
+  <div class="bio-box">
+    🔵 빅: #한국사 #공무원시험 #자격증<br>
+    🟢 미디엄: #한능검 #한능검기출 #한능검1급 #한국사능력검정시험 #기출문제<br>
+    🟡 스몰: #한능검공부법 #한능검기출문제 #한능검심화 #한능검준비 #한국사공부<br>
+    🟠 니치: #기출노트 #한능검무료
+  </div>
+
+  <h4>세트 B — 요약노트 / 시대별 정리 (15개)</h4>
+  <div class="bio-box">
+    🔵 빅: #한국사 #역사공부 #공부스타그램<br>
+    🟢 미디엄: #한능검 #한능검요약 #한국사정리 #시대별정리 #한국사능력검정<br>
+    🟡 스몰: #한능검핵심정리 #고려시대 #조선시대 #근현대사 #한국사키워드<br>
+    🟠 니치: #기출노트한능검 #한능검요약노트
+  </div>
+
+  <h4>세트 C — 공부법 / 합격 전략 (15개)</h4>
+  <div class="bio-box">
+    🔵 빅: #공시생 #취준생 #자격증공부<br>
+    🟢 미디엄: #한능검 #한능검공부법 #한능검1급합격 #독학 #벼락치기<br>
+    🟡 스몰: #한능검독학 #한능검2주합격 #한능검꿀팁 #공무원한국사 #한능검오답<br>
+    🟠 니치: #기출노트 #한능검무료사이트
+  </div>
+
+  <h4>세트 D — 시험 시즌 / 이벤트 (15개)</h4>
+  <div class="bio-box">
+    🔵 빅: #시험 #공무원 #합격<br>
+    🟢 미디엄: #한능검 #한능검시험 #한능검접수 #한능검가답안 #한국사시험<br>
+    🟡 스몰: #한능검시험일정 #한능검D-day #한능검결과 #한능검합격 #시험응원<br>
+    🟠 니치: #제78회한능검 #한능검가답안속보
+  </div>
+
+  <div class="warn-box">
+    <strong>규칙:</strong> 매 게시물마다 세트 교대 사용 (동일 세트 반복 금지 → 스팸 판정 위험). 게시물 주제에 맞는 세트 선택. 해시태그는 첫 번째 댓글에 배치.
+  </div>
+
+  <h4>인스타그램 SEO 체크리스트</h4>
+  <table>
+    <thead><tr><th>영역</th><th>최적화 방법</th><th>적용 내용</th><th>우선순위</th></tr></thead>
+    <tbody>
+      <tr><td><strong>이름(Name)</strong></td><td>키워드 포함</td><td>"기출노트 한능검 | 무료 기출 풀기"</td><td><span class="tag tag-red">필수</span></td></tr>
+      <tr><td><strong>캡션</strong></td><td>주요 키워드 자연 포함</td><td>"한능검", "기출", "한국사" 등 매 캡션 포함</td><td><span class="tag tag-red">필수</span></td></tr>
+      <tr><td><strong>대체 텍스트(Alt Text)</strong></td><td>게시물 편집 > 접근성에서 직접 입력</td><td>"한능검 제75회 기출문제 15번 해설 카드뉴스"</td><td><span class="tag tag-red">필수</span></td></tr>
+      <tr><td><strong>Username</strong></td><td>브랜드 명확</td><td>@gcnote.kr ✅</td><td><span class="tag tag-green">완료</span></td></tr>
+      <tr><td><strong>바이오</strong></td><td>핵심 키워드 포함</td><td>"한능검", "기출", "무료" 포함 ✅</td><td><span class="tag tag-green">완료</span></td></tr>
+    </tbody>
+  </table>
+
+  <h4>KPI 목표</h4>
+  <table>
+    <thead><tr><th>지표</th><th>1개월</th><th>3개월</th><th>6개월</th></tr></thead>
+    <tbody>
+      <tr><td><strong>팔로워</strong></td><td>100</td><td>500</td><td>2,000</td></tr>
+      <tr><td><strong>참여율</strong></td><td>5%+</td><td>3%+</td><td>3%+</td></tr>
+      <tr><td><strong>캐러셀 저장률</strong></td><td>5%+</td><td>5%+</td><td>5%+</td></tr>
+      <tr><td><strong>릴스 도달률 (팔로워 대비)</strong></td><td>50%+</td><td>50%+</td><td>30%+</td></tr>
+      <tr><td><strong>프로필 방문→팔로우 전환</strong></td><td>10%+</td><td>10%+</td><td>8%+</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PART 2: 유튜브 -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="section" style="border-top:4px solid #FF0000;">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--red-l);">🎬</div>
+    <div><div class="section-title">Part 2. 유튜브 심화 전략</div><div class="section-subtitle">채널 브랜딩 → 콘텐츠 플랜 → SEO 최적화</div></div>
+  </div>
+
+  <!-- 2-1 채널 브랜딩 -->
+  <h3>2-1. 채널 브랜딩</h3>
+
+  <table>
+    <thead><tr><th>항목</th><th>세팅 내용</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td><strong>채널명</strong></td><td>기출노트 한능검</td><td>18자 이내 ✅, 브랜드+키워드 하이브리드</td></tr>
+      <tr><td><strong>배너 이미지</strong></td><td>2560×1440px, 안전 영역 1546×423px</td><td>
+        포함 요소:<br>
+        • "한능검 기출 해설 · 시대별 정리 · 공부 꿀팁"<br>
+        • "매주 화·목 새 영상" (업로드 스케줄)<br>
+        • 에메랄드 그라데이션 + gcnote.co.kr
+      </td></tr>
+      <tr><td><strong>프로필 이미지</strong></td><td>기출노트 로고 800×800px</td><td>인스타와 동일 이미지 — 크로스 플랫폼 인지</td></tr>
+      <tr><td><strong>핸들</strong></td><td>@gcnote-kr</td><td>인스타와 유사하게 통일</td></tr>
+    </tbody>
+  </table>
+
+  <h4>채널 설명 (About)</h4>
+  <div class="bio-box">
+    한능검(한국사능력검정시험) 기출 해설과 시대별 핵심 정리를 짧고 핵심적으로 전달합니다.<br><br>
+    📝 1,900+ 기출문제 무료 풀기 — gcnote.co.kr<br>
+    🔗 기출 풀다 모르면 → 요약노트 바로 연결<br>
+    🎬 최태성 강의 해당 구간 자동 재생<br>
+    ✅ 회원가입 없이 바로 시작<br><br>
+    매주 화·목 새 영상 업로드<br>
+    한능검 기출, 한능검 공부법, 한능검 요약, 시대별 정리<br><br>
+    비즈니스 문의: gcnote.contact@gmail.com
+  </div>
+  <div style="font-size:12px; color:var(--muted);">처음 150자에 "한능검", "기출", "해설", "시대별" 키워드 배치 → 검색 결과 표시 영역</div>
+
+  <h4>채널 키워드 (5~10개)</h4>
+  <div class="bio-box">
+    한능검, 한국사능력검정시험, 한능검기출, 한능검해설, 한능검공부법, 한국사, 기출문제, 한능검1급, 한능검요약, 기출노트
+  </div>
+
+  <h4>추천 섹션 (Featured Sections)</h4>
+  <table>
+    <thead><tr><th>순서</th><th>섹션명</th><th>유형</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>인기 업로드</td><td>자동</td><td>조회수 높은 영상</td></tr>
+      <tr><td>2</td><td>🔥 기출 퀴즈 Shorts</td><td>재생목록</td><td>"이 문제 맞히면 1급" 시리즈</td></tr>
+      <tr><td>3</td><td>📚 시대별 핵심 정리</td><td>재생목록</td><td>선사~현대 7개 시대</td></tr>
+      <tr><td>4</td><td>📝 시험 직전 총정리</td><td>재생목록</td><td>벼락치기용 압축 콘텐츠</td></tr>
+      <tr><td>5</td><td>최신 업로드</td><td>자동</td><td>최근 영상</td></tr>
+    </tbody>
+  </table>
+
+  <h4>외부 링크 (배너 위 최대 5개)</h4>
+  <table>
+    <thead><tr><th>순서</th><th>링크</th><th>표시 텍스트</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>gcnote.co.kr</td><td>무료 기출 풀기</td></tr>
+      <tr><td>2</td><td>instagram.com/gcnote.kr</td><td>인스타그램</td></tr>
+      <tr><td>3</td><td>threads.net/@gcnote.kr</td><td>스레드</td></tr>
+      <tr><td>4</td><td>네이버 블로그 URL</td><td>네이버 블로그</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 2-2 콘텐츠 플랜 -->
+  <h3>2-2. 콘텐츠 플랜</h3>
+
+  <h4>콘텐츠 필러 (4개)</h4>
+  <table>
+    <thead><tr><th>필러</th><th>비율</th><th>핵심 주제</th><th>영상 유형</th></tr></thead>
+    <tbody>
+      <tr><td>🔥 <strong>기출 퀴즈</strong></td><td>40%</td><td>"이 문제 맞히면 1급" — 기출 1문제 해설</td><td>Shorts (30~60초)</td></tr>
+      <tr><td>📚 <strong>시대별 정리</strong></td><td>25%</td><td>7개 시대 핵심 키워드, 흐름 정리</td><td>일반 (5~10분)</td></tr>
+      <tr><td>💡 <strong>공부법/전략</strong></td><td>20%</td><td>2주 합격법, 오답 분석, 시간 배분</td><td>일반 (5~8분) + Shorts</td></tr>
+      <tr><td>📢 <strong>시험 시즌</strong></td><td>15%</td><td>가답안, 난이도 분석, D-day 정리</td><td>일반 + Shorts</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Shorts 제작 공식 (핵심 포맷 — 주력)</h4>
+  <div class="template-box">
+    <strong>구조 (30~60초):</strong><br>
+    [0~3초] 훅: "이 문제 3초 안에 맞히면 한능검 1급" (텍스트 대형)<br>
+    [3~10초] 문제 이미지 + 선지 표시 (배경음악)<br>
+    [10~15초] "정답은..." 카운트다운<br>
+    [15~20초] 정답 공개 + 효과음<br>
+    [20~50초] 해설 — 핵심 포인트 2~3개 텍스트 오버레이<br>
+    [50~60초] CTA: "더 많은 기출 → 설명란 링크 gcnote.co.kr"<br><br>
+    <strong>제작 도구:</strong> 캡컷(무료) — 문제 이미지 + 텍스트 오버레이 + BGM<br>
+    <strong>양산 가능:</strong> 1,900+ 기출에서 매일 1개씩 뽑아도 5년치 소스 확보
+  </div>
+
+  <h4>일반 영상 제작 공식 (시대별 정리)</h4>
+  <div class="template-box">
+    <strong>구조 (5~10분):</strong><br>
+    [0~5초] 결과 미리보기: "이 영상 하나면 고려시대 끝납니다"<br>
+    [5~30초] 시대 개요 (타임라인 그래픽)<br>
+    [30초~] 핵심 키워드 5~10개 순서대로 해설<br>
+    [중간] 전환 장치: "여기서 가장 많이 출제되는 포인트인데요..."<br>
+    [마지막 30초] 요약 + 다음 영상 예고 + CTA<br><br>
+    <strong>시청자 유지 후크:</strong><br>
+    • 30초마다 화면 전환 (텍스트→이미지→그래픽)<br>
+    • "이건 시험에 거의 매번 나옵니다" — 주의 환기<br>
+    • 타임스탬프 필수 → Google "주요 순간" 노출
+  </div>
+
+  <h4>시리즈 기획</h4>
+  <table>
+    <thead><tr><th>시리즈명</th><th>편수</th><th>유형</th><th>업로드 주기</th></tr></thead>
+    <tbody>
+      <tr><td>🔥 기출 퀴즈 (무한 시리즈)</td><td>∞</td><td>Shorts</td><td>주 3~5회</td></tr>
+      <tr><td>📚 시대별 완전 정리 (7편)</td><td>7편</td><td>일반 (7~10분)</td><td>주 1회 (화)</td></tr>
+      <tr><td>💡 한능검 2주 합격 플랜</td><td>5편</td><td>일반 (5~8분)</td><td>주 1회 (목)</td></tr>
+      <tr><td>📢 제N회 시험 총정리</td><td>시험당 2~3편</td><td>일반 + Shorts</td><td>시험 직후</td></tr>
+    </tbody>
+  </table>
+
+  <h4>주간 업로드 캘린더</h4>
+  <table>
+    <thead><tr><th>요일</th><th>시간</th><th>유형</th><th>필러</th><th>주제 예시</th></tr></thead>
+    <tbody>
+      <tr><td><strong>월</strong></td><td>07:30</td><td>Shorts</td><td>🔥 퀴즈</td><td>"이 문제 맞히면 1급 — 제75회 23번"</td></tr>
+      <tr><td><strong>화</strong></td><td>17:00</td><td>일반 (7~10분)</td><td>📚 시대별</td><td>"고려시대 완전 정리 — 시험 전 필수"</td></tr>
+      <tr><td><strong>수</strong></td><td>12:00</td><td>Shorts</td><td>🔥 퀴즈</td><td>"조선시대 이 사건, 순서 맞출 수 있나요?"</td></tr>
+      <tr><td><strong>목</strong></td><td>17:00</td><td>일반 (5~8분)</td><td>💡 공부법</td><td>"한능검 오답노트 활용법 — 이것만 하면 1급"</td></tr>
+      <tr><td><strong>금</strong></td><td>07:30</td><td>Shorts</td><td>🔥 퀴즈</td><td>"근현대사 함정 문제 — 대부분 틀립니다"</td></tr>
+      <tr><td><strong>토~일</strong></td><td>-</td><td>-</td><td>-</td><td>촬영/편집 또는 휴식</td></tr>
+    </tbody>
+  </table>
+  <div class="info-box"><strong>시험 시즌:</strong> Shorts 매일 1개 + 일반 주 3회로 증가. 시험 당일 가답안 영상 최대한 빨리 업로드.</div>
+
+  <!-- 2-3 SEO 최적화 -->
+  <h3>2-3. SEO 최적화</h3>
+
+  <h4>영상 업로드 SEO 체크리스트</h4>
+  <table>
+    <thead><tr><th>#</th><th>항목</th><th>규칙</th><th>기출노트 적용 예시</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>제목</strong></td><td>키워드 앞 15자 내, 60자 이내</td><td>"한능검 고려시대 핵심 정리 — 이것만 외우면 끝 (2026)"</td></tr>
+      <tr><td>2</td><td><strong>설명 첫 2줄</strong></td><td>키워드 포함 + 클릭 유도</td><td>"한능검 시험에서 고려시대는 매회 5~8문제 출제됩니다. 이 영상으로 핵심만 빠르게 정리하세요."</td></tr>
+      <tr><td>3</td><td><strong>타임스탬프</strong></td><td>5개+ 구간 표시</td><td>00:00 인트로 / 00:30 태조 왕건 / 02:00 무신정권 / 04:30 몽골 침략 / 07:00 마무리</td></tr>
+      <tr><td>4</td><td><strong>설명 본문</strong></td><td>300자+, 키워드 3~5회</td><td>"한능검", "고려시대", "기출", "요약" 자연 포함</td></tr>
+      <tr><td>5</td><td><strong>태그</strong></td><td>8~15개, 정확+넓은+롱테일</td><td>한능검 고려시대, 한능검 기출 해설, 한능검 요약, 한국사 고려, 한능검 공부법, 한국사능력검정시험, 기출노트</td></tr>
+      <tr><td>6</td><td><strong>해시태그</strong></td><td>3~5개</td><td>#한능검 #한능검기출 #고려시대 #한국사 #기출해설</td></tr>
+      <tr><td>7</td><td><strong>자막</strong></td><td>자동 자막 → 오류 교정</td><td>한국사 고유명사 교정 필수 (예: "왕건"→"왕건", "태조"→"태조")</td></tr>
+      <tr><td>8</td><td><strong>최종 화면</strong></td><td>구독 + 추천 영상 2개</td><td>구독 버튼 + "다음 시대: 조선시대" + "시대별 정리" 재생목록</td></tr>
+      <tr><td>9</td><td><strong>카드</strong></td><td>이탈 높은 구간에 배치</td><td>3분, 5분 구간에 관련 Shorts 링크</td></tr>
+      <tr><td>10</td><td><strong>재생목록</strong></td><td>해당 시리즈에 추가</td><td>"시대별 완전 정리" 재생목록에 추가</td></tr>
+    </tbody>
+  </table>
+
+  <h4>설명 템플릿 (매 영상 복사 사용)</h4>
+  <div class="template-box">
+    [영상 핵심 요약 1~2줄 — 키워드 포함]<br><br>
+    ⏱ 타임스탬프<br>
+    00:00 인트로<br>
+    00:30 [주제1]<br>
+    02:00 [주제2]<br>
+    ...<br><br>
+    📝 무료 기출 풀기 → https://gcnote.co.kr<br>
+    ✅ 회원가입 없이 1,900+ 기출 풀기<br>
+    ✅ 기출 → 요약노트 → 강의 한 곳에서 연결<br><br>
+    📌 관련 영상<br>
+    • [관련 영상 제목]: [URL]<br>
+    • [관련 영상 제목]: [URL]<br><br>
+    📱 SNS<br>
+    • 인스타: https://instagram.com/gcnote.kr<br>
+    • 스레드: https://threads.net/@gcnote.kr<br>
+    • 네이버 블로그: [URL]<br><br>
+    #한능검 #한능검기출 #한국사 #기출해설 #한국사능력검정시험
+  </div>
+
+  <h4>제목 패턴 (SEO + CTR 최적화)</h4>
+  <table>
+    <thead><tr><th>패턴</th><th>예시</th><th>용도</th></tr></thead>
+    <tbody>
+      <tr><td>How-to</td><td>"한능검 1급 2주 합격하는 방법 (독학)"</td><td>검색 유입</td></tr>
+      <tr><td>리스트형</td><td>"한능검 최빈출 키워드 TOP 10"</td><td>검색 + 클릭</td></tr>
+      <tr><td>퀴즈형 (Shorts)</td><td>"이 문제 맞히면 한능검 1급 🔥"</td><td>바이럴</td></tr>
+      <tr><td>시리즈형</td><td>"한능검 고려시대 완전 정리 | 시대별 #3"</td><td>시리즈 시청</td></tr>
+      <tr><td>속보형</td><td>"제78회 한능검 가답안 + 난이도 분석 (속보)"</td><td>시험 시즌 트래픽</td></tr>
+    </tbody>
+  </table>
+
+  <h4>재생목록 구성</h4>
+  <table>
+    <thead><tr><th>재생목록</th><th>내용</th><th>키워드</th></tr></thead>
+    <tbody>
+      <tr><td>🔥 기출 퀴즈 모음</td><td>Shorts 전체</td><td>한능검 기출 퀴즈, 한능검 기출문제</td></tr>
+      <tr><td>📚 시대별 완전 정리</td><td>선사~현대 7편</td><td>한능검 시대별 정리, 한능검 요약</td></tr>
+      <tr><td>💡 합격 전략</td><td>공부법, 오답, 시간 배분</td><td>한능검 공부법, 한능검 합격</td></tr>
+      <tr><td>📢 제N회 시험 특집</td><td>시험별 가답안+해설</td><td>한능검 가답안, 한능검 해설</td></tr>
+    </tbody>
+  </table>
+
+  <h4>KPI 목표</h4>
+  <table>
+    <thead><tr><th>지표</th><th>1개월</th><th>3개월</th><th>6개월</th></tr></thead>
+    <tbody>
+      <tr><td><strong>구독자</strong></td><td>-</td><td>100</td><td>500</td></tr>
+      <tr><td><strong>Shorts 평균 조회</strong></td><td>100~500</td><td>500~2,000</td><td>2,000~10,000</td></tr>
+      <tr><td><strong>일반 영상 평균 조회</strong></td><td>50~200</td><td>200~1,000</td><td>1,000~5,000</td></tr>
+      <tr><td><strong>업로드 일관성</strong></td><td>주 3회 유지</td><td>주 3~5회</td><td>주 5회</td></tr>
+      <tr><td><strong>평균 시청 지속</strong></td><td>40%+</td><td>50%+</td><td>50%+</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PART 3: 스레드 -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="section" style="border-top:4px solid #000000;">
+  <div class="section-header">
+    <div class="section-icon" style="background:#F3F4F6;">💬</div>
+    <div><div class="section-title">Part 3. 스레드 심화 전략</div><div class="section-subtitle">프로필 브랜딩 → 콘텐츠 전략 → 성장 전술</div></div>
+  </div>
+
+  <!-- 3-1 프로필 브랜딩 -->
+  <h3>3-1. 프로필 브랜딩</h3>
+
+  <table>
+    <thead><tr><th>항목</th><th>세팅 내용</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td><strong>핸들</strong></td><td>@gcnote.kr (인스타 연동)</td><td>인스타와 동일</td></tr>
+      <tr><td><strong>프로필 사진</strong></td><td>인스타 동기화 (기출노트 로고)</td><td>자동 연동</td></tr>
+      <tr><td><strong>프로필 링크</strong></td><td>gcnote.co.kr</td><td>직접 사이트 링크 (링크트리 불필요)</td></tr>
+    </tbody>
+  </table>
+
+  <h4>스레드 바이오 (160자 — 인스타와 다르게!)</h4>
+  <div class="card-grid">
+    <div class="card" style="border-top:3px solid #000;">
+      <div class="card-title">A안 — 친근한 선배 톤 (추천)</div>
+      <div class="bio-box" style="margin:0;">
+        한능검 기출 매일 1문제씩 풀어봅시다. 1,900+ 기출 무료 풀이 사이트 만드는 사람입니다. 기출-요약-강의 연결이 다른 데 없길래 직접 만들었어요.
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid #000;">
+      <div class="card-title">B안 — 솔직한 톤</div>
+      <div class="bio-box" style="margin:0;">
+        한능검 기출 풀 데가 마땅치 않아서 직접 만들었습니다. 1,900문제 무료, 가입 없음. 여기선 매일 기출 퀴즈 + 공부 꿀팁 씁니다.
+      </div>
+    </div>
+  </div>
+
+  <h4>고정 게시물 (필수)</h4>
+  <div class="template-box">
+    <strong>고정 게시물 초안:</strong><br><br>
+    안녕하세요, 기출노트 한능검 만든 사람입니다.<br><br>
+    한능검 기출 풀 곳이 마땅치 않아서 직접 만들었어요.<br>
+    • 40~77회 전 시험 1,900+ 문제 무료<br>
+    • 회원가입 없이 바로 풀기<br>
+    • 기출 틀리면 → 관련 요약노트로 바로 이동<br>
+    • 해설마다 최태성 강의 해당 구간 자동 재생<br><br>
+    여기선 매일 기출 1문제 + 시대별 꿀팁 올립니다.<br>
+    👉 gcnote.co.kr
+  </div>
+
+  <h4>톤앤매너 가이드</h4>
+  <table>
+    <thead><tr><th>항목</th><th>규칙</th><th>예시</th></tr></thead>
+    <tbody>
+      <tr><td><strong>말투</strong></td><td>~입니다/~해요 혼용, 대화체</td><td>"이거 진짜 많이 나와요" "알고 계셨나요?"</td></tr>
+      <tr><td><strong>이모지</strong></td><td>1~2개/게시물, 과하지 않게</td><td>🔥 📝 정도만</td></tr>
+      <tr><td><strong>길이</strong></td><td>200~300자 (500자 한도, 300자 넘으면 이탈↑)</td><td>핵심만 짧게</td></tr>
+      <tr><td><strong>마무리</strong></td><td>질문으로 끝내면 답글 유도</td><td>"여러분은 이 시대 어떻게 외우세요?"</td></tr>
+      <tr><td><strong>금지</strong></td><td>과도한 광고 톤, 해시태그 나열</td><td>해시태그 효과 낮음 → 1~2개 또는 없이</td></tr>
+    </tbody>
+  </table>
+
+  <h4>인스타↔스레드 교차 게시 전략</h4>
+  <table>
+    <thead><tr><th>방향</th><th>방법</th><th>빈도</th></tr></thead>
+    <tbody>
+      <tr><td><strong>스레드 → 인스타</strong></td><td>반응 좋은 글을 인스타 스토리에 캡처 공유</td><td>주 2~3회</td></tr>
+      <tr><td><strong>인스타 → 스레드</strong></td><td>카드뉴스 핵심을 텍스트로 풀어서 게시</td><td>캐러셀 업로드 시마다</td></tr>
+      <tr><td><strong>동시 게시</strong></td><td>기출 퀴즈만 양쪽에 동시 (형식은 다르게)</td><td>주 2~3회</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 3-2 콘텐츠 전략 -->
+  <h3>3-2. 콘텐츠 전략</h3>
+
+  <h4>콘텐츠 유형별 비율</h4>
+  <table>
+    <thead><tr><th>유형</th><th>비율</th><th>기출노트 적용</th><th>예시</th></tr></thead>
+    <tbody>
+      <tr><td>🎓 <strong>팁/조언</strong></td><td>25%</td><td>기출 빈출 키워드, 시대별 암기법</td><td>"조선 왕 순서 이렇게 외우면 3초 걸림"</td></tr>
+      <tr><td>🔥 <strong>핫테이크/의견</strong></td><td>20%</td><td>한능검 학습법에 대한 솔직한 의견</td><td>"한능검 교재 사는 건 돈 낭비입니다. 기출만 돌리세요."</td></tr>
+      <tr><td>❓ <strong>질문/투표</strong></td><td>20%</td><td>기출 퀴즈, 공부 관련 투표</td><td>"한능검에서 가장 어려운 시대는? 🏛 고려 vs 🏯 조선"</td></tr>
+      <tr><td>📖 <strong>비하인드/스토리</strong></td><td>20%</td><td>사이트 개발 뒷이야기, 데이터 인사이트</td><td>"1,900문제 분석해보니 가장 많이 나오는 키워드가..."</td></tr>
+      <tr><td>📢 <strong>시리즈/연재</strong></td><td>15%</td><td>"오늘의 기출 1문제" 매일 연재</td><td>"오늘의 기출 #47 — 이 사건의 결과는?"</td></tr>
+    </tbody>
+  </table>
+
+  <h4>게시물 템플릿 (유형별)</h4>
+
+  <h4 style="margin-top:16px;">팁/조언 템플릿</h4>
+  <div class="template-box">
+    한능검에서 [시대/주제] 나오면 이것만 기억하세요.<br><br>
+    1. [핵심 포인트 1]<br>
+    2. [핵심 포인트 2]<br>
+    3. [핵심 포인트 3]<br><br>
+    최근 5개년에서 이 주제 [N]번 나왔습니다.<br>
+    더 많은 기출 → gcnote.co.kr
+  </div>
+
+  <h4>핫테이크 템플릿</h4>
+  <div class="template-box">
+    [강한 의견 첫 줄 — 논란 유발 가능한 것도 OK]<br><br>
+    [근거 — 데이터나 경험 2~3줄]<br><br>
+    여러분은 어떻게 생각하세요?
+  </div>
+
+  <h4>오늘의 기출 (매일 연재) 템플릿</h4>
+  <div class="template-box">
+    오늘의 기출 #47 🔥<br><br>
+    [문제 텍스트 또는 이미지]<br><br>
+    정답은 내일 공개합니다.<br>
+    (어제 정답: ③번 — [간단 해설])<br><br>
+    전체 기출 풀기 → gcnote.co.kr
+  </div>
+
+  <h4>주간 콘텐츠 캘린더</h4>
+  <table>
+    <thead><tr><th>요일</th><th>시간</th><th>유형</th><th>주제 예시</th></tr></thead>
+    <tbody>
+      <tr><td><strong>월</strong></td><td>08:00</td><td>🔥 핫테이크</td><td>"한능검 공부에 교재는 필요 없다"</td></tr>
+      <tr><td><strong>화</strong></td><td>12:30</td><td>🎓 팁</td><td>"일제강점기 핵심 3가지만 외우세요"</td></tr>
+      <tr><td><strong>수</strong></td><td>21:00</td><td>📢 오늘의 기출</td><td>"오늘의 기출 #1 — 이 유물의 시대는?"</td></tr>
+      <tr><td><strong>목</strong></td><td>08:00</td><td>❓ 질문/투표</td><td>"한능검 공부 언제 하세요? 아침 vs 밤"</td></tr>
+      <tr><td><strong>금</strong></td><td>12:30</td><td>📖 비하인드</td><td>"기출 1,900개 분석했더니 가장 많이 나오는 인물이..."</td></tr>
+      <tr><td><strong>토</strong></td><td>10:00</td><td>🎓 팁</td><td>"주말 2시간 한능검 공부 루틴"</td></tr>
+      <tr><td><strong>일</strong></td><td>-</td><td>휴식 또는 가벼운 일상</td><td>"다음 주 시험 대비 콘텐츠 예고"</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 3-3 성장 전략 -->
+  <h3>3-3. 성장 전략</h3>
+
+  <h4>알고리즘 최적화 액션</h4>
+  <table>
+    <thead><tr><th>알고리즘 요소</th><th>영향도</th><th>기출노트 액션</th></tr></thead>
+    <tbody>
+      <tr><td><strong>참여 속도</strong></td><td>🟢 높음</td><td>피크 시간대(08:00, 12:30, 21:00) 게시, 게시 직후 인스타 스토리에 공유</td></tr>
+      <tr><td><strong>답글 깊이</strong></td><td>🟢 높음</td><td>모든 답글에 질문으로 응답하여 대화 연장. "어느 시대가 제일 어려우세요?" 등</td></tr>
+      <tr><td><strong>공유/리포스트</strong></td><td>🟢 높음</td><td>"저장해두세요" CTA, 공유하고 싶은 팁 콘텐츠 제작</td></tr>
+      <tr><td><strong>콘텐츠 관심사</strong></td><td>🟡 중간</td><td>한능검/교육/공시 관련 주제 일관성 유지</td></tr>
+    </tbody>
+  </table>
+
+  <h4>성장 단계별 전술 (1단계: 0~500 팔로워)</h4>
+  <table>
+    <thead><tr><th>전술</th><th>빈도</th><th>구체적 액션</th></tr></thead>
+    <tbody>
+      <tr><td><strong>대형 계정 답글</strong></td><td>일 5~10회</td><td>공시생 계정, 한국사 강사 계정, 취업 정보 계정에 가치 있는 답글 달기. "이거에 대해서는 [팁]도 있어요" 식으로.</td></tr>
+      <tr><td><strong>인스타 교차 프로모션</strong></td><td>주 3회</td><td>인스타 스토리에 스레드 게시물 캡처 공유 → "스레드에서 매일 기출 퀴즈 풀어요"</td></tr>
+      <tr><td><strong>트렌드 참여</strong></td><td>주 2~3회</td><td>시험 관련 이슈, 공시 정책 변화 등에 빠르게 의견 게시</td></tr>
+      <tr><td><strong>오늘의 기출 연재</strong></td><td>매일</td><td>"오늘의 기출 #N" 시리즈로 꾸준한 팔로우 이유 제공</td></tr>
+      <tr><td><strong>기출 퀴즈 투표</strong></td><td>주 2회</td><td>투표 기능으로 낮은 진입장벽 참여 유도</td></tr>
+    </tbody>
+  </table>
+
+  <h4>성장 2단계 (500~3,000) 추가 전술</h4>
+  <table>
+    <thead><tr><th>전술</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td><strong>시리즈 확장</strong></td><td>"시대별 1분 정리" 7편 시리즈 → 지속 방문 유도</td></tr>
+      <tr><td><strong>인용 게시물</strong></td><td>공시 관련 뉴스, 다른 계정 글에 의견 추가 (주 2~3회)</td></tr>
+      <tr><td><strong>답글 100% 응답</strong></td><td>모든 답글에 1시간 내 응답, 대화 연장</td></tr>
+      <tr><td><strong>데이터 콘텐츠</strong></td><td>"1,900문제 분석 결과" — 데이터 기반 인사이트는 공유율 높음</td></tr>
+    </tbody>
+  </table>
+
+  <h4>KPI 목표</h4>
+  <table>
+    <thead><tr><th>지표</th><th>1개월</th><th>3개월</th><th>6개월</th></tr></thead>
+    <tbody>
+      <tr><td><strong>팔로워</strong></td><td>100</td><td>500</td><td>2,000</td></tr>
+      <tr><td><strong>참여율</strong></td><td>5%+</td><td>4%+</td><td>3%+</td></tr>
+      <tr><td><strong>일 게시 횟수</strong></td><td>1회</td><td>1~2회</td><td>1~2회</td></tr>
+      <tr><td><strong>답글 응답률</strong></td><td>80%+</td><td>80%+</td><td>80%+</td></tr>
+      <tr><td><strong>월간 성장률</strong></td><td>-</td><td>10%+</td><td>10%+</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- 크로스 채널 시너지 -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="section" style="background:linear-gradient(135deg, var(--pink-l), var(--blue-l));">
+  <div class="section-header">
+    <div class="section-icon" style="background:white;">🔗</div>
+    <div><div class="section-title">Part 4. 크로스 채널 시너지</div><div class="section-subtitle">1개 소스 → 3개 채널 동시 배포 워크플로우</div></div>
+  </div>
+
+  <h4>원소스 멀티채널 변환 매트릭스</h4>
+  <table>
+    <thead><tr><th>소스</th><th>인스타</th><th>유튜브</th><th>스레드</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>기출 1문제</strong></td>
+        <td>캐러셀 카드뉴스 (저작도구 자동생성) + 릴스 퀴즈</td>
+        <td>Shorts "이 문제 맞히면 1급"</td>
+        <td>"오늘의 기출 #N" 텍스트 + 이미지</td>
+      </tr>
+      <tr>
+        <td><strong>시대별 요약노트</strong></td>
+        <td>캐러셀 "핵심 키워드 7가지"</td>
+        <td>일반 영상 "시대별 완전 정리" (7~10분)</td>
+        <td>"[시대] 이것만 외우면 끝" 팁 텍스트</td>
+      </tr>
+      <tr>
+        <td><strong>오답 데이터</strong></td>
+        <td>캐러셀 "가장 많이 틀리는 유형 TOP 5"</td>
+        <td>Shorts "이 문제 80%가 틀립니다"</td>
+        <td>"1,900문제 분석 결과" 데이터 공유</td>
+      </tr>
+      <tr>
+        <td><strong>시험 시즌</strong></td>
+        <td>스토리 D-day + 캐러셀 가답안</td>
+        <td>가답안 속보 영상 (즉시 업로드)</td>
+        <td>"시험 보신 분들 어떠셨어요?" 질문</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>주간 크로스 채널 워크플로우</h4>
+  <table>
+    <thead><tr><th>요일</th><th>인스타</th><th>유튜브</th><th>스레드</th><th>블로그 (참고)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>월</strong></td><td>릴스 퀴즈 07:30</td><td>Shorts 퀴즈 07:30</td><td>핫테이크 08:00</td><td>-</td></tr>
+      <tr><td><strong>화</strong></td><td>캐러셀 교육 12:00</td><td>일반 영상 17:00</td><td>팁 12:30</td><td>기출 해설 포스트</td></tr>
+      <tr><td><strong>수</strong></td><td>스토리 ×3~5</td><td>Shorts 퀴즈 12:00</td><td>오늘의 기출 21:00</td><td>-</td></tr>
+      <tr><td><strong>목</strong></td><td>릴스 교육 18:00</td><td>일반 영상 17:00</td><td>질문/투표 08:00</td><td>공부법 가이드</td></tr>
+      <tr><td><strong>금</strong></td><td>캐러셀 재미 12:00</td><td>Shorts 퀴즈 07:30</td><td>비하인드 12:30</td><td>-</td></tr>
+      <tr><td><strong>토</strong></td><td>릴스 사이트 10:00</td><td>-</td><td>팁 10:00</td><td>요약노트 시리즈</td></tr>
+      <tr><td><strong>일</strong></td><td>스토리 예고 ×3</td><td>-</td><td>휴식/예고</td><td>-</td></tr>
+    </tbody>
+  </table>
+
+  <h4>주간 제작 시간 추정</h4>
+  <table>
+    <thead><tr><th>채널</th><th>콘텐츠</th><th>소요 시간</th></tr></thead>
+    <tbody>
+      <tr><td>인스타</td><td>릴스 3개 + 캐러셀 2개 + 스토리</td><td>~4시간</td></tr>
+      <tr><td>유튜브</td><td>Shorts 3개 + 일반 2개</td><td>~5시간</td></tr>
+      <tr><td>스레드</td><td>텍스트 6~7개</td><td>~1시간</td></tr>
+      <tr><td colspan="2"><strong>총 주간 제작 시간</strong></td><td><strong>~10시간</strong></td></tr>
+    </tbody>
+  </table>
+  <div class="info-box">
+    <strong>효율화 팁:</strong><br>
+    • 기출 카드뉴스는 저작도구로 자동 생성 → 인스타 캐러셀 제작 시간 대폭 절감<br>
+    • Shorts와 릴스는 동일 영상을 양쪽에 업로드 (가로세로 비율 동일 9:16)<br>
+    • 스레드는 텍스트만이라 이동 중에도 작성 가능<br>
+    • 일요일에 월~금 스레드 글 미리 작성해두면 주중 부담 감소
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- 우선순위 액션 플랜 -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="section" style="border-top:4px solid var(--primary);">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--primary-l);">🚀</div>
+    <div><div class="section-title">우선순위 액션 플랜</div><div class="section-subtitle">지금 당장 시작할 수 있는 순서</div></div>
+  </div>
+
+  <h4>Phase 0 — 계정 개설 (Day 1~3)</h4>
+  <table>
+    <thead><tr><th>#</th><th>작업</th><th>소요 시간</th><th>채널</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>인스타 @gcnote.kr 크리에이터 계정 개설 + 바이오/프로필 세팅</td><td>30분</td><td>📸</td></tr>
+      <tr><td>2</td><td>스레드 연동 개설 + 바이오 작성 + 고정 게시물</td><td>20분</td><td>💬</td></tr>
+      <tr><td>3</td><td>유튜브 채널 개설 + 채널명/설명/키워드/배너 세팅</td><td>1시간</td><td>🎬</td></tr>
+      <tr><td>4</td><td>인스타 하이라이트 커버 5개 Canva 제작</td><td>30분</td><td>📸</td></tr>
+      <tr><td>5</td><td>인스타 링크인바이오 → gcnote.co.kr 설정</td><td>5분</td><td>📸</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Phase 1 — 콘텐츠 시딩 (Week 1~2)</h4>
+  <table>
+    <thead><tr><th>#</th><th>작업</th><th>소요 시간</th><th>채널</th></tr></thead>
+    <tbody>
+      <tr><td>6</td><td>인스타 첫 9개 피드/캐러셀 준비 + 업로드 (그리드 완성)</td><td>3시간</td><td>📸</td></tr>
+      <tr><td>7</td><td>유튜브 Shorts 5개 일괄 촬영/편집 (기출 퀴즈)</td><td>3시간</td><td>🎬</td></tr>
+      <tr><td>8</td><td>스레드 "오늘의 기출" 시리즈 시작 (매일 1개)</td><td>30분/일</td><td>💬</td></tr>
+      <tr><td>9</td><td>인스타 해시태그 4세트 + Alt Text 작성 규칙 확정</td><td>30분</td><td>📸</td></tr>
+      <tr><td>10</td><td>유튜브 설명 템플릿 + 태그 세트 확정</td><td>20분</td><td>🎬</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Phase 2 — 정상 운영 (Week 3~)</h4>
+  <table>
+    <thead><tr><th>작업</th><th>빈도</th></tr></thead>
+    <tbody>
+      <tr><td>주간 콘텐츠 캘린더에 따라 3채널 동시 운영</td><td>매주</td></tr>
+      <tr><td>스레드 대형 계정 답글 활동</td><td>매일 5~10회</td></tr>
+      <tr><td>인스타 스토리 (퀴즈/설문/D-day)</td><td>매일 2~5개</td></tr>
+      <tr><td>주간 성과 리뷰 (참여율, 도달, 팔로워 변화)</td><td>주 1회</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+<footer>기출노트 한능검 — 채널별 심화 전략 (인스타·유튜브·스레드) | gcnote.co.kr | 2026-03-24</footer>
+</body>
+</html>

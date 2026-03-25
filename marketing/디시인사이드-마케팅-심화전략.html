@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기출노트 한능검 — 디시인사이드 마케팅 심화 전략 (14개 갤러리)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+  :root {
+    --primary: #1E3A8A; --primary-l: #EFF6FF;
+    --blue: #2563EB; --blue-l: #DBEAFE;
+    --green: #059669; --green-l: #ECFDF5;
+    --purple: #7C3AED; --purple-l: #F5F3FF;
+    --pink: #EC4899; --pink-l: #FDF2F8;
+    --red: #DC2626; --red-l: #FEF2F2;
+    --amber: #F59E0B; --amber-l: #FFFBEB;
+    --orange: #EA580C; --orange-l: #FFF7ED;
+    --cyan: #0891B2; --cyan-l: #ECFEFF;
+    --text: #111827; --muted: #6B7280; --border: #E5E7EB;
+    --bg: #F8FAFC; --surface: #FFFFFF;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans KR',sans-serif; background:var(--bg); color:var(--text); font-size:14px; line-height:1.7; }
+  .container { max-width:1060px; margin:0 auto; padding:40px 24px; }
+
+  .hero { background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 40%,#3B82F6 100%); color:white; padding:56px 40px; border-radius:20px; margin-bottom:32px; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; top:-60%; right:-10%; width:500px; height:500px; background:rgba(255,255,255,0.05); border-radius:50%; }
+  .hero::after { content:''; position:absolute; bottom:-40%; left:-10%; width:350px; height:350px; background:rgba(59,130,246,0.15); border-radius:50%; }
+  .hero-badge { display:inline-block; background:rgba(255,255,255,0.15); padding:5px 14px; border-radius:16px; font-size:12px; font-weight:700; margin-bottom:12px; backdrop-filter:blur(4px); }
+  .hero h1 { font-size:34px; font-weight:900; margin-bottom:8px; letter-spacing:-1px; }
+  .hero p { font-size:15px; opacity:0.9; max-width:650px; }
+  .hero-meta { margin-top:16px; font-size:12px; opacity:0.5; }
+  .hero-stats { display:flex; gap:24px; margin-top:20px; flex-wrap:wrap; }
+  .hero-stat { background:rgba(255,255,255,0.1); padding:10px 18px; border-radius:10px; backdrop-filter:blur(4px); }
+  .hero-stat-value { font-size:22px; font-weight:900; }
+  .hero-stat-label { font-size:11px; opacity:0.7; }
+
+  .toc { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:24px 32px; margin-bottom:24px; }
+  .toc-title { font-size:16px; font-weight:900; margin-bottom:12px; }
+  .toc ol { padding-left:20px; font-size:13px; }
+  .toc li { margin-bottom:6px; }
+  .toc a { color:var(--blue); text-decoration:none; }
+  .toc a:hover { text-decoration:underline; }
+
+  .section { background:var(--surface); border-radius:16px; padding:32px; margin-bottom:24px; border:1px solid var(--border); }
+  .section-header { display:flex; align-items:center; gap:12px; margin-bottom:24px; }
+  .section-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+  .section-title { font-size:22px; font-weight:900; }
+  .section-subtitle { font-size:13px; color:var(--muted); }
+
+  table { width:100%; border-collapse:collapse; margin:16px 0; font-size:13px; }
+  th { background:var(--bg); padding:10px 14px; text-align:left; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--muted); border-bottom:2px solid var(--border); }
+  td { padding:10px 14px; border-bottom:1px solid var(--border); vertical-align:top; }
+
+  .tag { display:inline-block; padding:2px 10px; border-radius:6px; font-size:11px; font-weight:700; }
+  .tag-green { background:var(--green-l); color:var(--green); }
+  .tag-blue { background:var(--blue-l); color:var(--blue); }
+  .tag-purple { background:var(--purple-l); color:var(--purple); }
+  .tag-pink { background:var(--pink-l); color:var(--pink); }
+  .tag-red { background:var(--red-l); color:var(--red); }
+  .tag-amber { background:var(--amber-l); color:var(--amber); }
+  .tag-orange { background:var(--orange-l); color:var(--orange); }
+  .tag-cyan { background:var(--cyan-l); color:var(--cyan); }
+
+  .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin:16px 0; }
+  .card-grid-3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin:16px 0; }
+  .card { border:1px solid var(--border); border-radius:14px; padding:20px; }
+  .card-title { font-size:15px; font-weight:800; margin-bottom:8px; }
+  .card-desc { font-size:13px; color:var(--muted); }
+  .card ul { padding-left:18px; font-size:13px; }
+  .card li { margin-bottom:4px; }
+
+  .info-box { background:var(--green-l); border-left:3px solid var(--green); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; color:#065F46; }
+  .warn-box { background:var(--amber-l); border-left:3px solid var(--amber); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; color:#92400E; }
+  .danger-box { background:var(--red-l); border-left:3px solid var(--red); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; color:#991B1B; }
+  .tip-box { background:var(--blue-l); border-left:3px solid var(--blue); padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; color:#1E40AF; }
+
+  h3 { font-size:18px; font-weight:900; margin:28px 0 12px; padding-bottom:8px; border-bottom:2px solid var(--border); }
+  h4 { font-size:15px; font-weight:800; margin:20px 0 10px; }
+  h4:first-child { margin-top:0; }
+
+  .bio-box { background:#F8FAFC; border:2px solid var(--border); border-radius:12px; padding:16px 20px; font-size:13px; line-height:1.9; margin:12px 0; }
+  .template-box { background:#F0FDF4; border:1px solid #BBF7D0; border-radius:10px; padding:14px 18px; font-size:13px; line-height:1.8; margin:10px 0; }
+  .example-box { background:#F5F3FF; border:1px solid #DDD6FE; border-radius:10px; padding:14px 18px; font-size:13px; line-height:1.8; margin:10px 0; }
+  .dark-box { background:#1E293B; color:#E2E8F0; border-radius:10px; padding:16px 20px; font-size:13px; line-height:1.8; margin:12px 0; }
+
+  .timeline { border-left:3px solid var(--blue); padding-left:24px; margin:16px 0; }
+  .timeline-item { margin-bottom:20px; position:relative; }
+  .timeline-item::before { content:''; position:absolute; left:-30px; top:4px; width:12px; height:12px; background:var(--blue); border-radius:50%; border:2px solid white; }
+  .timeline-label { font-size:11px; font-weight:700; color:var(--blue); text-transform:uppercase; }
+  .timeline-content { font-size:13px; margin-top:4px; }
+
+  .gallery-card { border:1px solid var(--border); border-radius:14px; margin-bottom:16px; overflow:hidden; }
+  .gallery-header { padding:14px 20px; font-weight:800; font-size:15px; display:flex; align-items:center; gap:10px; justify-content:space-between; }
+  .gallery-body { padding:18px 20px; }
+  .gallery-body h4 { font-size:14px; font-weight:800; margin:14px 0 6px; }
+  .gallery-body h4:first-child { margin-top:0; }
+  .gallery-body ul { padding-left:18px; font-size:13px; }
+  .gallery-body li { margin-bottom:4px; }
+  .gallery-body p { font-size:13px; margin-bottom:8px; }
+
+  .tier-1 .gallery-header { background:linear-gradient(135deg,#1E3A8A,#2563EB); color:white; }
+  .tier-2 .gallery-header { background:linear-gradient(135deg,#1E40AF,#3B82F6); color:white; }
+  .tier-3 .gallery-header { background:linear-gradient(135deg,#475569,#64748B); color:white; }
+
+  .checklist { list-style:none; padding:0; font-size:13px; }
+  .checklist li { padding:6px 0; padding-left:24px; position:relative; }
+  .checklist li::before { content:''; position:absolute; left:0; top:10px; width:14px; height:14px; border:2px solid var(--border); border-radius:3px; }
+
+  .vs-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:12px 0; }
+  .vs-do { border:2px solid #059669; border-radius:12px; padding:16px; }
+  .vs-do-title { color:#059669; font-weight:800; font-size:14px; margin-bottom:8px; }
+  .vs-dont { border:2px solid #DC2626; border-radius:12px; padding:16px; }
+  .vs-dont-title { color:#DC2626; font-weight:800; font-size:14px; margin-bottom:8px; }
+  .vs-grid ul { padding-left:18px; font-size:13px; }
+  .vs-grid li { margin-bottom:4px; }
+
+  footer { text-align:center; padding:32px; font-size:12px; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- HERO -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="hero">
+  <div class="hero-badge">DC Inside 심화 전략 — 2026.03.24</div>
+  <h1>디시인사이드 14개 갤러리<br>마케팅 심화 전략서</h1>
+  <p>갤러리별 문화/톤 차이, 등업 로드맵, 게시글 작성 상세 가이드, 차단 방지 노하우, 시험 시즌 타이밍 전략까지 — DC에서 "홍보충" 소리 안 듣고 자연스럽게 침투하는 완전 가이드.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-value">14개</div><div class="hero-stat-label">타겟 갤러리</div></div>
+    <div class="hero-stat"><div class="hero-stat-value">3 Tier</div><div class="hero-stat-label">우선순위 분류</div></div>
+    <div class="hero-stat"><div class="hero-stat-value">6가지</div><div class="hero-stat-label">바이럴 멘트 유형</div></div>
+    <div class="hero-stat"><div class="hero-stat-value">4주</div><div class="hero-stat-label">최소 계정 육성</div></div>
+  </div>
+  <div class="hero-meta">gcnote.co.kr | 기출노트 한능검 | 기준일: 2026-03-24</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- 목차 -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="toc">
+  <div class="toc-title">목차</div>
+  <ol>
+    <li><a href="#s1">DC 플랫폼 이해 — 우리에게 유리한 점과 위험한 점</a></li>
+    <li><a href="#s2">갤러리 3-Tier 분류 및 문화/톤 분석</a></li>
+    <li><a href="#s3">등업 전략 — 갤러리 유형별 로드맵</a></li>
+    <li><a href="#s4">게시글 작성 상세 가이드 (6가지 유형 × 갤러리별 변형)</a></li>
+    <li><a href="#s5">차단 방지 노하우 — URL, 문체, 패턴 관리</a></li>
+    <li><a href="#s6">타이밍 전략 — 시험 시즌 캘린더 연동</a></li>
+    <li><a href="#s7">주간/월간 실행 플랜 및 KPI</a></li>
+    <li><a href="#s8">위기 대응 매뉴얼</a></li>
+  </ol>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- 1. DC 플랫폼 이해 -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="section" id="s1">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--primary-l);">🏛️</div>
+    <div><div class="section-title">1. DC 플랫폼 이해</div><div class="section-subtitle">왜 DC인가, 그리고 왜 위험한가</div></div>
+  </div>
+
+  <h3>1-1. 기출노트 한능검이 DC에 적합한 이유</h3>
+
+  <div class="info-box">
+    <strong>핵심:</strong> DC에서 가장 욕 안 먹는 홍보는 "진짜 무료 + 진짜 유용한" 정보 공유다. 우리는 완전 무료, 회원가입 없음, 결제 유도 없음 — DC에서 "이거 홍보 아니냐?" 물어왔을 때 "무료인데 뭘 홍보함?"으로 끝나는 구조다.
+  </div>
+
+  <table>
+    <thead><tr><th>우리의 강점 (DC 적합)</th><th>왜 강점인가</th></tr></thead>
+    <tbody>
+      <tr><td>완전 무료</td><td>"돈 받는 것도 아닌데 홍보는 무슨" → 의심 해소의 결정타</td></tr>
+      <tr><td>회원가입 없음</td><td>개인정보 수집 안 한다 → "팔아먹을 것도 없잖아" 논리 성립</td></tr>
+      <tr><td>실제로 유용함</td><td>1,900+ 문항, AI 해설, 요약노트 87개 → 써보면 진짜 좋음</td></tr>
+      <tr><td>공시생/취준생 대다수가 필요</td><td>한능검은 가산점 필수 → DC 공시생 갤러리와 완벽 매칭</td></tr>
+      <tr><td>경쟁 서비스 대부분 유료</td><td>"다른 앱은 다 결제 유도하는데 여기는 진짜 무료" 비교 우위</td></tr>
+    </tbody>
+  </table>
+
+  <h3>1-2. DC 특수 문화 — 반드시 숙지</h3>
+
+  <div class="vs-grid">
+    <div class="vs-do">
+      <div class="vs-do-title">DC에서 통하는 것</div>
+      <ul>
+        <li><strong>단점 먼저</strong> 언급하고 장점 나중에</li>
+        <li><strong>짧고 거친 말투</strong> (반말/존반말)</li>
+        <li>핸드폰 직찍 스크린샷 (저화질 OK)</li>
+        <li>"모르는 사람 많던데 알려줌" 식 정보 공유</li>
+        <li>물어봤을 때만 URL 알려주기</li>
+        <li>갤러리 내부 밈/용어 자연스럽게 사용</li>
+        <li>"ㅋㅋ" "ㄹㅇ" "ㅇㅇ" 등 줄임말</li>
+      </ul>
+    </div>
+    <div class="vs-dont">
+      <div class="vs-dont-title">DC에서 죽는 것</div>
+      <ul>
+        <li>장점만 나열하는 칭찬글</li>
+        <li>정중한 존댓말 (기업 계정 냄새)</li>
+        <li>고퀄리티 홍보 이미지/배너</li>
+        <li>"추천합니다" "꼭 써보세요" 식 권유</li>
+        <li>본문에 URL 바로 박기</li>
+        <li>밈 모르면서 억지로 쓰기</li>
+        <li>"광고 아닌데" "홍보 아니고" 변명</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>1-3. DC 게시글 생존 메커니즘</h3>
+
+  <table>
+    <thead><tr><th>요소</th><th>설명</th><th>전략적 활용</th></tr></thead>
+    <tbody>
+      <tr><td><strong>개념글</strong></td><td>추천 10개 이상 → 개념글 승격 → 노출 대폭 증가</td><td>유용한 정보글 → 자연 추천 유도</td></tr>
+      <tr><td><strong>글 밀림 속도</strong></td><td>정식갤: 수 분 내 1페이지에서 사라짐</td><td>피크타임에 게시 + 제목에 키워드</td></tr>
+      <tr><td><strong>댓글 활성도</strong></td><td>댓글 많을수록 상단 유지 시간 길어짐</td><td>질문 유도형 글 작성 → 댓글 소통</td></tr>
+      <tr><td><strong>갤러리 내 검색</strong></td><td>DC 내부 검색 + 구글 검색 노출</td><td>제목에 "한능검" "기출" 키워드 포함</td></tr>
+      <tr><td><strong>유동 닉네임</strong></td><td>비로그인 익명 글쓰기 (유동)</td><td>초기 정보 탐색에 활용. 단, 신뢰도 낮음</td></tr>
+      <tr><td><strong>고정 닉네임</strong></td><td>로그인 계정 (고닉)</td><td>계정 육성 → 신뢰도 확보에 필수</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- 2. 갤러리 3-Tier 분류 -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="section" id="s2">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--blue-l);">🎯</div>
+    <div><div class="section-title">2. 갤러리 3-Tier 분류 및 문화/톤 분석</div><div class="section-subtitle">14개 갤러리를 우선순위 × 문화 차이로 정밀 분류</div></div>
+  </div>
+
+  <h3>2-1. Tier 총괄 분류표</h3>
+
+  <table>
+    <thead><tr><th>Tier</th><th>갤러리</th><th>유형</th><th>활동량</th><th>톤</th><th>투입 비중</th></tr></thead>
+    <tbody>
+      <tr style="background:#EFF6FF;"><td rowspan="4"><span class="tag tag-blue">Tier 1</span><br>핵심</td>
+        <td><strong>공무원 갤러리</strong></td><td>정식갤</td><td>높음</td><td>빡셈/냉소</td><td rowspan="4">전체의 50%</td></tr>
+      <tr style="background:#EFF6FF;"><td><strong>자격증 갤러리</strong></td><td>정식갤</td><td>높음</td><td>정보 교류</td></tr>
+      <tr style="background:#EFF6FF;"><td><strong>취업 갤러리</strong></td><td>정식갤</td><td>높음</td><td>자조/독설</td></tr>
+      <tr style="background:#EFF6FF;"><td><strong>공시생 미니갤</strong></td><td>미니갤</td><td>중간</td><td>동료 의식</td></tr>
+      <tr style="background:#F5F3FF;"><td rowspan="4"><span class="tag tag-purple">Tier 2</span><br>직접 타겟</td>
+        <td><strong>한능검 마이너갤</strong></td><td>마이너</td><td>낮음~중</td><td>학습 공유</td><td rowspan="4">전체의 30%</td></tr>
+      <tr style="background:#F5F3FF;"><td><strong>한능검 미니갤</strong></td><td>미니갤</td><td>낮음</td><td>학습 공유</td></tr>
+      <tr style="background:#F5F3FF;"><td><strong>공무원스터디 미니갤</strong></td><td>미니갤</td><td>중간</td><td>스터디 공유</td></tr>
+      <tr style="background:#F5F3FF;"><td><strong>공무원합격 미니갤</strong></td><td>미니갤</td><td>낮음~중</td><td>합격 후기</td></tr>
+      <tr><td rowspan="6"><span class="tag tag-amber">Tier 3</span><br>직렬 니치</td>
+        <td><strong>기술직 갤러리</strong></td><td>정식갤</td><td>중간</td><td>직렬 특화</td><td rowspan="6">전체의 20%</td></tr>
+      <tr><td><strong>교정직 미니갤</strong></td><td>미니갤</td><td>낮음</td><td>동료 의식</td></tr>
+      <tr><td><strong>교행현직 미니갤</strong></td><td>미니갤</td><td>낮음</td><td>현직 위주</td></tr>
+      <tr><td><strong>공무원 미니갤</strong></td><td>미니갤</td><td>중간</td><td>일반 공시</td></tr>
+      <tr><td><strong>사회복지직 갤러리</strong></td><td>정식/마이너</td><td>낮음~중</td><td>직렬 특화</td></tr>
+      <tr><td><strong>시설관리직 갤러리</strong></td><td>정식/마이너</td><td>낮음</td><td>직렬 특화</td></tr>
+    </tbody>
+  </table>
+
+  <h3>2-2. Tier 1 — 핵심 갤러리 심층 분석</h3>
+
+  <!-- 공무원갤 -->
+  <div class="gallery-card tier-1">
+    <div class="gallery-header">
+      공무원 갤러리 (공갤) — "전장"
+      <span class="tag tag-red">난이도: 최상</span>
+    </div>
+    <div class="gallery-body">
+      <h4>문화 특성</h4>
+      <ul>
+        <li><strong>분위기:</strong> 공시 스트레스 + 냉소 + 자조. "공시생 현타" 글이 일상. 살벌함</li>
+        <li><strong>말투:</strong> 거친 반말. "~함" "~임" 체. 존댓말 쓰면 외부인 취급</li>
+        <li><strong>금기:</strong> "공시 쉽다" "나는 금방 붙었다" 식 자랑 → 즉시 공격</li>
+        <li><strong>밈/용어:</strong> "합격각" "탈공" "N수생" "현타" "이번 시험 폭탄" 등</li>
+        <li><strong>글 밀림 속도:</strong> 매우 빠름 (분 단위)</li>
+        <li><strong>홍보 감지력:</strong> 극도로 높음. 조금이라도 의심되면 "홍보충 아웃"</li>
+      </ul>
+      <h4>진입 전략</h4>
+      <ul>
+        <li>최소 2~3주 일반 활동 필수 (공시 관련 잡담, 공감 댓글)</li>
+        <li>"한국사 가산점 준비 어떻게 함?" 질문으로 자연스럽게 한능검 화제 꺼내기</li>
+        <li>절대 첫 글에서 사이트 언급 금지 → 3~4번째 글부터 자연 언급</li>
+      </ul>
+      <h4>맞춤 톤앤매너</h4>
+      <div class="example-box">
+        <strong>좋은 예:</strong> "한능검 기출 풀다가 77회 근현대 존나 어려운 거 발견함ㅋㅋ 이 문제 맞은 사람 있냐?"<br>
+        <strong>나쁜 예:</strong> "한능검 공부하기 좋은 사이트를 발견했습니다. 무료이고 정말 유용하니 한번 방문해보세요!"
+      </div>
+      <h4>추천 바이럴 유형 (우선순위)</h4>
+      <ol>
+        <li><strong>짧은 댓글</strong> — "한능검 기출 어디서 풂?" 질문에 답변 (가장 안전)</li>
+        <li><strong>빡침 해결</strong> — "한능검 앱마다 결제 유도하는 거 개빡침" (공감 유도)</li>
+        <li><strong>시험 직전</strong> — 시험 2주 전 "벼락치기 루트" 정보글</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 자격증갤 -->
+  <div class="gallery-card tier-1">
+    <div class="gallery-header">
+      자격증 갤러리 (자갤) — "정보의 장"
+      <span class="tag tag-amber">난이도: 중상</span>
+    </div>
+    <div class="gallery-body">
+      <h4>문화 특성</h4>
+      <ul>
+        <li><strong>분위기:</strong> 다양한 자격증 정보 교류. 공갤보다 부드럽지만 여전히 DC</li>
+        <li><strong>말투:</strong> 반말/존반말 혼용. "~함" "~인데" "~거든" 체</li>
+        <li><strong>특징:</strong> 정보글에 대한 수용도가 높은 편. 유용하면 추천 잘 해줌</li>
+        <li><strong>밈/용어:</strong> "자격증 뽑기" "가성비 자격증" "유효기간" "난이도 체감" 등</li>
+        <li><strong>주의:</strong> 한능검 외에도 다양한 자격증 화제 → 한능검 글이 너무 많으면 의심</li>
+      </ul>
+      <h4>진입 전략</h4>
+      <ul>
+        <li>한능검 외 다른 자격증 관련 댓글도 달아야 자연스러움</li>
+        <li>"자격증 몇 개 따봤는데 한능검은 이렇게 했음" 식 경험 공유</li>
+        <li>정보글 형태가 가장 환영받는 갤러리 → "가성비 정보" 유형 최적</li>
+      </ul>
+      <h4>맞춤 톤앤매너</h4>
+      <div class="example-box">
+        <strong>좋은 예:</strong> "한능검 가성비로 따려면 기출 반복이 답임. 무료 사이트에서 3회독 돌렸더니 1급 나옴"<br>
+        <strong>나쁜 예:</strong> "한능검 사이트 추천! gcnote.co.kr에서 무료로 공부할 수 있어요~"
+      </div>
+      <h4>추천 바이럴 유형 (우선순위)</h4>
+      <ol>
+        <li><strong>가성비 정보</strong> — "한능검 0원으로 따는 법" (자갤 최적)</li>
+        <li><strong>합격 후기</strong> — "2주 독학 1급" (실전 정보 + 간접 언급)</li>
+        <li><strong>좌표 공유</strong> — "(좌표) 한능검 기출 무료 사이트" (정보글에 관대한 갤)</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 취업갤 -->
+  <div class="gallery-card tier-1">
+    <div class="gallery-header">
+      취업 갤러리 (취갤) — "생존의 장"
+      <span class="tag tag-red">난이도: 최상</span>
+    </div>
+    <div class="gallery-body">
+      <h4>문화 특성</h4>
+      <ul>
+        <li><strong>분위기:</strong> 취준 스트레스 + 독설 + 자조. 공갤만큼 살벌</li>
+        <li><strong>말투:</strong> 거친 반말. 비꼬기/냉소 일상. 긍정적인 글 오히려 의심</li>
+        <li><strong>특징:</strong> 스펙, 자소서, 면접 관련 글이 주류. 한능검은 "스펙 부분"</li>
+        <li><strong>밈/용어:</strong> "스펙충" "취준 몇 년차" "서류 탈락" "합스" "취업 현타" 등</li>
+        <li><strong>주의:</strong> "쉽게 됐다" 뉘앙스 절대 금지. 고생한 느낌 필수</li>
+      </ul>
+      <h4>진입 전략</h4>
+      <ul>
+        <li>취업 관련 일반 글/댓글로 2~3주 활동</li>
+        <li>"스펙 만들기" 맥락에서 한능검을 자연스럽게 등장시킴</li>
+        <li>"가성비 스펙"으로 프레이밍 — 취준생이 돈 없다는 공감 포인트 활용</li>
+      </ul>
+      <h4>맞춤 톤앤매너</h4>
+      <div class="example-box">
+        <strong>좋은 예:</strong> "취준하면서 돈 없어서 한능검이라도 무료로 따려고 기출 돌렸는데 가성비 ㄹㅇ임"<br>
+        <strong>나쁜 예:</strong> "취업 준비에 유용한 한능검 학습 사이트를 알려드립니다!"
+      </div>
+      <h4>추천 바이럴 유형 (우선순위)</h4>
+      <ol>
+        <li><strong>빡침 해결</strong> — "한능검 앱마다 돈 내라는 거" (취준생 돈 없음 공감)</li>
+        <li><strong>가성비 정보</strong> — "0원 스펙 만들기" (취갤 핵심 관심사)</li>
+        <li><strong>짧은 댓글</strong> — 스펙 질문에 간결 답변</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 공시생 미니갤 -->
+  <div class="gallery-card tier-1">
+    <div class="gallery-header">
+      공시생 미니갤 — "동료의 방"
+      <span class="tag tag-amber">난이도: 중</span>
+    </div>
+    <div class="gallery-body">
+      <h4>문화 특성</h4>
+      <ul>
+        <li><strong>분위기:</strong> 공갤보다 부드러움. 실제 공시 준비생끼리 정보 공유 + 위로</li>
+        <li><strong>말투:</strong> 반말 기본이지만 공갤보다 덜 공격적. "~인데" "~더라" 체</li>
+        <li><strong>특징:</strong> 소규모라 같은 사람이 자주 보임 → 활동 이력이 쌓이면 신뢰 빠르게 형성</li>
+        <li><strong>장점:</strong> 정보 공유에 대한 감사 표현이 공갤보다 많음</li>
+      </ul>
+      <h4>진입 전략</h4>
+      <ul>
+        <li>1~2주 일반 활동 후 정보글 가능</li>
+        <li>"같이 준비하는 사람"으로 포지셔닝 → 공부법 나누기</li>
+        <li>미니갤은 글이 천천히 밀려서 노출 시간 김</li>
+      </ul>
+      <h4>추천 바이럴 유형 (우선순위)</h4>
+      <ol>
+        <li><strong>합격 후기</strong> — "한능검 이렇게 해서 1급 땄음" (동료 톤)</li>
+        <li><strong>가성비 정보</strong> — "돈 안 드는 한능검 공부법" (공시생 예산 공감)</li>
+        <li><strong>시험 직전</strong> — 시험 전 벼락치기 정보</li>
+      </ol>
+    </div>
+  </div>
+
+  <h3>2-3. Tier 2 — 직접 타겟 갤러리</h3>
+
+  <div class="gallery-card tier-2">
+    <div class="gallery-header">
+      한능검 마이너갤 + 한능검 미니갤 — "홈그라운드"
+      <span class="tag tag-green">난이도: 낮음</span>
+    </div>
+    <div class="gallery-body">
+      <h4>문화 특성</h4>
+      <ul>
+        <li><strong>분위기:</strong> 한능검 직접 타겟. 시험 정보, 기출 분석, 합격 후기 중심</li>
+        <li><strong>말투:</strong> DC 기본 반말이지만, 학습 관련이라 비교적 온화</li>
+        <li><strong>특징:</strong> 활동량 적음 → 글이 오래 살아있음 → 노출 시간 길다</li>
+        <li><strong>장점:</strong> 한능검 학습 자료 공유가 자연스러운 유일한 갤러리. 의심 받을 확률 가장 낮음</li>
+        <li><strong>주의:</strong> 소규모라 같은 사람이 반복 글 쓰면 바로 티남</li>
+      </ul>
+      <h4>진입 전략</h4>
+      <ul>
+        <li>등업 거의 필요 없음 (소규모 갤러리 특성)</li>
+        <li>기출 분석글, 시험 후기, 공부법 등 일반 글 3~5개 후 자연 언급</li>
+        <li>"요즘 여기서 기출 풀고 있는데" 식으로 사이트 자연스럽게 등장</li>
+      </ul>
+      <h4>추천 바이럴 유형 (우선순위)</h4>
+      <ol>
+        <li><strong>좌표 공유</strong> — 여기서는 직접 공유가 가장 자연스러움</li>
+        <li><strong>합격 후기</strong> — 기출 사이트 언급하며 공부법 공유</li>
+        <li><strong>시험 직전</strong> — 벼락치기 루트 + 사이트 추천</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="gallery-card tier-2">
+    <div class="gallery-header">
+      공무원스터디 미니갤 + 공무원합격 미니갤 — "스터디룸"
+      <span class="tag tag-amber">난이도: 중</span>
+    </div>
+    <div class="gallery-body">
+      <h4>문화 특성</h4>
+      <ul>
+        <li><strong>스터디 미니갤:</strong> 공부 인증, 스터디 모집, 공부법 공유. 학습 자료 공유에 관대</li>
+        <li><strong>합격 미니갤:</strong> 합격 후기, 수기 중심. 합격자 조언에 대한 수용도 높음</li>
+        <li><strong>말투:</strong> 존반말~반말. 서로 도와주는 분위기가 있음</li>
+        <li><strong>장점:</strong> "공부법 공유" 맥락에서 사이트 언급이 매우 자연스러움</li>
+      </ul>
+      <h4>추천 바이럴 유형</h4>
+      <ul>
+        <li>스터디갤: <strong>가성비 정보</strong> + <strong>합격 후기</strong></li>
+        <li>합격갤: <strong>합격 후기</strong> (가장 적합) + <strong>좌표 공유</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>2-4. Tier 3 — 직렬 니치 갤러리 (6개)</h3>
+
+  <div class="gallery-card tier-3">
+    <div class="gallery-header">
+      기술직 / 교정직 / 교행현직 / 공무원 / 사회복지직 / 시설관리직
+      <span class="tag tag-green">난이도: 낮음~중</span>
+    </div>
+    <div class="gallery-body">
+      <h4>공통 문화 특성</h4>
+      <ul>
+        <li><strong>분위기:</strong> 해당 직렬 준비생/현직 위주. 소규모. 직렬 특화 정보 중심</li>
+        <li><strong>말투:</strong> 갤러리마다 다르지만, 대체로 미니갤은 온화한 편</li>
+        <li><strong>핵심 어프로치:</strong> "해당 직렬 한국사 가산점" 맥락으로 진입</li>
+        <li><strong>특징:</strong> 한능검을 "메인 관심사"가 아닌 "필요한 가산점"으로 다룸</li>
+      </ul>
+
+      <h4>갤러리별 진입 포인트</h4>
+      <table>
+        <thead><tr><th>갤러리</th><th>진입 키워드</th><th>톤</th></tr></thead>
+        <tbody>
+          <tr><td><strong>기술직갤</strong></td><td>"기술직 한국사 가산점 5점 챙기는 법"</td><td>실용적. 최소 노력 최대 효과 강조</td></tr>
+          <tr><td><strong>교정직 미니갤</strong></td><td>"교정직 한능검 가산점 필수인가?"</td><td>동료 의식. 정보 공유 환영</td></tr>
+          <tr><td><strong>교행현직 미니갤</strong></td><td>"교행 준비 때 한능검 이렇게 했음"</td><td>현직 선배 톤. 후배에게 조언</td></tr>
+          <tr><td><strong>공무원 미니갤</strong></td><td>"한국사 가산점 가성비 공부법"</td><td>공시생 동료 톤</td></tr>
+          <tr><td><strong>사회복지직갤</strong></td><td>"사복직 한능검 필요한가? 가산점 정리"</td><td>친절한 정보 공유</td></tr>
+          <tr><td><strong>시설관리직갤</strong></td><td>"시설관리직 한능검 가산점 안내"</td><td>실용적. 간결</td></tr>
+        </tbody>
+      </table>
+
+      <h4>추천 바이럴 유형</h4>
+      <ul>
+        <li><strong>가성비 정보</strong>가 가장 적합 — "최소 시간 투자로 한능검 가산점 챙기기"</li>
+        <li><strong>짧은 댓글</strong> — 한능검 관련 질문에 답변</li>
+        <li>빈도: 갤러리당 월 1~2회 (활동량 적으니 너무 자주 쓰면 눈에 띔)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- 3. 등업 전략 -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="section" id="s3">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--green-l);">🌱</div>
+    <div><div class="section-title">3. 등업 전략 — 갤러리 유형별 로드맵</div><div class="section-subtitle">DC 계정을 "신뢰할 수 있는 갤러"로 육성하는 단계별 가이드</div></div>
+  </div>
+
+  <div class="danger-box">
+    <strong>대원칙:</strong> 등업 기간에 사이트 언급은 절대 금지. 이 기간은 "계정의 자연스러움"을 만드는 투자 기간이다. 조급하면 망한다.
+  </div>
+
+  <h3>3-1. 계정 준비 (Day 0)</h3>
+
+  <table>
+    <thead><tr><th>항목</th><th>권장</th><th>주의</th></tr></thead>
+    <tbody>
+      <tr><td><strong>계정 수</strong></td><td>2~3개 (1개만 쓰면 차단 시 대안 없음)</td><td>같은 IP로 동시 다중 활동 금지</td></tr>
+      <tr><td><strong>닉네임</strong></td><td>DC스러운 평범한 닉네임 (예: 한능검준비중, 9급도전, ㅇㅇ)</td><td>"기출노트" "gcnote" 등 사이트 연상 닉네임 절대 금지</td></tr>
+      <tr><td><strong>가입 메일</strong></td><td>네이버/지메일 (새 메일 권장)</td><td>회사 메일, 사이트 도메인 메일 금지</td></tr>
+      <tr><td><strong>고닉 vs 유동</strong></td><td>고닉(로그인) 필수. 유동은 신뢰도 0</td><td>고닉이라도 가입 직후 홍보글 = 즉시 차단</td></tr>
+    </tbody>
+  </table>
+
+  <h3>3-2. 갤러리 유형별 등업 로드맵</h3>
+
+  <h4>A. 정식 갤러리 (공무원갤, 자격증갤, 취업갤, 기술직갤)</h4>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-label">Week 1 — 관찰 + 첫 활동</div>
+      <div class="timeline-content">
+        <ul>
+          <li>갤러리 글 50개 이상 읽기 → 분위기, 말투, 밈 파악</li>
+          <li>일반 글에 공감 댓글 5~7개 (예: "ㅇㅇ ㅋㅋ 공감", "ㄹㅇ 나도 그럼")</li>
+          <li>질문글에 도움 댓글 2~3개 (한능검 무관한 일반 질문)</li>
+          <li><strong>홍보/사이트 언급: 절대 금지</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-label">Week 2 — 일반 게시글 작성</div>
+      <div class="timeline-content">
+        <ul>
+          <li>해당 갤러리 주제에 맞는 일반 글 2~3개 작성</li>
+          <li>예: 공갤 → "9급 일반행정 경쟁률 ㅎㄷㄷ" / 자갤 → "올해 딸 자격증 리스트"</li>
+          <li>댓글 달리면 자연스럽게 소통 (무시하지 않기)</li>
+          <li><strong>홍보/사이트 언급: 절대 금지</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-label">Week 3 — 한능검 화제 자연 진입</div>
+      <div class="timeline-content">
+        <ul>
+          <li>한능검 관련 질문글에 도움 답변 (사이트 없이 순수 정보만)</li>
+          <li>"한능검 공부법 질문" → "기출 3회독이 답임. 최근 5개년 위주로"</li>
+          <li>한능검 관련 자체 질문글도 OK ("한능검 77회 20번 이거 답 뭐임?")</li>
+          <li><strong>사이트 언급: 아직 금지. "한능검 잘 아는 사람" 이미지만 쌓기</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-label">Week 4+ — 자연스러운 첫 언급</div>
+      <div class="timeline-content">
+        <ul>
+          <li>누군가 "기출 어디서 풀어?" 질문 → 댓글로 자연 답변</li>
+          <li>또는 "기출 풀다가 발견한 것" 글에서 간접 언급</li>
+          <li>URL은 본문 아닌 댓글에서, 물어봤을 때만</li>
+          <li>이후 주 1~2회 간격으로 자연스러운 활동 유지</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h4>B. 마이너/미니 갤러리 (한능검갤, 공시생미니갤, 직렬갤 등)</h4>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-label">Week 1 — 관찰 + 댓글 활동</div>
+      <div class="timeline-content">
+        <ul>
+          <li>기존 글 읽고 분위기 파악. 소규모라 문화가 빠르게 파악됨</li>
+          <li>공감/도움 댓글 3~5개</li>
+          <li>마이너/미니갤은 활동 자체가 적어서 댓글만 달아도 눈에 띔</li>
+        </ul>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-label">Week 2 — 정보글 + 간접 언급</div>
+      <div class="timeline-content">
+        <ul>
+          <li>소규모 갤러리는 2주면 충분. 정보글에 대한 거부감 낮음</li>
+          <li>한능검 마이너/미니갤의 경우 → 1주 만에 자연 언급 가능</li>
+          <li>직렬갤은 "가산점 정보" 맥락에서 자연스럽게</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3>3-3. 계정 관리 원칙</h3>
+
+  <table>
+    <thead><tr><th>원칙</th><th>상세</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1 계정 = 2~3개 갤러리</strong></td><td>한 계정으로 14개 갤러리 다 돌면 의심. 계정별 2~3개 갤러리 전담</td></tr>
+      <tr><td><strong>활동 비율 7:3</strong></td><td>일반 활동 70% : 사이트 관련 30%. 사이트 언급만 하는 계정 = 홍보 계정</td></tr>
+      <tr><td><strong>댓글/글 비율 5:1</strong></td><td>댓글 5개당 글 1개. 글만 쓰는 건 부자연스러움</td></tr>
+      <tr><td><strong>동시 활동 금지</strong></td><td>같은 시간대에 여러 계정으로 같은 갤러리 활동 절대 금지</td></tr>
+      <tr><td><strong>활동 간격</strong></td><td>같은 갤러리 사이트 언급 → 최소 5~7일 간격</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- 4. 게시글 작성 상세 가이드 -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="section" id="s4">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--purple-l);">✍️</div>
+    <div><div class="section-title">4. 게시글 작성 상세 가이드</div><div class="section-subtitle">6가지 바이럴 유형별 작성법 + 갤러리별 변형</div></div>
+  </div>
+
+  <h3>4-1. 유형별 적합도 매트릭스</h3>
+
+  <table>
+    <thead><tr><th>바이럴 유형</th><th>공갤</th><th>자갤</th><th>취갤</th><th>공시생미니</th><th>한능검갤</th><th>직렬갤</th></tr></thead>
+    <tbody>
+      <tr><td><strong>좌표 공유</strong></td><td>위험</td><td>보통</td><td>위험</td><td>보통</td><td><span class="tag tag-green">최적</span></td><td>보통</td></tr>
+      <tr><td><strong>빡침 해결</strong></td><td><span class="tag tag-green">최적</span></td><td>보통</td><td><span class="tag tag-green">최적</span></td><td>좋음</td><td>좋음</td><td>보통</td></tr>
+      <tr><td><strong>가성비 정보</strong></td><td>좋음</td><td><span class="tag tag-green">최적</span></td><td><span class="tag tag-green">최적</span></td><td>좋음</td><td>좋음</td><td><span class="tag tag-green">최적</span></td></tr>
+      <tr><td><strong>합격 후기</strong></td><td>보통</td><td>좋음</td><td>보통</td><td><span class="tag tag-green">최적</span></td><td><span class="tag tag-green">최적</span></td><td>좋음</td></tr>
+      <tr><td><strong>짧은 댓글</strong></td><td><span class="tag tag-green">최적</span></td><td><span class="tag tag-green">최적</span></td><td><span class="tag tag-green">최적</span></td><td><span class="tag tag-green">최적</span></td><td><span class="tag tag-green">최적</span></td><td><span class="tag tag-green">최적</span></td></tr>
+      <tr><td><strong>시험 직전</strong></td><td>좋음</td><td>좋음</td><td>보통</td><td><span class="tag tag-green">최적</span></td><td><span class="tag tag-green">최적</span></td><td>좋음</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip-box">
+    <strong>TIP:</strong> "짧은 댓글"은 모든 갤러리에서 가장 안전하고 효과적인 유형이다. 글 쓰기보다 댓글 답변을 기본으로 하고, 글은 보조 수단으로 사용하라.
+  </div>
+
+  <h3>4-2. 유형 1: 좌표 공유 — 상세 가이드</h3>
+
+  <h4>작성 원칙</h4>
+  <ul>
+    <li>제목에 "(좌표)" 붙이기 — DC에서 "좌표 = 유용한 정보의 위치"를 의미</li>
+    <li>본문 시작은 "발견 경위"부터 (내가 어떤 상황에서 찾았는지)</li>
+    <li>장점 나열 시 "단점/아쉬운 점"도 반드시 1~2개 포함</li>
+    <li>URL은 가급적 본문 중간에 자연스럽게 (맨 아래에 URL만 딱 박으면 홍보 느낌)</li>
+  </ul>
+
+  <h4>공갤 버전</h4>
+  <div class="bio-box">
+    <strong>제목:</strong> (좌표) 한능검 기출 무한으로 돌릴 수 있는 데 찾음<br><br>
+    한국사 가산점 챙기려고 기출 앱 깔았는데 3일 뒤 결제하라고 함 ㅋㅋ<br>
+    그래서 웹으로 찾아봤는데 gcnote.co.kr 여기 가입 없이 바로 풀 수 있음<br><br>
+    40~77회 다 있고 틀리면 해설 나오는데<br>
+    근데 해설 밑에 최태성 강의가 해당 부분부터 바로 재생됨 이건 좀 미침<br>
+    요약노트도 있어서 기출 틀리면 그 파트 요약으로 바로 넘어감<br><br>
+    아쉬운 점은 앱이 없고 웹만 있어서 폰으로 보면 좀 불편할 수 있음<br>
+    근데 무료고 가입 없으니까 그정도는 감수할만
+  </div>
+
+  <h4>한능검갤 버전</h4>
+  <div class="bio-box">
+    <strong>제목:</strong> 한능검 기출 사이트 하나 괜찮은 거 공유<br><br>
+    gcnote.co.kr인데 40~77회 전부 있고 가입 없이 바로 풀림<br><br>
+    다른 데랑 다른 점은<br>
+    - 틀린 문제 → 관련 요약노트로 바로 연결됨<br>
+    - 해설 아래에 최태성 강의 해당 부분 바로 뜸<br>
+    - 오답노트 자동 수집되서 복습할 때 편함<br><br>
+    기출-요약-강의가 한 화면에서 연결되는 건 여기밖에 못 봄<br>
+    앱은 없고 웹만 있는 게 좀 그렇긴 한데 무료니까<br><br>
+    시험 준비하는 사람들 참고
+  </div>
+
+  <h3>4-3. 유형 2: 빡침 해결 — 상세 가이드</h3>
+
+  <h4>작성 원칙</h4>
+  <ul>
+    <li>"빡침"에서 시작 → "해결책"으로 전환하는 스토리 구조</li>
+    <li>경쟁 서비스를 직접 이름으로 까지 않기 (일반적으로 "앱들" "사이트들"로 지칭)</li>
+    <li>빡침 포인트에 갤러리 구성원이 공감하는 요소 포함</li>
+    <li>해결책(우리 사이트)은 글의 후반부에 자연스럽게</li>
+  </ul>
+
+  <h4>공갤/취갤 버전 (살벌 톤)</h4>
+  <div class="bio-box">
+    <strong>제목:</strong> 한능검 앱 결제 유도 개빡치네<br><br>
+    한국사 가산점 따려고 기출 좀 풀어보려는데<br>
+    앱마다 가입하라 3일 무료체험이요~ 하고 결제 떠넘기는 거 뭐냐<br>
+    기출문제가 저작권이 있는 것도 아니고 왜 돈 받냐 진짜<br><br>
+    빡쳐서 웹으로 찾아봤는데 gcnote 뭐시기 하는 데가 있는데<br>
+    가입 없이 바로 풀림. 진짜 무료.<br>
+    근데 무료인데 기출 풀다가 틀리면 해당 파트 요약노트로 바로 넘어가고<br>
+    최태성 강의까지 그 부분부터 재생됨<br>
+    유료 앱들이 이거보다 못한 게 좀 웃김ㅋㅋ<br><br>
+    아 근데 디자인은 좀 심심함. 근데 기능은 확실
+  </div>
+
+  <h4>공시생 미니갤 버전 (부드러운 톤)</h4>
+  <div class="bio-box">
+    <strong>제목:</strong> 한능검 기출앱 결제 유도 ㄹㅇ 짜증남<br><br>
+    한국사 가산점 준비해야 되는데<br>
+    기출 좀 풀려고 앱 깔면 죄다 며칠 후 결제하라 그러더라<br><br>
+    찾아보니까 gcnote.co.kr 여기가 진짜 무료더라<br>
+    가입도 없고 40~77회 다 풀 수 있음<br>
+    기출-요약-강의 연결이 잘 되어있어서 따로 찾아다닐 필요 없는 게 좋음<br><br>
+    앱은 없어서 좀 아쉽긴 한데 웹에서도 충분히 됨<br>
+    같이 준비하는 사람들 참고하셈
+  </div>
+
+  <h3>4-4. 유형 3: 가성비 정보 — 상세 가이드</h3>
+
+  <h4>작성 원칙</h4>
+  <ul>
+    <li>"돈 안 쓰고 한능검 따는 법" 프레이밍 — 정보 가치를 극대화</li>
+    <li>gcnote만 추천하면 홍보 냄새 → 다른 무료 자료도 함께 언급 (유튜브 강의 등)</li>
+    <li>"실제 내 경험" 기반으로 작성 — 추상적 정보가 아닌 구체적 루트</li>
+    <li>자격증갤과 취업갤에서 가장 잘 먹히는 유형</li>
+  </ul>
+
+  <h4>자갤/취갤 버전</h4>
+  <div class="bio-box">
+    <strong>제목:</strong> 한능검 1급 돈 0원으로 따는 루트 정리<br><br>
+    한능검 교재 사지 마셈. 기출이 답임<br><br>
+    <strong>1단계: 기출 3회독</strong><br>
+    gcnote.co.kr에서 최근 5개년(73~77회) 기출 3번 돌림<br>
+    무료고 가입 없이 바로 풀 수 있음<br>
+    틀리면 관련 요약노트로 연결되고 최태성 강의도 바로 뜸<br><br>
+    <strong>2단계: 약한 시대 집중</strong><br>
+    맞춤형 학습 기능으로 약한 시대만 골라서 반복<br>
+    나는 근현대가 약해서 거기만 100문제 돌림<br><br>
+    <strong>3단계: 오답 복습</strong><br>
+    틀린 문제 자동으로 모아주는 기능 있어서 시험 전날 오답만 쭉 돌림<br><br>
+    이거로 2주 만에 1급 땄음. 교재비 0원.<br>
+    다른 무료 자료: 최태성 1TV 유튜브 (강의), EBS 한능검 (기본 개념)<br>
+    근데 기출 반복이 제일 중요하고 위에 사이트가 그게 가장 잘 됨
+  </div>
+
+  <h3>4-5. 유형 4: 합격 후기 — 상세 가이드</h3>
+
+  <h4>작성 원칙</h4>
+  <ul>
+    <li>"이렇게 해서 붙었음" 경험담 형태 — 가장 자연스러운 사이트 언급 구조</li>
+    <li>점수까지 구체적으로 (예: "82점 1급") → 신뢰도 상승</li>
+    <li>"금방 했다" 보다 "고생했지만 이렇게 해서 됐다" 톤이 DC에서 안전</li>
+    <li>공시생미니갤, 합격미니갤, 한능검갤에서 가장 적합</li>
+  </ul>
+
+  <h4>공시생미니갤/합격미니갤 버전</h4>
+  <div class="bio-box">
+    <strong>제목:</strong> 한능검 1급 후기 (독학 3주, 무료 자료만)<br><br>
+    공시 준비하면서 한국사 가산점 챙겨야 해서 한능검 봤음<br>
+    돈 없어서 교재 안 사고 무료 자료만 썼는데 82점 1급 나옴<br><br>
+    <strong>뭘 썼냐면:</strong><br>
+    기출 → gcnote.co.kr (40~77회 전부, 무료, 가입없음)<br>
+    강의 → 최태성 1TV 유튜브<br><br>
+    <strong>이 사이트가 좋았던 게:</strong><br>
+    - 틀리면 관련 요약노트로 바로 넘어감 (따로 안 찾아도 됨)<br>
+    - 해설 밑에 최태성 강의 해당 부분부터 재생 (시간 절약 개쩜)<br>
+    - 오답 자동 수집 → 시험 전날 틀린 거만 돌림<br><br>
+    <strong>공부법:</strong><br>
+    1주차: 최근 5개년 기출 1회독<br>
+    2주차: 약한 시대 집중 + 2회독<br>
+    3주차: 오답 복습 + 3회독<br><br>
+    시간 없으면 2주도 가능할 듯. 기출 반복이 답이었음
+  </div>
+
+  <h3>4-6. 유형 5: 짧은 댓글 — 상세 가이드</h3>
+
+  <div class="info-box">
+    <strong>이 유형이 가장 중요하다.</strong> 글보다 댓글이 DC에서 훨씬 자연스럽고 안전하다. 바이럴 활동의 60~70%는 댓글로 해야 한다.
+  </div>
+
+  <h4>상황별 댓글 템플릿</h4>
+  <table>
+    <thead><tr><th>질문 상황</th><th>댓글 (짧은 버전)</th><th>댓글 (상세 버전)</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>"한능검 기출 어디서 풀어?"</td>
+        <td>gcnote.co.kr 무료고 가입없음</td>
+        <td>gcnote.co.kr 여기. 가입없이 바로 풀림. 틀리면 요약노트 연결돼서 편함</td>
+      </tr>
+      <tr>
+        <td>"한능검 앱 추천?"</td>
+        <td>앱은 모르겠고 gcnote 웹사이트가 무료인데 괜찮음</td>
+        <td>앱은 다 결제 유도하던데. gcnote.co.kr 웹이긴 한데 무료고 기출-요약-강의 연결 잘 됨</td>
+      </tr>
+      <tr>
+        <td>"한능검 공부법?"</td>
+        <td>기출 반복이 답. 무료 사이트 있으니 거기서 돌려</td>
+        <td>기출 3회독 → 오답 정리 → 약한 시대 집중. gcnote 여기서 다 가능하고 무료임</td>
+      </tr>
+      <tr>
+        <td>"한능검 가산점 필요함?"</td>
+        <td>필수임. 5점 차이 큼. 기출 돌리면 금방 딸 수 있음</td>
+        <td>가산점 5점 안 챙기면 ㅋㅋ 기출 2주 돌리면 1급 됨. 무료로 할 수 있으니 안 할 이유 없음</td>
+      </tr>
+      <tr>
+        <td>"한능검 2주면 되냐?"</td>
+        <td>됨. 기출만 돌려</td>
+        <td>됨. 최근 5개년 기출 3회독이면 1급. 무료 사이트에서 돌리면 됨</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="warn-box">
+    <strong>댓글 주의사항:</strong><br>
+    - 같은 글에 여러 계정으로 댓글 달지 않기<br>
+    - 하루에 사이트 언급 댓글 3개 이하 (1~2개 권장)<br>
+    - 같은 갤러리에서 연속 댓글 금지 (최소 2~3일 간격)<br>
+    - "물어봤을 때만" 답변 — 안 물어봤는데 먼저 추천하면 홍보
+  </div>
+
+  <h3>4-7. 유형 6: 시험 직전 — 상세 가이드</h3>
+
+  <h4>작성 원칙</h4>
+  <ul>
+    <li>시험 D-14 ~ D-1 기간에만 사용</li>
+    <li>"벼락치기 루트" "시험 직전 꿀팁" 프레이밍</li>
+    <li>시간이 급한 사람들이 타겟 → URL 직접 공유도 상대적으로 관대</li>
+    <li>시험 시즌에만 쓸 수 있으니 타이밍이 중요 (6장 참조)</li>
+  </ul>
+
+  <h4>범용 버전</h4>
+  <div class="bio-box">
+    <strong>제목:</strong> 한능검 시험 2주 남았는데 아직 안 한 사람 들어와<br><br>
+    벼락치기 루트 알려줌<br><br>
+    <strong>D-14~D-8:</strong> 최근 5개년 기출 1회독 (gcnote.co.kr에서 무료로 풀 수 있음)<br>
+    → 틀리는 문제마다 요약노트 연결되니까 그거 읽기<br><br>
+    <strong>D-7~D-3:</strong> 오답 복습 + 약한 시대 집중<br>
+    → 오답노트 기능으로 틀린 거만 모아서 돌리기<br><br>
+    <strong>D-2~D-1:</strong> 최근 1회 모의고사처럼 풀기 + 오답 최종 정리<br><br>
+    이거면 1급 충분함. 교재 살 시간에 기출 한 번 더 돌려.<br>
+    해설 밑에 최태성 강의도 바로 뜨니까 모르는 거 영상으로 보면 됨
+  </div>
+
+  <h3>4-8. 게시글 공통 작성 체크리스트</h3>
+
+  <ul class="checklist">
+    <li>갤러리 톤에 맞는 말투를 사용했는가? (공갤: 거친 반말 / 미니갤: 존반말)</li>
+    <li>단점/아쉬운 점을 1~2개 이상 포함했는가?</li>
+    <li>이미지가 있다면 핸드폰 직찍/캡처인가? (고퀄 이미지 금지)</li>
+    <li>URL을 본문 맨 위에 먼저 박지 않았는가?</li>
+    <li>"추천합니다" "꼭 써보세요" 같은 권유 표현이 없는가?</li>
+    <li>"광고 아니고" "홍보 아닌데" 같은 변명이 없는가?</li>
+    <li>다른 갤러리에 올린 글과 동일한 문구가 아닌가?</li>
+    <li>최근 1주 내 같은 갤러리에 사이트 관련 글을 쓴 적이 없는가?</li>
+    <li>계정이 최소 3주 이상 일반 활동을 한 계정인가?</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- 5. 차단 방지 노하우 -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="section" id="s5">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--red-l);">🛡️</div>
+    <div><div class="section-title">5. 차단 방지 노하우</div><div class="section-subtitle">URL, 문체, 패턴 관리 — DC에서 살아남는 법</div></div>
+  </div>
+
+  <h3>5-1. URL 관리</h3>
+
+  <div class="danger-box">
+    <strong>최악의 시나리오:</strong> gcnote.co.kr URL 자체가 갤러리 금지어로 등록되면, 해당 갤러리에서 영구적으로 URL 사용이 불가능해진다. 이건 복구가 안 된다.
+  </div>
+
+  <table>
+    <thead><tr><th>전략</th><th>설명</th><th>위험도</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>URL 최소 노출</strong></td>
+        <td>본문에 URL 직접 박지 않기. "기출노트 한능검 검색하면 나옴" 또는 댓글에서만 공유</td>
+        <td><span class="tag tag-green">안전</span></td>
+      </tr>
+      <tr>
+        <td><strong>사이트명으로 우회</strong></td>
+        <td>"gcnote" "기출노트" 같은 사이트명만 쓰고 URL은 물어보면 알려주기</td>
+        <td><span class="tag tag-green">안전</span></td>
+      </tr>
+      <tr>
+        <td><strong>검색 유도</strong></td>
+        <td>"한능검 기출 무료 검색하면 나옴" → 네이버/구글 검색으로 유도</td>
+        <td><span class="tag tag-green">매우 안전</span></td>
+      </tr>
+      <tr>
+        <td><strong>URL 직접 게시 (본문)</strong></td>
+        <td>한능검 전용 갤러리에서만 제한적으로. Tier 1 갤러리에서는 자제</td>
+        <td><span class="tag tag-amber">주의</span></td>
+      </tr>
+      <tr>
+        <td><strong>URL 직접 게시 (댓글)</strong></td>
+        <td>질문에 대한 답변으로만. 본문보다는 안전하지만 빈도 관리 필수</td>
+        <td><span class="tag tag-amber">보통</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4>URL 차단 시 대응 플랜</h4>
+  <table>
+    <thead><tr><th>단계</th><th>대응</th></tr></thead>
+    <tbody>
+      <tr><td>1차: URL 차단됨</td><td>"기출노트 한능검" 검색 유도로 전환. URL 언급 완전 중단</td></tr>
+      <tr><td>2차: 사이트명도 필터링</td><td>"한능검 무료 사이트" 같은 일반적 표현으로 전환. 직접 DM 추천</td></tr>
+      <tr><td>3차: 해당 갤러리 포기</td><td>차단이 심한 갤러리는 포기하고 다른 갤러리에 집중</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5-2. 문체 차단 방지</h3>
+
+  <table>
+    <thead><tr><th>차단 패턴</th><th>예시</th><th>대응</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>동일 문구 복붙</strong></td>
+        <td>14개 갤러리에 같은 글 복붙</td>
+        <td>갤러리마다 말투, 구조, 내용을 다르게. 완전히 다시 작성</td>
+      </tr>
+      <tr>
+        <td><strong>정형화된 추천 패턴</strong></td>
+        <td>"이 사이트 추천합니다. 장점은 1... 2... 3..."</td>
+        <td>개인 경험 기반. 스토리텔링 형태로. 장점 나열 대신 에피소드</td>
+      </tr>
+      <tr>
+        <td><strong>과도한 정보 나열</strong></td>
+        <td>"1,900문항, AI 해설, 87개 요약노트, 오답노트..."</td>
+        <td>한 번에 1~2개 기능만 언급. 전체 기능 목록 나열은 홍보물</td>
+      </tr>
+      <tr>
+        <td><strong>지나치게 긍정적</strong></td>
+        <td>"이건 진짜 미쳤음 완벽함 안 쓰면 손해"</td>
+        <td>단점 먼저 + 장점 나중. "이건 좀 그런데, 이건 괜찮음" 톤</td>
+      </tr>
+      <tr>
+        <td><strong>기업 용어 사용</strong></td>
+        <td>"사용자 경험" "학습 효율" "콘텐츠" "플랫폼"</td>
+        <td>DC 용어로 교체: "쓰기 편함" "공부 잘 됨" "자료" "사이트"</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>5-3. 패턴 차단 방지</h3>
+
+  <table>
+    <thead><tr><th>위험 패턴</th><th>탐지 원리</th><th>회피 방법</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>같은 시간대 반복 게시</strong></td>
+        <td>매일 같은 시간에 글 올리면 봇/업무로 의심</td>
+        <td>게시 시간을 랜덤하게. 점심/저녁/밤 번갈아가며</td>
+      </tr>
+      <tr>
+        <td><strong>짧은 간격 다중 갤 활동</strong></td>
+        <td>30분 내 3개 갤러리에 글 → 다중 갤 홍보 의심</td>
+        <td>같은 날 다른 갤러리 활동 시 최소 2~3시간 간격</td>
+      </tr>
+      <tr>
+        <td><strong>새 글 직후 자추/자댓</strong></td>
+        <td>글 쓰자마자 다른 계정으로 추천/댓글</td>
+        <td>다른 계정의 반응은 최소 6시간 이후. 자추는 절대 하지 않기</td>
+      </tr>
+      <tr>
+        <td><strong>특정 URL만 반복 공유</strong></td>
+        <td>계정의 모든 글/댓글에 같은 URL</td>
+        <td>활동 비율 7:3 유지. 사이트 무관한 활동이 다수여야 함</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>5-4. "홍보충" 의심 시 대응 시나리오</h3>
+
+  <div class="card-grid">
+    <div class="card" style="border-top:3px solid var(--amber);">
+      <div class="card-title">시나리오 1: "홍보 아니냐?"</div>
+      <ul>
+        <li><strong>안 좋은 대응:</strong> "홍보 아닙니다! 정말 좋아서 추천하는 거예요"</li>
+        <li><strong>좋은 대응:</strong> "ㅋㅋ 홍보면 이렇게 안 씀. 무료인데 뭘 홍보함"</li>
+        <li><strong>최선의 대응:</strong> 무시. 다른 댓글에만 반응</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:3px solid var(--red);">
+      <div class="card-title">시나리오 2: 집요하게 추궁</div>
+      <ul>
+        <li>"이 계정 글 다 사이트 홍보잖아" 식 공격</li>
+        <li><strong>대응:</strong> 절대 반박하지 않음. 해당 갤러리에서 사이트 언급 2주 이상 중단</li>
+        <li>다른 주제로 일반 활동 → 시간이 지나면 잊혀짐</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:3px solid #111;">
+      <div class="card-title">시나리오 3: 계정 차단</div>
+      <ul>
+        <li><strong>대응:</strong> 해당 갤러리 같은 계정으로 재시도 절대 금지</li>
+        <li>다른 갤러리에 다른 계정으로 이동</li>
+        <li>차단 사유 분석 → 다른 계정에서 같은 실수 반복하지 않기</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>5-5. 이미지 관리</h3>
+
+  <table>
+    <thead><tr><th>DO</th><th>DON'T</th></tr></thead>
+    <tbody>
+      <tr><td>핸드폰으로 직접 캡처한 화면</td><td>깔끔하게 편집된 스크린샷</td></tr>
+      <tr><td>사이트 일부만 보이는 자연스러운 캡처</td><td>사이트 전체 화면 (홍보물처럼 보임)</td></tr>
+      <tr><td>문제 풀다가 캡처한 느낌</td><td>기능 소개 목적의 이미지</td></tr>
+      <tr><td>이미지 없이 텍스트만 (가장 안전)</td><td>로고나 배너 이미지</td></tr>
+      <tr><td>이미지 메타데이터(EXIF) 없는 상태</td><td>EXIF에 기업 정보가 남아있는 이미지</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- 6. 타이밍 전략 -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="section" id="s6">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--orange-l);">📅</div>
+    <div><div class="section-title">6. 타이밍 전략 — 시험 시즌 캘린더 연동</div><div class="section-subtitle">한능검 시험 일정에 맞춘 게시 타이밍 최적화</div></div>
+  </div>
+
+  <h3>6-1. 한능검 시험 시즌 캘린더 (2026년 기준)</h3>
+
+  <div class="tip-box">
+    <strong>한능검 시험은 연 6회 실시.</strong> 매 시험 전 2~4주가 바이럴 골든타임이다. 시험 직후 1주는 "시험 후기/답 비교" 시즌이므로 이때도 활동 가능.
+  </div>
+
+  <table>
+    <thead><tr><th>회차</th><th>시험일 (예상)</th><th>접수 시작</th><th>골든타임</th><th>후기 시즌</th></tr></thead>
+    <tbody>
+      <tr><td>78회</td><td>2026년 2월</td><td>1월</td><td><span class="tag tag-green">1월 중순~시험일</span></td><td>시험 후 1주</td></tr>
+      <tr><td>79회</td><td>2026년 4월</td><td>3월</td><td><span class="tag tag-green">3월 중순~시험일</span></td><td>시험 후 1주</td></tr>
+      <tr><td>80회</td><td>2026년 6월</td><td>5월</td><td><span class="tag tag-green">5월 중순~시험일</span></td><td>시험 후 1주</td></tr>
+      <tr><td>81회</td><td>2026년 8월</td><td>7월</td><td><span class="tag tag-green">7월 중순~시험일</span></td><td>시험 후 1주</td></tr>
+      <tr><td>82회</td><td>2026년 10월</td><td>9월</td><td><span class="tag tag-green">9월 중순~시험일</span></td><td>시험 후 1주</td></tr>
+      <tr><td>83회</td><td>2026년 12월</td><td>11월</td><td><span class="tag tag-green">11월 중순~시험일</span></td><td>시험 후 1주</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6-2. 시기별 바이럴 전략</h3>
+
+  <table>
+    <thead><tr><th>시기</th><th>기간</th><th>활동 강도</th><th>주력 유형</th><th>주력 갤러리</th></tr></thead>
+    <tbody>
+      <tr style="background:#FEF2F2;">
+        <td><strong>평시</strong></td>
+        <td>시험 6~4주 전</td>
+        <td><span class="tag tag-amber">저강도</span><br>주 2~3건</td>
+        <td>짧은 댓글, 일반 활동 (계정 육성)</td>
+        <td>Tier 1 위주 일반 활동</td>
+      </tr>
+      <tr style="background:#FFFBEB;">
+        <td><strong>접수 시즌</strong></td>
+        <td>시험 4~2주 전</td>
+        <td><span class="tag tag-orange">중강도</span><br>주 5~7건</td>
+        <td>가성비 정보, 합격 후기</td>
+        <td>Tier 1 + Tier 2</td>
+      </tr>
+      <tr style="background:#ECFDF5;">
+        <td><strong>골든타임</strong></td>
+        <td>시험 2주 전~D-1</td>
+        <td><span class="tag tag-green">고강도</span><br>주 10~14건</td>
+        <td>시험 직전, 좌표 공유, 빡침 해결</td>
+        <td>전 Tier 전방위</td>
+      </tr>
+      <tr style="background:#EFF6FF;">
+        <td><strong>시험 당일~1주</strong></td>
+        <td>시험 후 1주</td>
+        <td><span class="tag tag-blue">중강도</span><br>주 5~7건</td>
+        <td>합격 후기 ("이걸로 공부해서 잘 봤음"), 짧은 댓글</td>
+        <td>Tier 1 + 한능검갤</td>
+      </tr>
+      <tr>
+        <td><strong>비시즌</strong></td>
+        <td>시험 후 2~6주</td>
+        <td><span class="tag tag-amber">최저강도</span><br>주 1~2건</td>
+        <td>일반 활동만 (계정 자연스러움 유지)</td>
+        <td>Tier 1만</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>6-3. 일일 시간대별 최적화</h3>
+
+  <table>
+    <thead><tr><th>시간대</th><th>활동량</th><th>추천 활동</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td>07:00~09:00</td><td>낮음</td><td>-</td><td>비추천 (공시생 아침 공부 시간)</td></tr>
+      <tr><td>09:00~11:00</td><td>보통</td><td>짧은 댓글</td><td>출근 후 슬쩍 보는 시간</td></tr>
+      <tr><td><strong>12:00~14:00</strong></td><td><span class="tag tag-green">높음</span></td><td>정보글 게시, 댓글</td><td>점심 피크. 글 노출 시간 길어짐</td></tr>
+      <tr><td>14:00~17:00</td><td>보통</td><td>댓글 답변</td><td>오후 활동. 점심때 올린 글에 댓글 소통</td></tr>
+      <tr><td><strong>18:00~20:00</strong></td><td><span class="tag tag-green">높음</span></td><td>정보글 게시, 댓글</td><td>퇴근 피크. 두 번째로 좋은 게시 시간</td></tr>
+      <tr><td>20:00~22:00</td><td>높음</td><td>댓글 소통</td><td>저녁때 올린 글에 댓글 대응</td></tr>
+      <tr><td><strong>22:00~01:00</strong></td><td><span class="tag tag-green">매우 높음</span></td><td>좌표 공유, 빡침 해결</td><td>DC 핵심 시간대. 가장 솔직한 소통 가능</td></tr>
+      <tr><td>01:00~07:00</td><td>낮음</td><td>-</td><td>비추천</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6-4. 요일별 전략</h3>
+
+  <table>
+    <thead><tr><th>요일</th><th>특성</th><th>추천 활동</th></tr></thead>
+    <tbody>
+      <tr><td><strong>월~금</strong></td><td>공시생 공부 중간중간 DC 방문. 점심/저녁/밤 피크</td><td>짧은 댓글(평일 내내) + 정보글(수/목 추천)</td></tr>
+      <tr><td><strong>토요일</strong></td><td>시험이 토요일에 많음. 시험일이면 최고 피크</td><td>시험 당일: 후기 소통 / 비시험일: 일반 활동</td></tr>
+      <tr><td><strong>일요일</strong></td><td>느슨한 분위기. 글 밀림 속도 느림</td><td>정보글 게시 (오래 살아있음). 자갤/한능검갤 추천</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6-5. 공무원 시험 연동</h3>
+
+  <div class="info-box">
+    <strong>보너스 타이밍:</strong> 한능검뿐만 아니라 공무원 시험 시즌에도 "한국사 가산점" 화제가 올라온다. 9급 공채(3~4월), 7급 공채(7~8월) 시험 전 1개월이 공갤에서 한능검 언급이 급증하는 시기다.
+  </div>
+
+  <table>
+    <thead><tr><th>공무원 시험</th><th>시기</th><th>갤러리</th><th>활용</th></tr></thead>
+    <tbody>
+      <tr><td>9급 국가직 필기</td><td>3~4월</td><td>공갤, 공시생미니, 직렬갤</td><td>"한국사 가산점 아직 안 챙겼으면" 맥락</td></tr>
+      <tr><td>9급 지방직 필기</td><td>6월</td><td>공갤, 공무원미니</td><td>"지방직 전에 한능검 빨리 따야 함"</td></tr>
+      <tr><td>7급 국가직 필기</td><td>7~8월</td><td>공갤, 공시생미니</td><td>"7급은 가산점 5점이 크니까"</td></tr>
+      <tr><td>경찰/소방 시험</td><td>수시</td><td>해당 직렬갤</td><td>"경찰 한국사 가산점 정리"</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- 7. 주간/월간 실행 플랜 -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="section" id="s7">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--cyan-l);">📊</div>
+    <div><div class="section-title">7. 주간/월간 실행 플랜 및 KPI</div><div class="section-subtitle">계정 3개 기준 운영 로드맵</div></div>
+  </div>
+
+  <h3>7-1. 계정 배분</h3>
+
+  <table>
+    <thead><tr><th>계정</th><th>담당 갤러리</th><th>캐릭터</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>계정 A</strong></td>
+        <td>공무원갤, 공시생미니, 공무원미니</td>
+        <td>"공시생 N수생" — 공무원 시험 준비하면서 한능검도 보는 사람</td>
+      </tr>
+      <tr>
+        <td><strong>계정 B</strong></td>
+        <td>자격증갤, 취업갤, 한능검마이너, 한능검미니</td>
+        <td>"자격증 수집가/취준생" — 여러 자격증 따면서 한능검 정보도 아는 사람</td>
+      </tr>
+      <tr>
+        <td><strong>계정 C</strong></td>
+        <td>기술직, 교정직미니, 교행현직미니, 사복직, 시설직, 합격미니, 스터디미니</td>
+        <td>"직렬 준비생/합격자" — 해당 직렬 경험이 있는 사람</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>7-2. 주간 활동 템플릿 (비시즌)</h3>
+
+  <table>
+    <thead><tr><th>요일</th><th>계정 A</th><th>계정 B</th><th>계정 C</th></tr></thead>
+    <tbody>
+      <tr><td><strong>월</strong></td><td>공갤 일반 댓글 2~3개</td><td>-</td><td>-</td></tr>
+      <tr><td><strong>화</strong></td><td>-</td><td>자갤 일반 댓글 2~3개</td><td>직렬갤 1개 일반 댓글</td></tr>
+      <tr><td><strong>수</strong></td><td>공시생미니 정보글/댓글</td><td>취갤 일반 댓글 2~3개</td><td>-</td></tr>
+      <tr><td><strong>목</strong></td><td>공갤 댓글 (한능검 질문 있으면 답변)</td><td>-</td><td>스터디미니 또는 합격미니 댓글</td></tr>
+      <tr><td><strong>금</strong></td><td>-</td><td>한능검갤 정보글/댓글</td><td>-</td></tr>
+      <tr><td><strong>토~일</strong></td><td colspan="3" style="text-align:center;">휴식 또는 가벼운 댓글 1~2개 (자연스러운 주말 패턴)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>7-3. 주간 활동 템플릿 (골든타임: 시험 2주 전)</h3>
+
+  <table>
+    <thead><tr><th>요일</th><th>계정 A</th><th>계정 B</th><th>계정 C</th></tr></thead>
+    <tbody>
+      <tr><td><strong>월</strong></td><td>공갤 빡침해결 글</td><td>자갤 가성비정보 글</td><td>직렬갤 2개 가산점 정보</td></tr>
+      <tr><td><strong>화</strong></td><td>공시생미니 시험직전 글</td><td>취갤 댓글 3~4개</td><td>스터디미니 공부법 글</td></tr>
+      <tr><td><strong>수</strong></td><td>공갤 댓글 답변 집중</td><td>한능검갤 좌표공유 글</td><td>합격미니 합격후기 글</td></tr>
+      <tr><td><strong>목</strong></td><td>공무원미니 정보글</td><td>자갤 댓글 답변</td><td>직렬갤 댓글</td></tr>
+      <tr><td><strong>금</strong></td><td>공갤 시험직전 글</td><td>취갤 빡침해결 글</td><td>-</td></tr>
+      <tr><td><strong>토</strong></td><td>공시생미니 댓글</td><td>한능검갤 시험직전 글</td><td>직렬갤 댓글</td></tr>
+      <tr><td><strong>일</strong></td><td>공갤 댓글</td><td>자갤 댓글</td><td>-</td></tr>
+    </tbody>
+  </table>
+
+  <h3>7-4. KPI (핵심 성과 지표)</h3>
+
+  <table>
+    <thead><tr><th>지표</th><th>측정 방법</th><th>목표 (월간)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>게시글 수</strong></td><td>작성한 글 수 (6가지 유형)</td><td>비시즌 8~12건 / 골든타임 20~30건</td></tr>
+      <tr><td><strong>댓글 수</strong></td><td>사이트 관련 답변 댓글</td><td>비시즌 15~20건 / 골든타임 40~50건</td></tr>
+      <tr><td><strong>개념글 달성</strong></td><td>추천 10+ 달성한 글</td><td>월 1~2건 (자연 발생)</td></tr>
+      <tr><td><strong>차단 건수</strong></td><td>계정/글 삭제 건</td><td>0건 (차단 발생 시 전략 재점검)</td></tr>
+      <tr><td><strong>유입 트래픽</strong></td><td>GA4에서 DC 레퍼러 확인</td><td>월 200+ UV (골든타임 500+)</td></tr>
+      <tr><td><strong>검색 유입</strong></td><td>"기출노트 한능검" 검색량 변화</td><td>전월 대비 10%+ 증가</td></tr>
+    </tbody>
+  </table>
+
+  <h3>7-5. 월간 점검 체크리스트</h3>
+
+  <ul class="checklist">
+    <li>계정 3개 모두 정상 상태인가? (차단 여부 확인)</li>
+    <li>각 계정의 일반 활동 : 사이트 언급 비율이 7:3인가?</li>
+    <li>동일 문구가 여러 갤러리에 복붙되지 않았는가?</li>
+    <li>gcnote.co.kr URL이 어떤 갤러리에서도 차단되지 않았는가?</li>
+    <li>GA4에서 DC 유입 트래픽 추이 확인</li>
+    <li>"기출노트 한능검" 네이버/구글 검색 트렌드 확인</li>
+    <li>다음 시험 일정 확인 + 골든타임 준비</li>
+    <li>부정 언급/이슈 발생 여부 모니터링</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- 8. 위기 대응 매뉴얼 -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="section" id="s8">
+  <div class="section-header">
+    <div class="section-icon" style="background:var(--red-l);">🚨</div>
+    <div><div class="section-title">8. 위기 대응 매뉴얼</div><div class="section-subtitle">최악의 시나리오별 대응 프로토콜</div></div>
+  </div>
+
+  <h3>8-1. 위기 등급 분류</h3>
+
+  <table>
+    <thead><tr><th>등급</th><th>상황</th><th>대응 속도</th></tr></thead>
+    <tbody>
+      <tr style="background:#ECFDF5;">
+        <td><span class="tag tag-green">Level 1</span></td>
+        <td>개별 댓글에서 "홍보 아니냐?" 의심</td>
+        <td>가볍게 대응 또는 무시. 일상적 상황</td>
+      </tr>
+      <tr style="background:#FFFBEB;">
+        <td><span class="tag tag-amber">Level 2</span></td>
+        <td>한 갤러리에서 "이 계정 홍보계정임" 글 올라옴</td>
+        <td>즉시 해당 갤러리 활동 중단. 2주간 잠수</td>
+      </tr>
+      <tr style="background:#FEF2F2;">
+        <td><span class="tag tag-red">Level 3</span></td>
+        <td>여러 갤러리에 "gcnote 홍보계정 조심" 퍼짐</td>
+        <td>전 갤러리 활동 즉시 중단. 최소 1개월 쿨다운</td>
+      </tr>
+      <tr style="background:#FEF2F2;">
+        <td><span class="tag tag-red">Level 4</span></td>
+        <td>gcnote.co.kr URL이 갤러리 금지어로 등록</td>
+        <td>검색 유도 방식으로 전환. URL 언급 영구 중단</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>8-2. Level별 상세 대응</h3>
+
+  <div class="card-grid">
+    <div class="card" style="border-top:3px solid #059669;">
+      <div class="card-title">Level 1 대응</div>
+      <ul>
+        <li>가볍게 넘기기: "ㅋㅋ 홍보면 돈이라도 받지" 또는 무시</li>
+        <li>절대 길게 해명하지 않기</li>
+        <li>다음 활동까지 3~5일 간격 두기</li>
+        <li>이후 해당 갤러리에서 일반 활동 비율 높이기</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:3px solid #F59E0B;">
+      <div class="card-title">Level 2 대응</div>
+      <ul>
+        <li>해당 갤러리 2주간 완전 잠수 (일반 활동도 중단)</li>
+        <li>해당 계정으로 사이트 언급 1개월 금지</li>
+        <li>다른 계정으로 다른 갤러리에서만 활동</li>
+        <li>2주 후 해당 갤러리에 일반 활동만으로 복귀</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:3px solid #DC2626;">
+      <div class="card-title">Level 3 대응</div>
+      <ul>
+        <li>전 갤러리, 전 계정 활동 즉시 중단</li>
+        <li>최소 1개월 쿨다운 기간</li>
+        <li>기존 계정 폐기 고려 (오염된 계정)</li>
+        <li>1개월 후 새 계정으로 처음부터 등업 시작</li>
+        <li>복귀 시 활동 패턴 완전히 변경</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:3px solid #111;">
+      <div class="card-title">Level 4 대응</div>
+      <ul>
+        <li>URL 차단된 갤러리에서 URL 사용 영구 중단</li>
+        <li>"기출노트 한능검 검색" 또는 "한능검 무료 사이트 검색" 유도</li>
+        <li>다른 갤러리에서도 URL 대신 검색 유도 방식 확대</li>
+        <li>장기적으로 SEO 강화하여 검색 유도만으로 충분하게 만들기</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>8-3. 사이트 단점 지적 대응</h3>
+
+  <table>
+    <thead><tr><th>지적 내용</th><th>좋은 대응</th><th>나쁜 대응</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>"앱 없어서 불편함"</td>
+        <td>"ㅇㅇ 앱은 없어서 좀 그럼. 근데 웹에서도 되고 무료니까"</td>
+        <td>"곧 앱이 출시될 예정입니다!"</td>
+      </tr>
+      <tr>
+        <td>"디자인 구림"</td>
+        <td>"ㅋㅋ 디자인은 좀 그렇긴 한데 기능은 됨"</td>
+        <td>"디자인이 그렇게 나쁘지 않은데요..."</td>
+      </tr>
+      <tr>
+        <td>"해설 틀린 거 있음"</td>
+        <td>"AI 해설이라 가끔 그럴 수 있음. 근데 대부분 맞던데"</td>
+        <td>"어떤 문제인지 알려주시면 수정하겠습니다"</td>
+      </tr>
+      <tr>
+        <td>"이미 다른 사이트 쓰는데"</td>
+        <td>"ㅇㅇ 다른 거 쓰고 있으면 그거 쓰셈. 나는 여기가 편하더라"</td>
+        <td>"우리 사이트가 더 좋은 이유는..."</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="warn-box">
+    <strong>핵심 원칙:</strong> "운영자"처럼 대응하면 정체가 들통난다. 항상 "그냥 쓰는 유저" 입장에서만 대응. 버그 리포트 받거나, 업데이트 예고하거나, 해명하는 순간 끝이다.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- 부록: 갤러리별 용어/밈 사전 -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="section" style="border-top:4px solid #475569;">
+  <div class="section-header">
+    <div class="section-icon" style="background:#F1F5F9;">📖</div>
+    <div><div class="section-title">부록: 갤러리별 용어 참고</div><div class="section-subtitle">DC 말투/문체 적응을 위한 참고 자료</div></div>
+  </div>
+
+  <h3>공통 DC 용어</h3>
+  <table>
+    <thead><tr><th>용어</th><th>의미</th><th>사용 맥락</th></tr></thead>
+    <tbody>
+      <tr><td>고닉</td><td>고정 닉네임 (로그인 계정)</td><td>"고닉으로 써라 유동 신뢰 없음"</td></tr>
+      <tr><td>유동</td><td>비로그인 익명 유저</td><td>"유동이 뭘 알아"</td></tr>
+      <tr><td>개념글</td><td>추천 많이 받은 인기글</td><td>"개념글 ㄱ"</td></tr>
+      <tr><td>홍보충</td><td>홍보/광고하는 사람 (비하)</td><td>"홍보충 아웃 ㅋㅋ"</td></tr>
+      <tr><td>좌표</td><td>유용한 정보/위치 공유</td><td>"좌표 공유 감사"</td></tr>
+      <tr><td>ㄹㅇ</td><td>리얼 (진짜)</td><td>"ㄹㅇ 무료임?"</td></tr>
+      <tr><td>ㅇㅇ</td><td>응응 (동의)</td><td>"ㅇㅇ 나도 그거 씀"</td></tr>
+      <tr><td>ㅋㅋ</td><td>웃음/가벼운 어감</td><td>거의 모든 문장에 자연스럽게</td></tr>
+    </tbody>
+  </table>
+
+  <h3>공시생 갤러리 특화 용어</h3>
+  <table>
+    <thead><tr><th>용어</th><th>의미</th></tr></thead>
+    <tbody>
+      <tr><td>탈공</td><td>공시 포기/탈출</td></tr>
+      <tr><td>N수</td><td>N번째 시험 도전</td></tr>
+      <tr><td>현타</td><td>현실을 직시하는 자괴감</td></tr>
+      <tr><td>가산점</td><td>한능검/자격증 가산점 (공시생 핵심 관심사)</td></tr>
+      <tr><td>합격각</td><td>합격 가능성이 보임</td></tr>
+      <tr><td>커트라인</td><td>합격 최저 점수</td></tr>
+      <tr><td>필기/면접</td><td>공무원 시험 단계</td></tr>
+    </tbody>
+  </table>
+
+  <h3>취업 갤러리 특화 용어</h3>
+  <table>
+    <thead><tr><th>용어</th><th>의미</th></tr></thead>
+    <tbody>
+      <tr><td>스펙</td><td>취업용 자격/경력/학력</td></tr>
+      <tr><td>서류 탈</td><td>서류전형 탈락</td></tr>
+      <tr><td>합스</td><td>합격 스펙</td></tr>
+      <tr><td>취준 N년차</td><td>취업 준비 N년째</td></tr>
+      <tr><td>가성비 스펙</td><td>시간 대비 효과 좋은 스펙</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip-box">
+    <strong>실전 팁:</strong> 용어를 외우려 하지 말고, 각 갤러리에서 2주간 글을 읽으면 자연스럽게 체화된다. 억지로 용어를 남발하면 오히려 "아재 노력" 느낌이 나서 역효과다. 자연스러움이 핵심이다.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- Footer -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<footer>
+  기출노트 한능검 — 디시인사이드 마케팅 심화 전략서 | 2026-03-24<br>
+  이 문서는 내부용이며 외부 유출 시 전략이 무력화됩니다.
+</footer>
+
+</div>
+</body>
+</html>
