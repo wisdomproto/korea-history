@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Question } from "@/lib/types";
 import AdSlot from "@/components/AdSlot";
+import { playSelectSound, playCorrectSound, playWrongSound } from "@/lib/sounds";
 
 interface YouTubeData {
   videoId: string;
@@ -24,13 +25,29 @@ export default function QuestionCard({
   const [selected, setSelected] = useState<number | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [showFlash, setShowFlash] = useState<"correct" | "wrong" | null>(null);
+  const [showScorePopup, setShowScorePopup] = useState(false);
   const feedbackRef = useRef<HTMLDivElement>(null);
+
+  const handleSelect = (choiceNum: number) => {
+    if (revealed) return;
+    setSelected(choiceNum);
+    playSelectSound();
+  };
 
   const handleReveal = () => {
     if (selected === null) return;
     setRevealed(true);
     const isCorrect = selected === question.correctAnswer;
-    if (isCorrect) setShowConfetti(true);
+    if (isCorrect) {
+      setShowConfetti(true);
+      setShowScorePopup(true);
+      setShowFlash("correct");
+      playCorrectSound();
+    } else {
+      setShowFlash("wrong");
+      playWrongSound();
+    }
     onAnswerSubmit?.(selected, isCorrect);
   };
 
@@ -49,10 +66,36 @@ export default function QuestionCard({
     }
   }, [showConfetti]);
 
+  useEffect(() => {
+    if (showFlash) {
+      const timer = setTimeout(() => setShowFlash(null), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [showFlash]);
+
+  useEffect(() => {
+    if (showScorePopup) {
+      const timer = setTimeout(() => setShowScorePopup(false), 1200);
+      return () => clearTimeout(timer);
+    }
+  }, [showScorePopup]);
+
   const isCorrect = selected === question.correctAnswer;
 
   return (
     <div className="relative">
+      {/* Screen flash overlay */}
+      {showFlash && (
+        <div className={`answer-flash ${showFlash === "correct" ? "answer-flash-correct" : "answer-flash-wrong"}`} />
+      )}
+
+      {/* Score popup */}
+      {showScorePopup && (
+        <div className="score-popup">
+          <span>+{question.points || 2}점</span>
+        </div>
+      )}
+
       {/* Confetti effect */}
       {showConfetti && (
         <div className="confetti-container">
@@ -62,6 +105,17 @@ export default function QuestionCard({
               animationDelay: `${Math.random() * 0.5}s`,
               backgroundColor: ['#10B981', '#34D399', '#6EE7B7', '#FBBF24', '#F59E0B', '#818CF8', '#A78BFA'][i % 7],
             }} />
+          ))}
+        </div>
+      )}
+
+      {/* Sparkle burst on correct */}
+      {showConfetti && (
+        <div className="sparkle-container">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div key={i} className="sparkle" style={{
+              '--angle': `${i * 45}deg`,
+            } as React.CSSProperties} />
           ))}
         </div>
       )}
@@ -125,7 +179,7 @@ export default function QuestionCard({
           return (
             <button
               key={i}
-              onClick={() => !revealed && setSelected(choiceNum)}
+              onClick={() => handleSelect(choiceNum)}
               disabled={revealed}
               className={`${btnClass} ${extraClass}`}
             >

@@ -724,6 +724,30 @@
 }
 
 /* ─── Keyframes (must be outside @layer) ─── */
+/* ─── Answer Flash Overlay ─── */
+@keyframes flash-correct {
+  0% { opacity: 0.35; }
+  100% { opacity: 0; }
+}
+
+@keyframes flash-wrong {
+  0%, 50% { opacity: 0.2; }
+  25%, 75% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes score-float {
+  0% { opacity: 0; transform: translate(-50%, 0) scale(0.5); }
+  20% { opacity: 1; transform: translate(-50%, -20px) scale(1.2); }
+  40% { transform: translate(-50%, -30px) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -80px) scale(0.8); }
+}
+
+@keyframes sparkle-burst {
+  0% { transform: rotate(var(--angle)) translateX(0) scale(1); opacity: 1; }
+  100% { transform: rotate(var(--angle)) translateX(80px) scale(0); opacity: 0; }
+}
+
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
@@ -782,4 +806,66 @@
   height: 8px;
   border-radius: 2px;
   animation: confetti-fall 1.5s ease-out forwards;
+}
+
+/* ─── Answer Flash Overlay ─── */
+.answer-flash {
+  position: absolute;
+  inset: -20px;
+  border-radius: 24px;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.answer-flash-correct {
+  background: radial-gradient(circle at center, rgba(16, 185, 129, 0.3), transparent 70%);
+  animation: flash-correct 0.5s ease-out forwards;
+}
+
+.answer-flash-wrong {
+  background: rgba(239, 68, 68, 0.15);
+  animation: flash-wrong 0.5s ease-out forwards;
+}
+
+/* ─── Score Popup ─── */
+.score-popup {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 30;
+  pointer-events: none;
+  animation: score-float 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.score-popup span {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #10B981, #34D399);
+  color: white;
+  font-size: 18px;
+  font-weight: 900;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+}
+
+/* ─── Sparkle Burst ─── */
+.sparkle-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 15;
+}
+
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FBBF24;
+  box-shadow: 0 0 6px #FBBF24, 0 0 12px rgba(251, 191, 36, 0.5);
+  animation: sparkle-burst 0.8s ease-out forwards;
 }
