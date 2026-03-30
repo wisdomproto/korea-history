@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 
 interface NoteItem {
@@ -46,6 +46,23 @@ export default function NotesHome({ notes, grouped }: Props) {
 
   const totalFiltered = Object.values(displayGroups).reduce((s, arr) => s + arr.length, 0);
 
+  // Scroll to hash section on mount (e.g., /notes#s1)
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash) {
+      // Small delay to ensure DOM is rendered
+      setTimeout(() => {
+        const el = document.getElementById(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          // Brief highlight effect
+          el.classList.add("ring-2", "ring-emerald-400", "ring-offset-2", "rounded-2xl");
+          setTimeout(() => el.classList.remove("ring-2", "ring-emerald-400", "ring-offset-2", "rounded-2xl"), 2000);
+        }
+      }, 100);
+    }
+  }, []);
+
   return (
     <div>
       <div className="flex items-center gap-3 mb-6">
@@ -90,7 +107,7 @@ export default function NotesHome({ notes, grouped }: Props) {
         const eraLabel = sectionNotes[0].eraLabel;
 
         return (
-          <section key={sectionId} className="mb-6">
+          <section key={sectionId} id={sectionId} className="mb-6 scroll-mt-4 transition-all duration-500">
             <div className="flex items-center gap-2 mb-2.5 px-1">
               <div className={`h-3 w-3 rounded-full ${meta.dotColor}`} />
               <h2 className="text-base font-bold text-slate-800">{eraLabel}</h2>
