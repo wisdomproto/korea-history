@@ -12,15 +12,25 @@ const METRIC_CONFIG: Record<Metric, { label: string; unit: string; color: string
   durationPerPV: { label: 'PV당 체류', unit: '', color: '#DC2626', weekendColor: '#FECACA' },
 };
 
-function addDays(date: Date, days: number): string {
+function toDateStr(date: Date): string {
+  return date.toISOString().split('T')[0];
+}
+
+function addDays(date: Date, days: number): Date {
   const d = new Date(date);
   d.setDate(d.getDate() + days);
-  return d.toISOString().split('T')[0];
+  return d;
 }
 
 function formatDate(dateStr: string): string {
   const d = new Date(dateStr + 'T00:00:00');
   return `${d.getMonth() + 1}/${d.getDate()}`;
+}
+
+function formatRangeLabel(startStr: string, endStr: string): string {
+  const s = new Date(startStr + 'T00:00:00');
+  const e = new Date(endStr + 'T00:00:00');
+  return `${s.getMonth() + 1}/${s.getDate()} ~ ${e.getMonth() + 1}/${e.getDate()}`;
 }
 
 function getDayName(dateStr: string): string {
@@ -48,20 +58,27 @@ function getMetricValue(d: DailyData, metric: Metric): number {
   return d[metric];
 }
 
-function formatMetricValue(value: number, metric: Metric): string {
-  if (metric === 'avgSessionDuration') return formatDuration(value);
-  return value.toLocaleString();
-}
-
 export default function DailyTrendChart() {
   const [period, setPeriod] = useState<Period>('7d');
   const [metric, setMetric] = useState<Metric>('pageViews');
+  const [offset, setOffset] = useState(0); // 0 = current, -1 = prev week/month, etc.
+
   const today = new Date();
-  const startDate = period === '7d' ? addDays(today, -6) : addDays(today, -29);
-  const endDate = today.toISOString().split('T')[0];
+  const days = period === '7d' ? 7 : 30;
+  const endDate = toDateStr(addDays(today, offset * days));
+  const startDate = toDateStr(addDays(new Date(endDate + 'T00:00:00'), -(days - 1)));
+
+  // Don't allow navigating into the future
+  const isLatest = offset === 0;
 
   const { data, isLoading } = useDailyTrend(startDate, endDate);
   const config = METRIC_CONFIG[metric];
+
+  // Reset offset when period changes
+  const handlePeriodChange = (p: Period) => {
+    setPeriod(p);
+    setOffset(0);
+  };
 
   if (isLoading) {
     return (
@@ -83,7 +100,7 @@ export default function DailyTrendChart() {
         <span className="text-sm font-extrabold">📈 날짜별 트래픽</span>
         <div className="flex gap-1">
           <button
-            onClick={() => setPeriod('7d')}
+            onClick={() => handlePeriodChange('7d')}
             className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-colors ${
               period === '7d'
                 ? 'bg-emerald-600 text-white'
@@ -93,7 +110,7 @@ export default function DailyTrendChart() {
             7일
           </button>
           <button
-            onClick={() => setPeriod('30d')}
+            onClick={() => handlePeriodChange('30d')}
             className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-colors ${
               period === '30d'
                 ? 'bg-emerald-600 text-white'
@@ -105,22 +122,54 @@ export default function DailyTrendChart() {
         </div>
       </div>
 
-      {/* Metric Toggle */}
-      <div className="flex gap-1 mb-3">
-        {(Object.keys(METRIC_CONFIG) as Metric[]).map((m) => (
+      {/* Period Navigation */}
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex gap-1">
+          {(Object.keys(METRIC_CONFIG) as Metric[]).map((m) => (
+            <button
+              key={m}
+              onClick={() => setMetric(m)}
+              className={`px-2.5 py-1 rounded-full text-[11px] font-semibold transition-colors ${
+                metric === m
+                  ? 'text-white'
+                  : 'bg-gray-50 text-gray-400 hover:bg-gray-100 hover:text-gray-600'
+              }`}
+              style={metric === m ? { backgroundColor: METRIC_CONFIG[m].color } : undefined}
+            >
+              {METRIC_CONFIG[m].label}
+            </button>
+          ))}
+        </div>
+        <div className="flex items-center gap-1.5">
           <button
-            key={m}
-            onClick={() => setMetric(m)}
-            className={`px-2.5 py-1 rounded-full text-[11px] font-semibold transition-colors ${
-              metric === m
-                ? 'text-white'
-                : 'bg-gray-50 text-gray-400 hover:bg-gray-100 hover:text-gray-600'
-            }`}
-            style={metric === m ? { backgroundColor: METRIC_CONFIG[m].color } : undefined}
+            onClick={() => setOffset(offset - 1)}
+            className="w-6 h-6 flex items-center justify-center rounded-md bg-gray-100 text-gray-500 hover:bg-gray-200 text-xs"
           >
-            {METRIC_CONFIG[m].label}
+            ‹
           </button>
-        ))}
+          <span className="text-[11px] text-gray-500 font-medium min-w-[90px] text-center">
+            {formatRangeLabel(startDate, endDate)}
+          </span>
+          <button
+            onClick={() => setOffset(offset + 1)}
+            disabled={isLatest}
+            className={`w-6 h-6 flex items-center justify-center rounded-md text-xs ${
+              isLatest
+                ? 'bg-gray-50 text-gray-300 cursor-not-allowed'
+                : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+            }`}
+          >
+            ›
+          </button>
+          {!isLatest && (
+            <button
+              onClick={() => setOffset(0)}
+              className="px-1.5 py-0.5 rounded-md bg-emerald-50 text-emerald-600 text-[10px] font-semibold hover:bg-emerald-100"
+            >
+              오늘
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Chart */}
