@@ -2,7 +2,6 @@ import { useState, useCallback } from 'react';
 import { useDashboard, useRefreshDashboard } from '../hooks/useAnalytics';
 import type { DateRange } from '../types/analytics.types';
 import DatePresetBar from './DatePresetBar';
-import KpiCards from './KpiCards';
 import ChannelChart from './ChannelChart';
 import TopPagesTable from './TopPagesTable';
 import CampaignTable from './CampaignTable';
@@ -105,7 +104,6 @@ export default function AnalyticsDashboard() {
           </>
         ) : data ? (
           <>
-            <KpiCards data={data.overview} />
             <DailyTrendChart />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <ChannelChart data={data.channels} />
