@@ -3,12 +3,13 @@ import { useDailyTrend } from '../hooks/useAnalytics';
 import type { DailyData } from '../types/analytics.types';
 
 type Period = '7d' | '30d';
-type Metric = 'pageViews' | 'users' | 'avgSessionDuration';
+type Metric = 'pageViews' | 'users' | 'avgSessionDuration' | 'durationPerPV';
 
 const METRIC_CONFIG: Record<Metric, { label: string; unit: string; color: string; weekendColor: string }> = {
   pageViews: { label: 'PV', unit: '', color: '#059669', weekendColor: '#BFDBFE' },
   users: { label: '사용자', unit: '명', color: '#7C3AED', weekendColor: '#DDD6FE' },
   avgSessionDuration: { label: '체류시간', unit: '', color: '#D97706', weekendColor: '#FDE68A' },
+  durationPerPV: { label: 'PV당 체류', unit: '', color: '#DC2626', weekendColor: '#FECACA' },
 };
 
 function addDays(date: Date, days: number): string {
@@ -41,6 +42,9 @@ function formatDuration(seconds: number): string {
 }
 
 function getMetricValue(d: DailyData, metric: Metric): number {
+  if (metric === 'durationPerPV') {
+    return d.pageViews > 0 ? Math.round((d.avgSessionDuration * d.sessions) / d.pageViews) : 0;
+  }
   return d[metric];
 }
 
@@ -143,6 +147,7 @@ export default function DailyTrendChart() {
                   <div>PV: {d.pageViews.toLocaleString()}</div>
                   <div>사용자: {d.users.toLocaleString()}</div>
                   <div>체류시간: {formatDuration(d.avgSessionDuration)}</div>
+                  <div>PV당: {formatDuration(d.pageViews > 0 ? Math.round((d.avgSessionDuration * d.sessions) / d.pageViews) : 0)}</div>
                 </div>
               </div>
             </div>
@@ -177,7 +182,7 @@ export default function DailyTrendChart() {
           <span className="w-2.5 h-2.5 rounded-sm inline-block" style={{ backgroundColor: config.weekendColor }} /> 주말
         </span>
         <span className="ml-auto">
-          {metric === 'avgSessionDuration'
+          {metric === 'avgSessionDuration' || metric === 'durationPerPV'
             ? `평균 ${formatDuration(Math.round(total / data.length))}`
             : `총 ${total.toLocaleString()}${config.unit}`
           }
