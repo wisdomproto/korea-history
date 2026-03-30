@@ -1,7 +1,15 @@
 import { useState } from 'react';
 import { useDailyTrend } from '../hooks/useAnalytics';
+import type { DailyData } from '../types/analytics.types';
 
 type Period = '7d' | '30d';
+type Metric = 'pageViews' | 'users' | 'avgSessionDuration';
+
+const METRIC_CONFIG: Record<Metric, { label: string; unit: string; color: string; weekendColor: string }> = {
+  pageViews: { label: 'PV', unit: '', color: '#059669', weekendColor: '#BFDBFE' },
+  users: { label: '사용자', unit: '명', color: '#7C3AED', weekendColor: '#DDD6FE' },
+  avgSessionDuration: { label: '체류시간', unit: '', color: '#D97706', weekendColor: '#FDE68A' },
+};
 
 function addDays(date: Date, days: number): string {
   const d = new Date(date);
@@ -25,13 +33,31 @@ function isWeekend(dateStr: string): boolean {
   return d.getDay() === 0 || d.getDay() === 6;
 }
 
+function formatDuration(seconds: number): string {
+  if (seconds < 60) return `${seconds}초`;
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return s > 0 ? `${m}분 ${s}초` : `${m}분`;
+}
+
+function getMetricValue(d: DailyData, metric: Metric): number {
+  return d[metric];
+}
+
+function formatMetricValue(value: number, metric: Metric): string {
+  if (metric === 'avgSessionDuration') return formatDuration(value);
+  return value.toLocaleString();
+}
+
 export default function DailyTrendChart() {
   const [period, setPeriod] = useState<Period>('7d');
+  const [metric, setMetric] = useState<Metric>('pageViews');
   const today = new Date();
   const startDate = period === '7d' ? addDays(today, -6) : addDays(today, -29);
   const endDate = today.toISOString().split('T')[0];
 
   const { data, isLoading } = useDailyTrend(startDate, endDate);
+  const config = METRIC_CONFIG[metric];
 
   if (isLoading) {
     return (
@@ -44,11 +70,12 @@ export default function DailyTrendChart() {
 
   if (!data || data.length === 0) return null;
 
-  const maxSessions = Math.max(...data.map((d) => d.sessions), 1);
+  const maxValue = Math.max(...data.map((d) => getMetricValue(d, metric)), 1);
+  const total = data.reduce((s, d) => s + getMetricValue(d, metric), 0);
 
   return (
     <div className="bg-white rounded-xl p-4 border border-gray-200">
-      <div className="flex items-center justify-between mb-3">
+      <div className="flex items-center justify-between mb-2">
         <span className="text-sm font-extrabold">📈 날짜별 트래픽</span>
         <div className="flex gap-1">
           <button
@@ -74,12 +101,31 @@ export default function DailyTrendChart() {
         </div>
       </div>
 
+      {/* Metric Toggle */}
+      <div className="flex gap-1 mb-3">
+        {(Object.keys(METRIC_CONFIG) as Metric[]).map((m) => (
+          <button
+            key={m}
+            onClick={() => setMetric(m)}
+            className={`px-2.5 py-1 rounded-full text-[11px] font-semibold transition-colors ${
+              metric === m
+                ? 'text-white'
+                : 'bg-gray-50 text-gray-400 hover:bg-gray-100 hover:text-gray-600'
+            }`}
+            style={metric === m ? { backgroundColor: METRIC_CONFIG[m].color } : undefined}
+          >
+            {METRIC_CONFIG[m].label}
+          </button>
+        ))}
+      </div>
+
       {/* Chart */}
       <div className="flex items-end gap-px h-40">
         {data.map((d) => {
-          const height = Math.max((d.sessions / maxSessions) * 100, 2);
+          const value = getMetricValue(d, metric);
+          const height = Math.max((value / maxValue) * 100, 2);
           const weekend = isWeekend(d.date);
-          const barColor = weekend ? '#BFDBFE' : '#059669';
+          const barColor = weekend ? config.weekendColor : config.color;
           return (
             <div
               key={d.date}
@@ -94,9 +140,9 @@ export default function DailyTrendChart() {
               <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 hidden group-hover:block z-10">
                 <div className="bg-gray-900 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap shadow-lg">
                   <div className="font-bold">{formatDate(d.date)} ({getDayName(d.date)})</div>
-                  <div>세션: {d.sessions}</div>
-                  <div>사용자: {d.users}</div>
-                  <div>PV: {d.pageViews}</div>
+                  <div>PV: {d.pageViews.toLocaleString()}</div>
+                  <div>사용자: {d.users.toLocaleString()}</div>
+                  <div>체류시간: {formatDuration(d.avgSessionDuration)}</div>
                 </div>
               </div>
             </div>
@@ -107,7 +153,6 @@ export default function DailyTrendChart() {
       {/* X-axis labels */}
       <div className="flex mt-1.5">
         {data.map((d, i) => {
-          // Show labels selectively to avoid crowding
           const showLabel = period === '7d'
             ? true
             : (i === 0 || i === data.length - 1 || i % 7 === 0);
@@ -126,13 +171,16 @@ export default function DailyTrendChart() {
       {/* Legend */}
       <div className="flex items-center gap-3 mt-2 text-[10px] text-gray-400">
         <span className="flex items-center gap-1">
-          <span className="w-2.5 h-2.5 rounded-sm bg-emerald-600 inline-block" /> 평일
+          <span className="w-2.5 h-2.5 rounded-sm inline-block" style={{ backgroundColor: config.color }} /> 평일
         </span>
         <span className="flex items-center gap-1">
-          <span className="w-2.5 h-2.5 rounded-sm bg-blue-200 inline-block" /> 주말
+          <span className="w-2.5 h-2.5 rounded-sm inline-block" style={{ backgroundColor: config.weekendColor }} /> 주말
         </span>
         <span className="ml-auto">
-          총 {data.reduce((s, d) => s + d.sessions, 0).toLocaleString()}세션
+          {metric === 'avgSessionDuration'
+            ? `평균 ${formatDuration(Math.round(total / data.length))}`
+            : `총 ${total.toLocaleString()}${config.unit}`
+          }
         </span>
       </div>
     </div>

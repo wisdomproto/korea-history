@@ -428,6 +428,7 @@ export interface DailyData {
   sessions: number;
   users: number;
   pageViews: number;
+  avgSessionDuration: number; // seconds
 }
 
 export async function getDailyTrend(
@@ -446,6 +447,7 @@ export async function getDailyTrend(
       { name: 'sessions' },
       { name: 'totalUsers' },
       { name: 'screenPageViews' },
+      { name: 'averageSessionDuration' },
     ],
     orderBys: [{ dimension: { dimensionName: 'date' } }],
   });
@@ -461,6 +463,7 @@ export async function getDailyTrend(
       sessions: Number(r.metricValues?.[0]?.value ?? 0),
       users: Number(r.metricValues?.[1]?.value ?? 0),
       pageViews: Number(r.metricValues?.[2]?.value ?? 0),
+      avgSessionDuration: Math.round(Number(r.metricValues?.[3]?.value ?? 0)),
     };
   });
 
