@@ -98,6 +98,37 @@ export default function DailyTrendChart() {
   const maxValue = Math.max(...data.map((d) => getMetricValue(d, metric)), 1);
   const total = data.reduce((s, d) => s + getMetricValue(d, metric), 0);
 
+  // Y-axis tick calculation
+  const isDurationMetric = metric === 'avgSessionDuration' || metric === 'durationPerPV';
+  const isRatioMetric = metric === 'pvPerUser';
+  const yTicks = (() => {
+    const tickCount = 4;
+    const niceMax = (() => {
+      if (isRatioMetric) {
+        const ceil = Math.ceil(maxValue);
+        return ceil < 1 ? 1 : ceil;
+      }
+      const magnitude = Math.pow(10, Math.floor(Math.log10(maxValue)));
+      const normalized = maxValue / magnitude;
+      const nice = normalized <= 1 ? 1 : normalized <= 2 ? 2 : normalized <= 5 ? 5 : 10;
+      return nice * magnitude;
+    })();
+    const step = niceMax / tickCount;
+    return Array.from({ length: tickCount + 1 }, (_, i) => Math.round(i * step));
+  })();
+  const yMax = yTicks[yTicks.length - 1] || 1;
+
+  function formatYLabel(v: number): string {
+    if (isDurationMetric) {
+      if (v === 0) return '0';
+      if (v < 60) return `${v}s`;
+      return `${Math.floor(v / 60)}m`;
+    }
+    if (isRatioMetric) return v.toFixed(1);
+    if (v >= 1000) return `${(v / 1000).toFixed(v >= 10000 ? 0 : 1)}k`;
+    return String(v);
+  }
+
   return (
     <div className="bg-white rounded-xl p-4 border border-gray-200">
       <div className="flex items-center justify-between mb-2">
@@ -176,41 +207,62 @@ export default function DailyTrendChart() {
         </div>
       </div>
 
-      {/* Chart */}
-      <div className="flex items-end gap-px h-40">
-        {data.map((d) => {
-          const value = getMetricValue(d, metric);
-          const height = Math.max((value / maxValue) * 100, 2);
-          const weekend = isWeekend(d.date);
-          const barColor = weekend ? config.weekendColor : config.color;
-          return (
+      {/* Chart with Y-axis */}
+      <div className="flex h-40">
+        {/* Y-axis labels */}
+        <div className="flex flex-col justify-between pr-1.5 py-0" style={{ width: '32px' }}>
+          {[...yTicks].reverse().map((v) => (
+            <span key={v} className="text-[9px] text-gray-300 text-right leading-none">
+              {formatYLabel(v)}
+            </span>
+          ))}
+        </div>
+        {/* Bars */}
+        <div className="flex-1 relative">
+          {/* Grid lines */}
+          {yTicks.map((v) => (
             <div
-              key={d.date}
-              className="flex-1 group relative cursor-default"
-              style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}
-            >
-              <div
-                className="w-full rounded-t-sm transition-opacity hover:opacity-80"
-                style={{ height: `${height}%`, backgroundColor: barColor, minHeight: '2px' }}
-              />
-              {/* Tooltip */}
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 hidden group-hover:block z-10">
-                <div className="bg-gray-900 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap shadow-lg">
-                  <div className="font-bold">{formatDate(d.date)} ({getDayName(d.date)})</div>
-                  <div>PV: {d.pageViews.toLocaleString()}</div>
-                  <div>사용자: {d.users.toLocaleString()}</div>
-                  <div>체류시간: {formatDuration(d.avgSessionDuration)}</div>
-                  <div>PV/사용자: {d.users > 0 ? (d.pageViews / d.users).toFixed(1) : '0'}</div>
-                  <div>PV당: {formatDuration(d.pageViews > 0 ? Math.round((d.avgSessionDuration * d.sessions) / d.pageViews) : 0)}</div>
+              key={v}
+              className="absolute w-full border-t border-gray-100"
+              style={{ bottom: `${(v / yMax) * 100}%` }}
+            />
+          ))}
+          <div className="flex items-end gap-px h-full relative z-[1]">
+            {data.map((d) => {
+              const value = getMetricValue(d, metric);
+              const height = Math.max((value / yMax) * 100, 1);
+              const weekend = isWeekend(d.date);
+              const barColor = weekend ? config.weekendColor : config.color;
+              return (
+                <div
+                  key={d.date}
+                  className="flex-1 group relative cursor-default"
+                  style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}
+                >
+                  <div
+                    className="w-full rounded-t-sm transition-opacity hover:opacity-80"
+                    style={{ height: `${height}%`, backgroundColor: barColor, minHeight: '2px' }}
+                  />
+                  {/* Tooltip */}
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 hidden group-hover:block z-10">
+                    <div className="bg-gray-900 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap shadow-lg">
+                      <div className="font-bold">{formatDate(d.date)} ({getDayName(d.date)})</div>
+                      <div>PV: {d.pageViews.toLocaleString()}</div>
+                      <div>사용자: {d.users.toLocaleString()}</div>
+                      <div>체류시간: {formatDuration(d.avgSessionDuration)}</div>
+                      <div>PV/사용자: {d.users > 0 ? (d.pageViews / d.users).toFixed(1) : '0'}</div>
+                      <div>PV당: {formatDuration(d.pageViews > 0 ? Math.round((d.avgSessionDuration * d.sessions) / d.pageViews) : 0)}</div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          );
-        })}
+              );
+            })}
+          </div>
+        </div>
       </div>
 
       {/* X-axis labels */}
-      <div className="flex mt-1.5">
+      <div className="flex mt-1.5" style={{ paddingLeft: '32px' }}>
         {data.map((d, i) => {
           const showLabel = period === '7d'
             ? true
