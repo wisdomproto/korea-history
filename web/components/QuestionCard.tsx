@@ -2,30 +2,16 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { Question, Era } from "@/lib/types";
+import { Question } from "@/lib/types";
 import AdSlot from "@/components/AdSlot";
 import { playSelectSound, playCorrectSound, playWrongSound } from "@/lib/sounds";
 
-// Map question era → notes sectionId for "관련 요약노트" link
-const ERA_TO_SECTION: Record<Era, string> = {
-  "선사·고조선": "s1",
-  "삼국": "s1",
-  "남북국": "s1",
-  "고려": "s2",
-  "조선 전기": "s3",
-  "조선 후기": "s4",
-  "근대": "s5",
-  "현대": "s7",
-};
-
-const ERA_SECTION_LABELS: Record<string, string> = {
-  s1: "고대/중세",
-  s2: "고려",
-  s3: "조선 전기",
-  s4: "조선 후기",
-  s5: "근대",
-  s7: "현대",
-};
+export interface RelatedNoteLink {
+  id: string;
+  title: string;
+  eraLabel: string;
+  sectionId: string;
+}
 
 interface YouTubeData {
   videoId: string;
@@ -37,12 +23,14 @@ interface QuestionCardProps {
   question: Question;
   onAnswerSubmit?: (selectedAnswer: number, isCorrect: boolean) => void;
   youtube?: YouTubeData | null;
+  relatedNotes?: RelatedNoteLink[];
 }
 
 export default function QuestionCard({
   question,
   onAnswerSubmit,
   youtube,
+  relatedNotes,
 }: QuestionCardProps) {
   const [selected, setSelected] = useState<number | null>(null);
   const [revealed, setRevealed] = useState(false);
@@ -279,29 +267,32 @@ export default function QuestionCard({
             </div>
           )}
 
-          {/* Related note link */}
-          {(() => {
-            const sectionId = ERA_TO_SECTION[question.era];
-            const label = ERA_SECTION_LABELS[sectionId];
-            if (!sectionId || !label) return null;
-            return (
-              <Link
-                href={`/notes#${sectionId}`}
-                className="flex items-center gap-2.5 px-4 py-3 rounded-2xl border border-emerald-200/60 bg-gradient-to-r from-emerald-50 to-teal-50 hover:from-emerald-100 hover:to-teal-100 transition-all group"
-              >
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center shrink-0">
-                  <span className="text-sm text-white">📒</span>
+          {/* Related notes */}
+          {relatedNotes && relatedNotes.length > 0 && (
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-2 px-1">
+                <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center shrink-0">
+                  <span className="text-xs text-white">📒</span>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <span className="text-sm font-bold text-emerald-700">관련 요약노트 보기</span>
-                  <span className="text-xs text-emerald-500 ml-1.5">{label}</span>
-                </div>
-                <svg className="w-4 h-4 text-emerald-400 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            );
-          })()}
+                <span className="text-sm font-bold text-slate-700">관련 요약노트</span>
+              </div>
+              {relatedNotes.map((note) => (
+                <Link
+                  key={note.id}
+                  href={`/notes/${note.id}`}
+                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl border border-emerald-200/60 bg-gradient-to-r from-emerald-50/80 to-teal-50/80 hover:from-emerald-100 hover:to-teal-100 transition-all group"
+                >
+                  <div className="flex-1 min-w-0">
+                    <span className="text-sm font-semibold text-emerald-700 line-clamp-1">{note.title}</span>
+                    <span className="text-[11px] text-emerald-500 block">{note.eraLabel}</span>
+                  </div>
+                  <svg className="w-4 h-4 text-emerald-400 shrink-0 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              ))}
+            </div>
+          )}
 
           {/* Ad: after explanation, before youtube */}
           <AdSlot size="rectangle" slot={process.env.NEXT_PUBLIC_AD_SLOT_QUESTION} className="my-2" />

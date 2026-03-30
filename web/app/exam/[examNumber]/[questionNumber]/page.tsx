@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllQuestionParams, getQuestion } from "@/lib/data";
 import { getYouTubeTimestamp } from "@/lib/youtube";
+import { getRelatedNotes } from "@/lib/notes";
 import { questionMeta, questionJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import BreadCrumb from "@/components/BreadCrumb";
 import QuestionWithTracking from "@/components/QuestionWithTracking";
@@ -100,6 +101,7 @@ export default async function QuestionPage({ params }: Props) {
         question={question}
         exam={exam}
         youtube={getYouTubeTimestamp(examNumber, questionNumber)}
+        relatedNotes={getRelatedNotes(question.id)}
       />
 
       {/* Bottom prev/next navigation */}

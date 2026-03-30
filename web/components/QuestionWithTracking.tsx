@@ -3,7 +3,7 @@
 import { Question, Exam } from "@/lib/types";
 import { handleAnswerResult } from "@/lib/wrong-answers";
 import { markAnswered } from "./QuestionNav";
-import QuestionCard from "./QuestionCard";
+import QuestionCard, { type RelatedNoteLink } from "./QuestionCard";
 
 interface YouTubeData {
   videoId: string;
@@ -15,13 +15,14 @@ interface Props {
   question: Question;
   exam: Exam;
   youtube?: YouTubeData | null;
+  relatedNotes?: RelatedNoteLink[];
 }
 
 /**
  * Wraps QuestionCard and auto-saves wrong answers to localStorage.
  * Also marks the question as answered for the nav dot coloring.
  */
-export default function QuestionWithTracking({ question, exam, youtube }: Props) {
+export default function QuestionWithTracking({ question, exam, youtube, relatedNotes }: Props) {
   const handleSubmit = (selectedAnswer: number, isCorrect: boolean) => {
     // Save wrong answer / auto-resolve
     handleAnswerResult(
@@ -45,5 +46,5 @@ export default function QuestionWithTracking({ question, exam, youtube }: Props)
     window.dispatchEvent(new Event("answer-revealed"));
   };
 
-  return <QuestionCard question={question} onAnswerSubmit={handleSubmit} youtube={youtube} />;
+  return <QuestionCard question={question} onAnswerSubmit={handleSubmit} youtube={youtube} relatedNotes={relatedNotes} />;
 }

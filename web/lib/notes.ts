@@ -57,6 +57,72 @@ export function getNotesGroupedBySection(): Record<string, NoteIndex[]> {
   return grouped;
 }
 
+/** Lazy-built reverse map: questionId → noteId[] */
+let _questionNoteMap: Record<number, string[]> | null = null;
+
+function getQuestionNoteMap(): Record<number, string[]> {
+  if (_questionNoteMap) return _questionNoteMap;
+  const index = getNotesIndex();
+  const map: Record<number, string[]> = {};
+  for (const meta of index) {
+    const note = getNoteById(meta.id);
+    if (!note) continue;
+    for (const qid of note.relatedQuestionIds) {
+      if (!map[qid]) map[qid] = [];
+      map[qid].push(meta.id);
+    }
+  }
+  _questionNoteMap = map;
+  return map;
+}
+
+export interface RelatedNote {
+  id: string;
+  title: string;
+  eraLabel: string;
+  sectionId: string;
+}
+
+/** Get related notes for a question ID (max 3, deduplicated). */
+export function getRelatedNotes(questionId: number): RelatedNote[] {
+  const map = getQuestionNoteMap();
+  const noteIds = map[questionId];
+  if (!noteIds || noteIds.length === 0) return [];
+  const index = getNotesIndex();
+  const indexMap = new Map(index.map((n) => [n.id, n]));
+  return noteIds
+    .slice(0, 3)
+    .map((id) => {
+      const n = indexMap.get(id);
+      if (!n) return null;
+      return { id: n.id, title: n.title, eraLabel: n.eraLabel, sectionId: n.sectionId };
+    })
+    .filter(Boolean) as RelatedNote[];
+}
+
+/** Get related notes for multiple question IDs at once. */
+export function getRelatedNotesForQuestions(
+  questionIds: number[]
+): Record<number, RelatedNote[]> {
+  const map = getQuestionNoteMap();
+  const index = getNotesIndex();
+  const indexMap = new Map(index.map((n) => [n.id, n]));
+  const result: Record<number, RelatedNote[]> = {};
+  for (const qid of questionIds) {
+    const noteIds = map[qid];
+    if (!noteIds || noteIds.length === 0) continue;
+    result[qid] = noteIds
+      .slice(0, 3)
+      .map((id) => {
+        const n = indexMap.get(id);
+        if (!n) return null;
+        return { id: n.id, title: n.title, eraLabel: n.eraLabel, sectionId: n.sectionId };
+      })
+      .filter(Boolean) as RelatedNote[];
+  }
+  return result;
+}
+
 /** Get prev/next note relative to current note. */
 export function getAdjacentNotes(
   currentId: string

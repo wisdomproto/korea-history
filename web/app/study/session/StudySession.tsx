@@ -3,12 +3,13 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import QuestionCard from "@/components/QuestionCard";
+import QuestionCard, { type RelatedNoteLink } from "@/components/QuestionCard";
 import type { Question } from "@/lib/types";
 
 interface StudyQuestion extends Question {
   examNumber: number;
   youtube?: { videoId: string; startSeconds: number; channelName: string } | null;
+  relatedNotes?: RelatedNoteLink[];
 }
 
 interface SessionData {
@@ -151,6 +152,7 @@ export default function StudySession() {
         question={q}
         onAnswerSubmit={handleAnswer}
         youtube={q.youtube}
+        relatedNotes={q.relatedNotes}
       />
 
       {/* Navigation */}
