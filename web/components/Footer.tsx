@@ -13,6 +13,9 @@ export default function Footer() {
           </Link>
         </div>
         <p className="text-xs">&copy; {new Date().getFullYear()} 기출노트 한능검. All rights reserved.</p>
+        <p className="text-xs mt-1">
+          문의: <a href="mailto:kil210@tangobook.co.kr" className="hover:text-indigo-600 transition-colors">kil210@tangobook.co.kr</a>
+        </p>
         {/* Build timestamp for deployment verification */}
         <p className="text-[10px] text-slate-300 mt-1" data-build={process.env.NEXT_PUBLIC_BUILD_TIME || new Date().toISOString()}>
           Build: {process.env.NEXT_PUBLIC_BUILD_TIME || new Date().toISOString().slice(0, 16)}
