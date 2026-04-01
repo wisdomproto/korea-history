@@ -78,14 +78,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const exams = getAllExams();
-  const examPages: MetadataRoute.Sitemap = exams.map(({ exam }) => ({
-    url: `${BASE_URL}/exam/${exam.examNumber}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }));
-
   const questionParams = getAllQuestionParams();
   const questionPages: MetadataRoute.Sitemap = questionParams.map((p) => ({
     url: `${BASE_URL}/exam/${p.examNumber}/${p.questionNumber}`,
@@ -102,5 +94,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...examPages, ...questionPages, ...notePages];
+  return [...staticPages, ...questionPages, ...notePages];
 }
