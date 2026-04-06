@@ -13,9 +13,12 @@ export const TEXT_MODELS = [
 
 // Image generation models
 export const IMAGE_MODELS = [
-  { id: 'gemini-2.5-flash-image', label: 'Gemini 2.5 Flash Image', default: true },
-  { id: 'gemini-3.1-flash-image-preview', label: 'Gemini 3.1 Flash Image (최신)' },
+  { id: 'gemini-2.5-flash-image', label: 'Gemini 2.5 Flash Image' },
+  { id: 'gemini-3.1-flash-image-preview', label: 'Gemini 3.1 Flash Image (최신)', default: true },
   { id: 'gemini-3-pro-image-preview', label: 'Gemini 3 Pro Image (최고품질)' },
+  { id: 'imagen-4.0-fast-generate-001', label: 'Imagen 4 Fast (초고속)' },
+  { id: 'imagen-4.0-generate-001', label: 'Imagen 4 (고품질 2K)' },
+  { id: 'imagen-4.0-ultra-generate-001', label: 'Imagen 4 Ultra (최고품질 2K)' },
 ];
 
 // --- Old SDK (text generation) ---
@@ -89,31 +92,51 @@ function getGenAI2(): GoogleGenAI {
 export async function generateImage(prompt: string, model?: string, aspectRatio?: string): Promise<Buffer> {
   const modelId = model ?? 'gemini-2.5-flash-image';
   const ai = getGenAI2();
-  const configObj: any = {
-    responseModalities: ['TEXT', 'IMAGE'],
-    imageConfig: {
-      aspectRatio: aspectRatio || '4:3',
-    },
-  };
-  console.log('[generateImage]', { modelId, aspectRatio, config: JSON.stringify(configObj) });
 
+  // Imagen 모델은 별도 API
+  if (modelId.startsWith('imagen-')) {
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        const result = await ai.models.generateImages({
+          model: modelId,
+          prompt,
+          config: {
+            numberOfImages: 1,
+            ...(aspectRatio ? { aspectRatio } : {}),
+          },
+        });
+        const imageData = (result as any).generatedImages?.[0]?.image?.imageBytes;
+        if (!imageData) throw new Error('Imagen 이미지 생성 실패: 빈 응답');
+        return Buffer.from(imageData, 'base64');
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        const isRetryable = msg.includes('503') || msg.includes('429') || msg.includes('RESOURCE_EXHAUSTED');
+        if (!isRetryable || attempt === 3) throw new AppError(500, `이미지 생성 실패: ${msg}`);
+        await new Promise((r) => setTimeout(r, 1000 * Math.pow(2, attempt - 1) + Math.random() * 500));
+      }
+    }
+    throw new AppError(500, '이미지 생성에 실패했습니다.');
+  }
+
+  // Gemini 멀티모달 이미지 모델
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
       const response = await ai.models.generateContent({
         model: modelId,
-        contents: prompt,
-        config: configObj,
+        contents: [{ role: 'user', parts: [{ text: prompt }] }],
+        config: {
+          responseModalities: ['IMAGE', 'TEXT'],
+          ...(aspectRatio ? { imageConfig: { aspectRatio } } : {}),
+        },
       });
 
-      const parts = response.candidates?.[0]?.content?.parts;
-      if (!parts) throw new Error('응답에 파트가 없습니다.');
-
-      for (const part of parts) {
-        if (part.inlineData?.data) {
-          return Buffer.from(part.inlineData.data, 'base64');
-        }
+      const candidate = response.candidates?.[0];
+      const imagePart = candidate?.content?.parts?.find((p: any) => p.inlineData);
+      if (!imagePart?.inlineData?.data) {
+        const textPart = candidate?.content?.parts?.find((p: any) => p.text)?.text;
+        throw new Error(textPart || '이미지가 생성되지 않았습니다.');
       }
-      throw new Error('이미지가 생성되지 않았습니다.');
+      return Buffer.from(imagePart.inlineData.data, 'base64');
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       const isRetryable = msg.includes('503') || msg.includes('429') || msg.includes('RESOURCE_EXHAUSTED');

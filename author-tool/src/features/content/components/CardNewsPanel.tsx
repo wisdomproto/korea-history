@@ -538,8 +538,8 @@ function SlideCard({ slide, index, isSelected, onSelect, onDelete, onGenerateIma
       {/* Canvas */}
       <div className="aspect-[4/5] relative overflow-hidden" style={{ backgroundColor: canvas?.bgColor || '#18181b' }}>
         {hasImage && (
-          <img src={canvas?.imageUrl || slide.imageUrl} className="absolute inset-0 w-full h-full object-cover"
-            style={{ objectPosition: `center ${canvas?.imageY || 50}%` }} />
+          <img src={canvas?.imageUrl || slide.imageUrl} className="absolute w-full object-contain"
+            style={{ top: `${canvas?.imageY || 50}%`, transform: 'translateY(-50%)' }} />
         )}
         {canvas?.textBlocks ? (
           canvas.textBlocks.filter((b) => !b.hidden).map((block) => (
