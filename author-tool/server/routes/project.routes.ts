@@ -12,9 +12,16 @@ router.get('/', async (_req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const { name, icon } = req.body;
+    const { name, icon, type, categoryCode, examCount, questionCount } = req.body;
     if (!name?.trim()) return res.status(400).json({ success: false, error: 'Name required' });
-    const project = await projectService.createProject(name.trim(), icon);
+    const project = await projectService.createProject({
+      name: name.trim(),
+      icon,
+      type,
+      categoryCode,
+      examCount,
+      questionCount,
+    });
     res.json({ success: true, data: project });
   } catch (err) { next(err); }
 });
