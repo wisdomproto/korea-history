@@ -13,6 +13,7 @@ import type { ContentMeta } from '@/lib/content-types';
 import type { NoteIndex } from '@/features/notes/api/notes.api';
 import { CategoryBrowserModal } from '@/features/cbt-import/components/CategoryBrowserModal';
 import { useCbtExams } from '@/features/cbt-import/hooks/useCbtExams';
+import { useSummaryNotes } from '@/features/summary-notes/hooks/useSummaryNotes';
 
 const ERA_COLORS: Record<string, string> = {
   '선사·고조선': 'bg-amber-100 text-amber-800',
@@ -122,6 +123,9 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
   const { data: cbtExams, isLoading: cbtExamsLoading } = useCbtExams(
     isCbt ? currentProject?.categoryCode : undefined
   );
+
+  // CBT summary notes (only fetches when project is CBT type)
+  const { data: summaryNotes } = useSummaryNotes(isCbt ? currentProject?.categoryCode : undefined);
 
   // ─── Exam filtering ───
   const filtered = (() => {
@@ -529,30 +533,47 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
                   {/* ─── 📝 요약노트 Tab ─── */}
                   {sidebarSection === 'notes' && (
                     <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 350px)' }}>
-                      {Object.entries(groupedNotes).map(([era, eraItems]) => (
-                        <div key={era}>
-                          <div className="sticky top-0 bg-white px-3 py-1.5 text-[10px] font-semibold text-gray-400 border-b">
-                            <span className={`mr-1 inline-block rounded px-1.5 py-0.5 text-[10px] ${ERA_COLORS[era] || 'bg-gray-100 text-gray-600'}`}>{era}</span>
-                            <span>{eraItems.length}</span>
+                      {isCbt ? (
+                        summaryNotes && summaryNotes.length > 0 ? (
+                          summaryNotes.map((note) => (
+                            <button key={note.id} className="w-full text-left px-3 py-2 text-sm border-b hover:bg-gray-50">
+                              <div className="font-medium truncate">{note.title}</div>
+                              <div className="text-xs text-gray-500">{note.topicCount}개 주제 · {note.questionCount}문제 분석</div>
+                            </button>
+                          ))
+                        ) : (
+                          <div className="text-center py-8 text-gray-400 text-xs">
+                            요약노트가 없습니다.<br />시험 패널에서 "요약노트 만들기"를 시도하세요.
                           </div>
-                          {eraItems.map((note) => (
-                            <div
-                              key={note.id}
-                              onClick={() => setSelectedNoteId(note.id)}
-                              className={`cursor-pointer px-4 py-2 text-xs transition-colors hover:bg-gray-50 ${
-                                selectedNoteId === note.id ? 'bg-primary-50 border-l-4 border-l-primary-500' : 'border-l-4 border-l-transparent'
-                              }`}
-                            >
-                              <div className="truncate font-medium">
-                                <span className={`inline-block mr-1 rounded px-1 py-0 text-[9px] ${ERA_COLORS[era] || 'bg-gray-100 text-gray-600'}`}>{era}</span>
-                                {note.title}
+                        )
+                      ) : (
+                        <>
+                          {Object.entries(groupedNotes).map(([era, eraItems]) => (
+                            <div key={era}>
+                              <div className="sticky top-0 bg-white px-3 py-1.5 text-[10px] font-semibold text-gray-400 border-b">
+                                <span className={`mr-1 inline-block rounded px-1.5 py-0.5 text-[10px] ${ERA_COLORS[era] || 'bg-gray-100 text-gray-600'}`}>{era}</span>
+                                <span>{eraItems.length}</span>
                               </div>
+                              {eraItems.map((note) => (
+                                <div
+                                  key={note.id}
+                                  onClick={() => setSelectedNoteId(note.id)}
+                                  className={`cursor-pointer px-4 py-2 text-xs transition-colors hover:bg-gray-50 ${
+                                    selectedNoteId === note.id ? 'bg-primary-50 border-l-4 border-l-primary-500' : 'border-l-4 border-l-transparent'
+                                  }`}
+                                >
+                                  <div className="truncate font-medium">
+                                    <span className={`inline-block mr-1 rounded px-1 py-0 text-[9px] ${ERA_COLORS[era] || 'bg-gray-100 text-gray-600'}`}>{era}</span>
+                                    {note.title}
+                                  </div>
+                                </div>
+                              ))}
                             </div>
                           ))}
-                        </div>
-                      ))}
-                      {!notes?.length && (
-                        <div className="p-4 text-center text-xs text-gray-400">노트가 없습니다</div>
+                          {!notes?.length && (
+                            <div className="p-4 text-center text-xs text-gray-400">노트가 없습니다</div>
+                          )}
+                        </>
                       )}
                     </div>
                   )}

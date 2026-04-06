@@ -1,6 +1,10 @@
+import { useState } from 'react';
 import { useEditorStore } from '@/store/editor.store';
 import { useCbtExam } from '../hooks/useCbtExam';
+import { useCbtExams } from '../hooks/useCbtExams';
 import { CbtQuestionCard } from './CbtQuestionCard';
+import { GenerateModal } from '@/features/summary-notes/components/GenerateModal';
+import { Button } from '@/components/Button';
 import { useQuery } from '@tanstack/react-query';
 import { apiGet } from '@/lib/axios';
 
@@ -11,6 +15,8 @@ export function CbtExamPanel() {
   const categoryCode = currentProject?.categoryCode;
 
   const { data: exam, isLoading, error } = useCbtExam(categoryCode, selectedCbtExamId ?? undefined);
+  const { data: allExams } = useCbtExams(categoryCode);
+  const [showGenerate, setShowGenerate] = useState(false);
 
   if (!selectedCbtExamId) {
     return (
@@ -48,13 +54,16 @@ export function CbtExamPanel() {
   return (
     <div className="flex-1 overflow-y-auto p-6">
       <div className="mx-auto max-w-3xl">
-        <div className="mb-6">
-          <h2 className="text-xl font-bold">{exam.label}</h2>
-          <div className="flex gap-4 mt-2 text-sm text-gray-500">
-            <span>📅 {exam.date}</span>
-            <span>📝 {exam.question_count}문제</span>
-            {avg && <span>📊 평균 정답률 {avg}%</span>}
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h2 className="text-xl font-bold">{exam.label}</h2>
+            <div className="flex gap-4 mt-2 text-sm text-gray-500">
+              <span>📅 {exam.date}</span>
+              <span>📝 {exam.question_count}문제</span>
+              {avg && <span>📊 평균 정답률 {avg}%</span>}
+            </div>
           </div>
+          <Button onClick={() => setShowGenerate(true)}>📖 요약노트 만들기</Button>
         </div>
         <div className="space-y-4">
           {exam.questions.map((q, i) => (
@@ -62,6 +71,17 @@ export function CbtExamPanel() {
           ))}
         </div>
       </div>
+      {showGenerate && categoryCode && allExams && (
+        <GenerateModal
+          open={showGenerate}
+          onClose={() => setShowGenerate(false)}
+          categoryCode={categoryCode}
+          exams={allExams}
+          onComplete={(noteId) => {
+            console.log('Generated note:', noteId);
+          }}
+        />
+      )}
     </div>
   );
 }
