@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-type ActiveView = 'analytics' | 'dashboard' | 'exam' | 'question' | 'generator' | 'card-news' | 'note-card-news' | 'card-news-gallery' | 'notes' | 'content' | 'notes-editor';
+type ActiveView = 'analytics' | 'dashboard' | 'exam' | 'question' | 'generator' | 'card-news' | 'note-card-news' | 'card-news-gallery' | 'notes' | 'content' | 'notes-editor' | 'cbt-exam' | 'summary-notes-editor';
 type ContentTab = 'base' | 'blog' | 'instagram' | 'threads' | 'longform' | 'shortform';
 type SidebarSection = 'exam' | 'notes' | 'content' | null;
 
@@ -37,6 +37,10 @@ interface EditorStore {
   setSelectedContentId: (id: string | null) => void;
   activeContentTab: ContentTab;
   setActiveContentTab: (tab: ContentTab) => void;
+
+  // CBT exam
+  selectedCbtExamId: string | null;
+  setSelectedCbtExamId: (id: string | null) => void;
 }
 
 export const useEditorStore = create<EditorStore>((set) => ({
@@ -47,7 +51,7 @@ export const useEditorStore = create<EditorStore>((set) => ({
 
   // Project
   selectedProjectId: 'proj-default',
-  setSelectedProjectId: (id) => set({ selectedProjectId: id, activeView: 'dashboard', selectedExamId: null, selectedContentId: null, selectedNoteId: null, sidebarSection: 'exam' }),
+  setSelectedProjectId: (id) => set({ selectedProjectId: id, activeView: 'dashboard', selectedExamId: null, selectedContentId: null, selectedNoteId: null, sidebarSection: 'exam', selectedCbtExamId: null }),
 
   // Sidebar section
   sidebarSection: 'exam',
@@ -55,7 +59,7 @@ export const useEditorStore = create<EditorStore>((set) => ({
 
   // Exam
   selectedExamId: null,
-  setSelectedExamId: (id) => set({ selectedExamId: id, activeView: id ? 'exam' : 'dashboard', editingQuestionId: null }),
+  setSelectedExamId: (id) => set({ selectedExamId: id, activeView: id ? 'exam' : 'dashboard', editingQuestionId: null, selectedCbtExamId: null }),
   editingQuestionId: null,
   setEditingQuestionId: (id) => set({ editingQuestionId: id, activeView: id ? 'question' : 'exam' }),
 
@@ -72,4 +76,8 @@ export const useEditorStore = create<EditorStore>((set) => ({
   setSelectedContentId: (id) => set({ selectedContentId: id, activeView: id ? 'content' : 'dashboard', activeContentTab: 'base' }),
   activeContentTab: 'base',
   setActiveContentTab: (tab) => set({ activeContentTab: tab }),
+
+  // CBT exam
+  selectedCbtExamId: null,
+  setSelectedCbtExamId: (id) => set({ selectedCbtExamId: id, activeView: id ? 'cbt-exam' : 'dashboard', selectedExamId: null, editingQuestionId: null }),
 }));
