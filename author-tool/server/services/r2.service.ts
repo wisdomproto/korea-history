@@ -30,10 +30,11 @@ export async function putObject(
   key: string,
   body: Buffer | string,
   contentType?: string,
+  bucket?: string,
 ): Promise<void> {
   await getClient().send(
     new PutObjectCommand({
-      Bucket: config.r2.bucketName,
+      Bucket: bucket ?? config.r2.bucketName,
       Key: key,
       Body: typeof body === 'string' ? Buffer.from(body, 'utf-8') : body,
       ContentType:
@@ -43,10 +44,10 @@ export async function putObject(
   );
 }
 
-export async function getObject(key: string): Promise<Buffer> {
+export async function getObject(key: string, bucket?: string): Promise<Buffer> {
   const result = await getClient().send(
     new GetObjectCommand({
-      Bucket: config.r2.bucketName,
+      Bucket: bucket ?? config.r2.bucketName,
       Key: key,
     }),
   );
@@ -58,31 +59,47 @@ export async function getObject(key: string): Promise<Buffer> {
   return Buffer.concat(chunks);
 }
 
-export async function getObjectText(key: string): Promise<string> {
-  const buf = await getObject(key);
+export async function getObjectText(key: string, bucket?: string): Promise<string> {
+  const buf = await getObject(key, bucket);
   return buf.toString('utf-8');
 }
 
-export async function deleteObject(key: string): Promise<void> {
+export async function deleteObject(key: string, bucket?: string): Promise<void> {
   await getClient().send(
     new DeleteObjectCommand({
-      Bucket: config.r2.bucketName,
+      Bucket: bucket ?? config.r2.bucketName,
       Key: key,
     }),
   );
 }
 
-export async function listObjects(prefix: string): Promise<string[]> {
+export async function listObjects(prefix: string, bucket?: string): Promise<string[]> {
   const result = await getClient().send(
     new ListObjectsV2Command({
-      Bucket: config.r2.bucketName,
+      Bucket: bucket ?? config.r2.bucketName,
       Prefix: prefix,
     }),
   );
   return (result.Contents ?? []).map((obj) => obj.Key!).filter(Boolean);
 }
 
-export function getPublicUrl(key: string): string {
+export function getPublicUrl(key: string, bucket?: string): string {
+  if (bucket && bucket === config.r2.cbtBucketName) {
+    return `${config.r2.cbtPublicUrl}/${key}`;
+  }
   return `${config.r2.publicUrl}/${key}`;
 }
 
+export const CBT_BUCKET = config.r2.cbtBucketName;
+
+export async function getCbtObject(key: string): Promise<Buffer> {
+  return getObject(key, CBT_BUCKET);
+}
+
+export async function getCbtObjectText(key: string): Promise<string> {
+  return getObjectText(key, CBT_BUCKET);
+}
+
+export async function putCbtObject(key: string, body: Buffer | string, contentType?: string): Promise<void> {
+  return putObject(key, body, contentType, CBT_BUCKET);
+}

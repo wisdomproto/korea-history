@@ -18,6 +18,8 @@ export const config = {
     secretAccessKey: process.env.R2_SECRET_ACCESS_KEY ?? '',
     bucketName: process.env.R2_BUCKET_NAME ?? 'korea-history-data',
     publicUrl: process.env.R2_PUBLIC_URL ?? '',
+    cbtBucketName: process.env.R2_CBT_BUCKET_NAME ?? 'cbt-exam-data',
+    cbtPublicUrl: process.env.R2_CBT_PUBLIC_URL ?? '',
   },
   vercel: {
     deployHookUrl: process.env.VERCEL_DEPLOY_HOOK_URL ?? '',
