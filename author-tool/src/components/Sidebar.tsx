@@ -11,6 +11,8 @@ import { useContents, useDeleteContent } from '@/features/content/hooks/useConte
 import { NewContentDialog } from '@/features/content/components/NewContentDialog';
 import type { ContentMeta } from '@/lib/content-types';
 import type { NoteIndex } from '@/features/notes/api/notes.api';
+import { CategoryBrowserModal } from '@/features/cbt-import/components/CategoryBrowserModal';
+import { useCbtExams } from '@/features/cbt-import/hooks/useCbtExams';
 
 const ERA_COLORS: Record<string, string> = {
   '선사·고조선': 'bg-amber-100 text-amber-800',
@@ -32,6 +34,10 @@ interface Project {
   id: string;
   name: string;
   icon: string;
+  type?: 'korean-history' | 'cbt';
+  categoryCode?: string;
+  examCount?: number;
+  questionCount?: number;
 }
 
 function getStatusTooltip(c: ExamCompleteness): string {
@@ -62,6 +68,7 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
     selectedNoteId, setSelectedNoteId,
     activeView, setActiveView,
     sidebarCollapsed, toggleSidebar,
+    selectedCbtExamId, setSelectedCbtExamId,
   } = useEditorStore();
   const qc = useQueryClient();
 
@@ -86,6 +93,9 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
   const [contentFilter, setContentFilter] = useState<'all' | 'exam' | 'note' | 'free'>('all');
   const [contentSearch, setContentSearch] = useState('');
 
+  // CBT state
+  const [showCbtBrowser, setShowCbtBrowser] = useState(false);
+
   // ─── Projects query ───
   const { data: projects } = useQuery<Project[]>({
     queryKey: ['projects'],
@@ -103,6 +113,15 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
   });
 
   const selectedProject = projects?.find((p) => p.id === selectedProjectId) ?? { id: 'proj-default', name: '기본 프로젝트', icon: '📂' };
+
+  // Derive current project info
+  const currentProject = projects?.find((p) => p.id === selectedProjectId);
+  const isCbt = currentProject?.type === 'cbt';
+
+  // CBT exam list (only fetches when project is CBT type)
+  const { data: cbtExams, isLoading: cbtExamsLoading } = useCbtExams(
+    isCbt ? currentProject?.categoryCode : undefined
+  );
 
   // ─── Exam filtering ───
   const filtered = (() => {
@@ -275,17 +294,25 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
         </div>
 
         {addingProject && (
-          <div className="flex gap-1 border-b bg-gray-50 px-3 py-1.5">
-            <input
-              type="text"
-              placeholder="프로젝트 이름"
-              value={newProjectName}
-              onChange={(e) => setNewProjectName(e.target.value)}
-              onKeyDown={(e) => { if (e.key === 'Enter') handleAddProject(); if (e.key === 'Escape') { setAddingProject(false); setNewProjectName(''); } }}
-              autoFocus
-              className="flex-1 rounded border px-2 py-1 text-xs focus:border-primary-500 focus:outline-none"
-            />
-            <button onClick={handleAddProject} className="rounded bg-primary-500 px-2 py-1 text-xs text-white hover:bg-primary-600">확인</button>
+          <div className="border-b bg-gray-50">
+            <div className="flex gap-1 px-3 py-1.5">
+              <input
+                type="text"
+                placeholder="프로젝트 이름"
+                value={newProjectName}
+                onChange={(e) => setNewProjectName(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') handleAddProject(); if (e.key === 'Escape') { setAddingProject(false); setNewProjectName(''); } }}
+                autoFocus
+                className="flex-1 rounded border px-2 py-1 text-xs focus:border-primary-500 focus:outline-none"
+              />
+              <button onClick={handleAddProject} className="rounded bg-primary-500 px-2 py-1 text-xs text-white hover:bg-primary-600">확인</button>
+            </div>
+            <button
+              onClick={() => setShowCbtBrowser(true)}
+              className="w-full text-left px-3 py-1.5 text-xs text-indigo-600 hover:bg-indigo-50 rounded"
+            >
+              + CBT 시험에서 추가
+            </button>
           </div>
         )}
 
@@ -350,7 +377,34 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
 
                   {/* ─── 📋 시험 Tab ─── */}
                   {sidebarSection === 'exam' && (
-                    <>
+                    isCbt ? (
+                      // CBT exam list
+                      <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 350px)' }}>
+                        {cbtExamsLoading ? (
+                          <div className="p-4 text-center text-sm text-gray-400">로딩 중...</div>
+                        ) : !cbtExams?.length ? (
+                          <div className="p-4 text-center text-sm text-gray-400">시험이 없습니다</div>
+                        ) : (
+                          cbtExams.map((exam) => (
+                            <div
+                              key={exam.exam_id}
+                              onClick={() => setSelectedCbtExamId(exam.exam_id)}
+                              className={`cursor-pointer border-b px-4 py-3 text-left transition-all hover:bg-gray-50 ${
+                                selectedCbtExamId === exam.exam_id ? 'bg-primary-50 border-l-4 border-l-primary-500' : 'border-l-4 border-l-transparent'
+                              }`}
+                            >
+                              <div className="text-xs font-medium truncate">{exam.label}</div>
+                              <div className="mt-1 flex items-center justify-between text-xs text-gray-500">
+                                <span>{exam.date}</span>
+                                <span>{exam.question_count}문제</span>
+                              </div>
+                            </div>
+                          ))
+                        )}
+                      </div>
+                    ) : (
+                      // Korean History exam list (unchanged)
+                      <>
                       <div className="space-y-2 border-b px-3 py-2">
                         <div className="flex gap-1.5">
                           <input
@@ -468,7 +522,8 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
                   ))
                 )}
                       </div>
-                    </>
+                      </>
+                    )
                   )}
 
                   {/* ─── 📝 요약노트 Tab ─── */}
@@ -599,6 +654,7 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
 
       {/* Dialogs */}
       <NewContentDialog open={showNewContent} onClose={() => setShowNewContent(false)} />
+      <CategoryBrowserModal open={showCbtBrowser} onClose={() => setShowCbtBrowser(false)} />
     </aside>
   );
 }
