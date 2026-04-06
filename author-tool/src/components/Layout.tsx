@@ -14,6 +14,7 @@ import { CardNewsGallery } from '@/features/card-news/components/CardNewsGallery
 import { NotesPanel } from '@/features/notes/components/NotesPanel';
 import { ContentPanel } from '@/features/content/components/ContentPanel';
 import { NoteEditorPanel } from '@/features/notes/components/NoteEditorPanel';
+import { CbtExamPanel } from '@/features/cbt-import/components/CbtExamPanel';
 import AnalyticsDashboard from '@/features/analytics/components/AnalyticsDashboard';
 import { pdfImportApi } from '@/features/exam/api/pdf-import.api';
 import { Button } from './Button';
@@ -211,6 +212,11 @@ export function Layout() {
         {/* Notes Editor */}
         {activeView === 'notes-editor' && (
           <NoteEditorPanel />
+        )}
+
+        {/* CBT Exam View */}
+        {activeView === 'cbt-exam' && (
+          <CbtExamPanel />
         )}
 
         {/* Exam loading */}
