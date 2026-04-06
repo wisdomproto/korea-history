@@ -51,7 +51,7 @@ export function CardNewsPanel({ contentFile }: Props) {
   const handleGenerate = () => generate({ modelId: textModelId });
 
   const buildImagePrompt = (prompt: string) =>
-    `${prompt}. Style: ${imageStyle}. Aspect ratio: ${imageAspectRatio}`;
+    `${prompt}. Style: ${imageStyle}.`;
 
   // ─── Local slides state (for instant UI updates without race conditions) ───
   const [localSlides, setLocalSlides] = useState<InstagramSlide[] | null>(null);

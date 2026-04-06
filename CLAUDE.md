@@ -143,12 +143,23 @@ korea_history/
 - **AI 생성**: Gemini API + SSE 스트리밍, 채널별 모델 선택 가능
 - **저장**: `data/contents/` (JSON) + R2 (이미지)
 
-**블로그 키워드 & SEO 시스템**:
+**블로그**:
 - 네이버 검색광고 API 연동 (키워드 검색량, 경쟁률 조회)
 - AI 키워드 추천 (Gemini) + 수동 키워드 추가
 - 키워드 선택 → SEO 최적화된 블로그 AI 생성
 - 생성 후 네이버 SEO 분석 (9개 카테고리, 100점 만점)
-- 블로그 카드: 이미지+텍스트 통합, 드래그 정렬, 추가/삭제, 이미지 스타일 선택
+- 블로그 카드: 모든 카드에 텍스트+이미지, 드래그 정렬, 추가/삭제, 이미지 스타일 선택
+- 재생성 시 기존 교체 (push → replace), 삭제 버튼
+
+**카드뉴스 (인스타그램)**:
+- 캔버스 기반 슬라이드 에디터 (4:5 비율 카드)
+- 6개 빌트인 템플릿 + 커스텀 프리셋 저장/삭제 (R2)
+- 왼쪽 스타일 패널: 배경색, 제목/본문 폰트(크기/색상/볼드/정렬/위치/그림자), 이미지 Y 위치 → 전체 슬라이드 일괄 반영
+- 슬라이드별: 제목/본문 인라인 편집, 이미지 프롬프트 표시
+- AI 이미지: 스타일 선택(6종), 비율 선택(7종), 모델 선택, Gemini imageConfig.aspectRatio
+- 이미지 생성/저장/삭제/재생성 버튼 (per slide), 전체 배치 생성 + 중지
+- 블로그 카드 기반 생성 (블로그 있으면 블로그 소스, 없으면 기본글)
+- 로컬 상태 + debounce 저장 (race condition 방지)
 
 **데이터 구조**: Content → BaseArticle(1:1) → ChannelContent[](1:N × 5채널)
 - 스펙: `docs/superpowers/specs/2026-03-23-multi-channel-content-design.md`
@@ -162,8 +173,10 @@ korea_history/
 - `server/services/naver-keyword.service.ts` — 네이버 검색광고 API 연동
 - `server/services/seo-scorer.ts` — 네이버 SEO 점수 계산 (100점)
 - `server/routes/blog-tools.routes.ts` — `/api/blog-tools` (키워드 추천, 검색량, SEO 분석)
-- `server/services/project.service.ts` — 프로젝트 CRUD
+- `server/services/project.service.ts` — 프로젝트 CRUD (type: korean-history | cbt)
 - `server/routes/project.routes.ts` — `/api/projects`
+- `server/services/cardnews-template.service.ts` — 카드뉴스 프리셋 CRUD (R2)
+- `server/routes/cardnews-template.routes.ts` — `/api/cardnews-templates`
 
 **프론트엔드 파일**:
 - `src/features/content/` — api, hooks, components
