@@ -1,1 +1,9 @@
-[{"id":"proj-default","name":"한국사능력검정시험","icon":"📚","createdAt":"2026-01-01T00:00:00.000Z"}]
+[
+  {
+    "id": "proj-default",
+    "name": "한국사능력검정시험",
+    "icon": "📚",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "type": "korean-history"
+  }
+]

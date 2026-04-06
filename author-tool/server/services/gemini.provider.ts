@@ -86,18 +86,23 @@ function getGenAI2(): GoogleGenAI {
   return _genAI2;
 }
 
-export async function generateImage(prompt: string, model?: string): Promise<Buffer> {
+export async function generateImage(prompt: string, model?: string, aspectRatio?: string): Promise<Buffer> {
   const modelId = model ?? 'gemini-2.5-flash-image';
   const ai = getGenAI2();
+  const configObj: any = {
+    responseModalities: ['TEXT', 'IMAGE'],
+    imageConfig: {
+      aspectRatio: aspectRatio || '4:3',
+    },
+  };
+  console.log('[generateImage]', { modelId, aspectRatio, config: JSON.stringify(configObj) });
 
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
       const response = await ai.models.generateContent({
         model: modelId,
         contents: prompt,
-        config: {
-          responseModalities: ['TEXT', 'IMAGE'],
-        },
+        config: configObj,
       });
 
       const parts = response.candidates?.[0]?.content?.parts;

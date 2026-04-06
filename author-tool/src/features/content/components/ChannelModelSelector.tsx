@@ -17,7 +17,8 @@ export function ChannelModelSelector({ type, value, onChange, label }: Props) {
     staleTime: Infinity,
   });
 
-  const list = type === 'text' ? models?.textModels : models?.imageModels;
+  const raw = models as any;
+  const list = type === 'text' ? (raw?.textModels || raw?.text) : (raw?.imageModels || raw?.image);
   if (!list) return null;
 
   return (

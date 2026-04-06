@@ -76,9 +76,20 @@ export async function generateChannelContent(
         prompt += `\n\n[SEO 타겟 키워드]\n메인 키워드: ${opts.keywords[0]}\n보조 키워드: ${opts.keywords.slice(1).join(', ')}\n\n위 키워드를 제목과 본문에 자연스럽게 포함시키세요. 메인 키워드는 제목 앞부분에 배치하고, 본문에 5~6회 포함하세요.`;
       }
       break;
-    case 'instagram':
-      prompt = prompts.buildCardNewsPrompt(baseHtml, source);
+    case 'instagram': {
+      // 블로그 카드가 있으면 블로그 기반, 없으면 기본글 기반
+      const blogContent = file.blog?.[0];
+      if (blogContent?.cards?.length) {
+        const blogText = blogContent.cards
+          .map((c: any, i: number) => `[카드 ${i + 1}]\n${c.content}`)
+          .filter((t: string) => t.trim())
+          .join('\n\n');
+        prompt = prompts.buildCardNewsPrompt(blogText, source);
+      } else {
+        prompt = prompts.buildCardNewsPrompt(baseHtml, source);
+      }
       break;
+    }
     case 'threads':
       prompt = prompts.buildThreadsPrompt(baseHtml, source);
       break;
@@ -98,10 +109,10 @@ export async function generateChannelContent(
   // Build channel content object with IDs
   const channelContent = buildChannelObject(opts, parsed);
 
-  // Save to file
+  // Save to file — replace existing (not push)
   const channelKey = getChannelKey(opts.channel);
   if (channelKey) {
-    (file as any)[channelKey].push(channelContent);
+    (file as any)[channelKey] = [channelContent];
     file.content.updatedAt = new Date().toISOString();
     await writeContentFile(opts.contentId, file);
   }
@@ -134,13 +145,35 @@ function buildChannelObject(opts: GenerateOptions, parsed: any): any {
         ...base,
         caption: parsed.caption || '',
         hashtags: parsed.hashtags || [],
-        slides: (parsed.slides || []).map((s: any, i: number) => ({
-          id: `is-${Date.now()}-${i}`,
-          type: s.type || 'content',
-          textOverlay: s.textOverlay || '',
-          imagePrompt: s.imagePrompt,
-          backgroundColor: s.backgroundColor,
-        })),
+        slides: (parsed.slides || []).map((s: any, i: number) => {
+          // Extract title/body — fallback: split textOverlay on first newline
+          let title = s.title || '';
+          let body = s.body || '';
+          if (!title && s.textOverlay) {
+            const lines = s.textOverlay.split('\n');
+            title = lines[0] || '';
+            body = lines.slice(1).join('\n').trim();
+          }
+          const textOverlay = `${title}\n${body}`.trim();
+
+          return {
+            id: `is-${Date.now()}-${i}`,
+            type: s.type || 'content',
+            title,
+            body,
+            textOverlay,
+            imagePrompt: s.imagePrompt,
+            canvas: {
+              bgColor: '#18181b',
+              imageUrl: null,
+              imageY: 50,
+              textBlocks: [
+                { id: 'title', text: title, x: 8, y: 10, fontSize: 26, color: '#ffffff', fontWeight: 'bold' as const, textAlign: 'left' as const, width: 84, shadow: true },
+                { id: 'body', text: body, x: 8, y: 55, fontSize: 14, color: '#cccccc', fontWeight: 'normal' as const, textAlign: 'left' as const, width: 84, shadow: false },
+              ],
+            },
+          };
+        }),
         textModelId: opts.modelId || 'gemini-2.5-flash',
         imageModelId: DEFAULT_IMAGE_MODEL,
       };

@@ -79,8 +79,9 @@ ${baseArticle}
 규칙:
 - 제목: 15~25자, SEO 키워드 포함
 - 본문: 2,000~3,000자
-- 카드 구조: text, image, quote, list 타입 조합
-- image 카드에는 imagePrompt (영어, 16:9 비율 사진 묘사) 포함
+- 8~15개 카드로 구성
+- 모든 카드에 content(본문 텍스트)와 imagePrompt(영어, 16:9 비율 사진 묘사)를 반드시 포함
+- content는 200~400자 분량의 충실한 본문
 - SEO 키워드 3~5개 추출
 - "자막", "YouTube", "강의", "영상" 금지
 
@@ -89,20 +90,17 @@ JSON으로 응답:
   "title": "블로그 제목",
   "seoKeywords": ["키워드1", ...],
   "cards": [
-    { "type": "text", "content": "..." },
-    { "type": "image", "content": "", "imagePrompt": "A historical painting of..." },
-    { "type": "quote", "content": "인용문..." },
-    { "type": "list", "content": "- 항목1\\n- 항목2\\n- 항목3" }
+    { "type": "text", "content": "본문 텍스트 (200~400자)", "imagePrompt": "A detailed photo of..." },
+    { "type": "text", "content": "다음 섹션 본문 텍스트", "imagePrompt": "A historical illustration of..." }
   ]
 }`;
 }
 
 // ─── Card News (Instagram) ───
 export function buildCardNewsPrompt(baseArticle: string, source: SourceData): string {
-  // Exam source: use existing 4-slide structure
+  let sourceContext = '';
   if (source.type === 'exam') {
-    return `${BRAND_CONTEXT}
-
+    sourceContext = `
 [기출문제 소스]
 시험: 제${source.examNumber}회 ${source.questionNumber}번
 시대: ${source.era || ''}
@@ -110,55 +108,40 @@ export function buildCardNewsPrompt(baseArticle: string, source: SourceData): st
 선지: ${(source.choices || []).map((c, i) => `${i + 1}. ${c}`).join('\n')}
 정답: ${source.correctAnswer}번
 해설: ${source.explanation || '없음'}
-
-[기본글]
-${baseArticle}
-
-인스타그램 카드뉴스 4장 슬라이드를 만드세요.
-
-슬라이드 구조:
-1. hook: 20자 이내 도발적 후킹 문구 (이모지 1개, MZ감성)
-2. question: 문제 요약 + 5지선다
-3. answer: 정답 + 150자 이내 해설 요약
-4. cta: CTA 문구
-
-JSON으로 응답:
-{
-  "caption": "인스타그램 캡션 (2~3줄)",
-  "hashtags": ["#한능검", "#한국사", ...],
-  "slides": [
-    { "type": "hook", "textOverlay": "🔥 후킹 문구" },
-    { "type": "question", "textOverlay": "Q. 문제 요약\\n① ...\\n② ...\\n③ ...\\n④ ...\\n⑤ ..." },
-    { "type": "answer", "textOverlay": "정답: ②\\n해설 요약..." },
-    { "type": "cta", "textOverlay": "📲 기출노트에서\\n전체 문제 풀어보기!" }
-  ]
-}`;
+`;
   }
 
-  // Note/free source: flexible slides
   return `${BRAND_CONTEXT}
-
+${sourceContext}
 [기본글]
 ${baseArticle}
 
 인스타그램 카드뉴스 5~8장 슬라이드를 만드세요.
 
-규칙:
-- 각 슬라이드: 짧은 텍스트 (50자 이내) + 이미지 프롬프트
-- 첫 슬라이드: 후킹 (hook)
-- 마지막 슬라이드: CTA
-- 중간 슬라이드: content
-- imagePrompt는 영어로, 1:1 정사각형, 교육 일러스트 스타일
+## 슬라이드 텍스트 구조
+각 슬라이드는 반드시 2개 텍스트 영역을 가집니다:
+- title: 메인 제목 (15~25자, 핵심 메시지, 이모지 1개 포함 가능)
+- body: 본문 설명 (50~100자, 완전한 문장으로 이미지 없이 읽어도 이해되는 내용)
+
+## 규칙
+- 첫 슬라이드: hook (호기심 유발, MZ감성)
+- 마지막 슬라이드: CTA (gcnote.co.kr 유도)
+- 중간 슬라이드: 핵심 내용을 한 장에 하나씩
+- body는 키워드 나열이 아닌 완전한 문장으로 작성
+- imagePrompt는 영어로, 4:5 비율, 모든 슬라이드가 동일한 색감/일러스트 스타일 유지
+- "자막", "YouTube", "강의", "영상" 금지
 
 JSON으로 응답:
 {
-  "caption": "인스타그램 캡션",
-  "hashtags": ["#한능검", ...],
+  "caption": "인스타그램 캡션 (2~3줄, 핵심 요약 + CTA)",
+  "hashtags": ["#한능검", "#한국사", "#기출노트", ...],
   "slides": [
-    { "type": "hook", "textOverlay": "...", "imagePrompt": "..." },
-    { "type": "content", "textOverlay": "...", "imagePrompt": "..." },
-    ...
-    { "type": "cta", "textOverlay": "📲 gcnote.co.kr" }
+    {
+      "type": "hook",
+      "title": "🔥 이거 모르면 시험 망한다",
+      "body": "매 시험마다 출제되는 핵심 주제를 정리했습니다. 스와이프해서 확인하세요!",
+      "imagePrompt": "Warm-toned flat illustration of a Korean historical scroll..."
+    }
   ]
 }`;
 }

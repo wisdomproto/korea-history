@@ -18,6 +18,7 @@ import blogToolsRoutes from './routes/blog-tools.routes.js';
 import analyticsRoutes from './routes/analytics.routes.js';
 import cbtRoutes from './routes/cbt.routes.js';
 import summaryNoteRoutes from './routes/summary-note.routes.js';
+import cardnewsTemplateRoutes from './routes/cardnews-template.routes.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isDev = process.env.NODE_ENV !== 'production';
@@ -68,6 +69,7 @@ async function startServer() {
   app.use('/api/analytics', analyticsRoutes);
   app.use('/api/cbt', cbtRoutes);
   app.use('/api/summary-notes', summaryNoteRoutes);
+  app.use('/api/cardnews-templates', cardnewsTemplateRoutes);
 
   app.use(errorMiddleware as express.ErrorRequestHandler);
 

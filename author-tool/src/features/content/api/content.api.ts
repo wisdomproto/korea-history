@@ -70,11 +70,13 @@ export async function generateImage(
   targetId: string,
   imagePrompt: string,
   modelId?: string,
+  aspectRatio?: string,
 ): Promise<string> {
   return apiPost<string>(`${BASE}/${id}/channels/${channel}/image`, {
     targetId,
     imagePrompt,
     modelId,
+    aspectRatio,
   });
 }
 

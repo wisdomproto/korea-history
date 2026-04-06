@@ -47,6 +47,7 @@ export interface InstagramContent {
   caption: string;
   hashtags: string[];
   slides: InstagramSlide[];
+  templateId?: string;
   textModelId: string;
   imageModelId: string;
 }
@@ -56,8 +57,39 @@ export interface InstagramSlide {
   type: 'hook' | 'question' | 'answer' | 'cta' | 'content';
   imageUrl?: string;
   imagePrompt?: string;
-  textOverlay: string;
+  textOverlay: string;         // legacy (kept for compat)
+  title?: string;              // main title text
+  body?: string;               // body text
+  canvas?: CardCanvasData;     // canvas layout data
   backgroundColor?: string;
+}
+
+// ─── Card Canvas (visual layout per slide) ───
+export interface CardCanvasData {
+  bgColor: string;
+  imageUrl: string | null;
+  imageY: number;              // image vertical position (0-100%)
+  textBlocks: TextBlock[];
+}
+
+export interface TextBlock {
+  id: string;                  // 'title' | 'body' | custom
+  text: string;
+  x: number;                   // left position (%)
+  y: number;                   // top position (%)
+  fontSize: number;            // px
+  color: string;               // hex
+  fontWeight: 'normal' | 'bold';
+  textAlign: 'left' | 'center' | 'right';
+  width: number;               // % of card width
+  shadow?: boolean;
+  hidden?: boolean;
+}
+
+export interface CardNewsTemplate {
+  id: string;
+  name: string;
+  canvas: Omit<CardCanvasData, 'imageUrl'> & { imageUrl: null };
 }
 
 // ─── Threads ───

@@ -94,9 +94,14 @@ export function useGenerateImage() {
       targetId: string;
       imagePrompt: string;
       modelId?: string;
-    }) => api.generateImage(vars.contentId, vars.channel, vars.targetId, vars.imagePrompt, vars.modelId),
+      aspectRatio?: string;
+    }) => api.generateImage(vars.contentId, vars.channel, vars.targetId, vars.imagePrompt, vars.modelId, vars.aspectRatio),
     onSuccess: (_data, vars) => {
       qc.invalidateQueries({ queryKey: KEYS.detail(vars.contentId) });
+    },
+    onError: (err: any) => {
+      const msg = err?.response?.data?.error || err?.message || '이미지 생성 실패';
+      alert(`이미지 생성 오류: ${msg}`);
     },
   });
 }

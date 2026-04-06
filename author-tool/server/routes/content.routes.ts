@@ -112,15 +112,33 @@ router.delete('/:id/channels/:channel/:channelContentId', async (req, res, next)
 // ─── Image Generation ───
 router.post('/:id/channels/:channel/image', async (req, res, next) => {
   try {
-    const { targetId, imagePrompt, modelId } = req.body;
+    const { targetId, imagePrompt, modelId, aspectRatio } = req.body;
     if (!targetId || !imagePrompt) {
       return res.status(400).json({ success: false, error: 'targetId and imagePrompt required' });
     }
 
-    const imageBuffer = await generateImage(imagePrompt, modelId);
+    const imageBuffer = await generateImage(imagePrompt, modelId, aspectRatio);
     const r2Key = `contents/${req.params.id}/${req.params.channel}/${targetId}.png`;
     await putObject(r2Key, imageBuffer, 'image/png');
     const imageUrl = getPublicUrl(r2Key);
+
+    // Update slide/card imageUrl in content file
+    const { readContentFile, writeContentFile } = await import('../services/content.service.js');
+    const file = await readContentFile(req.params.id);
+    const channelKey = req.params.channel === 'blog' ? 'blog' : req.params.channel === 'instagram' ? 'instagram' : req.params.channel === 'longform' ? 'longForm' : null;
+    if (file && channelKey) {
+      const items = (file as any)[channelKey] as any[];
+      for (const item of items) {
+        const targets = item.slides || item.cards || item.scenes || [];
+        const target = targets.find((t: any) => t.id === targetId);
+        if (target) {
+          target.imageUrl = imageUrl;
+          if (target.canvas) target.canvas.imageUrl = imageUrl;
+          break;
+        }
+      }
+      await writeContentFile(req.params.id, file);
+    }
 
     res.json({ success: true, data: { imageUrl } });
   } catch (err) { next(err); }

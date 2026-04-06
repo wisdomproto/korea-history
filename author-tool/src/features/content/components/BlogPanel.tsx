@@ -2,7 +2,7 @@
 import { useState, useRef } from 'react';
 import type { ContentFile, BlogContent, BlogCard } from '../../../lib/content-types';
 import { apiPost } from '../../../lib/axios';
-import { useGenerateImage } from '../hooks/useContent';
+import { useGenerateImage, useDeleteChannelContent } from '../hooks/useContent';
 import { copyToClipboard } from '../api/content.api';
 import { useDebouncedSave } from '../hooks/useDebouncedSave';
 import { useChannelGeneration } from '../hooks/useChannelGeneration';
@@ -64,6 +64,7 @@ export function BlogPanel({ contentFile }: Props) {
 
   const { save, saveNow } = useDebouncedSave(content.id, 'blog');
   const genImage = useGenerateImage();
+  const deleteBlog = useDeleteChannelContent();
   const dragRef = useRef<number | null>(null);
   const [dragOver, setDragOver] = useState<number | null>(null);
   const { isGenerating, generate } = useChannelGeneration({
@@ -399,6 +400,17 @@ export function BlogPanel({ contentFile }: Props) {
         <div className="ml-auto flex items-center gap-2">
           <ChannelModelSelector type="text" value={modelId} onChange={setModelId} label="모델:" />
           <ChannelModelSelector type="image" value={imageModelId} onChange={setImageModelId} label="이미지:" />
+          {current && (
+            <button
+              className="px-3 py-1.5 border border-red-200 text-red-500 rounded-md text-xs hover:bg-red-50"
+              onClick={() => {
+                if (!confirm('블로그를 삭제하시겠습니까?')) return;
+                deleteBlog.mutate({ id: content.id, channel: 'blog', channelContentId: current.id });
+              }}
+            >
+              🗑 삭제
+            </button>
+          )}
         </div>
       </div>
 
