@@ -183,6 +183,16 @@ korea_history/
 - 6개 탭 패널: BaseArticle, Blog(키워드+SEO), CardNews, Threads, LongForm, ShortForm
 - `src/features/notes/components/NoteEditorPanel.tsx` — 요약노트 HTML 에디터
 
+### CBT 시험 시스템
+- **728개 자격시험**, 15,767개 시험, 1,004,324개 문제 (R2: `cbt/` prefix)
+- 카테고리 브라우저: 검색 → 프로젝트 추가, 시험 목록 → 문제 에디터
+- 문제 에디터: 지문(텍스트+이미지), 선지(텍스트+이미지), 정답 선택, 해설
+- Auto-save (800ms debounce) + 저장 버튼 → R2에 저장
+- 프로젝트 검색 + 가나다순 정렬
+- 스크립트: `scripts/upload-cbt-to-r2.ts` (체크포인트 기반 이어하기), `scripts/register-cbt-projects.ts`
+- 데이터 구조: `cbt_data/cbtdata.md` 참고
+- 컨텐츠 프로젝트별 분리 (`Content.projectId`)
+
 ### 레거시 카드뉴스 (기존, 유지)
 - **기출 카드뉴스**: satori PNG 4장 (card-news.service.ts)
 - **요약노트 카드뉴스**: Gemini 웹툰 이미지 (note-card-news.service.ts)
