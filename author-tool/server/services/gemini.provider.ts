@@ -89,6 +89,8 @@ function getGenAI2(): GoogleGenAI {
   return _genAI2;
 }
 
+const IMAGE_SYSTEM_INSTRUCTION = `ABSOLUTE RULE: DO NOT render ANY text, letters, words, numbers, characters, or writing of any kind in the generated image. The image must contain ZERO text — no titles, no labels, no signs, no captions, no watermarks, no logos, no signatures, no annotations. Generate a purely visual illustration with no textual elements whatsoever.`;
+
 export async function generateImage(prompt: string, model?: string, aspectRatio?: string): Promise<Buffer> {
   const modelId = model ?? 'gemini-2.5-flash-image';
   const ai = getGenAI2();
@@ -121,9 +123,10 @@ export async function generateImage(prompt: string, model?: string, aspectRatio?
   // Gemini 멀티모달 이미지 모델
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
+      const fullPrompt = `${IMAGE_SYSTEM_INSTRUCTION}\n\n${prompt}`;
       const response = await ai.models.generateContent({
         model: modelId,
-        contents: [{ role: 'user', parts: [{ text: prompt }] }],
+        contents: [{ role: 'user', parts: [{ text: fullPrompt }] }],
         config: {
           responseModalities: ['IMAGE', 'TEXT'],
           ...(aspectRatio ? { imageConfig: { aspectRatio } } : {}),

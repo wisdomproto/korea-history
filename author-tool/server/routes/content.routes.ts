@@ -8,17 +8,21 @@ import { putObject, getPublicUrl } from '../services/r2.service.js';
 const router = Router();
 
 // ─── CRUD ───
-router.get('/', async (_req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
-    const index = await contentService.readIndex();
+    let index = await contentService.readIndex();
+    const { projectId } = req.query;
+    if (projectId) {
+      index = index.filter((c: any) => c.projectId === projectId || (!c.projectId && projectId === 'proj-default'));
+    }
     res.json({ success: true, data: index });
   } catch (err) { next(err); }
 });
 
 router.post('/', async (req, res, next) => {
   try {
-    const { title, sourceType, sourceId } = req.body;
-    const file = await contentService.createContent(title, sourceType, sourceId);
+    const { title, sourceType, sourceId, projectId } = req.body;
+    const file = await contentService.createContent(title, sourceType, sourceId, projectId);
     res.json({ success: true, data: file });
   } catch (err) { next(err); }
 });
@@ -120,7 +124,7 @@ router.post('/:id/channels/:channel/image', async (req, res, next) => {
     const imageBuffer = await generateImage(imagePrompt, modelId, aspectRatio);
     const r2Key = `contents/${req.params.id}/${req.params.channel}/${targetId}.png`;
     await putObject(r2Key, imageBuffer, 'image/png');
-    const imageUrl = getPublicUrl(r2Key);
+    const imageUrl = `${getPublicUrl(r2Key)}?v=${Date.now()}`;
 
     // Update slide/card imageUrl in content file
     const { readContentFile, writeContentFile } = await import('../services/content.service.js');

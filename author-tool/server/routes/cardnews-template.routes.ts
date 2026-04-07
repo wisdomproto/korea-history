@@ -19,6 +19,14 @@ router.post('/', async (req, res, next) => {
   } catch (err) { next(err); }
 });
 
+router.put('/:id', async (req, res, next) => {
+  try {
+    const tmpl = await templateService.updateTemplate(req.params.id, req.body);
+    if (!tmpl) return res.status(404).json({ success: false, error: 'Not found' });
+    res.json({ success: true, data: tmpl });
+  } catch (err) { next(err); }
+});
+
 router.delete('/:id', async (req, res, next) => {
   try {
     const ok = await templateService.deleteTemplate(req.params.id);

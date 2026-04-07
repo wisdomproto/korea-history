@@ -6,6 +6,7 @@ export interface Content {
   title: string;
   sourceType: 'exam' | 'note' | 'free';
   sourceId?: string;
+  projectId?: string;
   status: 'draft' | 'published';
   createdAt: string;
   updatedAt: string;
@@ -80,7 +81,7 @@ export interface TextBlock {
   fontSize: number;            // px
   color: string;               // hex
   fontWeight: 'normal' | 'bold';
-  textAlign: 'left' | 'center' | 'right';
+  textAlign: 'left' | 'center' | 'right' | 'justify';
   width: number;               // % of card width
   shadow?: boolean;
   hidden?: boolean;

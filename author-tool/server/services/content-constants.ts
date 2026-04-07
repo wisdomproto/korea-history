@@ -31,6 +31,7 @@ export interface ContentMeta {
   title: string;
   sourceType: 'exam' | 'note' | 'free';
   sourceId?: string;
+  projectId?: string;
   status: 'draft' | 'published';
   createdAt: string;
   updatedAt: string;

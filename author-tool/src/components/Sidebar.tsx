@@ -57,10 +57,6 @@ interface SidebarProps {
 }
 
 export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
-  const { data: exams, isLoading } = useExams();
-  const { data: notes } = useNotes();
-  const { data: contents } = useContents();
-  const deleteContentMutation = useDeleteContent();
   const {
     selectedExamId, setSelectedExamId,
     selectedContentId, setSelectedContentId,
@@ -73,9 +69,15 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
   } = useEditorStore();
   const qc = useQueryClient();
 
+  const { data: exams, isLoading } = useExams();
+  const { data: notes } = useNotes();
+  const { data: contents } = useContents(selectedProjectId);
+  const deleteContentMutation = useDeleteContent();
+
   // Project state
   const [addingProject, setAddingProject] = useState(false);
   const [newProjectName, setNewProjectName] = useState('');
+  const [projectSearch, setProjectSearch] = useState('');
 
   // Exam state
   const [search, setSearch] = useState('');
@@ -320,8 +322,34 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
           </div>
         )}
 
-        {/* Project list — each project is collapsible */}
-        {projects?.map((p) => {
+        {/* Project search */}
+        <div className="px-3 py-1.5 border-b">
+          <input
+            type="text"
+            placeholder="프로젝트 검색..."
+            value={projectSearch}
+            onChange={(e) => setProjectSearch(e.target.value)}
+            className="w-full rounded border px-2 py-1 text-xs focus:border-primary-500 focus:outline-none"
+          />
+        </div>
+
+        {/* Project list — sorted, filtered, selected always on top */}
+        {(() => {
+          const sorted = [...(projects || [])].sort((a, b) => {
+            // Selected project always first
+            if (a.id === selectedProjectId) return -1;
+            if (b.id === selectedProjectId) return 1;
+            // korean-history (default) second
+            if (a.type === 'korean-history') return -1;
+            if (b.type === 'korean-history') return 1;
+            // Then alphabetical
+            return a.name.localeCompare(b.name, 'ko');
+          });
+          const filtered = projectSearch.trim()
+            ? sorted.filter((p) => p.name.toLowerCase().includes(projectSearch.trim().toLowerCase()) || p.id === selectedProjectId)
+            : sorted;
+          return filtered;
+        })().map((p) => {
           const isOpen = selectedProjectId === p.id;
           return (
             <div key={p.id} className="border-b">

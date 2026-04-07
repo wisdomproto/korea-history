@@ -5,8 +5,9 @@ import type { ContentMeta, ContentFile, ChannelType } from '../../../lib/content
 const BASE = '/contents';
 
 // ─── CRUD ───
-export async function fetchContents(): Promise<ContentMeta[]> {
-  return apiGet<ContentMeta[]>(BASE);
+export async function fetchContents(projectId?: string): Promise<ContentMeta[]> {
+  const params = projectId ? `?projectId=${encodeURIComponent(projectId)}` : '';
+  return apiGet<ContentMeta[]>(`${BASE}${params}`);
 }
 
 export async function fetchContent(id: string): Promise<ContentFile> {
@@ -17,8 +18,9 @@ export async function createContent(
   title: string,
   sourceType: 'exam' | 'note' | 'free',
   sourceId?: string,
+  projectId?: string,
 ): Promise<ContentFile> {
-  return apiPost<ContentFile>(BASE, { title, sourceType, sourceId });
+  return apiPost<ContentFile>(BASE, { title, sourceType, sourceId, projectId });
 }
 
 export async function updateContent(

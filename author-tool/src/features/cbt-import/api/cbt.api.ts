@@ -1,4 +1,4 @@
-import { apiGet } from '@/lib/axios';
+import { apiGet, apiPut } from '@/lib/axios';
 
 export interface CbtCategory {
   name: string;
@@ -51,4 +51,6 @@ export const cbtApi = {
   getCategories: () => apiGet<CbtCategory[]>('/cbt/categories'),
   getExams: (code: string) => apiGet<CbtExamMeta[]>(`/cbt/categories/${code}/exams`),
   getExam: (code: string, examId: string) => apiGet<CbtExamData>(`/cbt/categories/${code}/exams/${examId}`),
+  updateQuestion: (code: string, examId: string, questionId: string, updates: any) =>
+    apiPut(`/cbt/categories/${code}/exams/${examId}/questions/${questionId}`, updates),
 };

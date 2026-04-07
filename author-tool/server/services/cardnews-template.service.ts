@@ -57,6 +57,16 @@ export async function saveTemplate(name: string, canvas: SavedTemplate['canvas']
   return tmpl;
 }
 
+export async function updateTemplate(id: string, updates: Partial<Pick<SavedTemplate, 'name' | 'canvas'>>): Promise<SavedTemplate | null> {
+  const templates = await readAll();
+  const idx = templates.findIndex((t) => t.id === id);
+  if (idx < 0) return null;
+  if (updates.name) templates[idx].name = updates.name;
+  if (updates.canvas) templates[idx].canvas = { ...updates.canvas, imageUrl: null, textBlocks: updates.canvas.textBlocks.map((b) => ({ ...b, text: '' })) };
+  await writeAll(templates);
+  return templates[idx];
+}
+
 export async function deleteTemplate(id: string): Promise<boolean> {
   const templates = await readAll();
   const filtered = templates.filter((t) => t.id !== id);

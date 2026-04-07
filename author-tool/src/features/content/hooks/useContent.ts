@@ -4,14 +4,14 @@ import * as api from '../api/content.api';
 import type { ContentFile, ChannelType } from '../../../lib/content-types';
 
 const KEYS = {
-  list: ['contents'] as const,
+  list: (projectId?: string) => ['contents', projectId ?? 'all'] as const,
   detail: (id: string) => ['contents', id] as const,
 };
 
-export function useContents() {
+export function useContents(projectId?: string) {
   return useQuery({
-    queryKey: KEYS.list,
-    queryFn: api.fetchContents,
+    queryKey: KEYS.list(projectId),
+    queryFn: () => api.fetchContents(projectId),
   });
 }
 
@@ -26,9 +26,9 @@ export function useContent(id: string | null) {
 export function useCreateContent() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (vars: { title: string; sourceType: 'exam' | 'note' | 'free'; sourceId?: string }) =>
-      api.createContent(vars.title, vars.sourceType, vars.sourceId),
-    onSuccess: () => qc.invalidateQueries({ queryKey: KEYS.list }),
+    mutationFn: (vars: { title: string; sourceType: 'exam' | 'note' | 'free'; sourceId?: string; projectId?: string }) =>
+      api.createContent(vars.title, vars.sourceType, vars.sourceId, vars.projectId),
+    onSuccess: (_data, vars) => qc.invalidateQueries({ queryKey: KEYS.list(vars.projectId) }),
   });
 }
 

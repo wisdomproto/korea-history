@@ -80,8 +80,10 @@ ${baseArticle}
 - 제목: 15~25자, SEO 키워드 포함
 - 본문: 2,000~3,000자
 - 8~15개 카드로 구성
-- 모든 카드에 content(본문 텍스트)와 imagePrompt(영어, 16:9 비율 사진 묘사)를 반드시 포함
+- 모든 카드에 content(본문 텍스트)와 imagePrompt를 반드시 포함
 - content는 200~400자 분량의 충실한 본문
+- imagePrompt는 영어로, 장면/인물/사물/구도/분위기만 묘사 (스타일은 별도 지정하므로 포함하지 않음)
+- imagePrompt에 스타일(illustration, watercolor 등)이나 색감 지시를 넣지 말 것
 - SEO 키워드 3~5개 추출
 - "자막", "YouTube", "강의", "영상" 금지
 
@@ -90,8 +92,8 @@ JSON으로 응답:
   "title": "블로그 제목",
   "seoKeywords": ["키워드1", ...],
   "cards": [
-    { "type": "text", "content": "본문 텍스트 (200~400자)", "imagePrompt": "A detailed photo of..." },
-    { "type": "text", "content": "다음 섹션 본문 텍스트", "imagePrompt": "A historical illustration of..." }
+    { "type": "text", "content": "본문 텍스트 (200~400자)", "imagePrompt": "A warm-toned flat illustration of ancient Korean warriors in iron armor standing near a river port, trading iron ingots with Japanese merchants, soft golden lighting, educational history style" },
+    { "type": "text", "content": "다음 섹션 본문 텍스트", "imagePrompt": "..." }
   ]
 }`;
 }
@@ -128,7 +130,9 @@ ${baseArticle}
 - 마지막 슬라이드: CTA (gcnote.co.kr 유도)
 - 중간 슬라이드: 핵심 내용을 한 장에 하나씩
 - body는 키워드 나열이 아닌 완전한 문장으로 작성
-- imagePrompt는 영어로, 4:5 비율, 모든 슬라이드가 동일한 색감/일러스트 스타일 유지
+- imagePrompt는 영어로, 장면/인물/사물/구도/분위기만 묘사 (스타일은 별도 지정하므로 포함하지 않음)
+- imagePrompt 예시: "Ancient Korean warriors trading iron ingots at a river port, merchants and ships in background, golden sunset lighting"
+- imagePrompt에 스타일(illustration, watercolor 등)이나 색감 지시를 넣지 말 것
 - "자막", "YouTube", "강의", "영상" 금지
 
 JSON으로 응답:

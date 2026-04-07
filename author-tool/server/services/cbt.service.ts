@@ -1,4 +1,4 @@
-import { getCbtObjectText } from './r2.service.js';
+import { getObjectText } from './r2.service.js';
 import { AppError } from '../middleware.js';
 
 // --- Types ---
@@ -71,6 +71,10 @@ function setCache<T>(key: string, data: T): void {
   cache.set(key, { data, expiry: Date.now() + CACHE_TTL });
 }
 
+export function clearCache(key: string): void {
+  cache.delete(key);
+}
+
 // --- Service Functions ---
 
 export async function listCategories(): Promise<CbtCategory[]> {
@@ -78,7 +82,7 @@ export async function listCategories(): Promise<CbtCategory[]> {
   const cached = getCached<CbtCategory[]>(cacheKey);
   if (cached) return cached;
   try {
-    const raw = await getCbtObjectText('_categories.json');
+    const raw = await getObjectText('cbt/' +'_categories.json');
     const categories: CbtCategory[] = JSON.parse(raw);
     setCache(cacheKey, categories);
     return categories;
@@ -95,7 +99,7 @@ export async function getManifest(code: string): Promise<CategoryManifest> {
   const cached = getCached<CategoryManifest>(cacheKey);
   if (cached) return cached;
   try {
-    const raw = await getCbtObjectText(`${code}/manifest.json`);
+    const raw = await getObjectText('cbt/' +`${code}/manifest.json`);
     const manifest: CategoryManifest = JSON.parse(raw);
     setCache(cacheKey, manifest);
     return manifest;
@@ -112,7 +116,7 @@ export async function getExam(code: string, examId: string): Promise<CbtExamData
   const cached = getCached<CbtExamData>(cacheKey);
   if (cached) return cached;
   try {
-    const raw = await getCbtObjectText(`${code}/exams/${examId}.json`);
+    const raw = await getObjectText('cbt/' +`${code}/exams/${examId}.json`);
     const exam: CbtExamData = JSON.parse(raw);
     setCache(cacheKey, exam);
     return exam;

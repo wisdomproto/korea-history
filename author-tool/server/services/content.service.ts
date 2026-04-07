@@ -62,6 +62,7 @@ export async function createContent(
   title: string,
   sourceType: 'exam' | 'note' | 'free',
   sourceId?: string,
+  projectId?: string,
 ): Promise<ContentFile> {
   const id = generateId();
   const now = new Date().toISOString();
@@ -70,6 +71,7 @@ export async function createContent(
     title,
     sourceType,
     sourceId,
+    projectId,
     status: 'draft',
     createdAt: now,
     updatedAt: now,

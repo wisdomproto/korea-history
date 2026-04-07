@@ -5,5 +5,7285 @@
     "icon": "📚",
     "createdAt": "2026-01-01T00:00:00.000Z",
     "type": "korean-history"
+  },
+  {
+    "id": "proj-1775541270989-8sfb",
+    "name": "전기기능사",
+    "icon": "📝",
+    "createdAt": "2026-04-07T05:54:30.989Z",
+    "type": "cbt",
+    "categoryCode": "전기기능사",
+    "examCount": 57,
+    "questionCount": 3420
+  },
+  {
+    "id": "proj-1775564836665-cyfc",
+    "name": "9급 국가직 공무원 건축계획",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.665Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-건축계획",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836671-qqj6",
+    "name": "9급 국가직 공무원 건축구조",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.671Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-건축구조",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836675-2gsf",
+    "name": "9급 국가직 공무원 경제학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.675Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-경제학개론",
+    "examCount": 15,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564836679-o5q6",
+    "name": "9급 국가직 공무원 공업화학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.679Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-공업화학",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836682-oxuw",
+    "name": "9급 국가직 공무원 공직선거법",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.682Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-공직선거법",
+    "examCount": 13,
+    "questionCount": 260
+  },
+  {
+    "id": "proj-1775564836685-2mcu",
+    "name": "9급 국가직 공무원 과학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.685Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-과학",
+    "examCount": 9,
+    "questionCount": 180
+  },
+  {
+    "id": "proj-1775564836690-bgit",
+    "name": "9급 국가직 공무원 관세법개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.690Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-관세법개론",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836694-ytps",
+    "name": "9급 국가직 공무원 교육학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.694Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-교육학개론",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836699-m4sh",
+    "name": "9급 국가직 공무원 교정학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.699Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-교정학개론",
+    "examCount": 21,
+    "questionCount": 420
+  },
+  {
+    "id": "proj-1775564836704-4xbi",
+    "name": "9급 국가직 공무원 국어",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.704Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-국어",
+    "examCount": 22,
+    "questionCount": 434
+  },
+  {
+    "id": "proj-1775564836708-i6g0",
+    "name": "9급 국가직 공무원 국제법개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.708Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-국제법개론",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836713-0mon",
+    "name": "9급 국가직 공무원 기계설계",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.713Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-기계설계",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836716-nvt9",
+    "name": "9급 국가직 공무원 기계일반",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.716Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-기계일반",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836718-yrzi",
+    "name": "9급 국가직 공무원 네트워크보안",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.718Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-네트워크보안",
+    "examCount": 10,
+    "questionCount": 200
+  },
+  {
+    "id": "proj-1775564836720-dh6z",
+    "name": "9급 국가직 공무원 노동법개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.720Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-노동법개론",
+    "examCount": 8,
+    "questionCount": 160
+  },
+  {
+    "id": "proj-1775564836726-4b3v",
+    "name": "9급 국가직 공무원 무선공학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.726Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-무선공학개론",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836728-yzvg",
+    "name": "9급 국가직 공무원 사회",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.729Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-사회",
+    "examCount": 9,
+    "questionCount": 180
+  },
+  {
+    "id": "proj-1775564836732-6n9n",
+    "name": "9급 국가직 공무원 사회복지학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.732Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-사회복지학개론",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836737-kwmb",
+    "name": "9급 국가직 공무원 세법개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.737Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-세법개론",
+    "examCount": 21,
+    "questionCount": 420
+  },
+  {
+    "id": "proj-1775564836739-c6nw",
+    "name": "9급 국가직 공무원 수학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.739Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-수학",
+    "examCount": 9,
+    "questionCount": 180
+  },
+  {
+    "id": "proj-1775564836743-jdzl",
+    "name": "9급 국가직 공무원 식용작물",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.743Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-식용작물",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836745-ahv5",
+    "name": "9급 국가직 공무원 안전관리론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.745Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-안전관리론",
+    "examCount": 11,
+    "questionCount": 220
+  },
+  {
+    "id": "proj-1775564836749-7yld",
+    "name": "9급 국가직 공무원 영어",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.749Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-영어",
+    "examCount": 22,
+    "questionCount": 438
+  },
+  {
+    "id": "proj-1775564836754-ynta",
+    "name": "9급 국가직 공무원 응용역학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.754Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-응용역학개론",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836758-lga1",
+    "name": "9급 국가직 공무원 임업경영",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.758Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-임업경영",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836760-w9ig",
+    "name": "9급 국가직 공무원 재난관리론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.760Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-재난관리론",
+    "examCount": 11,
+    "questionCount": 220
+  },
+  {
+    "id": "proj-1775564836765-w6w3",
+    "name": "9급 국가직 공무원 재배학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.765Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-재배학개론",
+    "examCount": 18,
+    "questionCount": 360
+  },
+  {
+    "id": "proj-1775564836769-7nb8",
+    "name": "9급 국가직 공무원 전기기기",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.769Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-전기기기",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836774-m1hs",
+    "name": "9급 국가직 공무원 전기이론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.774Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-전기이론",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836778-lygt",
+    "name": "9급 국가직 공무원 전자공학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.778Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-전자공학개론",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836781-izpj",
+    "name": "9급 국가직 공무원 정보보호론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.781Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-정보보호론",
+    "examCount": 12,
+    "questionCount": 240
+  },
+  {
+    "id": "proj-1775564836784-hn5p",
+    "name": "9급 국가직 공무원 정보시스템보안",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.784Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-정보시스템보안",
+    "examCount": 10,
+    "questionCount": 200
+  },
+  {
+    "id": "proj-1775564836785-fjd6",
+    "name": "9급 국가직 공무원 조경계획및설계",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.785Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-조경계획및설계",
+    "examCount": 6,
+    "questionCount": 120
+  },
+  {
+    "id": "proj-1775564836786-59cd",
+    "name": "9급 국가직 공무원 조경학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.786Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-조경학",
+    "examCount": 6,
+    "questionCount": 120
+  },
+  {
+    "id": "proj-1775564836790-ec96",
+    "name": "9급 국가직 공무원 조림",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.790Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-조림",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836792-sdlm",
+    "name": "9급 국가직 공무원 직업상담심리학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.792Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-직업상담심리학개론",
+    "examCount": 8,
+    "questionCount": 160
+  },
+  {
+    "id": "proj-1775564836796-0990",
+    "name": "9급 국가직 공무원 컴퓨터일반",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.796Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-컴퓨터일반",
+    "examCount": 20,
+    "questionCount": 400
+  },
+  {
+    "id": "proj-1775564836801-vkkv",
+    "name": "9급 국가직 공무원 토목설계",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.801Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-토목설계",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836803-h6bh",
+    "name": "9급 국가직 공무원 통계학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.803Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-통계학개론",
+    "examCount": 7,
+    "questionCount": 140
+  },
+  {
+    "id": "proj-1775564836808-7xj3",
+    "name": "9급 국가직 공무원 한국사",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.808Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-한국사",
+    "examCount": 22,
+    "questionCount": 440
+  },
+  {
+    "id": "proj-1775564836813-xn2c",
+    "name": "9급 국가직 공무원 행정법총론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.813Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-행정법총론",
+    "examCount": 21,
+    "questionCount": 420
+  },
+  {
+    "id": "proj-1775564836818-q0vh",
+    "name": "9급 국가직 공무원 행정학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.818Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-행정학개론",
+    "examCount": 22,
+    "questionCount": 440
+  },
+  {
+    "id": "proj-1775564836823-iybh",
+    "name": "9급 국가직 공무원 형법",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.823Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-형법",
+    "examCount": 15,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564836828-oho3",
+    "name": "9급 국가직 공무원 형법총론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.828Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-형법총론",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836833-beas",
+    "name": "9급 국가직 공무원 형사소송법",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.833Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-형사소송법",
+    "examCount": 15,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564836837-2jkh",
+    "name": "9급 국가직 공무원 형사소송법개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.837Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-형사소송법개론",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836843-i14x",
+    "name": "9급 국가직 공무원 화학공학일반",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.843Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-화학공학일반",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836847-lt3u",
+    "name": "9급 국가직 공무원 회계원리",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.847Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-회계원리",
+    "examCount": 19,
+    "questionCount": 380
+  },
+  {
+    "id": "proj-1775564836851-8nfs",
+    "name": "9급 국가직 공무원 회계학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.851Z",
+    "type": "cbt",
+    "categoryCode": "9급-국가직-공무원-회계학",
+    "examCount": 21,
+    "questionCount": 420
+  },
+  {
+    "id": "proj-1775564836854-7ecs",
+    "name": "9급 지방직 공무원 간호관리",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.854Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-간호관리",
+    "examCount": 13,
+    "questionCount": 260
+  },
+  {
+    "id": "proj-1775564836857-ydto",
+    "name": "9급 지방직 공무원 건축계획",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.857Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-건축계획",
+    "examCount": 16,
+    "questionCount": 320
+  },
+  {
+    "id": "proj-1775564836862-1ex4",
+    "name": "9급 지방직 공무원 건축구조",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.862Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-건축구조",
+    "examCount": 16,
+    "questionCount": 320
+  },
+  {
+    "id": "proj-1775564836864-qqlz",
+    "name": "9급 지방직 공무원 공업화학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.864Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-공업화학",
+    "examCount": 13,
+    "questionCount": 260
+  },
+  {
+    "id": "proj-1775564836867-rol5",
+    "name": "9급 지방직 공무원 과학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.867Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-과학",
+    "examCount": 14,
+    "questionCount": 280
+  },
+  {
+    "id": "proj-1775564836869-n2h6",
+    "name": "9급 지방직 공무원 교육학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.869Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-교육학개론",
+    "examCount": 8,
+    "questionCount": 160
+  },
+  {
+    "id": "proj-1775564836872-3ts5",
+    "name": "9급 지방직 공무원 국어",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.872Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-국어",
+    "examCount": 21,
+    "questionCount": 416
+  },
+  {
+    "id": "proj-1775564836876-hxh8",
+    "name": "9급 지방직 공무원 기계설계",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.876Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-기계설계",
+    "examCount": 16,
+    "questionCount": 320
+  },
+  {
+    "id": "proj-1775564836880-oew6",
+    "name": "9급 지방직 공무원 기계일반",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.880Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-기계일반",
+    "examCount": 16,
+    "questionCount": 320
+  },
+  {
+    "id": "proj-1775564836885-y4ec",
+    "name": "9급 지방직 공무원 사회",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.885Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-사회",
+    "examCount": 14,
+    "questionCount": 280
+  },
+  {
+    "id": "proj-1775564836888-8s75",
+    "name": "9급 지방직 공무원 사회복지학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.888Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-사회복지학개론",
+    "examCount": 15,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564836890-z3af",
+    "name": "9급 지방직 공무원 서울시 간호관리(8급)",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.890Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-간호관리8급",
+    "examCount": 8,
+    "questionCount": 160
+  },
+  {
+    "id": "proj-1775564836891-0ivi",
+    "name": "9급 지방직 공무원 서울시 건축계획",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.891Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-건축계획",
+    "examCount": 7,
+    "questionCount": 140
+  },
+  {
+    "id": "proj-1775564836893-rioq",
+    "name": "9급 지방직 공무원 서울시 건축구조",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.893Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-건축구조",
+    "examCount": 7,
+    "questionCount": 140
+  },
+  {
+    "id": "proj-1775564836894-h1a3",
+    "name": "9급 지방직 공무원 서울시 공업화학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.894Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-공업화학",
+    "examCount": 4,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564836896-pu1q",
+    "name": "9급 지방직 공무원 서울시 공중보건",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.896Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-공중보건",
+    "examCount": 8,
+    "questionCount": 160
+  },
+  {
+    "id": "proj-1775564836897-etxt",
+    "name": "9급 지방직 공무원 서울시 과학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.897Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-과학",
+    "examCount": 6,
+    "questionCount": 120
+  },
+  {
+    "id": "proj-1775564836899-ez69",
+    "name": "9급 지방직 공무원 서울시 국어",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.900Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-국어",
+    "examCount": 11,
+    "questionCount": 220
+  },
+  {
+    "id": "proj-1775564836901-oqe3",
+    "name": "9급 지방직 공무원 서울시 기계설계",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.901Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-기계설계",
+    "examCount": 7,
+    "questionCount": 140
+  },
+  {
+    "id": "proj-1775564836903-pzpg",
+    "name": "9급 지방직 공무원 서울시 기계일반",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.903Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-기계일반",
+    "examCount": 11,
+    "questionCount": 220
+  },
+  {
+    "id": "proj-1775564836905-nhx5",
+    "name": "9급 지방직 공무원 서울시 물리",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.905Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-물리",
+    "examCount": 4,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564836907-0exf",
+    "name": "9급 지방직 공무원 서울시 보건행정",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.907Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-보건행정",
+    "examCount": 7,
+    "questionCount": 140
+  },
+  {
+    "id": "proj-1775564836909-ie2t",
+    "name": "9급 지방직 공무원 서울시 사회",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.909Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-사회",
+    "examCount": 10,
+    "questionCount": 200
+  },
+  {
+    "id": "proj-1775564836910-dwcs",
+    "name": "9급 지방직 공무원 서울시 사회(유공자)",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.910Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-사회유공자",
+    "examCount": 5,
+    "questionCount": 100
+  },
+  {
+    "id": "proj-1775564836911-5cup",
+    "name": "9급 지방직 공무원 서울시 사회복지학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.911Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-사회복지학개론",
+    "examCount": 3,
+    "questionCount": 60
+  },
+  {
+    "id": "proj-1775564836913-7l87",
+    "name": "9급 지방직 공무원 서울시 생물",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.913Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-생물",
+    "examCount": 7,
+    "questionCount": 140
+  },
+  {
+    "id": "proj-1775564836914-c7yr",
+    "name": "9급 지방직 공무원 서울시 선박일반",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.914Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-선박일반",
+    "examCount": 4,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564836915-6qtt",
+    "name": "9급 지방직 공무원 서울시 수학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.915Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-수학",
+    "examCount": 9,
+    "questionCount": 180
+  },
+  {
+    "id": "proj-1775564836916-6xcq",
+    "name": "9급 지방직 공무원 서울시 수학(지적)",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.916Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-수학지적",
+    "examCount": 4,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564836917-eow4",
+    "name": "9급 지방직 공무원 서울시 식용작물",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.917Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-식용작물",
+    "examCount": 4,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564836918-20du",
+    "name": "9급 지방직 공무원 서울시 안전관리론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.918Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-안전관리론",
+    "examCount": 5,
+    "questionCount": 100
+  },
+  {
+    "id": "proj-1775564836920-a3zr",
+    "name": "9급 지방직 공무원 서울시 영어",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.920Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-영어",
+    "examCount": 7,
+    "questionCount": 139
+  },
+  {
+    "id": "proj-1775564836921-s8sr",
+    "name": "9급 지방직 공무원 서울시 응용역학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.921Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-응용역학개론",
+    "examCount": 6,
+    "questionCount": 120
+  },
+  {
+    "id": "proj-1775564836922-60vt",
+    "name": "9급 지방직 공무원 서울시 의료관계법규",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.922Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-의료관계법규",
+    "examCount": 6,
+    "questionCount": 120
+  },
+  {
+    "id": "proj-1775564836924-ecw3",
+    "name": "9급 지방직 공무원 서울시 임업경영",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.924Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-임업경영",
+    "examCount": 5,
+    "questionCount": 100
+  },
+  {
+    "id": "proj-1775564836925-t0ee",
+    "name": "9급 지방직 공무원 서울시 자동차구조원리",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.925Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-자동차구조원리",
+    "examCount": 7,
+    "questionCount": 140
+  },
+  {
+    "id": "proj-1775564836926-jdm9",
+    "name": "9급 지방직 공무원 서울시 자동차구조원리(유공자)",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.926Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-자동차구조원리유공자",
+    "examCount": 5,
+    "questionCount": 100
+  },
+  {
+    "id": "proj-1775564836928-olza",
+    "name": "9급 지방직 공무원 서울시 자료조직개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.928Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-자료조직개론",
+    "examCount": 5,
+    "questionCount": 100
+  },
+  {
+    "id": "proj-1775564836929-eul7",
+    "name": "9급 지방직 공무원 서울시 재난관리론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.929Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-재난관리론",
+    "examCount": 5,
+    "questionCount": 100
+  },
+  {
+    "id": "proj-1775564836930-byhm",
+    "name": "9급 지방직 공무원 서울시 재배학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.930Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-재배학개론",
+    "examCount": 4,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564836931-rt6m",
+    "name": "9급 지방직 공무원 서울시 전기기기",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.931Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-전기기기",
+    "examCount": 6,
+    "questionCount": 120
+  },
+  {
+    "id": "proj-1775564836933-g3mw",
+    "name": "9급 지방직 공무원 서울시 전기이론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.933Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-전기이론",
+    "examCount": 10,
+    "questionCount": 200
+  },
+  {
+    "id": "proj-1775564836935-rmai",
+    "name": "9급 지방직 공무원 서울시 전자공학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.935Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-전자공학개론",
+    "examCount": 7,
+    "questionCount": 140
+  },
+  {
+    "id": "proj-1775564836936-m6yb",
+    "name": "9급 지방직 공무원 서울시 정보보호론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.936Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-정보보호론",
+    "examCount": 5,
+    "questionCount": 100
+  },
+  {
+    "id": "proj-1775564836938-h9bk",
+    "name": "9급 지방직 공무원 서울시 정보봉사개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.938Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-정보봉사개론",
+    "examCount": 5,
+    "questionCount": 100
+  },
+  {
+    "id": "proj-1775564836940-ikdr",
+    "name": "9급 지방직 공무원 서울시 조경계획및생태관리",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.940Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-조경계획및생태관리",
+    "examCount": 9,
+    "questionCount": 180
+  },
+  {
+    "id": "proj-1775564836941-jxln",
+    "name": "9급 지방직 공무원 서울시 조경학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.941Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-조경학",
+    "examCount": 8,
+    "questionCount": 160
+  },
+  {
+    "id": "proj-1775564836943-8zm4",
+    "name": "9급 지방직 공무원 서울시 조림",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.943Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-조림",
+    "examCount": 5,
+    "questionCount": 100
+  },
+  {
+    "id": "proj-1775564836945-19z5",
+    "name": "9급 지방직 공무원 서울시 지방세법",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.945Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-지방세법",
+    "examCount": 5,
+    "questionCount": 100
+  },
+  {
+    "id": "proj-1775564836946-f7j2",
+    "name": "9급 지방직 공무원 서울시 지역사회간호",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.946Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-지역사회간호",
+    "examCount": 7,
+    "questionCount": 140
+  },
+  {
+    "id": "proj-1775564836948-7sqo",
+    "name": "9급 지방직 공무원 서울시 지적법규",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.948Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-지적법규",
+    "examCount": 7,
+    "questionCount": 140
+  },
+  {
+    "id": "proj-1775564836950-8zkj",
+    "name": "9급 지방직 공무원 서울시 지적측량",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.950Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-지적측량",
+    "examCount": 7,
+    "questionCount": 140
+  },
+  {
+    "id": "proj-1775564836951-hnnm",
+    "name": "9급 지방직 공무원 서울시 컴퓨터일반",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.951Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-컴퓨터일반",
+    "examCount": 5,
+    "questionCount": 100
+  },
+  {
+    "id": "proj-1775564836953-1fcw",
+    "name": "9급 지방직 공무원 서울시 토목설계",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.953Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-토목설계",
+    "examCount": 6,
+    "questionCount": 120
+  },
+  {
+    "id": "proj-1775564836954-t7qp",
+    "name": "9급 지방직 공무원 서울시 통신이론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.954Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-통신이론",
+    "examCount": 7,
+    "questionCount": 140
+  },
+  {
+    "id": "proj-1775564836956-wep2",
+    "name": "9급 지방직 공무원 서울시 한국사",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.956Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-한국사",
+    "examCount": 11,
+    "questionCount": 220
+  },
+  {
+    "id": "proj-1775564836957-ndl3",
+    "name": "9급 지방직 공무원 서울시 한국사(유공자)",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.957Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-한국사유공자",
+    "examCount": 5,
+    "questionCount": 100
+  },
+  {
+    "id": "proj-1775564836958-8phb",
+    "name": "9급 지방직 공무원 서울시 항해",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.958Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-항해",
+    "examCount": 4,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564836960-byy4",
+    "name": "9급 지방직 공무원 서울시 행정법총론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.960Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-행정법총론",
+    "examCount": 6,
+    "questionCount": 120
+  },
+  {
+    "id": "proj-1775564836962-hxkq",
+    "name": "9급 지방직 공무원 서울시 행정학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.962Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-행정학개론",
+    "examCount": 7,
+    "questionCount": 140
+  },
+  {
+    "id": "proj-1775564836963-dtck",
+    "name": "9급 지방직 공무원 서울시 화학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.963Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-화학",
+    "examCount": 4,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564836964-k20h",
+    "name": "9급 지방직 공무원 서울시 화학공학일반",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.964Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-화학공학일반",
+    "examCount": 4,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564836965-aqmb",
+    "name": "9급 지방직 공무원 서울시 환경공학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.965Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-환경공학개론",
+    "examCount": 4,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564836966-r97z",
+    "name": "9급 지방직 공무원 서울시 회계학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.966Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-서울시-회계학",
+    "examCount": 5,
+    "questionCount": 100
+  },
+  {
+    "id": "proj-1775564836969-mwwi",
+    "name": "9급 지방직 공무원 수학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.969Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-수학",
+    "examCount": 13,
+    "questionCount": 260
+  },
+  {
+    "id": "proj-1775564836971-8cru",
+    "name": "9급 지방직 공무원 식용작물",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.971Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-식용작물",
+    "examCount": 14,
+    "questionCount": 280
+  },
+  {
+    "id": "proj-1775564836974-wl9w",
+    "name": "9급 지방직 공무원 안전관리론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.974Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-안전관리론",
+    "examCount": 10,
+    "questionCount": 200
+  },
+  {
+    "id": "proj-1775564836979-woad",
+    "name": "9급 지방직 공무원 영어",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.979Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-영어",
+    "examCount": 21,
+    "questionCount": 420
+  },
+  {
+    "id": "proj-1775564836983-lxnw",
+    "name": "9급 지방직 공무원 응용역학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.983Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-응용역학개론",
+    "examCount": 16,
+    "questionCount": 320
+  },
+  {
+    "id": "proj-1775564836987-zrt9",
+    "name": "9급 지방직 공무원 임업경영",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.987Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-임업경영",
+    "examCount": 14,
+    "questionCount": 280
+  },
+  {
+    "id": "proj-1775564836990-rs5z",
+    "name": "9급 지방직 공무원 자료조직개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.990Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-자료조직개론",
+    "examCount": 15,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564836993-jicd",
+    "name": "9급 지방직 공무원 재난관리론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.993Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-재난관리론",
+    "examCount": 10,
+    "questionCount": 200
+  },
+  {
+    "id": "proj-1775564836996-abwp",
+    "name": "9급 지방직 공무원 재배학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.996Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-재배학개론",
+    "examCount": 14,
+    "questionCount": 280
+  },
+  {
+    "id": "proj-1775564836999-zdwd",
+    "name": "9급 지방직 공무원 전기기기",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:16.999Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-전기기기",
+    "examCount": 13,
+    "questionCount": 260
+  },
+  {
+    "id": "proj-1775564837002-w01i",
+    "name": "9급 지방직 공무원 전기이론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:17.002Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-전기이론",
+    "examCount": 13,
+    "questionCount": 260
+  },
+  {
+    "id": "proj-1775564837005-t0nv",
+    "name": "9급 지방직 공무원 정보보호론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:17.005Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-정보보호론",
+    "examCount": 11,
+    "questionCount": 220
+  },
+  {
+    "id": "proj-1775564837008-ajoc",
+    "name": "9급 지방직 공무원 정보봉사개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:17.008Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-정보봉사개론",
+    "examCount": 15,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564837011-eplk",
+    "name": "9급 지방직 공무원 조림",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:17.011Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-조림",
+    "examCount": 14,
+    "questionCount": 280
+  },
+  {
+    "id": "proj-1775564837015-1wo3",
+    "name": "9급 지방직 공무원 지방세법",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:17.015Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-지방세법",
+    "examCount": 14,
+    "questionCount": 280
+  },
+  {
+    "id": "proj-1775564837018-yyot",
+    "name": "9급 지방직 공무원 지역사회간호학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:17.018Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-지역사회간호학",
+    "examCount": 14,
+    "questionCount": 280
+  },
+  {
+    "id": "proj-1775564837021-nhbp",
+    "name": "9급 지방직 공무원 지적전산학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:17.021Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-지적전산학개론",
+    "examCount": 14,
+    "questionCount": 280
+  },
+  {
+    "id": "proj-1775564837024-kqt5",
+    "name": "9급 지방직 공무원 지적측량",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:17.024Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-지적측량",
+    "examCount": 14,
+    "questionCount": 280
+  },
+  {
+    "id": "proj-1775564837027-c8xr",
+    "name": "9급 지방직 공무원 컴퓨터일반",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:17.027Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-컴퓨터일반",
+    "examCount": 15,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564837031-yt4u",
+    "name": "9급 지방직 공무원 토목설계",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:17.031Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-토목설계",
+    "examCount": 15,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564837039-4oqa",
+    "name": "9급 지방직 공무원 한국사",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:17.039Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-한국사",
+    "examCount": 21,
+    "questionCount": 420
+  },
+  {
+    "id": "proj-1775564837045-s2vw",
+    "name": "9급 지방직 공무원 행정법총론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:17.045Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-행정법총론",
+    "examCount": 21,
+    "questionCount": 420
+  },
+  {
+    "id": "proj-1775564837050-lyqf",
+    "name": "9급 지방직 공무원 행정학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:17.050Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-행정학개론",
+    "examCount": 21,
+    "questionCount": 420
+  },
+  {
+    "id": "proj-1775564837052-dlgf",
+    "name": "9급 지방직 공무원 화학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:17.052Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-화학",
+    "examCount": 14,
+    "questionCount": 280
+  },
+  {
+    "id": "proj-1775564837055-c1wd",
+    "name": "9급 지방직 공무원 화학공학일반",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:17.055Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-화학공학일반",
+    "examCount": 13,
+    "questionCount": 260
+  },
+  {
+    "id": "proj-1775564837058-wwxg",
+    "name": "9급 지방직 공무원 환경공학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:17.058Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-환경공학개론",
+    "examCount": 12,
+    "questionCount": 240
+  },
+  {
+    "id": "proj-1775564837062-z71f",
+    "name": "9급 지방직 공무원 회계학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:17.062Z",
+    "type": "cbt",
+    "categoryCode": "9급-지방직-공무원-회계학",
+    "examCount": 15,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564837090-14jb",
+    "name": "DIAT 정보통신상식",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.090Z",
+    "type": "cbt",
+    "categoryCode": "diat-정보통신상식",
+    "examCount": 76,
+    "questionCount": 3040
+  },
+  {
+    "id": "proj-1775564837112-ly8q",
+    "name": "DIAT 정보통신상식(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.112Z",
+    "type": "cbt",
+    "categoryCode": "diat-정보통신상식구",
+    "examCount": 52,
+    "questionCount": 2600
+  },
+  {
+    "id": "proj-1775564837116-9p9e",
+    "name": "ERP 인사 2급 실무",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.116Z",
+    "type": "cbt",
+    "categoryCode": "erp-인사-2급-실무",
+    "examCount": 17,
+    "questionCount": 340
+  },
+  {
+    "id": "proj-1775564837121-5zxn",
+    "name": "ERP 인사 2급 이론",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.121Z",
+    "type": "cbt",
+    "categoryCode": "erp-인사-2급-이론",
+    "examCount": 23,
+    "questionCount": 460
+  },
+  {
+    "id": "proj-1775564837125-tr5l",
+    "name": "ERP 회계 2급 실무",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.125Z",
+    "type": "cbt",
+    "categoryCode": "erp-회계-2급-실무",
+    "examCount": 16,
+    "questionCount": 320
+  },
+  {
+    "id": "proj-1775564837130-sj39",
+    "name": "ERP 회계 2급 이론",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.130Z",
+    "type": "cbt",
+    "categoryCode": "erp-회계-2급-이론",
+    "examCount": 23,
+    "questionCount": 460
+  },
+  {
+    "id": "proj-1775564837137-8yyc",
+    "name": "FAT 1급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.138Z",
+    "type": "cbt",
+    "categoryCode": "fat-1급",
+    "examCount": 42,
+    "questionCount": 630
+  },
+  {
+    "id": "proj-1775564837139-dt5q",
+    "name": "FAT 1급(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.139Z",
+    "type": "cbt",
+    "categoryCode": "fat-1급구",
+    "examCount": 7,
+    "questionCount": 70
+  },
+  {
+    "id": "proj-1775564837147-vxs4",
+    "name": "FAT 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.147Z",
+    "type": "cbt",
+    "categoryCode": "fat-2급",
+    "examCount": 42,
+    "questionCount": 630
+  },
+  {
+    "id": "proj-1775564837148-qph7",
+    "name": "FAT 2급(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.148Z",
+    "type": "cbt",
+    "categoryCode": "fat-2급구",
+    "examCount": 7,
+    "questionCount": 70
+  },
+  {
+    "id": "proj-1775564837153-gcdl",
+    "name": "IoT지식능력검정",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.153Z",
+    "type": "cbt",
+    "categoryCode": "iot지식능력검정",
+    "examCount": 9,
+    "questionCount": 450
+  },
+  {
+    "id": "proj-1775564837176-ewyv",
+    "name": "PC정비사 1급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.176Z",
+    "type": "cbt",
+    "categoryCode": "pc정비사-1급",
+    "examCount": 48,
+    "questionCount": 2880
+  },
+  {
+    "id": "proj-1775564837215-d2fn",
+    "name": "PC정비사 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.215Z",
+    "type": "cbt",
+    "categoryCode": "pc정비사-2급",
+    "examCount": 88,
+    "questionCount": 4400
+  },
+  {
+    "id": "proj-1775564837221-uaqx",
+    "name": "PSAT 상황판단",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.221Z",
+    "type": "cbt",
+    "categoryCode": "psat-상황판단",
+    "examCount": 13,
+    "questionCount": 494
+  },
+  {
+    "id": "proj-1775564837227-qwfv",
+    "name": "PSAT 언어논리",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.227Z",
+    "type": "cbt",
+    "categoryCode": "psat-언어논리",
+    "examCount": 13,
+    "questionCount": 494
+  },
+  {
+    "id": "proj-1775564837233-vb67",
+    "name": "PSAT 자료해석",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.233Z",
+    "type": "cbt",
+    "categoryCode": "psat-자료해석",
+    "examCount": 12,
+    "questionCount": 456
+  },
+  {
+    "id": "proj-1775564837235-x1ol",
+    "name": "PSAT 헌법",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.235Z",
+    "type": "cbt",
+    "categoryCode": "psat-헌법",
+    "examCount": 8,
+    "questionCount": 200
+  },
+  {
+    "id": "proj-1775564837242-0ag4",
+    "name": "RFID-GL",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.242Z",
+    "type": "cbt",
+    "categoryCode": "rfid-gl",
+    "examCount": 9,
+    "questionCount": 720
+  },
+  {
+    "id": "proj-1775564837248-q1ux",
+    "name": "TAT 1급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.248Z",
+    "type": "cbt",
+    "categoryCode": "tat-1급",
+    "examCount": 42,
+    "questionCount": 630
+  },
+  {
+    "id": "proj-1775564837255-nmox",
+    "name": "TAT 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.255Z",
+    "type": "cbt",
+    "categoryCode": "tat-2급",
+    "examCount": 42,
+    "questionCount": 630
+  },
+  {
+    "id": "proj-1775564837256-jejv",
+    "name": "TAT 2급(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.256Z",
+    "type": "cbt",
+    "categoryCode": "tat-2급구",
+    "examCount": 7,
+    "questionCount": 70
+  },
+  {
+    "id": "proj-1775564837260-phjm",
+    "name": "가구제작기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:17.260Z",
+    "type": "cbt",
+    "categoryCode": "가구제작기능사",
+    "examCount": 8,
+    "questionCount": 480
+  },
+  {
+    "id": "proj-1775564837283-3xww",
+    "name": "가맹거래사",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.283Z",
+    "type": "cbt",
+    "categoryCode": "가맹거래사",
+    "examCount": 18,
+    "questionCount": 2160
+  },
+  {
+    "id": "proj-1775564837312-si20",
+    "name": "가스기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:17.312Z",
+    "type": "cbt",
+    "categoryCode": "가스기능사",
+    "examCount": 58,
+    "questionCount": 3480
+  },
+  {
+    "id": "proj-1775564837331-dpc8",
+    "name": "가스기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:17.331Z",
+    "type": "cbt",
+    "categoryCode": "가스기능장",
+    "examCount": 33,
+    "questionCount": 1980
+  },
+  {
+    "id": "proj-1775564837387-yvn0",
+    "name": "가스기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:17.387Z",
+    "type": "cbt",
+    "categoryCode": "가스기사",
+    "examCount": 56,
+    "questionCount": 5600
+  },
+  {
+    "id": "proj-1775564837427-enl9",
+    "name": "가스산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:17.427Z",
+    "type": "cbt",
+    "categoryCode": "가스산업기사",
+    "examCount": 54,
+    "questionCount": 4320
+  },
+  {
+    "id": "proj-1775564837442-s288",
+    "name": "감정평가사 1차 1교시",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.442Z",
+    "type": "cbt",
+    "categoryCode": "감정평가사-1차-1교시",
+    "examCount": 10,
+    "questionCount": 1200
+  },
+  {
+    "id": "proj-1775564837449-tcnr",
+    "name": "감정평가사 1차 1교시(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.449Z",
+    "type": "cbt",
+    "categoryCode": "감정평가사-1차-1교시구",
+    "examCount": 7,
+    "questionCount": 560
+  },
+  {
+    "id": "proj-1775564837465-byf4",
+    "name": "감정평가사 1차 2교시",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.465Z",
+    "type": "cbt",
+    "categoryCode": "감정평가사-1차-2교시",
+    "examCount": 17,
+    "questionCount": 1360
+  },
+  {
+    "id": "proj-1775564837500-mlf3",
+    "name": "건설기계설비기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:17.500Z",
+    "type": "cbt",
+    "categoryCode": "건설기계설비기사",
+    "examCount": 35,
+    "questionCount": 3500
+  },
+  {
+    "id": "proj-1775564837518-8857",
+    "name": "건설기계설비산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:17.518Z",
+    "type": "cbt",
+    "categoryCode": "건설기계설비산업기사",
+    "examCount": 24,
+    "questionCount": 1920
+  },
+  {
+    "id": "proj-1775564837535-fqfd",
+    "name": "건설기계정비기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:17.535Z",
+    "type": "cbt",
+    "categoryCode": "건설기계정비기능사",
+    "examCount": 19,
+    "questionCount": 1140
+  },
+  {
+    "id": "proj-1775564837539-vx95",
+    "name": "건설기계정비기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:17.539Z",
+    "type": "cbt",
+    "categoryCode": "건설기계정비기능장",
+    "examCount": 7,
+    "questionCount": 420
+  },
+  {
+    "id": "proj-1775564837541-itw4",
+    "name": "건설기계정비기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:17.541Z",
+    "type": "cbt",
+    "categoryCode": "건설기계정비기사",
+    "examCount": 3,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564837551-8w77",
+    "name": "건설기계정비산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:17.551Z",
+    "type": "cbt",
+    "categoryCode": "건설기계정비산업기사",
+    "examCount": 15,
+    "questionCount": 1200
+  },
+  {
+    "id": "proj-1775564837609-vab2",
+    "name": "건설안전기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:17.609Z",
+    "type": "cbt",
+    "categoryCode": "건설안전기사",
+    "examCount": 59,
+    "questionCount": 7080
+  },
+  {
+    "id": "proj-1775564837663-a8dv",
+    "name": "건설안전산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:17.663Z",
+    "type": "cbt",
+    "categoryCode": "건설안전산업기사",
+    "examCount": 57,
+    "questionCount": 5700
+  },
+  {
+    "id": "proj-1775564837674-tind",
+    "name": "건설재료시험기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:17.674Z",
+    "type": "cbt",
+    "categoryCode": "건설재료시험기능사",
+    "examCount": 18,
+    "questionCount": 1080
+  },
+  {
+    "id": "proj-1775564837715-q7kx",
+    "name": "건설재료시험기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:17.715Z",
+    "type": "cbt",
+    "categoryCode": "건설재료시험기사",
+    "examCount": 55,
+    "questionCount": 4400
+  },
+  {
+    "id": "proj-1775564837735-s67j",
+    "name": "건설재료시험산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:17.735Z",
+    "type": "cbt",
+    "categoryCode": "건설재료시험산업기사",
+    "examCount": 29,
+    "questionCount": 2320
+  },
+  {
+    "id": "proj-1775564837790-6r7v",
+    "name": "건축기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:17.790Z",
+    "type": "cbt",
+    "categoryCode": "건축기사",
+    "examCount": 58,
+    "questionCount": 5800
+  },
+  {
+    "id": "proj-1775564837793-odzp",
+    "name": "건축목공산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:17.793Z",
+    "type": "cbt",
+    "categoryCode": "건축목공산업기사",
+    "examCount": 5,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564837796-vjmt",
+    "name": "건축목재시공기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:17.796Z",
+    "type": "cbt",
+    "categoryCode": "건축목재시공기능장",
+    "examCount": 5,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564837838-kisb",
+    "name": "건축산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:17.838Z",
+    "type": "cbt",
+    "categoryCode": "건축산업기사",
+    "examCount": 51,
+    "questionCount": 5100
+  },
+  {
+    "id": "proj-1775564837885-9u6v",
+    "name": "건축설비기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:17.885Z",
+    "type": "cbt",
+    "categoryCode": "건축설비기사",
+    "examCount": 52,
+    "questionCount": 5200
+  },
+  {
+    "id": "proj-1775564837917-tgsv",
+    "name": "건축설비산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:17.917Z",
+    "type": "cbt",
+    "categoryCode": "건축설비산업기사",
+    "examCount": 46,
+    "questionCount": 3680
+  },
+  {
+    "id": "proj-1775564837919-yokg",
+    "name": "건축일반시공기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:17.919Z",
+    "type": "cbt",
+    "categoryCode": "건축일반시공기능장",
+    "examCount": 4,
+    "questionCount": 240
+  },
+  {
+    "id": "proj-1775564837922-32h1",
+    "name": "건축일반시공산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:17.922Z",
+    "type": "cbt",
+    "categoryCode": "건축일반시공산업기사",
+    "examCount": 5,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564837929-ayrc",
+    "name": "검량사",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.929Z",
+    "type": "cbt",
+    "categoryCode": "검량사",
+    "examCount": 11,
+    "questionCount": 825
+  },
+  {
+    "id": "proj-1775564837942-egdx",
+    "name": "경비지도사 1차(법학개론,민간경비론)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.942Z",
+    "type": "cbt",
+    "categoryCode": "경비지도사-1차법학개론민간경비론",
+    "examCount": 20,
+    "questionCount": 1600
+  },
+  {
+    "id": "proj-1775564837951-m24a",
+    "name": "경비지도사 2차(경비업법)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.951Z",
+    "type": "cbt",
+    "categoryCode": "경비지도사-2차경비업법",
+    "examCount": 20,
+    "questionCount": 800
+  },
+  {
+    "id": "proj-1775564837960-wqsw",
+    "name": "경비지도사 2차(경호학)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.960Z",
+    "type": "cbt",
+    "categoryCode": "경비지도사-2차경호학",
+    "examCount": 20,
+    "questionCount": 800
+  },
+  {
+    "id": "proj-1775564837972-csyt",
+    "name": "경비지도사 2차(기계경비개론)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.972Z",
+    "type": "cbt",
+    "categoryCode": "경비지도사-2차기계경비개론",
+    "examCount": 19,
+    "questionCount": 760
+  },
+  {
+    "id": "proj-1775564837978-17st",
+    "name": "경비지도사 2차(기계경비기획및설계)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.978Z",
+    "type": "cbt",
+    "categoryCode": "경비지도사-2차기계경비기획및설계",
+    "examCount": 19,
+    "questionCount": 760
+  },
+  {
+    "id": "proj-1775564837984-h5ow",
+    "name": "경비지도사 2차(범죄학)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.984Z",
+    "type": "cbt",
+    "categoryCode": "경비지도사-2차범죄학",
+    "examCount": 19,
+    "questionCount": 760
+  },
+  {
+    "id": "proj-1775564837990-a44b",
+    "name": "경비지도사 2차(소방학)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.990Z",
+    "type": "cbt",
+    "categoryCode": "경비지도사-2차소방학",
+    "examCount": 19,
+    "questionCount": 760
+  },
+  {
+    "id": "proj-1775564837993-k0rs",
+    "name": "경영지도사 1차",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.993Z",
+    "type": "cbt",
+    "categoryCode": "경영지도사-1차",
+    "examCount": 3,
+    "questionCount": 375
+  },
+  {
+    "id": "proj-1775564837995-i61z",
+    "name": "경영지도사 1차 1교시",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:17.995Z",
+    "type": "cbt",
+    "categoryCode": "경영지도사-1차-1교시",
+    "examCount": 2,
+    "questionCount": 150
+  },
+  {
+    "id": "proj-1775564838006-mmfx",
+    "name": "경영지도사 1차 1교시(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.006Z",
+    "type": "cbt",
+    "categoryCode": "경영지도사-1차-1교시구",
+    "examCount": 8,
+    "questionCount": 960
+  },
+  {
+    "id": "proj-1775564838009-y38o",
+    "name": "경영지도사 1차 2교시",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.009Z",
+    "type": "cbt",
+    "categoryCode": "경영지도사-1차-2교시",
+    "examCount": 2,
+    "questionCount": 100
+  },
+  {
+    "id": "proj-1775564838018-9tok",
+    "name": "경영지도사 1차 2교시(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.018Z",
+    "type": "cbt",
+    "categoryCode": "경영지도사-1차-2교시구",
+    "examCount": 8,
+    "questionCount": 960
+  },
+  {
+    "id": "proj-1775564838025-le0o",
+    "name": "경찰공무원(순경) 경찰학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:18.025Z",
+    "type": "cbt",
+    "categoryCode": "경찰공무원순경-경찰학개론",
+    "examCount": 28,
+    "questionCount": 560
+  },
+  {
+    "id": "proj-1775564838029-s8w6",
+    "name": "경찰공무원(순경) 과학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:18.029Z",
+    "type": "cbt",
+    "categoryCode": "경찰공무원순경-과학",
+    "examCount": 18,
+    "questionCount": 360
+  },
+  {
+    "id": "proj-1775564838032-b0bi",
+    "name": "경찰공무원(순경) 국어",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:18.032Z",
+    "type": "cbt",
+    "categoryCode": "경찰공무원순경-국어",
+    "examCount": 18,
+    "questionCount": 327
+  },
+  {
+    "id": "proj-1775564838037-mpd3",
+    "name": "경찰공무원(순경) 사회",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:18.037Z",
+    "type": "cbt",
+    "categoryCode": "경찰공무원순경-사회",
+    "examCount": 18,
+    "questionCount": 360
+  },
+  {
+    "id": "proj-1775564838041-9t3d",
+    "name": "경찰공무원(순경) 수사",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:18.041Z",
+    "type": "cbt",
+    "categoryCode": "경찰공무원순경-수사",
+    "examCount": 14,
+    "questionCount": 280
+  },
+  {
+    "id": "proj-1775564838044-eu5n",
+    "name": "경찰공무원(순경) 수학",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:18.044Z",
+    "type": "cbt",
+    "categoryCode": "경찰공무원순경-수학",
+    "examCount": 18,
+    "questionCount": 360
+  },
+  {
+    "id": "proj-1775564838048-30fz",
+    "name": "경찰공무원(순경) 영어",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:18.048Z",
+    "type": "cbt",
+    "categoryCode": "경찰공무원순경-영어",
+    "examCount": 28,
+    "questionCount": 549
+  },
+  {
+    "id": "proj-1775564838053-kgo6",
+    "name": "경찰공무원(순경) 한국사",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:18.053Z",
+    "type": "cbt",
+    "categoryCode": "경찰공무원순경-한국사",
+    "examCount": 23,
+    "questionCount": 460
+  },
+  {
+    "id": "proj-1775564838057-3zwo",
+    "name": "경찰공무원(순경) 행정법",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:18.057Z",
+    "type": "cbt",
+    "categoryCode": "경찰공무원순경-행정법",
+    "examCount": 11,
+    "questionCount": 220
+  },
+  {
+    "id": "proj-1775564838065-0laz",
+    "name": "경찰공무원(순경) 형법",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:18.065Z",
+    "type": "cbt",
+    "categoryCode": "경찰공무원순경-형법",
+    "examCount": 28,
+    "questionCount": 560
+  },
+  {
+    "id": "proj-1775564838074-zk9a",
+    "name": "경찰공무원(순경) 형사소송법",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:18.074Z",
+    "type": "cbt",
+    "categoryCode": "경찰공무원순경-형사소송법",
+    "examCount": 28,
+    "questionCount": 560
+  },
+  {
+    "id": "proj-1775564838074-l7g6",
+    "name": "계리직 공무원 금융상식",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:18.074Z",
+    "type": "cbt",
+    "categoryCode": "계리직-공무원-금융상식",
+    "examCount": 1,
+    "questionCount": 20
+  },
+  {
+    "id": "proj-1775564838075-8kf4",
+    "name": "계리직 공무원 우편",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:18.075Z",
+    "type": "cbt",
+    "categoryCode": "계리직-공무원-우편",
+    "examCount": 1,
+    "questionCount": 20
+  },
+  {
+    "id": "proj-1775564838077-6cil",
+    "name": "계리직공무원 우편 및 금융상식",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:18.077Z",
+    "type": "cbt",
+    "categoryCode": "계리직공무원-우편-및-금융상식",
+    "examCount": 8,
+    "questionCount": 160
+  },
+  {
+    "id": "proj-1775564838079-owox",
+    "name": "계리직공무원 컴퓨터 일반",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:18.079Z",
+    "type": "cbt",
+    "categoryCode": "계리직공무원-컴퓨터-일반",
+    "examCount": 9,
+    "questionCount": 180
+  },
+  {
+    "id": "proj-1775564838081-m34e",
+    "name": "계리직공무원 한국사",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:18.081Z",
+    "type": "cbt",
+    "categoryCode": "계리직공무원-한국사",
+    "examCount": 9,
+    "questionCount": 180
+  },
+  {
+    "id": "proj-1775564838090-ktk9",
+    "name": "공유압기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:18.090Z",
+    "type": "cbt",
+    "categoryCode": "공유압기능사",
+    "examCount": 21,
+    "questionCount": 1260
+  },
+  {
+    "id": "proj-1775564838091-sb5a",
+    "name": "공인노무사 1차(경영학개론)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.091Z",
+    "type": "cbt",
+    "categoryCode": "공인노무사-1차경영학개론",
+    "examCount": 2,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564838093-tpds",
+    "name": "공인노무사 1차(경영학개론)(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.093Z",
+    "type": "cbt",
+    "categoryCode": "공인노무사-1차경영학개론구",
+    "examCount": 10,
+    "questionCount": 250
+  },
+  {
+    "id": "proj-1775564838094-wjs4",
+    "name": "공인노무사 1차(경제학원론)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.094Z",
+    "type": "cbt",
+    "categoryCode": "공인노무사-1차경제학원론",
+    "examCount": 2,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564838098-yrb1",
+    "name": "공인노무사 1차(경제학원론)(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.098Z",
+    "type": "cbt",
+    "categoryCode": "공인노무사-1차경제학원론구",
+    "examCount": 16,
+    "questionCount": 400
+  },
+  {
+    "id": "proj-1775564838099-mtmv",
+    "name": "공인노무사 1차(노동법1)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.099Z",
+    "type": "cbt",
+    "categoryCode": "공인노무사-1차노동법1",
+    "examCount": 2,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564838103-p8xo",
+    "name": "공인노무사 1차(노동법1)(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.103Z",
+    "type": "cbt",
+    "categoryCode": "공인노무사-1차노동법1구",
+    "examCount": 16,
+    "questionCount": 400
+  },
+  {
+    "id": "proj-1775564838104-wpmz",
+    "name": "공인노무사 1차(노동법2)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.104Z",
+    "type": "cbt",
+    "categoryCode": "공인노무사-1차노동법2",
+    "examCount": 2,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564838109-40vk",
+    "name": "공인노무사 1차(노동법2)(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.109Z",
+    "type": "cbt",
+    "categoryCode": "공인노무사-1차노동법2구",
+    "examCount": 16,
+    "questionCount": 400
+  },
+  {
+    "id": "proj-1775564838110-c0kd",
+    "name": "공인노무사 1차(민법)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.110Z",
+    "type": "cbt",
+    "categoryCode": "공인노무사-1차민법",
+    "examCount": 2,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564838114-d6jb",
+    "name": "공인노무사 1차(민법)(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.114Z",
+    "type": "cbt",
+    "categoryCode": "공인노무사-1차민법구",
+    "examCount": 16,
+    "questionCount": 400
+  },
+  {
+    "id": "proj-1775564838115-efzg",
+    "name": "공인노무사 1차(사회보험법)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.115Z",
+    "type": "cbt",
+    "categoryCode": "공인노무사-1차사회보험법",
+    "examCount": 2,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564838118-2fru",
+    "name": "공인노무사 1차(사회보험법)(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.118Z",
+    "type": "cbt",
+    "categoryCode": "공인노무사-1차사회보험법구",
+    "examCount": 10,
+    "questionCount": 250
+  },
+  {
+    "id": "proj-1775564838136-bg3m",
+    "name": "공인중개사 1차",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.136Z",
+    "type": "cbt",
+    "categoryCode": "공인중개사-1차",
+    "examCount": 20,
+    "questionCount": 1600
+  },
+  {
+    "id": "proj-1775564838164-6pen",
+    "name": "공인중개사 2차",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.165Z",
+    "type": "cbt",
+    "categoryCode": "공인중개사-2차",
+    "examCount": 20,
+    "questionCount": 2400
+  },
+  {
+    "id": "proj-1775564838192-k57a",
+    "name": "공조냉동기계기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:18.192Z",
+    "type": "cbt",
+    "categoryCode": "공조냉동기계기능사",
+    "examCount": 58,
+    "questionCount": 3480
+  },
+  {
+    "id": "proj-1775564838194-xyuc",
+    "name": "공조냉동기계기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:18.194Z",
+    "type": "cbt",
+    "categoryCode": "공조냉동기계기사",
+    "examCount": 2,
+    "questionCount": 160
+  },
+  {
+    "id": "proj-1775564838235-fshc",
+    "name": "공조냉동기계기사(구)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:18.235Z",
+    "type": "cbt",
+    "categoryCode": "공조냉동기계기사구",
+    "examCount": 49,
+    "questionCount": 4900
+  },
+  {
+    "id": "proj-1775564838276-dez3",
+    "name": "공조냉동기계산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:18.276Z",
+    "type": "cbt",
+    "categoryCode": "공조냉동기계산업기사",
+    "examCount": 52,
+    "questionCount": 4160
+  },
+  {
+    "id": "proj-1775564838278-u04r",
+    "name": "관광통역안내사",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.278Z",
+    "type": "cbt",
+    "categoryCode": "관광통역안내사",
+    "examCount": 3,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564838284-hcm2",
+    "name": "관광통역안내사 1교시(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.284Z",
+    "type": "cbt",
+    "categoryCode": "관광통역안내사-1교시구",
+    "examCount": 13,
+    "questionCount": 650
+  },
+  {
+    "id": "proj-1775564838292-oxv4",
+    "name": "관광통역안내사 2교시(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.292Z",
+    "type": "cbt",
+    "categoryCode": "관광통역안내사-2교시구",
+    "examCount": 14,
+    "questionCount": 700
+  },
+  {
+    "id": "proj-1775564838296-1vzv",
+    "name": "관세사 관세법개론",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.296Z",
+    "type": "cbt",
+    "categoryCode": "관세사-관세법개론",
+    "examCount": 11,
+    "questionCount": 440
+  },
+  {
+    "id": "proj-1775564838301-96vz",
+    "name": "관세사 내국소비세법",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.301Z",
+    "type": "cbt",
+    "categoryCode": "관세사-내국소비세법",
+    "examCount": 11,
+    "questionCount": 440
+  },
+  {
+    "id": "proj-1775564838305-fuhr",
+    "name": "관세사 무역영어",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.305Z",
+    "type": "cbt",
+    "categoryCode": "관세사-무역영어",
+    "examCount": 11,
+    "questionCount": 440
+  },
+  {
+    "id": "proj-1775564838309-uggv",
+    "name": "관세사 회계학",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.309Z",
+    "type": "cbt",
+    "categoryCode": "관세사-회계학",
+    "examCount": 11,
+    "questionCount": 440
+  },
+  {
+    "id": "proj-1775564838315-z757",
+    "name": "광고도장기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:18.315Z",
+    "type": "cbt",
+    "categoryCode": "광고도장기능사",
+    "examCount": 13,
+    "questionCount": 780
+  },
+  {
+    "id": "proj-1775564838320-wwtf",
+    "name": "광학기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:18.320Z",
+    "type": "cbt",
+    "categoryCode": "광학기능사",
+    "examCount": 6,
+    "questionCount": 360
+  },
+  {
+    "id": "proj-1775564838328-pvty",
+    "name": "광학기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:18.328Z",
+    "type": "cbt",
+    "categoryCode": "광학기사",
+    "examCount": 12,
+    "questionCount": 960
+  },
+  {
+    "id": "proj-1775564838378-rwym",
+    "name": "교통기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:18.378Z",
+    "type": "cbt",
+    "categoryCode": "교통기사",
+    "examCount": 50,
+    "questionCount": 6000
+  },
+  {
+    "id": "proj-1775564838381-bq5z",
+    "name": "교통산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:18.381Z",
+    "type": "cbt",
+    "categoryCode": "교통산업기사",
+    "examCount": 3,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564838386-3wl1",
+    "name": "국내여행안내사 1차",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.386Z",
+    "type": "cbt",
+    "categoryCode": "국내여행안내사-1차",
+    "examCount": 12,
+    "questionCount": 600
+  },
+  {
+    "id": "proj-1775564838404-mmsx",
+    "name": "굴착기운전기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:18.404Z",
+    "type": "cbt",
+    "categoryCode": "굴착기운전기능사",
+    "examCount": 31,
+    "questionCount": 1860
+  },
+  {
+    "id": "proj-1775564838409-d7q4",
+    "name": "귀금속가공기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:18.409Z",
+    "type": "cbt",
+    "categoryCode": "귀금속가공기능사",
+    "examCount": 9,
+    "questionCount": 540
+  },
+  {
+    "id": "proj-1775564838411-3l0e",
+    "name": "귀금속가공기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:18.411Z",
+    "type": "cbt",
+    "categoryCode": "귀금속가공기능장",
+    "examCount": 4,
+    "questionCount": 240
+  },
+  {
+    "id": "proj-1775564838414-vhyg",
+    "name": "귀금속가공산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:18.414Z",
+    "type": "cbt",
+    "categoryCode": "귀금속가공산업기사",
+    "examCount": 5,
+    "questionCount": 400
+  },
+  {
+    "id": "proj-1775564838422-76e4",
+    "name": "금속도장기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:18.422Z",
+    "type": "cbt",
+    "categoryCode": "금속도장기능사",
+    "examCount": 19,
+    "questionCount": 1140
+  },
+  {
+    "id": "proj-1775564838433-l7vm",
+    "name": "금속재료기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:18.433Z",
+    "type": "cbt",
+    "categoryCode": "금속재료기능장",
+    "examCount": 22,
+    "questionCount": 1320
+  },
+  {
+    "id": "proj-1775564838445-oph6",
+    "name": "금속재료기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:18.445Z",
+    "type": "cbt",
+    "categoryCode": "금속재료기사",
+    "examCount": 15,
+    "questionCount": 1500
+  },
+  {
+    "id": "proj-1775564838470-rpza",
+    "name": "금속재료산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:18.470Z",
+    "type": "cbt",
+    "categoryCode": "금속재료산업기사",
+    "examCount": 41,
+    "questionCount": 3280
+  },
+  {
+    "id": "proj-1775564838477-jnsu",
+    "name": "금속재료시험기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:18.477Z",
+    "type": "cbt",
+    "categoryCode": "금속재료시험기능사",
+    "examCount": 17,
+    "questionCount": 1020
+  },
+  {
+    "id": "proj-1775564838485-rtme",
+    "name": "금형기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:18.485Z",
+    "type": "cbt",
+    "categoryCode": "금형기능사",
+    "examCount": 14,
+    "questionCount": 840
+  },
+  {
+    "id": "proj-1775564838491-oi2y",
+    "name": "금형제작기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:18.491Z",
+    "type": "cbt",
+    "categoryCode": "금형제작기능장",
+    "examCount": 13,
+    "questionCount": 780
+  },
+  {
+    "id": "proj-1775564838504-ksna",
+    "name": "기계가공기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:18.504Z",
+    "type": "cbt",
+    "categoryCode": "기계가공기능장",
+    "examCount": 28,
+    "questionCount": 1680
+  },
+  {
+    "id": "proj-1775564838513-irdj",
+    "name": "기계가공조립기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:18.513Z",
+    "type": "cbt",
+    "categoryCode": "기계가공조립기능사",
+    "examCount": 18,
+    "questionCount": 1080
+  },
+  {
+    "id": "proj-1775564838521-qk2k",
+    "name": "기계설계기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:18.521Z",
+    "type": "cbt",
+    "categoryCode": "기계설계기사",
+    "examCount": 11,
+    "questionCount": 880
+  },
+  {
+    "id": "proj-1775564838556-jlts",
+    "name": "기계설계산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:18.556Z",
+    "type": "cbt",
+    "categoryCode": "기계설계산업기사",
+    "examCount": 55,
+    "questionCount": 4400
+  },
+  {
+    "id": "proj-1775564838559-7dor",
+    "name": "기계정비기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:18.559Z",
+    "type": "cbt",
+    "categoryCode": "기계정비기능사",
+    "examCount": 6,
+    "questionCount": 360
+  },
+  {
+    "id": "proj-1775564838572-54qz",
+    "name": "기계조립산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:18.572Z",
+    "type": "cbt",
+    "categoryCode": "기계조립산업기사",
+    "examCount": 25,
+    "questionCount": 1500
+  },
+  {
+    "id": "proj-1775564838591-a5my",
+    "name": "기상기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:18.591Z",
+    "type": "cbt",
+    "categoryCode": "기상기사",
+    "examCount": 25,
+    "questionCount": 2500
+  },
+  {
+    "id": "proj-1775564838594-z21k",
+    "name": "남성복기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:18.594Z",
+    "type": "cbt",
+    "categoryCode": "남성복기능사",
+    "examCount": 4,
+    "questionCount": 240
+  },
+  {
+    "id": "proj-1775564838614-7azi",
+    "name": "네트워크관리사 1급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.614Z",
+    "type": "cbt",
+    "categoryCode": "네트워크관리사-1급",
+    "examCount": 44,
+    "questionCount": 2640
+  },
+  {
+    "id": "proj-1775564838651-ue9y",
+    "name": "네트워크관리사 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.651Z",
+    "type": "cbt",
+    "categoryCode": "네트워크관리사-2급",
+    "examCount": 88,
+    "questionCount": 4400
+  },
+  {
+    "id": "proj-1775564838657-5p1e",
+    "name": "농기계운전기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:18.657Z",
+    "type": "cbt",
+    "categoryCode": "농기계운전기능사",
+    "examCount": 12,
+    "questionCount": 720
+  },
+  {
+    "id": "proj-1775564838659-5e3x",
+    "name": "농림토양평가관리산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:18.659Z",
+    "type": "cbt",
+    "categoryCode": "농림토양평가관리산업기사",
+    "examCount": 3,
+    "questionCount": 240
+  },
+  {
+    "id": "proj-1775564838671-03e2",
+    "name": "농산물품질관리사 1차",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.671Z",
+    "type": "cbt",
+    "categoryCode": "농산물품질관리사-1차",
+    "examCount": 14,
+    "questionCount": 1400
+  },
+  {
+    "id": "proj-1775564838675-nyj8",
+    "name": "농업기계기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:18.675Z",
+    "type": "cbt",
+    "categoryCode": "농업기계기사",
+    "examCount": 4,
+    "questionCount": 400
+  },
+  {
+    "id": "proj-1775564838679-22i1",
+    "name": "농업기계산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:18.679Z",
+    "type": "cbt",
+    "categoryCode": "농업기계산업기사",
+    "examCount": 7,
+    "questionCount": 560
+  },
+  {
+    "id": "proj-1775564838692-78jb",
+    "name": "농업기계정비기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:18.692Z",
+    "type": "cbt",
+    "categoryCode": "농업기계정비기능사",
+    "examCount": 27,
+    "questionCount": 1620
+  },
+  {
+    "id": "proj-1775564838696-kxj5",
+    "name": "농작업안전보건기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:18.696Z",
+    "type": "cbt",
+    "categoryCode": "농작업안전보건기사",
+    "examCount": 4,
+    "questionCount": 320
+  },
+  {
+    "id": "proj-1775564838704-lvr7",
+    "name": "누설비파괴검사기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:18.704Z",
+    "type": "cbt",
+    "categoryCode": "누설비파괴검사기사",
+    "examCount": 14,
+    "questionCount": 1120
+  },
+  {
+    "id": "proj-1775564838709-53a3",
+    "name": "누설비파괴검사기사(구)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:18.709Z",
+    "type": "cbt",
+    "categoryCode": "누설비파괴검사기사구",
+    "examCount": 6,
+    "questionCount": 600
+  },
+  {
+    "id": "proj-1775564838766-4ytv",
+    "name": "대기환경기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:18.766Z",
+    "type": "cbt",
+    "categoryCode": "대기환경기사",
+    "examCount": 61,
+    "questionCount": 6099
+  },
+  {
+    "id": "proj-1775564838809-xnrn",
+    "name": "대기환경산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:18.809Z",
+    "type": "cbt",
+    "categoryCode": "대기환경산업기사",
+    "examCount": 57,
+    "questionCount": 4560
+  },
+  {
+    "id": "proj-1775564838867-nmya",
+    "name": "도시계획기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:18.867Z",
+    "type": "cbt",
+    "categoryCode": "도시계획기사",
+    "examCount": 59,
+    "questionCount": 5900
+  },
+  {
+    "id": "proj-1775564838871-dr70",
+    "name": "도자기공예기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:18.871Z",
+    "type": "cbt",
+    "categoryCode": "도자기공예기능사",
+    "examCount": 7,
+    "questionCount": 420
+  },
+  {
+    "id": "proj-1775564838874-3h6n",
+    "name": "디지털영상편집 1급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.874Z",
+    "type": "cbt",
+    "categoryCode": "디지털영상편집-1급",
+    "examCount": 10,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564838876-uvak",
+    "name": "디지털영상편집 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.876Z",
+    "type": "cbt",
+    "categoryCode": "디지털영상편집-2급",
+    "examCount": 11,
+    "questionCount": 275
+  },
+  {
+    "id": "proj-1775564838885-bz89",
+    "name": "디지털인쇄산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:18.885Z",
+    "type": "cbt",
+    "categoryCode": "디지털인쇄산업기사",
+    "examCount": 14,
+    "questionCount": 1120
+  },
+  {
+    "id": "proj-1775564838920-d5mn",
+    "name": "리눅스마스터 1급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.920Z",
+    "type": "cbt",
+    "categoryCode": "리눅스마스터-1급",
+    "examCount": 43,
+    "questionCount": 4300
+  },
+  {
+    "id": "proj-1775564838960-9g8l",
+    "name": "리눅스마스터 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.960Z",
+    "type": "cbt",
+    "categoryCode": "리눅스마스터-2급",
+    "examCount": 61,
+    "questionCount": 4880
+  },
+  {
+    "id": "proj-1775564838973-4tbu",
+    "name": "멀티미디어콘텐츠제작전문가",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.973Z",
+    "type": "cbt",
+    "categoryCode": "멀티미디어콘텐츠제작전문가",
+    "examCount": 18,
+    "questionCount": 1440
+  },
+  {
+    "id": "proj-1775564838998-tg42",
+    "name": "멀티미디어콘텐츠제작전문가(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:18.998Z",
+    "type": "cbt",
+    "categoryCode": "멀티미디어콘텐츠제작전문가구",
+    "examCount": 25,
+    "questionCount": 2500
+  },
+  {
+    "id": "proj-1775564839002-eh7t",
+    "name": "모터그레이더운전기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:19.002Z",
+    "type": "cbt",
+    "categoryCode": "모터그레이더운전기능사",
+    "examCount": 9,
+    "questionCount": 540
+  },
+  {
+    "id": "proj-1775564839007-akbo",
+    "name": "목공예기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:19.007Z",
+    "type": "cbt",
+    "categoryCode": "목공예기능사",
+    "examCount": 9,
+    "questionCount": 540
+  },
+  {
+    "id": "proj-1775564839015-ozqo",
+    "name": "무선설비기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:19.015Z",
+    "type": "cbt",
+    "categoryCode": "무선설비기능사",
+    "examCount": 16,
+    "questionCount": 960
+  },
+  {
+    "id": "proj-1775564839070-zvat",
+    "name": "무선설비기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:19.070Z",
+    "type": "cbt",
+    "categoryCode": "무선설비기사",
+    "examCount": 70,
+    "questionCount": 7000
+  },
+  {
+    "id": "proj-1775564839118-udz2",
+    "name": "무선설비산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:19.118Z",
+    "type": "cbt",
+    "categoryCode": "무선설비산업기사",
+    "examCount": 61,
+    "questionCount": 4880
+  },
+  {
+    "id": "proj-1775564839140-587a",
+    "name": "물류관리사 1교시",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.140Z",
+    "type": "cbt",
+    "categoryCode": "물류관리사-1교시",
+    "examCount": 19,
+    "questionCount": 2279
+  },
+  {
+    "id": "proj-1775564839158-je6i",
+    "name": "물류관리사 2교시",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.158Z",
+    "type": "cbt",
+    "categoryCode": "물류관리사-2교시",
+    "examCount": 19,
+    "questionCount": 1520
+  },
+  {
+    "id": "proj-1775564839161-33u2",
+    "name": "미용사(네일)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.161Z",
+    "type": "cbt",
+    "categoryCode": "미용사네일",
+    "examCount": 7,
+    "questionCount": 420
+  },
+  {
+    "id": "proj-1775564839175-59rt",
+    "name": "미용사(일반)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.175Z",
+    "type": "cbt",
+    "categoryCode": "미용사일반",
+    "examCount": 32,
+    "questionCount": 1920
+  },
+  {
+    "id": "proj-1775564839184-p7qw",
+    "name": "미용사(피부)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.184Z",
+    "type": "cbt",
+    "categoryCode": "미용사피부",
+    "examCount": 13,
+    "questionCount": 780
+  },
+  {
+    "id": "proj-1775564839189-6fzf",
+    "name": "미용장",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.189Z",
+    "type": "cbt",
+    "categoryCode": "미용장",
+    "examCount": 11,
+    "questionCount": 660
+  },
+  {
+    "id": "proj-1775564839200-fah9",
+    "name": "바리스타 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.200Z",
+    "type": "cbt",
+    "categoryCode": "바리스타-2급",
+    "examCount": 22,
+    "questionCount": 1320
+  },
+  {
+    "id": "proj-1775564839217-vqax",
+    "name": "바이오화학제품제조기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:19.217Z",
+    "type": "cbt",
+    "categoryCode": "바이오화학제품제조기사",
+    "examCount": 19,
+    "questionCount": 1900
+  },
+  {
+    "id": "proj-1775564839222-95hn",
+    "name": "반도체커스텀레이아웃산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:19.222Z",
+    "type": "cbt",
+    "categoryCode": "반도체커스텀레이아웃산업기사",
+    "examCount": 7,
+    "questionCount": 560
+  },
+  {
+    "id": "proj-1775564839242-6yst",
+    "name": "방사선비파괴검사기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:19.242Z",
+    "type": "cbt",
+    "categoryCode": "방사선비파괴검사기능사",
+    "examCount": 40,
+    "questionCount": 2400
+  },
+  {
+    "id": "proj-1775564839252-4g91",
+    "name": "방사선비파괴검사기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:19.252Z",
+    "type": "cbt",
+    "categoryCode": "방사선비파괴검사기사",
+    "examCount": 14,
+    "questionCount": 1120
+  },
+  {
+    "id": "proj-1775564839269-45kn",
+    "name": "방사선비파괴검사기사(구)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:19.269Z",
+    "type": "cbt",
+    "categoryCode": "방사선비파괴검사기사구",
+    "examCount": 20,
+    "questionCount": 2000
+  },
+  {
+    "id": "proj-1775564839280-k19t",
+    "name": "방사선비파괴검사산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:19.280Z",
+    "type": "cbt",
+    "categoryCode": "방사선비파괴검사산업기사",
+    "examCount": 11,
+    "questionCount": 660
+  },
+  {
+    "id": "proj-1775564839293-oqv0",
+    "name": "방사선비파괴검사산업기사(구)",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:19.293Z",
+    "type": "cbt",
+    "categoryCode": "방사선비파괴검사산업기사구",
+    "examCount": 20,
+    "questionCount": 1600
+  },
+  {
+    "id": "proj-1775564839300-mh8x",
+    "name": "방송통신기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:19.300Z",
+    "type": "cbt",
+    "categoryCode": "방송통신기능사",
+    "examCount": 15,
+    "questionCount": 900
+  },
+  {
+    "id": "proj-1775564839301-k7km",
+    "name": "방송통신기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:19.301Z",
+    "type": "cbt",
+    "categoryCode": "방송통신기사",
+    "examCount": 1,
+    "questionCount": 100
+  },
+  {
+    "id": "proj-1775564839333-qlfh",
+    "name": "방송통신기사(구)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:19.333Z",
+    "type": "cbt",
+    "categoryCode": "방송통신기사구",
+    "examCount": 40,
+    "questionCount": 4000
+  },
+  {
+    "id": "proj-1775564839334-pmlr",
+    "name": "방송통신산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:19.334Z",
+    "type": "cbt",
+    "categoryCode": "방송통신산업기사",
+    "examCount": 1,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564839359-3fjf",
+    "name": "방송통신산업기사(구)",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:19.359Z",
+    "type": "cbt",
+    "categoryCode": "방송통신산업기사구",
+    "examCount": 39,
+    "questionCount": 3120
+  },
+  {
+    "id": "proj-1775564839366-9g80",
+    "name": "방수산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:19.366Z",
+    "type": "cbt",
+    "categoryCode": "방수산업기사",
+    "examCount": 7,
+    "questionCount": 560
+  },
+  {
+    "id": "proj-1775564839371-jdk1",
+    "name": "방재기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:19.371Z",
+    "type": "cbt",
+    "categoryCode": "방재기사",
+    "examCount": 5,
+    "questionCount": 500
+  },
+  {
+    "id": "proj-1775564839376-kijk",
+    "name": "배관기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:19.376Z",
+    "type": "cbt",
+    "categoryCode": "배관기능사",
+    "examCount": 11,
+    "questionCount": 660
+  },
+  {
+    "id": "proj-1775564839390-i4sh",
+    "name": "배관기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:19.390Z",
+    "type": "cbt",
+    "categoryCode": "배관기능장",
+    "examCount": 27,
+    "questionCount": 1620
+  },
+  {
+    "id": "proj-1775564839399-ffm1",
+    "name": "버섯종균기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:19.399Z",
+    "type": "cbt",
+    "categoryCode": "버섯종균기능사",
+    "examCount": 16,
+    "questionCount": 960
+  },
+  {
+    "id": "proj-1775564839407-spkv",
+    "name": "법조윤리",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.407Z",
+    "type": "cbt",
+    "categoryCode": "법조윤리",
+    "examCount": 16,
+    "questionCount": 640
+  },
+  {
+    "id": "proj-1775564839416-p8n7",
+    "name": "변리사 1차(1교시)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.416Z",
+    "type": "cbt",
+    "categoryCode": "변리사-1차1교시",
+    "examCount": 16,
+    "questionCount": 640
+  },
+  {
+    "id": "proj-1775564839425-jmz7",
+    "name": "변리사 1차(2교시)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.425Z",
+    "type": "cbt",
+    "categoryCode": "변리사-1차2교시",
+    "examCount": 16,
+    "questionCount": 640
+  },
+  {
+    "id": "proj-1775564839433-6pw8",
+    "name": "변리사 1차(3교시)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.433Z",
+    "type": "cbt",
+    "categoryCode": "변리사-1차3교시",
+    "examCount": 16,
+    "questionCount": 640
+  },
+  {
+    "id": "proj-1775564839435-soor",
+    "name": "보석가공기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:19.435Z",
+    "type": "cbt",
+    "categoryCode": "보석가공기능사",
+    "examCount": 4,
+    "questionCount": 240
+  },
+  {
+    "id": "proj-1775564839448-euzd",
+    "name": "보석감정사(기능사)",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:19.448Z",
+    "type": "cbt",
+    "categoryCode": "보석감정사기능사",
+    "examCount": 30,
+    "questionCount": 1800
+  },
+  {
+    "id": "proj-1775564839460-7aw4",
+    "name": "비서 1급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.460Z",
+    "type": "cbt",
+    "categoryCode": "비서-1급",
+    "examCount": 15,
+    "questionCount": 1180
+  },
+  {
+    "id": "proj-1775564839470-x9vk",
+    "name": "비서 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.470Z",
+    "type": "cbt",
+    "categoryCode": "비서-2급",
+    "examCount": 15,
+    "questionCount": 1187
+  },
+  {
+    "id": "proj-1775564839477-dgy4",
+    "name": "비서 3급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.477Z",
+    "type": "cbt",
+    "categoryCode": "비서-3급",
+    "examCount": 13,
+    "questionCount": 775
+  },
+  {
+    "id": "proj-1775564839514-8kgj",
+    "name": "사무자동화산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:19.514Z",
+    "type": "cbt",
+    "categoryCode": "사무자동화산업기사",
+    "examCount": 60,
+    "questionCount": 4800
+  },
+  {
+    "id": "proj-1775564839533-z2ke",
+    "name": "사진기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:19.533Z",
+    "type": "cbt",
+    "categoryCode": "사진기능사",
+    "examCount": 35,
+    "questionCount": 2100
+  },
+  {
+    "id": "proj-1775564839557-0vzr",
+    "name": "사출(프레스)금형산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:19.557Z",
+    "type": "cbt",
+    "categoryCode": "사출프레스금형산업기사",
+    "examCount": 39,
+    "questionCount": 2340
+  },
+  {
+    "id": "proj-1775564839565-ufpm",
+    "name": "사출(프레스)금형설계기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:19.565Z",
+    "type": "cbt",
+    "categoryCode": "사출프레스금형설계기사",
+    "examCount": 10,
+    "questionCount": 800
+  },
+  {
+    "id": "proj-1775564839571-yunk",
+    "name": "사회복지사 1급(1교시)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.571Z",
+    "type": "cbt",
+    "categoryCode": "사회복지사-1급1교시",
+    "examCount": 12,
+    "questionCount": 600
+  },
+  {
+    "id": "proj-1775564839574-w3u1",
+    "name": "사회복지사 1급(1교시)(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.574Z",
+    "type": "cbt",
+    "categoryCode": "사회복지사-1급1교시구",
+    "examCount": 2,
+    "questionCount": 120
+  },
+  {
+    "id": "proj-1775564839582-azb4",
+    "name": "사회복지사 1급(2교시)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.582Z",
+    "type": "cbt",
+    "categoryCode": "사회복지사-1급2교시",
+    "examCount": 12,
+    "questionCount": 900
+  },
+  {
+    "id": "proj-1775564839585-jpp5",
+    "name": "사회복지사 1급(2교시)(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.585Z",
+    "type": "cbt",
+    "categoryCode": "사회복지사-1급2교시구",
+    "examCount": 2,
+    "questionCount": 180
+  },
+  {
+    "id": "proj-1775564839593-xsso",
+    "name": "사회복지사 1급(3교시)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.593Z",
+    "type": "cbt",
+    "categoryCode": "사회복지사-1급3교시",
+    "examCount": 12,
+    "questionCount": 900
+  },
+  {
+    "id": "proj-1775564839595-re7i",
+    "name": "사회복지사 1급(3교시)(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.595Z",
+    "type": "cbt",
+    "categoryCode": "사회복지사-1급3교시구",
+    "examCount": 2,
+    "questionCount": 180
+  },
+  {
+    "id": "proj-1775564839603-vmvy",
+    "name": "사회조사분석사 1급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.603Z",
+    "type": "cbt",
+    "categoryCode": "사회조사분석사-1급",
+    "examCount": 8,
+    "questionCount": 800
+  },
+  {
+    "id": "proj-1775564839645-adkp",
+    "name": "사회조사분석사 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.645Z",
+    "type": "cbt",
+    "categoryCode": "사회조사분석사-2급",
+    "examCount": 46,
+    "questionCount": 4600
+  },
+  {
+    "id": "proj-1775564839664-hud3",
+    "name": "산림기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:19.664Z",
+    "type": "cbt",
+    "categoryCode": "산림기능사",
+    "examCount": 36,
+    "questionCount": 2160
+  },
+  {
+    "id": "proj-1775564839711-jguu",
+    "name": "산림기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:19.711Z",
+    "type": "cbt",
+    "categoryCode": "산림기사",
+    "examCount": 55,
+    "questionCount": 5500
+  },
+  {
+    "id": "proj-1775564839742-yxz9",
+    "name": "산림산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:19.742Z",
+    "type": "cbt",
+    "categoryCode": "산림산업기사",
+    "examCount": 42,
+    "questionCount": 3360
+  },
+  {
+    "id": "proj-1775564839744-vgw1",
+    "name": "산림산업기사(구60문항)",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:19.744Z",
+    "type": "cbt",
+    "categoryCode": "산림산업기사구60문항",
+    "examCount": 4,
+    "questionCount": 240
+  },
+  {
+    "id": "proj-1775564839754-a50s",
+    "name": "산업보건지도사",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.754Z",
+    "type": "cbt",
+    "categoryCode": "산업보건지도사",
+    "examCount": 13,
+    "questionCount": 975
+  },
+  {
+    "id": "proj-1775564839813-gyua",
+    "name": "산업안전기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:19.813Z",
+    "type": "cbt",
+    "categoryCode": "산업안전기사",
+    "examCount": 60,
+    "questionCount": 7199
+  },
+  {
+    "id": "proj-1775564839862-4che",
+    "name": "산업안전산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:19.862Z",
+    "type": "cbt",
+    "categoryCode": "산업안전산업기사",
+    "examCount": 55,
+    "questionCount": 5500
+  },
+  {
+    "id": "proj-1775564839883-6q21",
+    "name": "산업안전지도사",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:19.883Z",
+    "type": "cbt",
+    "categoryCode": "산업안전지도사",
+    "examCount": 13,
+    "questionCount": 975
+  },
+  {
+    "id": "proj-1775564839934-cx6w",
+    "name": "산업위생관리기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:19.934Z",
+    "type": "cbt",
+    "categoryCode": "산업위생관리기사",
+    "examCount": 59,
+    "questionCount": 5900
+  },
+  {
+    "id": "proj-1775564839970-gpv4",
+    "name": "산업위생관리산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:19.970Z",
+    "type": "cbt",
+    "categoryCode": "산업위생관리산업기사",
+    "examCount": 48,
+    "questionCount": 3840
+  },
+  {
+    "id": "proj-1775564839980-2qkq",
+    "name": "생물분류기사(동물)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:19.980Z",
+    "type": "cbt",
+    "categoryCode": "생물분류기사동물",
+    "examCount": 11,
+    "questionCount": 1100
+  },
+  {
+    "id": "proj-1775564839990-sfsm",
+    "name": "생물분류기사(식물)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:19.990Z",
+    "type": "cbt",
+    "categoryCode": "생물분류기사식물",
+    "examCount": 10,
+    "questionCount": 1000
+  },
+  {
+    "id": "proj-1775564840005-9n9e",
+    "name": "생산자동화기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:20.005Z",
+    "type": "cbt",
+    "categoryCode": "생산자동화기능사",
+    "examCount": 23,
+    "questionCount": 1380
+  },
+  {
+    "id": "proj-1775564840035-phy5",
+    "name": "생산자동화산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:20.035Z",
+    "type": "cbt",
+    "categoryCode": "생산자동화산업기사",
+    "examCount": 48,
+    "questionCount": 3840
+  },
+  {
+    "id": "proj-1775564840037-orj4",
+    "name": "석공예기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:20.037Z",
+    "type": "cbt",
+    "categoryCode": "석공예기능사",
+    "examCount": 4,
+    "questionCount": 240
+  },
+  {
+    "id": "proj-1775564840039-ktfp",
+    "name": "선박기관정비기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:20.039Z",
+    "type": "cbt",
+    "categoryCode": "선박기관정비기능사",
+    "examCount": 3,
+    "questionCount": 180
+  },
+  {
+    "id": "proj-1775564840042-r95n",
+    "name": "선체건조기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:20.042Z",
+    "type": "cbt",
+    "categoryCode": "선체건조기능사",
+    "examCount": 7,
+    "questionCount": 420
+  },
+  {
+    "id": "proj-1775564840045-gkw2",
+    "name": "선체설계기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:20.045Z",
+    "type": "cbt",
+    "categoryCode": "선체설계기능사",
+    "examCount": 5,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564840054-72u5",
+    "name": "설비보전기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:20.054Z",
+    "type": "cbt",
+    "categoryCode": "설비보전기능사",
+    "examCount": 18,
+    "questionCount": 1080
+  },
+  {
+    "id": "proj-1775564840055-pt1x",
+    "name": "설비보전기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:20.055Z",
+    "type": "cbt",
+    "categoryCode": "설비보전기사",
+    "examCount": 2,
+    "questionCount": 160
+  },
+  {
+    "id": "proj-1775564840075-p837",
+    "name": "설비보전기사(구)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:20.075Z",
+    "type": "cbt",
+    "categoryCode": "설비보전기사구",
+    "examCount": 25,
+    "questionCount": 2500
+  },
+  {
+    "id": "proj-1775564840104-nuys",
+    "name": "설비보전산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:20.104Z",
+    "type": "cbt",
+    "categoryCode": "설비보전산업기사",
+    "examCount": 48,
+    "questionCount": 3840
+  },
+  {
+    "id": "proj-1775564840107-rory",
+    "name": "섬유디자인산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:20.107Z",
+    "type": "cbt",
+    "categoryCode": "섬유디자인산업기사",
+    "examCount": 3,
+    "questionCount": 240
+  },
+  {
+    "id": "proj-1775564840123-zfll",
+    "name": "세탁기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:20.123Z",
+    "type": "cbt",
+    "categoryCode": "세탁기능사",
+    "examCount": 35,
+    "questionCount": 2099
+  },
+  {
+    "id": "proj-1775564840124-dpaa",
+    "name": "소방공무원(경력) 생활영어(구)",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:20.124Z",
+    "type": "cbt",
+    "categoryCode": "소방공무원경력-생활영어구",
+    "examCount": 5,
+    "questionCount": 99
+  },
+  {
+    "id": "proj-1775564840125-xidw",
+    "name": "소방공무원(경력) 소방관계법규",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:20.125Z",
+    "type": "cbt",
+    "categoryCode": "소방공무원경력-소방관계법규",
+    "examCount": 3,
+    "questionCount": 120
+  },
+  {
+    "id": "proj-1775564840127-ck9f",
+    "name": "소방공무원(경력) 소방관계법규(구)",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:20.127Z",
+    "type": "cbt",
+    "categoryCode": "소방공무원경력-소방관계법규구",
+    "examCount": 5,
+    "questionCount": 100
+  },
+  {
+    "id": "proj-1775564840128-vuiq",
+    "name": "소방공무원(경력) 응급처치학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:20.128Z",
+    "type": "cbt",
+    "categoryCode": "소방공무원경력-응급처치학개론",
+    "examCount": 3,
+    "questionCount": 120
+  },
+  {
+    "id": "proj-1775564840129-1fts",
+    "name": "소방공무원(경력) 컴퓨터일반",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:20.129Z",
+    "type": "cbt",
+    "categoryCode": "소방공무원경력-컴퓨터일반",
+    "examCount": 3,
+    "questionCount": 120
+  },
+  {
+    "id": "proj-1775564840130-ds7s",
+    "name": "소방공무원(경력) 화학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:20.130Z",
+    "type": "cbt",
+    "categoryCode": "소방공무원경력-화학개론",
+    "examCount": 3,
+    "questionCount": 120
+  },
+  {
+    "id": "proj-1775564840131-lqg3",
+    "name": "소방공무원(공개,경력) 국어(구)",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:20.131Z",
+    "type": "cbt",
+    "categoryCode": "소방공무원공개경력-국어구",
+    "examCount": 7,
+    "questionCount": 122
+  },
+  {
+    "id": "proj-1775564840131-byh2",
+    "name": "소방공무원(공개,경력) 소방학개론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:20.131Z",
+    "type": "cbt",
+    "categoryCode": "소방공무원공개경력-소방학개론",
+    "examCount": 3,
+    "questionCount": 75
+  },
+  {
+    "id": "proj-1775564840133-aewu",
+    "name": "소방공무원(공개,경력) 소방학개론(구)",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:20.133Z",
+    "type": "cbt",
+    "categoryCode": "소방공무원공개경력-소방학개론구",
+    "examCount": 7,
+    "questionCount": 140
+  },
+  {
+    "id": "proj-1775564840134-ij9o",
+    "name": "소방공무원(공개,경력) 영어(구)",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:20.134Z",
+    "type": "cbt",
+    "categoryCode": "소방공무원공개경력-영어구",
+    "examCount": 5,
+    "questionCount": 100
+  },
+  {
+    "id": "proj-1775564840135-wn18",
+    "name": "소방공무원(공개) 과학(구)",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:20.135Z",
+    "type": "cbt",
+    "categoryCode": "소방공무원공개-과학구",
+    "examCount": 4,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564840136-23xr",
+    "name": "소방공무원(공개) 사회(구)",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:20.136Z",
+    "type": "cbt",
+    "categoryCode": "소방공무원공개-사회구",
+    "examCount": 4,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564840137-jpgr",
+    "name": "소방공무원(공개) 소방관계법규",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:20.137Z",
+    "type": "cbt",
+    "categoryCode": "소방공무원공개-소방관계법규",
+    "examCount": 3,
+    "questionCount": 75
+  },
+  {
+    "id": "proj-1775564840138-qkjb",
+    "name": "소방공무원(공개) 소방관계법규(구)",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:20.138Z",
+    "type": "cbt",
+    "categoryCode": "소방공무원공개-소방관계법규구",
+    "examCount": 6,
+    "questionCount": 120
+  },
+  {
+    "id": "proj-1775564840139-8q2y",
+    "name": "소방공무원(공개) 수학(구)",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:20.139Z",
+    "type": "cbt",
+    "categoryCode": "소방공무원공개-수학구",
+    "examCount": 4,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564840141-1im1",
+    "name": "소방공무원(공개) 한국사(구)",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:20.141Z",
+    "type": "cbt",
+    "categoryCode": "소방공무원공개-한국사구",
+    "examCount": 7,
+    "questionCount": 140
+  },
+  {
+    "id": "proj-1775564840142-ugle",
+    "name": "소방공무원(공개) 행정법총론",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:20.142Z",
+    "type": "cbt",
+    "categoryCode": "소방공무원공개-행정법총론",
+    "examCount": 3,
+    "questionCount": 75
+  },
+  {
+    "id": "proj-1775564840143-3mt1",
+    "name": "소방공무원(공개) 행정법총론(구)",
+    "icon": "📋",
+    "createdAt": "2026-04-07T12:27:20.143Z",
+    "type": "cbt",
+    "categoryCode": "소방공무원공개-행정법총론구",
+    "examCount": 5,
+    "questionCount": 100
+  },
+  {
+    "id": "proj-1775564840183-w867",
+    "name": "소방설비기사(기계분야)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:20.183Z",
+    "type": "cbt",
+    "categoryCode": "소방설비기사기계분야",
+    "examCount": 59,
+    "questionCount": 4720
+  },
+  {
+    "id": "proj-1775564840227-dly5",
+    "name": "소방설비기사(전기분야)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:20.227Z",
+    "type": "cbt",
+    "categoryCode": "소방설비기사전기분야",
+    "examCount": 59,
+    "questionCount": 4720
+  },
+  {
+    "id": "proj-1775564840266-7njm",
+    "name": "소방설비산업기사(기계)",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:20.266Z",
+    "type": "cbt",
+    "categoryCode": "소방설비산업기사기계",
+    "examCount": 56,
+    "questionCount": 4480
+  },
+  {
+    "id": "proj-1775564840303-axxf",
+    "name": "소방설비산업기사(전기)",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:20.303Z",
+    "type": "cbt",
+    "categoryCode": "소방설비산업기사전기",
+    "examCount": 52,
+    "questionCount": 4160
+  },
+  {
+    "id": "proj-1775564840326-7xul",
+    "name": "소방시설관리사",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:20.326Z",
+    "type": "cbt",
+    "categoryCode": "소방시설관리사",
+    "examCount": 15,
+    "questionCount": 1875
+  },
+  {
+    "id": "proj-1775564840344-zdxm",
+    "name": "소비자전문상담사 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:20.344Z",
+    "type": "cbt",
+    "categoryCode": "소비자전문상담사-2급",
+    "examCount": 20,
+    "questionCount": 2000
+  },
+  {
+    "id": "proj-1775564840346-7v40",
+    "name": "소음진동기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:20.346Z",
+    "type": "cbt",
+    "categoryCode": "소음진동기사",
+    "examCount": 1,
+    "questionCount": 80
+  },
+  {
+    "id": "proj-1775564840376-ni6z",
+    "name": "소음진동기사(구)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:20.376Z",
+    "type": "cbt",
+    "categoryCode": "소음진동기사구",
+    "examCount": 34,
+    "questionCount": 3400
+  },
+  {
+    "id": "proj-1775564840387-zav1",
+    "name": "소음진동산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:20.387Z",
+    "type": "cbt",
+    "categoryCode": "소음진동산업기사",
+    "examCount": 14,
+    "questionCount": 1120
+  },
+  {
+    "id": "proj-1775564840395-x0oy",
+    "name": "손해평가사",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:20.395Z",
+    "type": "cbt",
+    "categoryCode": "손해평가사",
+    "examCount": 11,
+    "questionCount": 825
+  },
+  {
+    "id": "proj-1775564840402-1ziu",
+    "name": "수능(경제)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.402Z",
+    "type": "cbt",
+    "categoryCode": "수능경제",
+    "examCount": 33,
+    "questionCount": 650
+  },
+  {
+    "id": "proj-1775564840409-7xkq",
+    "name": "수능(국사)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.409Z",
+    "type": "cbt",
+    "categoryCode": "수능국사",
+    "examCount": 34,
+    "questionCount": 676
+  },
+  {
+    "id": "proj-1775564840419-iig2",
+    "name": "수능(국어영역)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.419Z",
+    "type": "cbt",
+    "categoryCode": "수능국어영역",
+    "examCount": 28,
+    "questionCount": 898
+  },
+  {
+    "id": "proj-1775564840426-jg3t",
+    "name": "수능(동아시아사)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.426Z",
+    "type": "cbt",
+    "categoryCode": "수능동아시아사",
+    "examCount": 26,
+    "questionCount": 517
+  },
+  {
+    "id": "proj-1775564840444-ksve",
+    "name": "수능(물리I)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.444Z",
+    "type": "cbt",
+    "categoryCode": "수능물리i",
+    "examCount": 72,
+    "questionCount": 1435
+  },
+  {
+    "id": "proj-1775564840461-o2uw",
+    "name": "수능(물리II)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.461Z",
+    "type": "cbt",
+    "categoryCode": "수능물리ii",
+    "examCount": 63,
+    "questionCount": 1246
+  },
+  {
+    "id": "proj-1775564840467-73s4",
+    "name": "수능(법과정치)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.467Z",
+    "type": "cbt",
+    "categoryCode": "수능법과정치",
+    "examCount": 26,
+    "questionCount": 507
+  },
+  {
+    "id": "proj-1775564840479-3ybr",
+    "name": "수능(생명과학I)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.479Z",
+    "type": "cbt",
+    "categoryCode": "수능생명과학i",
+    "examCount": 47,
+    "questionCount": 940
+  },
+  {
+    "id": "proj-1775564840490-j6ff",
+    "name": "수능(생명과학II)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.490Z",
+    "type": "cbt",
+    "categoryCode": "수능생명과학ii",
+    "examCount": 42,
+    "questionCount": 835
+  },
+  {
+    "id": "proj-1775564840495-oheg",
+    "name": "수능(생활과윤리)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.495Z",
+    "type": "cbt",
+    "categoryCode": "수능생활과윤리",
+    "examCount": 27,
+    "questionCount": 540
+  },
+  {
+    "id": "proj-1775564840502-acsi",
+    "name": "수능(세계사)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.502Z",
+    "type": "cbt",
+    "categoryCode": "수능세계사",
+    "examCount": 33,
+    "questionCount": 657
+  },
+  {
+    "id": "proj-1775564840513-arkv",
+    "name": "수능(세계지리)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.513Z",
+    "type": "cbt",
+    "categoryCode": "수능세계지리",
+    "examCount": 53,
+    "questionCount": 1045
+  },
+  {
+    "id": "proj-1775564840519-od7a",
+    "name": "수능(윤리와사상)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.519Z",
+    "type": "cbt",
+    "categoryCode": "수능윤리와사상",
+    "examCount": 27,
+    "questionCount": 538
+  },
+  {
+    "id": "proj-1775564840529-wn1e",
+    "name": "수능(지구과학I)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.529Z",
+    "type": "cbt",
+    "categoryCode": "수능지구과학i",
+    "examCount": 48,
+    "questionCount": 959
+  },
+  {
+    "id": "proj-1775564840540-fr0d",
+    "name": "수능(지구과학II)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.540Z",
+    "type": "cbt",
+    "categoryCode": "수능지구과학ii",
+    "examCount": 42,
+    "questionCount": 836
+  },
+  {
+    "id": "proj-1775564840547-dt1t",
+    "name": "수능(한국근ㆍ현대사)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.547Z",
+    "type": "cbt",
+    "categoryCode": "수능한국근현대사",
+    "examCount": 34,
+    "questionCount": 673
+  },
+  {
+    "id": "proj-1775564840552-lpma",
+    "name": "수능(한국사)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.552Z",
+    "type": "cbt",
+    "categoryCode": "수능한국사",
+    "examCount": 26,
+    "questionCount": 518
+  },
+  {
+    "id": "proj-1775564840569-v8el",
+    "name": "수능(한국지리)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.569Z",
+    "type": "cbt",
+    "categoryCode": "수능한국지리",
+    "examCount": 75,
+    "questionCount": 1499
+  },
+  {
+    "id": "proj-1775564840589-sjqd",
+    "name": "수능(화학I)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.589Z",
+    "type": "cbt",
+    "categoryCode": "수능화학i",
+    "examCount": 71,
+    "questionCount": 1417
+  },
+  {
+    "id": "proj-1775564840605-ch1l",
+    "name": "수능(화학II)",
+    "icon": "📖",
+    "createdAt": "2026-04-07T12:27:20.605Z",
+    "type": "cbt",
+    "categoryCode": "수능화학ii",
+    "examCount": 64,
+    "questionCount": 1269
+  },
+  {
+    "id": "proj-1775564840614-vu73",
+    "name": "수산물품질관리사 1차",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:20.614Z",
+    "type": "cbt",
+    "categoryCode": "수산물품질관리사-1차",
+    "examCount": 11,
+    "questionCount": 1100
+  },
+  {
+    "id": "proj-1775564840617-ugqb",
+    "name": "수산양식기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:20.617Z",
+    "type": "cbt",
+    "categoryCode": "수산양식기능사",
+    "examCount": 6,
+    "questionCount": 360
+  },
+  {
+    "id": "proj-1775564840644-z6zr",
+    "name": "수산양식기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:20.644Z",
+    "type": "cbt",
+    "categoryCode": "수산양식기사",
+    "examCount": 36,
+    "questionCount": 3600
+  },
+  {
+    "id": "proj-1775564840652-utsx",
+    "name": "수산양식산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:20.652Z",
+    "type": "cbt",
+    "categoryCode": "수산양식산업기사",
+    "examCount": 11,
+    "questionCount": 1100
+  },
+  {
+    "id": "proj-1775564840656-8li1",
+    "name": "수산제조기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:20.656Z",
+    "type": "cbt",
+    "categoryCode": "수산제조기사",
+    "examCount": 4,
+    "questionCount": 400
+  },
+  {
+    "id": "proj-1775564840715-3e13",
+    "name": "수질환경기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:20.715Z",
+    "type": "cbt",
+    "categoryCode": "수질환경기사",
+    "examCount": 59,
+    "questionCount": 5900
+  },
+  {
+    "id": "proj-1775564840762-yxow",
+    "name": "수질환경산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:20.762Z",
+    "type": "cbt",
+    "categoryCode": "수질환경산업기사",
+    "examCount": 55,
+    "questionCount": 4400
+  },
+  {
+    "id": "proj-1775564840769-vxa1",
+    "name": "스포츠경영관리사",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:20.769Z",
+    "type": "cbt",
+    "categoryCode": "스포츠경영관리사",
+    "examCount": 7,
+    "questionCount": 700
+  },
+  {
+    "id": "proj-1775564840791-58pf",
+    "name": "승강기기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:20.791Z",
+    "type": "cbt",
+    "categoryCode": "승강기기능사",
+    "examCount": 46,
+    "questionCount": 2760
+  },
+  {
+    "id": "proj-1775564840823-z919",
+    "name": "승강기기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:20.823Z",
+    "type": "cbt",
+    "categoryCode": "승강기기사",
+    "examCount": 46,
+    "questionCount": 3680
+  },
+  {
+    "id": "proj-1775564840843-26v6",
+    "name": "승강기산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:20.843Z",
+    "type": "cbt",
+    "categoryCode": "승강기산업기사",
+    "examCount": 30,
+    "questionCount": 2400
+  },
+  {
+    "id": "proj-1775564840858-psks",
+    "name": "시각디자인기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:20.858Z",
+    "type": "cbt",
+    "categoryCode": "시각디자인기사",
+    "examCount": 19,
+    "questionCount": 1900
+  },
+  {
+    "id": "proj-1775564840893-60np",
+    "name": "시각디자인산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:20.893Z",
+    "type": "cbt",
+    "categoryCode": "시각디자인산업기사",
+    "examCount": 54,
+    "questionCount": 4320
+  },
+  {
+    "id": "proj-1775564840903-oeh7",
+    "name": "시설원예기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:20.903Z",
+    "type": "cbt",
+    "categoryCode": "시설원예기사",
+    "examCount": 9,
+    "questionCount": 900
+  },
+  {
+    "id": "proj-1775564840945-zuii",
+    "name": "식물보호기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:20.945Z",
+    "type": "cbt",
+    "categoryCode": "식물보호기사",
+    "examCount": 57,
+    "questionCount": 5700
+  },
+  {
+    "id": "proj-1775564840976-bei4",
+    "name": "식물보호산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:20.976Z",
+    "type": "cbt",
+    "categoryCode": "식물보호산업기사",
+    "examCount": 36,
+    "questionCount": 2880
+  },
+  {
+    "id": "proj-1775564840978-rlhj",
+    "name": "식육가공기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:20.978Z",
+    "type": "cbt",
+    "categoryCode": "식육가공기사",
+    "examCount": 2,
+    "questionCount": 200
+  },
+  {
+    "id": "proj-1775564840983-28qk",
+    "name": "식품가공기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:20.983Z",
+    "type": "cbt",
+    "categoryCode": "식품가공기능사",
+    "examCount": 10,
+    "questionCount": 600
+  },
+  {
+    "id": "proj-1775564841002-icrh",
+    "name": "식품산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:21.002Z",
+    "type": "cbt",
+    "categoryCode": "식품산업기사",
+    "examCount": 25,
+    "questionCount": 2500
+  },
+  {
+    "id": "proj-1775564841020-uhwk",
+    "name": "식품산업기사(구)",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:21.020Z",
+    "type": "cbt",
+    "categoryCode": "식품산업기사구",
+    "examCount": 28,
+    "questionCount": 2240
+  },
+  {
+    "id": "proj-1775564841060-i9f6",
+    "name": "식품안전기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:21.060Z",
+    "type": "cbt",
+    "categoryCode": "식품안전기사",
+    "examCount": 60,
+    "questionCount": 6000
+  },
+  {
+    "id": "proj-1775564841063-3ads",
+    "name": "신발류제조기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.063Z",
+    "type": "cbt",
+    "categoryCode": "신발류제조기능사",
+    "examCount": 4,
+    "questionCount": 240
+  },
+  {
+    "id": "proj-1775564841065-hce1",
+    "name": "신재생에너지발전설비기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.065Z",
+    "type": "cbt",
+    "categoryCode": "신재생에너지발전설비기능사",
+    "examCount": 5,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564841072-ad4t",
+    "name": "신재생에너지발전설비기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:21.072Z",
+    "type": "cbt",
+    "categoryCode": "신재생에너지발전설비기사",
+    "examCount": 8,
+    "questionCount": 640
+  },
+  {
+    "id": "proj-1775564841084-vkjt",
+    "name": "신재생에너지발전설비기사(구)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:21.084Z",
+    "type": "cbt",
+    "categoryCode": "신재생에너지발전설비기사구",
+    "examCount": 15,
+    "questionCount": 1500
+  },
+  {
+    "id": "proj-1775564841093-5au6",
+    "name": "신재생에너지발전설비산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:21.093Z",
+    "type": "cbt",
+    "categoryCode": "신재생에너지발전설비산업기사",
+    "examCount": 12,
+    "questionCount": 960
+  },
+  {
+    "id": "proj-1775564841122-87ut",
+    "name": "실내건축기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.122Z",
+    "type": "cbt",
+    "categoryCode": "실내건축기능사",
+    "examCount": 61,
+    "questionCount": 3659
+  },
+  {
+    "id": "proj-1775564841124-jxbe",
+    "name": "실내건축기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:21.124Z",
+    "type": "cbt",
+    "categoryCode": "실내건축기사",
+    "examCount": 2,
+    "questionCount": 160
+  },
+  {
+    "id": "proj-1775564841171-jw0d",
+    "name": "실내건축기사(구)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:21.171Z",
+    "type": "cbt",
+    "categoryCode": "실내건축기사구",
+    "examCount": 50,
+    "questionCount": 6000
+  },
+  {
+    "id": "proj-1775564841208-ktxy",
+    "name": "실내건축산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:21.208Z",
+    "type": "cbt",
+    "categoryCode": "실내건축산업기사",
+    "examCount": 42,
+    "questionCount": 3360
+  },
+  {
+    "id": "proj-1775564841217-hy81",
+    "name": "압연기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.217Z",
+    "type": "cbt",
+    "categoryCode": "압연기능사",
+    "examCount": 16,
+    "questionCount": 960
+  },
+  {
+    "id": "proj-1775564841227-iran",
+    "name": "압연기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:21.227Z",
+    "type": "cbt",
+    "categoryCode": "압연기능장",
+    "examCount": 19,
+    "questionCount": 1140
+  },
+  {
+    "id": "proj-1775564841234-67o5",
+    "name": "양화장치운전기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.234Z",
+    "type": "cbt",
+    "categoryCode": "양화장치운전기능사",
+    "examCount": 14,
+    "questionCount": 840
+  },
+  {
+    "id": "proj-1775564841243-ur08",
+    "name": "어로산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:21.243Z",
+    "type": "cbt",
+    "categoryCode": "어로산업기사",
+    "examCount": 14,
+    "questionCount": 1120
+  },
+  {
+    "id": "proj-1775564841248-2nq0",
+    "name": "어업생산관리기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:21.248Z",
+    "type": "cbt",
+    "categoryCode": "어업생산관리기사",
+    "examCount": 6,
+    "questionCount": 600
+  },
+  {
+    "id": "proj-1775564841278-k6hy",
+    "name": "에너지관리기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.278Z",
+    "type": "cbt",
+    "categoryCode": "에너지관리기능사",
+    "examCount": 59,
+    "questionCount": 3540
+  },
+  {
+    "id": "proj-1775564841292-dwsb",
+    "name": "에너지관리기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:21.292Z",
+    "type": "cbt",
+    "categoryCode": "에너지관리기능장",
+    "examCount": 26,
+    "questionCount": 1560
+  },
+  {
+    "id": "proj-1775564841343-6thn",
+    "name": "에너지관리기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:21.343Z",
+    "type": "cbt",
+    "categoryCode": "에너지관리기사",
+    "examCount": 54,
+    "questionCount": 5400
+  },
+  {
+    "id": "proj-1775564841375-1wh3",
+    "name": "에너지관리산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:21.375Z",
+    "type": "cbt",
+    "categoryCode": "에너지관리산업기사",
+    "examCount": 33,
+    "questionCount": 2640
+  },
+  {
+    "id": "proj-1775564841393-a3ev",
+    "name": "여성복기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.393Z",
+    "type": "cbt",
+    "categoryCode": "여성복기능사",
+    "examCount": 38,
+    "questionCount": 2280
+  },
+  {
+    "id": "proj-1775564841398-34l2",
+    "name": "연구실안전관리사",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:21.398Z",
+    "type": "cbt",
+    "categoryCode": "연구실안전관리사",
+    "examCount": 4,
+    "questionCount": 560
+  },
+  {
+    "id": "proj-1775564841402-5erz",
+    "name": "연삭기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.402Z",
+    "type": "cbt",
+    "categoryCode": "연삭기능사",
+    "examCount": 8,
+    "questionCount": 480
+  },
+  {
+    "id": "proj-1775564841410-wbze",
+    "name": "열처리기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.410Z",
+    "type": "cbt",
+    "categoryCode": "열처리기능사",
+    "examCount": 17,
+    "questionCount": 1020
+  },
+  {
+    "id": "proj-1775564841412-ksgx",
+    "name": "염색기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.412Z",
+    "type": "cbt",
+    "categoryCode": "염색기능사",
+    "examCount": 3,
+    "questionCount": 180
+  },
+  {
+    "id": "proj-1775564841420-saz8",
+    "name": "영사기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.420Z",
+    "type": "cbt",
+    "categoryCode": "영사기능사",
+    "examCount": 15,
+    "questionCount": 900
+  },
+  {
+    "id": "proj-1775564841425-55gk",
+    "name": "영상정보관리사",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:21.425Z",
+    "type": "cbt",
+    "categoryCode": "영상정보관리사",
+    "examCount": 17,
+    "questionCount": 680
+  },
+  {
+    "id": "proj-1775564841439-h1bd",
+    "name": "온실가스관리기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:21.439Z",
+    "type": "cbt",
+    "categoryCode": "온실가스관리기사",
+    "examCount": 15,
+    "questionCount": 1500
+  },
+  {
+    "id": "proj-1775564841445-hh04",
+    "name": "와전류비파괴검사기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:21.445Z",
+    "type": "cbt",
+    "categoryCode": "와전류비파괴검사기사",
+    "examCount": 8,
+    "questionCount": 640
+  },
+  {
+    "id": "proj-1775564841454-gzki",
+    "name": "와전류비파괴검사기사(구)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:21.454Z",
+    "type": "cbt",
+    "categoryCode": "와전류비파괴검사기사구",
+    "examCount": 8,
+    "questionCount": 800
+  },
+  {
+    "id": "proj-1775564841468-cdc7",
+    "name": "용접기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.468Z",
+    "type": "cbt",
+    "categoryCode": "용접기능사",
+    "examCount": 29,
+    "questionCount": 1740
+  },
+  {
+    "id": "proj-1775564841479-h3y7",
+    "name": "용접기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:21.479Z",
+    "type": "cbt",
+    "categoryCode": "용접기능장",
+    "examCount": 20,
+    "questionCount": 1200
+  },
+  {
+    "id": "proj-1775564841511-q3dy",
+    "name": "용접기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:21.511Z",
+    "type": "cbt",
+    "categoryCode": "용접기사",
+    "examCount": 34,
+    "questionCount": 3400
+  },
+  {
+    "id": "proj-1775564841534-pwjs",
+    "name": "용접산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:21.534Z",
+    "type": "cbt",
+    "categoryCode": "용접산업기사",
+    "examCount": 43,
+    "questionCount": 2580
+  },
+  {
+    "id": "proj-1775564841545-yx7n",
+    "name": "운전면허 학과시험(필기) 1종 2종(2020년판)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:21.545Z",
+    "type": "cbt",
+    "categoryCode": "운전면허-학과시험필기-1종-2종2020년판",
+    "examCount": 10,
+    "questionCount": 1000
+  },
+  {
+    "id": "proj-1775564841551-366m",
+    "name": "운전면허 학과시험(필기) 2종 소형 이륜(2020년판)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:21.551Z",
+    "type": "cbt",
+    "categoryCode": "운전면허-학과시험필기-2종-소형-이륜2020년판",
+    "examCount": 5,
+    "questionCount": 500
+  },
+  {
+    "id": "proj-1775564841586-3rlo",
+    "name": "워드프로세서 (구 1급)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:21.586Z",
+    "type": "cbt",
+    "categoryCode": "워드프로세서-구-1급",
+    "examCount": 64,
+    "questionCount": 3840
+  },
+  {
+    "id": "proj-1775564841608-eb7n",
+    "name": "워드프로세서 2급(폐지)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:21.608Z",
+    "type": "cbt",
+    "categoryCode": "워드프로세서-2급폐지",
+    "examCount": 41,
+    "questionCount": 2460
+  },
+  {
+    "id": "proj-1775564841621-v5wo",
+    "name": "워드프로세서 3급(폐지)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:21.621Z",
+    "type": "cbt",
+    "categoryCode": "워드프로세서-3급폐지",
+    "examCount": 40,
+    "questionCount": 1600
+  },
+  {
+    "id": "proj-1775564841627-kzj5",
+    "name": "원예기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.627Z",
+    "type": "cbt",
+    "categoryCode": "원예기능사",
+    "examCount": 11,
+    "questionCount": 660
+  },
+  {
+    "id": "proj-1775564841645-5jpe",
+    "name": "원자력기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:21.645Z",
+    "type": "cbt",
+    "categoryCode": "원자력기사",
+    "examCount": 17,
+    "questionCount": 1700
+  },
+  {
+    "id": "proj-1775564841647-81il",
+    "name": "원형기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.647Z",
+    "type": "cbt",
+    "categoryCode": "원형기능사",
+    "examCount": 3,
+    "questionCount": 180
+  },
+  {
+    "id": "proj-1775564841666-7ihv",
+    "name": "웹디자인개발기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.666Z",
+    "type": "cbt",
+    "categoryCode": "웹디자인개발기능사",
+    "examCount": 39,
+    "questionCount": 2340
+  },
+  {
+    "id": "proj-1775564841695-ms5i",
+    "name": "위험물기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.695Z",
+    "type": "cbt",
+    "categoryCode": "위험물기능사",
+    "examCount": 62,
+    "questionCount": 3720
+  },
+  {
+    "id": "proj-1775564841713-u5x0",
+    "name": "위험물기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:21.713Z",
+    "type": "cbt",
+    "categoryCode": "위험물기능장",
+    "examCount": 33,
+    "questionCount": 1980
+  },
+  {
+    "id": "proj-1775564841741-3duq",
+    "name": "위험물산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:21.741Z",
+    "type": "cbt",
+    "categoryCode": "위험물산업기사",
+    "examCount": 57,
+    "questionCount": 3420
+  },
+  {
+    "id": "proj-1775564841760-bvkv",
+    "name": "유기농업기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.760Z",
+    "type": "cbt",
+    "categoryCode": "유기농업기능사",
+    "examCount": 22,
+    "questionCount": 1320
+  },
+  {
+    "id": "proj-1775564841792-6733",
+    "name": "유기농업기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:21.793Z",
+    "type": "cbt",
+    "categoryCode": "유기농업기사",
+    "examCount": 42,
+    "questionCount": 4200
+  },
+  {
+    "id": "proj-1775564841799-g465",
+    "name": "유기농업산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:21.799Z",
+    "type": "cbt",
+    "categoryCode": "유기농업산업기사",
+    "examCount": 10,
+    "questionCount": 800
+  },
+  {
+    "id": "proj-1775564841812-sjy7",
+    "name": "유통관리사 1급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:21.812Z",
+    "type": "cbt",
+    "categoryCode": "유통관리사-1급",
+    "examCount": 13,
+    "questionCount": 1300
+  },
+  {
+    "id": "proj-1775564841846-miwl",
+    "name": "유통관리사 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:21.846Z",
+    "type": "cbt",
+    "categoryCode": "유통관리사-2급",
+    "examCount": 39,
+    "questionCount": 3510
+  },
+  {
+    "id": "proj-1775564841863-2xkt",
+    "name": "유통관리사 3급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:21.863Z",
+    "type": "cbt",
+    "categoryCode": "유통관리사-3급",
+    "examCount": 33,
+    "questionCount": 1485
+  },
+  {
+    "id": "proj-1775564841870-c5qx",
+    "name": "육상무선통신사",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:21.870Z",
+    "type": "cbt",
+    "categoryCode": "육상무선통신사",
+    "examCount": 22,
+    "questionCount": 1100
+  },
+  {
+    "id": "proj-1775564841908-7ref",
+    "name": "응용지질기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:21.908Z",
+    "type": "cbt",
+    "categoryCode": "응용지질기사",
+    "examCount": 40,
+    "questionCount": 4000
+  },
+  {
+    "id": "proj-1775564841928-63u5",
+    "name": "의공기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:21.928Z",
+    "type": "cbt",
+    "categoryCode": "의공기사",
+    "examCount": 19,
+    "questionCount": 1900
+  },
+  {
+    "id": "proj-1775564841939-sw6c",
+    "name": "의공산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:21.939Z",
+    "type": "cbt",
+    "categoryCode": "의공산업기사",
+    "examCount": 13,
+    "questionCount": 1300
+  },
+  {
+    "id": "proj-1775564841946-tf0m",
+    "name": "의료전자기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.946Z",
+    "type": "cbt",
+    "categoryCode": "의료전자기능사",
+    "examCount": 10,
+    "questionCount": 600
+  },
+  {
+    "id": "proj-1775564841950-xdrc",
+    "name": "의류기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:21.950Z",
+    "type": "cbt",
+    "categoryCode": "의류기사",
+    "examCount": 5,
+    "questionCount": 500
+  },
+  {
+    "id": "proj-1775564841961-14u2",
+    "name": "이용사",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:21.961Z",
+    "type": "cbt",
+    "categoryCode": "이용사",
+    "examCount": 25,
+    "questionCount": 1500
+  },
+  {
+    "id": "proj-1775564841965-wzke",
+    "name": "이용장",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:21.965Z",
+    "type": "cbt",
+    "categoryCode": "이용장",
+    "examCount": 6,
+    "questionCount": 360
+  },
+  {
+    "id": "proj-1775564841986-oxgy",
+    "name": "인간공학기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:21.986Z",
+    "type": "cbt",
+    "categoryCode": "인간공학기사",
+    "examCount": 31,
+    "questionCount": 2480
+  },
+  {
+    "id": "proj-1775564841994-kk6b",
+    "name": "인쇄기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:21.994Z",
+    "type": "cbt",
+    "categoryCode": "인쇄기능사",
+    "examCount": 15,
+    "questionCount": 900
+  },
+  {
+    "id": "proj-1775564842005-u356",
+    "name": "인쇄설계기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:22.005Z",
+    "type": "cbt",
+    "categoryCode": "인쇄설계기사",
+    "examCount": 14,
+    "questionCount": 1400
+  },
+  {
+    "id": "proj-1775564842025-uqi5",
+    "name": "인터넷보안전문가 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:22.025Z",
+    "type": "cbt",
+    "categoryCode": "인터넷보안전문가-2급",
+    "examCount": 39,
+    "questionCount": 2340
+  },
+  {
+    "id": "proj-1775564842055-ii7l",
+    "name": "인터넷정보관리사 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:22.055Z",
+    "type": "cbt",
+    "categoryCode": "인터넷정보관리사-2급",
+    "examCount": 47,
+    "questionCount": 3760
+  },
+  {
+    "id": "proj-1775564842106-rm1t",
+    "name": "일반기계기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:22.106Z",
+    "type": "cbt",
+    "categoryCode": "일반기계기사",
+    "examCount": 51,
+    "questionCount": 5100
+  },
+  {
+    "id": "proj-1775564842125-w1fz",
+    "name": "임베디드기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:22.125Z",
+    "type": "cbt",
+    "categoryCode": "임베디드기능사",
+    "examCount": 34,
+    "questionCount": 2040
+  },
+  {
+    "id": "proj-1775564842129-3tjk",
+    "name": "임산가공기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:22.129Z",
+    "type": "cbt",
+    "categoryCode": "임산가공기능사",
+    "examCount": 8,
+    "questionCount": 480
+  },
+  {
+    "id": "proj-1775564842137-5u6c",
+    "name": "임산가공기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:22.137Z",
+    "type": "cbt",
+    "categoryCode": "임산가공기사",
+    "examCount": 8,
+    "questionCount": 800
+  },
+  {
+    "id": "proj-1775564842139-wqpo",
+    "name": "임산가공산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:22.139Z",
+    "type": "cbt",
+    "categoryCode": "임산가공산업기사",
+    "examCount": 3,
+    "questionCount": 240
+  },
+  {
+    "id": "proj-1775564842145-wit3",
+    "name": "임상심리사 1급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:22.145Z",
+    "type": "cbt",
+    "categoryCode": "임상심리사-1급",
+    "examCount": 6,
+    "questionCount": 600
+  },
+  {
+    "id": "proj-1775564842168-l9ty",
+    "name": "임상심리사 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:22.168Z",
+    "type": "cbt",
+    "categoryCode": "임상심리사-2급",
+    "examCount": 25,
+    "questionCount": 2500
+  },
+  {
+    "id": "proj-1775564842174-if6u",
+    "name": "임업종묘기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:22.174Z",
+    "type": "cbt",
+    "categoryCode": "임업종묘기능사",
+    "examCount": 13,
+    "questionCount": 780
+  },
+  {
+    "id": "proj-1775564842184-5655",
+    "name": "임업종묘기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:22.184Z",
+    "type": "cbt",
+    "categoryCode": "임업종묘기사",
+    "examCount": 13,
+    "questionCount": 1040
+  },
+  {
+    "id": "proj-1775564842200-v80w",
+    "name": "자기비파괴검사기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:22.200Z",
+    "type": "cbt",
+    "categoryCode": "자기비파괴검사기능사",
+    "examCount": 35,
+    "questionCount": 2100
+  },
+  {
+    "id": "proj-1775564842213-tinj",
+    "name": "자기비파괴검사기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:22.213Z",
+    "type": "cbt",
+    "categoryCode": "자기비파괴검사기사",
+    "examCount": 16,
+    "questionCount": 1280
+  },
+  {
+    "id": "proj-1775564842231-tbeb",
+    "name": "자기비파괴검사기사(구)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:22.231Z",
+    "type": "cbt",
+    "categoryCode": "자기비파괴검사기사구",
+    "examCount": 22,
+    "questionCount": 2200
+  },
+  {
+    "id": "proj-1775564842237-oldf",
+    "name": "자기비파괴검사산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:22.237Z",
+    "type": "cbt",
+    "categoryCode": "자기비파괴검사산업기사",
+    "examCount": 11,
+    "questionCount": 660
+  },
+  {
+    "id": "proj-1775564842250-k6jg",
+    "name": "자기비파괴검사산업기사(구)",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:22.250Z",
+    "type": "cbt",
+    "categoryCode": "자기비파괴검사산업기사구",
+    "examCount": 18,
+    "questionCount": 1440
+  },
+  {
+    "id": "proj-1775564842259-u1in",
+    "name": "자동차보수도장기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:22.259Z",
+    "type": "cbt",
+    "categoryCode": "자동차보수도장기능사",
+    "examCount": 18,
+    "questionCount": 1080
+  },
+  {
+    "id": "proj-1775564842291-8vrr",
+    "name": "자동차정비기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:22.291Z",
+    "type": "cbt",
+    "categoryCode": "자동차정비기능사",
+    "examCount": 51,
+    "questionCount": 3060
+  },
+  {
+    "id": "proj-1775564842303-mo1u",
+    "name": "자동차정비기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:22.303Z",
+    "type": "cbt",
+    "categoryCode": "자동차정비기능장",
+    "examCount": 27,
+    "questionCount": 1620
+  },
+  {
+    "id": "proj-1775564842331-70tt",
+    "name": "자동차정비기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:22.331Z",
+    "type": "cbt",
+    "categoryCode": "자동차정비기사",
+    "examCount": 32,
+    "questionCount": 3200
+  },
+  {
+    "id": "proj-1775564842349-p7ht",
+    "name": "자동차정비산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:22.349Z",
+    "type": "cbt",
+    "categoryCode": "자동차정비산업기사",
+    "examCount": 26,
+    "questionCount": 2080
+  },
+  {
+    "id": "proj-1775564842361-7wu8",
+    "name": "자동차차체수리기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:22.361Z",
+    "type": "cbt",
+    "categoryCode": "자동차차체수리기능사",
+    "examCount": 29,
+    "questionCount": 1740
+  },
+  {
+    "id": "proj-1775564842363-lp8v",
+    "name": "자연생태복원기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:22.363Z",
+    "type": "cbt",
+    "categoryCode": "자연생태복원기사",
+    "examCount": 2,
+    "questionCount": 160
+  },
+  {
+    "id": "proj-1775564842401-8kes",
+    "name": "자연생태복원기사(구)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:22.401Z",
+    "type": "cbt",
+    "categoryCode": "자연생태복원기사구",
+    "examCount": 44,
+    "questionCount": 4400
+  },
+  {
+    "id": "proj-1775564842412-svuw",
+    "name": "자연생태복원산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:22.412Z",
+    "type": "cbt",
+    "categoryCode": "자연생태복원산업기사",
+    "examCount": 13,
+    "questionCount": 1040
+  },
+  {
+    "id": "proj-1775564842423-yj8j",
+    "name": "잠수기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:22.423Z",
+    "type": "cbt",
+    "categoryCode": "잠수기능사",
+    "examCount": 20,
+    "questionCount": 1200
+  },
+  {
+    "id": "proj-1775564842431-ix2d",
+    "name": "잠수산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:22.431Z",
+    "type": "cbt",
+    "categoryCode": "잠수산업기사",
+    "examCount": 4,
+    "questionCount": 320
+  },
+  {
+    "id": "proj-1775564842433-dnnl",
+    "name": "잠수산업기사(구)",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:22.433Z",
+    "type": "cbt",
+    "categoryCode": "잠수산업기사구",
+    "examCount": 5,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564842481-vzbq",
+    "name": "전기공사기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:22.481Z",
+    "type": "cbt",
+    "categoryCode": "전기공사기사",
+    "examCount": 58,
+    "questionCount": 5800
+  },
+  {
+    "id": "proj-1775564842527-porh",
+    "name": "전기공사산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:22.527Z",
+    "type": "cbt",
+    "categoryCode": "전기공사산업기사",
+    "examCount": 49,
+    "questionCount": 4900
+  },
+  {
+    "id": "proj-1775564842548-t6bu",
+    "name": "전기기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:22.548Z",
+    "type": "cbt",
+    "categoryCode": "전기기능장",
+    "examCount": 25,
+    "questionCount": 1500
+  },
+  {
+    "id": "proj-1775564842603-qhmu",
+    "name": "전기기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:22.603Z",
+    "type": "cbt",
+    "categoryCode": "전기기사",
+    "examCount": 59,
+    "questionCount": 5900
+  },
+  {
+    "id": "proj-1775564842661-pnds",
+    "name": "전기산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:22.661Z",
+    "type": "cbt",
+    "categoryCode": "전기산업기사",
+    "examCount": 56,
+    "questionCount": 5600
+  },
+  {
+    "id": "proj-1775564842684-0l99",
+    "name": "전기철도기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:22.684Z",
+    "type": "cbt",
+    "categoryCode": "전기철도기사",
+    "examCount": 31,
+    "questionCount": 2480
+  },
+  {
+    "id": "proj-1775564842689-dg3z",
+    "name": "전기철도산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:22.689Z",
+    "type": "cbt",
+    "categoryCode": "전기철도산업기사",
+    "examCount": 6,
+    "questionCount": 480
+  },
+  {
+    "id": "proj-1775564842703-eczn",
+    "name": "전산세무 1급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:22.703Z",
+    "type": "cbt",
+    "categoryCode": "전산세무-1급",
+    "examCount": 83,
+    "questionCount": 1245
+  },
+  {
+    "id": "proj-1775564842718-gom0",
+    "name": "전산세무 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:22.718Z",
+    "type": "cbt",
+    "categoryCode": "전산세무-2급",
+    "examCount": 111,
+    "questionCount": 1665
+  },
+  {
+    "id": "proj-1775564842746-qphb",
+    "name": "전산응용건축제도기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:22.746Z",
+    "type": "cbt",
+    "categoryCode": "전산응용건축제도기능사",
+    "examCount": 55,
+    "questionCount": 3300
+  },
+  {
+    "id": "proj-1775564842775-hd38",
+    "name": "전산응용기계제도기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:22.775Z",
+    "type": "cbt",
+    "categoryCode": "전산응용기계제도기능사",
+    "examCount": 55,
+    "questionCount": 3300
+  },
+  {
+    "id": "proj-1775564842793-44zi",
+    "name": "전산응용토목제도기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:22.793Z",
+    "type": "cbt",
+    "categoryCode": "전산응용토목제도기능사",
+    "examCount": 30,
+    "questionCount": 1800
+  },
+  {
+    "id": "proj-1775564842812-83qa",
+    "name": "전산회계 1급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:22.812Z",
+    "type": "cbt",
+    "categoryCode": "전산회계-1급",
+    "examCount": 97,
+    "questionCount": 1455
+  },
+  {
+    "id": "proj-1775564842823-n0so",
+    "name": "전산회계 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:22.823Z",
+    "type": "cbt",
+    "categoryCode": "전산회계-2급",
+    "examCount": 96,
+    "questionCount": 1440
+  },
+  {
+    "id": "proj-1775564842831-wwks",
+    "name": "전산회계운용사 1급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:22.831Z",
+    "type": "cbt",
+    "categoryCode": "전산회계운용사-1급",
+    "examCount": 12,
+    "questionCount": 720
+  },
+  {
+    "id": "proj-1775564842840-nb5j",
+    "name": "전산회계운용사 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:22.840Z",
+    "type": "cbt",
+    "categoryCode": "전산회계운용사-2급",
+    "examCount": 18,
+    "questionCount": 720
+  },
+  {
+    "id": "proj-1775564842845-37ys",
+    "name": "전산회계운용사 3급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:22.845Z",
+    "type": "cbt",
+    "categoryCode": "전산회계운용사-3급",
+    "examCount": 18,
+    "questionCount": 450
+  },
+  {
+    "id": "proj-1775564842853-scqf",
+    "name": "전자계산기제어산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:22.853Z",
+    "type": "cbt",
+    "categoryCode": "전자계산기제어산업기사",
+    "examCount": 14,
+    "questionCount": 1120
+  },
+  {
+    "id": "proj-1775564842863-ci9y",
+    "name": "전자계산기제어산업기사(구)",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:22.863Z",
+    "type": "cbt",
+    "categoryCode": "전자계산기제어산업기사구",
+    "examCount": 11,
+    "questionCount": 1100
+  },
+  {
+    "id": "proj-1775564842892-3ngz",
+    "name": "전자기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:22.892Z",
+    "type": "cbt",
+    "categoryCode": "전자기능사",
+    "examCount": 59,
+    "questionCount": 3540
+  },
+  {
+    "id": "proj-1775564842907-xd5p",
+    "name": "전자기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:22.907Z",
+    "type": "cbt",
+    "categoryCode": "전자기능장",
+    "examCount": 25,
+    "questionCount": 1500
+  },
+  {
+    "id": "proj-1775564842955-xiu5",
+    "name": "전자기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:22.955Z",
+    "type": "cbt",
+    "categoryCode": "전자기사",
+    "examCount": 53,
+    "questionCount": 5300
+  },
+  {
+    "id": "proj-1775564842999-sbla",
+    "name": "전자산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:22.999Z",
+    "type": "cbt",
+    "categoryCode": "전자산업기사",
+    "examCount": 52,
+    "questionCount": 4160
+  },
+  {
+    "id": "proj-1775564843009-wb5d",
+    "name": "전자상거래관리사 1급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:23.009Z",
+    "type": "cbt",
+    "categoryCode": "전자상거래관리사-1급",
+    "examCount": 11,
+    "questionCount": 1100
+  },
+  {
+    "id": "proj-1775564843014-1sg0",
+    "name": "전자상거래관리사 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:23.014Z",
+    "type": "cbt",
+    "categoryCode": "전자상거래관리사-2급",
+    "examCount": 11,
+    "questionCount": 880
+  },
+  {
+    "id": "proj-1775564843034-hsbz",
+    "name": "전자상거래운용사",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:23.034Z",
+    "type": "cbt",
+    "categoryCode": "전자상거래운용사",
+    "examCount": 41,
+    "questionCount": 2403
+  },
+  {
+    "id": "proj-1775564843050-i99f",
+    "name": "전자출판기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.050Z",
+    "type": "cbt",
+    "categoryCode": "전자출판기능사",
+    "examCount": 33,
+    "questionCount": 1980
+  },
+  {
+    "id": "proj-1775564843067-msvj",
+    "name": "전자캐드기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.067Z",
+    "type": "cbt",
+    "categoryCode": "전자캐드기능사",
+    "examCount": 34,
+    "questionCount": 2040
+  },
+  {
+    "id": "proj-1775564843076-88r6",
+    "name": "전파전자기능사(구)",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.076Z",
+    "type": "cbt",
+    "categoryCode": "전파전자기능사구",
+    "examCount": 19,
+    "questionCount": 1140
+  },
+  {
+    "id": "proj-1775564843087-q2fg",
+    "name": "전파전자통신기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.087Z",
+    "type": "cbt",
+    "categoryCode": "전파전자통신기능사",
+    "examCount": 22,
+    "questionCount": 1320
+  },
+  {
+    "id": "proj-1775564843101-58ou",
+    "name": "전파전자통신기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:23.101Z",
+    "type": "cbt",
+    "categoryCode": "전파전자통신기사",
+    "examCount": 18,
+    "questionCount": 1800
+  },
+  {
+    "id": "proj-1775564843103-knig",
+    "name": "전파통신기능사(구)",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.103Z",
+    "type": "cbt",
+    "categoryCode": "전파통신기능사구",
+    "examCount": 3,
+    "questionCount": 180
+  },
+  {
+    "id": "proj-1775564843105-4gqp",
+    "name": "정밀측정기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.105Z",
+    "type": "cbt",
+    "categoryCode": "정밀측정기능사",
+    "examCount": 4,
+    "questionCount": 240
+  },
+  {
+    "id": "proj-1775564843110-i1ll",
+    "name": "정밀측정산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:23.110Z",
+    "type": "cbt",
+    "categoryCode": "정밀측정산업기사",
+    "examCount": 6,
+    "questionCount": 480
+  },
+  {
+    "id": "proj-1775564843132-zwlb",
+    "name": "정보기기운용기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.132Z",
+    "type": "cbt",
+    "categoryCode": "정보기기운용기능사",
+    "examCount": 43,
+    "questionCount": 2580
+  },
+  {
+    "id": "proj-1775564843150-6wbe",
+    "name": "정보보안기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:23.150Z",
+    "type": "cbt",
+    "categoryCode": "정보보안기사",
+    "examCount": 21,
+    "questionCount": 2100
+  },
+  {
+    "id": "proj-1775564843154-qxq0",
+    "name": "정보처리기능사 실기(베타)",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.154Z",
+    "type": "cbt",
+    "categoryCode": "정보처리기능사-실기베타",
+    "examCount": 31,
+    "questionCount": 465
+  },
+  {
+    "id": "proj-1775564843162-l1kp",
+    "name": "정보처리기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:23.162Z",
+    "type": "cbt",
+    "categoryCode": "정보처리기사",
+    "examCount": 8,
+    "questionCount": 800
+  },
+  {
+    "id": "proj-1775564843212-phnx",
+    "name": "정보처리기사(구)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:23.212Z",
+    "type": "cbt",
+    "categoryCode": "정보처리기사구",
+    "examCount": 58,
+    "questionCount": 5800
+  },
+  {
+    "id": "proj-1775564843277-ua7t",
+    "name": "정보처리산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:23.277Z",
+    "type": "cbt",
+    "categoryCode": "정보처리산업기사",
+    "examCount": 68,
+    "questionCount": 6800
+  },
+  {
+    "id": "proj-1775564843288-6aj0",
+    "name": "정보통신기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.288Z",
+    "type": "cbt",
+    "categoryCode": "정보통신기능사",
+    "examCount": 17,
+    "questionCount": 1020
+  },
+  {
+    "id": "proj-1775564843293-q6o4",
+    "name": "정보통신기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:23.293Z",
+    "type": "cbt",
+    "categoryCode": "정보통신기사",
+    "examCount": 5,
+    "questionCount": 500
+  },
+  {
+    "id": "proj-1775564843343-onyh",
+    "name": "정보통신기사(구)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:23.343Z",
+    "type": "cbt",
+    "categoryCode": "정보통신기사구",
+    "examCount": 60,
+    "questionCount": 6000
+  },
+  {
+    "id": "proj-1775564843395-cb84",
+    "name": "정보통신산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:23.395Z",
+    "type": "cbt",
+    "categoryCode": "정보통신산업기사",
+    "examCount": 63,
+    "questionCount": 5040
+  },
+  {
+    "id": "proj-1775564843403-iy1z",
+    "name": "정수시설운영관리사 1급 1차",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:23.403Z",
+    "type": "cbt",
+    "categoryCode": "정수시설운영관리사-1급-1차",
+    "examCount": 14,
+    "questionCount": 1120
+  },
+  {
+    "id": "proj-1775564843410-2dzj",
+    "name": "정수시설운영관리사 2급 1차",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:23.410Z",
+    "type": "cbt",
+    "categoryCode": "정수시설운영관리사-2급-1차",
+    "examCount": 12,
+    "questionCount": 960
+  },
+  {
+    "id": "proj-1775564843415-ft58",
+    "name": "정수시설운영관리사 3급 1차",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:23.415Z",
+    "type": "cbt",
+    "categoryCode": "정수시설운영관리사-3급-1차",
+    "examCount": 12,
+    "questionCount": 960
+  },
+  {
+    "id": "proj-1775564843422-njjp",
+    "name": "제강기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.422Z",
+    "type": "cbt",
+    "categoryCode": "제강기능사",
+    "examCount": 13,
+    "questionCount": 780
+  },
+  {
+    "id": "proj-1775564843426-zyct",
+    "name": "제강기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:23.426Z",
+    "type": "cbt",
+    "categoryCode": "제강기능장",
+    "examCount": 7,
+    "questionCount": 420
+  },
+  {
+    "id": "proj-1775564843445-ecez",
+    "name": "제과기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.445Z",
+    "type": "cbt",
+    "categoryCode": "제과기능사",
+    "examCount": 40,
+    "questionCount": 2400
+  },
+  {
+    "id": "proj-1775564843449-xmmw",
+    "name": "제과기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:23.449Z",
+    "type": "cbt",
+    "categoryCode": "제과기능장",
+    "examCount": 8,
+    "questionCount": 480
+  },
+  {
+    "id": "proj-1775564843468-h2ap",
+    "name": "제빵기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.468Z",
+    "type": "cbt",
+    "categoryCode": "제빵기능사",
+    "examCount": 40,
+    "questionCount": 2400
+  },
+  {
+    "id": "proj-1775564843474-s89r",
+    "name": "제선기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.474Z",
+    "type": "cbt",
+    "categoryCode": "제선기능사",
+    "examCount": 12,
+    "questionCount": 720
+  },
+  {
+    "id": "proj-1775564843478-q988",
+    "name": "제선기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:23.478Z",
+    "type": "cbt",
+    "categoryCode": "제선기능장",
+    "examCount": 7,
+    "questionCount": 420
+  },
+  {
+    "id": "proj-1775564843480-67yw",
+    "name": "제품디자인기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:23.480Z",
+    "type": "cbt",
+    "categoryCode": "제품디자인기사",
+    "examCount": 2,
+    "questionCount": 200
+  },
+  {
+    "id": "proj-1775564843485-hiim",
+    "name": "제품디자인산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:23.485Z",
+    "type": "cbt",
+    "categoryCode": "제품디자인산업기사",
+    "examCount": 7,
+    "questionCount": 560
+  },
+  {
+    "id": "proj-1775564843488-acjv",
+    "name": "제품응용모델링기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.488Z",
+    "type": "cbt",
+    "categoryCode": "제품응용모델링기능사",
+    "examCount": 5,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564843512-5zgv",
+    "name": "조경기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.512Z",
+    "type": "cbt",
+    "categoryCode": "조경기능사",
+    "examCount": 50,
+    "questionCount": 3000
+  },
+  {
+    "id": "proj-1775564843572-j6h3",
+    "name": "조경기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:23.572Z",
+    "type": "cbt",
+    "categoryCode": "조경기사",
+    "examCount": 60,
+    "questionCount": 7200
+  },
+  {
+    "id": "proj-1775564843621-6s87",
+    "name": "조경산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:23.621Z",
+    "type": "cbt",
+    "categoryCode": "조경산업기사",
+    "examCount": 56,
+    "questionCount": 4480
+  },
+  {
+    "id": "proj-1775564843625-blx8",
+    "name": "조리기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:23.625Z",
+    "type": "cbt",
+    "categoryCode": "조리기능장",
+    "examCount": 9,
+    "questionCount": 540
+  },
+  {
+    "id": "proj-1775564843633-xj23",
+    "name": "조리산업기사(공통)",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:23.633Z",
+    "type": "cbt",
+    "categoryCode": "조리산업기사공통",
+    "examCount": 13,
+    "questionCount": 1040
+  },
+  {
+    "id": "proj-1775564843638-uoz9",
+    "name": "조선기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:23.638Z",
+    "type": "cbt",
+    "categoryCode": "조선기사",
+    "examCount": 5,
+    "questionCount": 500
+  },
+  {
+    "id": "proj-1775564843642-ywr5",
+    "name": "조선산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:23.642Z",
+    "type": "cbt",
+    "categoryCode": "조선산업기사",
+    "examCount": 5,
+    "questionCount": 400
+  },
+  {
+    "id": "proj-1775564843664-v9l1",
+    "name": "조주기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.664Z",
+    "type": "cbt",
+    "categoryCode": "조주기능사",
+    "examCount": 56,
+    "questionCount": 3360
+  },
+  {
+    "id": "proj-1775564843678-w62b",
+    "name": "종자기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.678Z",
+    "type": "cbt",
+    "categoryCode": "종자기능사",
+    "examCount": 30,
+    "questionCount": 1800
+  },
+  {
+    "id": "proj-1775564843723-1stc",
+    "name": "종자기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:23.723Z",
+    "type": "cbt",
+    "categoryCode": "종자기사",
+    "examCount": 55,
+    "questionCount": 5500
+  },
+  {
+    "id": "proj-1775564843746-g82a",
+    "name": "종자산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:23.746Z",
+    "type": "cbt",
+    "categoryCode": "종자산업기사",
+    "examCount": 31,
+    "questionCount": 2480
+  },
+  {
+    "id": "proj-1775564843754-udwt",
+    "name": "주조기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.754Z",
+    "type": "cbt",
+    "categoryCode": "주조기능사",
+    "examCount": 3,
+    "questionCount": 180
+  },
+  {
+    "id": "proj-1775564843756-pu6g",
+    "name": "주조기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:23.756Z",
+    "type": "cbt",
+    "categoryCode": "주조기능장",
+    "examCount": 4,
+    "questionCount": 240
+  },
+  {
+    "id": "proj-1775564843759-48dq",
+    "name": "주조산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:23.759Z",
+    "type": "cbt",
+    "categoryCode": "주조산업기사",
+    "examCount": 5,
+    "questionCount": 400
+  },
+  {
+    "id": "proj-1775564843784-2id0",
+    "name": "주택관리사보 1차",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:23.784Z",
+    "type": "cbt",
+    "categoryCode": "주택관리사보-1차",
+    "examCount": 18,
+    "questionCount": 2160
+  },
+  {
+    "id": "proj-1775564843803-7z6u",
+    "name": "주택관리사보 2차",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:23.803Z",
+    "type": "cbt",
+    "categoryCode": "주택관리사보-2차",
+    "examCount": 18,
+    "questionCount": 1440
+  },
+  {
+    "id": "proj-1775564843820-l7v1",
+    "name": "지게차운전기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.820Z",
+    "type": "cbt",
+    "categoryCode": "지게차운전기능사",
+    "examCount": 32,
+    "questionCount": 1920
+  },
+  {
+    "id": "proj-1775564843831-qn1x",
+    "name": "지게차유사(롤러,기중기등)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:23.831Z",
+    "type": "cbt",
+    "categoryCode": "지게차유사롤러기중기등",
+    "examCount": 19,
+    "questionCount": 1140
+  },
+  {
+    "id": "proj-1775564843836-hmav",
+    "name": "지능형홈관리사",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:23.836Z",
+    "type": "cbt",
+    "categoryCode": "지능형홈관리사",
+    "examCount": 20,
+    "questionCount": 800
+  },
+  {
+    "id": "proj-1775564843847-j73k",
+    "name": "지적기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:23.847Z",
+    "type": "cbt",
+    "categoryCode": "지적기능사",
+    "examCount": 22,
+    "questionCount": 1320
+  },
+  {
+    "id": "proj-1775564843896-423k",
+    "name": "지적기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:23.896Z",
+    "type": "cbt",
+    "categoryCode": "지적기사",
+    "examCount": 53,
+    "questionCount": 5300
+  },
+  {
+    "id": "proj-1775564843933-5c4s",
+    "name": "지적산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:23.933Z",
+    "type": "cbt",
+    "categoryCode": "지적산업기사",
+    "examCount": 43,
+    "questionCount": 4300
+  },
+  {
+    "id": "proj-1775564843933-1f41",
+    "name": "직업상담사 1급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:23.933Z",
+    "type": "cbt",
+    "categoryCode": "직업상담사-1급",
+    "examCount": 0,
+    "questionCount": 0
+  },
+  {
+    "id": "proj-1775564843936-fx52",
+    "name": "직업상담사 1급(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:23.936Z",
+    "type": "cbt",
+    "categoryCode": "직업상담사-1급구",
+    "examCount": 3,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564843973-nswa",
+    "name": "직업상담사 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:23.973Z",
+    "type": "cbt",
+    "categoryCode": "직업상담사-2급",
+    "examCount": 39,
+    "questionCount": 3900
+  },
+  {
+    "id": "proj-1775564843988-rlw7",
+    "name": "직업상담사 2급(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:23.988Z",
+    "type": "cbt",
+    "categoryCode": "직업상담사-2급구",
+    "examCount": 16,
+    "questionCount": 1600
+  },
+  {
+    "id": "proj-1775564844017-a7vs",
+    "name": "천장크레인운전기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:24.017Z",
+    "type": "cbt",
+    "categoryCode": "천장크레인운전기능사",
+    "examCount": 44,
+    "questionCount": 2640
+  },
+  {
+    "id": "proj-1775564844041-1ss3",
+    "name": "철도신호기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:24.041Z",
+    "type": "cbt",
+    "categoryCode": "철도신호기사",
+    "examCount": 33,
+    "questionCount": 2640
+  },
+  {
+    "id": "proj-1775564844051-uwy2",
+    "name": "철도신호산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:24.051Z",
+    "type": "cbt",
+    "categoryCode": "철도신호산업기사",
+    "examCount": 15,
+    "questionCount": 1200
+  },
+  {
+    "id": "proj-1775564844065-uvkh",
+    "name": "철도운송산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:24.065Z",
+    "type": "cbt",
+    "categoryCode": "철도운송산업기사",
+    "examCount": 21,
+    "questionCount": 1260
+  },
+  {
+    "id": "proj-1775564844071-nrce",
+    "name": "철도차량기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:24.071Z",
+    "type": "cbt",
+    "categoryCode": "철도차량기사",
+    "examCount": 6,
+    "questionCount": 600
+  },
+  {
+    "id": "proj-1775564844072-b8zc",
+    "name": "철도차량정비기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:24.072Z",
+    "type": "cbt",
+    "categoryCode": "철도차량정비기능사",
+    "examCount": 2,
+    "questionCount": 120
+  },
+  {
+    "id": "proj-1775564844075-7mo8",
+    "name": "철도차량정비기능사(구)",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:24.075Z",
+    "type": "cbt",
+    "categoryCode": "철도차량정비기능사구",
+    "examCount": 11,
+    "questionCount": 660
+  },
+  {
+    "id": "proj-1775564844080-boq3",
+    "name": "철도차량정비기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:24.080Z",
+    "type": "cbt",
+    "categoryCode": "철도차량정비기능장",
+    "examCount": 12,
+    "questionCount": 720
+  },
+  {
+    "id": "proj-1775564844084-oojf",
+    "name": "철도토목기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:24.084Z",
+    "type": "cbt",
+    "categoryCode": "철도토목기능사",
+    "examCount": 8,
+    "questionCount": 480
+  },
+  {
+    "id": "proj-1775564844089-cqr7",
+    "name": "철도토목산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:24.089Z",
+    "type": "cbt",
+    "categoryCode": "철도토목산업기사",
+    "examCount": 5,
+    "questionCount": 500
+  },
+  {
+    "id": "proj-1775564844098-vpq2",
+    "name": "청소년상담사 1급(1교시)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:24.098Z",
+    "type": "cbt",
+    "categoryCode": "청소년상담사-1급1교시",
+    "examCount": 10,
+    "questionCount": 750
+  },
+  {
+    "id": "proj-1775564844102-g42l",
+    "name": "청소년상담사 1급(1교시)(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:24.102Z",
+    "type": "cbt",
+    "categoryCode": "청소년상담사-1급1교시구",
+    "examCount": 3,
+    "questionCount": 270
+  },
+  {
+    "id": "proj-1775564844111-io8b",
+    "name": "청소년상담사 1급(2교시)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:24.111Z",
+    "type": "cbt",
+    "categoryCode": "청소년상담사-1급2교시",
+    "examCount": 10,
+    "questionCount": 1000
+  },
+  {
+    "id": "proj-1775564844115-qigc",
+    "name": "청소년상담사 1급(2교시)(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:24.115Z",
+    "type": "cbt",
+    "categoryCode": "청소년상담사-1급2교시구",
+    "examCount": 3,
+    "questionCount": 360
+  },
+  {
+    "id": "proj-1775564844127-07sb",
+    "name": "청소년상담사 2급(1교시)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:24.127Z",
+    "type": "cbt",
+    "categoryCode": "청소년상담사-2급1교시",
+    "examCount": 10,
+    "questionCount": 1000
+  },
+  {
+    "id": "proj-1775564844131-dk1y",
+    "name": "청소년상담사 2급(1교시)(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:24.131Z",
+    "type": "cbt",
+    "categoryCode": "청소년상담사-2급1교시구",
+    "examCount": 3,
+    "questionCount": 360
+  },
+  {
+    "id": "proj-1775564844141-jxkd",
+    "name": "청소년상담사 2급(2교시)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:24.141Z",
+    "type": "cbt",
+    "categoryCode": "청소년상담사-2급2교시",
+    "examCount": 10,
+    "questionCount": 1000
+  },
+  {
+    "id": "proj-1775564844146-bk3f",
+    "name": "청소년상담사 2급(2교시)(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:24.146Z",
+    "type": "cbt",
+    "categoryCode": "청소년상담사-2급2교시구",
+    "examCount": 3,
+    "questionCount": 360
+  },
+  {
+    "id": "proj-1775564844157-2d6h",
+    "name": "청소년상담사 3급(1교시)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:24.157Z",
+    "type": "cbt",
+    "categoryCode": "청소년상담사-3급1교시",
+    "examCount": 10,
+    "questionCount": 1000
+  },
+  {
+    "id": "proj-1775564844161-91z6",
+    "name": "청소년상담사 3급(1교시)(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:24.161Z",
+    "type": "cbt",
+    "categoryCode": "청소년상담사-3급1교시구",
+    "examCount": 3,
+    "questionCount": 360
+  },
+  {
+    "id": "proj-1775564844168-13h5",
+    "name": "청소년상담사 3급(2교시)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:24.168Z",
+    "type": "cbt",
+    "categoryCode": "청소년상담사-3급2교시",
+    "examCount": 10,
+    "questionCount": 750
+  },
+  {
+    "id": "proj-1775564844171-9d50",
+    "name": "청소년상담사 3급(2교시)(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:24.171Z",
+    "type": "cbt",
+    "categoryCode": "청소년상담사-3급2교시구",
+    "examCount": 3,
+    "questionCount": 270
+  },
+  {
+    "id": "proj-1775564844192-1a3g",
+    "name": "초음파비파괴검사기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:24.192Z",
+    "type": "cbt",
+    "categoryCode": "초음파비파괴검사기능사",
+    "examCount": 41,
+    "questionCount": 2460
+  },
+  {
+    "id": "proj-1775564844204-t8cp",
+    "name": "초음파비파괴검사기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:24.204Z",
+    "type": "cbt",
+    "categoryCode": "초음파비파괴검사기사",
+    "examCount": 16,
+    "questionCount": 1280
+  },
+  {
+    "id": "proj-1775564844223-mbna",
+    "name": "초음파비파괴검사기사(구)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:24.223Z",
+    "type": "cbt",
+    "categoryCode": "초음파비파괴검사기사구",
+    "examCount": 21,
+    "questionCount": 2100
+  },
+  {
+    "id": "proj-1775564844235-4dmd",
+    "name": "초음파비파괴검사산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:24.235Z",
+    "type": "cbt",
+    "categoryCode": "초음파비파괴검사산업기사",
+    "examCount": 12,
+    "questionCount": 720
+  },
+  {
+    "id": "proj-1775564844249-jx1d",
+    "name": "초음파비파괴검사산업기사(구)",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:24.249Z",
+    "type": "cbt",
+    "categoryCode": "초음파비파괴검사산업기사구",
+    "examCount": 23,
+    "questionCount": 1840
+  },
+  {
+    "id": "proj-1775564844252-ww87",
+    "name": "축로기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:24.252Z",
+    "type": "cbt",
+    "categoryCode": "축로기능사",
+    "examCount": 5,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564844256-2prt",
+    "name": "축산기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:24.256Z",
+    "type": "cbt",
+    "categoryCode": "축산기능사",
+    "examCount": 8,
+    "questionCount": 480
+  },
+  {
+    "id": "proj-1775564844286-oj9l",
+    "name": "축산기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:24.287Z",
+    "type": "cbt",
+    "categoryCode": "축산기사",
+    "examCount": 40,
+    "questionCount": 4000
+  },
+  {
+    "id": "proj-1775564844309-v0lj",
+    "name": "축산산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:24.309Z",
+    "type": "cbt",
+    "categoryCode": "축산산업기사",
+    "examCount": 33,
+    "questionCount": 2640
+  },
+  {
+    "id": "proj-1775564844324-kttp",
+    "name": "측량기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:24.324Z",
+    "type": "cbt",
+    "categoryCode": "측량기능사",
+    "examCount": 26,
+    "questionCount": 1560
+  },
+  {
+    "id": "proj-1775564844377-6cyl",
+    "name": "측량및지형공간정보기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:24.377Z",
+    "type": "cbt",
+    "categoryCode": "측량및지형공간정보기사",
+    "examCount": 59,
+    "questionCount": 5900
+  },
+  {
+    "id": "proj-1775564844420-ca0f",
+    "name": "측량및지형공간정보산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:24.420Z",
+    "type": "cbt",
+    "categoryCode": "측량및지형공간정보산업기사",
+    "examCount": 57,
+    "questionCount": 4560
+  },
+  {
+    "id": "proj-1775564844432-g4rt",
+    "name": "치공구설계산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:24.432Z",
+    "type": "cbt",
+    "categoryCode": "치공구설계산업기사",
+    "examCount": 5,
+    "questionCount": 400
+  },
+  {
+    "id": "proj-1775564844455-53gd",
+    "name": "침투비파괴검사기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:24.455Z",
+    "type": "cbt",
+    "categoryCode": "침투비파괴검사기능사",
+    "examCount": 44,
+    "questionCount": 2640
+  },
+  {
+    "id": "proj-1775564844472-r64u",
+    "name": "침투비파괴검사기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:24.472Z",
+    "type": "cbt",
+    "categoryCode": "침투비파괴검사기사",
+    "examCount": 22,
+    "questionCount": 1760
+  },
+  {
+    "id": "proj-1775564844491-74l2",
+    "name": "침투비파괴검사기사(구)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:24.491Z",
+    "type": "cbt",
+    "categoryCode": "침투비파괴검사기사구",
+    "examCount": 22,
+    "questionCount": 2200
+  },
+  {
+    "id": "proj-1775564844501-63rg",
+    "name": "침투비파괴검사산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:24.501Z",
+    "type": "cbt",
+    "categoryCode": "침투비파괴검사산업기사",
+    "examCount": 14,
+    "questionCount": 840
+  },
+  {
+    "id": "proj-1775564844515-eyrv",
+    "name": "침투비파괴검사산업기사(구)",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:24.515Z",
+    "type": "cbt",
+    "categoryCode": "침투비파괴검사산업기사구",
+    "examCount": 22,
+    "questionCount": 1760
+  },
+  {
+    "id": "proj-1775564844517-3rw7",
+    "name": "컨벤션기획사 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:24.517Z",
+    "type": "cbt",
+    "categoryCode": "컨벤션기획사-2급",
+    "examCount": 2,
+    "questionCount": 160
+  },
+  {
+    "id": "proj-1775564844530-2tyw",
+    "name": "컨벤션기획사 2급(구)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:24.530Z",
+    "type": "cbt",
+    "categoryCode": "컨벤션기획사-2급구",
+    "examCount": 14,
+    "questionCount": 1400
+  },
+  {
+    "id": "proj-1775564844534-7bau",
+    "name": "컨테이너크레인운전기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:24.534Z",
+    "type": "cbt",
+    "categoryCode": "컨테이너크레인운전기능사",
+    "examCount": 8,
+    "questionCount": 480
+  },
+  {
+    "id": "proj-1775564844578-lk0r",
+    "name": "컬러리스트기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:24.578Z",
+    "type": "cbt",
+    "categoryCode": "컬러리스트기사",
+    "examCount": 53,
+    "questionCount": 5300
+  },
+  {
+    "id": "proj-1775564844620-u4ug",
+    "name": "컬러리스트산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:24.620Z",
+    "type": "cbt",
+    "categoryCode": "컬러리스트산업기사",
+    "examCount": 48,
+    "questionCount": 4800
+  },
+  {
+    "id": "proj-1775564844652-ci4r",
+    "name": "컴퓨터그래픽스기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:24.652Z",
+    "type": "cbt",
+    "categoryCode": "컴퓨터그래픽스기능사",
+    "examCount": 51,
+    "questionCount": 3060
+  },
+  {
+    "id": "proj-1775564844685-b0z3",
+    "name": "컴퓨터시스템기사(A형)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:24.685Z",
+    "type": "cbt",
+    "categoryCode": "컴퓨터시스템기사a형",
+    "examCount": 40,
+    "questionCount": 4000
+  },
+  {
+    "id": "proj-1775564844707-fccc",
+    "name": "컴퓨터시스템기사(B형)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:24.707Z",
+    "type": "cbt",
+    "categoryCode": "컴퓨터시스템기사b형",
+    "examCount": 24,
+    "questionCount": 2400
+  },
+  {
+    "id": "proj-1775564844745-vce6",
+    "name": "컴퓨터응용가공산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:24.745Z",
+    "type": "cbt",
+    "categoryCode": "컴퓨터응용가공산업기사",
+    "examCount": 56,
+    "questionCount": 4480
+  },
+  {
+    "id": "proj-1775564844762-13mz",
+    "name": "컴퓨터응용밀링기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:24.762Z",
+    "type": "cbt",
+    "categoryCode": "컴퓨터응용밀링기능사",
+    "examCount": 29,
+    "questionCount": 1740
+  },
+  {
+    "id": "proj-1775564844780-hn5l",
+    "name": "컴퓨터응용선반기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:24.780Z",
+    "type": "cbt",
+    "categoryCode": "컴퓨터응용선반기능사",
+    "examCount": 35,
+    "questionCount": 2100
+  },
+  {
+    "id": "proj-1775564844816-qg8d",
+    "name": "컴퓨터활용능력 1급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:24.816Z",
+    "type": "cbt",
+    "categoryCode": "컴퓨터활용능력-1급",
+    "examCount": 58,
+    "questionCount": 3480
+  },
+  {
+    "id": "proj-1775564844841-vher",
+    "name": "컴퓨터활용능력 2급",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:24.841Z",
+    "type": "cbt",
+    "categoryCode": "컴퓨터활용능력-2급",
+    "examCount": 63,
+    "questionCount": 2520
+  },
+  {
+    "id": "proj-1775564844864-wuex",
+    "name": "컴퓨터활용능력 3급(폐지)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:24.864Z",
+    "type": "cbt",
+    "categoryCode": "컴퓨터활용능력-3급폐지",
+    "examCount": 40,
+    "questionCount": 1600
+  },
+  {
+    "id": "proj-1775564844883-dlr4",
+    "name": "콘크리트기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:24.883Z",
+    "type": "cbt",
+    "categoryCode": "콘크리트기능사",
+    "examCount": 31,
+    "questionCount": 1860
+  },
+  {
+    "id": "proj-1775564844909-3rrh",
+    "name": "콘크리트기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:24.909Z",
+    "type": "cbt",
+    "categoryCode": "콘크리트기사",
+    "examCount": 32,
+    "questionCount": 2559
+  },
+  {
+    "id": "proj-1775564844930-fhjl",
+    "name": "콘크리트산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:24.930Z",
+    "type": "cbt",
+    "categoryCode": "콘크리트산업기사",
+    "examCount": 27,
+    "questionCount": 2160
+  },
+  {
+    "id": "proj-1775564844935-ynlo",
+    "name": "타워크레인운전기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:24.935Z",
+    "type": "cbt",
+    "categoryCode": "타워크레인운전기능사",
+    "examCount": 8,
+    "questionCount": 480
+  },
+  {
+    "id": "proj-1775564844971-llkc",
+    "name": "텔레마케팅관리사",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:24.971Z",
+    "type": "cbt",
+    "categoryCode": "텔레마케팅관리사",
+    "examCount": 42,
+    "questionCount": 4200
+  },
+  {
+    "id": "proj-1775564845040-9q20",
+    "name": "토목기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:25.040Z",
+    "type": "cbt",
+    "categoryCode": "토목기사",
+    "examCount": 57,
+    "questionCount": 6840
+  },
+  {
+    "id": "proj-1775564845093-ib28",
+    "name": "토목산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:25.093Z",
+    "type": "cbt",
+    "categoryCode": "토목산업기사",
+    "examCount": 41,
+    "questionCount": 4920
+  },
+  {
+    "id": "proj-1775564845124-prot",
+    "name": "토양환경기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:25.124Z",
+    "type": "cbt",
+    "categoryCode": "토양환경기사",
+    "examCount": 40,
+    "questionCount": 3200
+  },
+  {
+    "id": "proj-1775564845126-6u0x",
+    "name": "통신기기기능사(통합변경)",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:25.126Z",
+    "type": "cbt",
+    "categoryCode": "통신기기기능사통합변경",
+    "examCount": 5,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564845137-rxy5",
+    "name": "통신선로산업기사(통합편입)",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:25.137Z",
+    "type": "cbt",
+    "categoryCode": "통신선로산업기사통합편입",
+    "examCount": 15,
+    "questionCount": 1200
+  },
+  {
+    "id": "proj-1775564845156-hflb",
+    "name": "통신설비기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:25.156Z",
+    "type": "cbt",
+    "categoryCode": "통신설비기능장",
+    "examCount": 35,
+    "questionCount": 2100
+  },
+  {
+    "id": "proj-1775564845184-zl4i",
+    "name": "특수용접기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:25.184Z",
+    "type": "cbt",
+    "categoryCode": "특수용접기능사",
+    "examCount": 55,
+    "questionCount": 3300
+  },
+  {
+    "id": "proj-1775564845187-qy9x",
+    "name": "판금제관기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:25.187Z",
+    "type": "cbt",
+    "categoryCode": "판금제관기능장",
+    "examCount": 6,
+    "questionCount": 360
+  },
+  {
+    "id": "proj-1775564845190-x9xw",
+    "name": "판금제관산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:25.190Z",
+    "type": "cbt",
+    "categoryCode": "판금제관산업기사",
+    "examCount": 5,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564845201-cusm",
+    "name": "패션디자인산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:25.201Z",
+    "type": "cbt",
+    "categoryCode": "패션디자인산업기사",
+    "examCount": 18,
+    "questionCount": 1440
+  },
+  {
+    "id": "proj-1775564845227-cews",
+    "name": "패션머천다이징산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:25.227Z",
+    "type": "cbt",
+    "categoryCode": "패션머천다이징산업기사",
+    "examCount": 30,
+    "questionCount": 3000
+  },
+  {
+    "id": "proj-1775564845281-oaux",
+    "name": "폐기물처리기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:25.281Z",
+    "type": "cbt",
+    "categoryCode": "폐기물처리기사",
+    "examCount": 57,
+    "questionCount": 5700
+  },
+  {
+    "id": "proj-1775564845328-qo7y",
+    "name": "폐기물처리산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:25.328Z",
+    "type": "cbt",
+    "categoryCode": "폐기물처리산업기사",
+    "examCount": 50,
+    "questionCount": 4000
+  },
+  {
+    "id": "proj-1775564845332-ial7",
+    "name": "포장기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:25.332Z",
+    "type": "cbt",
+    "categoryCode": "포장기사",
+    "examCount": 2,
+    "questionCount": 200
+  },
+  {
+    "id": "proj-1775564845335-haa7",
+    "name": "포장산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:25.335Z",
+    "type": "cbt",
+    "categoryCode": "포장산업기사",
+    "examCount": 4,
+    "questionCount": 320
+  },
+  {
+    "id": "proj-1775564845341-q9u6",
+    "name": "표면실장장비기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:25.341Z",
+    "type": "cbt",
+    "categoryCode": "표면실장장비기능사",
+    "examCount": 10,
+    "questionCount": 600
+  },
+  {
+    "id": "proj-1775564845343-yead",
+    "name": "표면처리기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:25.343Z",
+    "type": "cbt",
+    "categoryCode": "표면처리기능사",
+    "examCount": 4,
+    "questionCount": 240
+  },
+  {
+    "id": "proj-1775564845346-kn4j",
+    "name": "표면처리기능장",
+    "icon": "🏅",
+    "createdAt": "2026-04-07T12:27:25.346Z",
+    "type": "cbt",
+    "categoryCode": "표면처리기능장",
+    "examCount": 5,
+    "questionCount": 300
+  },
+  {
+    "id": "proj-1775564845349-v72t",
+    "name": "표면처리산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:25.349Z",
+    "type": "cbt",
+    "categoryCode": "표면처리산업기사",
+    "examCount": 6,
+    "questionCount": 360
+  },
+  {
+    "id": "proj-1775564845385-e02l",
+    "name": "품질경영기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:25.385Z",
+    "type": "cbt",
+    "categoryCode": "품질경영기사",
+    "examCount": 37,
+    "questionCount": 3700
+  },
+  {
+    "id": "proj-1775564845400-ojcs",
+    "name": "품질경영산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:25.400Z",
+    "type": "cbt",
+    "categoryCode": "품질경영산업기사",
+    "examCount": 20,
+    "questionCount": 1600
+  },
+  {
+    "id": "proj-1775564845421-4yfa",
+    "name": "프로그래밍기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:25.421Z",
+    "type": "cbt",
+    "categoryCode": "프로그래밍기능사",
+    "examCount": 43,
+    "questionCount": 2580
+  },
+  {
+    "id": "proj-1775564845425-56xn",
+    "name": "플라스틱창호기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:25.425Z",
+    "type": "cbt",
+    "categoryCode": "플라스틱창호기능사",
+    "examCount": 7,
+    "questionCount": 420
+  },
+  {
+    "id": "proj-1775564845432-e95q",
+    "name": "피아노조율기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:25.432Z",
+    "type": "cbt",
+    "categoryCode": "피아노조율기능사",
+    "examCount": 15,
+    "questionCount": 900
+  },
+  {
+    "id": "proj-1775564845438-a9bf",
+    "name": "피아노조율산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:25.438Z",
+    "type": "cbt",
+    "categoryCode": "피아노조율산업기사",
+    "examCount": 8,
+    "questionCount": 480
+  },
+  {
+    "id": "proj-1775564845446-s603",
+    "name": "한국사능력검정시험 기본",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:25.446Z",
+    "type": "cbt",
+    "categoryCode": "한국사능력검정시험-기본",
+    "examCount": 20,
+    "questionCount": 999
+  },
+  {
+    "id": "proj-1775564845482-djav",
+    "name": "한국사능력검정시험 심화",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:25.482Z",
+    "type": "cbt",
+    "categoryCode": "한국사능력검정시험-심화",
+    "examCount": 71,
+    "questionCount": 3540
+  },
+  {
+    "id": "proj-1775564845502-nzom",
+    "name": "한국사능력검정시험 중급(폐지)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:25.502Z",
+    "type": "cbt",
+    "categoryCode": "한국사능력검정시험-중급폐지",
+    "examCount": 36,
+    "questionCount": 1800
+  },
+  {
+    "id": "proj-1775564845518-0ugw",
+    "name": "한국사능력검정시험 초급(폐지)",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:25.518Z",
+    "type": "cbt",
+    "categoryCode": "한국사능력검정시험-초급폐지",
+    "examCount": 41,
+    "questionCount": 1640
+  },
+  {
+    "id": "proj-1775564845519-7zec",
+    "name": "한국수어교원자격검정",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:25.519Z",
+    "type": "cbt",
+    "categoryCode": "한국수어교원자격검정",
+    "examCount": 1,
+    "questionCount": 40
+  },
+  {
+    "id": "proj-1775564845523-5otd",
+    "name": "한복기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:25.523Z",
+    "type": "cbt",
+    "categoryCode": "한복기능사",
+    "examCount": 7,
+    "questionCount": 420
+  },
+  {
+    "id": "proj-1775564845525-rxnb",
+    "name": "한복산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:25.525Z",
+    "type": "cbt",
+    "categoryCode": "한복산업기사",
+    "examCount": 3,
+    "questionCount": 180
+  },
+  {
+    "id": "proj-1775564845548-6ap2",
+    "name": "한식조리기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:25.548Z",
+    "type": "cbt",
+    "categoryCode": "한식조리기능사",
+    "examCount": 47,
+    "questionCount": 2820
+  },
+  {
+    "id": "proj-1775564845573-5vaq",
+    "name": "항공기관정비기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:25.573Z",
+    "type": "cbt",
+    "categoryCode": "항공기관정비기능사",
+    "examCount": 46,
+    "questionCount": 2760
+  },
+  {
+    "id": "proj-1775564845584-1jga",
+    "name": "항공기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:25.584Z",
+    "type": "cbt",
+    "categoryCode": "항공기사",
+    "examCount": 5,
+    "questionCount": 500
+  },
+  {
+    "id": "proj-1775564845606-6pto",
+    "name": "항공기체정비기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:25.606Z",
+    "type": "cbt",
+    "categoryCode": "항공기체정비기능사",
+    "examCount": 45,
+    "questionCount": 2700
+  },
+  {
+    "id": "proj-1775564845620-8tp0",
+    "name": "항공무선통신사",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:25.620Z",
+    "type": "cbt",
+    "categoryCode": "항공무선통신사",
+    "examCount": 22,
+    "questionCount": 1540
+  },
+  {
+    "id": "proj-1775564845657-7279",
+    "name": "항공산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:25.657Z",
+    "type": "cbt",
+    "categoryCode": "항공산업기사",
+    "examCount": 56,
+    "questionCount": 4480
+  },
+  {
+    "id": "proj-1775564845663-47s1",
+    "name": "항공장비정비기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:25.663Z",
+    "type": "cbt",
+    "categoryCode": "항공장비정비기능사",
+    "examCount": 7,
+    "questionCount": 420
+  },
+  {
+    "id": "proj-1775564845669-vm6h",
+    "name": "항공전자정비기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:25.669Z",
+    "type": "cbt",
+    "categoryCode": "항공전자정비기능사",
+    "examCount": 11,
+    "questionCount": 660
+  },
+  {
+    "id": "proj-1775564845675-zl6l",
+    "name": "항로표지기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:25.675Z",
+    "type": "cbt",
+    "categoryCode": "항로표지기능사",
+    "examCount": 11,
+    "questionCount": 660
+  },
+  {
+    "id": "proj-1775564845686-3s67",
+    "name": "항로표지기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:25.686Z",
+    "type": "cbt",
+    "categoryCode": "항로표지기사",
+    "examCount": 15,
+    "questionCount": 1200
+  },
+  {
+    "id": "proj-1775564845690-yfmi",
+    "name": "항로표지산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:25.690Z",
+    "type": "cbt",
+    "categoryCode": "항로표지산업기사",
+    "examCount": 5,
+    "questionCount": 400
+  },
+  {
+    "id": "proj-1775564845691-rsos",
+    "name": "해상무선통신사",
+    "icon": "📝",
+    "createdAt": "2026-04-07T12:27:25.691Z",
+    "type": "cbt",
+    "categoryCode": "해상무선통신사",
+    "examCount": 3,
+    "questionCount": 180
+  },
+  {
+    "id": "proj-1775564845699-3so6",
+    "name": "해양공학기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:25.699Z",
+    "type": "cbt",
+    "categoryCode": "해양공학기사",
+    "examCount": 9,
+    "questionCount": 900
+  },
+  {
+    "id": "proj-1775564845706-8829",
+    "name": "해양자원개발기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:25.706Z",
+    "type": "cbt",
+    "categoryCode": "해양자원개발기사",
+    "examCount": 10,
+    "questionCount": 1000
+  },
+  {
+    "id": "proj-1775564845718-oegl",
+    "name": "해양조사산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:25.718Z",
+    "type": "cbt",
+    "categoryCode": "해양조사산업기사",
+    "examCount": 17,
+    "questionCount": 1360
+  },
+  {
+    "id": "proj-1775564845733-z9q6",
+    "name": "해양환경기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:25.733Z",
+    "type": "cbt",
+    "categoryCode": "해양환경기사",
+    "examCount": 19,
+    "questionCount": 1900
+  },
+  {
+    "id": "proj-1775564845735-sw66",
+    "name": "화공기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:25.735Z",
+    "type": "cbt",
+    "categoryCode": "화공기사",
+    "examCount": 2,
+    "questionCount": 160
+  },
+  {
+    "id": "proj-1775564845761-plx6",
+    "name": "화공기사(구)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:25.761Z",
+    "type": "cbt",
+    "categoryCode": "화공기사구",
+    "examCount": 27,
+    "questionCount": 2698
+  },
+  {
+    "id": "proj-1775564845777-biyx",
+    "name": "화공기사(구)(구)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:25.777Z",
+    "type": "cbt",
+    "categoryCode": "화공기사구구",
+    "examCount": 14,
+    "questionCount": 1680
+  },
+  {
+    "id": "proj-1775564845812-ctgt",
+    "name": "화약류관리기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:25.812Z",
+    "type": "cbt",
+    "categoryCode": "화약류관리기사",
+    "examCount": 37,
+    "questionCount": 3700
+  },
+  {
+    "id": "proj-1775564845834-c98z",
+    "name": "화약류관리산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:25.834Z",
+    "type": "cbt",
+    "categoryCode": "화약류관리산업기사",
+    "examCount": 30,
+    "questionCount": 2400
+  },
+  {
+    "id": "proj-1775564845844-b7ol",
+    "name": "화약취급기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:25.844Z",
+    "type": "cbt",
+    "categoryCode": "화약취급기능사",
+    "examCount": 22,
+    "questionCount": 1320
+  },
+  {
+    "id": "proj-1775564845857-pgsw",
+    "name": "화재감식평가기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:25.857Z",
+    "type": "cbt",
+    "categoryCode": "화재감식평가기사",
+    "examCount": 13,
+    "questionCount": 1300
+  },
+  {
+    "id": "proj-1775564845860-kaaa",
+    "name": "화재감식평가산업기사",
+    "icon": "🏭",
+    "createdAt": "2026-04-07T12:27:25.860Z",
+    "type": "cbt",
+    "categoryCode": "화재감식평가산업기사",
+    "examCount": 3,
+    "questionCount": 240
+  },
+  {
+    "id": "proj-1775564845865-jfvy",
+    "name": "화학분석기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:25.865Z",
+    "type": "cbt",
+    "categoryCode": "화학분석기능사",
+    "examCount": 9,
+    "questionCount": 540
+  },
+  {
+    "id": "proj-1775564845873-xn5l",
+    "name": "화학분석기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:25.873Z",
+    "type": "cbt",
+    "categoryCode": "화학분석기사",
+    "examCount": 8,
+    "questionCount": 800
+  },
+  {
+    "id": "proj-1775564845891-cjcr",
+    "name": "화학분석기사(구)",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:25.891Z",
+    "type": "cbt",
+    "categoryCode": "화학분석기사구",
+    "examCount": 22,
+    "questionCount": 1760
+  },
+  {
+    "id": "proj-1775564845903-hkf2",
+    "name": "화훼장식기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:25.903Z",
+    "type": "cbt",
+    "categoryCode": "화훼장식기능사",
+    "examCount": 28,
+    "questionCount": 1680
+  },
+  {
+    "id": "proj-1775564845914-bfwq",
+    "name": "화훼장식기사",
+    "icon": "📐",
+    "createdAt": "2026-04-07T12:27:25.914Z",
+    "type": "cbt",
+    "categoryCode": "화훼장식기사",
+    "examCount": 13,
+    "questionCount": 1300
+  },
+  {
+    "id": "proj-1775564845943-xkn0",
+    "name": "환경기능사",
+    "icon": "🔧",
+    "createdAt": "2026-04-07T12:27:25.943Z",
+    "type": "cbt",
+    "categoryCode": "환경기능사",
+    "examCount": 46,
+    "questionCount": 2760
   }
 ]

@@ -6,6 +6,7 @@ import { generateText, parseJSON } from './gemini.provider.js';
 import * as prompts from './prompt-builder.js';
 import type { SourceData } from './prompt-builder.js';
 import { readContentFile, writeContentFile } from './content.service.js';
+import { deleteObject } from './r2.service.js';
 import { getChannelKey, DEFAULT_TEXT_MODEL, DEFAULT_IMAGE_MODEL } from './content-constants.js';
 import { AppError } from '../middleware.js';
 import { config } from '../config.js';
@@ -109,9 +110,25 @@ export async function generateChannelContent(
   // Build channel content object with IDs
   const channelContent = buildChannelObject(opts, parsed);
 
-  // Save to file — replace existing (not push)
+  // Save to file — replace existing (not push), delete old images from R2
   const channelKey = getChannelKey(opts.channel);
   if (channelKey) {
+    // Delete old images from R2
+    const oldItems = (file as any)[channelKey] as any[];
+    if (oldItems?.length) {
+      for (const item of oldItems) {
+        const targets = item.slides || item.cards || item.scenes || [];
+        for (const t of targets) {
+          const imgUrl = t.canvas?.imageUrl || t.imageUrl;
+          if (imgUrl && imgUrl.includes('.r2.dev/')) {
+            const r2Key = imgUrl.split('.r2.dev/')[1]?.split('?')[0];
+            if (r2Key) {
+              try { await deleteObject(r2Key); } catch { /* ignore */ }
+            }
+          }
+        }
+      }
+    }
     (file as any)[channelKey] = [channelContent];
     file.content.updatedAt = new Date().toISOString();
     await writeContentFile(opts.contentId, file);

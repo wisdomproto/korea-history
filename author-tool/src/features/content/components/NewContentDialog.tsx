@@ -70,7 +70,8 @@ export function NewContentDialog({ open, onClose }: Props) {
       sourceId = selectedNote;
     }
 
-    const file = await createContent.mutateAsync({ title, sourceType, sourceId });
+    const { selectedProjectId } = useEditorStore.getState();
+    const file = await createContent.mutateAsync({ title, sourceType, sourceId, projectId: selectedProjectId });
     setSelectedContentId(file.content.id);
     onClose();
     resetForm();
