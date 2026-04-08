@@ -40,9 +40,44 @@ interface TopicGroup {
   subtopics: Map<string, { subtopic: string; frequency: number; concepts: string[] }>;
 }
 
-// --- Concurrency guard ---
+interface SerializableTopicGroup {
+  topic: string;
+  frequency: number;
+  allTerms: string[];
+  subtopics: { subtopic: string; frequency: number; concepts: string[] }[];
+}
 
+// --- Constants ---
+
+const BATCH_SIZE = 5;
+const POLISH_BATCH = 25;
 const activeJobs = new Set<string>();
+
+// --- CSS for styled HTML ---
+
+const HTML_CSS = `<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif;background:linear-gradient(135deg,#E8D5F2,#B8E6E1,#A8E6CF);min-height:100vh;padding:2rem 1rem;color:#333;line-height:1.8}
+.container{max-width:800px;margin:0 auto;background:rgba(255,255,255,.95);border-radius:20px;padding:2.5rem;box-shadow:0 8px 32px rgba(0,0,0,.1)}
+h1{font-size:1.8rem;font-weight:700;text-align:center;margin-bottom:.5rem;color:#2d3748}
+.subtitle{text-align:center;color:#718096;font-size:.9rem;margin-bottom:2rem}
+details{margin-bottom:1rem;border-radius:12px;overflow:hidden;border:1px solid #e2e8f0}
+details>summary{padding:1rem 1.25rem;background:linear-gradient(135deg,#FFF3E0,#FFE0B2);border-left:4px solid #FF9800;cursor:pointer;font-size:1.1rem;list-style:none}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"▸ "}details[open]>summary::before{content:"▾ "}
+details>.content,details>:not(summary){padding:.75rem 1.25rem}
+details.sub-details{margin:.75rem 0;border:1px solid #e8e8e8;border-radius:8px}
+details.sub-details>summary{padding:.75rem 1rem;background:#f7fafc;border-left:3px solid #4299e1;font-size:.95rem}
+.highlight{background:linear-gradient(to bottom,transparent 60%,#FEFCBF 60%);padding:0 2px;font-weight:600}
+.keyword{color:#2b6cb0;font-weight:700;border-bottom:2px solid #bee3f8}
+.note{background:#EBF8FF;border-left:4px solid #4299e1;border-radius:8px;padding:.75rem 1rem;margin:.75rem 0;font-size:.9rem;color:#2c5282}
+table{width:100%;border-collapse:collapse;margin:.75rem 0;font-size:.9rem}
+th{background:#edf2f7;padding:.6rem .75rem;text-align:left;border-bottom:2px solid #cbd5e0;font-weight:600}
+td{padding:.5rem .75rem;border-bottom:1px solid #e2e8f0}
+tr:hover td{background:#f7fafc}
+p{margin:.75rem 0}ul,ol{margin:.5rem 0 .5rem 1.5rem}li{margin-bottom:.4rem}
+hr{border:none;border-top:1px solid #e2e8f0;margin:1.5rem 0}
+</style>`;
 
 // --- Main generator ---
 
@@ -50,306 +85,203 @@ export async function* generate(opts: GenerateOptions): AsyncGenerator<SSEEvent>
   const { categoryCode, examIds, mode, model } = opts;
 
   if (activeJobs.has(categoryCode)) {
-    yield { type: 'error', message: `이미 '${categoryCode}' 카테고리에서 생성 중인 작업이 있습니다.` };
+    yield { type: 'error', message: '이미 생성 중인 작업이 있습니다.' };
     return;
   }
-
   activeJobs.add(categoryCode);
 
   try {
     // Step 1: Load questions
-    yield { type: 'progress', step: 'load', current: 0, total: examIds.length, message: '문제 데이터를 불러오는 중...' };
+    yield { type: 'progress', step: 'loading', message: '문제 로딩 중...' };
     const questions = await loadQuestions(categoryCode, examIds);
-    yield { type: 'progress', step: 'load', current: examIds.length, total: examIds.length, message: `총 ${questions.length}개 문제 로드 완료` };
+    const total = questions.length;
+    if (total === 0) { yield { type: 'error', message: '문제가 없습니다.' }; return; }
 
-    // Step 2: Extract concepts in batches of 5
-    const BATCH_SIZE = 5;
-    const batches: CbtQuestion[][] = [];
-    for (let i = 0; i < questions.length; i += BATCH_SIZE) {
-      batches.push(questions.slice(i, i + BATCH_SIZE));
-    }
-
+    // Step 2: Extract concepts (with grounding)
     const allConcepts: ConceptItem[] = [];
-    let skippedBatches = 0;
+    let skipped = 0;
+    const totalBatches = Math.ceil(total / BATCH_SIZE);
 
-    yield { type: 'progress', step: 'extract', current: 0, total: batches.length, message: '개념 추출 중...' };
+    for (let i = 0; i < total; i += BATCH_SIZE) {
+      const batch = questions.slice(i, i + BATCH_SIZE);
+      const batchNum = Math.floor(i / BATCH_SIZE) + 1;
+      yield { type: 'progress', step: 'extracting', current: batchNum, total: totalBatches };
 
-    for (let i = 0; i < batches.length; i++) {
       try {
-        const concepts = await extractConcepts(batches[i], model);
+        const concepts = await extractConcepts(batch, model);
         allConcepts.push(...concepts);
-      } catch (err) {
-        skippedBatches++;
-        const msg = err instanceof Error ? err.message : String(err);
-        console.warn(`[summary-note-generator] Batch ${i + 1} failed, skipping: ${msg}`);
-      }
+      } catch { skipped++; }
 
-      yield { type: 'progress', step: 'extract', current: i + 1, total: batches.length, message: `배치 ${i + 1}/${batches.length} 처리 완료 (${skippedBatches > 0 ? `${skippedBatches}개 실패` : '모두 성공'})` };
-
-      // 1s delay between batches (except after the last one)
-      if (i < batches.length - 1) {
-        await new Promise((r) => setTimeout(r, 1000));
-      }
+      if (i + BATCH_SIZE < total) await new Promise((r) => setTimeout(r, 1200));
     }
 
-    // Step 3: Merge concepts by topic
-    yield { type: 'progress', step: 'merge', message: '주제별로 개념 정리 중...' };
+    yield { type: 'progress', step: 'extracting', current: totalBatches, total: totalBatches,
+      message: `${allConcepts.length}개 개념 추출 (${skipped}개 스킵)` };
+
+    // Step 3: Merge
+    yield { type: 'progress', step: 'grouping', message: '주제 그룹핑 중...' };
     const topics = mergeConcepts(allConcepts);
+    yield { type: 'progress', step: 'grouping', topicCount: topics.length };
 
-    // Step 4: Generate markdown
-    let markdown: string;
-    if (mode === 'quick') {
-      yield { type: 'progress', step: 'markdown', message: '마크다운 생성 중 (빠른 모드)...' };
-      markdown = conceptsToMarkdown(topics, categoryCode);
+    // Step 4: Generate HTML
+    let html: string;
+    if (mode === 'polish') {
+      // Polish ALL topics in batches
+      const polishBatches = Math.ceil(topics.length / POLISH_BATCH);
+      const htmlParts: string[] = [];
+
+      for (let i = 0; i < topics.length; i += POLISH_BATCH) {
+        const batch = topics.slice(i, i + POLISH_BATCH);
+        const batchNum = Math.floor(i / POLISH_BATCH) + 1;
+        yield { type: 'progress', step: 'polishing', current: batchNum, total: polishBatches,
+          message: `교과서 형태로 정리 중 (${batchNum}/${polishBatches})...` };
+
+        try {
+          const part = await polishBatch(batch, categoryCode, model);
+          htmlParts.push(part);
+        } catch {
+          // Fallback to quick mode for this batch
+          htmlParts.push(quickHtml(batch));
+        }
+
+        if (i + POLISH_BATCH < topics.length) await new Promise((r) => setTimeout(r, 2000));
+      }
+
+      html = wrapFullHtml(htmlParts.join('\n\n<hr>\n\n'), categoryCode, total, topics.length);
     } else {
-      yield { type: 'progress', step: 'markdown', message: 'AI로 마크다운 정제 중 (고품질 모드)...' };
-      markdown = await polishWithAI(topics, categoryCode, model);
+      yield { type: 'progress', step: 'polishing', message: '빠른 모드로 생성 중...' };
+      html = wrapFullHtml(quickHtml(topics), categoryCode, total, topics.length);
     }
 
-    // Step 5: Convert markdown to HTML
-    yield { type: 'progress', step: 'html', message: 'HTML로 변환 중...' };
-    const html = markdownToHtml(markdown);
-
-    // Step 6: Save note
-    yield { type: 'progress', step: 'save', message: '요약노트 저장 중...' };
-    const noteId = `sn-${categoryCode}-${Date.now()}`;
+    // Step 5: Save
+    yield { type: 'progress', step: 'saving', message: '저장 중...' };
+    const noteId = `sn-${Date.now()}`;
     const now = new Date().toISOString();
     const note: SummaryNote = {
-      id: noteId,
-      categoryCode,
-      title: buildTitle(categoryCode, examIds),
-      examIds,
-      questionCount: questions.length,
-      topicCount: topics.length,
-      html,
-      createdAt: now,
-      updatedAt: now,
+      id: noteId, categoryCode,
+      title: `${categoryCode} 핵심 요약노트`,
+      examIds, questionCount: total, topicCount: topics.length,
+      html, createdAt: now, updatedAt: now,
     };
     await saveNote(note);
 
-    yield { type: 'complete', topicCount: topics.length, noteId, message: `요약노트 생성 완료 (${topics.length}개 주제, ${skippedBatches > 0 ? `${skippedBatches}개 배치 실패` : '전체 성공'})` };
-  } catch (err) {
-    const message = err instanceof Error ? err.message : String(err);
-    yield { type: 'error', message };
+    yield { type: 'complete', noteId, topicCount: topics.length };
   } finally {
     activeJobs.delete(categoryCode);
   }
 }
 
-// --- Helper functions ---
+// --- Helpers ---
 
 async function loadQuestions(categoryCode: string, examIds: string[]): Promise<CbtQuestion[]> {
+  if (examIds.length > 0) {
+    const all: CbtQuestion[] = [];
+    for (const id of examIds) {
+      const exam = await cbtService.getExam(categoryCode, id);
+      all.push(...exam.questions);
+    }
+    return all;
+  }
+  // Load first 5 exams if no specific IDs
+  const manifest = await cbtService.getManifest(categoryCode);
+  const examsToUse = manifest.exams.slice(0, 5);
   const all: CbtQuestion[] = [];
-  for (const examId of examIds) {
-    const exam = await cbtService.getExam(categoryCode, examId);
+  for (const meta of examsToUse) {
+    const exam = await cbtService.getExam(categoryCode, meta.exam_id);
     all.push(...exam.questions);
   }
   return all;
 }
 
 async function extractConcepts(questions: CbtQuestion[], model?: string): Promise<ConceptItem[]> {
-  const formatted = questions
-    .map((q, idx) => {
-      const correctChoice = q.choices.find((c) => c.is_correct);
-      const choicesText = q.choices.map((c) => `${c.number}. ${c.text}`).join('\n');
-      return `[문제 ${idx + 1}]\n${q.text}\n\n선지:\n${choicesText}\n\n정답: ${q.correct_answer}번 (${correctChoice?.text ?? ''})\n${q.explanation ? `\n해설: ${q.explanation}` : ''}`;
-    })
-    .join('\n\n---\n\n');
+  const text = questions.map((q, idx) => {
+    const choices = q.choices.map((c) => `${c.number}. ${c.text}${c.is_correct ? ' [정답]' : ''}`).join('\n');
+    return `문제 ${idx + 1}:\n${q.text}\n${choices}${q.explanation ? `\n해설: ${q.explanation}` : ''}`;
+  }).join('\n\n---\n\n');
 
-  const prompt = `당신은 자격시험 기본서 저자입니다.
-아래 기출문제들을 분석하고, 각 문제를 풀기 위해 반드시 알아야 할 핵심 개념을 추출하세요.
+  const prompt = `자격시험 기본서 저자로서, 아래 문제들의 핵심 개념을 추출하세요.
+각 문제마다 topic(교과서 챕터 수준), subtopic, concept(교과서급 3-5문장 설명), key_terms를 JSON으로 응답.
+부족한 정보는 당신의 지식과 웹 검색 결과로 보충하여 충실한 교과서 설명을 작성하세요.
 
-## 규칙
-1. 각 문제마다 **주제(topic)**와 **핵심 개념 설명**을 작성하세요.
-2. 주제는 교과서 챕터 수준으로
-3. 핵심 개념은 이 문제를 풀려면 알아야 할 기본 지식을 교과서처럼 설명
-4. 왜 그 답이 맞는지 이해할 수 있는 배경 지식 제공
-5. 수식이 필요하면 포함
+[{"question_index":1,"topic":"주제","subtopic":"세부주제","concept":"상세 설명","key_terms":["용어"]}]
 
-## 출력 형식 (JSON)
-[{"question_index":1,"topic":"주제명","subtopic":"세부주제","concept":"설명","key_terms":["용어1"]}]
+${text}`;
 
-## 문제들
-${formatted}`;
-
-  const raw = await generateText(prompt, model);
-  return parseJSON<ConceptItem[]>(raw, '개념 추출 결과');
+  const raw = await generateText(prompt, model, { grounding: true });
+  return parseJSON<ConceptItem[]>(raw, '개념 추출');
 }
 
-function mergeConcepts(concepts: ConceptItem[]): TopicGroup[] {
-  const topicMap = new Map<string, TopicGroup>();
-
-  for (const item of concepts) {
-    const topicKey = item.topic.trim();
-    if (!topicMap.has(topicKey)) {
-      topicMap.set(topicKey, {
-        topic: topicKey,
-        frequency: 0,
-        allTerms: new Set(),
-        subtopics: new Map(),
-      });
-    }
-
-    const group = topicMap.get(topicKey)!;
-    group.frequency++;
-
-    // Collect key terms
-    for (const term of item.key_terms ?? []) {
-      group.allTerms.add(term.trim());
-    }
-
-    // Merge subtopics
-    const subtopicKey = (item.subtopic ?? '').trim() || topicKey;
-    if (!group.subtopics.has(subtopicKey)) {
-      group.subtopics.set(subtopicKey, {
-        subtopic: subtopicKey,
-        frequency: 0,
-        concepts: [],
-      });
-    }
-    const sub = group.subtopics.get(subtopicKey)!;
-    sub.frequency++;
-    if (item.concept?.trim()) {
-      sub.concepts.push(item.concept.trim());
-    }
+function mergeConcepts(concepts: ConceptItem[]): SerializableTopicGroup[] {
+  const map = new Map<string, TopicGroup>();
+  for (const c of concepts) {
+    if (!map.has(c.topic)) map.set(c.topic, { topic: c.topic, frequency: 0, allTerms: new Set(), subtopics: new Map() });
+    const g = map.get(c.topic)!;
+    g.frequency++;
+    c.key_terms?.forEach((t) => g.allTerms.add(t));
+    if (!g.subtopics.has(c.subtopic)) g.subtopics.set(c.subtopic, { subtopic: c.subtopic, frequency: 0, concepts: [] });
+    const s = g.subtopics.get(c.subtopic)!;
+    s.frequency++;
+    if (c.concept?.trim()) s.concepts.push(c.concept.trim());
   }
-
-  // Sort topics by frequency descending
-  return Array.from(topicMap.values()).sort((a, b) => b.frequency - a.frequency);
+  return Array.from(map.values())
+    .sort((a, b) => b.frequency - a.frequency)
+    .map((g) => ({
+      topic: g.topic, frequency: g.frequency, allTerms: Array.from(g.allTerms),
+      subtopics: Array.from(g.subtopics.values()).sort((a, b) => b.frequency - a.frequency),
+    }));
 }
 
-function frequencyIcon(freq: number): string {
-  if (freq >= 5) return '🔥';
-  if (freq >= 3) return '⭐';
-  return '📌';
+async function polishBatch(topics: SerializableTopicGroup[], categoryCode: string, model?: string): Promise<string> {
+  const data = topics.map((t) => ({
+    topic: t.topic, frequency: t.frequency, key_terms: t.allTerms.slice(0, 10),
+    subtopics: t.subtopics.slice(0, 6).map((s) => ({
+      subtopic: s.subtopic, frequency: s.frequency,
+      concept: s.concepts.sort((a, b) => b.length - a.length)[0]?.slice(0, 500),
+    })),
+  }));
+
+  const prompt = `${categoryCode} 자격시험 기본서 저자로서, 아래 기출 주제를 교과서급 HTML 요약노트로 작성하세요.
+
+## 중요: 해설이 아닌 교과서 형태로 작성
+- 학생이 처음 공부할 때 읽는 기본서/교과서 형태
+- "이 문제에서는..." 같은 해설 문체 금지. "~이다", "~한다" 교과서 문체 사용
+- 정보가 부족하면 당신의 지식과 웹 검색으로 보충하여 충실하게 작성
+- 각 세부주제 최소 200자, 핵심 주제는 500자 이상
+- 정의, 원리, 예시, 비교표, 공식을 풍부하게 포함
+
+## HTML 태그
+- <details open><summary><strong>이모지 주제 (출제 N회)</strong></summary>
+- <details class="sub-details"><summary><strong>세부주제</strong></summary>
+- <span class="highlight">핵심용어</span>, <span class="keyword">키워드</span>
+- <div class="note">💡 팁</div>, <table> (thead + tbody)
+- 줄바꿈과 구조화 (p, ul/ol, table) 적극 활용
+- 가능한 한 길고 상세하게 작성
+
+${JSON.stringify(data)}`;
+
+  return await generateText(prompt, model, { grounding: true });
 }
 
-function conceptsToMarkdown(topics: TopicGroup[], categoryCode: string): string {
-  const lines: string[] = [
-    `# ${categoryCode} 요약노트`,
-    '',
-    `> 총 ${topics.length}개 주제`,
-    '',
-  ];
-
-  for (const group of topics) {
-    const icon = frequencyIcon(group.frequency);
-    lines.push(`## ${icon} ${group.topic} (출제 ${group.frequency}회)`);
-    lines.push('');
-
-    if (group.allTerms.size > 0) {
-      lines.push(`**핵심 용어**: ${Array.from(group.allTerms).join(', ')}`);
-      lines.push('');
+function quickHtml(topics: SerializableTopicGroup[]): string {
+  let html = '';
+  for (const t of topics) {
+    const icon = t.frequency >= 10 ? '🔴' : t.frequency >= 5 ? '🟡' : '🟢';
+    html += `<details open><summary><strong>${icon} ${t.topic} (출제 ${t.frequency}회)</strong></summary>\n`;
+    html += `<div class="note">📌 ${t.allTerms.slice(0, 8).map((k) => `<span class="keyword">${k}</span>`).join(', ')}</div>\n`;
+    for (const s of t.subtopics) {
+      html += `<details class="sub-details"><summary><strong>${s.subtopic} (${s.frequency}회)</strong></summary>\n`;
+      const best = s.concepts.sort((a, b) => b.length - a.length)[0] || '';
+      html += `<p>${best}</p>\n</details>\n`;
     }
-
-    // Sort subtopics by frequency
-    const sortedSubs = Array.from(group.subtopics.values()).sort((a, b) => b.frequency - a.frequency);
-    for (const sub of sortedSubs) {
-      if (sub.subtopic !== group.topic) {
-        lines.push(`### ${sub.subtopic}`);
-        lines.push('');
-      }
-      // Deduplicate concepts (keep first occurrence of similar ones)
-      const seen = new Set<string>();
-      for (const concept of sub.concepts) {
-        const key = concept.slice(0, 40);
-        if (!seen.has(key)) {
-          seen.add(key);
-          lines.push(concept);
-          lines.push('');
-        }
-      }
-    }
+    html += `</details>\n\n`;
   }
-
-  return lines.join('\n');
-}
-
-async function polishWithAI(topics: TopicGroup[], categoryCode: string, model?: string): Promise<string> {
-  // Build a compact representation of merged topics to pass to AI
-  const topicSummary = topics
-    .map((g) => {
-      const subs = Array.from(g.subtopics.values())
-        .sort((a, b) => b.frequency - a.frequency)
-        .map((s) => `  - ${s.subtopic}: ${s.concepts.slice(0, 2).join(' / ')}`)
-        .join('\n');
-      return `[${g.topic}] (빈도: ${g.frequency})\n핵심용어: ${Array.from(g.allTerms).join(', ')}\n${subs}`;
-    })
-    .join('\n\n');
-
-  const prompt = `당신은 자격시험 기본서 저자입니다.
-아래 기출문제 분석 결과를 바탕으로 학습자가 시험을 준비할 수 있는 **깔끔하고 체계적인 요약노트**를 마크다운으로 작성하세요.
-
-## 작성 규칙
-1. 제목: # ${categoryCode} 핵심 요약노트
-2. 빈도가 높은 주제는 더 자세히, 낮은 주제는 간결하게
-3. 각 주제마다 핵심 개념을 교과서처럼 서술형으로 정리
-4. 중요 용어는 **굵게** 표시
-5. 이해를 돕는 예시나 구조화된 설명 포함
-6. 마크다운 형식 (##, ###, -, **, > 등 활용)
-
-## 주제 분석 결과
-${topicSummary}`;
-
-  const raw = await generateText(prompt, model);
-
-  // Strip code fences if present
-  const stripped = raw.replace(/^```(?:markdown)?\s*/i, '').replace(/\s*```\s*$/, '');
-  return stripped.trim();
-}
-
-function markdownToHtml(md: string): string {
-  let html = md
-    // Escape HTML entities first (basic safety)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-
-    // H1
-    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
-    // H2
-    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-    // H3
-    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-
-    // Bold
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    // Italic
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-
-    // Blockquote
-    .replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>')
-
-    // Unordered list items
-    .replace(/^[-*] (.+)$/gm, '<li>$1</li>')
-
-    // Horizontal rules
-    .replace(/^---$/gm, '<hr>')
-
-    // Blank lines → paragraph breaks (two+ newlines)
-    .replace(/\n{2,}/g, '\n\n');
-
-  // Wrap consecutive <li> items in <ul>
-  html = html.replace(/(<li>.*<\/li>\n?)+/gs, (match) => `<ul>\n${match}</ul>\n`);
-
-  // Wrap remaining plain text lines in <p> (lines not already wrapped in a block tag)
-  html = html
-    .split('\n')
-    .map((line) => {
-      const trimmed = line.trim();
-      if (!trimmed) return '';
-      if (/^<(h[1-6]|ul|ol|li|blockquote|hr|p)[\s>]/.test(trimmed)) return line;
-      if (/<\/(h[1-6]|ul|ol|li|blockquote|p)>$/.test(trimmed)) return line;
-      return `<p>${trimmed}</p>`;
-    })
-    .join('\n');
-
   return html;
 }
 
-function buildTitle(categoryCode: string, examIds: string[]): string {
-  if (examIds.length === 1) {
-    return `${categoryCode} 요약노트 (${examIds[0]})`;
-  }
-  return `${categoryCode} 요약노트 (${examIds.length}개 시험)`;
+function wrapFullHtml(body: string, categoryCode: string, questionCount: number, topicCount: number): string {
+  return `<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>${categoryCode} 핵심 요약노트</title>${HTML_CSS}</head><body><div class="container">
+<h1>📚 ${categoryCode} 핵심 요약노트</h1>
+<p class="subtitle">기출문제 ${questionCount}문제 완전 분석 · ${topicCount}개 주제 · 출제 빈도순 · Google Search 보강</p><hr>
+${body}</div></body></html>`;
 }

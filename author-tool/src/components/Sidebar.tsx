@@ -564,7 +564,9 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
                       {isCbt ? (
                         summaryNotes && summaryNotes.length > 0 ? (
                           summaryNotes.map((note) => (
-                            <button key={note.id} className="w-full text-left px-3 py-2 text-sm border-b hover:bg-gray-50">
+                            <button key={note.id}
+                              onClick={() => { setSelectedNoteId(note.id); setActiveView('summary-notes-editor' as any); }}
+                              className={`w-full text-left px-3 py-2 text-sm border-b hover:bg-gray-50 ${selectedNoteId === note.id ? 'bg-indigo-50 border-l-4 border-l-indigo-500' : ''}`}>
                               <div className="font-medium truncate">{note.title}</div>
                               <div className="text-xs text-gray-500">{note.topicCount}개 주제 · {note.questionCount}문제 분석</div>
                             </button>
