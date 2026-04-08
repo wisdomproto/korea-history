@@ -53,7 +53,7 @@ export default function NoteContent({ html }: NoteContentProps) {
       {/* Note HTML content */}
       <div
         ref={contentRef}
-        className="note-content prose prose-sm max-w-none"
+        className="note-content prose prose-base sm:prose-sm max-w-none prose-p:leading-relaxed prose-li:leading-relaxed prose-td:text-sm prose-th:text-sm"
         dangerouslySetInnerHTML={{ __html: html }}
       />
     </div>

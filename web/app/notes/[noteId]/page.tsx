@@ -77,9 +77,9 @@ export default async function NotePage({ params }: Props) {
         ]}
       />
 
-      <div className="flex items-start justify-between gap-4 mb-2">
-        <h1 className="text-2xl font-extrabold text-gray-900">{note.title}</h1>
-        <div className="shrink-0 mt-1">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 mb-2">
+        <h1 className="text-xl sm:text-2xl font-extrabold text-gray-900">{note.title}</h1>
+        <div className="shrink-0">
           <ShareButtons
             title={`${note.title} — 한능검 요약노트`}
             description={`${note.eraLabel} 핵심 요약 | 관련 기출 ${note.relatedQuestionIds.length}문제`}

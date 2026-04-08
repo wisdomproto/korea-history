@@ -119,12 +119,12 @@ export default function NotesHome({ notes, grouped }: Props) {
                 <Link
                   key={note.id}
                   href={`/notes/${note.id}`}
-                  className={`flex items-center justify-between rounded-2xl border-l-4 bg-white border border-gray-200/80 p-4 hover:shadow-md hover:-translate-y-0.5 transition-all ${meta.color}`}
+                  className={`flex items-center justify-between rounded-2xl border-l-4 bg-white border border-gray-200/80 px-4 py-4 sm:py-3 hover:shadow-md hover:-translate-y-0.5 transition-all min-h-[52px] ${meta.color}`}
                 >
-                  <span className="font-semibold text-sm text-slate-800">{note.title}</span>
+                  <span className="font-semibold text-sm sm:text-sm text-slate-800 leading-snug">{note.title}</span>
                   <div className="flex items-center gap-2 shrink-0 ml-3">
                     {note.questionCount > 0 && (
-                      <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-600">
+                      <span className="rounded-full bg-emerald-50 px-2.5 py-1 sm:py-0.5 text-[11px] sm:text-[10px] font-bold text-emerald-600">
                         기출 {note.questionCount}
                       </span>
                     )}
