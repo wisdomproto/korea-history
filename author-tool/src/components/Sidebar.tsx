@@ -1,35 +1,17 @@
 import { useExams } from '@/features/exam/hooks/useExams';
 import { useNotes } from '@/features/notes/hooks/useNotes';
 import { useEditorStore } from '@/store/editor.store';
+import { useQuery } from '@tanstack/react-query';
+import { apiGet } from '@/lib/axios';
+import { useState } from 'react';
+import { useContents } from '@/features/content/hooks/useContent';
 import { examApi } from '@/features/exam/api/exam.api';
-import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
-import { apiGet, apiPost, apiDelete } from '@/lib/axios';
-import { Button } from './Button';
-import { useState, useRef, useMemo } from 'react';
-import type { ExamCompleteness } from '@/lib/types';
-import { useContents, useDeleteContent } from '@/features/content/hooks/useContent';
-import { NewContentDialog } from '@/features/content/components/NewContentDialog';
-import type { ContentMeta } from '@/lib/content-types';
-import type { NoteIndex } from '@/features/notes/api/notes.api';
-import { CategoryBrowserModal } from '@/features/cbt-import/components/CategoryBrowserModal';
-import { useCbtExams } from '@/features/cbt-import/hooks/useCbtExams';
-import { useSummaryNotes } from '@/features/summary-notes/hooks/useSummaryNotes';
-
-const ERA_COLORS: Record<string, string> = {
-  '선사·고조선': 'bg-amber-100 text-amber-800',
-  '삼국': 'bg-red-100 text-red-800',
-  '남북국': 'bg-orange-100 text-orange-800',
-  '고려': 'bg-emerald-100 text-emerald-800',
-  '조선 전기': 'bg-blue-100 text-blue-800',
-  '조선 후기': 'bg-indigo-100 text-indigo-800',
-  '근대': 'bg-purple-100 text-purple-800',
-  '현대': 'bg-pink-100 text-pink-800',
-};
-
-const SECTION_ERAS: Record<string, string> = {
-  s1: '선사·고조선', s2: '삼국', s3: '남북국', s4: '고려',
-  s5: '조선 전기', s6: '조선 후기', s7: '근대·현대',
-};
+import { ProjectSelector } from './sidebar/ProjectSelector';
+import { ExamList } from './sidebar/ExamList';
+import { CbtExamList } from './sidebar/CbtExamList';
+import { NotesList } from './sidebar/NotesList';
+import { ContentList } from './sidebar/ContentList';
+export { ERA_COLORS } from './sidebar/NotesList';
 
 interface Project {
   id: string;
@@ -39,16 +21,6 @@ interface Project {
   categoryCode?: string;
   examCount?: number;
   questionCount?: number;
-}
-
-function getStatusTooltip(c: ExamCompleteness): string {
-  if (!c.hasQuestions) return '문제 없음';
-  const issues: string[] = [];
-  if (c.missingContent > 0) issues.push(`내용 ${c.missingContent}개 부족`);
-  if (c.missingAnswers > 0) issues.push(`정답 ${c.missingAnswers}개 부족`);
-  if (c.missingImages > 0) issues.push(`이미지 ${c.missingImages}개 부족`);
-  if (c.missingExplanations > 0) issues.push(`해설 ${c.missingExplanations}개 부족`);
-  return issues.length === 0 ? '완료' : issues.join(' · ');
 }
 
 interface SidebarProps {
@@ -67,140 +39,19 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
     sidebarCollapsed, toggleSidebar,
     selectedCbtExamId, setSelectedCbtExamId,
   } = useEditorStore();
-  const qc = useQueryClient();
 
-  const { data: exams, isLoading } = useExams();
+  const { data: exams } = useExams();
   const { data: notes } = useNotes();
   const { data: contents } = useContents(selectedProjectId);
-  const deleteContentMutation = useDeleteContent();
 
-  // Project state
-  const [addingProject, setAddingProject] = useState(false);
-  const [newProjectName, setNewProjectName] = useState('');
-  const [projectSearch, setProjectSearch] = useState('');
-
-  // Exam state
-  const [search, setSearch] = useState('');
-  const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | null>(null);
-  const [editingId, setEditingId] = useState<number | null>(null);
-  const [editValue, setEditValue] = useState('');
-  const savingRef = useRef(false);
-
-  // DnD state
-  const [dragIdx, setDragIdx] = useState<number | null>(null);
-  const [overIdx, setOverIdx] = useState<number | null>(null);
-  const dragRef = useRef<number | null>(null);
-
-  // Content state
-  const [showNewContent, setShowNewContent] = useState(false);
-  const [contentFilter, setContentFilter] = useState<'all' | 'exam' | 'note' | 'free'>('all');
-  const [contentSearch, setContentSearch] = useState('');
-
-  // CBT state
-  const [showCbtBrowser, setShowCbtBrowser] = useState(false);
-
-  // ─── Projects query ───
   const { data: projects } = useQuery<Project[]>({
     queryKey: ['projects'],
     queryFn: () => apiGet<Project[]>('/projects'),
   });
 
-  const createProjectMutation = useMutation({
-    mutationFn: (name: string) => apiPost<Project>('/projects', { name, icon: '📁' }),
-    onSuccess: () => { qc.invalidateQueries({ queryKey: ['projects'] }); },
-  });
-
-  const deleteProjectMutation = useMutation({
-    mutationFn: (id: string) => apiDelete(`/projects/${id}`),
-    onSuccess: () => { qc.invalidateQueries({ queryKey: ['projects'] }); },
-  });
-
   const selectedProject = projects?.find((p) => p.id === selectedProjectId) ?? { id: 'proj-default', name: '기본 프로젝트', icon: '📂' };
-
-  // Derive current project info
   const currentProject = projects?.find((p) => p.id === selectedProjectId);
   const isCbt = currentProject?.type === 'cbt';
-
-  // CBT exam list (only fetches when project is CBT type)
-  const { data: cbtExams, isLoading: cbtExamsLoading } = useCbtExams(
-    isCbt ? currentProject?.categoryCode : undefined
-  );
-
-  // CBT summary notes (only fetches when project is CBT type)
-  const { data: summaryNotes } = useSummaryNotes(isCbt ? currentProject?.categoryCode : undefined);
-
-  // ─── Exam filtering ───
-  const filtered = (() => {
-    let list = exams?.filter(
-      (e) => !search || `${e.examNumber}회`.includes(search) || e.examDate.includes(search) || (e.name ?? '').includes(search),
-    );
-    if (list && sortOrder) {
-      list = [...list].sort((a, b) => {
-        const nameA = a.name || `제${a.examNumber}회`;
-        const nameB = b.name || `제${b.examNumber}회`;
-        return sortOrder === 'asc' ? nameA.localeCompare(nameB, 'ko') : nameB.localeCompare(nameA, 'ko');
-      });
-    }
-    return list;
-  })();
-
-  const canDrag = !search && !sortOrder;
-
-  // ─── Notes grouping ───
-  const groupedNotes = useMemo(() => {
-    if (!notes) return {};
-    const groups: Record<string, NoteIndex[]> = {};
-    for (const note of notes) {
-      const prefix = note.sectionId.split('-')[0];
-      const era = SECTION_ERAS[prefix] || '기타';
-      if (!groups[era]) groups[era] = [];
-      groups[era].push(note);
-    }
-    return groups;
-  }, [notes]);
-
-  // ─── DnD handlers ───
-  const handleDragStart = (idx: number) => { if (!canDrag) return; dragRef.current = idx; setDragIdx(idx); };
-  const handleDragOver = (e: React.DragEvent, idx: number) => { if (!canDrag) return; e.preventDefault(); setOverIdx(idx); };
-  const handleDragEnd = () => { setDragIdx(null); setOverIdx(null); };
-
-  const handleDrop = async (idx: number) => {
-    const fromIdx = dragRef.current;
-    if (!canDrag || !exams || fromIdx === null || fromIdx === idx) { setDragIdx(null); setOverIdx(null); return; }
-    const ids = exams.map((e) => e.id);
-    const [moved] = ids.splice(fromIdx, 1);
-    ids.splice(idx, 0, moved);
-    setDragIdx(null); setOverIdx(null);
-    try { await examApi.reorder(ids); qc.invalidateQueries({ queryKey: ['exams'] }); }
-    catch (err) { console.error('시험 순서 변경 실패:', err); }
-  };
-
-  // ─── Inline edit handlers ───
-  const startEditing = (exam: { id: number; name?: string; examNumber: number }) => {
-    setEditingId(exam.id);
-    setEditValue(exam.name || `제${exam.examNumber}회 한국사능력검정시험`);
-  };
-
-  const saveEdit = async (id: number) => {
-    if (savingRef.current) return;
-    savingRef.current = true;
-    const trimmed = editValue.trim();
-    setEditingId(null);
-    if (!trimmed) { savingRef.current = false; return; }
-    qc.setQueryData(['exams'], (old: any) => old?.map((e: any) => (e.id === id ? { ...e, name: trimmed } : e)));
-    try { await examApi.update(id, { name: trimmed } as any); qc.invalidateQueries({ queryKey: ['exam', id] }); }
-    catch (err) { console.error('시험 이름 수정 실패:', err); qc.invalidateQueries({ queryKey: ['exams'] }); }
-    finally { savingRef.current = false; }
-  };
-
-  // ─── Project add handler ───
-  const handleAddProject = () => {
-    const name = newProjectName.trim();
-    if (!name) return;
-    createProjectMutation.mutate(name);
-    setNewProjectName('');
-    setAddingProject(false);
-  };
 
   // ─── Collapsed sidebar ───
   if (sidebarCollapsed) {
@@ -286,414 +137,82 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
         </div>
       </div>
 
-      {/* ═══ 2. Projects (collapsible) ═══ */}
+      {/* ═══ 2. Projects + Tab Content ═══ */}
       <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
-        {/* Add project button */}
-        <div className="border-b bg-gray-50 px-3 py-1.5 flex items-center justify-between">
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-400">프로젝트</span>
-          <button
-            onClick={() => setAddingProject(!addingProject)}
-            className="text-[10px] font-medium text-primary-600 hover:text-primary-800"
-          >
-            + 추가
-          </button>
-        </div>
-
-        {addingProject && (
-          <div className="border-b bg-gray-50">
-            <div className="flex gap-1 px-3 py-1.5">
-              <input
-                type="text"
-                placeholder="프로젝트 이름"
-                value={newProjectName}
-                onChange={(e) => setNewProjectName(e.target.value)}
-                onKeyDown={(e) => { if (e.key === 'Enter') handleAddProject(); if (e.key === 'Escape') { setAddingProject(false); setNewProjectName(''); } }}
-                autoFocus
-                className="flex-1 rounded border px-2 py-1 text-xs focus:border-primary-500 focus:outline-none"
-              />
-              <button onClick={handleAddProject} className="rounded bg-primary-500 px-2 py-1 text-xs text-white hover:bg-primary-600">확인</button>
-            </div>
-            <button
-              onClick={() => setShowCbtBrowser(true)}
-              className="w-full text-left px-3 py-1.5 text-xs text-indigo-600 hover:bg-indigo-50 rounded"
-            >
-              + CBT 시험에서 추가
-            </button>
-          </div>
-        )}
-
-        {/* Project search */}
-        <div className="px-3 py-1.5 border-b">
-          <input
-            type="text"
-            placeholder="프로젝트 검색..."
-            value={projectSearch}
-            onChange={(e) => setProjectSearch(e.target.value)}
-            className="w-full rounded border px-2 py-1 text-xs focus:border-primary-500 focus:outline-none"
-          />
-        </div>
-
-        {/* Project list — sorted, filtered, selected always on top */}
-        {(() => {
-          const sorted = [...(projects || [])].sort((a, b) => {
-            // Selected project always first
-            if (a.id === selectedProjectId) return -1;
-            if (b.id === selectedProjectId) return 1;
-            // korean-history (default) second
-            if (a.type === 'korean-history') return -1;
-            if (b.type === 'korean-history') return 1;
-            // Then alphabetical
-            return a.name.localeCompare(b.name, 'ko');
-          });
-          const filtered = projectSearch.trim()
-            ? sorted.filter((p) => p.name.toLowerCase().includes(projectSearch.trim().toLowerCase()) || p.id === selectedProjectId)
-            : sorted;
-          return filtered;
-        })().map((p) => {
-          const isOpen = selectedProjectId === p.id;
-          return (
-            <div key={p.id} className="border-b">
-              {/* Project header (click to toggle) */}
-              <div
-                onClick={() => setSelectedProjectId(isOpen ? '' : p.id)}
-                className={`group flex cursor-pointer items-center justify-between px-3 py-2 transition-colors ${
-                  isOpen ? 'bg-emerald-50' : 'hover:bg-gray-50'
-                }`}
-              >
-                <div className="flex items-center gap-1.5 min-w-0">
-                  <span className="text-[10px] text-gray-400">{isOpen ? '▾' : '▸'}</span>
-                  <span className="text-sm">{p.icon}</span>
-                  <span className={`text-xs font-bold truncate ${isOpen ? 'text-emerald-700' : 'text-gray-700'}`}>{p.name}</span>
+        <ProjectSelector
+          selectedProjectId={selectedProjectId}
+          setSelectedProjectId={setSelectedProjectId}
+        >
+          {({ project }) => {
+            const projectIsCbt = project.type === 'cbt';
+            return (
+              <div className="flex flex-col">
+                {/* Tabs */}
+                <div className="flex border-b border-t bg-white">
+                  {[
+                    { key: 'exam' as const, label: '📋 시험', count: exams?.length },
+                    { key: 'notes' as const, label: '📝 노트', count: notes?.length },
+                    { key: 'content' as const, label: '✏️ 컨텐츠', count: contents?.length },
+                  ].map((t) => (
+                    <button
+                      key={t.key}
+                      onClick={() => setSidebarSection(t.key)}
+                      className={`flex-1 py-2 text-[11px] font-semibold transition-colors ${
+                        sidebarSection === t.key
+                          ? 'border-b-2 border-emerald-500 text-emerald-700'
+                          : 'text-gray-400 hover:text-gray-600'
+                      }`}
+                    >
+                      {t.label} <span className="text-[9px] font-normal">{t.count ?? ''}</span>
+                    </button>
+                  ))}
                 </div>
-                {p.id !== 'proj-default' && (
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (confirm(`프로젝트 "${p.name}"을 삭제하시겠습니까?`)) {
-                        deleteProjectMutation.mutate(p.id);
-                        if (selectedProjectId === p.id) setSelectedProjectId('proj-default');
-                      }
-                    }}
-                    className="ml-1 shrink-0 rounded p-0.5 text-gray-300 opacity-0 transition-opacity group-hover:opacity-100 hover:bg-red-50 hover:text-red-500"
-                  >
-                    <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                    </svg>
-                  </button>
+
+                {/* ─── 📋 시험 Tab ─── */}
+                {sidebarSection === 'exam' && (
+                  projectIsCbt ? (
+                    <CbtExamList
+                      categoryCode={project.categoryCode}
+                      selectedCbtExamId={selectedCbtExamId}
+                      setSelectedCbtExamId={setSelectedCbtExamId}
+                    />
+                  ) : (
+                    <ExamList
+                      selectedExamId={selectedExamId}
+                      setSelectedExamId={setSelectedExamId}
+                      setActiveView={setActiveView}
+                      onCreateExam={onCreateExam}
+                      onDeleteExam={onDeleteExam}
+                    />
+                  )
+                )}
+
+                {/* ─── 📝 요약노트 Tab ─── */}
+                {sidebarSection === 'notes' && (
+                  <NotesList
+                    isCbt={projectIsCbt}
+                    categoryCode={project.categoryCode}
+                    selectedNoteId={selectedNoteId}
+                    setSelectedNoteId={setSelectedNoteId}
+                    setActiveView={setActiveView}
+                  />
+                )}
+
+                {/* ─── ✏️ 컨텐츠 Tab ─── */}
+                {sidebarSection === 'content' && (
+                  <ContentList
+                    selectedProjectId={selectedProjectId}
+                    selectedContentId={selectedContentId}
+                    setSelectedContentId={setSelectedContentId}
+                  />
                 )}
               </div>
-
-              {/* Project content: tabs + tab content */}
-              {isOpen && (
-                <div className="flex flex-col">
-                  {/* Tabs */}
-                  <div className="flex border-b border-t bg-white">
-                    {[
-                      { key: 'exam' as const, label: '📋 시험', count: exams?.length },
-                      { key: 'notes' as const, label: '📝 노트', count: notes?.length },
-                      { key: 'content' as const, label: '✏️ 컨텐츠', count: contents?.length },
-                    ].map((t) => (
-                      <button
-                        key={t.key}
-                        onClick={() => setSidebarSection(t.key)}
-                        className={`flex-1 py-2 text-[11px] font-semibold transition-colors ${
-                          sidebarSection === t.key
-                            ? 'border-b-2 border-emerald-500 text-emerald-700'
-                            : 'text-gray-400 hover:text-gray-600'
-                        }`}
-                      >
-                        {t.label} <span className="text-[9px] font-normal">{t.count ?? ''}</span>
-                      </button>
-                    ))}
-                  </div>
-
-                  {/* ─── 📋 시험 Tab ─── */}
-                  {sidebarSection === 'exam' && (
-                    isCbt ? (
-                      // CBT exam list
-                      <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 350px)' }}>
-                        {cbtExamsLoading ? (
-                          <div className="p-4 text-center text-sm text-gray-400">로딩 중...</div>
-                        ) : !cbtExams?.length ? (
-                          <div className="p-4 text-center text-sm text-gray-400">시험이 없습니다</div>
-                        ) : (
-                          cbtExams.map((exam) => (
-                            <div
-                              key={exam.exam_id}
-                              onClick={() => setSelectedCbtExamId(exam.exam_id)}
-                              className={`cursor-pointer border-b px-4 py-3 text-left transition-all hover:bg-gray-50 ${
-                                selectedCbtExamId === exam.exam_id ? 'bg-primary-50 border-l-4 border-l-primary-500' : 'border-l-4 border-l-transparent'
-                              }`}
-                            >
-                              <div className="text-xs font-medium truncate">{exam.label}</div>
-                              <div className="mt-1 flex items-center justify-between text-xs text-gray-500">
-                                <span>{exam.date}</span>
-                                <span>{exam.question_count}문제</span>
-                              </div>
-                            </div>
-                          ))
-                        )}
-                      </div>
-                    ) : (
-                      // Korean History exam list (unchanged)
-                      <>
-                      <div className="space-y-2 border-b px-3 py-2">
-                        <div className="flex gap-1.5">
-                          <input
-                            type="text"
-                            placeholder="시험 검색..."
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                            className="flex-1 rounded-lg border px-3 py-1.5 text-xs focus:border-primary-500 focus:outline-none"
-                          />
-                          <button
-                            onClick={() => setSortOrder((prev) => prev === null ? 'asc' : prev === 'asc' ? 'desc' : null)}
-                            className={`rounded-lg border px-2 py-1.5 text-xs transition-colors ${sortOrder ? 'border-primary-300 bg-primary-50 text-primary-700' : 'text-gray-400 hover:text-gray-600'}`}
-                          >
-                            {sortOrder === 'desc' ? '↓' : sortOrder === 'asc' ? '↑' : '↕'}
-                          </button>
-                        </div>
-                        <div className="flex gap-2">
-                          <Button size="sm" className="flex-1" onClick={onCreateExam}>+ 새 시험</Button>
-                          <Button size="sm" variant="secondary" onClick={() => setActiveView('generator')}>AI 생성</Button>
-                        </div>
-                      </div>
-                      <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 350px)' }}>
-                {isLoading ? (
-                  <div className="p-4 text-center text-sm text-gray-400">로딩 중...</div>
-                ) : !filtered?.length ? (
-                  <div className="p-4 text-center text-sm text-gray-400">시험이 없습니다</div>
-                ) : (
-                  filtered.map((exam, idx) => (
-                    <div
-                      key={exam.id}
-                      draggable={canDrag}
-                      onDragStart={() => handleDragStart(idx)}
-                      onDragOver={(e) => handleDragOver(e, idx)}
-                      onDragEnd={handleDragEnd}
-                      onDrop={() => handleDrop(idx)}
-                      onClick={() => setSelectedExamId(exam.id)}
-                      className={`group relative w-full border-b px-4 py-3 text-left transition-all cursor-pointer hover:bg-gray-50 ${
-                        selectedExamId === exam.id ? 'bg-primary-50 border-l-4 border-l-primary-500' : 'border-l-4 border-l-transparent'
-                      } ${dragIdx === idx ? 'opacity-40' : ''} ${overIdx === idx && dragIdx !== idx ? 'border-t-2 border-t-primary-400' : ''}`}
-                    >
-                      {canDrag && (
-                        <span className="absolute left-1 top-1/2 -translate-y-1/2 cursor-grab text-[10px] text-gray-200 group-hover:text-gray-400 select-none">⠿</span>
-                      )}
-                      <div className="flex items-center justify-between">
-                        {editingId === exam.id ? (
-                          <input
-                            type="text" value={editValue} autoFocus
-                            onClick={(e) => e.stopPropagation()}
-                            onChange={(e) => setEditValue(e.target.value)}
-                            onBlur={() => saveEdit(exam.id)}
-                            onKeyDown={(e) => { if (e.key === 'Enter') saveEdit(exam.id); if (e.key === 'Escape') setEditingId(null); }}
-                            className="mr-2 flex-1 rounded border border-primary-300 px-1.5 py-0.5 text-sm font-medium focus:outline-none focus:border-primary-500"
-                          />
-                        ) : (
-                          <span
-                            onDoubleClick={(e) => { e.stopPropagation(); startEditing(exam); }}
-                            className={`font-medium truncate cursor-text ${!exam.isVisible ? 'text-gray-400' : ''}`}
-                            title={exam.name || `제${exam.examNumber}회`}
-                          >
-                            {exam.name || `제${exam.examNumber}회`}
-                          </span>
-                        )}
-                        <div className="flex items-center gap-1 shrink-0">
-                          <span className={`rounded px-1.5 py-0.5 text-xs ${exam.examType === 'advanced' ? 'bg-violet-100 text-violet-700' : 'bg-gray-100 text-gray-600'}`}>
-                            {exam.examType === 'advanced' ? '심화' : '기본'}
-                          </span>
-                          <button
-                            onClick={async (e) => {
-                              e.stopPropagation();
-                              try { await examApi.update(exam.id, { isVisible: !exam.isVisible }); qc.invalidateQueries({ queryKey: ['exams'] }); }
-                              catch (err) { console.error('공개 상태 변경 실패:', err); }
-                            }}
-                            className={`rounded p-0.5 transition-all ${exam.isVisible ? 'text-primary-500 hover:bg-primary-50' : 'text-gray-300 hover:bg-gray-100'}`}
-                            title={exam.isVisible ? '앱에서 숨기기' : '앱에 공개하기'}
-                          >
-                            <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                              {exam.isVisible ? (
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178zM15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                              ) : (
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12c1.292 4.338 5.31 7.5 10.066 7.5.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
-                              )}
-                            </svg>
-                          </button>
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              if (confirm(`제${exam.examNumber}회를 삭제하시겠습니까?\n모든 문제가 함께 삭제됩니다.`)) onDeleteExam(exam.id);
-                            }}
-                            className="rounded p-0.5 text-gray-300 opacity-0 transition-all hover:bg-red-50 hover:text-red-500 group-hover:opacity-100"
-                            title="시험 삭제"
-                          >
-                            <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                            </svg>
-                          </button>
-                        </div>
-                      </div>
-                      <div className="mt-1 flex items-center justify-between text-xs text-gray-500">
-                        <span>{exam.examDate}</span>
-                        <div className="flex items-center gap-1.5">
-                          {exam.completeness && (
-                            <span
-                              className={`inline-block h-2 w-2 rounded-full ${
-                                exam.completeness.status === 'complete' ? 'bg-green-500' :
-                                exam.completeness.status === 'partial' ? 'bg-yellow-500' : 'bg-gray-300'
-                              }`}
-                              title={getStatusTooltip(exam.completeness)}
-                            />
-                          )}
-                          <span>{exam.questionCount}문제</span>
-                        </div>
-                      </div>
-                      {exam.isFree && <span className="mt-1 inline-block rounded bg-green-100 px-1.5 py-0.5 text-xs text-green-700">무료</span>}
-                    </div>
-                  ))
-                )}
-                      </div>
-                      </>
-                    )
-                  )}
-
-                  {/* ─── 📝 요약노트 Tab ─── */}
-                  {sidebarSection === 'notes' && (
-                    <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 350px)' }}>
-                      {isCbt ? (
-                        summaryNotes && summaryNotes.length > 0 ? (
-                          summaryNotes.map((note) => (
-                            <button key={note.id}
-                              onClick={() => { setSelectedNoteId(note.id); setActiveView('summary-notes-editor' as any); }}
-                              className={`w-full text-left px-3 py-2 text-sm border-b hover:bg-gray-50 ${selectedNoteId === note.id ? 'bg-indigo-50 border-l-4 border-l-indigo-500' : ''}`}>
-                              <div className="font-medium truncate">{note.title}</div>
-                              <div className="text-xs text-gray-500">{note.topicCount}개 주제 · {note.questionCount}문제 분석</div>
-                            </button>
-                          ))
-                        ) : (
-                          <div className="text-center py-8 text-gray-400 text-xs">
-                            요약노트가 없습니다.<br />시험 패널에서 "요약노트 만들기"를 시도하세요.
-                          </div>
-                        )
-                      ) : (
-                        <>
-                          {Object.entries(groupedNotes).map(([era, eraItems]) => (
-                            <div key={era}>
-                              <div className="sticky top-0 bg-white px-3 py-1.5 text-[10px] font-semibold text-gray-400 border-b">
-                                <span className={`mr-1 inline-block rounded px-1.5 py-0.5 text-[10px] ${ERA_COLORS[era] || 'bg-gray-100 text-gray-600'}`}>{era}</span>
-                                <span>{eraItems.length}</span>
-                              </div>
-                              {eraItems.map((note) => (
-                                <div
-                                  key={note.id}
-                                  onClick={() => setSelectedNoteId(note.id)}
-                                  className={`cursor-pointer px-4 py-2 text-xs transition-colors hover:bg-gray-50 ${
-                                    selectedNoteId === note.id ? 'bg-primary-50 border-l-4 border-l-primary-500' : 'border-l-4 border-l-transparent'
-                                  }`}
-                                >
-                                  <div className="truncate font-medium">
-                                    <span className={`inline-block mr-1 rounded px-1 py-0 text-[9px] ${ERA_COLORS[era] || 'bg-gray-100 text-gray-600'}`}>{era}</span>
-                                    {note.title}
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          ))}
-                          {!notes?.length && (
-                            <div className="p-4 text-center text-xs text-gray-400">노트가 없습니다</div>
-                          )}
-                        </>
-                      )}
-                    </div>
-                  )}
-
-                  {/* ─── ✏️ 컨텐츠 Tab ─── */}
-                  {sidebarSection === 'content' && (
-                    <>
-                      <div className="space-y-2 border-b px-3 py-2">
-                        <button
-                          className="w-full rounded-lg border border-gray-200 py-1.5 text-xs font-medium hover:bg-gray-50"
-                          onClick={() => setShowNewContent(true)}
-                        >
-                          + 새 컨텐츠
-                        </button>
-                        <input
-                          type="text"
-                          placeholder="검색..."
-                          value={contentSearch}
-                          onChange={(e) => setContentSearch(e.target.value)}
-                          className="w-full rounded-lg border px-3 py-1.5 text-xs focus:border-primary-500 focus:outline-none"
-                        />
-                        <div className="flex gap-1 flex-wrap">
-                          {(['all', 'exam', 'note', 'free'] as const).map((f) => (
-                            <button
-                              key={f}
-                              onClick={() => setContentFilter(f)}
-                              className={`px-2 py-0.5 rounded-full text-[10px] transition-colors ${
-                                contentFilter === f ? 'bg-primary-500 text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                              }`}
-                            >
-                              {f === 'all' ? '전체' : f === 'exam' ? '기출' : f === 'note' ? '노트' : '자유'}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 420px)' }}>
-                        {contents?.filter((c: ContentMeta) => {
-                          if (contentFilter !== 'all' && c.sourceType !== contentFilter) return false;
-                          if (contentSearch && !c.title.includes(contentSearch)) return false;
-                          return true;
-                        }).map((c: ContentMeta) => (
-                          <div
-                            key={c.id}
-                            onClick={() => setSelectedContentId(c.id)}
-                            className={`group cursor-pointer px-4 py-2 border-b transition-colors hover:bg-gray-50 ${
-                              selectedContentId === c.id ? 'bg-primary-50 border-l-4 border-l-primary-500' : 'border-l-4 border-l-transparent'
-                            }`}
-                          >
-                            <div className="flex items-center justify-between">
-                              <div className="text-xs font-bold truncate">{c.title}</div>
-                              <button
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  if (confirm(`"${c.title}" 컨텐츠를 삭제하시겠습니까?`)) {
-                                    deleteContentMutation.mutate(c.id);
-                                    if (selectedContentId === c.id) setSelectedContentId(null);
-                                  }
-                                }}
-                                className="shrink-0 rounded p-0.5 text-gray-300 opacity-0 transition-opacity group-hover:opacity-100 hover:bg-red-50 hover:text-red-500"
-                                title="컨텐츠 삭제"
-                              >
-                                <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                </svg>
-                              </button>
-                            </div>
-                            <div className="flex items-center gap-2 mt-0.5 text-[10px] text-gray-400">
-                              <span>{c.sourceType === 'exam' ? '📋 기출' : c.sourceType === 'note' ? '📝 노트' : '✍️ 자유'}</span>
-                              <span>{new Date(c.createdAt).toLocaleDateString('ko-KR', { month: 'numeric', day: 'numeric' })}</span>
-                            </div>
-                          </div>
-                        ))}
-                        {contents?.length === 0 && (
-                          <div className="p-4 text-center text-xs text-gray-400">컨텐츠가 없습니다</div>
-                        )}
-                      </div>
-                    </>
-                  )}
-                </div>
-              )}
-            </div>
-          );
-        })}
-
-        {!projects?.length && (
-          <div className="p-4 text-center text-xs text-gray-400">프로젝트가 없습니다</div>
-        )}
+            );
+          }}
+        </ProjectSelector>
       </div>
 
-      {/* ═══ 4. Footer ═══ */}
+      {/* ═══ 3. Footer ═══ */}
       <div className="border-t bg-gray-50 px-4 py-2">
         <div className="flex items-center justify-between">
           <span className="truncate text-xs text-gray-500">
@@ -702,10 +221,6 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
           <DeployButton />
         </div>
       </div>
-
-      {/* Dialogs */}
-      <NewContentDialog open={showNewContent} onClose={() => setShowNewContent(false)} />
-      <CategoryBrowserModal open={showCbtBrowser} onClose={() => setShowCbtBrowser(false)} />
     </aside>
   );
 }
@@ -739,5 +254,3 @@ function DeployButton() {
     </button>
   );
 }
-
-export { ERA_COLORS };

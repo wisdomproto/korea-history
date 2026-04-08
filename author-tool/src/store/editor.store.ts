@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-type ActiveView = 'analytics' | 'dashboard' | 'exam' | 'question' | 'generator' | 'card-news' | 'note-card-news' | 'card-news-gallery' | 'notes' | 'content' | 'notes-editor' | 'cbt-exam' | 'summary-notes-editor';
+export type ActiveView ='analytics' | 'dashboard' | 'exam' | 'question' | 'generator' | 'card-news' | 'note-card-news' | 'card-news-gallery' | 'notes' | 'content' | 'notes-editor' | 'cbt-exam' | 'summary-notes-editor';
 type ContentTab = 'base' | 'blog' | 'instagram' | 'threads' | 'longform' | 'shortform';
 type SidebarSection = 'exam' | 'notes' | 'content' | null;
 
