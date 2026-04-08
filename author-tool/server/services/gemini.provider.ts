@@ -32,7 +32,31 @@ function getGenAI(): GoogleGenerativeAI {
   return _genAI;
 }
 
-export async function generateText(prompt: string, model?: string): Promise<string> {
+export async function generateText(prompt: string, model?: string, options?: { grounding?: boolean }): Promise<string> {
+  // Use new SDK (GoogleGenAI) when grounding is needed
+  if (options?.grounding) {
+    const ai = getGenAI2();
+    const modelId = model ?? config.gemini.model;
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        const result = await ai.models.generateContent({
+          model: modelId,
+          contents: prompt,
+          config: {
+            tools: [{ googleSearch: {} }],
+          } as any,
+        });
+        return result.text ?? '';
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        const isRetryable = msg.includes('503') || msg.includes('429') || msg.includes('RESOURCE_EXHAUSTED');
+        if (!isRetryable || attempt === 3) throw new AppError(500, `Gemini 호출 실패: ${msg}`);
+        await new Promise((r) => setTimeout(r, 1000 * Math.pow(2, attempt - 1) + Math.random() * 500));
+      }
+    }
+    throw new AppError(500, 'Gemini 호출에 실패했습니다.');
+  }
+
   const modelId = model ?? config.gemini.model;
   const genModel = getGenAI().getGenerativeModel({ model: modelId });
 
