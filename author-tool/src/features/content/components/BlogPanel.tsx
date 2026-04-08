@@ -7,16 +7,11 @@ import { copyToClipboard } from '../api/content.api';
 import { useDebouncedSave } from '../hooks/useDebouncedSave';
 import { useChannelGeneration } from '../hooks/useChannelGeneration';
 import { ChannelModelSelector } from './ChannelModelSelector';
+import { KeywordPanel } from './blog/KeywordPanel';
+import { BlogCardEditor } from './blog/BlogCardEditor';
+import { BlogPreview } from './blog/BlogPreview';
 
 // ─── Local types ───
-
-interface KeywordData {
-  keyword: string;
-  totalSearchVolume: number;
-  competition: string;
-  pcSearchVolume: number;
-  mobileSearchVolume: number;
-}
 
 interface SeoDetail {
   category: string;
@@ -30,8 +25,6 @@ interface SeoResult {
   score: number;
   details: SeoDetail[];
 }
-
-type KeywordSortKey = 'keyword' | 'totalSearchVolume' | 'competition';
 
 // ─── Component ───
 
@@ -47,20 +40,14 @@ export function BlogPanel({ contentFile }: Props) {
   const [showPreview, setShowPreview] = useState(false);
   const [imageStyle, setImageStyle] = useState('photorealistic');
 
-  // Keyword research state
-  const [suggestedKeywords, setSuggestedKeywords] = useState<string[]>([]);
+  // Keyword state (shared with KeywordPanel)
   const [selectedKeywords, setSelectedKeywords] = useState<Set<string>>(new Set());
-  const [keywordDataMap, setKeywordDataMap] = useState<Map<string, KeywordData>>(new Map());
-  const [isLoadingKeywords, setIsLoadingKeywords] = useState(false);
-  const [isLoadingKeywordData, setIsLoadingKeywordData] = useState(false);
-  const [keywordSort, setKeywordSort] = useState<{ key: KeywordSortKey; asc: boolean }>({ key: 'totalSearchVolume', asc: false });
+  const [showKeywordPanel, setShowKeywordPanel] = useState(!blog[0]);
 
   // SEO analysis state
   const [seoResult, setSeoResult] = useState<SeoResult | null>(null);
   const [isLoadingSeo, setIsLoadingSeo] = useState(false);
   const [showSeoPanel, setShowSeoPanel] = useState(false);
-  const [showKeywordPanel, setShowKeywordPanel] = useState(!blog[0]);
-  const [showKeywordTable, setShowKeywordTable] = useState(true);
 
   const { save, saveNow } = useDebouncedSave(content.id, 'blog');
   const genImage = useGenerateImage();
@@ -71,70 +58,6 @@ export function BlogPanel({ contentFile }: Props) {
     contentId: content.id,
     path: 'generate/blog',
   });
-
-  // ─── Keyword Research ───
-
-  const handleSuggestKeywords = async () => {
-    setIsLoadingKeywords(true);
-    try {
-      const suggested = await apiPost<string[]>('/blog-tools/suggest-keywords', {
-        topic: content.title,
-        baseArticle: baseArticle?.html,
-      });
-      setSuggestedKeywords(suggested);
-      setSelectedKeywords(new Set(suggested));
-    } catch (err: unknown) {
-      alert(`키워드 추천 실패: ${err instanceof Error ? err.message : err}`);
-    } finally {
-      setIsLoadingKeywords(false);
-    }
-  };
-
-  const handleFetchKeywordData = async () => {
-    const keywords = Array.from(selectedKeywords);
-    if (keywords.length === 0) { alert('키워드를 먼저 선택하세요.'); return; }
-    setIsLoadingKeywordData(true);
-    try {
-      const data = await apiPost<KeywordData[]>('/blog-tools/keyword-data', { keywords });
-      if (!data || data.length === 0) {
-        alert('네이버 API에서 검색량 데이터를 받지 못했습니다. API 키를 확인하세요.');
-      } else {
-        const map = new Map(keywordDataMap);
-        data.forEach((d) => map.set(d.keyword, d));
-        setKeywordDataMap(map);
-        // Update selectedKeywords to match server-returned keywords (spaces stripped)
-        setSelectedKeywords(new Set(data.map((d) => d.keyword)));
-      }
-    } catch (err: unknown) {
-      alert(`검색량 조회 실패: ${err instanceof Error ? err.message : err}`);
-    } finally {
-      setIsLoadingKeywordData(false);
-    }
-  };
-
-  const toggleKeyword = (kw: string) => {
-    setSelectedKeywords((prev) => {
-      const next = new Set(prev);
-      if (next.has(kw)) next.delete(kw);
-      else next.add(kw);
-      return next;
-    });
-  };
-
-  const getSortedKeywordsWithData = (): KeywordData[] => {
-    const entries = Array.from(keywordDataMap.values());
-    entries.sort((a, b) => {
-      const { key, asc } = keywordSort;
-      if (key === 'keyword') return asc ? a.keyword.localeCompare(b.keyword) : b.keyword.localeCompare(a.keyword);
-      if (key === 'competition') return asc ? a.competition.localeCompare(b.competition) : b.competition.localeCompare(a.competition);
-      return asc ? a.totalSearchVolume - b.totalSearchVolume : b.totalSearchVolume - a.totalSearchVolume;
-    });
-    return entries;
-  };
-
-  const handleSortToggle = (key: KeywordSortKey) => {
-    setKeywordSort((prev) => prev.key === key ? { key, asc: !prev.asc } : { key, asc: false });
-  };
 
   // ─── Generation ───
 
@@ -225,140 +148,6 @@ export function BlogPanel({ contentFile }: Props) {
     score >= 80 ? 'bg-green-100 text-green-700' : score >= 50 ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700';
 
   // ════════════════════════════════════════════════
-  // Keyword Research Panel (reusable block)
-  // ════════════════════════════════════════════════
-
-  const keywordPanel = (
-    <div className="bg-blue-50 rounded-lg p-4 space-y-4">
-      <div className="flex items-center gap-2">
-        <h3 className="text-sm font-semibold text-blue-800">🔍 키워드 연구</h3>
-        <button
-          className="px-3 py-1.5 bg-blue-500 text-white rounded-md text-xs font-medium hover:bg-blue-600 disabled:opacity-50"
-          onClick={handleSuggestKeywords}
-          disabled={isLoadingKeywords}
-        >
-          {isLoadingKeywords ? <span className="flex items-center gap-1"><Spinner /> 분석 중...</span> : '키워드 추천'}
-        </button>
-        {suggestedKeywords.length > 0 && selectedKeywords.size > 0 && (
-          <button
-            className="px-3 py-1.5 bg-white text-blue-600 border border-blue-300 rounded-md text-xs font-medium hover:bg-blue-100 disabled:opacity-50"
-            onClick={handleFetchKeywordData}
-            disabled={isLoadingKeywordData}
-          >
-            {isLoadingKeywordData ? <span className="flex items-center gap-1"><Spinner /> 조회 중...</span> : '📊 검색량 조회'}
-          </button>
-        )}
-        <span className="text-[10px] text-blue-500 ml-auto">{selectedKeywords.size}개 선택</span>
-      </div>
-
-      {/* Suggested keywords as chips */}
-      {suggestedKeywords.length > 0 && (
-        <div className="flex flex-wrap gap-2">
-          {suggestedKeywords.map((kw) => (
-            <label
-              key={kw}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs cursor-pointer transition-colors ${
-                selectedKeywords.has(kw)
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-white text-blue-700 border border-blue-200 hover:bg-blue-100'
-              }`}
-            >
-              <input type="checkbox" checked={selectedKeywords.has(kw)} onChange={() => toggleKeyword(kw)} className="sr-only" />
-              {kw}
-            </label>
-          ))}
-          {/* Add keyword inline input */}
-          <form
-            className="inline-flex"
-            onSubmit={(e) => {
-              e.preventDefault();
-              const input = (e.target as HTMLFormElement).elements.namedItem('newkw') as HTMLInputElement;
-              const val = input.value.trim();
-              if (val) {
-                setSuggestedKeywords((prev) => prev.includes(val) ? prev : [...prev, val]);
-                setSelectedKeywords((prev) => new Set([...prev, val]));
-                input.value = '';
-              }
-            }}
-          >
-            <input
-              name="newkw"
-              placeholder="+ 키워드 추가"
-              className="px-3 py-1.5 rounded-full text-xs border border-dashed border-blue-300 bg-white text-blue-600 placeholder-blue-400 w-28 focus:outline-none focus:border-blue-500"
-            />
-          </form>
-        </div>
-      )}
-
-      {/* Keyword data table */}
-      {keywordDataMap.size > 0 && (
-        <div className="bg-white rounded-lg border border-blue-100 overflow-hidden">
-          <button
-            className="w-full flex items-center justify-between px-3 py-2 text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors"
-            onClick={() => setShowKeywordTable(!showKeywordTable)}
-          >
-            <span>📊 검색량 데이터 ({keywordDataMap.size}개)</span>
-            <span>{showKeywordTable ? '▾' : '▸'}</span>
-          </button>
-          {showKeywordTable && <table className="w-full text-xs">
-            <thead>
-              <tr className="bg-blue-50 text-blue-700">
-                <th className="px-3 py-2 text-left w-8">
-                  <input
-                    type="checkbox"
-                    checked={Array.from(keywordDataMap.keys()).every((kw) => selectedKeywords.has(kw))}
-                    onChange={(e) => {
-                      const dataKeywords = Array.from(keywordDataMap.keys());
-                      if (e.target.checked) {
-                        setSelectedKeywords((prev) => { const next = new Set(prev); dataKeywords.forEach((kw) => next.add(kw)); return next; });
-                      } else {
-                        setSelectedKeywords((prev) => { const next = new Set(prev); dataKeywords.forEach((kw) => next.delete(kw)); return next; });
-                      }
-                    }}
-                  />
-                </th>
-                <th className="px-3 py-2 text-left cursor-pointer hover:text-blue-900" onClick={() => handleSortToggle('keyword')}>
-                  키워드 {keywordSort.key === 'keyword' ? (keywordSort.asc ? '▲' : '▼') : ''}
-                </th>
-                <th className="px-3 py-2 text-right cursor-pointer hover:text-blue-900" onClick={() => handleSortToggle('totalSearchVolume')}>
-                  검색량 {keywordSort.key === 'totalSearchVolume' ? (keywordSort.asc ? '▲' : '▼') : ''}
-                </th>
-                <th className="px-3 py-2 text-right">PC</th>
-                <th className="px-3 py-2 text-right">모바일</th>
-                <th className="px-3 py-2 text-center cursor-pointer hover:text-blue-900" onClick={() => handleSortToggle('competition')}>
-                  경쟁률 {keywordSort.key === 'competition' ? (keywordSort.asc ? '▲' : '▼') : ''}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {getSortedKeywordsWithData().map((d) => (
-                <tr key={d.keyword} className="border-t border-blue-50 hover:bg-blue-50/50">
-                  <td className="px-3 py-1.5">
-                    <input type="checkbox" checked={selectedKeywords.has(d.keyword)} onChange={() => toggleKeyword(d.keyword)} />
-                  </td>
-                  <td className="px-3 py-1.5 font-medium">{d.keyword}</td>
-                  <td className="px-3 py-1.5 text-right tabular-nums">{d.totalSearchVolume.toLocaleString()}</td>
-                  <td className="px-3 py-1.5 text-right tabular-nums text-gray-500">{d.pcSearchVolume.toLocaleString()}</td>
-                  <td className="px-3 py-1.5 text-right tabular-nums text-gray-500">{d.mobileSearchVolume.toLocaleString()}</td>
-                  <td className="px-3 py-1.5 text-center">
-                    <span className={`px-1.5 py-0.5 rounded text-[10px] font-medium ${
-                      d.competition === '높음' ? 'bg-red-100 text-red-600' :
-                      d.competition === '중간' ? 'bg-yellow-100 text-yellow-600' :
-                      'bg-green-100 text-green-600'
-                    }`}>
-                      {d.competition}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>}
-        </div>
-      )}
-    </div>
-  );
-
-  // ════════════════════════════════════════════════
   // Main Render
   // ════════════════════════════════════════════════
 
@@ -416,19 +205,15 @@ export function BlogPanel({ contentFile }: Props) {
 
       {/* Keyword Research Panel (collapsible) */}
       {showKeywordPanel && (
-        <div className="px-5 py-3 border-b border-gray-200">
-          {keywordPanel}
-          <div className="flex items-center gap-3 mt-3">
-            <button
-              className="px-4 py-1.5 bg-blue-500 text-white rounded-md text-xs font-medium hover:bg-blue-600 disabled:opacity-50"
-              onClick={() => { handleGenerate(); setShowKeywordPanel(false); }}
-              disabled={isGenerating || selectedKeywords.size === 0}
-            >
-              {isGenerating ? '⏳ 생성 중...' : `✨ 선택 키워드로 블로그 ${current ? '재생성' : '생성'}`}
-            </button>
-            <span className="text-[10px] text-gray-400">선택한 키워드 기반으로 SEO 최적화된 블로그를 생성합니다</span>
-          </div>
-        </div>
+        <KeywordPanel
+          topic={content.title}
+          baseArticleHtml={baseArticle?.html}
+          selectedKeywords={selectedKeywords}
+          setSelectedKeywords={setSelectedKeywords}
+          isGenerating={isGenerating}
+          hasCurrent={!!current}
+          onGenerate={() => { handleGenerate(); setShowKeywordPanel(false); }}
+        />
       )}
 
       {/* SEO Analysis Panel (collapsible) */}
@@ -538,72 +323,23 @@ export function BlogPanel({ contentFile }: Props) {
 
           {/* Cards */}
           {current.cards.map((card, idx) => (
-            <div
+            <BlogCardEditor
               key={card.id}
-              draggable
-              onDragStart={() => { dragRef.current = idx; }}
-              onDragOver={(e) => { e.preventDefault(); setDragOver(idx); }}
+              card={card}
+              idx={idx}
+              dragOver={dragOver}
+              imageStyle={imageStyle}
+              imageModelId={imageModelId}
+              contentId={content.id}
+              genImagePending={genImage.isPending}
+              onDragStart={(i) => { dragRef.current = i; }}
+              onDragOver={(e, i) => { e.preventDefault(); setDragOver(i); }}
               onDragEnd={() => { setDragOver(null); }}
-              onDrop={() => { if (dragRef.current !== null) reorderCards(dragRef.current, idx); dragRef.current = null; setDragOver(null); }}
-              className={`border border-gray-200 rounded-lg mb-2 overflow-hidden transition-all ${dragOver === idx ? 'border-t-2 border-t-blue-400' : ''}`}
-            >
-              <div className="px-3 py-2 bg-gray-50 flex items-center gap-2 border-b border-gray-100">
-                <span className="cursor-grab text-gray-300 hover:text-gray-500 text-xs select-none">⠿</span>
-                <span className="text-[11px] px-1.5 py-0.5 rounded bg-blue-100">카드 {idx + 1}</span>
-                <span className="text-[10px] text-gray-400 ml-auto">
-                  {card.type}
-                </span>
-                <button
-                  onClick={(e) => { e.stopPropagation(); deleteCard(card.id); }}
-                  className="text-gray-300 hover:text-red-500 transition-colors"
-                  title="카드 삭제"
-                >
-                  <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-              {card.type === 'divider' ? (
-                <div className="p-3">
-                  <hr className="border-gray-200" />
-                </div>
-              ) : (
-                <div className="p-3 space-y-3">
-                  {/* Image section */}
-                  <div className="flex items-center gap-3">
-                    {card.imageUrl ? (
-                      <img src={card.imageUrl} alt="" className="w-[160px] h-[90px] object-cover rounded" />
-                    ) : (
-                      <div className="w-[160px] h-[90px] bg-gray-100 rounded flex items-center justify-center text-[10px] text-gray-400">
-                        이미지 없음
-                      </div>
-                    )}
-                    <div className="flex-1 space-y-1">
-                      <input
-                        className="w-full px-2 py-1 border border-gray-200 rounded text-[10px] text-gray-500"
-                        placeholder="이미지 프롬프트 (영어)"
-                        value={card.imagePrompt || ''}
-                        onChange={(e) => updateCard(card.id, { imagePrompt: e.target.value })}
-                      />
-                      <button
-                        className="px-2 py-1 bg-pink-500 text-white rounded text-[10px] hover:bg-pink-600 disabled:opacity-50"
-                        disabled={genImage.isPending || !card.imagePrompt}
-                        onClick={() => genImage.mutate({ contentId: content.id, channel: 'blog', targetId: card.id, imagePrompt: `${card.imagePrompt}. Style: ${imageStyle}`, modelId: imageModelId })}
-                      >
-                        {genImage.isPending ? '⏳' : '🎨 이미지 생성'}
-                      </button>
-                    </div>
-                  </div>
-                  {/* Text section */}
-                  <textarea
-                    className="w-full text-sm border border-gray-200 rounded-lg p-2 resize-y min-h-[60px] focus:outline-none focus:ring-1 focus:ring-blue-200"
-                    placeholder="텍스트 내용..."
-                    value={card.content}
-                    onChange={(e) => updateCard(card.id, { content: e.target.value })}
-                  />
-                </div>
-              )}
-            </div>
+              onDrop={(i) => { if (dragRef.current !== null) reorderCards(dragRef.current, i); dragRef.current = null; setDragOver(null); }}
+              onUpdateCard={updateCard}
+              onDeleteCard={deleteCard}
+              onGenerateImage={(params) => genImage.mutate(params)}
+            />
           ))}
 
           {/* Add card button */}
@@ -618,24 +354,7 @@ export function BlogPanel({ contentFile }: Props) {
 
       {/* Preview modal */}
       {showPreview && current && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50" onClick={() => setShowPreview(false)}>
-          <div className="bg-white rounded-xl w-[600px] max-h-[80vh] overflow-y-auto p-8 shadow-xl" onClick={(e) => e.stopPropagation()}>
-            <h2 className="text-xl font-bold mb-4">{current.title}</h2>
-            <div className="prose prose-sm max-w-none">
-              {current.cards.map((card) => (
-                <div key={card.id}>
-                  {card.type === 'text' && <p>{card.content}</p>}
-                  {card.type === 'quote' && <blockquote className="border-l-4 border-gray-300 pl-4 italic">{card.content}</blockquote>}
-                  {card.type === 'list' && (
-                    <ul>{card.content.split('\n').map((l, i) => <li key={i}>{l.replace(/^-\s*/, '')}</li>)}</ul>
-                  )}
-                  {card.type === 'image' && card.imageUrl && <img src={card.imageUrl} alt="" className="rounded-lg" />}
-                  {card.type === 'divider' && <hr />}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        <BlogPreview current={current} onClose={() => setShowPreview(false)} />
       )}
     </div>
   );
