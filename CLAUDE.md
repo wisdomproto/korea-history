@@ -182,6 +182,13 @@ korea_history/
 - `src/features/content/` — api, hooks, components
 - 6개 탭 패널: BaseArticle, Blog(키워드+SEO), CardNews, Threads, LongForm, ShortForm
 - `src/features/notes/components/NoteEditorPanel.tsx` — 요약노트 HTML 에디터
+- `src/features/summary-notes/components/SummaryNoteViewer.tsx` — CBT 요약노트 뷰어
+
+**리팩토링 구조** (2026-04-08):
+- `src/components/Layout.tsx` (116줄) → `ViewRouter.tsx` + `useExamActions.ts`
+- `src/components/Sidebar.tsx` (256줄) → `sidebar/` (ProjectSelector, ExamList, CbtExamList, NotesList, ContentList)
+- `src/features/content/components/CardNewsPanel.tsx` (532줄) → `cardnews/` (SlideCanvas, SlideCard, SavedTemplateCard, NewPresetInput, ImageStyleInput, SlidePreviewModal, cardnews-export)
+- `src/features/content/components/BlogPanel.tsx` (272줄) → `blog/` (KeywordPanel, BlogCardEditor, BlogPreview)
 
 ### CBT 시험 시스템
 - **728개 자격시험**, 15,767개 시험, 1,004,324개 문제 (R2: `cbt/` prefix)
