@@ -1,5 +1,5 @@
 // author-tool/src/features/content/components/CardNewsPanel.tsx
-import { useState, useRef, useCallback, useEffect, useMemo } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import type { ContentFile, InstagramContent, InstagramSlide, CardCanvasData, TextBlock } from '../../../lib/content-types';
 import { useSaveChannelContent, useGenerateImage, useDeleteChannelContent } from '../hooks/useContent';
 import { useChannelGeneration } from '../hooks/useChannelGeneration';
@@ -7,7 +7,14 @@ import { ChannelModelSelector } from './ChannelModelSelector';
 import { CARD_NEWS_TEMPLATES, DEFAULT_CANVAS, applyTemplate } from './cardnews-templates';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiGet, apiPost, apiPut, apiDelete } from '../../../lib/axios';
-import JSZip from 'jszip';
+
+import { SlideCanvas } from './cardnews/SlideCanvas';
+import { SlideCard } from './cardnews/SlideCard';
+import { SavedTemplateCard } from './cardnews/SavedTemplateCard';
+import { NewPresetInput } from './cardnews/NewPresetInput';
+import { ImageStyleInput } from './cardnews/ImageStyleInput';
+import { SlidePreviewModal } from './cardnews/SlidePreviewModal';
+import { downloadSlide, downloadAllSlides } from './cardnews/cardnews-export';
 
 interface Props {
   contentFile: ContentFile;
@@ -38,7 +45,7 @@ export function CardNewsPanel({ contentFile }: Props) {
   });
   const saveTemplateMutation = useMutation({
     mutationFn: (data: { name: string; canvas: any }) => apiPost('/cardnews-templates', data),
-    onSuccess: () => { qc.invalidateQueries({ queryKey: ['cardnews-templates'] }); setSavingPreset(false); setPresetName(''); },
+    onSuccess: () => { qc.invalidateQueries({ queryKey: ['cardnews-templates'] }); },
   });
   const updateTemplateMutation = useMutation({
     mutationFn: (vars: { id: string; data: any }) => apiPut(`/cardnews-templates/${vars.id}`, vars.data),
@@ -194,80 +201,6 @@ export function CardNewsPanel({ contentFile }: Props) {
     batchAbortRef.current = true;
   };
 
-  // ─── HTML-to-Image Render & Download (uses same CSS as SlideCanvas) ───
-  const renderSlideToBlob = async (slide: InstagramSlide): Promise<Blob> => {
-    const html2canvas = (await import('html2canvas')).default;
-    const W = 1080, H = 1350;
-    const canvasData = slide.canvas;
-    const imgUrl = canvasData?.imageUrl || slide.imageUrl;
-    // Use proxy for R2 images
-    const proxyImgUrl = imgUrl?.includes('.r2.dev/') ? '/r2/' + imgUrl.split('.r2.dev/')[1] : imgUrl;
-
-    // Create offscreen container at export resolution
-    const container = document.createElement('div');
-    container.style.cssText = `position:fixed;left:-9999px;top:0;width:${W}px;height:${H}px;overflow:hidden;background:${canvasData?.bgColor || '#18181b'};`;
-
-    // Image layer
-    if (proxyImgUrl) {
-      const img = document.createElement('img');
-      img.crossOrigin = 'anonymous';
-      img.src = proxyImgUrl;
-      img.style.cssText = `position:absolute;width:100%;object-fit:contain;top:${canvasData?.imageY || 50}%;transform:translateY(-50%);`;
-      container.appendChild(img);
-      // Wait for image to load
-      await new Promise<void>((resolve) => { img.onload = () => resolve(); img.onerror = () => resolve(); });
-    }
-
-    // Text blocks (same CSS as SlideCanvas)
-    if (canvasData?.textBlocks) {
-      for (const block of canvasData.textBlocks) {
-        if (block.hidden) continue;
-        const div = document.createElement('div');
-        div.style.cssText = `position:absolute;left:${block.x}%;top:${block.y}%;width:${block.width}%;font-size:${block.fontSize}px;color:${block.color};font-weight:${block.fontWeight};text-align:${block.textAlign};line-height:1.4;white-space:pre-wrap;${block.shadow ? `text-shadow:0 2px 8px rgba(0,0,0,0.7);` : ''}`;
-        div.textContent = block.text || '';
-        container.appendChild(div);
-      }
-    }
-
-    document.body.appendChild(container);
-
-    const canvas = await html2canvas(container, {
-      width: W, height: H, scale: 1,
-      useCORS: true, allowTaint: false,
-      backgroundColor: null,
-    });
-
-    document.body.removeChild(container);
-
-    return new Promise((resolve) => {
-      canvas.toBlob((blob) => resolve(blob!), 'image/png');
-    });
-  };
-
-  const downloadSlide = async (slide: InstagramSlide, index: number) => {
-    const blob = await renderSlideToBlob(slide);
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = `cardnews_${index + 1}.png`;
-    a.click();
-    URL.revokeObjectURL(url);
-  };
-
-  const downloadAllSlides = async () => {
-    const zip = new JSZip();
-    for (let i = 0; i < slides.length; i++) {
-      const blob = await renderSlideToBlob(slides[i]);
-      zip.file(`cardnews_${String(i + 1).padStart(2, '0')}.png`, blob);
-    }
-    const zipBlob = await zip.generateAsync({ type: 'blob' });
-    const url = URL.createObjectURL(zipBlob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `cardnews_${current?.caption?.slice(0, 20) || 'slides'}.zip`;
-    a.click();
-    URL.revokeObjectURL(url);
-  };
-
   // ─── Empty State ───
   if (!current && !isGenerating) {
     return (
@@ -302,7 +235,7 @@ export function CardNewsPanel({ contentFile }: Props) {
             <button className="px-3 py-1.5 border border-gray-200 rounded-md text-xs hover:bg-gray-50" onClick={() => setPreviewIdx(0)} title="카드뉴스를 전체 화면으로 미리보기합니다">
               👁 미리보기
             </button>
-            <button className="px-3 py-1.5 border border-gray-200 rounded-md text-xs hover:bg-gray-50" onClick={downloadAllSlides} title="모든 슬라이드를 PNG로 저장합니다">
+            <button className="px-3 py-1.5 border border-gray-200 rounded-md text-xs hover:bg-gray-50" onClick={() => downloadAllSlides(slides, current?.caption)} title="모든 슬라이드를 PNG로 저장합니다">
               💾 전체 저장
             </button>
           </>
@@ -593,278 +526,7 @@ export function CardNewsPanel({ contentFile }: Props) {
       )}
 
       {/* ═══ Preview Modal ═══ */}
-      {previewIdx !== null && slides.length > 0 && (
-        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center" onClick={() => setPreviewIdx(null)}>
-          {/* Card — uses same SlideCanvas component */}
-          <div className="relative" style={{ width: '400px' }} onClick={(e) => e.stopPropagation()}>
-            <SlideCanvas slide={slides[previewIdx]} className="rounded-xl" />
-
-            {/* Slide counter */}
-            <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-white text-sm">
-              {previewIdx + 1} / {slides.length}
-            </div>
-          </div>
-
-          {/* Navigation */}
-          {previewIdx > 0 && (
-            <button
-              className="absolute left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 hover:bg-white/40 text-white text-2xl flex items-center justify-center transition-colors"
-              onClick={(e) => { e.stopPropagation(); setPreviewIdx(previewIdx - 1); }}
-              title="이전 슬라이드"
-            >‹</button>
-          )}
-          {previewIdx < slides.length - 1 && (
-            <button
-              className="absolute right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 hover:bg-white/40 text-white text-2xl flex items-center justify-center transition-colors"
-              onClick={(e) => { e.stopPropagation(); setPreviewIdx(previewIdx + 1); }}
-              title="다음 슬라이드"
-            >›</button>
-          )}
-
-          {/* Close */}
-          <button
-            className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 text-white text-xl flex items-center justify-center transition-colors"
-            onClick={() => setPreviewIdx(null)}
-            title="닫기"
-          >✕</button>
-
-          {/* Dots */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
-            {slides.map((_, i) => (
-              <button
-                key={i}
-                className={`w-2 h-2 rounded-full transition-all ${i === previewIdx ? 'bg-white scale-125' : 'bg-white/40 hover:bg-white/60'}`}
-                onClick={(e) => { e.stopPropagation(); setPreviewIdx(i); }}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ─── Shared Slide Canvas (used in grid, preview, and export) ───
-// fontSize is stored relative to BASE_W. All rendering scales by containerWidth / BASE_W.
-const BASE_W = 1080;
-
-function SlideCanvas({ slide, className }: { slide: InstagramSlide; className?: string }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(1);
-  const canvas = slide.canvas;
-  const imgUrl = canvas?.imageUrl || slide.imageUrl;
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-    const obs = new ResizeObserver(([entry]) => setScale(entry.contentRect.width / BASE_W));
-    obs.observe(containerRef.current);
-    return () => obs.disconnect();
-  }, []);
-
-  return (
-    <div ref={containerRef} className={`aspect-[4/5] relative overflow-hidden ${className || ''}`} style={{ backgroundColor: canvas?.bgColor || '#18181b' }}>
-      {imgUrl && (
-        <img src={imgUrl} className="absolute w-full object-contain"
-          style={{ top: `${canvas?.imageY || 50}%`, transform: 'translateY(-50%)' }} />
-      )}
-      {canvas?.textBlocks ? (
-        canvas.textBlocks.filter((b) => !b.hidden).map((block) => (
-          <div key={block.id} className="absolute overflow-hidden" style={{
-            left: `${block.x}%`, top: `${block.y}%`, width: `${block.width}%`,
-            fontSize: `${block.fontSize * scale}px`, color: block.color,
-            fontWeight: block.fontWeight, textAlign: block.textAlign,
-            lineHeight: 1.4,
-            textShadow: block.shadow ? `0 ${2 * scale}px ${8 * scale}px rgba(0,0,0,0.7)` : 'none',
-            whiteSpace: 'pre-wrap',
-          }}>
-            {block.text || `(${block.id})`}
-          </div>
-        ))
-      ) : (
-        <div className="absolute inset-0 flex items-center justify-center text-white p-2 text-center">
-          <div style={{ fontSize: `${14 * scale}px` }}>{slide.textOverlay}</div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ─── Slide Card (grid item) ───
-
-function SlideCard({ slide, index, isSelected, onSelect, onDelete, onGenerateImage, onDeleteImage, onSaveImage, isGeneratingImage }: {
-  slide: InstagramSlide;
-  index: number;
-  isSelected: boolean;
-  onSelect: () => void;
-  onDelete: () => void;
-  onGenerateImage: () => void;
-  onDeleteImage: () => void;
-  onSaveImage: () => void;
-  isGeneratingImage: boolean;
-}) {
-  const hasImage = !!(slide.canvas?.imageUrl || slide.imageUrl);
-
-  return (
-    <div
-      className={`border rounded-lg overflow-hidden cursor-pointer transition-all ${
-        isSelected ? 'border-pink-500 ring-2 ring-pink-200' : 'border-gray-200 hover:border-gray-300'
-      }`}
-      onClick={onSelect}
-    >
-      <SlideCanvas slide={slide} />
-
-      {/* Footer */}
-      <div className="p-1.5 bg-white space-y-1">
-        <div className="flex items-center justify-between">
-          <span className="text-[9px] text-gray-500">{index + 1}. {slide.type}</span>
-          <div className="flex gap-1">
-            {slide.imagePrompt && (
-              <button className="px-1.5 py-0.5 bg-pink-500 text-white rounded text-[8px] hover:bg-pink-600 disabled:opacity-50"
-                disabled={isGeneratingImage} onClick={(e) => { e.stopPropagation(); onGenerateImage(); }}
-                title="이미지 생성">{isGeneratingImage ? '⏳' : '🎨'}</button>
-            )}
-            <button className="px-1.5 py-0.5 bg-blue-500 text-white rounded text-[8px] hover:bg-blue-600"
-              onClick={(e) => { e.stopPropagation(); onSaveImage(); }} title="카드 이미지로 저장">💾</button>
-            {hasImage && (
-              <button className="px-1.5 py-0.5 bg-gray-200 text-gray-600 rounded text-[8px] hover:bg-gray-300"
-                onClick={(e) => { e.stopPropagation(); onDeleteImage(); }} title="이미지 삭제">🗑</button>
-            )}
-            <button className="px-1 py-0.5 text-red-400 rounded text-[8px] hover:bg-red-50"
-              onClick={(e) => { e.stopPropagation(); onDelete(); }} title="슬라이드 삭제">✕</button>
-          </div>
-        </div>
-        {slide.imagePrompt && (
-          <div className="text-[8px] text-gray-400 truncate" title={slide.imagePrompt}>🖼 {slide.imagePrompt}</div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// ─── Saved Template Card ───
-
-function SavedTemplateCard({ tmpl, isActive, onApply, onRename, onDelete }: {
-  tmpl: any;
-  isActive: boolean;
-  onApply: () => void;
-  onRename: (name: string) => void;
-  onDelete: () => void;
-}) {
-  const [editing, setEditing] = useState(false);
-  const [name, setName] = useState(tmpl.name);
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <div className="relative" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-      {/* Delete button — top right on hover */}
-      {hovered && (
-        <button
-          className="absolute -top-1.5 -right-1.5 z-10 w-4 h-4 bg-red-500 text-white rounded-full text-[8px] flex items-center justify-center shadow hover:bg-red-600"
-          onClick={(e) => { e.stopPropagation(); if (confirm(`'${tmpl.name}' 프리셋을 삭제하시겠습니까?`)) onDelete(); }}
-          title="프리셋 삭제"
-        >✕</button>
-      )}
-
-      {/* Preview (click to apply) */}
-      <div onClick={onApply}
-        className={`cursor-pointer rounded overflow-hidden border-2 transition-all ${isActive ? 'border-pink-500' : 'border-dashed border-gray-300 hover:border-gray-400'}`}>
-        <div className="aspect-[4/5] flex flex-col items-center justify-center p-0.5" style={{ backgroundColor: tmpl.canvas.bgColor }}>
-          <div className="text-[5px] font-bold" style={{ color: tmpl.canvas.textBlocks[0]?.color }}>제목</div>
-          <div className="text-[4px] mt-0.5" style={{ color: tmpl.canvas.textBlocks[1]?.color }}>본문</div>
-        </div>
-      </div>
-
-      {/* Name — click to edit */}
-      {editing ? (
-        <input className="w-full text-[8px] text-center py-0.5 bg-yellow-50 border rounded px-1 mt-0.5"
-          value={name} autoFocus
-          onChange={(e) => setName(e.target.value)}
-          onBlur={() => { if (name.trim() && name !== tmpl.name) onRename(name.trim()); setEditing(false); }}
-          onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); if (name.trim() && name !== tmpl.name) onRename(name.trim()); setEditing(false); } if (e.key === 'Escape') { setName(tmpl.name); setEditing(false); } }}
-        />
-      ) : (
-        <div className="text-[8px] text-center py-0.5 truncate px-0.5 cursor-text hover:bg-gray-100 rounded mt-0.5"
-          onClick={(e) => { e.stopPropagation(); setEditing(true); setName(tmpl.name); }}
-          title="클릭하여 이름 수정">{tmpl.name}</div>
-      )}
-    </div>
-  );
-}
-
-// ─── New Preset Input ───
-
-function NewPresetInput({ onSave, isPending }: { onSave: (name: string) => void; isPending: boolean }) {
-  const [open, setOpen] = useState(false);
-  const [name, setName] = useState('');
-
-  if (!open) {
-    return (
-      <button className="w-full text-[9px] text-pink-500 hover:text-pink-700 border border-dashed border-pink-300 rounded py-1 mb-1.5"
-        onClick={() => setOpen(true)}>
-        + 새 프리셋
-      </button>
-    );
-  }
-
-  return (
-    <div className="flex gap-1 mb-1.5">
-      <input className="flex-1 text-[9px] border rounded px-1.5 py-1" placeholder="프리셋 이름"
-        value={name} autoFocus
-        onChange={(e) => setName(e.target.value)}
-        onKeyDown={(e) => { if (e.key === 'Enter' && name.trim()) { onSave(name.trim()); setOpen(false); setName(''); } if (e.key === 'Escape') { setOpen(false); setName(''); } }}
-      />
-      <button className="text-[9px] text-pink-500 hover:text-pink-700 disabled:opacity-50 px-1.5"
-        disabled={!name.trim() || isPending}
-        onClick={() => { onSave(name.trim()); setOpen(false); setName(''); }}>
-        {isPending ? '⏳' : '저장'}
-      </button>
-      <button className="text-[9px] text-gray-400 hover:text-gray-600 px-1"
-        onClick={() => { setOpen(false); setName(''); }}>취소</button>
-    </div>
-  );
-}
-
-// ─── Image Style Input (dropdown + custom input) ───
-
-const IMAGE_STYLE_PRESETS = [
-  { value: 'Contemporary Korean educational illustration style with flat design aesthetics. Warm color palette dominated by terracotta, bronze, gold accents, and deep forest green. Clean vector-style lines with subtle textures. Approachable and friendly character designs. Professional composition optimized for social media card news format with good text contrast. Bright, engaging, and culturally appropriate for Korean historical content. no text.', label: '한국식 일러스트' },
-  { value: 'flat illustration', label: '플랫 일러스트' },
-  { value: 'photorealistic', label: '사실적' },
-  { value: 'watercolor', label: '수채화' },
-  { value: 'minimal line art', label: '미니멀 라인아트' },
-  { value: 'cartoon anime', label: '만화/애니메' },
-  { value: '3d render', label: '3D 렌더' },
-  { value: 'oil painting', label: '유화' },
-  { value: 'pencil sketch', label: '연필 스케치' },
-  { value: 'pixel art', label: '픽셀 아트' },
-];
-
-function ImageStyleInput({ value, onChange }: { value: string; onChange: (v: string) => void }) {
-  const [custom, setCustom] = useState(false);
-  const isPreset = IMAGE_STYLE_PRESETS.some((p) => p.value === value);
-
-  if (custom || !isPreset) {
-    return (
-      <div className="flex gap-0.5">
-        <input className="px-2 py-1.5 border border-gray-200 rounded text-[10px] w-32"
-          value={value} onChange={(e) => onChange(e.target.value)}
-          placeholder="스타일 직접 입력" title="이미지 스타일 직접 입력" />
-        <button className="text-[9px] text-gray-400 hover:text-gray-600 px-1" onClick={() => { setCustom(false); onChange(IMAGE_STYLE_PRESETS[0].value); }}
-          title="프리셋으로 돌아가기">▼</button>
-      </div>
-    );
-  }
-
-  return (
-    <div className="flex gap-0.5">
-      <select className="px-2 py-1.5 border border-gray-200 rounded text-[10px]"
-        value={value} onChange={(e) => onChange(e.target.value)} title="이미지 스타일 선택">
-        {IMAGE_STYLE_PRESETS.map((p) => (
-          <option key={p.value} value={p.value}>{p.label}</option>
-        ))}
-      </select>
-      <button className="text-[9px] text-gray-400 hover:text-gray-600 px-1" onClick={() => setCustom(true)}
-        title="직접 입력">✏</button>
+      <SlidePreviewModal slides={slides} previewIdx={previewIdx} setPreviewIdx={setPreviewIdx} />
     </div>
   );
 }
