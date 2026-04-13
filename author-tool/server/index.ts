@@ -19,6 +19,7 @@ import analyticsRoutes from './routes/analytics.routes.js';
 import cbtRoutes from './routes/cbt.routes.js';
 import summaryNoteRoutes from './routes/summary-note.routes.js';
 import cardnewsTemplateRoutes from './routes/cardnews-template.routes.js';
+import instagramRoutes from './routes/instagram.routes.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isDev = process.env.NODE_ENV !== 'production';
@@ -70,6 +71,7 @@ async function startServer() {
   app.use('/api/cbt', cbtRoutes);
   app.use('/api/summary-notes', summaryNoteRoutes);
   app.use('/api/cardnews-templates', cardnewsTemplateRoutes);
+  app.use('/api/instagram', instagramRoutes);
 
   app.use(errorMiddleware as express.ErrorRequestHandler);
 

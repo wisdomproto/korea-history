@@ -16,12 +16,13 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 import { generateText, parseJSON } from '../server/services/gemini.provider.js';
+import { vision as gemmaVision, research as gemmaResearch } from '../server/services/gemma-client.js';
 
 const CBT_DATA_DIR = path.resolve(__dirname, '../../cbt_data');
 const CATEGORY = process.argv.find((a) => a.startsWith('--category='))?.split('=')[1]!;
 const EXAM_COUNT = parseInt(process.argv.find((a) => a.startsWith('--exams='))?.split('=')[1] || '5');
 const MODEL = process.argv.find((a) => a.startsWith('--model='))?.split('=')[1] || 'gemini-2.5-flash';
-const BATCH_SIZE = 5;
+const BATCH_SIZE = 3;
 const POLISH_BATCH = 25;
 
 if (!CATEGORY) { console.error('--category required'); process.exit(1); }
@@ -46,6 +47,97 @@ async function loadQuestions(): Promise<any[]> {
   return all;
 }
 
+// ─── Step 1b: OCR images attached to questions/choices (Gemma vision) ───
+const OCR_CACHE_PATH = path.join(CBT_DATA_DIR, 'summary_notes', `${CATEGORY}_ocr_cache.json`);
+
+async function loadOcrCache(): Promise<Record<string, string>> {
+  try { return JSON.parse(await fs.readFile(OCR_CACHE_PATH, 'utf-8')); } catch { return {}; }
+}
+
+async function saveOcrCache(cache: Record<string, string>): Promise<void> {
+  await fs.mkdir(path.dirname(OCR_CACHE_PATH), { recursive: true });
+  await fs.writeFile(OCR_CACHE_PATH, JSON.stringify(cache, null, 2), 'utf-8');
+}
+
+async function ocrImage(relOrLocalPath: string, cache: Record<string, string>): Promise<string> {
+  if (!relOrLocalPath) return '';
+  const normalized = relOrLocalPath.replace(/\\/g, '/').replace(/^(\.\/|images\/)?/, 'images/').replace(/^images\/images\//, 'images/');
+  if (cache[normalized] !== undefined) return cache[normalized];
+  const abs = path.join(CBT_DATA_DIR, normalized);
+  try {
+    const buf = await fs.readFile(abs);
+    const b64 = buf.toString('base64');
+    const text = await gemmaVision(
+      '이 이미지에서 읽을 수 있는 모든 텍스트와 주요 시각 정보(도표/그래프의 수치, 축, 라벨 포함)를 한국어로 간결히 요약하세요. 불확실한 부분은 "(불명)"이라고 표기하세요.',
+      [b64],
+      { temperature: 0.1, timeoutMs: 180000 },
+    );
+    const cleaned = (text || '').trim().slice(0, 300);
+    cache[normalized] = cleaned;
+    return cleaned;
+  } catch (e) {
+    cache[normalized] = '';
+    return '';
+  }
+}
+
+async function enrichWithOcr(questions: any[]): Promise<any[]> {
+  const imgPairs: Array<{ q: any; field: 'q' | 'c'; ci?: number; relPath: string }> = [];
+  for (const q of questions) {
+    for (const img of q.images || []) if (img?.local_path) imgPairs.push({ q, field: 'q', relPath: img.local_path });
+    for (let ci = 0; ci < (q.choices || []).length; ci++) {
+      for (const img of q.choices[ci].images || []) if (img?.local_path) imgPairs.push({ q, field: 'c', ci, relPath: img.local_path });
+    }
+  }
+  if (imgPairs.length === 0) return questions;
+
+  console.log(`🔎 OCR 대상 이미지: ${imgPairs.length}개`);
+  const cache = await loadOcrCache();
+  const enrich = new Map<any, { qParts: string[]; cParts: Map<number, string[]> }>();
+  let done = 0;
+  for (const pair of imgPairs) {
+    done++;
+    process.stdout.write(`\r  OCR: ${done}/${imgPairs.length}`);
+    const text = await ocrImage(pair.relPath, cache);
+    if (!text) continue;
+    if (!enrich.has(pair.q)) enrich.set(pair.q, { qParts: [], cParts: new Map() });
+    const e = enrich.get(pair.q)!;
+    if (pair.field === 'q') e.qParts.push(text);
+    else {
+      if (!e.cParts.has(pair.ci!)) e.cParts.set(pair.ci!, []);
+      e.cParts.get(pair.ci!)!.push(text);
+    }
+    if (done % 10 === 0) await saveOcrCache(cache);
+  }
+  await saveOcrCache(cache);
+  console.log('');
+
+  for (const q of questions) {
+    const e = enrich.get(q);
+    if (!e) continue;
+    if (e.qParts.length) q.text = `${q.text}\n[그림: ${e.qParts.join(' / ')}]`;
+    for (const [ci, parts] of e.cParts) {
+      q.choices[ci].text = `${q.choices[ci].text} [그림: ${parts.join(' / ')}]`;
+    }
+  }
+  return questions;
+}
+
+// ─── Tavily image search per topic (used during polish) ───
+async function searchTopicImages(topic: string): Promise<string[]> {
+  try {
+    const r = await gemmaResearch(topic, {
+      includeImages: true,
+      maxResults: 3,
+      searchDepth: 'basic',
+      timeoutMs: 60000,
+    });
+    return (r.images || []).slice(0, 2);
+  } catch {
+    return [];
+  }
+}
+
 // ─── Step 2: Extract concepts with grounding ───
 async function extractAll(questions: any[]): Promise<Concept[]> {
   const concepts: Concept[] = [];
@@ -60,12 +152,17 @@ async function extractAll(questions: any[]): Promise<Concept[]> {
       return `문제 ${idx + 1}:\n${q.text}\n${choices}${q.explanation ? `\n해설: ${q.explanation}` : ''}`;
     }).join('\n\n---\n\n');
 
-    const prompt = `자격시험 기본서 저자로서, 아래 문제들의 핵심 개념을 추출하세요.
-각 문제마다 topic(교과서 챕터 수준), subtopic, concept(교과서급 3-5문장 설명), key_terms를 JSON으로 응답.
-부족한 정보는 당신의 지식과 웹 검색 결과로 보충하여 충실한 교과서 설명을 작성하세요.
+    const prompt = `아래 문제들의 핵심 개념을 추출하여 JSON 배열로만 응답하세요.
 
-[{"question_index":1,"topic":"주제","subtopic":"세부주제","concept":"상세 설명","key_terms":["용어"]}]
+규칙(엄수):
+- 응답은 JSON 배열(\`[ ... ]\`) 하나만. 설명/머리말/마크다운 금지.
+- 각 객체는 정확히 이 필드: question_index(number), topic(string), subtopic(string), concept(string, 한국어 3~5문장), key_terms(string 배열).
+- topic은 교과서 챕터 수준, concept는 자족적 교과서급 설명.
 
+예시:
+[{"question_index":1,"topic":"문법","subtopic":"복합어","concept":"한국어의 복합어는 …","key_terms":["파생어","합성어"]}]
+
+문제:
 ${text}`;
 
     try {
@@ -84,13 +181,18 @@ ${text}`;
 function mergeConcepts(concepts: Concept[]): TopicGroup[] {
   const map = new Map<string, { topic: string; freq: number; terms: Set<string>; subs: Map<string, { sub: string; freq: number; concepts: string[] }> }>();
   for (const c of concepts) {
-    if (!map.has(c.topic)) map.set(c.topic, { topic: c.topic, freq: 0, terms: new Set(), subs: new Map() });
-    const g = map.get(c.topic)!;
+    const topic = (c.topic ?? '').trim() || '기타';
+    const subtopic = (c.subtopic ?? '').trim() || '기타';
+    const concept = (c.concept ?? '').trim();
+    const keyTerms = Array.isArray(c.key_terms) ? c.key_terms : [];
+    if (!concept) continue;
+    if (!map.has(topic)) map.set(topic, { topic, freq: 0, terms: new Set(), subs: new Map() });
+    const g = map.get(topic)!;
     g.freq++;
-    c.key_terms.forEach((t) => g.terms.add(t));
-    if (!g.subs.has(c.subtopic)) g.subs.set(c.subtopic, { sub: c.subtopic, freq: 0, concepts: [] });
-    const s = g.subs.get(c.subtopic)!;
-    s.freq++; s.concepts.push(c.concept);
+    for (const t of keyTerms) if (typeof t === 'string' && t.trim()) g.terms.add(t.trim());
+    if (!g.subs.has(subtopic)) g.subs.set(subtopic, { sub: subtopic, freq: 0, concepts: [] });
+    const s = g.subs.get(subtopic)!;
+    s.freq++; s.concepts.push(concept);
   }
   return Array.from(map.values())
     .sort((a, b) => b.freq - a.freq)
@@ -174,16 +276,38 @@ function quickHtml(topics: TopicGroup[]): string {
   return html;
 }
 
-// ─── Step 5: Wrap with CSS ───
+// ─── Minimal markdown → HTML post-processor (covers what Gemma mixes in) ───
+function mdToHtml(s: string): string {
+  let out = s;
+  // Headers: # / ## / ### (line-start)
+  out = out.replace(/^#{3}\s+(.+)$/gm, '<h3>$1</h3>');
+  out = out.replace(/^#{2}\s+(.+)$/gm, '<h2>$1</h2>');
+  out = out.replace(/^#{1}\s+(.+)$/gm, '<h2>$1</h2>');
+  // Horizontal rules: *** or --- on their own line
+  out = out.replace(/^\s*(\*\*\*|---)\s*$/gm, '<hr>');
+  // Bold **text** (avoid across newlines)
+  out = out.replace(/\*\*([^*\n]+?)\*\*/g, '<strong>$1</strong>');
+  // Italic _text_ (conservative)
+  out = out.replace(/(^|\s)_([^_\n]+?)_(?=\s|$|[.,!?;])/g, '$1<em>$2</em>');
+  return out;
+}
+
+// ─── Step 5: Wrap with CSS + KaTeX (auto-renders $...$ and $$...$$) ───
 function wrapHtml(body: string, questionCount: number, topicCount: number): string {
   return `<!DOCTYPE html>
 <html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>${CATEGORY} 핵심 요약노트</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\\\(',right:'\\\\)',display:false},{left:'\\\\[',right:'\\\\]',display:true}],throwOnError:false})"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard",sans-serif;background:linear-gradient(135deg,#E8D5F2,#B8E6E1,#A8E6CF);min-height:100vh;padding:2rem 1rem;color:#333;line-height:1.8}
 .container{max-width:800px;margin:0 auto;background:rgba(255,255,255,.95);border-radius:20px;padding:2.5rem;box-shadow:0 8px 32px rgba(0,0,0,.1)}
 h1{font-size:1.8rem;font-weight:700;text-align:center;margin-bottom:.5rem;color:#2d3748}
+h2{font-size:1.3rem;font-weight:700;margin:1.5rem 0 .75rem;color:#2d3748;border-bottom:2px solid #CBD5E0;padding-bottom:.25rem}
+h3{font-size:1.05rem;font-weight:600;margin:1rem 0 .5rem;color:#4a5568}
 .subtitle{text-align:center;color:#718096;font-size:.9rem;margin-bottom:2rem}
 details{margin-bottom:1rem;border-radius:12px;overflow:hidden;border:1px solid #e2e8f0}
 details>summary{padding:1rem 1.25rem;background:linear-gradient(135deg,#FFF3E0,#FFE0B2);border-left:4px solid #FF9800;cursor:pointer;font-size:1.1rem;list-style:none}
@@ -201,6 +325,9 @@ td{padding:.5rem .75rem;border-bottom:1px solid #e2e8f0}
 tr:hover td{background:#f7fafc}
 p{margin:.75rem 0}ul,ol{margin:.5rem 0 .5rem 1.5rem}li{margin-bottom:.4rem}
 hr{border:none;border-top:1px solid #e2e8f0;margin:1.5rem 0}
+.katex{font-size:1em}
+figure.topic-img{margin:.75rem 0;display:flex;flex-wrap:wrap;gap:.5rem}
+figure.topic-img img{max-width:220px;max-height:160px;border-radius:8px;border:1px solid #e2e8f0;object-fit:cover}
 </style></head><body><div class="container">
 <h1>📚 ${CATEGORY} 핵심 요약노트</h1>
 <p class="subtitle">기출문제 ${questionCount}문제 완전 분석 · ${topicCount}개 주제 · 출제 빈도순 · Google Search 보강</p>
@@ -216,8 +343,12 @@ async function main() {
   const start = Date.now();
 
   // Step 1
-  const questions = await loadQuestions();
-  console.log(`📚 ${questions.length}문제 로드\n`);
+  const rawQuestions = await loadQuestions();
+  console.log(`📚 ${rawQuestions.length}문제 로드`);
+
+  // Step 1b: OCR images → inject into question/choice text
+  const questions = await enrichWithOcr(rawQuestions);
+  console.log('');
 
   // Step 2: Check if concepts already exist
   const conceptsPath = path.join(CBT_DATA_DIR, 'summary_notes', `${CATEGORY}_concepts_full.json`);
@@ -240,8 +371,27 @@ async function main() {
   console.log(`✨ 전체 polish 시작 (${Math.ceil(topics.length / POLISH_BATCH)}배치)...\n`);
   const htmlParts = await polishAll(topics);
 
-  // Step 5: Merge & wrap
-  const body = htmlParts.join('\n\n<hr>\n\n');
+  // Step 4b: Add topic images (web-searched via Tavily)
+  console.log(`🖼  토픽별 이미지 검색...`);
+  const topicImages = new Map<string, string[]>();
+  for (const t of topics) {
+    const imgs = await searchTopicImages(t.topic);
+    if (imgs.length) topicImages.set(t.topic, imgs);
+  }
+  console.log(`  → 이미지 보강된 주제 ${topicImages.size}/${topics.length}`);
+
+  let bodyRaw = htmlParts.join('\n\n<hr>\n\n');
+  for (const [topic, imgs] of topicImages) {
+    const esc = topic.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const figHtml = imgs
+      .map((u) => `<figure class="topic-img"><img src="${u}" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.style.display='none'"/></figure>`)
+      .join('');
+    const re = new RegExp(`(<summary[^>]*>[^<]*?${esc}[^<]*</summary>)`, 'i');
+    if (re.test(bodyRaw)) bodyRaw = bodyRaw.replace(re, `$1${figHtml}`);
+  }
+
+  // Step 5: Merge & wrap (post-process markdown remnants into HTML)
+  const body = mdToHtml(bodyRaw);
   const fullHtml = wrapHtml(body, questions.length, topics.length);
 
   const outPath = path.join(CBT_DATA_DIR, 'summary_notes', `${CATEGORY}_full.html`);

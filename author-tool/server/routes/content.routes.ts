@@ -60,24 +60,25 @@ router.put('/:id/base-article', async (req, res, next) => {
   } catch (err) { next(err); }
 });
 
-router.post('/:id/base-article/generate', async (req, res, next) => {
+router.post('/:id/base-article/generate', async (req, res) => {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
   try {
-    res.setHeader('Content-Type', 'text/event-stream');
-    res.setHeader('Cache-Control', 'no-cache');
-    res.setHeader('Connection', 'keep-alive');
-
     await generator.generateBaseArticle(req.params.id, req.body.modelId, req.body.extraPrompt, res);
-    res.end();
-  } catch (err) { next(err); }
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : 'Unknown error';
+    res.write(`data: ${JSON.stringify({ type: 'error', error: msg })}\n\n`);
+  }
+  res.end();
 });
 
 // ─── Channel Generation (SSE) ───
-router.post('/:id/generate/:channel', async (req, res, next) => {
+router.post('/:id/generate/:channel', async (req, res) => {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
   try {
-    res.setHeader('Content-Type', 'text/event-stream');
-    res.setHeader('Cache-Control', 'no-cache');
-    res.setHeader('Connection', 'keep-alive');
-
     await generator.generateChannelContent(
       {
         contentId: req.params.id,
@@ -88,8 +89,11 @@ router.post('/:id/generate/:channel', async (req, res, next) => {
       },
       res,
     );
-    res.end();
-  } catch (err) { next(err); }
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : 'Unknown error';
+    res.write(`data: ${JSON.stringify({ type: 'error', error: msg })}\n\n`);
+  }
+  res.end();
 });
 
 // ─── Channel Content Save/Delete ───

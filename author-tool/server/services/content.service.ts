@@ -1,23 +1,15 @@
 // author-tool/server/services/content.service.ts
-import fs from 'fs/promises';
-import path from 'path';
-import { config } from '../config.js';
-import { deleteObject, listObjects } from './r2.service.js';
+import { deleteObject, listObjects, putObject, getObjectText } from './r2.service.js';
 import { getChannelKey } from './content-constants.js';
 import type { ContentMeta, ContentFile, ChannelContentItem } from './content-constants.js';
 
 export type { ContentMeta, ContentFile, ChannelContentItem };
 
-const CONTENTS_DIR = path.resolve(config.dataDir, '../contents');
-const INDEX_PATH = path.join(CONTENTS_DIR, 'index.json');
+const R2_PREFIX = 'contents';
+const INDEX_KEY = `${R2_PREFIX}/index.json`;
 
-// ─── Helpers ───
-async function ensureDir() {
-  await fs.mkdir(CONTENTS_DIR, { recursive: true });
-}
-
-function contentFilePath(id: string): string {
-  return path.join(CONTENTS_DIR, `${id}.json`);
+function contentFileKey(id: string): string {
+  return `${R2_PREFIX}/${id}.json`;
 }
 
 function generateId(): string {
@@ -28,9 +20,8 @@ function generateId(): string {
 
 // ─── Index operations ───
 export async function readIndex(): Promise<ContentMeta[]> {
-  await ensureDir();
   try {
-    const raw = await fs.readFile(INDEX_PATH, 'utf-8');
+    const raw = await getObjectText(INDEX_KEY);
     return JSON.parse(raw);
   } catch {
     return [];
@@ -38,14 +29,13 @@ export async function readIndex(): Promise<ContentMeta[]> {
 }
 
 async function writeIndex(index: ContentMeta[]): Promise<void> {
-  await ensureDir();
-  await fs.writeFile(INDEX_PATH, JSON.stringify(index, null, 2), 'utf-8');
+  await putObject(INDEX_KEY, JSON.stringify(index, null, 2), 'application/json');
 }
 
 // ─── Content file operations ───
 export async function readContentFile(id: string): Promise<ContentFile | null> {
   try {
-    const raw = await fs.readFile(contentFilePath(id), 'utf-8');
+    const raw = await getObjectText(contentFileKey(id));
     return JSON.parse(raw);
   } catch {
     return null;
@@ -53,8 +43,7 @@ export async function readContentFile(id: string): Promise<ContentFile | null> {
 }
 
 export async function writeContentFile(id: string, data: ContentFile): Promise<void> {
-  await ensureDir();
-  await fs.writeFile(contentFilePath(id), JSON.stringify(data, null, 2), 'utf-8');
+  await putObject(contentFileKey(id), JSON.stringify(data, null, 2), 'application/json');
 }
 
 // ─── CRUD ───
@@ -122,9 +111,9 @@ export async function deleteContent(id: string): Promise<boolean> {
   const file = await readContentFile(id);
   if (!file) return false;
 
-  // Delete JSON file
+  // Delete JSON file from R2
   try {
-    await fs.unlink(contentFilePath(id));
+    await deleteObject(contentFileKey(id));
   } catch { /* ignore */ }
 
   // Delete R2 images

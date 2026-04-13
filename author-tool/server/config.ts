@@ -35,4 +35,9 @@ export const config = {
     clientEmail: process.env.GA4_CLIENT_EMAIL ?? '',
     privateKey: process.env.GA4_PRIVATE_KEY ?? '',
   },
+  instagram: {
+    userId: process.env.INSTAGRAM_USER_ID ?? '',
+    accessToken: process.env.INSTAGRAM_ACCESS_TOKEN ?? '',
+    graphVersion: process.env.INSTAGRAM_GRAPH_VERSION ?? 'v21.0',
+  },
 } as const;

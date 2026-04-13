@@ -49,7 +49,6 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
     queryFn: () => apiGet<Project[]>('/projects'),
   });
 
-  const selectedProject = projects?.find((p) => p.id === selectedProjectId) ?? { id: 'proj-default', name: '기본 프로젝트', icon: '📂' };
   const currentProject = projects?.find((p) => p.id === selectedProjectId);
   const isCbt = currentProject?.type === 'cbt';
 
@@ -96,130 +95,120 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
 
   return (
     <aside className="flex h-screen w-72 flex-col border-r bg-white shrink-0">
-      {/* ═══ 1. Header ═══ */}
-      <div className="border-b px-4 py-3">
-        <div className="flex items-center justify-between">
-          <h1
-            className="cursor-pointer text-lg font-bold text-primary-700"
-            onClick={() => { setSelectedExamId(null); setActiveView('dashboard'); }}
-          >
-            기출노트 저작도구
-          </h1>
-          <div className="flex items-center gap-1">
-            <button
-              onClick={toggleSidebar}
-              className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-500 transition-colors"
-              title="사이드바 접기"
-            >
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M11 19l-7-7 7-7M19 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              onClick={() => setActiveView('analytics')}
-              className={`p-1.5 rounded-lg text-sm transition-colors ${
-                activeView === 'analytics' ? 'bg-emerald-100 text-emerald-700' : 'hover:bg-gray-100 text-gray-500'
-              }`}
-              title="사이트 분석"
-            >
-              📊
-            </button>
-            <a
-              href={window.location.hostname === 'localhost' ? 'http://localhost:8081' : 'https://gcnote.co.kr'}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-lg bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600 transition-colors hover:bg-primary-100 hover:text-primary-700"
-              title="웹사이트 열기"
-            >
-              사이트 &rarr;
-            </a>
-          </div>
-        </div>
-      </div>
+      {/* ═══ 1. Project Selector (최상단) ═══ */}
+      <ProjectSelector
+        selectedProjectId={selectedProjectId}
+        setSelectedProjectId={setSelectedProjectId}
+      />
 
-      {/* ═══ 2. Projects + Tab Content ═══ */}
-      <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
-        <ProjectSelector
-          selectedProjectId={selectedProjectId}
-          setSelectedProjectId={setSelectedProjectId}
+      {/* ═══ 2. Action Bar ═══ */}
+      <div className="flex items-center gap-1 border-b px-2 py-1.5">
+        <button
+          onClick={toggleSidebar}
+          className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-500 transition-colors"
+          title="사이드바 접기"
         >
-          {({ project }) => {
-            const projectIsCbt = project.type === 'cbt';
-            return (
-              <div className="flex flex-col">
-                {/* Tabs */}
-                <div className="flex border-b border-t bg-white">
-                  {[
-                    { key: 'exam' as const, label: '📋 시험', count: exams?.length },
-                    { key: 'notes' as const, label: '📝 노트', count: notes?.length },
-                    { key: 'content' as const, label: '✏️ 컨텐츠', count: contents?.length },
-                  ].map((t) => (
-                    <button
-                      key={t.key}
-                      onClick={() => setSidebarSection(t.key)}
-                      className={`flex-1 py-2 text-[11px] font-semibold transition-colors ${
-                        sidebarSection === t.key
-                          ? 'border-b-2 border-emerald-500 text-emerald-700'
-                          : 'text-gray-400 hover:text-gray-600'
-                      }`}
-                    >
-                      {t.label} <span className="text-[9px] font-normal">{t.count ?? ''}</span>
-                    </button>
-                  ))}
-                </div>
-
-                {/* ─── 📋 시험 Tab ─── */}
-                {sidebarSection === 'exam' && (
-                  projectIsCbt ? (
-                    <CbtExamList
-                      categoryCode={project.categoryCode}
-                      selectedCbtExamId={selectedCbtExamId}
-                      setSelectedCbtExamId={setSelectedCbtExamId}
-                    />
-                  ) : (
-                    <ExamList
-                      selectedExamId={selectedExamId}
-                      setSelectedExamId={setSelectedExamId}
-                      setActiveView={setActiveView}
-                      onCreateExam={onCreateExam}
-                      onDeleteExam={onDeleteExam}
-                    />
-                  )
-                )}
-
-                {/* ─── 📝 요약노트 Tab ─── */}
-                {sidebarSection === 'notes' && (
-                  <NotesList
-                    isCbt={projectIsCbt}
-                    categoryCode={project.categoryCode}
-                    selectedNoteId={selectedNoteId}
-                    setSelectedNoteId={setSelectedNoteId}
-                    setActiveView={setActiveView}
-                  />
-                )}
-
-                {/* ─── ✏️ 컨텐츠 Tab ─── */}
-                {sidebarSection === 'content' && (
-                  <ContentList
-                    selectedProjectId={selectedProjectId}
-                    selectedContentId={selectedContentId}
-                    setSelectedContentId={setSelectedContentId}
-                  />
-                )}
-              </div>
-            );
-          }}
-        </ProjectSelector>
+          <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M11 19l-7-7 7-7M19 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button
+          onClick={() => { setSelectedExamId(null); setActiveView('dashboard'); }}
+          className="p-1.5 rounded-lg text-sm hover:bg-gray-100 text-gray-500 transition-colors"
+          title="홈"
+        >
+          🏠
+        </button>
+        <button
+          onClick={() => setActiveView('analytics')}
+          className={`p-1.5 rounded-lg text-sm transition-colors ${
+            activeView === 'analytics' ? 'bg-emerald-100 text-emerald-700' : 'hover:bg-gray-100 text-gray-500'
+          }`}
+          title="사이트 분석"
+        >
+          📊
+        </button>
+        <a
+          href={window.location.hostname === 'localhost' ? 'http://localhost:8081' : 'https://gcnote.co.kr'}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ml-auto rounded-lg bg-gray-100 px-2 py-1 text-[11px] font-medium text-gray-600 transition-colors hover:bg-primary-100 hover:text-primary-700"
+          title="웹사이트 열기"
+        >
+          사이트 &rarr;
+        </a>
       </div>
 
-      {/* ═══ 3. Footer ═══ */}
-      <div className="border-t bg-gray-50 px-4 py-2">
-        <div className="flex items-center justify-between">
-          <span className="truncate text-xs text-gray-500">
-            {selectedProject.icon} {selectedProject.name}
-          </span>
-          <DeployButton />
+      {/* ═══ 3. Tabs + Tab Content ═══ */}
+      <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
+
+        {/* Tabs */}
+        <div className="flex border-b bg-white sticky top-0 z-10">
+          {[
+            { key: 'exam' as const, label: '📋 시험', count: exams?.length },
+            { key: 'notes' as const, label: '📝 노트', count: notes?.length },
+            { key: 'content' as const, label: '✏️ 컨텐츠', count: contents?.length },
+          ].map((t) => (
+            <button
+              key={t.key}
+              onClick={() => setSidebarSection(t.key)}
+              className={`flex-1 py-2 text-[11px] font-semibold transition-colors ${
+                sidebarSection === t.key
+                  ? 'border-b-2 border-emerald-500 text-emerald-700'
+                  : 'text-gray-400 hover:text-gray-600'
+              }`}
+            >
+              {t.label} <span className="text-[9px] font-normal">{t.count ?? ''}</span>
+            </button>
+          ))}
         </div>
+
+        {/* Tab content */}
+        <div className="flex-1 overflow-y-auto">
+          {/* ─── 📋 시험 Tab ─── */}
+          {sidebarSection === 'exam' && (
+            isCbt ? (
+              <CbtExamList
+                categoryCode={currentProject?.categoryCode}
+                selectedCbtExamId={selectedCbtExamId}
+                setSelectedCbtExamId={setSelectedCbtExamId}
+              />
+            ) : (
+              <ExamList
+                selectedExamId={selectedExamId}
+                setSelectedExamId={setSelectedExamId}
+                setActiveView={setActiveView}
+                onCreateExam={onCreateExam}
+                onDeleteExam={onDeleteExam}
+              />
+            )
+          )}
+
+          {/* ─── 📝 요약노트 Tab ─── */}
+          {sidebarSection === 'notes' && (
+            <NotesList
+              isCbt={isCbt}
+              categoryCode={currentProject?.categoryCode}
+              selectedNoteId={selectedNoteId}
+              setSelectedNoteId={setSelectedNoteId}
+              setActiveView={setActiveView}
+            />
+          )}
+
+          {/* ─── ✏️ 컨텐츠 Tab ─── */}
+          {sidebarSection === 'content' && (
+            <ContentList
+              selectedProjectId={selectedProjectId}
+              selectedContentId={selectedContentId}
+              setSelectedContentId={setSelectedContentId}
+            />
+          )}
+        </div>
+      </div>
+
+      {/* ═══ 4. Footer ═══ */}
+      <div className="flex justify-end border-t bg-gray-50 px-4 py-2">
+        <DeployButton />
       </div>
     </aside>
   );

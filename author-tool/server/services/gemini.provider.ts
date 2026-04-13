@@ -2,6 +2,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { GoogleGenAI } from '@google/genai';
 import { config } from '../config.js';
 import { AppError } from '../middleware.js';
+import { generate as gemmaGenerate, research as gemmaResearch } from './gemma-client.js';
 
 // Text generation models
 export const TEXT_MODELS = [
@@ -32,49 +33,44 @@ function getGenAI(): GoogleGenerativeAI {
   return _genAI;
 }
 
-export async function generateText(prompt: string, model?: string, options?: { grounding?: boolean }): Promise<string> {
-  // Use new SDK (GoogleGenAI) when grounding is needed
-  if (options?.grounding) {
-    const ai = getGenAI2();
-    const modelId = model ?? config.gemini.model;
-    for (let attempt = 1; attempt <= 3; attempt++) {
-      try {
-        const result = await ai.models.generateContent({
-          model: modelId,
-          contents: prompt,
-          config: {
-            tools: [{ googleSearch: {} }],
-          } as any,
-        });
-        return result.text ?? '';
-      } catch (err) {
-        const msg = err instanceof Error ? err.message : String(err);
-        const isRetryable = msg.includes('503') || msg.includes('429') || msg.includes('RESOURCE_EXHAUSTED');
-        if (!isRetryable || attempt === 3) throw new AppError(500, `Gemini 호출 실패: ${msg}`);
-        await new Promise((r) => setTimeout(r, 1000 * Math.pow(2, attempt - 1) + Math.random() * 500));
-      }
-    }
-    throw new AppError(500, 'Gemini 호출에 실패했습니다.');
-  }
+// Routed to the local Gemma gateway (C:\projects\gemma). Model parameter is
+// accepted for call-site compatibility but ignored — the gateway always uses
+// gemma4:e4b. Grounding is served by Tavily via /v1/research.
+export async function generateText(
+  prompt: string,
+  model?: string,
+  options?: { grounding?: boolean },
+): Promise<string> {
+  const MAX_RETRIES = 3;
+  const label = options?.grounding ? 'Gemma/research' : 'Gemma/generate';
 
-  const modelId = model ?? config.gemini.model;
-  const genModel = getGenAI().getGenerativeModel({ model: modelId });
-
-  for (let attempt = 1; attempt <= 3; attempt++) {
+  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
     try {
-      const result = await genModel.generateContent(prompt);
-      return result.response.text();
+      if (options?.grounding) {
+        const r = await gemmaResearch(prompt);
+        return r.text ?? '';
+      }
+      return await gemmaGenerate(prompt);
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
-      const isRetryable = msg.includes('503') || msg.includes('429') || msg.includes('RESOURCE_EXHAUSTED');
-      if (!isRetryable || attempt === 3) {
-        throw new AppError(500, `Gemini 호출 실패: ${msg}`);
+      // Retry transient errors: connection resets, 5xx, rate limits, aborts.
+      const isRetryable =
+        msg.includes('ECONNREFUSED') ||
+        msg.includes('ECONNRESET') ||
+        msg.includes('ETIMEDOUT') ||
+        msg.includes('fetch failed') ||
+        msg.includes('aborted') ||
+        /\b5\d\d\b/.test(msg) ||
+        msg.includes('429');
+      if (!isRetryable || attempt === MAX_RETRIES) {
+        throw new AppError(500, `${label} 호출 실패: ${msg}`);
       }
-      const delay = 1000 * Math.pow(2, attempt - 1) + Math.random() * 500;
+      const delay = 1500 * Math.pow(2, attempt - 1) + Math.random() * 500;
+      console.log(`[${label}] retry ${attempt}/${MAX_RETRIES} in ${Math.round(delay)}ms... (${model ?? 'default'})`);
       await new Promise((r) => setTimeout(r, delay));
     }
   }
-  throw new AppError(500, 'Gemini 호출에 실패했습니다.');
+  throw new AppError(500, `${label} 호출에 실패했습니다.`);
 }
 
 export async function generateTextWithPdf(pdfBuffer: Buffer, prompt: string, model?: string): Promise<string> {
@@ -119,9 +115,11 @@ export async function generateImage(prompt: string, model?: string, aspectRatio?
   const modelId = model ?? 'gemini-2.5-flash-image';
   const ai = getGenAI2();
 
+  const MAX_RETRIES = 5;
+
   // Imagen 모델은 별도 API
   if (modelId.startsWith('imagen-')) {
-    for (let attempt = 1; attempt <= 3; attempt++) {
+    for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
       try {
         const result = await ai.models.generateImages({
           model: modelId,
@@ -137,15 +135,17 @@ export async function generateImage(prompt: string, model?: string, aspectRatio?
       } catch (err) {
         const msg = err instanceof Error ? err.message : String(err);
         const isRetryable = msg.includes('503') || msg.includes('429') || msg.includes('RESOURCE_EXHAUSTED');
-        if (!isRetryable || attempt === 3) throw new AppError(500, `이미지 생성 실패: ${msg}`);
-        await new Promise((r) => setTimeout(r, 1000 * Math.pow(2, attempt - 1) + Math.random() * 500));
+        if (!isRetryable || attempt === MAX_RETRIES) throw new AppError(500, `이미지 생성 실패: ${msg}`);
+        const delay = 2000 * Math.pow(2, attempt - 1) + Math.random() * 1000;
+        console.log(`[Gemini Image] ${modelId} retry ${attempt}/${MAX_RETRIES} in ${Math.round(delay)}ms...`);
+        await new Promise((r) => setTimeout(r, delay));
       }
     }
     throw new AppError(500, '이미지 생성에 실패했습니다.');
   }
 
   // Gemini 멀티모달 이미지 모델
-  for (let attempt = 1; attempt <= 3; attempt++) {
+  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
     try {
       const fullPrompt = `${IMAGE_SYSTEM_INSTRUCTION}\n\n${prompt}`;
       const response = await ai.models.generateContent({
@@ -167,10 +167,11 @@ export async function generateImage(prompt: string, model?: string, aspectRatio?
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       const isRetryable = msg.includes('503') || msg.includes('429') || msg.includes('RESOURCE_EXHAUSTED');
-      if (!isRetryable || attempt === 3) {
+      if (!isRetryable || attempt === MAX_RETRIES) {
         throw new AppError(500, `이미지 생성 실패: ${msg}`);
       }
-      const delay = 1000 * Math.pow(2, attempt - 1) + Math.random() * 500;
+      const delay = 2000 * Math.pow(2, attempt - 1) + Math.random() * 1000;
+      console.log(`[Gemini Image] ${modelId} retry ${attempt}/${MAX_RETRIES} in ${Math.round(delay)}ms...`);
       await new Promise((r) => setTimeout(r, delay));
     }
   }
@@ -202,15 +203,15 @@ export function parseJSON<T>(raw: string, errorMsg: string): T {
   for (const extract of strategies) {
     const json = extract();
     if (!json) continue;
-    try {
-      return JSON.parse(json) as T;
-    } catch {
-      // Try to repair truncated JSON (Gemini output token limit)
-      const repaired = tryRepairTruncatedJson(json);
-      if (repaired) {
-        try {
-          return JSON.parse(repaired) as T;
-        } catch { /* continue to next strategy */ }
+    const attempts = [json, sanitizeLatexEscapes(json)];
+    for (const candidate of attempts) {
+      try {
+        return JSON.parse(candidate) as T;
+      } catch {
+        const repaired = tryRepairTruncatedJson(candidate);
+        if (repaired) {
+          try { return JSON.parse(repaired) as T; } catch { /* next */ }
+        }
       }
     }
   }
@@ -220,6 +221,12 @@ export function parseJSON<T>(raw: string, errorMsg: string): T {
   console.error(`[parseJSON] Raw response (first 500 chars):`, raw.slice(0, 500));
   console.error(`[parseJSON] Raw response (last 300 chars):`, raw.slice(-300));
   throw new AppError(500, `${errorMsg}: JSON 파싱 실패`);
+}
+
+/** Escape rogue `\x` sequences that aren't valid JSON escapes (e.g. LaTeX `\sum`, `\frac`).
+ *  Valid escapes: \" \\ \/ \b \f \n \r \t \uXXXX. Anything else becomes `\\x`. */
+function sanitizeLatexEscapes(s: string): string {
+  return s.replace(/\\(?!["\\/bfnrt]|u[0-9a-fA-F]{4})/g, '\\\\');
 }
 
 /** Try to repair JSON truncated by output token limit */

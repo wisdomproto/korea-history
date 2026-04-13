@@ -14,7 +14,7 @@ import { SavedTemplateCard } from './cardnews/SavedTemplateCard';
 import { NewPresetInput } from './cardnews/NewPresetInput';
 import { ImageStyleInput } from './cardnews/ImageStyleInput';
 import { SlidePreviewModal } from './cardnews/SlidePreviewModal';
-import { downloadSlide, downloadAllSlides } from './cardnews/cardnews-export';
+import { downloadSlide, downloadAllSlides, renderSlideToBlob } from './cardnews/cardnews-export';
 
 interface Props {
   contentFile: ContentFile;
@@ -32,6 +32,8 @@ export function CardNewsPanel({ contentFile }: Props) {
   const [batchGenerating, setBatchGenerating] = useState(false);
   const [batchProgress, setBatchProgress] = useState('');
   const [editingTemplateId, setEditingTemplateId] = useState<string | null>(null);
+  const [publishing, setPublishing] = useState(false);
+  const [publishStage, setPublishStage] = useState('');
 
   const saveChannel = useSaveChannelContent();
   const genImage = useGenerateImage();
@@ -201,6 +203,51 @@ export function CardNewsPanel({ contentFile }: Props) {
     batchAbortRef.current = true;
   };
 
+  // ─── Instagram Publish ───
+  const handlePublishInstagram = async () => {
+    if (!current || slides.length === 0 || publishing) return;
+    if (slides.length > 10) {
+      alert('인스타그램 캐러셀은 최대 10장입니다. 슬라이드를 10장 이하로 줄여주세요.');
+      return;
+    }
+    const missingImg = slides.some((s) => !(s.canvas?.imageUrl || s.imageUrl));
+    if (missingImg && !confirm('이미지가 없는 슬라이드가 있습니다. 그대로 발행할까요?')) return;
+    if (!confirm(`${slides.length}장을 인스타그램에 발행하시겠습니까?`)) return;
+
+    setPublishing(true);
+    try {
+      setPublishStage(`이미지 렌더링 중 (0/${slides.length})...`);
+      const blobs: Blob[] = [];
+      for (let i = 0; i < slides.length; i++) {
+        setPublishStage(`이미지 렌더링 중 (${i + 1}/${slides.length})...`);
+        blobs.push(await renderSlideToBlob(slides[i]));
+      }
+
+      setPublishStage('업로드 및 인스타그램 발행 중...');
+      const form = new FormData();
+      blobs.forEach((b, i) => form.append('images', b, `slide_${String(i + 1).padStart(2, '0')}.png`));
+      const caption = [current.caption, current.hashtags.join(' ')].filter((s) => s?.trim()).join('\n\n');
+      form.append('caption', caption);
+      form.append('contentId', content.id);
+
+      const res = await fetch('/api/instagram/publish', { method: 'POST', body: form });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.error || '발행 실패');
+
+      const link = data.data.permalink;
+      if (link && confirm(`✅ 발행 완료!\n\n${link}\n\n인스타그램으로 이동하시겠습니까?`)) {
+        window.open(link, '_blank');
+      } else if (!link) {
+        alert(`✅ 발행 완료!\nMedia ID: ${data.data.mediaId}`);
+      }
+    } catch (err: any) {
+      alert('❌ 발행 실패: ' + (err?.message || String(err)));
+    } finally {
+      setPublishing(false);
+      setPublishStage('');
+    }
+  };
+
   // ─── Empty State ───
   if (!current && !isGenerating) {
     return (
@@ -237,6 +284,14 @@ export function CardNewsPanel({ contentFile }: Props) {
             </button>
             <button className="px-3 py-1.5 border border-gray-200 rounded-md text-xs hover:bg-gray-50" onClick={() => downloadAllSlides(slides, current?.caption)} title="모든 슬라이드를 PNG로 저장합니다">
               💾 전체 저장
+            </button>
+            <button
+              className="px-3 py-1.5 bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-500 text-white rounded-md text-xs hover:opacity-90 disabled:opacity-50"
+              onClick={handlePublishInstagram}
+              disabled={publishing}
+              title="렌더링한 슬라이드를 인스타그램에 캐러셀로 발행합니다"
+            >
+              {publishing ? `📤 ${publishStage || '발행 중...'}` : '📸 인스타그램 발행'}
             </button>
           </>
         )}

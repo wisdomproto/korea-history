@@ -120,6 +120,16 @@ export function generateSSE(
     callbacks.onError?.('생성 시간이 초과되었습니다 (90초). 다시 시도해주세요.');
   }, SSE_TIMEOUT_MS);
 
+  const processLine = (line: string) => {
+    if (!line.startsWith('data: ')) return;
+    try {
+      const event = JSON.parse(line.slice(6));
+      if (event.type === 'chunk') callbacks.onChunk?.(event.content);
+      else if (event.type === 'complete') callbacks.onComplete?.(event.data);
+      else if (event.type === 'error') callbacks.onError?.(event.error || event.message || 'Unknown error');
+    } catch { /* ignore parse errors */ }
+  };
+
   fetch(`/api/contents/${id}/${path}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -127,6 +137,10 @@ export function generateSSE(
     signal: controller.signal,
   })
     .then(async (response) => {
+      if (!response.ok) {
+        callbacks.onError?.(`서버 오류 (${response.status})`);
+        return;
+      }
       const reader = response.body?.getReader();
       if (!reader) return;
 
@@ -141,24 +155,17 @@ export function generateSSE(
         const lines = buffer.split('\n');
         buffer = lines.pop() || '';
 
-        for (const line of lines) {
-          if (!line.startsWith('data: ')) continue;
-          try {
-            const event = JSON.parse(line.slice(6));
-            if (event.type === 'chunk') callbacks.onChunk?.(event.content);
-            else if (event.type === 'complete') callbacks.onComplete?.(event.data);
-            else if (event.type === 'error') callbacks.onError?.(event.message);
-          } catch { /* ignore parse errors */ }
-        }
+        for (const line of lines) processLine(line);
+      }
+      // Process any remaining buffer
+      if (buffer.trim()) processLine(buffer.trim());
+    })
+    .catch((err) => {
+      if (err.name !== 'AbortError') {
+        callbacks.onError?.(err.message || 'Network error');
       }
     })
-    .finally(() => clearTimeout(timeout))
-    .catch((err) => {
-      clearTimeout(timeout);
-      if (err.name !== 'AbortError') {
-        callbacks.onError?.(err.message);
-      }
-    });
+    .finally(() => clearTimeout(timeout));
 
   return controller;
 }
