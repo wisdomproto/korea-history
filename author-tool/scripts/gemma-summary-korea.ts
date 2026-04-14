@@ -16,6 +16,41 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 import { generate as gemmaGenerate } from '../server/services/gemma-client.js';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+
+// Gemini for both extract and polish (proven 97% coverage baseline)
+const EXTRACT_MODEL = process.env.EXTRACT_MODEL || 'gemini-2.5-flash';
+const POLISH_MODEL = process.env.POLISH_MODEL || 'gemini-2.5-flash';
+let _genAI: GoogleGenerativeAI | null = null;
+function getGenAI(): GoogleGenerativeAI {
+  if (!_genAI) {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) throw new Error('GEMINI_API_KEY not set in .env');
+    _genAI = new GoogleGenerativeAI(apiKey);
+  }
+  return _genAI;
+}
+async function geminiGenerate(prompt: string, modelId = POLISH_MODEL, maxTokens = 16000): Promise<string> {
+  const maxRetries = 4;
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      const model = getGenAI().getGenerativeModel({
+        model: modelId,
+        generationConfig: { temperature: 0.3, maxOutputTokens: maxTokens },
+      });
+      const result = await model.generateContent(prompt);
+      return result.response.text();
+    } catch (err: any) {
+      const msg = err?.message || String(err);
+      const retryable = /503|429|ECONNRESET|ETIMEDOUT|fetch failed|Service Unavailable|high demand/i.test(msg);
+      if (!retryable || attempt === maxRetries) throw err;
+      const delay = 3000 * Math.pow(2, attempt - 1) + Math.random() * 1000;
+      console.warn(`  ↻ Gemini ${modelId} retry ${attempt}/${maxRetries} in ${Math.round(delay / 1000)}s (${msg.slice(0, 60)}...)`);
+      await new Promise((r) => setTimeout(r, delay));
+    }
+  }
+  throw new Error(`Gemini ${modelId} failed after ${maxRetries} retries`);
+}
 
 const DATA_DIR = path.resolve(__dirname, '../../data/questions');
 const OUT_DIR = path.resolve(__dirname, '../../data/summary-notes-gemma-test');
@@ -92,17 +127,20 @@ async function extractAll(questions: KQuestion[]): Promise<Concept[]> {
 
 규칙(엄수):
 - 응답은 JSON 배열(\`[ ... ]\`) 하나만. 설명/머리말/마크다운 금지.
-- 각 객체: question_index(number, 1부터), topic(string, 한국사 교과서 단원 수준: "삼국의 성립과 발전" 등), subtopic(string, 세부 주제: "신라의 삼국 통일" 등), concept(string, 한국어 3~5문장의 교과서급 설명), key_terms(string 배열, 핵심 용어 3~7개).
-- concept는 문제 맥락이 아니라 역사적 사실/개념 설명.
+- 각 객체: question_index(number, 1부터), topic(string), subtopic(string), concept(string, 한국어 3~5문장의 교과서급 설명), key_terms(string 배열, 핵심 용어 5~10개).
+- **topic은 교과서 단원 수준으로 구체적**: "삼국 시대" 같은 광범위 명칭 금지. 좋은 예: "고구려 광개토대왕의 정복 활동", "백제 근초고왕의 전성기", "신라 진흥왕의 영토 확장", "흥선대원군의 개혁 정치", "갑신정변", "동학농민운동", "6.10 만세운동" 등 구체 사건/인물/정책 단위.
+- **subtopic은 topic보다 더 세부적**: 예) topic="갑신정변" → subtopic="개화당의 정강 14개조", "청일 간섭과 실패", "이후 영향".
+- **key_terms에는 반드시 등장하는 고유명사를 전부 포함**: 왕명/인물/사건/제도/유물/서적/연도 등. 추상 개념("중앙집권화", "정치 개혁")보다 고유명사 우선.
+- concept는 문제 맥락이 아니라 역사적 사실 설명.
 
 예시:
-[{"question_index":1,"topic":"선사시대와 고조선","subtopic":"청동기시대","concept":"청동기시대에는 계급이 발생하고 사유재산이 생겨났다. 대표적 유물로 비파형동검, 반달돌칼이 있으며 지배층의 무덤인 고인돌이 축조되었다. 벼농사가 본격화되었다.","key_terms":["비파형동검","고인돌","반달돌칼","사유재산","계급"]}]
+[{"question_index":1,"topic":"청동기 시대의 사회 변화","subtopic":"계급 발생과 유물","concept":"청동기시대에는 벼농사가 본격화되면서 잉여 생산물이 발생하고 사유재산과 계급이 출현하였다. 지배층의 권위를 상징하는 고인돌이 축조되고, 비파형동검과 반달돌칼 같은 대표 유물이 사용되었다.","key_terms":["비파형동검","고인돌","반달돌칼","벼농사","사유재산","계급","잉여생산물"]}]
 
 문제:
 ${body}`;
 
     try {
-      const raw = await gemmaGenerate(prompt, { temperature: 0.3, maxTokens: 4096, timeoutMs: 180_000 });
+      const raw = await geminiGenerate(prompt, EXTRACT_MODEL, 6000);
       const parsed = parseJsonArray<Concept>(raw);
       // Map question_index back to absolute question number within this run
       for (const c of parsed) {
@@ -113,6 +151,8 @@ ${body}`;
       skipped++;
       console.warn(`\n    ⚠️ batch ${i / EXTRACT_BATCH + 1} 실패: ${e.message}`);
     }
+    // 배치 간 간격 (rate limit 완화)
+    if (i + EXTRACT_BATCH < questions.length) await new Promise((r) => setTimeout(r, 800));
   }
   console.log(`\n  → ${concepts.length}개 개념 추출 (${skipped}개 배치 스킵)\n`);
   return concepts;
@@ -146,6 +186,26 @@ function canonicalEra(rawTopic: string): string {
   return topic || '기타';
 }
 
+// 원본 topic 문자열에서 직접 시대 추론 (병합 없이 정렬용)
+function eraRankByTopic(topic: string): number {
+  const t = stripHanja(topic);
+  if (/선사|구석기|신석기|청동기|철기/.test(t)) return 10;
+  if (/고조선|위만/.test(t)) return 15;
+  if (/부여|삼한|옥저|동예|초기\s*국가/.test(t)) return 20;
+  if (/후삼국/.test(t)) return 55;
+  if (/통일\s*신라|남북국|발해/.test(t)) return 50;
+  if (/삼국|고구려|백제|신라/.test(t)) return 30;
+  if (/고려/.test(t)) return 60;
+  if (/조선\s*전기|조선\s*초기/.test(t)) return 70;
+  if (/조선\s*후기|조선\s*중기|실학|세도/.test(t)) return 80;
+  if (/조선/.test(t)) return 75;
+  if (/근현대/.test(t)) return 95;
+  if (/일제|식민|강점|독립운동|3\.?1|의열단|임시정부/.test(t)) return 100;
+  if (/개항|개화|강화도|대한제국|갑신|갑오|을미|근대/.test(t)) return 90;
+  if (/현대|해방|대한민국|6\.?25|한국전쟁|유신|민주화/.test(t)) return 110;
+  return 999;
+}
+
 // 시대 정규화 이름으로부터 순서 랭크
 function eraRank(canonical: string): number {
   const map: Record<string, number> = {
@@ -169,8 +229,8 @@ function eraRank(canonical: string): number {
 function mergeConcepts(concepts: Concept[]): TopicGroup[] {
   const map = new Map<string, { topic: string; freq: number; terms: Set<string>; subs: Map<string, { sub: string; freq: number; concepts: string[] }> }>();
   for (const c of concepts) {
-    const rawTopic = (c.topic ?? '').trim();
-    const topic = canonicalEra(rawTopic); // 시대명 정규화로 병합
+    // 원본 topic 유지 (시대 병합 X) — 세부 주제 보존을 위해
+    const topic = stripHanja(c.topic ?? '').trim() || '기타';
     const subtopic = stripHanja(c.subtopic ?? '').trim() || '기타';
     const concept = stripHanja(c.concept ?? '').trim();
     const keyTerms = Array.isArray(c.key_terms) ? c.key_terms.map((t) => stripHanja(t)).filter(Boolean) : [];
@@ -185,7 +245,13 @@ function mergeConcepts(concepts: Concept[]): TopicGroup[] {
     s.concepts.push(concept);
   }
   return Array.from(map.values())
-    .sort((a, b) => eraRank(a.topic) - eraRank(b.topic))
+    .sort((a, b) => {
+      // 원본 topic 이름에서 시대 추론하여 정렬
+      const ra = eraRankByTopic(a.topic);
+      const rb = eraRankByTopic(b.topic);
+      if (ra !== rb) return ra - rb;
+      return b.freq - a.freq;
+    })
     .map((g) => ({
       topic: g.topic,
       frequency: g.freq,
@@ -212,70 +278,70 @@ async function polishAll(topics: TopicGroup[]): Promise<string[]> {
 }
 
 async function polishOne(t: TopicGroup): Promise<string> {
-  // 최대 25개 subtopic까지 전달 (병합 후에도 모든 세부주제가 반영되도록)
-  const subLines = t.subtopics.slice(0, 25).map((s, idx) => {
-    const bestConcept = s.concepts.sort((a, b) => b.length - a.length)[0]?.slice(0, 500) || '';
+  // 모든 subtopic 전달 (최대 30개), 원본 topic 유지 시 subtopic 수가 적음
+  const subLines = t.subtopics.slice(0, 30).map((s, idx) => {
+    const bestConcept = s.concepts.sort((a, b) => b.length - a.length)[0]?.slice(0, 600) || '';
     return `세부주제 ${idx + 1}: ${s.subtopic} (출제 ${s.frequency}회)\n  기출 개념: ${bestConcept}`;
   }).join('\n\n');
 
-  const keyTerms = t.allTerms.slice(0, 25).join(', ');
+  // 모든 key_terms를 본문에 반드시 포함시키기 위해 전체 전달
+  const allKeyTerms = t.allTerms; // 모두 전달
+  const keyTerms = allKeyTerms.join(', ');
+  const mandatoryList = allKeyTerms.map((k) => `- ${k}`).join('\n');
 
   const prompt = `당신은 한국사능력검정시험 기본서 저자입니다. 아래 **단 하나의 주제**에 대해 교과서급 HTML 요약노트를 작성하세요.
 
 # 주제 정보
 - 주제명: ${t.topic}
 - 기출 빈도: ${t.frequency}회
-- 핵심 용어: ${keyTerms}
+
+# 🔑 반드시 본문에 전부 등장시킬 핵심 용어 (${allKeyTerms.length}개)
+${mandatoryList}
+
+위 용어는 **하나도 빠짐없이** 본문 어딘가에 등장해야 합니다. 각 용어를 <span class="keyword">용어명</span> 형태로 표기하세요. 인물명, 사건명, 제도명, 유물명은 절대 추상화하지 말고 원래 이름 그대로 사용하세요.
 
 # 기출 세부주제와 개념 (${t.subtopics.length}개)
 ${subLines}
 
 # 작성 규칙 (엄수)
 1. 출력은 오직 **<details open>...</details>** 블록 하나. 다른 태그(<h1><h2><h3>) 금지.
-2. 메타 서술 금지: "정리해보겠습니다", "이러한 내용들을 통해", "위 정보를 바탕으로" 등 금지. 바로 HTML 시작.
+2. 메타 서술 금지: "정리해보겠습니다", "이러한 내용들을 통해", "위 정보를 바탕으로" 등. 바로 HTML 시작.
 3. 교과서 문체: "~이다", "~하였다", "~이었다". 해설 말투("~문제에서는") 금지.
-4. **입력된 세부주제를 빠짐없이 각각 별도의 <details class="sub-details"> 블록으로 출력하세요.** 유사 주제라도 통합하지 말고 개별 블록으로 작성. 세부주제 개수가 많을수록 더 풍부한 노트가 됩니다.
-5. 각 <details class="sub-details"> 블록의 <p>는 **최소 300자**. 정의→배경→전개→영향 흐름. 부족하면 당신의 한국사 지식으로 충실히 보강.
-6. <span class="highlight">핵심 문장</span>, <span class="keyword">핵심 용어</span>를 충분히 활용.
-7. 마크다운 금지(**, ##, ---). HTML 태그만 사용.
-8. **한자 사용 금지**: 한자(漢字) 일체 사용 금지. 모든 용어는 한글로만 표기. 병기도 금지.
-9. **플레이스홀더 금지**: "(본문)", "(300자+)", "(항목1)" 같은 괄호 안 안내 문구를 출력에 그대로 포함하지 말 것. 반드시 실제 내용으로 채울 것.
-10. <p> 태그 안에서 본문은 괄호 "(" 로 시작하지 말 것. 바로 본문 문장으로 시작.
+4. **입력된 세부주제를 빠짐없이 각각 별도의 <details class="sub-details"> 블록으로 출력**. 유사 주제라도 통합하지 말고 개별 블록.
+5. 각 <details class="sub-details">의 <p>는 **최소 400자**. 정의→배경→전개→결과→영향 순서로 서술. 부족한 정보는 한국사 지식으로 충실히 보강.
+6. **고유명사 그대로 사용**: 왕명(고종, 정조, 세종), 인물(김구, 이승만), 사건(갑신정변, 임오군란), 제도(균역법, 과거제), 유물(비파형동검), 서적(경국대전) 등은 원래 이름 그대로. "왕", "정치인", "개혁" 같은 일반화 금지.
+7. <span class="highlight">핵심 문장</span>, <span class="keyword">고유 용어</span>를 **빈번히** 사용. 위 핵심 용어 목록을 전부 포함시켜야 함.
+8. 마크다운 금지(**, ##, ---). HTML 태그만.
+9. **한자 사용 금지**: 한자(漢字) 일체 금지. 한글만.
+10. 플레이스홀더 금지 "(본문)", "(300자+)" 등 괄호 안 안내 문구를 그대로 출력하지 말 것. 본문은 괄호 "(" 로 시작하지 말 것.
 
-# 출력 형식 (이 예시의 구조를 정확히 따를 것)
+# 출력 형식 예시 (구조는 정확히, 내용은 절대 따라 쓰지 말 것)
 
-<details open><summary><strong>📜 ${t.topic} (출제 ${t.frequency}회)</strong></summary>
-<div class="note">💡 핵심: (3문장으로 주제의 전체 맥락과 시험 포인트 요약)</div>
+<details open><summary><strong>📜 주제명 (출제 N회)</strong></summary>
+<div class="note">💡 핵심: 이 주제의 역사적 맥락, 주요 인물과 사건을 3문장으로 요약.</div>
 <ul>
-  <li>(핵심 포인트 1)</li>
-  <li>(핵심 포인트 2)</li>
-  <li>(핵심 포인트 3)</li>
-  <li>(핵심 포인트 4)</li>
-  <li>(핵심 포인트 5)</li>
+  <li>핵심 인물: 특정 왕이나 인물 이름</li>
+  <li>주요 사건: 구체적인 사건명과 연도</li>
+  <li>중요 제도/유물: 원래 이름 그대로</li>
 </ul>
-<details class="sub-details"><summary><strong>(세부주제 1 이름)</strong></summary>
-<p>(300자 이상의 교과서 설명. <span class="keyword">핵심용어</span>를 본문에 녹여쓰기. <span class="highlight">중요 문장 강조</span>.)</p>
-</details>
-<details class="sub-details"><summary><strong>(세부주제 2 이름)</strong></summary>
-<p>(300자 이상)</p>
-</details>
-<details class="sub-details"><summary><strong>(세부주제 3 이름)</strong></summary>
-<p>(300자 이상)</p>
+<details class="sub-details"><summary><strong>세부주제 실제 이름</strong></summary>
+<p><span class="keyword">고유명사</span>를 포함한 400자 이상의 교과서 설명. 정의와 배경을 먼저 서술하고, 전개 과정에서 <span class="keyword">구체적 인물명</span>과 <span class="keyword">사건명</span>을 모두 언급한다. 결과와 영향을 통해 <span class="highlight">핵심 의의를 강조</span>한다.</p>
 </details>
 <table>
-<thead><tr><th>구분</th><th>내용</th></tr></thead>
+<thead><tr><th>항목</th><th>내용</th></tr></thead>
 <tbody>
-<tr><td>(항목1)</td><td>(설명)</td></tr>
-<tr><td>(항목2)</td><td>(설명)</td></tr>
+<tr><td>실제 항목명</td><td>실제 내용</td></tr>
 </tbody>
 </table>
 </details>
 
-이제 "${t.topic}" 주제에 대한 HTML을 위 형식 그대로 출력하세요. HTML만 출력, 다른 설명 없이.`;
+⚠️ 위 예시의 설명 문구(정의와 배경, 전개 과정 등)를 그대로 복붙하지 말고, 실제 "${t.topic}" 내용으로 채우세요.
+
+이제 "${t.topic}" 주제에 대한 HTML을 출력하세요. HTML만 출력, 다른 설명 없이.`;
 
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
-      const html = await gemmaGenerate(prompt, { temperature: 0.3, maxTokens: 16000, timeoutMs: 900_000 });
+      const html = await geminiGenerate(prompt);
       return html;
     } catch (err: any) {
       if (attempt === 3) {
