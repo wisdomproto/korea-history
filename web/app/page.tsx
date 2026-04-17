@@ -71,6 +71,38 @@ export default function HomePage() {
       {/* ─── Banner ─── */}
       <BannerCarousel />
 
+      {/* ─── Site Intro (SEO / AdSense 정책 대응용 고유 본문) ─── */}
+      <section className="rounded-2xl border border-emerald-100 bg-white p-5 sm:p-6 card-shadow">
+        <h1 className="text-lg sm:text-xl font-extrabold text-slate-900 mb-2">
+          한국사능력검정시험(한능검) 무료 학습 플랫폼, 기출노트
+        </h1>
+        <div className="space-y-2.5 text-[13.5px] leading-[1.75] text-slate-600">
+          <p>
+            <strong>기출노트</strong>는 국사편찬위원회가 주관하는 한국사능력검정시험(한능검) 준비를 돕기 위해 만들어진
+            무료 학습 서비스입니다. 제40회부터 제77회까지 총 {exams.length}회차의 기출문제 {exams.reduce((s,e)=>s+e.questions.length,0).toLocaleString()}문항을
+            회차별·시대별·키워드별로 풀어볼 수 있고, 모든 문항에는 정답 해설과 최태성 강사의 영상 해설, 시대 배경 자료가
+            함께 제공됩니다.
+          </p>
+          <p>
+            한능검은 심화(1·2·3급)와 기본(4·5·6급) 두 과정으로 구성되며, 심화는 1급 80점 이상·2급 70점 이상·3급 60점 이상
+            기준으로 급수가 결정됩니다. 공무원 시험 가산점, 대학·대학원 입시, 승진 가점, 사관학교 지원 등 다양한 목적에
+            활용되므로 체계적인 회차별 반복 학습과 시대별 요약 정리가 중요합니다. 본 사이트는 선사·고조선부터 삼국·남북국·고려·조선
+            전기·후기·근대·현대까지 8개 시대를 {keywords.length.toLocaleString()}개 키워드로 세분하여 제공하며,
+            87개 시대별 요약노트(총 20만 자 이상)로 개념을 정리할 수 있도록 구성했습니다.
+          </p>
+          <p>
+            학습 방법은 세 가지입니다. 첫째, <Link href="/exam" className="text-emerald-600 font-semibold hover:underline">회차별 풀기</Link>로
+            최신 기출을 시험장처럼 풀어보고, 둘째, <Link href="/study/custom" className="text-emerald-600 font-semibold hover:underline">맞춤형 학습</Link>으로
+            약한 시대·유형만 골라 집중 훈련할 수 있습니다. 셋째, <Link href="/study/keyword" className="text-emerald-600 font-semibold hover:underline">키워드별 학습</Link>으로
+            &lsquo;고인돌&rsquo; &lsquo;규장각&rsquo; &lsquo;신간회&rsquo;처럼 핵심 키워드만 묶어 반복할 수 있고, 틀린 문제는 자동으로
+            <Link href="/wrong-answers" className="text-emerald-600 font-semibold hover:underline"> 오답 노트</Link>에
+            저장되어 복습 세션에서 다시 풀어볼 수 있습니다. 풀이 이력은 <Link href="/my-record" className="text-emerald-600 font-semibold hover:underline">내 기록</Link>에서
+            회차별 점수·급수와 시대/유형별 약점 분석까지 확인할 수 있습니다. 학습에 도움이 되는 자료·공지는{" "}
+            <Link href="/board" className="text-emerald-600 font-semibold hover:underline">게시판</Link>에서 공유됩니다.
+          </p>
+        </div>
+      </section>
+
       {/* ─── Quick Actions ─── */}
       <section>
         <h2 className="text-lg font-bold text-gray-900 mb-4">빠른 학습</h2>

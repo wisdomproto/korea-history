@@ -4,6 +4,7 @@ import {
   getAllNoteIds,
   getNoteById,
   getAdjacentNotes,
+  getSectionNotes,
 } from "@/lib/notes";
 import { getNoteLectures } from "@/lib/note-lectures";
 import { breadcrumbJsonLd } from "@/lib/seo";
@@ -13,6 +14,7 @@ import NoteContent from "./NoteContent";
 import NoteActions from "./NoteActions";
 import AdSlot from "@/components/AdSlot";
 import ShareButtons from "@/components/ShareButtons";
+import { NoteIntro, NoteOutro } from "@/components/NoteSEOContent";
 
 interface Props {
   params: Promise<{ noteId: string }>;
@@ -98,8 +100,19 @@ export default async function NotePage({ params }: Props) {
         )}
       </div>
 
+      {/* Server-rendered intro (SEO) — describes section context */}
+      <NoteIntro sectionId={note.sectionId} noteTitle={note.title} />
+
       {/* Note content with expand/collapse */}
       <NoteContent html={note.content} />
+
+      {/* Server-rendered outro (SEO) — study guide, exam frequency, sibling notes */}
+      <NoteOutro
+        sectionId={note.sectionId}
+        noteTitle={note.title}
+        relatedNotes={getSectionNotes(note.sectionId, note.id, 8)}
+        relatedQuestionCount={note.relatedQuestionIds.length}
+      />
 
       {/* Lecture videos */}
       {lectures.length > 0 && (

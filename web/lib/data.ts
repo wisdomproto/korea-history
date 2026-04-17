@@ -293,6 +293,35 @@ export function getFullQuestionsByIds(
   return ids.map((id) => lookup.get(id)).filter(Boolean) as { question: Question; examNumber: number }[];
 }
 
+/** Get N questions from the same era as the reference question (for SEO "related" links). */
+export function getRelatedQuestionsInEra(
+  era: string,
+  excludeExam: number,
+  excludeQuestion: number,
+  limit: number = 6
+): { examNumber: number; questionNumber: number; content: string }[] {
+  const allExams = getAllExams();
+  const results: { examNumber: number; questionNumber: number; content: string }[] = [];
+
+  for (const { exam, questions } of allExams) {
+    for (const q of questions) {
+      if (q.era !== era) continue;
+      if (exam.examNumber === excludeExam && q.questionNumber === excludeQuestion) continue;
+      results.push({
+        examNumber: exam.examNumber,
+        questionNumber: q.questionNumber,
+        content: q.content,
+      });
+      if (results.length >= limit * 3) break;
+    }
+    if (results.length >= limit * 3) break;
+  }
+
+  // Stable pick: evenly spaced sample so different pages get varied links
+  const step = Math.max(1, Math.floor(results.length / limit));
+  return results.filter((_, i) => i % step === 0).slice(0, limit);
+}
+
 /** Get all questions across all exams (for sitemap / static params). */
 export function getAllQuestionParams(): {
   examNumber: number;

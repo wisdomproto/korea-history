@@ -123,6 +123,18 @@ export function getRelatedNotesForQuestions(
   return result;
 }
 
+/** Get other notes from the same section (excluding current), max N. */
+export function getSectionNotes(
+  sectionId: string,
+  excludeId: string,
+  limit: number = 8
+): { id: string; title: string }[] {
+  return getNotesIndex()
+    .filter((n) => n.sectionId === sectionId && n.id !== excludeId)
+    .slice(0, limit)
+    .map((n) => ({ id: n.id, title: n.title }));
+}
+
 /** Get prev/next note relative to current note. */
 export function getAdjacentNotes(
   currentId: string

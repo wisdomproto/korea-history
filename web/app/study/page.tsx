@@ -24,6 +24,28 @@ export default function StudyPage() {
         {exams.length}개 회차 &middot; {totalQuestions.toLocaleString()}문항
       </p>
 
+      {/* Intro (SEO / unique content) */}
+      <section className="mb-6 rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 card-shadow text-[13px] leading-[1.75] text-slate-600 space-y-2.5">
+        <p>
+          한능검 대비는 기출 반복이 가장 확실한 전략입니다. 기출노트는 {totalQuestions.toLocaleString()}개 기출 문항을
+          <strong> 세 가지 방식</strong>으로 풀 수 있도록 구성했습니다.
+        </p>
+        <p>
+          <strong>회차별</strong>은 실제 시험장처럼 1회분 50문항을 순서대로 풀어보는 모드로, 시간 배분과 체력 조율에
+          유리합니다. <strong>맞춤형</strong>은 선사·고조선부터 현대까지 8개 시대 × 4개 유형(정치·경제·사회·문화) 매트릭스에서
+          원하는 칸만 체크해 나만의 학습 세트를 만듭니다. 오답이 많은 구간만 집중적으로 훈련할 때 효과적입니다.
+          <strong> 키워드별</strong>은 {keywords.length.toLocaleString()}개 핵심 키워드 중 원하는 것을 골라 관련 문제만 묶어 풀 수 있어
+          &lsquo;고인돌&rsquo; &lsquo;대한매일신보&rsquo; 같은 세밀한 단서 학습에 유용합니다.
+        </p>
+        <p>
+          풀이 도중 선택한 답은 <strong>자동으로 오답 복습 리스트</strong>에 저장되며, 회차 결과는{" "}
+          <Link href="/my-record" className="text-indigo-600 font-semibold hover:underline">내 기록</Link>에서 점수·급수와
+          시대/유형별 약점으로 분석됩니다. 개념 복습이 필요하면{" "}
+          <Link href="/notes" className="text-indigo-600 font-semibold hover:underline">요약노트</Link> 87개 주제에서 시대별 핵심을
+          정리해 두었습니다.
+        </p>
+      </section>
+
       {/* 문제풀이 */}
       <section className="mb-6">
         <h2 className="text-sm font-bold text-slate-800 mb-2.5 px-0.5">문제풀이</h2>
