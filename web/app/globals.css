@@ -1,6 +1,32 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* Fonts (Noto Serif KR + Pretendard + JetBrains Mono) are loaded via
+   <link> tags in app/layout.tsx <head> since Tailwind v4 + Turbopack don't
+   support arbitrary @import url(...) statements after Tailwind imports. */
+
+/* ─── Design Tokens (gcnote.co.kr — promo/site redesign) ───
+   Warm cream + deep ink + amber/teal accents.
+   Mirrors the promo video's visual language. */
+:root {
+  --gc-bg:        #F5EFE4;   /* warm cream page bg */
+  --gc-bg-deep:   #EFE6D4;   /* deeper cream for section breaks */
+  --gc-paper:     #FDFBF5;   /* near-white card/paper surface */
+  --gc-ink:       #1F1A14;   /* deep brown-black text */
+  --gc-ink2:      #3D342A;   /* secondary ink */
+  --gc-subtle:    #7A6F5E;   /* muted body text */
+  --gc-hairline:  #D9CFBB;   /* thin borders/dividers */
+  --gc-amber:     #B45309;   /* primary accent */
+  --gc-amber-soft:#FDF5E3;
+  --gc-teal:      #0D9488;   /* secondary accent */
+  --gc-teal-soft: #E6F4F2;
+  --gc-rose:      #B84A3F;
+
+  --gc-font-serif: "Noto Serif KR", "Source Serif Pro", Georgia, serif;
+  --gc-font-sans:  "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", system-ui, sans-serif;
+  --gc-font-mono:  "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+}
+
 /* ─── Base Layer ─── */
 @layer base {
   html {
@@ -9,14 +35,15 @@
 
   body {
     @apply text-gray-900 antialiased;
-    background: #FAFAF8;
-    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Pretendard', 'Malgun Gothic', sans-serif;
+    background: var(--gc-bg);
+    font-family: var(--gc-font-sans);
     font-feature-settings: "ss01", "cv01";
+    color: var(--gc-ink);
   }
 
   ::selection {
-    background: rgba(139, 115, 85, 0.2);
-    color: #4A3728;
+    background: var(--gc-amber);
+    color: var(--gc-paper);
   }
 
   ::-webkit-scrollbar {
@@ -27,12 +54,27 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(139, 115, 85, 0.2);
+    background: rgba(139, 115, 85, 0.25);
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(139, 115, 85, 0.35);
+    background: rgba(139, 115, 85, 0.4);
   }
+}
+
+/* ─── gcnote typography utilities ─── */
+.font-serif-kr  { font-family: var(--gc-font-serif); }
+.font-sans-kr   { font-family: var(--gc-font-sans); }
+.font-mono-kr   { font-family: var(--gc-font-mono); }
+
+/* Full-bleed helper: breaks out of the layout's max-w-6xl + px-4 + py-5 wrapper.
+   Used by marketing/landing pages that want to control their own width. */
+.gc-fullbleed {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  margin-top: -20px;
+  margin-bottom: -20px;
 }
 
 /* ─── Components Layer ─── */

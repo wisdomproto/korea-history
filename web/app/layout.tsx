@@ -34,6 +34,17 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+        {/* Design system fonts — Noto Serif KR (headlines), Pretendard (body), JetBrains Mono (labels) */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css"
+          rel="stylesheet"
+        />
         <meta name="google-adsense-account" content="ca-pub-6002059361162458" />
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6002059361162458" crossOrigin="anonymous" />
         <meta name="naver-site-verification" content="e79f5c36354d88f45d3cd7b622df34f3d570a336" />

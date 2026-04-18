@@ -5,128 +5,165 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const NAV_ITEMS = [
-  {
-    href: "/study",
-    label: "학습하기",
-    icon: (
-      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-      </svg>
-    ),
-  },
-  {
-    href: "/wrong-answers",
-    label: "오답복습",
-    icon: (
-      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-      </svg>
-    ),
-  },
-  {
-    href: "/notes",
-    label: "요약노트",
-    icon: (
-      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-      </svg>
-    ),
-  },
-  {
-    href: "/my-record",
-    label: "내 기록",
-    icon: (
-      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-      </svg>
-    ),
-  },
-  {
-    href: "/board",
-    label: "게시판",
-    icon: (
-      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-      </svg>
-    ),
-  },
+  { href: "/exam",          label: "기출문제", match: ["/exam", "/study"] },
+  { href: "/notes",         label: "요약노트", match: ["/notes"] },
+  { href: "/wrong-answers", label: "오답노트", match: ["/wrong-answers"] },
+  { href: "/my-record",     label: "내 기록",   match: ["/my-record"] },
+  { href: "/board",         label: "게시판",   match: ["/board"] },
 ];
+
+const ink     = "var(--gc-ink)";
+const subtle  = "var(--gc-subtle)";
+const amber   = "var(--gc-amber)";
+const paper   = "var(--gc-paper)";
+const bg      = "var(--gc-bg)";
+const hair    = "var(--gc-hairline)";
 
 export default function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
 
-  // Prevent scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
+  const isActive = (matches: string[]) =>
+    matches.some((m) => pathname === m || pathname.startsWith(m + "/"));
+
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-gray-200/80 bg-white/95 backdrop-blur-xl">
-        <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
+      <header
+        className="sticky top-0 z-50 backdrop-blur-xl"
+        style={{
+          background: "rgba(245, 239, 228, 0.92)",
+          borderBottom: `1px solid ${hair}`,
+        }}
+      >
+        <div className="mx-auto flex h-[68px] max-w-[1280px] items-center gap-8 px-6 md:px-8">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 shadow-sm shadow-emerald-200">
-              <svg className="w-4.5 h-4.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342" />
-              </svg>
-            </div>
-            <div className="flex items-baseline gap-1.5">
-              <span className="text-[15px] font-extrabold tracking-tight text-gray-900">기출노트</span>
-              <span className="text-[11px] font-bold text-emerald-600 tracking-wide">한능검</span>
-            </div>
+          <Link
+            href="/"
+            className="flex shrink-0 items-baseline gap-1.5 whitespace-nowrap no-underline"
+          >
+            <span
+              className="font-serif-kr"
+              style={{
+                fontSize: 26,
+                fontWeight: 900,
+                color: ink,
+                letterSpacing: "-0.04em",
+              }}
+            >
+              기출노트
+            </span>
+            <span
+              className="font-sans-kr"
+              style={{
+                fontSize: 14,
+                color: amber,
+                fontWeight: 800,
+                marginLeft: 4,
+                letterSpacing: "-0.01em",
+              }}
+            >
+              한능검
+            </span>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-0.5">
-            {NAV_ITEMS.map(({ href, label, icon }) => {
-              const isActive =
-                pathname === href ||
-                pathname.startsWith(href + "/") ||
-                (href === "/study" && pathname.startsWith("/exam"));
+          <nav className="hidden md:flex items-center gap-7 shrink-0">
+            {NAV_ITEMS.map(({ href, label, match }) => {
+              const active = isActive(match);
               return (
                 <Link
                   key={href}
                   href={href}
-                  className={`relative flex items-center gap-1.5 rounded-lg px-3 py-2 text-[13px] font-semibold transition-all duration-200 ${
-                    isActive
-                      ? "text-emerald-700 bg-emerald-50"
-                      : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
-                  }`}
+                  className="font-sans-kr no-underline transition-colors"
+                  style={{
+                    color: active ? ink : subtle,
+                    fontSize: 15,
+                    fontWeight: active ? 700 : 500,
+                    padding: "8px 2px",
+                    borderBottom: active
+                      ? `2px solid ${amber}`
+                      : "2px solid transparent",
+                    whiteSpace: "nowrap",
+                  }}
                 >
-                  {icon}
-                  <span>{label}</span>
-                  {isActive && (
-                    <span className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-emerald-500" />
-                  )}
+                  {label}
                 </Link>
               );
             })}
           </nav>
 
-          {/* Admin */}
-          <Link
-            href="/admin/banners"
-            className="hidden md:flex items-center justify-center w-8 h-8 rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors"
-            title="관리"
+          <div className="flex-1" />
+
+          {/* Search (hidden <1100px) */}
+          <div
+            className="gc-search hidden lg:flex items-center gap-2 whitespace-nowrap"
+            style={{
+              padding: "8px 14px",
+              background: paper,
+              border: `1px solid ${hair}`,
+              borderRadius: 999,
+              fontFamily: "var(--gc-font-sans)",
+              fontSize: 13,
+              color: subtle,
+              minWidth: 220,
+            }}
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-4-4" />
+            </svg>
+            <span>단원·키워드 검색</span>
+            <span className="flex-1" />
+            <span
+              className="font-mono-kr"
+              style={{
+                fontSize: 10,
+                padding: "2px 6px",
+                borderRadius: 4,
+                background: bg,
+                color: subtle,
+                fontWeight: 700,
+              }}
+            >
+              ⌘ K
+            </span>
+          </div>
+
+          {/* CTA */}
+          <Link
+            href="/exam"
+            className="hidden md:inline-flex items-center gap-2 whitespace-nowrap no-underline shrink-0"
+            style={{
+              padding: "10px 20px",
+              background: ink,
+              color: bg,
+              borderRadius: 999,
+              fontFamily: "var(--gc-font-sans)",
+              fontSize: 14,
+              fontWeight: 700,
+            }}
+          >
+            지금 풀기
+            <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14" />
+              <path d="m13 5 7 7-7 7" />
             </svg>
           </Link>
 
           {/* Mobile menu button */}
           <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+            onClick={() => setMobileOpen((v) => !v)}
+            className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg transition-colors"
+            style={{ color: ink }}
             aria-label="메뉴"
           >
             {mobileOpen ? (
@@ -145,37 +182,65 @@ export default function Header() {
       {/* Mobile Menu Overlay */}
       {mobileOpen && (
         <div className="fixed inset-0 z-40 md:hidden">
-          {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+            className="absolute inset-0"
+            style={{ background: "rgba(20, 15, 10, 0.35)", backdropFilter: "blur(4px)" }}
             onClick={() => setMobileOpen(false)}
           />
-          {/* Menu Panel */}
-          <nav className="absolute top-14 left-0 right-0 bg-white border-b border-gray-100 shadow-lg shadow-black/5 animate-fade-in">
-            <div className="mx-auto max-w-6xl px-4 py-2">
-              {NAV_ITEMS.map(({ href, label, icon }) => {
-                const isActive =
-                  pathname === href ||
-                  pathname.startsWith(href + "/") ||
-                  (href === "/study" && pathname.startsWith("/exam"));
+          <nav
+            className="absolute left-0 right-0 animate-fade-in"
+            style={{
+              top: 68,
+              background: paper,
+              borderBottom: `1px solid ${hair}`,
+              boxShadow: "0 20px 40px rgba(20,15,10,0.12)",
+            }}
+          >
+            <div className="mx-auto max-w-[1280px] px-6 py-3">
+              {NAV_ITEMS.map(({ href, label, match }) => {
+                const active = isActive(match);
                 return (
                   <Link
                     key={href}
                     href={href}
-                    className={`flex items-center gap-3 rounded-xl px-3 py-3 text-[15px] font-semibold transition-colors ${
-                      isActive
-                        ? "text-emerald-700 bg-emerald-50"
-                        : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-                    }`}
+                    className="flex items-center no-underline transition-colors"
+                    style={{
+                      padding: "14px 4px",
+                      fontSize: 16,
+                      fontWeight: active ? 700 : 500,
+                      color: active ? ink : subtle,
+                      borderBottom: `1px solid ${hair}`,
+                      fontFamily: "var(--gc-font-sans)",
+                    }}
                   >
-                    {icon}
                     <span>{label}</span>
-                    {isActive && (
-                      <span className="ml-auto w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                    {active && (
+                      <span
+                        className="ml-auto w-1.5 h-1.5 rounded-full"
+                        style={{ background: amber }}
+                      />
                     )}
                   </Link>
                 );
               })}
+              <Link
+                href="/exam"
+                className="mt-4 flex items-center justify-center gap-2 no-underline"
+                style={{
+                  padding: "14px",
+                  background: ink,
+                  color: bg,
+                  borderRadius: 999,
+                  fontSize: 15,
+                  fontWeight: 700,
+                }}
+              >
+                지금 풀기
+                <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14" />
+                  <path d="m13 5 7 7-7 7" />
+                </svg>
+              </Link>
             </div>
           </nav>
         </div>

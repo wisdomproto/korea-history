@@ -77,6 +77,17 @@ korea_history/
 
 ## 핵심 기능 (웹사이트)
 
+### 디자인 시스템 (2026-04-18 리디자인)
+- **디자인 언어**: 프로모 영상 톤 — warm cream `#F5EFE4` + deep ink `#1F1A14` + amber `#B45309` + teal `#0D9488`
+- **타이포그래피**: Noto Serif KR (헤드라인) + Pretendard Variable (본문) + JetBrains Mono (라벨), 폰트는 `app/layout.tsx` `<head>`에 `<link>` 로드
+- **디자인 토큰**: `app/globals.css` `:root`에 `--gc-*` CSS 변수 (`--gc-bg`, `--gc-ink`, `--gc-amber`, `--gc-teal`, `--gc-paper`, `--gc-hairline` 등)
+- **폰트 유틸**: `.font-serif-kr`, `.font-sans-kr`, `.font-mono-kr` globals에 정의
+- **풀블리드 유틸**: `.gc-fullbleed` — `layout.tsx`의 `max-w-6xl` 컨테이너를 viewport 전체 너비로 브레이크아웃 (랜딩 페이지가 사용)
+- **랜딩 페이지** (`app/page.tsx`): Hero(세리프 84px + Q카드↔노트카드 연결 콜라주) → Stats Band → Feature Grid 2×2 → Exam Preview(브라우저 프레임) → Notes Preview(시대 스택) → Linked Preview(MATCH 시각화) → Latest Exams + Keywords → Pricing Band(다크 ink) → SEO Prose
+- **Header**: 세리프 "기출노트" + 앰버 "한능검" 워드마크, 액티브 nav에 앰버 밑줄, 검색바(⌘K, ≥1024px), "지금 풀기" 필 CTA
+- **Footer**: cream deep 배경 + 3컬럼(학습/회차별/정보) + 모노 카피라이트
+- **모바일 반응형**: 모든 섹션 `px-5 sm:px-6 md:px-8` + `py-14 md:py-20`, Hero/Exam/Notes preview는 1-col → `md:`/`lg:` 2-col, Stats는 `grid-cols-2 md:grid-cols-4`, Linked Preview 연결선은 모바일에서 90° 회전
+
 ### 학습 시스템
 - **회차별 풀기**: 40~77회 시험 (1,900+ 문항)
 - **맞춤형 학습**: 시대 × 유형 체크박스 선택 → 학습 세션
