@@ -40,4 +40,13 @@ export const config = {
     accessToken: process.env.INSTAGRAM_ACCESS_TOKEN ?? '',
     graphVersion: process.env.INSTAGRAM_GRAPH_VERSION ?? 'v21.0',
   },
+  supabase: {
+    url: process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL ?? '',
+    serviceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY ?? '',
+  },
+  weeklyReport: {
+    cronExpr: process.env.WEEKLY_REPORT_CRON ?? '0 7 * * 1',
+    cronTimezone: process.env.WEEKLY_REPORT_TZ ?? 'Asia/Seoul',
+    enabled: (process.env.WEEKLY_REPORT_ENABLED ?? 'true') !== 'false',
+  },
 } as const;

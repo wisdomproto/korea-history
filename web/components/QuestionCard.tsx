@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Question } from "@/lib/types";
 import AdSlot from "@/components/AdSlot";
+import YouTubeEmbed from "@/components/YouTubeEmbed";
 import { playSelectSound, playCorrectSound, playWrongSound } from "@/lib/sounds";
 
 export interface RelatedNoteLink {
@@ -308,12 +309,18 @@ export default function QuestionCard({
                 <span className="text-xs text-slate-400 ml-auto">{youtube.channelName}</span>
               </div>
               <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                <iframe
+                <YouTubeEmbed
                   className="absolute inset-0 w-full h-full"
-                  src={`https://www.youtube.com/embed/${youtube.videoId}?start=${youtube.startSeconds}&rel=0`}
+                  videoId={youtube.videoId}
+                  startSeconds={youtube.startSeconds}
                   title="영상 해설"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
+                  context={{
+                    surface: "question",
+                    question_id: question.id,
+                    exam_id: question.examId,
+                    question_number: question.questionNumber,
+                    channel: youtube.channelName,
+                  }}
                 />
               </div>
             </div>

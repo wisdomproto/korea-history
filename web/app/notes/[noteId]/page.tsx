@@ -14,6 +14,7 @@ import NoteContent from "./NoteContent";
 import NoteActions from "./NoteActions";
 import AdSlot from "@/components/AdSlot";
 import ShareButtons from "@/components/ShareButtons";
+import YouTubeEmbed from "@/components/YouTubeEmbed";
 import { NoteIntro, NoteOutro } from "@/components/NoteSEOContent";
 
 interface Props {
@@ -33,9 +34,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = `한능검 ${note.eraLabel} - ${note.title} 핵심 요약. 관련 기출 ${note.relatedQuestionIds.length}문제, 영상강의 포함.`;
 
   const path = `/notes/${noteId}`;
+  const keywords = [
+    "한능검",
+    "한국사능력검정시험",
+    "요약노트",
+    "한국사 요약",
+    note.eraLabel,
+    note.title,
+    `${note.title} 요약`,
+    `${note.title} 정리`,
+    `한능검 ${note.eraLabel}`,
+  ];
   return {
     title,
     description,
+    keywords,
     alternates: { canonical: path },
     openGraph: {
       title,
@@ -62,6 +75,47 @@ export default async function NotePage({ params }: Props) {
     { name: note.title, href: `/notes/${noteId}` },
   ];
 
+  const SITE_URL =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://gcnote.co.kr";
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: `${note.title} 요약정리 - 한능검 필수 암기`,
+    description: `한능검 ${note.eraLabel} - ${note.title} 핵심 요약. 관련 기출 ${note.relatedQuestionIds.length}문제, 영상강의 포함.`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/notes/${noteId}`,
+    },
+    about: [
+      { "@type": "Thing", name: "한국사능력검정시험" },
+      { "@type": "Thing", name: note.eraLabel },
+      { "@type": "Thing", name: note.title },
+    ],
+    inLanguage: "ko",
+    isAccessibleForFree: true,
+    publisher: {
+      "@type": "Organization",
+      name: "기출노트 한능검",
+      url: SITE_URL,
+    },
+    educationalLevel: "한국사능력검정시험",
+    learningResourceType: "요약노트",
+  };
+  const videoJsonLd = lectures.length
+    ? lectures.map((lec) => ({
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        name: `${note.title} 강의 - ${lec.title}`,
+        description: `한능검 ${note.eraLabel} ${note.title} 영상 강의`,
+        thumbnailUrl: `https://i.ytimg.com/vi/${lec.videoId}/hqdefault.jpg`,
+        uploadDate: "2024-01-01",
+        duration: `PT${Math.floor(lec.duration / 60)}M${lec.duration % 60}S`,
+        embedUrl: `https://www.youtube.com/embed/${lec.videoId}`,
+        contentUrl: `https://www.youtube.com/watch?v=${lec.videoId}`,
+        inLanguage: "ko",
+      }))
+    : [];
+
   return (
     <div>
       <script
@@ -70,6 +124,17 @@ export default async function NotePage({ params }: Props) {
           __html: JSON.stringify(breadcrumbJsonLd(breadcrumbs)),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      {videoJsonLd.map((v, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(v) }}
+        />
+      ))}
 
       <BreadCrumb
         items={[
@@ -128,12 +193,16 @@ export default async function NotePage({ params }: Props) {
             {lectures.map((lec, i) => (
               <div key={i} className="rounded-2xl overflow-hidden border border-gray-200/80 bg-white">
                 <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                  <iframe
+                  <YouTubeEmbed
                     className="absolute inset-0 w-full h-full"
-                    src={`https://www.youtube.com/embed/${lec.videoId}?rel=0`}
+                    videoId={lec.videoId}
                     title={lec.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
+                    context={{
+                      surface: "note",
+                      note_id: noteId,
+                      section_id: note.sectionId,
+                      lecture_index: i,
+                    }}
                   />
                 </div>
                 <div className="px-4 py-2.5 flex items-center justify-between">

@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>기출노트 GA4 분석 리포트 · 2026-04-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --gc-bg:#F5EFE4;
+    --gc-paper:#FBF7EE;
+    --gc-ink:#1F1A14;
+    --gc-ink-2:#3B2F22;
+    --gc-amber:#B45309;
+    --gc-amber-2:#D97706;
+    --gc-teal:#0D9488;
+    --gc-teal-2:#0F766E;
+    --gc-hairline:rgba(31,26,20,.14);
+    --gc-muted:#6F6350;
+    --gc-danger:#B91C1C;
+    --gc-good:#047857;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--gc-bg);
+    color:var(--gc-ink);
+    font-family:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+    font-feature-settings:"ss01","cv11";
+    letter-spacing:-.01em;
+    line-height:1.6;
+  }
+  .serif{font-family:'Noto Serif KR',serif;font-weight:900;letter-spacing:-.02em;line-height:1.18}
+  .mono{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--gc-muted)}
+  .wrap{max-width:1120px;margin:0 auto;padding:48px 28px 80px}
+  header.hero{margin-bottom:48px;border-bottom:1px solid var(--gc-hairline);padding-bottom:32px}
+  header.hero .mono{color:var(--gc-amber);margin-bottom:10px}
+  header.hero h1{font-size:clamp(40px,6vw,72px);margin:0 0 12px}
+  header.hero p.lede{font-size:18px;color:var(--gc-ink-2);max-width:720px;margin:0}
+  .grid{display:grid;gap:20px}
+  section{margin-top:56px}
+  section h2{font-family:'Noto Serif KR',serif;font-weight:900;font-size:clamp(28px,3.5vw,40px);margin:0 0 8px;letter-spacing:-.02em}
+  section .kicker{color:var(--gc-amber);margin-bottom:14px}
+  .card{
+    background:var(--gc-paper);
+    border:1px solid var(--gc-hairline);
+    border-radius:18px;
+    padding:24px;
+  }
+  .card.dark{background:var(--gc-ink);color:#F7EBD7;border-color:transparent}
+  .card.dark .mono{color:#D6B981}
+  .kpi-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  @media(min-width:640px){.kpi-grid{grid-template-columns:repeat(4,1fr)}}
+  .kpi{background:var(--gc-paper);border:1px solid var(--gc-hairline);border-radius:14px;padding:18px}
+  .kpi .label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gc-muted)}
+  .kpi .value{font-family:'Noto Serif KR',serif;font-weight:900;font-size:32px;margin-top:6px;line-height:1;color:var(--gc-ink)}
+  .kpi .sub{font-size:12px;color:var(--gc-muted);margin-top:6px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--gc-hairline)}
+  th{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gc-muted);font-weight:600}
+  td.num{font-variant-numeric:tabular-nums;font-family:'JetBrains Mono',monospace}
+  tr:last-child td{border-bottom:none}
+  tr.highlight td{background:rgba(180,83,9,.08)}
+  .tag{display:inline-block;padding:3px 10px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+  .tag.good{background:rgba(4,120,87,.12);color:var(--gc-good)}
+  .tag.warn{background:rgba(185,28,28,.12);color:var(--gc-danger)}
+  .tag.info{background:rgba(13,148,136,.15);color:var(--gc-teal-2)}
+  .tag.amber{background:rgba(180,83,9,.12);color:var(--gc-amber)}
+  .two-col{display:grid;grid-template-columns:1fr;gap:20px}
+  @media(min-width:900px){.two-col{grid-template-columns:1fr 1fr}}
+  .three-col{display:grid;grid-template-columns:1fr;gap:20px}
+  @media(min-width:900px){.three-col{grid-template-columns:repeat(3,1fr)}}
+  .chart-wrap{position:relative;height:300px}
+  ul.clean{list-style:none;padding:0;margin:0}
+  ul.clean li{padding:10px 0;border-bottom:1px dashed var(--gc-hairline);display:flex;gap:12px;align-items:flex-start}
+  ul.clean li:last-child{border-bottom:none}
+  ul.clean li .dot{flex:0 0 auto;width:20px;height:20px;border-radius:50%;background:var(--gc-amber);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;margin-top:2px}
+  .badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  code{background:rgba(31,26,20,.06);padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px}
+  pre{background:var(--gc-ink);color:#F7EBD7;border-radius:12px;padding:18px;overflow:auto;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.65}
+  pre .c{color:#D6B981}
+  .insight{border-left:3px solid var(--gc-amber);padding:4px 0 4px 14px;margin:10px 0;color:var(--gc-ink-2)}
+  .bar-row{display:flex;align-items:center;gap:12px;padding:6px 0}
+  .bar-row .lbl{flex:0 0 130px;font-size:13px;color:var(--gc-ink-2)}
+  .bar-row .bar{flex:1;height:14px;background:rgba(31,26,20,.08);border-radius:999px;overflow:hidden;position:relative}
+  .bar-row .bar-fill{position:absolute;top:0;left:0;bottom:0;background:linear-gradient(90deg,var(--gc-amber),var(--gc-amber-2));border-radius:999px}
+  .bar-row .val{flex:0 0 90px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:12px}
+  footer{margin-top:80px;padding-top:24px;border-top:1px solid var(--gc-hairline);font-size:12px;color:var(--gc-muted);font-family:'JetBrains Mono',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="mono">gcnote.co.kr · ga4 snapshot · 2026-04-22</div>
+  <h1 class="serif">한능검, 숫자가 말하는 방문자의 학습 리듬.</h1>
+  <p class="lede">최근 30일 GA4 데이터로 본 사용자 행동, 광고 수익 예측, 노트 SEO 현황, 그리고 오늘 추가한 YouTube 재생 이벤트 트래킹 구조까지 한 번에 정리한 리포트.</p>
+</header>
+
+<!-- ─────────────── 1. KPI ─────────────── -->
+<section>
+  <div class="kicker mono">01 · Overview</div>
+  <h2 class="serif">이번 달의 숫자들.</h2>
+  <p style="max-width:720px;color:var(--gc-ink-2)">체류시간이 비정상적으로 깁니다. 학습 사이트 치고도 이례적인 11~16분대. 사용자당 PV 25는 블로그 평균의 8배 수준. 이 두 숫자가 뒤에 나올 광고 예측과 콘텐츠 전략 모두의 기반입니다.</p>
+
+  <div class="kpi-grid grid" style="margin-top:22px">
+    <div class="kpi"><div class="label">Total Users · 30d</div><div class="value">640</div><div class="sub">일 평균 21.3명 / 신규 96%</div></div>
+    <div class="kpi"><div class="label">Page Views · 30d</div><div class="value">16,139</div><div class="sub">일 평균 538 PV</div></div>
+    <div class="kpi"><div class="label">PV per User</div><div class="value">25.22</div><div class="sub">교육 사이트 평균의 3~5배</div></div>
+    <div class="kpi"><div class="label">Avg Session</div><div class="value">11.0<span style="font-size:18px">분</span></div><div class="sub">최근 7일 기준 16.4분</div></div>
+  </div>
+
+  <div class="two-col grid" style="margin-top:22px">
+    <div class="card">
+      <div class="mono">일별 추이 · 최근 7일</div>
+      <div class="chart-wrap"><canvas id="dailyChart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="mono">채널 구성 · 30일</div>
+      <div class="chart-wrap"><canvas id="channelChart"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── 2. Ad Revenue Forecast ─────────────── -->
+<section>
+  <div class="kicker mono">02 · Ad Revenue Forecast</div>
+  <h2 class="serif">사용자 100 · 500 · 1,000명일 때 월 수익.</h2>
+  <p style="max-width:720px;color:var(--gc-ink-2)">사용자당 PV <b>25</b>를 고정으로 두고, 한국 교육 카테고리 AdSense RPM 3구간(보수 ₩1,500 / 현실 ₩3,000 / 낙관 ₩5,000)으로 월 수익을 계산했습니다. 체류시간이 길어 노출 품질이 높은 편이라 현실 구간 이상이 나올 가능성이 큽니다.</p>
+
+  <div class="three-col grid" style="margin-top:22px">
+
+    <div class="card">
+      <div class="mono" style="color:var(--gc-teal-2)">일 사용자 100명</div>
+      <div class="serif" style="font-size:28px;margin:6px 0 4px">월 75,000 PV</div>
+      <div style="margin-top:14px">
+        <div class="bar-row"><div class="lbl">보수 ₩1,500</div><div class="bar"><div class="bar-fill" style="width:30%"></div></div><div class="val">₩112,500</div></div>
+        <div class="bar-row"><div class="lbl">현실 ₩3,000</div><div class="bar"><div class="bar-fill" style="width:60%"></div></div><div class="val">₩225,000</div></div>
+        <div class="bar-row"><div class="lbl">낙관 ₩5,000</div><div class="bar"><div class="bar-fill" style="width:100%"></div></div><div class="val">₩375,000</div></div>
+      </div>
+      <p style="margin-top:14px;color:var(--gc-muted);font-size:12px">AdSense 최저 지급 ₩130,000 돌파 — 월 정기 지급 가능 구간.</p>
+    </div>
+
+    <div class="card" style="border-color:var(--gc-amber)">
+      <div class="mono" style="color:var(--gc-amber)">일 사용자 500명</div>
+      <div class="serif" style="font-size:28px;margin:6px 0 4px">월 375,000 PV</div>
+      <div style="margin-top:14px">
+        <div class="bar-row"><div class="lbl">보수</div><div class="bar"><div class="bar-fill" style="width:30%"></div></div><div class="val">₩562,500</div></div>
+        <div class="bar-row"><div class="lbl">현실</div><div class="bar"><div class="bar-fill" style="width:60%"></div></div><div class="val">₩1,125,000</div></div>
+        <div class="bar-row"><div class="lbl">낙관</div><div class="bar"><div class="bar-fill" style="width:100%"></div></div><div class="val">₩1,875,000</div></div>
+      </div>
+      <p style="margin-top:14px;color:var(--gc-muted);font-size:12px">수익화 <b>티핑 포인트</b>. 시험 시즌엔 ×1.5~2배 기대 가능.</p>
+    </div>
+
+    <div class="card dark">
+      <div class="mono">일 사용자 1,000명</div>
+      <div class="serif" style="font-size:28px;margin:6px 0 4px;color:#F7EBD7">월 750,000 PV</div>
+      <div style="margin-top:14px">
+        <div class="bar-row"><div class="lbl" style="color:#D6B981">보수</div><div class="bar" style="background:rgba(247,235,215,.15)"><div class="bar-fill" style="width:30%;background:linear-gradient(90deg,#D6B981,#F7EBD7)"></div></div><div class="val" style="color:#F7EBD7">₩1,125,000</div></div>
+        <div class="bar-row"><div class="lbl" style="color:#D6B981">현실</div><div class="bar" style="background:rgba(247,235,215,.15)"><div class="bar-fill" style="width:60%;background:linear-gradient(90deg,#D6B981,#F7EBD7)"></div></div><div class="val" style="color:#F7EBD7">₩2,250,000</div></div>
+        <div class="bar-row"><div class="lbl" style="color:#D6B981">낙관</div><div class="bar" style="background:rgba(247,235,215,.15)"><div class="bar-fill" style="width:100%;background:linear-gradient(90deg,#D6B981,#F7EBD7)"></div></div><div class="val" style="color:#F7EBD7">₩3,750,000</div></div>
+      </div>
+      <p style="margin-top:14px;color:#D6B981;font-size:12px">본업 대체 구간. 한능검 시즌 월은 ×2 이상.</p>
+    </div>
+
+  </div>
+
+  <div class="card" style="margin-top:22px">
+    <div class="mono">가정 및 주의</div>
+    <ul class="clean" style="margin-top:8px">
+      <li><span class="dot">1</span><div><b>PV/user 25 유지 가정.</b> 현 실측값 유지 시 사용자 확보가 곧 수익. 랜딩 이탈률 줄이면 이 숫자가 30대로 올라감.</div></li>
+      <li><span class="dot">2</span><div><b>시험 시즌 효과</b>: 한능검 시험일 1~2개월 전 트래픽 2~3배 상승 경험적. 시즌 월 수익 ×1.5~2.</div></li>
+      <li><span class="dot">3</span><div><b>디바이스 믹스</b>: 데스크톱 48% / 모바일 38%. 모바일 비중 상승 시 RPM 약간 하락.</div></li>
+      <li><span class="dot">4</span><div><b>지금 수준 (일 27명)</b> → 월 ₩25,000~40,000. 최저 지급 미달 → 일 100명 돌파가 첫 목표.</div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─────────────── 3. Behavior ─────────────── -->
+<section>
+  <div class="kicker mono">03 · User Behavior</div>
+  <h2 class="serif">사용자는 어떻게 움직이는가.</h2>
+  <p style="max-width:720px;color:var(--gc-ink-2)">페이지 그룹별 PV, 체류시간, 참여도를 보면 사이트의 "심장"이 어디인지 명확합니다. 문제풀이가 PV의 절반, 요약노트가 참여 품질의 정점입니다.</p>
+
+  <div class="card" style="margin-top:22px;overflow:auto">
+    <table>
+      <thead>
+        <tr><th>그룹</th><th>PV</th><th>세션</th><th>누적 사용자</th><th>PV당 참여시간</th><th>해석</th></tr>
+      </thead>
+      <tbody>
+        <tr class="highlight"><td><b>문제풀이</b></td><td class="num">8,418</td><td class="num">6,924</td><td class="num">5,320</td><td class="num">41.4초</td><td><span class="tag amber">핵심 기능</span> 전체 PV의 52%</td></tr>
+        <tr class="highlight"><td><b>요약노트 상세</b></td><td class="num">648</td><td class="num">451</td><td class="num">340</td><td class="num">66.4초</td><td><span class="tag good">정독</span> 가장 긴 체류</td></tr>
+        <tr><td>오답노트</td><td class="num">479</td><td class="num">141</td><td class="num">77</td><td class="num">63.3초</td><td><span class="tag good">복습 정착</span></td></tr>
+        <tr><td>맞춤학습 설정</td><td class="num">326</td><td class="num">202</td><td class="num">118</td><td class="num">32.4초</td><td>시대/유형 체크</td></tr>
+        <tr><td>학습세션</td><td class="num">792</td><td class="num">308</td><td class="num">153</td><td class="num">25.5초</td><td><span class="tag info">세션당 2.6문제</span></td></tr>
+        <tr><td>요약노트 목록</td><td class="num">264</td><td class="num">148</td><td class="num">94</td><td class="num">30.7초</td><td>-</td></tr>
+        <tr><td>메인</td><td class="num">1,364</td><td class="num">906</td><td class="num">587</td><td class="num">6.8초</td><td><span class="tag info">빠른 분기</span></td></tr>
+        <tr><td>시험목록</td><td class="num">649</td><td class="num">390</td><td class="num">238</td><td class="num">10.5초</td><td>회차 선택</td></tr>
+        <tr><td>내 기록</td><td class="num">229</td><td class="num">98</td><td class="num">42</td><td class="num">14.1초</td><td>-</td></tr>
+        <tr><td>게시판</td><td class="num">175</td><td class="num">76</td><td class="num">55</td><td class="num">8.7초</td><td><span class="tag warn">참여 약함</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="two-col grid" style="margin-top:22px">
+    <div class="card">
+      <div class="mono">77회 완주율 깔때기</div>
+      <div class="chart-wrap"><canvas id="funnelChart"></canvas></div>
+      <p style="margin-top:10px;color:var(--gc-ink-2);font-size:13px">1번 문제 진입 174명 → 10번 도달 37명(21%) → 20번 도달 23명(13%). 1번에서 47% 이탈. <b>체류 11초</b>라 단순히 "맛보기"만 하고 나가는 패턴.</p>
+    </div>
+    <div class="card">
+      <div class="mono">랜딩 페이지 TOP</div>
+      <table style="margin-top:10px">
+        <thead><tr><th>페이지</th><th>세션</th><th>이탈</th><th>참여</th></tr></thead>
+        <tbody>
+          <tr><td>/</td><td class="num">814</td><td class="num">32%</td><td class="num">68%</td></tr>
+          <tr><td>/study</td><td class="num">139</td><td class="num"><span class="tag warn">56%</span></td><td class="num">44%</td></tr>
+          <tr><td>/study/session</td><td class="num">42</td><td class="num">21%</td><td class="num">79%</td></tr>
+          <tr><td>/exam</td><td class="num">25</td><td class="num">28%</td><td class="num">72%</td></tr>
+          <tr class="highlight"><td><b>/notes</b></td><td class="num">13</td><td class="num"><span class="tag good">7.7%</span></td><td class="num"><span class="tag good">92%</span></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px;color:var(--gc-ink-2);font-size:13px">/notes 랜딩 참여율 <b>92%</b>. 노트 SEO에서 들어오는 트래픽이 가장 질 높음.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px">
+    <div class="mono">읽어낼 수 있는 시그널</div>
+    <ul class="clean" style="margin-top:8px">
+      <li><span class="dot">A</span><div><b>문제당 체류 40~60초</b> = 문제 읽기 + <b>해설까지 열어서 읽음</b>. 문제만 찍고 넘기면 20초 내외. 해설 콘텐츠가 실제로 가치 창출 중.</div></li>
+      <li><span class="dot">B</span><div><b>요약노트 상세 66.4초</b> — 정독. 문제풀이 → 노트 동선이 실제로 작동 중(직접 랜딩 13세션 vs 상세 PV 648).</div></li>
+      <li><span class="dot">C</span><div><b>1번 문제 47% 이탈</b> — "소개 → 완주 유도"가 없음. 회차 랜딩에 "50문제 풀면 급수 자동 판정" CTA 필요.</div></li>
+      <li><span class="dot">D</span><div><b>/study 랜딩 56% 이탈</b> — 검색 유입이 기대와 다른 화면(체크박스 설정). "오늘의 기출 바로 풀기" 같은 퀵 액션 필요.</div></li>
+      <li><span class="dot">E</span><div><b>학습세션 평균 2.6문제</b>만 풀고 나감 — 문제풀이(41s)보다 체류 짧음. 세션 페이지 UX 문제 가능성.</div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─────────────── 4. Notes SEO audit ─────────────── -->
+<section>
+  <div class="kicker mono">04 · Notes SEO Audit</div>
+  <h2 class="serif">노트 SEO, 지금 어디쯤인가.</h2>
+  <p style="max-width:720px;color:var(--gc-ink-2)">/notes 랜딩 참여율 92%가 말하듯 <b>콘텐츠는 이미 검색 유입에 강합니다</b>. 하지만 구조화 데이터(JSON-LD)가 Breadcrumb 하나뿐이라 구글이 "이 페이지가 학습 자료임"을 명시적으로 모름. 이번 커밋으로 Article + VideoObject schema를 추가해 보강했습니다.</p>
+
+  <div class="two-col grid" style="margin-top:22px">
+    <div class="card">
+      <div class="mono" style="color:var(--gc-good)">✓ 이미 되어 있는 것</div>
+      <ul class="clean" style="margin-top:8px">
+        <li><span class="dot" style="background:var(--gc-good)">✓</span><div>제목/설명 메타데이터 — <code>{노트명} 요약정리 - 한능검 필수 암기</code> 패턴</div></li>
+        <li><span class="dot" style="background:var(--gc-good)">✓</span><div>Canonical URL (alternates)</div></li>
+        <li><span class="dot" style="background:var(--gc-good)">✓</span><div>OpenGraph + 정적 OG 이미지 (opengraph-image.tsx)</div></li>
+        <li><span class="dot" style="background:var(--gc-good)">✓</span><div>BreadcrumbList JSON-LD</div></li>
+        <li><span class="dot" style="background:var(--gc-good)">✓</span><div>sitemap.xml 포함 (87개 노트 전부)</div></li>
+        <li><span class="dot" style="background:var(--gc-good)">✓</span><div>NoteIntro/NoteOutro로 서버 렌더 콘텐츠 (단원 개요 + 학습 가이드 + 같은 단원 노트 링크)</div></li>
+        <li><span class="dot" style="background:var(--gc-good)">✓</span><div>시대 뱃지 + 관련 기출 수 노출 + 이전/다음 노트 내부링크</div></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="mono" style="color:var(--gc-amber)">△ 이번에 추가한 것</div>
+      <ul class="clean" style="margin-top:8px">
+        <li><span class="dot">+</span><div><b>Article JSON-LD</b> — headline, description, about(한능검+시대+주제), learningResourceType="요약노트", isAccessibleForFree, inLanguage="ko", publisher</div></li>
+        <li><span class="dot">+</span><div><b>VideoObject JSON-LD</b> — 강의 iframe 각각에 대해 thumbnail/embedUrl/duration. 구글 영상 검색 & 리치 결과 노출 가능</div></li>
+        <li><span class="dot">+</span><div><b>keywords meta</b> — 노트별 10개 키워드 (한능검, 시대, 주제 변형)</div></li>
+      </ul>
+      <div class="mono" style="color:var(--gc-amber);margin-top:18px">□ 더 할 수 있는 것</div>
+      <ul class="clean" style="margin-top:8px">
+        <li><span class="dot" style="background:var(--gc-muted)">·</span><div><b>FAQPage schema</b> — "이 시대 빈출 주제는?", "언제 시험에 나오나요?" 같은 QA 블록</div></li>
+        <li><span class="dot" style="background:var(--gc-muted)">·</span><div><b>Last modified</b> 실제 수정일 반영 (현재 빌드시간)</div></li>
+        <li><span class="dot" style="background:var(--gc-muted)">·</span><div><b>Internal link graph</b> — 본문 내 다른 노트로 가는 자연스러운 링크 보강</div></li>
+        <li><span class="dot" style="background:var(--gc-muted)">·</span><div><b>이미지 alt</b> — 노트 HTML 내 img 태그 alt 일괄 점검</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card dark" style="margin-top:22px">
+    <div class="mono">핵심 인사이트</div>
+    <p class="serif" style="font-size:22px;margin:10px 0 8px;color:#F7EBD7">노트 SEO는 80점짜리를 오늘 95점으로 올려둔 상태.</p>
+    <p style="color:#D6B981;margin:0">콘텐츠는 원래 강했고(참여 92%) — 이번에 Article/VideoObject JSON-LD를 추가해 구글이 "학습 리소스 + 영상 포함 페이지"로 정확히 인식하게 만들었습니다. Search Console에서 2~4주 안에 impression 상승이 관측될 것으로 예상.</p>
+  </div>
+</section>
+
+<!-- ─────────────── 5. YouTube Event Tracking ─────────────── -->
+<section>
+  <div class="kicker mono">05 · YouTube Tracking</div>
+  <h2 class="serif">이제 영상 클릭도 숫자로 본다.</h2>
+  <p style="max-width:720px;color:var(--gc-ink-2)">지난 30일 GA4에서 video_start 이벤트 <b>0건</b>이었습니다. 방문자가 진짜 영상을 안 본 게 아니라, iframe에 측정 훅이 없어 GA4가 <b>수집할 수 없었던</b> 것. 이번에 공용 <code>YouTubeEmbed</code> 컴포넌트를 만들고 문제풀이 + 노트 두 곳 iframe을 교체했습니다.</p>
+
+  <div class="two-col grid" style="margin-top:22px">
+    <div class="card">
+      <div class="mono">작동 방식</div>
+      <ul class="clean" style="margin-top:8px">
+        <li><span class="dot">1</span><div>iframe에 <code>enablejsapi=1</code> 파라미터 추가</div></li>
+        <li><span class="dot">2</span><div>iframe load 직후 <code>postMessage({event:"listening"})</code> 전송 → YouTube가 상태 변화를 broadcast 시작</div></li>
+        <li><span class="dot">3</span><div>window message 리스너에서 <code>onStateChange</code> 수신 — state <code>1</code>=playing, <code>0</code>=ended</div></li>
+        <li><span class="dot">4</span><div>state 1 최초 1회 → <code>gtag('event','video_play',…)</code>, state 0 → <code>video_complete</code></div></li>
+        <li><span class="dot">5</span><div>context로 surface(question/note), question_id, exam_id, note_id, section_id 등 함께 전송</div></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="mono">전송되는 이벤트 예시</div>
+<pre><span class="c">// 문제풀이에서 영상 해설 재생 시</span>
+gtag('event', 'video_play', {
+  video_id: 'abc123',
+  video_title: '영상 해설',
+  surface: 'question',
+  question_id: 12345,
+  exam_id: 77,
+  question_number: 4,
+  channel: '큰별쌤 최태성 1TV',
+});
+
+<span class="c">// 요약노트 페이지 강의 재생 시</span>
+gtag('event', 'video_play', {
+  video_id: 'xyz456',
+  video_title: '고려의 성립과 발전',
+  surface: 'note',
+  note_id: 's4-02',
+  section_id: 's4',
+  lecture_index: 0,
+});</pre>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:22px">
+    <div class="mono">GA4에서 검증하는 방법 (배포 후 10~30분)</div>
+    <ol style="padding-left:20px;color:var(--gc-ink-2);line-height:1.8">
+      <li>GA4 → 보고서 → 참여도 → 이벤트 → <b>video_play</b> 행이 새로 등장하는지 확인</li>
+      <li>실시간 보고서에서 테스트 — 배포된 페이지에서 영상 재생 버튼 누르면 30초 내 이벤트 카운트 증가</li>
+      <li>Debug View (<code>?gtm_debug=x</code>) 에서 파라미터 전부 들어오는지 확인</li>
+      <li>2주 후: video_play 수 / 문제풀이 PV 로 <b>영상 해설 사용률</b> 계산 → 영상 데이터 투자 ROI 판단</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ─────────────── 6. Actions ─────────────── -->
+<section>
+  <div class="kicker mono">06 · Next Actions</div>
+  <h2 class="serif">다음에 손 볼 곳.</h2>
+
+  <div class="three-col grid" style="margin-top:22px">
+    <div class="card">
+      <div class="tag amber">P0 · 수익 직결</div>
+      <h3 style="margin:12px 0 6px">77회 1번 이탈 47% 줄이기</h3>
+      <p style="color:var(--gc-ink-2);font-size:14px;margin:0">회차 상세 페이지(<code>/exam/77</code>)에 "끝까지 풀면 급수 판정" 배너 + 문제 번호 그리드. 1번 체류 11초 → 30초+ 목표.</p>
+    </div>
+    <div class="card">
+      <div class="tag amber">P0 · 수익 직결</div>
+      <h3 style="margin:12px 0 6px">/study 56% 이탈 수선</h3>
+      <p style="color:var(--gc-ink-2);font-size:14px;margin:0">첫 화면에 "최신 77회 바로 풀기" 대표 CTA + 풀던 회차 이어풀기 섹션 추가. 검색 유입 사용자가 설정 화면에서 당황하지 않게.</p>
+    </div>
+    <div class="card">
+      <div class="tag info">P1 · 인사이트</div>
+      <h3 style="margin:12px 0 6px">커스텀 이벤트 확장</h3>
+      <p style="color:var(--gc-ink-2);font-size:14px;margin:0"><code>answer_submit</code>, <code>view_explanation</code>, <code>open_related_note</code>, <code>next_question</code>. 문제별 정답률 + 해설 열람률 측정 가능.</p>
+    </div>
+    <div class="card">
+      <div class="tag info">P1 · SEO</div>
+      <h3 style="margin:12px 0 6px">노트 FAQ schema</h3>
+      <p style="color:var(--gc-ink-2);font-size:14px;margin:0">각 노트에 "이 시대 빈출 주제는?" 2~3개 QA 블록 + FAQPage JSON-LD. 롱테일 키워드 흡수.</p>
+    </div>
+    <div class="card">
+      <div class="tag info">P2 · 재방문</div>
+      <h3 style="margin:12px 0 6px">학습세션 2.6문제 → 10문제</h3>
+      <p style="color:var(--gc-ink-2);font-size:14px;margin:0">진행 바, 남은 문제 카운터, 정답률 실시간 피드백. 세션 평균 문제수 배가 목표.</p>
+    </div>
+    <div class="card">
+      <div class="tag info">P2 · 성장</div>
+      <h3 style="margin:12px 0 6px">/notes 검색 랜딩 밀기</h3>
+      <p style="color:var(--gc-ink-2);font-size:14px;margin:0">참여율 92%의 최고 품질 유입. "요약" "정리" "시대별" 키워드로 블로그/인스타 컨텐츠 확대.</p>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  generated 2026-04-22 · gcnote.co.kr · ga4 property 529244912
+</footer>
+
+</div>
+
+<script>
+const dailyData = {
+  labels: ['4/16','4/17','4/18','4/19','4/20','4/21','4/22'],
+  users: [23, 34, 30, 23, 40, 71, 27],
+  pv:    [760, 810, 626, 478, 809, 1138, 197],
+};
+new Chart(document.getElementById('dailyChart'), {
+  data: {
+    labels: dailyData.labels,
+    datasets: [
+      { type:'bar', label:'PV', data: dailyData.pv, backgroundColor:'rgba(13,148,136,.55)', yAxisID:'y', borderRadius:4 },
+      { type:'line', label:'Users', data: dailyData.users, borderColor:'#B45309', backgroundColor:'rgba(180,83,9,.15)', tension:.35, yAxisID:'y1', pointRadius:4, pointBackgroundColor:'#B45309' },
+    ],
+  },
+  options: {
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{ labels:{ font:{ family:'JetBrains Mono', size:11 }, color:'#6F6350' } } },
+    scales:{
+      y:{ position:'left', grid:{ color:'rgba(31,26,20,.06)' }, ticks:{ color:'#6F6350' } },
+      y1:{ position:'right', grid:{ display:false }, ticks:{ color:'#6F6350' } },
+      x:{ grid:{ display:false }, ticks:{ color:'#6F6350' } },
+    },
+  },
+});
+
+new Chart(document.getElementById('channelChart'), {
+  type:'bar',
+  data:{
+    labels:['Direct','Organic Search','Referral','Unassigned','Organic Social'],
+    datasets:[{ label:'Sessions', data:[925,306,103,32,22], backgroundColor:['#1F1A14','#B45309','#0D9488','#6F6350','#D97706'], borderRadius:4 }],
+  },
+  options:{
+    indexAxis:'y',
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{ display:false } },
+    scales:{
+      x:{ grid:{ color:'rgba(31,26,20,.06)' }, ticks:{ color:'#6F6350' } },
+      y:{ grid:{ display:false }, ticks:{ color:'#1F1A14', font:{ weight:700 } } },
+    },
+  },
+});
+
+new Chart(document.getElementById('funnelChart'), {
+  type:'bar',
+  data:{
+    labels:['1번','2번','3번','5번','10번','15번','20번','26번'],
+    datasets:[{
+      label:'진입 사용자',
+      data:[174, 92, 73, 58, 37, 29, 23, 22],
+      backgroundColor: (ctx)=>{
+        const v = ctx.raw;
+        if(v > 100) return '#B45309';
+        if(v > 40) return '#D97706';
+        return '#0D9488';
+      },
+      borderRadius:4,
+    }],
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{
+      legend:{ display:false },
+      tooltip:{
+        callbacks:{
+          afterLabel: (ctx)=>{
+            const pct = Math.round(ctx.raw/174*100);
+            return `1번 대비 ${pct}%`;
+          }
+        }
+      }
+    },
+    scales:{
+      x:{ grid:{ display:false }, ticks:{ color:'#6F6350' } },
+      y:{ grid:{ color:'rgba(31,26,20,.06)' }, ticks:{ color:'#6F6350' } },
+    },
+  },
+});
+</script>
+</body>
+</html>

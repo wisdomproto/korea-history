@@ -20,6 +20,8 @@ import cbtRoutes from './routes/cbt.routes.js';
 import summaryNoteRoutes from './routes/summary-note.routes.js';
 import cardnewsTemplateRoutes from './routes/cardnews-template.routes.js';
 import instagramRoutes from './routes/instagram.routes.js';
+import weeklyReportRoutes from './routes/weekly-report.routes.js';
+import { startCron } from './services/cron.service.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isDev = process.env.NODE_ENV !== 'production';
@@ -72,6 +74,7 @@ async function startServer() {
   app.use('/api/summary-notes', summaryNoteRoutes);
   app.use('/api/cardnews-templates', cardnewsTemplateRoutes);
   app.use('/api/instagram', instagramRoutes);
+  app.use('/api/weekly-reports', weeklyReportRoutes);
 
   app.use(errorMiddleware as express.ErrorRequestHandler);
 
@@ -105,6 +108,7 @@ async function startServer() {
   app.listen(config.port, () => {
     console.warn(`[Author Tool] http://localhost:${config.port} (${isDev ? 'dev' : 'prod'})`);
     console.warn(`[Data Directory] ${config.dataDir}`);
+    startCron();
   });
 }
 

@@ -8,7 +8,7 @@ import { ContentPanel } from '@/features/content/components/ContentPanel';
 import { NoteEditorPanel } from '@/features/notes/components/NoteEditorPanel';
 import { CbtExamPanel } from '@/features/cbt-import/components/CbtExamPanel';
 import { SummaryNoteViewer } from '@/features/summary-notes/components/SummaryNoteViewer';
-import AnalyticsDashboard from '@/features/analytics/components/AnalyticsDashboard';
+import AnalyticsView from '@/features/analytics/components/AnalyticsView';
 import { QuestionList } from '@/features/question/components/QuestionList';
 import { QuestionEditor } from '@/features/question/components/QuestionEditor';
 import { Button } from './Button';
@@ -66,7 +66,7 @@ export function ViewRouter({
     <>
       {/* Analytics Dashboard */}
       {activeView === 'analytics' && (
-        <AnalyticsDashboard />
+        <AnalyticsView />
       )}
 
       {/* Dashboard */}
