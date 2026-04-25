@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { getAllExamTypes, getAllSubjects } from "@/lib/exam-types";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -63,7 +64,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <div className="flex min-h-screen flex-col">
-          <Header />
+          <Header examTypes={getAllExamTypes()} subjects={getAllSubjects()} />
           <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-5">
             {children}
           </main>

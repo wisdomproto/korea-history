@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { getWrongAnswers } from "@/lib/wrong-answers";
 import { saveExamRecord } from "@/lib/exam-history";
+import { useCurrentExamSlug, useCurrentSubjectSlug } from "@/lib/exam-context";
 import AdSlot from "@/components/AdSlot";
 import ShareButtons from "@/components/ShareButtons";
 
@@ -12,6 +13,8 @@ interface Props {
 }
 
 export default function ExamResult({ examNumber }: Props) {
+  const examSlug = useCurrentExamSlug();
+  const subjectSlug = useCurrentSubjectSlug();
   const [stats, setStats] = useState<{
     total: number;
     correct: number;
@@ -27,7 +30,7 @@ export default function ExamResult({ examNumber }: Props) {
       if (raw) answeredCount = JSON.parse(raw).length;
     } catch {}
 
-    const allWrong = getWrongAnswers();
+    const allWrong = getWrongAnswers(examSlug, subjectSlug);
     const examWrong = allWrong.filter(
       (a) => a.examNumber === examNumber && !a.resolved
     );
@@ -43,7 +46,7 @@ export default function ExamResult({ examNumber }: Props) {
 
     // Save to exam history
     if (total > 0) {
-      saveExamRecord({ examNumber, score: correct, total, percentage, wrongByEra });
+      saveExamRecord({ examNumber, score: correct, total, percentage, wrongByEra }, examSlug, subjectSlug);
     }
 
     setStats({
@@ -52,7 +55,7 @@ export default function ExamResult({ examNumber }: Props) {
       wrong: examWrong.length,
       wrongByEra,
     });
-  }, [examNumber]);
+  }, [examNumber, examSlug, subjectSlug]);
 
   if (!stats) {
     return (

@@ -82,6 +82,46 @@ korea_history/
                     └──────────────┘
 ```
 
+## 다중 시험 플랫폼 (2026-04-26)
+
+한능검 단일 → **728개 R2 자격시험 + 9급/7급 공무원 + 직렬별** 통합 학습 허브로 확장.
+
+### 데이터 구조
+- **카테고리** (`data/exam-types/categories.json`): 7개 — civil/cert/driver/corporate/language/exam(수능)/other(기타). 각 카테고리는 subcategory 리스트 보유 (cert는 16개 subcategory).
+- **ExamType** (`data/exam-types/index.json`): **547개** — 한능검 + 자격증 478개 + 공무원 직렬 자식 69개. 신규 필드: `isContainer` (직렬로 분리된 부모), `parentExamId` (직렬 자식의 부모 참조), `jobSeries` (직렬 ID).
+- **Subject** (`data/subjects/index.json`): **624개** — R2 727개 stem 전수 매핑 (754 SubjectRef, 한국사 reuse 27건 포함).
+- **R2 stem 캐시** (`cbt_data/_r2_categories.json`): R2 `_categories.json`을 로컬 미러링 (727 entries). canonical stem은 `code` 필드 (하이픈 separator).
+
+### 직렬 분리
+- **9급 국가직** (`civil-9-national`, isContainer): 24직렬 자식 (일반행정/세무/관세/통계/검찰사무/교정/보호/사회복지/직업상담/교육행정/외무영사/선거행정/건축/토목/일반기계/전기/통신기술/화공/전산/정보보호/임업/식품위생/조경/방재안전).
+- **9급 지방직** (`civil-9-local`, isContainer): 21직렬.
+- **9급 지방직 서울시** (isContainer): 24직렬.
+- 각 직렬 자식 = 공통 3과목 (한국사/국어/영어) + 직렬 전공 1-5과목.
+- **7급/경찰/소방/계리직** — R2에 직렬 정보 없어 단일 ExamType 유지.
+
+### URL 구조 (평면)
+- 단일 시험 / 직렬: `/[examSlug]` (예: `/한능검`, `/9급-국가직-일반행정`, `/변리사`)
+- 과목 랜딩: `/[examSlug]/[subjectSlug]` (예: `/9급-국가직-일반행정/한국사`)
+- 부모 컨테이너: `/[examSlug]` 으로 가면 **JobSeriesSection** (직렬 카드 24개)
+- sub-routes (`/exam`, `/notes`, `/wrong-answers`, `/my-record`)는 직렬 ExamType 단위
+
+### 3-level 트리 UI
+- **헤더 ExamSelector** (`web/components/ExamSelector.tsx`): 카테고리 → 부모 시험 → 직렬 → 과목 (4-level expand).
+- **OtherExamsTree** (`web/components/OtherExamsTree.tsx`): 홈 하단 트리, 동일 4-level 구조 (JobSeriesRow 컴포넌트 추가).
+- **부모 페이지** (`web/app/[examSlug]/page.tsx`): `exam.isContainer` 면 SubjectsSection 대신 **JobSeriesSection** (직렬 카드 그리드).
+- `getCategoriesWithExams()`는 자식 직렬 제외 (`!e.parentExamId`) — 트리 top-level에 부모만 노출.
+
+### Lib helper (`web/lib/exam-types.ts`)
+- `getJobSeriesChildren(parentId)` — 부모 ExamType의 직렬 자식 리스트
+- `getParentExamType(child)` — 직렬 자식의 부모 ExamType
+
+### 데이터 파이프라인 스크립트
+- `scripts/wire-all-r2-stems.mjs` — R2 727 stem → ExamType/Subject 자동 분류 + 머지
+- `scripts/cleanup-labels-slugs.mjs` — 라벨 정규화 (불완전 괄호 fix), slug 특수문자 제거 (`,` `ㆍ` 등), shortLabel 14자 + … 축약, 중복 slug 해결
+- `scripts/dedup-subject-refs.mjs` — 같은 ExamType 내 동일 subjectId 중복 제거 (한국사 우선순위)
+- `scripts/split-civil-by-job-series.mjs` — 공무원 부모 시험을 직렬 자식으로 분리
+- `scripts/audit-all-routes.mjs` — 데이터 무결성 + HTTP probe (1,645 라우트 전수 점검)
+
 ## 핵심 기능 (웹사이트)
 
 ### 디자인 시스템 (2026-04-18 리디자인)

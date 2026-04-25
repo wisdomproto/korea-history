@@ -1,0 +1,110 @@
+{
+  "$schema": "https://gcnote.co.kr/schemas/categories.v1.json",
+  "version": 1,
+  "updatedAt": "2026-04-25",
+  "categories": [
+    {
+      "id": "civil",
+      "slug": "공무원",
+      "label": "공무원",
+      "icon": "🏛️",
+      "order": 1,
+      "featured": true,
+      "description": "9급/7급 공무원, 경찰, 소방, 군무원, 검찰, 교정, 교행, 사회복지직 등. 2027년부터 한국사가 한능검으로 통합됩니다.",
+      "audience": ["20~30대 공시생", "재직자 이직 준비"],
+      "subcategories": [
+        { "id": "civil-9-common", "label": "9급 공통" },
+        { "id": "civil-9-direct", "label": "9급 직렬별" },
+        { "id": "civil-9-seoul", "label": "9급 지방직 서울시" },
+        { "id": "civil-7", "label": "7급 / PSAT" },
+        { "id": "civil-postal", "label": "계리직" },
+        { "id": "civil-special", "label": "특수직 (경찰/소방/군무원)" },
+        { "id": "civil-history", "label": "한국사 (한능검)" }
+      ]
+    },
+    {
+      "id": "cert",
+      "slug": "자격증",
+      "label": "자격증",
+      "icon": "🪪",
+      "order": 2,
+      "featured": true,
+      "description": "전문 자격증 — 부동산, IT, 회계, 노무, 사회복지, 산업기사 등 주요 자격증 학습.",
+      "audience": ["취업 준비생", "이직 준비", "직무 가산점"],
+      "subcategories": [
+        { "id": "cert-professional", "label": "전문 자격사 (변리사·노무사·관세사 등)" },
+        { "id": "cert-realestate", "label": "부동산/감정" },
+        { "id": "cert-it", "label": "IT/사무" },
+        { "id": "cert-welfare", "label": "사회복지/심리" },
+        { "id": "cert-labor", "label": "노무/금융" },
+        { "id": "cert-construction", "label": "건축/토목" },
+        { "id": "cert-mechanical", "label": "기계" },
+        { "id": "cert-electrical", "label": "전기/전자" },
+        { "id": "cert-chemistry", "label": "화학/안전/환경" },
+        { "id": "cert-food", "label": "식품/조리/위생" },
+        { "id": "cert-functional", "label": "기능사 (조작/장비)" },
+        { "id": "cert-beauty", "label": "미용" },
+        { "id": "cert-tourism", "label": "관광/호텔" },
+        { "id": "cert-medical", "label": "보건/의료" },
+        { "id": "cert-agri", "label": "농업/원예/조경" },
+        { "id": "cert-other", "label": "기타 자격증" }
+      ]
+    },
+    {
+      "id": "driver",
+      "slug": "운전",
+      "label": "운전·건설장비",
+      "icon": "🚗",
+      "order": 3,
+      "featured": false,
+      "description": "운전면허 학과시험 + 건설기계 운전 자격(굴착기/지게차/크레인 등).",
+      "audience": ["10대 후반~20대 초반", "재발급", "건설 종사자"],
+      "subcategories": [
+        { "id": "driver-license", "label": "운전면허" },
+        { "id": "driver-construction", "label": "건설기계 운전 (굴착기·지게차·크레인 등)" }
+      ]
+    },
+    {
+      "id": "corporate",
+      "slug": "인적성",
+      "label": "기업 인적성",
+      "icon": "🏢",
+      "order": 4,
+      "featured": false,
+      "status": "coming-soon",
+      "description": "대기업·공기업 인적성 — NCS, GSAT, SKCT 등 (추후 추가 예정).",
+      "audience": ["취준생", "신입 입사 준비"]
+    },
+    {
+      "id": "language",
+      "slug": "어학",
+      "label": "어학",
+      "icon": "🌐",
+      "order": 5,
+      "featured": false,
+      "status": "coming-soon",
+      "description": "어학 인증시험 — 토익, 토플, 텝스, 한국어능력시험 등 (추후 추가 예정).",
+      "audience": ["취업 준비", "어학 가산점"]
+    },
+    {
+      "id": "exam",
+      "slug": "수능",
+      "label": "수능·모의고사",
+      "icon": "🎓",
+      "order": 6,
+      "featured": false,
+      "description": "수능·교육청 모의고사 기출 (국·수·영·탐구).",
+      "audience": ["고등학생", "재수생", "검정고시"]
+    },
+    {
+      "id": "other",
+      "slug": "기타",
+      "label": "기타",
+      "icon": "📋",
+      "order": 99,
+      "featured": false,
+      "description": "위 카테고리에 분류되지 않은 기타 자격·시험.",
+      "audience": []
+    }
+  ]
+}

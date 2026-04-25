@@ -1,0 +1,193 @@
+import Link from "next/link";
+import { notFound, redirect } from "next/navigation";
+import { Metadata } from "next";
+import {
+  getAllExamTypes,
+  getExamTypeBySlug,
+  getSubjectBySlug,
+  getSubjectById,
+} from "@/lib/exam-types";
+import { getCbtManifest } from "@/lib/cbt-data";
+import BreadCrumb from "@/components/BreadCrumb";
+import RoundList, { type RoundListItem } from "@/components/RoundList";
+
+interface PageProps {
+  params: Promise<{ examSlug: string; subjectSlug: string }>;
+}
+
+export function generateStaticParams() {
+  const out: Array<{ examSlug: string; subjectSlug: string }> = [];
+  for (const exam of getAllExamTypes()) {
+    const refs = [...exam.subjects.required, ...(exam.subjects.selectable ?? [])];
+    for (const ref of refs) {
+      if (ref.status !== "live") continue;
+      const subj = getSubjectById(ref.subjectId);
+      if (!subj) continue;
+      out.push({ examSlug: exam.slug, subjectSlug: subj.slug });
+    }
+  }
+  return out;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { examSlug, subjectSlug } = await params;
+  const exam = getExamTypeBySlug(decodeURIComponent(examSlug));
+  const subject = getSubjectBySlug(decodeURIComponent(subjectSlug));
+  if (!exam || !subject) return { title: "시험" };
+  return {
+    title: `${exam.shortLabel} ${subject.label} — 기출노트`,
+    description: `${exam.label} ${subject.label} 기출문제 / 오답노트 / 내 기록.`,
+    alternates: { canonical: `${exam.routes.main}/${subject.slug}` },
+  };
+}
+
+/**
+ * 시험-과목 단독 랜딩 — 한능검처럼 단순한 leaf 페이지.
+ * Hero + 회차 빠른 진입 (있으면) + 4개 CTA (기출/노트/오답/기록).
+ */
+export default async function SubjectLanding({ params }: PageProps) {
+  const { examSlug, subjectSlug } = await params;
+  const examS = decodeURIComponent(examSlug);
+  const subS = decodeURIComponent(subjectSlug);
+  const exam = getExamTypeBySlug(examS);
+  const subject = getSubjectBySlug(subS);
+  if (!exam || !subject) notFound();
+
+  const ref =
+    exam.subjects.required.find((r) => r.subjectId === subject.id) ??
+    exam.subjects.selectable?.find((r) => r.subjectId === subject.id);
+
+  // 한능검 한국사 — legacy 한능검 풍부한 랜딩으로 redirect (URL encode 필수)
+  if (exam.id === "korean-history" && subject.id === "korean-history") {
+    redirect("/" + encodeURIComponent("한능검"));
+  }
+
+  // CBT stem — 회차 미리보기 가능
+  const stem = ref?.stem ?? subject.questionPool?.stem;
+  const manifest = stem ? await getCbtManifest(stem) : null;
+  const previewRounds = manifest?.exams.slice(0, 6) ?? [];
+
+  const hasNotes = subject.id === "korean-history" && subject.notePool;
+  const baseUrl = `${exam.routes.main}/${subject.slug}`;
+
+  // RoundList items
+  const roundItems: RoundListItem[] =
+    manifest && previewRounds.length > 0
+      ? previewRounds.map((r) => ({
+          id: r.exam_id,
+          label: r.label.replace(manifest.category.name + " ", ""),
+          href: `${baseUrl}/exam/${r.exam_id}`,
+          badge: `${r.question_count}문항`,
+        }))
+      : [];
+
+  return (
+    <div>
+      <BreadCrumb
+        items={[
+          { label: "기출노트", href: "/" },
+          { label: exam.label, href: exam.routes.main },
+          { label: subject.label },
+        ]}
+      />
+
+      {/* Hero */}
+      <header className="mb-8">
+        <div className="font-mono text-xs uppercase tracking-wider text-[var(--gc-amber)] mb-2">
+          {exam.icon} {exam.shortLabel}
+        </div>
+        <h1 className="font-serif-kr text-3xl md:text-5xl font-black text-[var(--gc-ink)]">
+          {subject.label}
+        </h1>
+        {subject.description && (
+          <p className="mt-3 text-sm md:text-base text-[var(--gc-ink2)] max-w-2xl">
+            {subject.description}
+          </p>
+        )}
+        {manifest && (
+          <p className="mt-2 text-xs text-[var(--gc-ink2)]">
+            {manifest.category.examCount}회차 · {manifest.category.questionCount.toLocaleString()}문항
+          </p>
+        )}
+      </header>
+
+      {/* CTA grid */}
+      <div className="grid gap-3 grid-cols-2 md:grid-cols-4 mb-10">
+        <CtaCard
+          href={`${baseUrl}/exam`}
+          label="기출 풀기"
+          icon="📝"
+          available={!!stem}
+          primary
+        />
+        <CtaCard
+          href={`${baseUrl}/notes`}
+          label="요약노트"
+          icon="📚"
+          available={!!hasNotes}
+          unavailableLabel="준비중"
+        />
+        <CtaCard href={`${baseUrl}/wrong-answers`} label="오답노트" icon="✗" available />
+        <CtaCard href={`${baseUrl}/my-record`} label="내 기록" icon="📊" available />
+      </div>
+
+      {/* 회차 미리보기 */}
+      {roundItems.length > 0 && (
+        <>
+          <div className="flex items-baseline justify-between mb-3">
+            <h2 className="text-sm font-bold text-slate-700">최근 회차</h2>
+            <Link
+              href={`${baseUrl}/exam`}
+              className="text-xs font-bold text-[var(--gc-amber)] hover:underline"
+            >
+              전체 회차 →
+            </Link>
+          </div>
+          <RoundList items={roundItems} />
+        </>
+      )}
+    </div>
+  );
+}
+
+function CtaCard({
+  href,
+  label,
+  icon,
+  available,
+  primary,
+  unavailableLabel = "준비중",
+}: {
+  href: string;
+  label: string;
+  icon: string;
+  available: boolean;
+  primary?: boolean;
+  unavailableLabel?: string;
+}) {
+  if (!available) {
+    return (
+      <div
+        className="rounded-2xl border border-dashed border-slate-200 bg-white/60 p-4 text-center text-slate-400"
+        title="준비중"
+      >
+        <div className="text-2xl mb-1">{icon}</div>
+        <div className="text-sm font-bold">{label}</div>
+        <div className="text-[10px] mt-1 font-mono uppercase">{unavailableLabel}</div>
+      </div>
+    );
+  }
+  return (
+    <Link
+      href={href}
+      className={`rounded-2xl border p-4 text-center transition-all hover:scale-[1.02] ${
+        primary
+          ? "border-[var(--gc-amber)] bg-[var(--gc-ink)] text-white"
+          : "border-slate-200 bg-white text-slate-900 hover:border-[var(--gc-amber)]"
+      }`}
+    >
+      <div className="text-2xl mb-1">{icon}</div>
+      <div className="text-sm font-bold">{label}</div>
+    </Link>
+  );
+}

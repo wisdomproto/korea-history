@@ -1,0 +1,8025 @@
+{
+  "$schema": "https://gcnote.co.kr/schemas/subjects.v1.json",
+  "version": 1,
+  "updatedAt": "2026-04-25",
+  "subjects": [
+    {
+      "id": "korean-history",
+      "slug": "한국사",
+      "label": "한국사",
+      "shortLabel": "한국사",
+      "status": "live",
+      "questionPool": {
+        "source": "exam-folder",
+        "path": "data/questions/exam-*.json"
+      },
+      "notePool": {
+        "source": "notes-index",
+        "path": "data/notes/index.json"
+      },
+      "stats": {
+        "examCount": 38,
+        "questionCount": 1900,
+        "noteCount": 87
+      },
+      "description": "한국사 — 한능검(한국사능력검정시험) 콘텐츠를 12개 공무원 시험에서 공유 사용.",
+      "phase": 0
+    },
+    {
+      "id": "korean-language",
+      "slug": "국어",
+      "label": "국어",
+      "shortLabel": "국어",
+      "status": "coming-soon",
+      "etaQuarter": "2026 Q3",
+      "description": "9급/7급 공무원 국어 + 인접 시험 공통.",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-국어",
+        "status": "live"
+      }
+    },
+    {
+      "id": "english",
+      "slug": "영어",
+      "label": "영어",
+      "shortLabel": "영어",
+      "status": "coming-soon",
+      "etaQuarter": "2026 Q4",
+      "description": "9급/7급 공무원 영어 + 토익/공무원 인증 영어.",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-영어",
+        "status": "live"
+      }
+    },
+    {
+      "id": "admin-law",
+      "slug": "행정법",
+      "label": "행정법총론",
+      "shortLabel": "행정법총론",
+      "status": "coming-soon",
+      "etaQuarter": "2027 Q1",
+      "description": "행정법 — 9급 행정직, 사회복지직, 교행직, 경찰, 소방.",
+      "phase": 2,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-행정법총론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "admin-science",
+      "slug": "행정학",
+      "label": "행정학개론",
+      "shortLabel": "행정학개론",
+      "status": "coming-soon",
+      "etaQuarter": "2027 Q1",
+      "description": "행정학 — 9급/7급 행정직.",
+      "phase": 2,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-행정학개론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "constitution",
+      "slug": "헌법",
+      "label": "헌법",
+      "shortLabel": "헌법",
+      "status": "coming-soon",
+      "etaQuarter": "2027 Q2",
+      "description": "헌법 — 경찰, 7급 PSAT.",
+      "phase": 2
+    },
+    {
+      "id": "criminal-law",
+      "slug": "형법",
+      "label": "형법",
+      "shortLabel": "형법",
+      "status": "coming-soon",
+      "etaQuarter": "2027 Q2",
+      "description": "형법 — 경찰, 검찰, 교정.",
+      "phase": 2
+    },
+    {
+      "id": "criminal-procedure",
+      "slug": "형사소송법",
+      "label": "형사소송법",
+      "shortLabel": "형사소송법",
+      "status": "coming-soon",
+      "etaQuarter": "2027 Q2",
+      "description": "형사소송법 — 경찰, 검찰, 교정.",
+      "phase": 2
+    },
+    {
+      "id": "social-welfare-theory",
+      "slug": "사회복지학",
+      "label": "사회복지학개론",
+      "shortLabel": "사회복지학개론",
+      "status": "coming-soon",
+      "etaQuarter": "2027 Q2",
+      "description": "사회복지학 — 사회복지직, 보호직, 사회복지사 1급.",
+      "phase": 2,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-사회복지학개론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "realtor-1",
+      "slug": "공인중개사-1차",
+      "label": "공인중개사 1차",
+      "shortLabel": "공인중개사 1차",
+      "status": "live",
+      "questionPool": {
+        "source": "cbt-r2",
+        "stem": "공인중개사-1차"
+      },
+      "description": "공인중개사 1차 — 부동산학개론, 민법 및 민사특별법.",
+      "phase": 0
+    },
+    {
+      "id": "realtor-2",
+      "slug": "공인중개사-2차",
+      "label": "공인중개사 2차",
+      "shortLabel": "공인중개사 2차",
+      "status": "live",
+      "questionPool": {
+        "source": "cbt-r2",
+        "stem": "공인중개사-2차"
+      },
+      "description": "공인중개사 2차 — 공인중개사법령, 부동산공법, 부동산공시법, 세법.",
+      "phase": 0
+    },
+    {
+      "id": "it-engineer",
+      "slug": "정보처리기사",
+      "label": "정보처리기사",
+      "shortLabel": "정보처리기사",
+      "status": "live",
+      "questionPool": {
+        "source": "cbt-r2",
+        "stem": "정보처리기사"
+      },
+      "description": "정보처리기사 — IT 가산점 + 큰 자격증 시장.",
+      "phase": 0
+    },
+    {
+      "id": "it-industrial",
+      "slug": "정보처리산업기사",
+      "label": "정보처리산업기사",
+      "shortLabel": "정보처리산업기사",
+      "status": "live",
+      "questionPool": {
+        "source": "cbt-r2",
+        "stem": "정보처리산업기사"
+      },
+      "description": "정보처리산업기사.",
+      "phase": 0
+    },
+    {
+      "id": "social-worker-1-1",
+      "slug": "사회복지사-1급-1교시",
+      "label": "사회복지사 1급 1교시",
+      "shortLabel": "사회복지사 1급 1교시",
+      "status": "live",
+      "questionPool": {
+        "source": "cbt-r2",
+        "stem": "사회복지사-1급1교시"
+      },
+      "phase": 0
+    },
+    {
+      "id": "social-worker-1-2",
+      "slug": "사회복지사-1급-2교시",
+      "label": "사회복지사 1급 2교시",
+      "shortLabel": "사회복지사 1급 2교시",
+      "status": "live",
+      "questionPool": {
+        "source": "cbt-r2",
+        "stem": "사회복지사-1급2교시"
+      },
+      "phase": 0
+    },
+    {
+      "id": "social-worker-1-3",
+      "slug": "사회복지사-1급-3교시",
+      "label": "사회복지사 1급 3교시",
+      "shortLabel": "사회복지사 1급 3교시",
+      "status": "live",
+      "questionPool": {
+        "source": "cbt-r2",
+        "stem": "사회복지사-1급3교시"
+      },
+      "phase": 0
+    },
+    {
+      "id": "subj-건축계획",
+      "slug": "건축계획",
+      "label": "건축계획",
+      "shortLabel": "건축계획",
+      "status": "live",
+      "description": "건축계획 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-건축계획",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건축구조",
+      "slug": "건축구조",
+      "label": "건축구조",
+      "shortLabel": "건축구조",
+      "status": "live",
+      "description": "건축구조 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-건축구조",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-경제학개론",
+      "slug": "경제학개론",
+      "label": "경제학개론",
+      "shortLabel": "경제학개론",
+      "status": "live",
+      "description": "경제학개론 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-공업화학",
+      "slug": "공업화학",
+      "label": "공업화학",
+      "shortLabel": "공업화학",
+      "status": "live",
+      "description": "공업화학 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-공업화학",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-공직선거법",
+      "slug": "공직선거법",
+      "label": "공직선거법",
+      "shortLabel": "공직선거법",
+      "status": "live",
+      "description": "공직선거법 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-과학",
+      "slug": "과학",
+      "label": "과학",
+      "shortLabel": "과학",
+      "status": "live",
+      "description": "과학 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-과학",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-관세법개론",
+      "slug": "관세법개론",
+      "label": "관세법개론",
+      "shortLabel": "관세법개론",
+      "status": "live",
+      "description": "관세법개론 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "관세사-관세법개론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-교육학개론",
+      "slug": "교육학개론",
+      "label": "교육학개론",
+      "shortLabel": "교육학개론",
+      "status": "live",
+      "description": "교육학개론 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-교정학개론",
+      "slug": "교정학개론",
+      "label": "교정학개론",
+      "shortLabel": "교정학개론",
+      "status": "live",
+      "description": "교정학개론 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-국제법개론",
+      "slug": "국제법개론",
+      "label": "국제법개론",
+      "shortLabel": "국제법개론",
+      "status": "live",
+      "description": "국제법개론 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-기계설계",
+      "slug": "기계설계",
+      "label": "기계설계",
+      "shortLabel": "기계설계",
+      "status": "live",
+      "description": "기계설계 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-기계설계",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-기계일반",
+      "slug": "기계일반",
+      "label": "기계일반",
+      "shortLabel": "기계일반",
+      "status": "live",
+      "description": "기계일반 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-기계일반",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-네트워크보안",
+      "slug": "네트워크보안",
+      "label": "네트워크보안",
+      "shortLabel": "네트워크보안",
+      "status": "live",
+      "description": "네트워크보안 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-노동법개론",
+      "slug": "노동법개론",
+      "label": "노동법개론",
+      "shortLabel": "노동법개론",
+      "status": "live",
+      "description": "노동법개론 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-무선공학개론",
+      "slug": "무선공학개론",
+      "label": "무선공학개론",
+      "shortLabel": "무선공학개론",
+      "status": "live",
+      "description": "무선공학개론 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-사회",
+      "slug": "사회",
+      "label": "사회",
+      "shortLabel": "사회",
+      "status": "live",
+      "description": "사회 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-사회",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-세법개론",
+      "slug": "세법개론",
+      "label": "세법개론",
+      "shortLabel": "세법개론",
+      "status": "live",
+      "description": "세법개론 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-수학",
+      "slug": "수학",
+      "label": "수학",
+      "shortLabel": "수학",
+      "status": "live",
+      "description": "수학 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-수학",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-식용작물",
+      "slug": "식용작물",
+      "label": "식용작물",
+      "shortLabel": "식용작물",
+      "status": "live",
+      "description": "식용작물 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-식용작물",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-안전관리론",
+      "slug": "안전관리론",
+      "label": "안전관리론",
+      "shortLabel": "안전관리론",
+      "status": "live",
+      "description": "안전관리론 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-안전관리론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-응용역학개론",
+      "slug": "응용역학개론",
+      "label": "응용역학개론",
+      "shortLabel": "응용역학개론",
+      "status": "live",
+      "description": "응용역학개론 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-응용역학개론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-임업경영",
+      "slug": "임업경영",
+      "label": "임업경영",
+      "shortLabel": "임업경영",
+      "status": "live",
+      "description": "임업경영 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-임업경영",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-재난관리론",
+      "slug": "재난관리론",
+      "label": "재난관리론",
+      "shortLabel": "재난관리론",
+      "status": "live",
+      "description": "재난관리론 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-재난관리론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-재배학개론",
+      "slug": "재배학개론",
+      "label": "재배학개론",
+      "shortLabel": "재배학개론",
+      "status": "live",
+      "description": "재배학개론 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-재배학개론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전기기기",
+      "slug": "전기기기",
+      "label": "전기기기",
+      "shortLabel": "전기기기",
+      "status": "live",
+      "description": "전기기기 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-전기기기",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전기이론",
+      "slug": "전기이론",
+      "label": "전기이론",
+      "shortLabel": "전기이론",
+      "status": "live",
+      "description": "전기이론 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-전기이론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전자공학개론",
+      "slug": "전자공학개론",
+      "label": "전자공학개론",
+      "shortLabel": "전자공학개론",
+      "status": "live",
+      "description": "전자공학개론 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-전자공학개론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-정보보호론",
+      "slug": "정보보호론",
+      "label": "정보보호론",
+      "shortLabel": "정보보호론",
+      "status": "live",
+      "description": "정보보호론 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-정보보호론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-정보시스템보안",
+      "slug": "정보시스템보안",
+      "label": "정보시스템보안",
+      "shortLabel": "정보시스템보안",
+      "status": "live",
+      "description": "정보시스템보안 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-조경계획및설계",
+      "slug": "조경계획및설계",
+      "label": "조경계획및설계",
+      "shortLabel": "조경계획및설계",
+      "status": "live",
+      "description": "조경계획및설계 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-조경학",
+      "slug": "조경학",
+      "label": "조경학",
+      "shortLabel": "조경학",
+      "status": "live",
+      "description": "조경학 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-조경학",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-조림",
+      "slug": "조림",
+      "label": "조림",
+      "shortLabel": "조림",
+      "status": "live",
+      "description": "조림 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-조림",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-직업상담심리학개론",
+      "slug": "직업상담심리학개론",
+      "label": "직업상담심리학개론",
+      "shortLabel": "직업상담심리학개론",
+      "status": "live",
+      "description": "직업상담심리학개론 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-컴퓨터일반",
+      "slug": "컴퓨터일반",
+      "label": "컴퓨터일반",
+      "shortLabel": "컴퓨터일반",
+      "status": "live",
+      "description": "컴퓨터일반 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-컴퓨터일반",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-토목설계",
+      "slug": "토목설계",
+      "label": "토목설계",
+      "shortLabel": "토목설계",
+      "status": "live",
+      "description": "토목설계 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-토목설계",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-통계학개론",
+      "slug": "통계학개론",
+      "label": "통계학개론",
+      "shortLabel": "통계학개론",
+      "status": "live",
+      "description": "통계학개론 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-형법총론",
+      "slug": "형법총론",
+      "label": "형법총론",
+      "shortLabel": "형법총론",
+      "status": "live",
+      "description": "형법총론 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-형사소송법개론",
+      "slug": "형사소송법개론",
+      "label": "형사소송법개론",
+      "shortLabel": "형사소송법개론",
+      "status": "live",
+      "description": "형사소송법개론 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-화학공학일반",
+      "slug": "화학공학일반",
+      "label": "화학공학일반",
+      "shortLabel": "화학공학일반",
+      "status": "live",
+      "description": "화학공학일반 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-화학공학일반",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-회계원리",
+      "slug": "회계원리",
+      "label": "회계원리",
+      "shortLabel": "회계원리",
+      "status": "live",
+      "description": "회계원리 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-회계학",
+      "slug": "회계학",
+      "label": "회계학",
+      "shortLabel": "회계학",
+      "status": "live",
+      "description": "회계학 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-회계학",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-간호관리",
+      "slug": "간호관리",
+      "label": "간호관리",
+      "shortLabel": "간호관리",
+      "status": "live",
+      "description": "간호관리 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-자료조직개론",
+      "slug": "자료조직개론",
+      "label": "자료조직개론",
+      "shortLabel": "자료조직개론",
+      "status": "live",
+      "description": "자료조직개론 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-자료조직개론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-정보봉사개론",
+      "slug": "정보봉사개론",
+      "label": "정보봉사개론",
+      "shortLabel": "정보봉사개론",
+      "status": "live",
+      "description": "정보봉사개론 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-정보봉사개론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-지방세법",
+      "slug": "지방세법",
+      "label": "지방세법",
+      "shortLabel": "지방세법",
+      "status": "live",
+      "description": "지방세법 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-지방세법",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-지역사회간호학",
+      "slug": "지역사회간호학",
+      "label": "지역사회간호학",
+      "shortLabel": "지역사회간호학",
+      "status": "live",
+      "description": "지역사회간호학 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-지적전산학개론",
+      "slug": "지적전산학개론",
+      "label": "지적전산학개론",
+      "shortLabel": "지적전산학개론",
+      "status": "live",
+      "description": "지적전산학개론 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-지적측량",
+      "slug": "지적측량",
+      "label": "지적측량",
+      "shortLabel": "지적측량",
+      "status": "live",
+      "description": "지적측량 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-지적측량",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-화학",
+      "slug": "화학",
+      "label": "화학",
+      "shortLabel": "화학",
+      "status": "live",
+      "description": "화학 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-화학",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-환경공학개론",
+      "slug": "환경공학개론",
+      "label": "환경공학개론",
+      "shortLabel": "환경공학개론",
+      "status": "live",
+      "description": "환경공학개론 (자격시험 과목)",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-환경공학개론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-경찰학개론",
+      "slug": "경찰학개론",
+      "label": "경찰학개론",
+      "shortLabel": "경찰학개론",
+      "status": "live",
+      "description": "경찰학개론 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-수사",
+      "slug": "수사",
+      "label": "수사",
+      "shortLabel": "수사",
+      "status": "live",
+      "description": "수사 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-행정법",
+      "slug": "행정법-2",
+      "label": "행정법",
+      "shortLabel": "행정법",
+      "status": "live",
+      "description": "행정법 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-공개-소방관계법규",
+      "slug": "공개-소방관계법규",
+      "label": "(공개) 소방관계법규",
+      "shortLabel": "(공개) 소방관계법규",
+      "status": "live",
+      "description": "(공개) 소방관계법규 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "subj-공개-행정법총론",
+      "slug": "공개-행정법총론",
+      "label": "(공개) 행정법총론",
+      "shortLabel": "(공개) 행정법총론",
+      "status": "live",
+      "description": "(공개) 행정법총론 (자격시험 과목)",
+      "phase": 1
+    },
+    {
+      "id": "psat-언어논리",
+      "slug": "PSAT-언어논리",
+      "label": "PSAT 언어논리",
+      "shortLabel": "PSAT 언어논리",
+      "status": "live",
+      "questionPool": {
+        "source": "cbt-r2",
+        "stem": "psat-언어논리"
+      },
+      "description": "PSAT 언어논리 (7급 공무원 1차 PSAT)",
+      "phase": 1
+    },
+    {
+      "id": "psat-자료해석",
+      "slug": "PSAT-자료해석",
+      "label": "PSAT 자료해석",
+      "shortLabel": "PSAT 자료해석",
+      "status": "live",
+      "questionPool": {
+        "source": "cbt-r2",
+        "stem": "psat-자료해석"
+      },
+      "description": "PSAT 자료해석 (7급 공무원 1차 PSAT)",
+      "phase": 1
+    },
+    {
+      "id": "psat-상황판단",
+      "slug": "PSAT-상황판단",
+      "label": "PSAT 상황판단",
+      "shortLabel": "PSAT 상황판단",
+      "status": "live",
+      "questionPool": {
+        "source": "cbt-r2",
+        "stem": "psat-상황판단"
+      },
+      "description": "PSAT 상황판단 (7급 공무원 1차 PSAT)",
+      "phase": 1
+    },
+    {
+      "id": "driver-license-1-2",
+      "slug": "학과-1종-2종",
+      "label": "운전면허 학과 1종·2종 (필기)",
+      "shortLabel": "운전면허 학과 1종·2종 …",
+      "status": "live",
+      "questionPool": {
+        "source": "cbt-r2",
+        "stem": "운전면허-학과시험필기-1종-2종2020년판"
+      },
+      "description": "운전면허 학과 1종·2종 (필기) — 도로교통공단 운전면허 학과시험.",
+      "phase": 0
+    },
+    {
+      "id": "driver-license-2-small",
+      "slug": "학과-2종-소형-이륜",
+      "label": "운전면허 학과 2종 소형·이륜 (필기)",
+      "shortLabel": "운전면허 학과 2종 소형·…",
+      "status": "live",
+      "questionPool": {
+        "source": "cbt-r2",
+        "stem": "운전면허-학과시험필기-2종-소형-이륜2020년판"
+      },
+      "description": "운전면허 학과 2종 소형·이륜 (필기) — 도로교통공단 운전면허 학과시험.",
+      "phase": 0
+    },
+    {
+      "id": "subj-간호관리8급",
+      "slug": "간호관리8급",
+      "label": "간호관리(8급)",
+      "shortLabel": "간호관리(8급)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-간호관리8급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-공중보건",
+      "slug": "공중보건",
+      "label": "공중보건",
+      "shortLabel": "공중보건",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-공중보건",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-물리",
+      "slug": "물리",
+      "label": "물리",
+      "shortLabel": "물리",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-물리",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-보건행정",
+      "slug": "보건행정",
+      "label": "보건행정",
+      "shortLabel": "보건행정",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-보건행정",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-사회유공자",
+      "slug": "사회유공자",
+      "label": "사회(유공자)",
+      "shortLabel": "사회(유공자)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-사회유공자",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-생물",
+      "slug": "생물",
+      "label": "생물",
+      "shortLabel": "생물",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-생물",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-선박일반",
+      "slug": "선박일반",
+      "label": "선박일반",
+      "shortLabel": "선박일반",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-선박일반",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-수학지적",
+      "slug": "수학지적",
+      "label": "수학(지적)",
+      "shortLabel": "수학(지적)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-수학지적",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-의료관계법규",
+      "slug": "의료관계법규",
+      "label": "의료관계법규",
+      "shortLabel": "의료관계법규",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-의료관계법규",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-자동차구조원리",
+      "slug": "자동차구조원리",
+      "label": "자동차구조원리",
+      "shortLabel": "자동차구조원리",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-자동차구조원리",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-자동차구조원리유공자",
+      "slug": "자동차구조원리유공자",
+      "label": "자동차구조원리(유공자)",
+      "shortLabel": "자동차구조원리(유공자)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-자동차구조원리유공자",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-조경계획및생태관리",
+      "slug": "조경계획및생태관리",
+      "label": "조경계획및생태관리",
+      "shortLabel": "조경계획및생태관리",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-조경계획및생태관리",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-지역사회간호",
+      "slug": "지역사회간호",
+      "label": "지역사회간호",
+      "shortLabel": "지역사회간호",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-지역사회간호",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-지적법규",
+      "slug": "지적법규",
+      "label": "지적법규",
+      "shortLabel": "지적법규",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-지적법규",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-통신이론",
+      "slug": "통신이론",
+      "label": "통신이론",
+      "shortLabel": "통신이론",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-통신이론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-한국사유공자",
+      "slug": "한국사유공자",
+      "label": "한국사(유공자)",
+      "shortLabel": "한국사(유공자)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-한국사유공자",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-항해",
+      "slug": "항해",
+      "label": "항해",
+      "shortLabel": "항해",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "9급-지방직-공무원-서울시-항해",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-정보통신상식",
+      "slug": "정보통신상식",
+      "label": "정보통신상식",
+      "shortLabel": "정보통신상식",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "diat-정보통신상식",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-정보통신상식구",
+      "slug": "정보통신상식구",
+      "label": "정보통신상식 (구버전)",
+      "shortLabel": "정보통신상식 (구버전)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "diat-정보통신상식구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-인사-2급-실무",
+      "slug": "인사-2급-실무",
+      "label": "인사 2급 실무",
+      "shortLabel": "인사 2급 실무",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "erp-인사-2급-실무",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-인사-2급-이론",
+      "slug": "인사-2급-이론",
+      "label": "인사 2급 이론",
+      "shortLabel": "인사 2급 이론",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "erp-인사-2급-이론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-회계-2급-실무",
+      "slug": "회계-2급-실무",
+      "label": "회계 2급 실무",
+      "shortLabel": "회계 2급 실무",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "erp-회계-2급-실무",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-회계-2급-이론",
+      "slug": "회계-2급-이론",
+      "label": "회계 2급 이론",
+      "shortLabel": "회계 2급 이론",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "erp-회계-2급-이론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1급",
+      "slug": "1급",
+      "label": "1급",
+      "shortLabel": "1급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "fat-1급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1급구",
+      "slug": "1급구",
+      "label": "1급 (구버전)",
+      "shortLabel": "1급 (구버전)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "fat-1급구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-2급",
+      "slug": "2급",
+      "label": "2급",
+      "shortLabel": "2급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "fat-2급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-2급구",
+      "slug": "2급구",
+      "label": "2급 (구버전)",
+      "shortLabel": "2급 (구버전)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "fat-2급구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-IoT지식능력검정",
+      "slug": "IoT지식능력검정",
+      "label": "IoT지식능력검정",
+      "shortLabel": "IoT지식능력검정",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "iot지식능력검정",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-PC정비사-1급",
+      "slug": "PC정비사-1급",
+      "label": "PC정비사 1급",
+      "shortLabel": "PC정비사 1급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "pc정비사-1급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-PC정비사-2급",
+      "slug": "PC정비사-2급",
+      "label": "PC정비사 2급",
+      "shortLabel": "PC정비사 2급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "pc정비사-2급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-RFID-GL",
+      "slug": "RFID-GL",
+      "label": "RFID-GL",
+      "shortLabel": "RFID-GL",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "rfid-gl",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-가구제작기능사",
+      "slug": "가구제작기능사",
+      "label": "가구제작기능사",
+      "shortLabel": "가구제작기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "가구제작기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-가맹거래사",
+      "slug": "가맹거래사",
+      "label": "가맹거래사",
+      "shortLabel": "가맹거래사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "가맹거래사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-가스기능사",
+      "slug": "가스기능사",
+      "label": "가스기능사",
+      "shortLabel": "가스기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "가스기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-가스기능장",
+      "slug": "가스기능장",
+      "label": "가스기능장",
+      "shortLabel": "가스기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "가스기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-가스기사",
+      "slug": "가스기사",
+      "label": "가스기사",
+      "shortLabel": "가스기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "가스기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-가스산업기사",
+      "slug": "가스산업기사",
+      "label": "가스산업기사",
+      "shortLabel": "가스산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "가스산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차-1교시",
+      "slug": "1차-1교시",
+      "label": "1차 1교시",
+      "shortLabel": "1차 1교시",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "감정평가사-1차-1교시",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차-1교시구",
+      "slug": "1차-1교시구",
+      "label": "1차 1교시 (구버전)",
+      "shortLabel": "1차 1교시 (구버전)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "감정평가사-1차-1교시구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차-2교시",
+      "slug": "1차-2교시",
+      "label": "1차 2교시",
+      "shortLabel": "1차 2교시",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "감정평가사-1차-2교시",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건설기계설비기사",
+      "slug": "건설기계설비기사",
+      "label": "건설기계설비기사",
+      "shortLabel": "건설기계설비기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건설기계설비기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건설기계설비산업기사",
+      "slug": "건설기계설비산업기사",
+      "label": "건설기계설비산업기사",
+      "shortLabel": "건설기계설비산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건설기계설비산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건설기계정비기능사",
+      "slug": "건설기계정비기능사",
+      "label": "건설기계정비기능사",
+      "shortLabel": "건설기계정비기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건설기계정비기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건설기계정비기능장",
+      "slug": "건설기계정비기능장",
+      "label": "건설기계정비기능장",
+      "shortLabel": "건설기계정비기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건설기계정비기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건설기계정비기사",
+      "slug": "건설기계정비기사",
+      "label": "건설기계정비기사",
+      "shortLabel": "건설기계정비기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건설기계정비기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건설기계정비산업기사",
+      "slug": "건설기계정비산업기사",
+      "label": "건설기계정비산업기사",
+      "shortLabel": "건설기계정비산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건설기계정비산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건설안전기사",
+      "slug": "건설안전기사",
+      "label": "건설안전기사",
+      "shortLabel": "건설안전기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건설안전기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건설안전산업기사",
+      "slug": "건설안전산업기사",
+      "label": "건설안전산업기사",
+      "shortLabel": "건설안전산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건설안전산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건설재료시험기능사",
+      "slug": "건설재료시험기능사",
+      "label": "건설재료시험기능사",
+      "shortLabel": "건설재료시험기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건설재료시험기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건설재료시험기사",
+      "slug": "건설재료시험기사",
+      "label": "건설재료시험기사",
+      "shortLabel": "건설재료시험기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건설재료시험기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건설재료시험산업기사",
+      "slug": "건설재료시험산업기사",
+      "label": "건설재료시험산업기사",
+      "shortLabel": "건설재료시험산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건설재료시험산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건축기사",
+      "slug": "건축기사",
+      "label": "건축기사",
+      "shortLabel": "건축기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건축기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건축목공산업기사",
+      "slug": "건축목공산업기사",
+      "label": "건축목공산업기사",
+      "shortLabel": "건축목공산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건축목공산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건축목재시공기능장",
+      "slug": "건축목재시공기능장",
+      "label": "건축목재시공기능장",
+      "shortLabel": "건축목재시공기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건축목재시공기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건축산업기사",
+      "slug": "건축산업기사",
+      "label": "건축산업기사",
+      "shortLabel": "건축산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건축산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건축설비기사",
+      "slug": "건축설비기사",
+      "label": "건축설비기사",
+      "shortLabel": "건축설비기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건축설비기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건축설비산업기사",
+      "slug": "건축설비산업기사",
+      "label": "건축설비산업기사",
+      "shortLabel": "건축설비산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건축설비산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건축일반시공기능장",
+      "slug": "건축일반시공기능장",
+      "label": "건축일반시공기능장",
+      "shortLabel": "건축일반시공기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건축일반시공기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-건축일반시공산업기사",
+      "slug": "건축일반시공산업기사",
+      "label": "건축일반시공산업기사",
+      "shortLabel": "건축일반시공산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "건축일반시공산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-검량사",
+      "slug": "검량사",
+      "label": "검량사",
+      "shortLabel": "검량사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "검량사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차법학개론,민간경비론",
+      "slug": "1차법학개론-민간경비론",
+      "label": "1차(법학개론·민간경비론)",
+      "shortLabel": "1차(법학개론·민간경비론)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "경비지도사-1차법학개론민간경비론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-2차경비업법",
+      "slug": "2차경비업법",
+      "label": "2차(경비업법)",
+      "shortLabel": "2차(경비업법)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "경비지도사-2차경비업법",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-2차경호학",
+      "slug": "2차경호학",
+      "label": "2차(경호학)",
+      "shortLabel": "2차(경호학)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "경비지도사-2차경호학",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-2차기계경비개론",
+      "slug": "2차기계경비개론",
+      "label": "2차(기계경비개론)",
+      "shortLabel": "2차(기계경비개론)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "경비지도사-2차기계경비개론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-2차기계경비기획및설계",
+      "slug": "2차기계경비기획및설계",
+      "label": "2차(기계경비기획및설계)",
+      "shortLabel": "2차(기계경비기획및설계)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "경비지도사-2차기계경비기획및설계",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-2차범죄학",
+      "slug": "2차범죄학",
+      "label": "2차(범죄학)",
+      "shortLabel": "2차(범죄학)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "경비지도사-2차범죄학",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-2차소방학",
+      "slug": "2차소방학",
+      "label": "2차(소방학)",
+      "shortLabel": "2차(소방학)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "경비지도사-2차소방학",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차",
+      "slug": "1차",
+      "label": "1차",
+      "shortLabel": "1차",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "경영지도사-1차",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차-2교시구",
+      "slug": "1차-2교시구",
+      "label": "1차 2교시 (구버전)",
+      "shortLabel": "1차 2교시 (구버전)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "경영지도사-1차-2교시구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-순경-한국사",
+      "slug": "순경-한국사",
+      "label": "(순경) 한국사",
+      "shortLabel": "(순경) 한국사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "경찰공무원순경-한국사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-금융상식",
+      "slug": "금융상식",
+      "label": "금융상식",
+      "shortLabel": "금융상식",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "계리직-공무원-금융상식",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-우편",
+      "slug": "우편",
+      "label": "우편",
+      "shortLabel": "우편",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "계리직-공무원-우편",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-우편-및-금융상식",
+      "slug": "우편-및-금융상식",
+      "label": "우편 및 금융상식",
+      "shortLabel": "우편 및 금융상식",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "계리직공무원-우편-및-금융상식",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-컴퓨터-일반",
+      "slug": "컴퓨터-일반",
+      "label": "컴퓨터 일반",
+      "shortLabel": "컴퓨터 일반",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "계리직공무원-컴퓨터-일반",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-공유압기능사",
+      "slug": "공유압기능사",
+      "label": "공유압기능사",
+      "shortLabel": "공유압기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "공유압기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차경영학개론",
+      "slug": "1차경영학개론",
+      "label": "1차(경영학개론)",
+      "shortLabel": "1차(경영학개론)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "공인노무사-1차경영학개론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차경영학개론구",
+      "slug": "1차경영학개론구",
+      "label": "1차(경영학개론) (구버전)",
+      "shortLabel": "1차(경영학개론) (구버전…",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "공인노무사-1차경영학개론구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차경제학원론",
+      "slug": "1차경제학원론",
+      "label": "1차(경제학원론)",
+      "shortLabel": "1차(경제학원론)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "공인노무사-1차경제학원론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차경제학원론구",
+      "slug": "1차경제학원론구",
+      "label": "1차(경제학원론) (구버전)",
+      "shortLabel": "1차(경제학원론) (구버전…",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "공인노무사-1차경제학원론구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차노동법1",
+      "slug": "1차노동법1",
+      "label": "1차(노동법1)",
+      "shortLabel": "1차(노동법1)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "공인노무사-1차노동법1",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차노동법1구",
+      "slug": "1차노동법1구",
+      "label": "1차(노동법1) (구버전)",
+      "shortLabel": "1차(노동법1) (구버전)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "공인노무사-1차노동법1구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차노동법2",
+      "slug": "1차노동법2",
+      "label": "1차(노동법2)",
+      "shortLabel": "1차(노동법2)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "공인노무사-1차노동법2",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차노동법2구",
+      "slug": "1차노동법2구",
+      "label": "1차(노동법2) (구버전)",
+      "shortLabel": "1차(노동법2) (구버전)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "공인노무사-1차노동법2구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차민법",
+      "slug": "1차민법",
+      "label": "1차(민법)",
+      "shortLabel": "1차(민법)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "공인노무사-1차민법",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차민법구",
+      "slug": "1차민법구",
+      "label": "1차(민법) (구버전)",
+      "shortLabel": "1차(민법) (구버전)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "공인노무사-1차민법구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차사회보험법",
+      "slug": "1차사회보험법",
+      "label": "1차(사회보험법)",
+      "shortLabel": "1차(사회보험법)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "공인노무사-1차사회보험법",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차사회보험법구",
+      "slug": "1차사회보험법구",
+      "label": "1차(사회보험법) (구버전)",
+      "shortLabel": "1차(사회보험법) (구버전…",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "공인노무사-1차사회보험법구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-공조냉동기계기능사",
+      "slug": "공조냉동기계기능사",
+      "label": "공조냉동기계기능사",
+      "shortLabel": "공조냉동기계기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "공조냉동기계기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-공조냉동기계기사",
+      "slug": "공조냉동기계기사",
+      "label": "공조냉동기계기사",
+      "shortLabel": "공조냉동기계기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "공조냉동기계기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-공조냉동기계기사구",
+      "slug": "공조냉동기계기사구",
+      "label": "공조냉동기계기사(구)",
+      "shortLabel": "공조냉동기계기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "공조냉동기계기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-공조냉동기계산업기사",
+      "slug": "공조냉동기계산업기사",
+      "label": "공조냉동기계산업기사",
+      "shortLabel": "공조냉동기계산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "공조냉동기계산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-관광통역안내사",
+      "slug": "관광통역안내사",
+      "label": "관광통역안내사",
+      "shortLabel": "관광통역안내사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "관광통역안내사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1교시구",
+      "slug": "1교시구",
+      "label": "1교시 (구버전)",
+      "shortLabel": "1교시 (구버전)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "관광통역안내사-1교시구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-2교시구",
+      "slug": "2교시구",
+      "label": "2교시 (구버전)",
+      "shortLabel": "2교시 (구버전)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "관광통역안내사-2교시구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-내국소비세법",
+      "slug": "내국소비세법",
+      "label": "내국소비세법",
+      "shortLabel": "내국소비세법",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "관세사-내국소비세법",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-무역영어",
+      "slug": "무역영어",
+      "label": "무역영어",
+      "shortLabel": "무역영어",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "관세사-무역영어",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-광고도장기능사",
+      "slug": "광고도장기능사",
+      "label": "광고도장기능사",
+      "shortLabel": "광고도장기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "광고도장기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-광학기능사",
+      "slug": "광학기능사",
+      "label": "광학기능사",
+      "shortLabel": "광학기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "광학기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-광학기사",
+      "slug": "광학기사",
+      "label": "광학기사",
+      "shortLabel": "광학기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "광학기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-교통기사",
+      "slug": "교통기사",
+      "label": "교통기사",
+      "shortLabel": "교통기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "교통기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-교통산업기사",
+      "slug": "교통산업기사",
+      "label": "교통산업기사",
+      "shortLabel": "교통산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "교통산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-국내여행안내사-1차",
+      "slug": "국내여행안내사-1차",
+      "label": "국내여행안내사 1차",
+      "shortLabel": "국내여행안내사 1차",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "국내여행안내사-1차",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-굴착기운전기능사",
+      "slug": "굴착기운전기능사",
+      "label": "굴착기운전기능사",
+      "shortLabel": "굴착기운전기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "굴착기운전기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-귀금속가공기능사",
+      "slug": "귀금속가공기능사",
+      "label": "귀금속가공기능사",
+      "shortLabel": "귀금속가공기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "귀금속가공기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-귀금속가공기능장",
+      "slug": "귀금속가공기능장",
+      "label": "귀금속가공기능장",
+      "shortLabel": "귀금속가공기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "귀금속가공기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-귀금속가공산업기사",
+      "slug": "귀금속가공산업기사",
+      "label": "귀금속가공산업기사",
+      "shortLabel": "귀금속가공산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "귀금속가공산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-금속도장기능사",
+      "slug": "금속도장기능사",
+      "label": "금속도장기능사",
+      "shortLabel": "금속도장기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "금속도장기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-금속재료기능장",
+      "slug": "금속재료기능장",
+      "label": "금속재료기능장",
+      "shortLabel": "금속재료기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "금속재료기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-금속재료기사",
+      "slug": "금속재료기사",
+      "label": "금속재료기사",
+      "shortLabel": "금속재료기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "금속재료기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-금속재료산업기사",
+      "slug": "금속재료산업기사",
+      "label": "금속재료산업기사",
+      "shortLabel": "금속재료산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "금속재료산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-금속재료시험기능사",
+      "slug": "금속재료시험기능사",
+      "label": "금속재료시험기능사",
+      "shortLabel": "금속재료시험기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "금속재료시험기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-금형기능사",
+      "slug": "금형기능사",
+      "label": "금형기능사",
+      "shortLabel": "금형기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "금형기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-금형제작기능장",
+      "slug": "금형제작기능장",
+      "label": "금형제작기능장",
+      "shortLabel": "금형제작기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "금형제작기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-기계가공기능장",
+      "slug": "기계가공기능장",
+      "label": "기계가공기능장",
+      "shortLabel": "기계가공기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "기계가공기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-기계가공조립기능사",
+      "slug": "기계가공조립기능사",
+      "label": "기계가공조립기능사",
+      "shortLabel": "기계가공조립기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "기계가공조립기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-기계설계기사",
+      "slug": "기계설계기사",
+      "label": "기계설계기사",
+      "shortLabel": "기계설계기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "기계설계기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-기계설계산업기사",
+      "slug": "기계설계산업기사",
+      "label": "기계설계산업기사",
+      "shortLabel": "기계설계산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "기계설계산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-기계정비기능사",
+      "slug": "기계정비기능사",
+      "label": "기계정비기능사",
+      "shortLabel": "기계정비기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "기계정비기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-기계조립산업기사",
+      "slug": "기계조립산업기사",
+      "label": "기계조립산업기사",
+      "shortLabel": "기계조립산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "기계조립산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-기상기사",
+      "slug": "기상기사",
+      "label": "기상기사",
+      "shortLabel": "기상기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "기상기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-남성복기능사",
+      "slug": "남성복기능사",
+      "label": "남성복기능사",
+      "shortLabel": "남성복기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "남성복기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-네트워크관리사-1급",
+      "slug": "네트워크관리사-1급",
+      "label": "네트워크관리사 1급",
+      "shortLabel": "네트워크관리사 1급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "네트워크관리사-1급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-네트워크관리사-2급",
+      "slug": "네트워크관리사-2급",
+      "label": "네트워크관리사 2급",
+      "shortLabel": "네트워크관리사 2급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "네트워크관리사-2급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-농기계운전기능사",
+      "slug": "농기계운전기능사",
+      "label": "농기계운전기능사",
+      "shortLabel": "농기계운전기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "농기계운전기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-농림토양평가관리산업기사",
+      "slug": "농림토양평가관리산업기사",
+      "label": "농림토양평가관리산업기사",
+      "shortLabel": "농림토양평가관리산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "농림토양평가관리산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-농산물품질관리사-1차",
+      "slug": "농산물품질관리사-1차",
+      "label": "농산물품질관리사 1차",
+      "shortLabel": "농산물품질관리사 1차",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "농산물품질관리사-1차",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-농업기계기사",
+      "slug": "농업기계기사",
+      "label": "농업기계기사",
+      "shortLabel": "농업기계기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "농업기계기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-농업기계산업기사",
+      "slug": "농업기계산업기사",
+      "label": "농업기계산업기사",
+      "shortLabel": "농업기계산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "농업기계산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-농업기계정비기능사",
+      "slug": "농업기계정비기능사",
+      "label": "농업기계정비기능사",
+      "shortLabel": "농업기계정비기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "농업기계정비기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-농작업안전보건기사",
+      "slug": "농작업안전보건기사",
+      "label": "농작업안전보건기사",
+      "shortLabel": "농작업안전보건기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "농작업안전보건기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-누설비파괴검사기사",
+      "slug": "누설비파괴검사기사",
+      "label": "누설비파괴검사기사",
+      "shortLabel": "누설비파괴검사기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "누설비파괴검사기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-누설비파괴검사기사구",
+      "slug": "누설비파괴검사기사구",
+      "label": "누설비파괴검사기사(구)",
+      "shortLabel": "누설비파괴검사기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "누설비파괴검사기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-대기환경기사",
+      "slug": "대기환경기사",
+      "label": "대기환경기사",
+      "shortLabel": "대기환경기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "대기환경기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-대기환경산업기사",
+      "slug": "대기환경산업기사",
+      "label": "대기환경산업기사",
+      "shortLabel": "대기환경산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "대기환경산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-도시계획기사",
+      "slug": "도시계획기사",
+      "label": "도시계획기사",
+      "shortLabel": "도시계획기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "도시계획기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-도자기공예기능사",
+      "slug": "도자기공예기능사",
+      "label": "도자기공예기능사",
+      "shortLabel": "도자기공예기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "도자기공예기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-디지털영상편집-1급",
+      "slug": "디지털영상편집-1급",
+      "label": "디지털영상편집 1급",
+      "shortLabel": "디지털영상편집 1급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "디지털영상편집-1급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-디지털영상편집-2급",
+      "slug": "디지털영상편집-2급",
+      "label": "디지털영상편집 2급",
+      "shortLabel": "디지털영상편집 2급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "디지털영상편집-2급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-디지털인쇄산업기사",
+      "slug": "디지털인쇄산업기사",
+      "label": "디지털인쇄산업기사",
+      "shortLabel": "디지털인쇄산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "디지털인쇄산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-리눅스마스터-1급",
+      "slug": "리눅스마스터-1급",
+      "label": "리눅스마스터 1급",
+      "shortLabel": "리눅스마스터 1급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "리눅스마스터-1급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-리눅스마스터-2급",
+      "slug": "리눅스마스터-2급",
+      "label": "리눅스마스터 2급",
+      "shortLabel": "리눅스마스터 2급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "리눅스마스터-2급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-멀티미디어콘텐츠제작전문가",
+      "slug": "멀티미디어콘텐츠제작전문가",
+      "label": "멀티미디어콘텐츠제작전문가",
+      "shortLabel": "멀티미디어콘텐츠제작전문가",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "멀티미디어콘텐츠제작전문가",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-멀티미디어콘텐츠제작전문가구",
+      "slug": "멀티미디어콘텐츠제작전문가구",
+      "label": "멀티미디어콘텐츠제작전문가(구)",
+      "shortLabel": "멀티미디어콘텐츠제작전문가(…",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "멀티미디어콘텐츠제작전문가구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-모터그레이더운전기능사",
+      "slug": "모터그레이더운전기능사",
+      "label": "모터그레이더운전기능사",
+      "shortLabel": "모터그레이더운전기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "모터그레이더운전기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-목공예기능사",
+      "slug": "목공예기능사",
+      "label": "목공예기능사",
+      "shortLabel": "목공예기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "목공예기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-무선설비기능사",
+      "slug": "무선설비기능사",
+      "label": "무선설비기능사",
+      "shortLabel": "무선설비기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "무선설비기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-무선설비기사",
+      "slug": "무선설비기사",
+      "label": "무선설비기사",
+      "shortLabel": "무선설비기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "무선설비기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-무선설비산업기사",
+      "slug": "무선설비산업기사",
+      "label": "무선설비산업기사",
+      "shortLabel": "무선설비산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "무선설비산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1교시",
+      "slug": "1교시",
+      "label": "1교시",
+      "shortLabel": "1교시",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "물류관리사-1교시",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-2교시",
+      "slug": "2교시",
+      "label": "2교시",
+      "shortLabel": "2교시",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "물류관리사-2교시",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-네일",
+      "slug": "네일",
+      "label": "네일",
+      "shortLabel": "네일",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "미용사네일",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-일반",
+      "slug": "일반",
+      "label": "일반",
+      "shortLabel": "일반",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "미용사일반",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-피부",
+      "slug": "피부",
+      "label": "피부",
+      "shortLabel": "피부",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "미용사피부",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-미용장",
+      "slug": "미용장",
+      "label": "미용장",
+      "shortLabel": "미용장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "미용장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-바리스타-2급",
+      "slug": "바리스타-2급",
+      "label": "바리스타 2급",
+      "shortLabel": "바리스타 2급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "바리스타-2급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-바이오화학제품제조기사",
+      "slug": "바이오화학제품제조기사",
+      "label": "바이오화학제품제조기사",
+      "shortLabel": "바이오화학제품제조기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "바이오화학제품제조기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-반도체커스텀레이아웃산업기사",
+      "slug": "반도체커스텀레이아웃산업기사",
+      "label": "반도체커스텀레이아웃산업기사",
+      "shortLabel": "반도체커스텀레이아웃산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "반도체커스텀레이아웃산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-방사선비파괴검사기능사",
+      "slug": "방사선비파괴검사기능사",
+      "label": "방사선비파괴검사기능사",
+      "shortLabel": "방사선비파괴검사기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "방사선비파괴검사기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-방사선비파괴검사기사",
+      "slug": "방사선비파괴검사기사",
+      "label": "방사선비파괴검사기사",
+      "shortLabel": "방사선비파괴검사기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "방사선비파괴검사기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-방사선비파괴검사기사구",
+      "slug": "방사선비파괴검사기사구",
+      "label": "방사선비파괴검사기사(구)",
+      "shortLabel": "방사선비파괴검사기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "방사선비파괴검사기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-방사선비파괴검사산업기사",
+      "slug": "방사선비파괴검사산업기사",
+      "label": "방사선비파괴검사산업기사",
+      "shortLabel": "방사선비파괴검사산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "방사선비파괴검사산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-방사선비파괴검사산업기사구",
+      "slug": "방사선비파괴검사산업기사구",
+      "label": "방사선비파괴검사산업기사(구)",
+      "shortLabel": "방사선비파괴검사산업기사(구…",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "방사선비파괴검사산업기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-방송통신기능사",
+      "slug": "방송통신기능사",
+      "label": "방송통신기능사",
+      "shortLabel": "방송통신기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "방송통신기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-방송통신기사",
+      "slug": "방송통신기사",
+      "label": "방송통신기사",
+      "shortLabel": "방송통신기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "방송통신기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-방송통신기사구",
+      "slug": "방송통신기사구",
+      "label": "방송통신기사(구)",
+      "shortLabel": "방송통신기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "방송통신기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-방송통신산업기사",
+      "slug": "방송통신산업기사",
+      "label": "방송통신산업기사",
+      "shortLabel": "방송통신산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "방송통신산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-방송통신산업기사구",
+      "slug": "방송통신산업기사구",
+      "label": "방송통신산업기사(구)",
+      "shortLabel": "방송통신산업기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "방송통신산업기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-방수산업기사",
+      "slug": "방수산업기사",
+      "label": "방수산업기사",
+      "shortLabel": "방수산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "방수산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-방재기사",
+      "slug": "방재기사",
+      "label": "방재기사",
+      "shortLabel": "방재기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "방재기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-배관기능사",
+      "slug": "배관기능사",
+      "label": "배관기능사",
+      "shortLabel": "배관기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "배관기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-배관기능장",
+      "slug": "배관기능장",
+      "label": "배관기능장",
+      "shortLabel": "배관기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "배관기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-버섯종균기능사",
+      "slug": "버섯종균기능사",
+      "label": "버섯종균기능사",
+      "shortLabel": "버섯종균기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "버섯종균기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-법조윤리",
+      "slug": "법조윤리",
+      "label": "법조윤리",
+      "shortLabel": "법조윤리",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "법조윤리",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차1교시",
+      "slug": "1차1교시",
+      "label": "1차(1교시)",
+      "shortLabel": "1차(1교시)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "변리사-1차1교시",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차2교시",
+      "slug": "1차2교시",
+      "label": "1차(2교시)",
+      "shortLabel": "1차(2교시)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "변리사-1차2교시",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-1차3교시",
+      "slug": "1차3교시",
+      "label": "1차(3교시)",
+      "shortLabel": "1차(3교시)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "변리사-1차3교시",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-보석가공기능사",
+      "slug": "보석가공기능사",
+      "label": "보석가공기능사",
+      "shortLabel": "보석가공기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "보석가공기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-보석감정사기능사",
+      "slug": "보석감정사기능사",
+      "label": "보석감정사(기능사)",
+      "shortLabel": "보석감정사(기능사)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "보석감정사기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-3급",
+      "slug": "3급",
+      "label": "3급",
+      "shortLabel": "3급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "비서-3급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-사무자동화산업기사",
+      "slug": "사무자동화산업기사",
+      "label": "사무자동화산업기사",
+      "shortLabel": "사무자동화산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "사무자동화산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-사진기능사",
+      "slug": "사진기능사",
+      "label": "사진기능사",
+      "shortLabel": "사진기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "사진기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-사출프레스금형산업기사",
+      "slug": "사출프레스금형산업기사",
+      "label": "사출(프레스)금형산업기사",
+      "shortLabel": "사출(프레스)금형산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "사출프레스금형산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-사출프레스금형설계기사",
+      "slug": "사출프레스금형설계기사",
+      "label": "사출(프레스)금형설계기사",
+      "shortLabel": "사출(프레스)금형설계기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "사출프레스금형설계기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-3교시구",
+      "slug": "3교시구",
+      "label": "(3교시) (구버전)",
+      "shortLabel": "(3교시) (구버전)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "사회복지사-1급3교시구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-사회조사분석사-1급",
+      "slug": "사회조사분석사-1급",
+      "label": "사회조사분석사 1급",
+      "shortLabel": "사회조사분석사 1급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "사회조사분석사-1급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-사회조사분석사-2급",
+      "slug": "사회조사분석사-2급",
+      "label": "사회조사분석사 2급",
+      "shortLabel": "사회조사분석사 2급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "사회조사분석사-2급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-산림기능사",
+      "slug": "산림기능사",
+      "label": "산림기능사",
+      "shortLabel": "산림기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "산림기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-산림기사",
+      "slug": "산림기사",
+      "label": "산림기사",
+      "shortLabel": "산림기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "산림기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-산림산업기사",
+      "slug": "산림산업기사",
+      "label": "산림산업기사",
+      "shortLabel": "산림산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "산림산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-산림산업기사구60문항",
+      "slug": "산림산업기사구60문항",
+      "label": "산림산업기사(구60문항)",
+      "shortLabel": "산림산업기사(구60문항)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "산림산업기사구60문항",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-산업보건지도사",
+      "slug": "산업보건지도사",
+      "label": "산업보건지도사",
+      "shortLabel": "산업보건지도사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "산업보건지도사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-산업안전기사",
+      "slug": "산업안전기사",
+      "label": "산업안전기사",
+      "shortLabel": "산업안전기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "산업안전기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-산업안전산업기사",
+      "slug": "산업안전산업기사",
+      "label": "산업안전산업기사",
+      "shortLabel": "산업안전산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "산업안전산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-산업안전지도사",
+      "slug": "산업안전지도사",
+      "label": "산업안전지도사",
+      "shortLabel": "산업안전지도사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "산업안전지도사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-산업위생관리기사",
+      "slug": "산업위생관리기사",
+      "label": "산업위생관리기사",
+      "shortLabel": "산업위생관리기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "산업위생관리기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-산업위생관리산업기사",
+      "slug": "산업위생관리산업기사",
+      "label": "산업위생관리산업기사",
+      "shortLabel": "산업위생관리산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "산업위생관리산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-생물분류기사동물",
+      "slug": "생물분류기사동물",
+      "label": "생물분류기사(동물)",
+      "shortLabel": "생물분류기사(동물)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "생물분류기사동물",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-생물분류기사식물",
+      "slug": "생물분류기사식물",
+      "label": "생물분류기사(식물)",
+      "shortLabel": "생물분류기사(식물)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "생물분류기사식물",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-생산자동화기능사",
+      "slug": "생산자동화기능사",
+      "label": "생산자동화기능사",
+      "shortLabel": "생산자동화기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "생산자동화기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-생산자동화산업기사",
+      "slug": "생산자동화산업기사",
+      "label": "생산자동화산업기사",
+      "shortLabel": "생산자동화산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "생산자동화산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-석공예기능사",
+      "slug": "석공예기능사",
+      "label": "석공예기능사",
+      "shortLabel": "석공예기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "석공예기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-선박기관정비기능사",
+      "slug": "선박기관정비기능사",
+      "label": "선박기관정비기능사",
+      "shortLabel": "선박기관정비기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "선박기관정비기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-선체건조기능사",
+      "slug": "선체건조기능사",
+      "label": "선체건조기능사",
+      "shortLabel": "선체건조기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "선체건조기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-선체설계기능사",
+      "slug": "선체설계기능사",
+      "label": "선체설계기능사",
+      "shortLabel": "선체설계기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "선체설계기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-설비보전기능사",
+      "slug": "설비보전기능사",
+      "label": "설비보전기능사",
+      "shortLabel": "설비보전기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "설비보전기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-설비보전기사",
+      "slug": "설비보전기사",
+      "label": "설비보전기사",
+      "shortLabel": "설비보전기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "설비보전기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-설비보전기사구",
+      "slug": "설비보전기사구",
+      "label": "설비보전기사(구)",
+      "shortLabel": "설비보전기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "설비보전기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-설비보전산업기사",
+      "slug": "설비보전산업기사",
+      "label": "설비보전산업기사",
+      "shortLabel": "설비보전산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "설비보전산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-섬유디자인산업기사",
+      "slug": "섬유디자인산업기사",
+      "label": "섬유디자인산업기사",
+      "shortLabel": "섬유디자인산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "섬유디자인산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-세탁기능사",
+      "slug": "세탁기능사",
+      "label": "세탁기능사",
+      "shortLabel": "세탁기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "세탁기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-경력-생활영어구",
+      "slug": "경력-생활영어구",
+      "label": "(경력) 생활영어 (구버전)",
+      "shortLabel": "(경력) 생활영어 (구버전…",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방공무원경력-생활영어구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-경력-소방관계법규",
+      "slug": "경력-소방관계법규",
+      "label": "(경력) 소방관계법규",
+      "shortLabel": "(경력) 소방관계법규",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방공무원경력-소방관계법규",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-경력-소방관계법규구",
+      "slug": "경력-소방관계법규구",
+      "label": "(경력) 소방관계법규 (구버전)",
+      "shortLabel": "(경력) 소방관계법규 (구…",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방공무원경력-소방관계법규구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-경력-응급처치학개론",
+      "slug": "경력-응급처치학개론",
+      "label": "(경력) 응급처치학개론",
+      "shortLabel": "(경력) 응급처치학개론",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방공무원경력-응급처치학개론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-경력-컴퓨터일반",
+      "slug": "경력-컴퓨터일반",
+      "label": "(경력) 컴퓨터일반",
+      "shortLabel": "(경력) 컴퓨터일반",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방공무원경력-컴퓨터일반",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-경력-화학개론",
+      "slug": "경력-화학개론",
+      "label": "(경력) 화학개론",
+      "shortLabel": "(경력) 화학개론",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방공무원경력-화학개론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-공개,경력-국어구",
+      "slug": "공개-경력-국어구",
+      "label": "(공개·경력) 국어 (구버전)",
+      "shortLabel": "(공개·경력) 국어 (구버…",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방공무원공개경력-국어구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-공개,경력-소방학개론",
+      "slug": "공개-경력-소방학개론",
+      "label": "(공개·경력) 소방학개론",
+      "shortLabel": "(공개·경력) 소방학개론",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방공무원공개경력-소방학개론",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-공개,경력-소방학개론구",
+      "slug": "공개-경력-소방학개론구",
+      "label": "(공개·경력) 소방학개론 (구버전)",
+      "shortLabel": "(공개·경력) 소방학개론 …",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방공무원공개경력-소방학개론구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-공개,경력-영어구",
+      "slug": "공개-경력-영어구",
+      "label": "(공개·경력) 영어 (구버전)",
+      "shortLabel": "(공개·경력) 영어 (구버…",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방공무원공개경력-영어구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-공개-과학구",
+      "slug": "공개-과학구",
+      "label": "(공개) 과학 (구버전)",
+      "shortLabel": "(공개) 과학 (구버전)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방공무원공개-과학구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-공개-사회구",
+      "slug": "공개-사회구",
+      "label": "(공개) 사회 (구버전)",
+      "shortLabel": "(공개) 사회 (구버전)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방공무원공개-사회구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-공개-소방관계법규구",
+      "slug": "공개-소방관계법규구",
+      "label": "(공개) 소방관계법규 (구버전)",
+      "shortLabel": "(공개) 소방관계법규 (구…",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방공무원공개-소방관계법규구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-공개-수학구",
+      "slug": "공개-수학구",
+      "label": "(공개) 수학 (구버전)",
+      "shortLabel": "(공개) 수학 (구버전)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방공무원공개-수학구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-공개-한국사구",
+      "slug": "공개-한국사구",
+      "label": "(공개) 한국사 (구버전)",
+      "shortLabel": "(공개) 한국사 (구버전)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방공무원공개-한국사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-공개-행정법총론구",
+      "slug": "공개-행정법총론구",
+      "label": "(공개) 행정법총론 (구버전)",
+      "shortLabel": "(공개) 행정법총론 (구버…",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방공무원공개-행정법총론구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-소방설비기사기계분야",
+      "slug": "소방설비기사기계분야",
+      "label": "소방설비기사(기계분야)",
+      "shortLabel": "소방설비기사(기계분야)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방설비기사기계분야",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-소방설비기사전기분야",
+      "slug": "소방설비기사전기분야",
+      "label": "소방설비기사(전기분야)",
+      "shortLabel": "소방설비기사(전기분야)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방설비기사전기분야",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-소방설비산업기사기계",
+      "slug": "소방설비산업기사기계",
+      "label": "소방설비산업기사(기계)",
+      "shortLabel": "소방설비산업기사(기계)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방설비산업기사기계",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-소방설비산업기사전기",
+      "slug": "소방설비산업기사전기",
+      "label": "소방설비산업기사(전기)",
+      "shortLabel": "소방설비산업기사(전기)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방설비산업기사전기",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-소방시설관리사",
+      "slug": "소방시설관리사",
+      "label": "소방시설관리사",
+      "shortLabel": "소방시설관리사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소방시설관리사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-소비자전문상담사-2급",
+      "slug": "소비자전문상담사-2급",
+      "label": "소비자전문상담사 2급",
+      "shortLabel": "소비자전문상담사 2급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소비자전문상담사-2급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-소음진동기사",
+      "slug": "소음진동기사",
+      "label": "소음진동기사",
+      "shortLabel": "소음진동기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소음진동기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-소음진동기사구",
+      "slug": "소음진동기사구",
+      "label": "소음진동기사(구)",
+      "shortLabel": "소음진동기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소음진동기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-소음진동산업기사",
+      "slug": "소음진동산업기사",
+      "label": "소음진동산업기사",
+      "shortLabel": "소음진동산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "소음진동산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-손해평가사",
+      "slug": "손해평가사",
+      "label": "손해평가사",
+      "shortLabel": "손해평가사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "손해평가사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-경제",
+      "slug": "경제",
+      "label": "경제",
+      "shortLabel": "경제",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능경제",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-국사",
+      "slug": "국사",
+      "label": "국사",
+      "shortLabel": "국사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능국사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-국어영역",
+      "slug": "국어영역",
+      "label": "국어영역",
+      "shortLabel": "국어영역",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능국어영역",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-동아시아사",
+      "slug": "동아시아사",
+      "label": "동아시아사",
+      "shortLabel": "동아시아사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능동아시아사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-물리I",
+      "slug": "물리I",
+      "label": "물리I",
+      "shortLabel": "물리I",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능물리i",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-물리II",
+      "slug": "물리II",
+      "label": "물리II",
+      "shortLabel": "물리II",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능물리ii",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-법과정치",
+      "slug": "법과정치",
+      "label": "법과정치",
+      "shortLabel": "법과정치",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능법과정치",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-생명과학I",
+      "slug": "생명과학I",
+      "label": "생명과학I",
+      "shortLabel": "생명과학I",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능생명과학i",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-생명과학II",
+      "slug": "생명과학II",
+      "label": "생명과학II",
+      "shortLabel": "생명과학II",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능생명과학ii",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-생활과윤리",
+      "slug": "생활과윤리",
+      "label": "생활과윤리",
+      "shortLabel": "생활과윤리",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능생활과윤리",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-세계사",
+      "slug": "세계사",
+      "label": "세계사",
+      "shortLabel": "세계사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능세계사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-세계지리",
+      "slug": "세계지리",
+      "label": "세계지리",
+      "shortLabel": "세계지리",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능세계지리",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-윤리와사상",
+      "slug": "윤리와사상",
+      "label": "윤리와사상",
+      "shortLabel": "윤리와사상",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능윤리와사상",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-지구과학I",
+      "slug": "지구과학I",
+      "label": "지구과학I",
+      "shortLabel": "지구과학I",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능지구과학i",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-지구과학II",
+      "slug": "지구과학II",
+      "label": "지구과학II",
+      "shortLabel": "지구과학II",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능지구과학ii",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-한국근ㆍ현대사",
+      "slug": "한국근현대사",
+      "label": "한국근ㆍ현대사",
+      "shortLabel": "한국근ㆍ현대사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능한국근현대사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-한국지리",
+      "slug": "한국지리",
+      "label": "한국지리",
+      "shortLabel": "한국지리",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능한국지리",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-화학I",
+      "slug": "화학I",
+      "label": "화학I",
+      "shortLabel": "화학I",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능화학i",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-화학II",
+      "slug": "화학II",
+      "label": "화학II",
+      "shortLabel": "화학II",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수능화학ii",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-수산물품질관리사-1차",
+      "slug": "수산물품질관리사-1차",
+      "label": "수산물품질관리사 1차",
+      "shortLabel": "수산물품질관리사 1차",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수산물품질관리사-1차",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-수산양식기능사",
+      "slug": "수산양식기능사",
+      "label": "수산양식기능사",
+      "shortLabel": "수산양식기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수산양식기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-수산양식기사",
+      "slug": "수산양식기사",
+      "label": "수산양식기사",
+      "shortLabel": "수산양식기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수산양식기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-수산양식산업기사",
+      "slug": "수산양식산업기사",
+      "label": "수산양식산업기사",
+      "shortLabel": "수산양식산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수산양식산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-수산제조기사",
+      "slug": "수산제조기사",
+      "label": "수산제조기사",
+      "shortLabel": "수산제조기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수산제조기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-수질환경기사",
+      "slug": "수질환경기사",
+      "label": "수질환경기사",
+      "shortLabel": "수질환경기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수질환경기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-수질환경산업기사",
+      "slug": "수질환경산업기사",
+      "label": "수질환경산업기사",
+      "shortLabel": "수질환경산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "수질환경산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-스포츠경영관리사",
+      "slug": "스포츠경영관리사",
+      "label": "스포츠경영관리사",
+      "shortLabel": "스포츠경영관리사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "스포츠경영관리사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-승강기기능사",
+      "slug": "승강기기능사",
+      "label": "승강기기능사",
+      "shortLabel": "승강기기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "승강기기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-승강기기사",
+      "slug": "승강기기사",
+      "label": "승강기기사",
+      "shortLabel": "승강기기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "승강기기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-승강기산업기사",
+      "slug": "승강기산업기사",
+      "label": "승강기산업기사",
+      "shortLabel": "승강기산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "승강기산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-시각디자인기사",
+      "slug": "시각디자인기사",
+      "label": "시각디자인기사",
+      "shortLabel": "시각디자인기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "시각디자인기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-시각디자인산업기사",
+      "slug": "시각디자인산업기사",
+      "label": "시각디자인산업기사",
+      "shortLabel": "시각디자인산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "시각디자인산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-시설원예기사",
+      "slug": "시설원예기사",
+      "label": "시설원예기사",
+      "shortLabel": "시설원예기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "시설원예기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-식물보호기사",
+      "slug": "식물보호기사",
+      "label": "식물보호기사",
+      "shortLabel": "식물보호기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "식물보호기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-식물보호산업기사",
+      "slug": "식물보호산업기사",
+      "label": "식물보호산업기사",
+      "shortLabel": "식물보호산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "식물보호산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-식육가공기사",
+      "slug": "식육가공기사",
+      "label": "식육가공기사",
+      "shortLabel": "식육가공기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "식육가공기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-식품가공기능사",
+      "slug": "식품가공기능사",
+      "label": "식품가공기능사",
+      "shortLabel": "식품가공기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "식품가공기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-식품산업기사",
+      "slug": "식품산업기사",
+      "label": "식품산업기사",
+      "shortLabel": "식품산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "식품산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-식품산업기사구",
+      "slug": "식품산업기사구",
+      "label": "식품산업기사(구)",
+      "shortLabel": "식품산업기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "식품산업기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-식품안전기사",
+      "slug": "식품안전기사",
+      "label": "식품안전기사",
+      "shortLabel": "식품안전기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "식품안전기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-신발류제조기능사",
+      "slug": "신발류제조기능사",
+      "label": "신발류제조기능사",
+      "shortLabel": "신발류제조기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "신발류제조기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-신재생에너지발전설비기능사",
+      "slug": "신재생에너지발전설비기능사",
+      "label": "신재생에너지발전설비기능사",
+      "shortLabel": "신재생에너지발전설비기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "신재생에너지발전설비기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-신재생에너지발전설비기사",
+      "slug": "신재생에너지발전설비기사",
+      "label": "신재생에너지발전설비기사",
+      "shortLabel": "신재생에너지발전설비기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "신재생에너지발전설비기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-신재생에너지발전설비기사구",
+      "slug": "신재생에너지발전설비기사구",
+      "label": "신재생에너지발전설비기사(구)",
+      "shortLabel": "신재생에너지발전설비기사(구…",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "신재생에너지발전설비기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-신재생에너지발전설비산업기사",
+      "slug": "신재생에너지발전설비산업기사",
+      "label": "신재생에너지발전설비산업기사",
+      "shortLabel": "신재생에너지발전설비산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "신재생에너지발전설비산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-실내건축기능사",
+      "slug": "실내건축기능사",
+      "label": "실내건축기능사",
+      "shortLabel": "실내건축기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "실내건축기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-실내건축기사",
+      "slug": "실내건축기사",
+      "label": "실내건축기사",
+      "shortLabel": "실내건축기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "실내건축기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-실내건축기사구",
+      "slug": "실내건축기사구",
+      "label": "실내건축기사(구)",
+      "shortLabel": "실내건축기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "실내건축기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-실내건축산업기사",
+      "slug": "실내건축산업기사",
+      "label": "실내건축산업기사",
+      "shortLabel": "실내건축산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "실내건축산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-압연기능사",
+      "slug": "압연기능사",
+      "label": "압연기능사",
+      "shortLabel": "압연기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "압연기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-압연기능장",
+      "slug": "압연기능장",
+      "label": "압연기능장",
+      "shortLabel": "압연기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "압연기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-양화장치운전기능사",
+      "slug": "양화장치운전기능사",
+      "label": "양화장치운전기능사",
+      "shortLabel": "양화장치운전기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "양화장치운전기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-어로산업기사",
+      "slug": "어로산업기사",
+      "label": "어로산업기사",
+      "shortLabel": "어로산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "어로산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-어업생산관리기사",
+      "slug": "어업생산관리기사",
+      "label": "어업생산관리기사",
+      "shortLabel": "어업생산관리기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "어업생산관리기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-에너지관리기능사",
+      "slug": "에너지관리기능사",
+      "label": "에너지관리기능사",
+      "shortLabel": "에너지관리기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "에너지관리기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-에너지관리기능장",
+      "slug": "에너지관리기능장",
+      "label": "에너지관리기능장",
+      "shortLabel": "에너지관리기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "에너지관리기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-에너지관리기사",
+      "slug": "에너지관리기사",
+      "label": "에너지관리기사",
+      "shortLabel": "에너지관리기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "에너지관리기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-에너지관리산업기사",
+      "slug": "에너지관리산업기사",
+      "label": "에너지관리산업기사",
+      "shortLabel": "에너지관리산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "에너지관리산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-여성복기능사",
+      "slug": "여성복기능사",
+      "label": "여성복기능사",
+      "shortLabel": "여성복기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "여성복기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-연구실안전관리사",
+      "slug": "연구실안전관리사",
+      "label": "연구실안전관리사",
+      "shortLabel": "연구실안전관리사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "연구실안전관리사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-연삭기능사",
+      "slug": "연삭기능사",
+      "label": "연삭기능사",
+      "shortLabel": "연삭기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "연삭기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-열처리기능사",
+      "slug": "열처리기능사",
+      "label": "열처리기능사",
+      "shortLabel": "열처리기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "열처리기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-염색기능사",
+      "slug": "염색기능사",
+      "label": "염색기능사",
+      "shortLabel": "염색기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "염색기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-영사기능사",
+      "slug": "영사기능사",
+      "label": "영사기능사",
+      "shortLabel": "영사기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "영사기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-영상정보관리사",
+      "slug": "영상정보관리사",
+      "label": "영상정보관리사",
+      "shortLabel": "영상정보관리사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "영상정보관리사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-온실가스관리기사",
+      "slug": "온실가스관리기사",
+      "label": "온실가스관리기사",
+      "shortLabel": "온실가스관리기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "온실가스관리기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-와전류비파괴검사기사",
+      "slug": "와전류비파괴검사기사",
+      "label": "와전류비파괴검사기사",
+      "shortLabel": "와전류비파괴검사기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "와전류비파괴검사기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-와전류비파괴검사기사구",
+      "slug": "와전류비파괴검사기사구",
+      "label": "와전류비파괴검사기사(구)",
+      "shortLabel": "와전류비파괴검사기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "와전류비파괴검사기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-용접기능사",
+      "slug": "용접기능사",
+      "label": "용접기능사",
+      "shortLabel": "용접기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "용접기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-용접기능장",
+      "slug": "용접기능장",
+      "label": "용접기능장",
+      "shortLabel": "용접기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "용접기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-용접기사",
+      "slug": "용접기사",
+      "label": "용접기사",
+      "shortLabel": "용접기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "용접기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-용접산업기사",
+      "slug": "용접산업기사",
+      "label": "용접산업기사",
+      "shortLabel": "용접산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "용접산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-워드프로세서-구-1급",
+      "slug": "워드프로세서-구-1급",
+      "label": "워드프로세서 (구 1급)",
+      "shortLabel": "워드프로세서 (구 1급)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "워드프로세서-구-1급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-워드프로세서-2급폐지",
+      "slug": "워드프로세서-2급폐지",
+      "label": "워드프로세서 2급(폐지)",
+      "shortLabel": "워드프로세서 2급(폐지)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "워드프로세서-2급폐지",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-워드프로세서-3급폐지",
+      "slug": "워드프로세서-3급폐지",
+      "label": "워드프로세서 3급(폐지)",
+      "shortLabel": "워드프로세서 3급(폐지)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "워드프로세서-3급폐지",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-원예기능사",
+      "slug": "원예기능사",
+      "label": "원예기능사",
+      "shortLabel": "원예기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "원예기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-원자력기사",
+      "slug": "원자력기사",
+      "label": "원자력기사",
+      "shortLabel": "원자력기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "원자력기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-원형기능사",
+      "slug": "원형기능사",
+      "label": "원형기능사",
+      "shortLabel": "원형기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "원형기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-웹디자인개발기능사",
+      "slug": "웹디자인개발기능사",
+      "label": "웹디자인개발기능사",
+      "shortLabel": "웹디자인개발기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "웹디자인개발기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-위험물기능사",
+      "slug": "위험물기능사",
+      "label": "위험물기능사",
+      "shortLabel": "위험물기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "위험물기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-위험물기능장",
+      "slug": "위험물기능장",
+      "label": "위험물기능장",
+      "shortLabel": "위험물기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "위험물기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-위험물산업기사",
+      "slug": "위험물산업기사",
+      "label": "위험물산업기사",
+      "shortLabel": "위험물산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "위험물산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-유기농업기능사",
+      "slug": "유기농업기능사",
+      "label": "유기농업기능사",
+      "shortLabel": "유기농업기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "유기농업기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-유기농업기사",
+      "slug": "유기농업기사",
+      "label": "유기농업기사",
+      "shortLabel": "유기농업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "유기농업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-유기농업산업기사",
+      "slug": "유기농업산업기사",
+      "label": "유기농업산업기사",
+      "shortLabel": "유기농업산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "유기농업산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-유통관리사-1급",
+      "slug": "유통관리사-1급",
+      "label": "유통관리사 1급",
+      "shortLabel": "유통관리사 1급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "유통관리사-1급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-유통관리사-2급",
+      "slug": "유통관리사-2급",
+      "label": "유통관리사 2급",
+      "shortLabel": "유통관리사 2급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "유통관리사-2급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-유통관리사-3급",
+      "slug": "유통관리사-3급",
+      "label": "유통관리사 3급",
+      "shortLabel": "유통관리사 3급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "유통관리사-3급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-육상무선통신사",
+      "slug": "육상무선통신사",
+      "label": "육상무선통신사",
+      "shortLabel": "육상무선통신사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "육상무선통신사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-응용지질기사",
+      "slug": "응용지질기사",
+      "label": "응용지질기사",
+      "shortLabel": "응용지질기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "응용지질기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-의공기사",
+      "slug": "의공기사",
+      "label": "의공기사",
+      "shortLabel": "의공기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "의공기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-의공산업기사",
+      "slug": "의공산업기사",
+      "label": "의공산업기사",
+      "shortLabel": "의공산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "의공산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-의료전자기능사",
+      "slug": "의료전자기능사",
+      "label": "의료전자기능사",
+      "shortLabel": "의료전자기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "의료전자기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-의류기사",
+      "slug": "의류기사",
+      "label": "의류기사",
+      "shortLabel": "의류기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "의류기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-이용사",
+      "slug": "이용사",
+      "label": "이용사",
+      "shortLabel": "이용사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "이용사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-이용장",
+      "slug": "이용장",
+      "label": "이용장",
+      "shortLabel": "이용장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "이용장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-인간공학기사",
+      "slug": "인간공학기사",
+      "label": "인간공학기사",
+      "shortLabel": "인간공학기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "인간공학기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-인쇄기능사",
+      "slug": "인쇄기능사",
+      "label": "인쇄기능사",
+      "shortLabel": "인쇄기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "인쇄기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-인쇄설계기사",
+      "slug": "인쇄설계기사",
+      "label": "인쇄설계기사",
+      "shortLabel": "인쇄설계기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "인쇄설계기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-인터넷보안전문가-2급",
+      "slug": "인터넷보안전문가-2급",
+      "label": "인터넷보안전문가 2급",
+      "shortLabel": "인터넷보안전문가 2급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "인터넷보안전문가-2급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-인터넷정보관리사-2급",
+      "slug": "인터넷정보관리사-2급",
+      "label": "인터넷정보관리사 2급",
+      "shortLabel": "인터넷정보관리사 2급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "인터넷정보관리사-2급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-일반기계기사",
+      "slug": "일반기계기사",
+      "label": "일반기계기사",
+      "shortLabel": "일반기계기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "일반기계기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-임베디드기능사",
+      "slug": "임베디드기능사",
+      "label": "임베디드기능사",
+      "shortLabel": "임베디드기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "임베디드기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-임산가공기능사",
+      "slug": "임산가공기능사",
+      "label": "임산가공기능사",
+      "shortLabel": "임산가공기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "임산가공기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-임산가공기사",
+      "slug": "임산가공기사",
+      "label": "임산가공기사",
+      "shortLabel": "임산가공기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "임산가공기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-임산가공산업기사",
+      "slug": "임산가공산업기사",
+      "label": "임산가공산업기사",
+      "shortLabel": "임산가공산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "임산가공산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-임상심리사-1급",
+      "slug": "임상심리사-1급",
+      "label": "임상심리사 1급",
+      "shortLabel": "임상심리사 1급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "임상심리사-1급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-임상심리사-2급",
+      "slug": "임상심리사-2급",
+      "label": "임상심리사 2급",
+      "shortLabel": "임상심리사 2급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "임상심리사-2급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-임업종묘기능사",
+      "slug": "임업종묘기능사",
+      "label": "임업종묘기능사",
+      "shortLabel": "임업종묘기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "임업종묘기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-임업종묘기사",
+      "slug": "임업종묘기사",
+      "label": "임업종묘기사",
+      "shortLabel": "임업종묘기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "임업종묘기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-자기비파괴검사기능사",
+      "slug": "자기비파괴검사기능사",
+      "label": "자기비파괴검사기능사",
+      "shortLabel": "자기비파괴검사기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "자기비파괴검사기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-자기비파괴검사기사",
+      "slug": "자기비파괴검사기사",
+      "label": "자기비파괴검사기사",
+      "shortLabel": "자기비파괴검사기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "자기비파괴검사기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-자기비파괴검사기사구",
+      "slug": "자기비파괴검사기사구",
+      "label": "자기비파괴검사기사(구)",
+      "shortLabel": "자기비파괴검사기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "자기비파괴검사기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-자기비파괴검사산업기사",
+      "slug": "자기비파괴검사산업기사",
+      "label": "자기비파괴검사산업기사",
+      "shortLabel": "자기비파괴검사산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "자기비파괴검사산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-자기비파괴검사산업기사구",
+      "slug": "자기비파괴검사산업기사구",
+      "label": "자기비파괴검사산업기사(구)",
+      "shortLabel": "자기비파괴검사산업기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "자기비파괴검사산업기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-자동차보수도장기능사",
+      "slug": "자동차보수도장기능사",
+      "label": "자동차보수도장기능사",
+      "shortLabel": "자동차보수도장기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "자동차보수도장기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-자동차정비기능사",
+      "slug": "자동차정비기능사",
+      "label": "자동차정비기능사",
+      "shortLabel": "자동차정비기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "자동차정비기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-자동차정비기능장",
+      "slug": "자동차정비기능장",
+      "label": "자동차정비기능장",
+      "shortLabel": "자동차정비기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "자동차정비기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-자동차정비기사",
+      "slug": "자동차정비기사",
+      "label": "자동차정비기사",
+      "shortLabel": "자동차정비기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "자동차정비기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-자동차정비산업기사",
+      "slug": "자동차정비산업기사",
+      "label": "자동차정비산업기사",
+      "shortLabel": "자동차정비산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "자동차정비산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-자동차차체수리기능사",
+      "slug": "자동차차체수리기능사",
+      "label": "자동차차체수리기능사",
+      "shortLabel": "자동차차체수리기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "자동차차체수리기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-자연생태복원기사",
+      "slug": "자연생태복원기사",
+      "label": "자연생태복원기사",
+      "shortLabel": "자연생태복원기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "자연생태복원기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-자연생태복원기사구",
+      "slug": "자연생태복원기사구",
+      "label": "자연생태복원기사(구)",
+      "shortLabel": "자연생태복원기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "자연생태복원기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-자연생태복원산업기사",
+      "slug": "자연생태복원산업기사",
+      "label": "자연생태복원산업기사",
+      "shortLabel": "자연생태복원산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "자연생태복원산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-잠수기능사",
+      "slug": "잠수기능사",
+      "label": "잠수기능사",
+      "shortLabel": "잠수기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "잠수기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-잠수산업기사",
+      "slug": "잠수산업기사",
+      "label": "잠수산업기사",
+      "shortLabel": "잠수산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "잠수산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-잠수산업기사구",
+      "slug": "잠수산업기사구",
+      "label": "잠수산업기사(구)",
+      "shortLabel": "잠수산업기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "잠수산업기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전기공사기사",
+      "slug": "전기공사기사",
+      "label": "전기공사기사",
+      "shortLabel": "전기공사기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전기공사기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전기공사산업기사",
+      "slug": "전기공사산업기사",
+      "label": "전기공사산업기사",
+      "shortLabel": "전기공사산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전기공사산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전기기능사",
+      "slug": "전기기능사",
+      "label": "전기기능사",
+      "shortLabel": "전기기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전기기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전기기능장",
+      "slug": "전기기능장",
+      "label": "전기기능장",
+      "shortLabel": "전기기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전기기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전기기사",
+      "slug": "전기기사",
+      "label": "전기기사",
+      "shortLabel": "전기기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전기기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전기산업기사",
+      "slug": "전기산업기사",
+      "label": "전기산업기사",
+      "shortLabel": "전기산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전기산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전기철도기사",
+      "slug": "전기철도기사",
+      "label": "전기철도기사",
+      "shortLabel": "전기철도기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전기철도기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전기철도산업기사",
+      "slug": "전기철도산업기사",
+      "label": "전기철도산업기사",
+      "shortLabel": "전기철도산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전기철도산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전산응용건축제도기능사",
+      "slug": "전산응용건축제도기능사",
+      "label": "전산응용건축제도기능사",
+      "shortLabel": "전산응용건축제도기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전산응용건축제도기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전산응용기계제도기능사",
+      "slug": "전산응용기계제도기능사",
+      "label": "전산응용기계제도기능사",
+      "shortLabel": "전산응용기계제도기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전산응용기계제도기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전산응용토목제도기능사",
+      "slug": "전산응용토목제도기능사",
+      "label": "전산응용토목제도기능사",
+      "shortLabel": "전산응용토목제도기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전산응용토목제도기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-운용사-1급",
+      "slug": "운용사-1급",
+      "label": "운용사 1급",
+      "shortLabel": "운용사 1급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전산회계운용사-1급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-운용사-2급",
+      "slug": "운용사-2급",
+      "label": "운용사 2급",
+      "shortLabel": "운용사 2급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전산회계운용사-2급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-운용사-3급",
+      "slug": "운용사-3급",
+      "label": "운용사 3급",
+      "shortLabel": "운용사 3급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전산회계운용사-3급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전자계산기제어산업기사",
+      "slug": "전자계산기제어산업기사",
+      "label": "전자계산기제어산업기사",
+      "shortLabel": "전자계산기제어산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전자계산기제어산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전자계산기제어산업기사구",
+      "slug": "전자계산기제어산업기사구",
+      "label": "전자계산기제어산업기사(구)",
+      "shortLabel": "전자계산기제어산업기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전자계산기제어산업기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전자기능사",
+      "slug": "전자기능사",
+      "label": "전자기능사",
+      "shortLabel": "전자기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전자기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전자기능장",
+      "slug": "전자기능장",
+      "label": "전자기능장",
+      "shortLabel": "전자기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전자기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전자기사",
+      "slug": "전자기사",
+      "label": "전자기사",
+      "shortLabel": "전자기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전자기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전자산업기사",
+      "slug": "전자산업기사",
+      "label": "전자산업기사",
+      "shortLabel": "전자산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전자산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전자상거래관리사-1급",
+      "slug": "전자상거래관리사-1급",
+      "label": "전자상거래관리사 1급",
+      "shortLabel": "전자상거래관리사 1급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전자상거래관리사-1급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전자상거래관리사-2급",
+      "slug": "전자상거래관리사-2급",
+      "label": "전자상거래관리사 2급",
+      "shortLabel": "전자상거래관리사 2급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전자상거래관리사-2급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전자상거래운용사",
+      "slug": "전자상거래운용사",
+      "label": "전자상거래운용사",
+      "shortLabel": "전자상거래운용사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전자상거래운용사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전자출판기능사",
+      "slug": "전자출판기능사",
+      "label": "전자출판기능사",
+      "shortLabel": "전자출판기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전자출판기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전자캐드기능사",
+      "slug": "전자캐드기능사",
+      "label": "전자캐드기능사",
+      "shortLabel": "전자캐드기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전자캐드기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전파전자기능사구",
+      "slug": "전파전자기능사구",
+      "label": "전파전자기능사(구)",
+      "shortLabel": "전파전자기능사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전파전자기능사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전파전자통신기능사",
+      "slug": "전파전자통신기능사",
+      "label": "전파전자통신기능사",
+      "shortLabel": "전파전자통신기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전파전자통신기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전파전자통신기사",
+      "slug": "전파전자통신기사",
+      "label": "전파전자통신기사",
+      "shortLabel": "전파전자통신기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전파전자통신기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-전파통신기능사구",
+      "slug": "전파통신기능사구",
+      "label": "전파통신기능사(구)",
+      "shortLabel": "전파통신기능사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "전파통신기능사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-정밀측정기능사",
+      "slug": "정밀측정기능사",
+      "label": "정밀측정기능사",
+      "shortLabel": "정밀측정기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "정밀측정기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-정밀측정산업기사",
+      "slug": "정밀측정산업기사",
+      "label": "정밀측정산업기사",
+      "shortLabel": "정밀측정산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "정밀측정산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-정보기기운용기능사",
+      "slug": "정보기기운용기능사",
+      "label": "정보기기운용기능사",
+      "shortLabel": "정보기기운용기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "정보기기운용기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-정보보안기사",
+      "slug": "정보보안기사",
+      "label": "정보보안기사",
+      "shortLabel": "정보보안기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "정보보안기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-정보처리기능사-실기베타",
+      "slug": "정보처리기능사-실기베타",
+      "label": "정보처리기능사 실기(베타)",
+      "shortLabel": "정보처리기능사 실기(베타)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "정보처리기능사-실기베타",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-정보처리기사구",
+      "slug": "정보처리기사구",
+      "label": "정보처리기사(구)",
+      "shortLabel": "정보처리기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "정보처리기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-정보통신기능사",
+      "slug": "정보통신기능사",
+      "label": "정보통신기능사",
+      "shortLabel": "정보통신기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "정보통신기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-정보통신기사",
+      "slug": "정보통신기사",
+      "label": "정보통신기사",
+      "shortLabel": "정보통신기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "정보통신기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-정보통신기사구",
+      "slug": "정보통신기사구",
+      "label": "정보통신기사(구)",
+      "shortLabel": "정보통신기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "정보통신기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-정보통신산업기사",
+      "slug": "정보통신산업기사",
+      "label": "정보통신산업기사",
+      "shortLabel": "정보통신산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "정보통신산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-정수시설운영관리사-1급-1차",
+      "slug": "정수시설운영관리사-1급-1차",
+      "label": "정수시설운영관리사 1급 1차",
+      "shortLabel": "정수시설운영관리사 1급 1…",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "정수시설운영관리사-1급-1차",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-정수시설운영관리사-2급-1차",
+      "slug": "정수시설운영관리사-2급-1차",
+      "label": "정수시설운영관리사 2급 1차",
+      "shortLabel": "정수시설운영관리사 2급 1…",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "정수시설운영관리사-2급-1차",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-정수시설운영관리사-3급-1차",
+      "slug": "정수시설운영관리사-3급-1차",
+      "label": "정수시설운영관리사 3급 1차",
+      "shortLabel": "정수시설운영관리사 3급 1…",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "정수시설운영관리사-3급-1차",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-제강기능사",
+      "slug": "제강기능사",
+      "label": "제강기능사",
+      "shortLabel": "제강기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "제강기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-제강기능장",
+      "slug": "제강기능장",
+      "label": "제강기능장",
+      "shortLabel": "제강기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "제강기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-제과기능사",
+      "slug": "제과기능사",
+      "label": "제과기능사",
+      "shortLabel": "제과기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "제과기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-제과기능장",
+      "slug": "제과기능장",
+      "label": "제과기능장",
+      "shortLabel": "제과기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "제과기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-제빵기능사",
+      "slug": "제빵기능사",
+      "label": "제빵기능사",
+      "shortLabel": "제빵기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "제빵기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-제선기능사",
+      "slug": "제선기능사",
+      "label": "제선기능사",
+      "shortLabel": "제선기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "제선기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-제선기능장",
+      "slug": "제선기능장",
+      "label": "제선기능장",
+      "shortLabel": "제선기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "제선기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-제품디자인기사",
+      "slug": "제품디자인기사",
+      "label": "제품디자인기사",
+      "shortLabel": "제품디자인기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "제품디자인기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-제품디자인산업기사",
+      "slug": "제품디자인산업기사",
+      "label": "제품디자인산업기사",
+      "shortLabel": "제품디자인산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "제품디자인산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-제품응용모델링기능사",
+      "slug": "제품응용모델링기능사",
+      "label": "제품응용모델링기능사",
+      "shortLabel": "제품응용모델링기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "제품응용모델링기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-조경기능사",
+      "slug": "조경기능사",
+      "label": "조경기능사",
+      "shortLabel": "조경기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "조경기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-조경기사",
+      "slug": "조경기사",
+      "label": "조경기사",
+      "shortLabel": "조경기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "조경기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-조경산업기사",
+      "slug": "조경산업기사",
+      "label": "조경산업기사",
+      "shortLabel": "조경산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "조경산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-조리기능장",
+      "slug": "조리기능장",
+      "label": "조리기능장",
+      "shortLabel": "조리기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "조리기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-조리산업기사공통",
+      "slug": "조리산업기사공통",
+      "label": "조리산업기사(공통)",
+      "shortLabel": "조리산업기사(공통)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "조리산업기사공통",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-조선기사",
+      "slug": "조선기사",
+      "label": "조선기사",
+      "shortLabel": "조선기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "조선기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-조선산업기사",
+      "slug": "조선산업기사",
+      "label": "조선산업기사",
+      "shortLabel": "조선산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "조선산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-조주기능사",
+      "slug": "조주기능사",
+      "label": "조주기능사",
+      "shortLabel": "조주기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "조주기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-종자기능사",
+      "slug": "종자기능사",
+      "label": "종자기능사",
+      "shortLabel": "종자기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "종자기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-종자기사",
+      "slug": "종자기사",
+      "label": "종자기사",
+      "shortLabel": "종자기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "종자기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-종자산업기사",
+      "slug": "종자산업기사",
+      "label": "종자산업기사",
+      "shortLabel": "종자산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "종자산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-주조기능사",
+      "slug": "주조기능사",
+      "label": "주조기능사",
+      "shortLabel": "주조기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "주조기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-주조기능장",
+      "slug": "주조기능장",
+      "label": "주조기능장",
+      "shortLabel": "주조기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "주조기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-주조산업기사",
+      "slug": "주조산업기사",
+      "label": "주조산업기사",
+      "shortLabel": "주조산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "주조산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-2차",
+      "slug": "2차",
+      "label": "2차",
+      "shortLabel": "2차",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "주택관리사보-2차",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-지게차운전기능사",
+      "slug": "지게차운전기능사",
+      "label": "지게차운전기능사",
+      "shortLabel": "지게차운전기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "지게차운전기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-지게차유사롤러,기중기등",
+      "slug": "지게차유사롤러-기중기등",
+      "label": "지게차유사(롤러·기중기등)",
+      "shortLabel": "지게차유사(롤러·기중기등)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "지게차유사롤러기중기등",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-지능형홈관리사",
+      "slug": "지능형홈관리사",
+      "label": "지능형홈관리사",
+      "shortLabel": "지능형홈관리사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "지능형홈관리사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-지적기능사",
+      "slug": "지적기능사",
+      "label": "지적기능사",
+      "shortLabel": "지적기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "지적기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-지적기사",
+      "slug": "지적기사",
+      "label": "지적기사",
+      "shortLabel": "지적기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "지적기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-지적산업기사",
+      "slug": "지적산업기사",
+      "label": "지적산업기사",
+      "shortLabel": "지적산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "지적산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-직업상담사-1급구",
+      "slug": "직업상담사-1급구",
+      "label": "직업상담사 1급(구)",
+      "shortLabel": "직업상담사 1급(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "직업상담사-1급구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-직업상담사-2급",
+      "slug": "직업상담사-2급",
+      "label": "직업상담사 2급",
+      "shortLabel": "직업상담사 2급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "직업상담사-2급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-직업상담사-2급구",
+      "slug": "직업상담사-2급구",
+      "label": "직업상담사 2급(구)",
+      "shortLabel": "직업상담사 2급(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "직업상담사-2급구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-천장크레인운전기능사",
+      "slug": "천장크레인운전기능사",
+      "label": "천장크레인운전기능사",
+      "shortLabel": "천장크레인운전기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "천장크레인운전기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-철도신호기사",
+      "slug": "철도신호기사",
+      "label": "철도신호기사",
+      "shortLabel": "철도신호기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "철도신호기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-철도신호산업기사",
+      "slug": "철도신호산업기사",
+      "label": "철도신호산업기사",
+      "shortLabel": "철도신호산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "철도신호산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-철도운송산업기사",
+      "slug": "철도운송산업기사",
+      "label": "철도운송산업기사",
+      "shortLabel": "철도운송산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "철도운송산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-철도차량기사",
+      "slug": "철도차량기사",
+      "label": "철도차량기사",
+      "shortLabel": "철도차량기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "철도차량기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-철도차량정비기능사",
+      "slug": "철도차량정비기능사",
+      "label": "철도차량정비기능사",
+      "shortLabel": "철도차량정비기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "철도차량정비기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-철도차량정비기능사구",
+      "slug": "철도차량정비기능사구",
+      "label": "철도차량정비기능사(구)",
+      "shortLabel": "철도차량정비기능사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "철도차량정비기능사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-철도차량정비기능장",
+      "slug": "철도차량정비기능장",
+      "label": "철도차량정비기능장",
+      "shortLabel": "철도차량정비기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "철도차량정비기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-철도토목기능사",
+      "slug": "철도토목기능사",
+      "label": "철도토목기능사",
+      "shortLabel": "철도토목기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "철도토목기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-철도토목산업기사",
+      "slug": "철도토목산업기사",
+      "label": "철도토목산업기사",
+      "shortLabel": "철도토목산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "철도토목산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-초음파비파괴검사기능사",
+      "slug": "초음파비파괴검사기능사",
+      "label": "초음파비파괴검사기능사",
+      "shortLabel": "초음파비파괴검사기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "초음파비파괴검사기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-초음파비파괴검사기사",
+      "slug": "초음파비파괴검사기사",
+      "label": "초음파비파괴검사기사",
+      "shortLabel": "초음파비파괴검사기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "초음파비파괴검사기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-초음파비파괴검사기사구",
+      "slug": "초음파비파괴검사기사구",
+      "label": "초음파비파괴검사기사(구)",
+      "shortLabel": "초음파비파괴검사기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "초음파비파괴검사기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-초음파비파괴검사산업기사",
+      "slug": "초음파비파괴검사산업기사",
+      "label": "초음파비파괴검사산업기사",
+      "shortLabel": "초음파비파괴검사산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "초음파비파괴검사산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-초음파비파괴검사산업기사구",
+      "slug": "초음파비파괴검사산업기사구",
+      "label": "초음파비파괴검사산업기사(구)",
+      "shortLabel": "초음파비파괴검사산업기사(구…",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "초음파비파괴검사산업기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-축로기능사",
+      "slug": "축로기능사",
+      "label": "축로기능사",
+      "shortLabel": "축로기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "축로기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-축산기능사",
+      "slug": "축산기능사",
+      "label": "축산기능사",
+      "shortLabel": "축산기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "축산기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-축산기사",
+      "slug": "축산기사",
+      "label": "축산기사",
+      "shortLabel": "축산기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "축산기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-축산산업기사",
+      "slug": "축산산업기사",
+      "label": "축산산업기사",
+      "shortLabel": "축산산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "축산산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-측량기능사",
+      "slug": "측량기능사",
+      "label": "측량기능사",
+      "shortLabel": "측량기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "측량기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-측량및지형공간정보기사",
+      "slug": "측량및지형공간정보기사",
+      "label": "측량및지형공간정보기사",
+      "shortLabel": "측량및지형공간정보기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "측량및지형공간정보기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-측량및지형공간정보산업기사",
+      "slug": "측량및지형공간정보산업기사",
+      "label": "측량및지형공간정보산업기사",
+      "shortLabel": "측량및지형공간정보산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "측량및지형공간정보산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-치공구설계산업기사",
+      "slug": "치공구설계산업기사",
+      "label": "치공구설계산업기사",
+      "shortLabel": "치공구설계산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "치공구설계산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-침투비파괴검사기능사",
+      "slug": "침투비파괴검사기능사",
+      "label": "침투비파괴검사기능사",
+      "shortLabel": "침투비파괴검사기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "침투비파괴검사기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-침투비파괴검사기사",
+      "slug": "침투비파괴검사기사",
+      "label": "침투비파괴검사기사",
+      "shortLabel": "침투비파괴검사기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "침투비파괴검사기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-침투비파괴검사기사구",
+      "slug": "침투비파괴검사기사구",
+      "label": "침투비파괴검사기사(구)",
+      "shortLabel": "침투비파괴검사기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "침투비파괴검사기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-침투비파괴검사산업기사",
+      "slug": "침투비파괴검사산업기사",
+      "label": "침투비파괴검사산업기사",
+      "shortLabel": "침투비파괴검사산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "침투비파괴검사산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-침투비파괴검사산업기사구",
+      "slug": "침투비파괴검사산업기사구",
+      "label": "침투비파괴검사산업기사(구)",
+      "shortLabel": "침투비파괴검사산업기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "침투비파괴검사산업기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-컨벤션기획사-2급",
+      "slug": "컨벤션기획사-2급",
+      "label": "컨벤션기획사 2급",
+      "shortLabel": "컨벤션기획사 2급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "컨벤션기획사-2급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-컨벤션기획사-2급구",
+      "slug": "컨벤션기획사-2급구",
+      "label": "컨벤션기획사 2급(구)",
+      "shortLabel": "컨벤션기획사 2급(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "컨벤션기획사-2급구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-컨테이너크레인운전기능사",
+      "slug": "컨테이너크레인운전기능사",
+      "label": "컨테이너크레인운전기능사",
+      "shortLabel": "컨테이너크레인운전기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "컨테이너크레인운전기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-컬러리스트기사",
+      "slug": "컬러리스트기사",
+      "label": "컬러리스트기사",
+      "shortLabel": "컬러리스트기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "컬러리스트기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-컬러리스트산업기사",
+      "slug": "컬러리스트산업기사",
+      "label": "컬러리스트산업기사",
+      "shortLabel": "컬러리스트산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "컬러리스트산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-컴퓨터그래픽스기능사",
+      "slug": "컴퓨터그래픽스기능사",
+      "label": "컴퓨터그래픽스기능사",
+      "shortLabel": "컴퓨터그래픽스기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "컴퓨터그래픽스기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-컴퓨터시스템기사A형",
+      "slug": "컴퓨터시스템기사A형",
+      "label": "컴퓨터시스템기사(A형)",
+      "shortLabel": "컴퓨터시스템기사(A형)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "컴퓨터시스템기사a형",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-컴퓨터시스템기사B형",
+      "slug": "컴퓨터시스템기사B형",
+      "label": "컴퓨터시스템기사(B형)",
+      "shortLabel": "컴퓨터시스템기사(B형)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "컴퓨터시스템기사b형",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-컴퓨터응용가공산업기사",
+      "slug": "컴퓨터응용가공산업기사",
+      "label": "컴퓨터응용가공산업기사",
+      "shortLabel": "컴퓨터응용가공산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "컴퓨터응용가공산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-컴퓨터응용밀링기능사",
+      "slug": "컴퓨터응용밀링기능사",
+      "label": "컴퓨터응용밀링기능사",
+      "shortLabel": "컴퓨터응용밀링기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "컴퓨터응용밀링기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-컴퓨터응용선반기능사",
+      "slug": "컴퓨터응용선반기능사",
+      "label": "컴퓨터응용선반기능사",
+      "shortLabel": "컴퓨터응용선반기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "컴퓨터응용선반기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-컴퓨터활용능력-1급",
+      "slug": "컴퓨터활용능력-1급",
+      "label": "컴퓨터활용능력 1급",
+      "shortLabel": "컴퓨터활용능력 1급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "컴퓨터활용능력-1급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-컴퓨터활용능력-2급",
+      "slug": "컴퓨터활용능력-2급",
+      "label": "컴퓨터활용능력 2급",
+      "shortLabel": "컴퓨터활용능력 2급",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "컴퓨터활용능력-2급",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-컴퓨터활용능력-3급폐지",
+      "slug": "컴퓨터활용능력-3급폐지",
+      "label": "컴퓨터활용능력 3급(폐지)",
+      "shortLabel": "컴퓨터활용능력 3급(폐지)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "컴퓨터활용능력-3급폐지",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-콘크리트기능사",
+      "slug": "콘크리트기능사",
+      "label": "콘크리트기능사",
+      "shortLabel": "콘크리트기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "콘크리트기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-콘크리트기사",
+      "slug": "콘크리트기사",
+      "label": "콘크리트기사",
+      "shortLabel": "콘크리트기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "콘크리트기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-콘크리트산업기사",
+      "slug": "콘크리트산업기사",
+      "label": "콘크리트산업기사",
+      "shortLabel": "콘크리트산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "콘크리트산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-타워크레인운전기능사",
+      "slug": "타워크레인운전기능사",
+      "label": "타워크레인운전기능사",
+      "shortLabel": "타워크레인운전기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "타워크레인운전기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-텔레마케팅관리사",
+      "slug": "텔레마케팅관리사",
+      "label": "텔레마케팅관리사",
+      "shortLabel": "텔레마케팅관리사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "텔레마케팅관리사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-토목기사",
+      "slug": "토목기사",
+      "label": "토목기사",
+      "shortLabel": "토목기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "토목기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-토목산업기사",
+      "slug": "토목산업기사",
+      "label": "토목산업기사",
+      "shortLabel": "토목산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "토목산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-토양환경기사",
+      "slug": "토양환경기사",
+      "label": "토양환경기사",
+      "shortLabel": "토양환경기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "토양환경기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-통신기기기능사통합변경",
+      "slug": "통신기기기능사통합변경",
+      "label": "통신기기기능사(통합변경)",
+      "shortLabel": "통신기기기능사(통합변경)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "통신기기기능사통합변경",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-통신선로산업기사통합편입",
+      "slug": "통신선로산업기사통합편입",
+      "label": "통신선로산업기사(통합편입)",
+      "shortLabel": "통신선로산업기사(통합편입)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "통신선로산업기사통합편입",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-통신설비기능장",
+      "slug": "통신설비기능장",
+      "label": "통신설비기능장",
+      "shortLabel": "통신설비기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "통신설비기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-특수용접기능사",
+      "slug": "특수용접기능사",
+      "label": "특수용접기능사",
+      "shortLabel": "특수용접기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "특수용접기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-판금제관기능장",
+      "slug": "판금제관기능장",
+      "label": "판금제관기능장",
+      "shortLabel": "판금제관기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "판금제관기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-판금제관산업기사",
+      "slug": "판금제관산업기사",
+      "label": "판금제관산업기사",
+      "shortLabel": "판금제관산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "판금제관산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-패션디자인산업기사",
+      "slug": "패션디자인산업기사",
+      "label": "패션디자인산업기사",
+      "shortLabel": "패션디자인산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "패션디자인산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-패션머천다이징산업기사",
+      "slug": "패션머천다이징산업기사",
+      "label": "패션머천다이징산업기사",
+      "shortLabel": "패션머천다이징산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "패션머천다이징산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-폐기물처리기사",
+      "slug": "폐기물처리기사",
+      "label": "폐기물처리기사",
+      "shortLabel": "폐기물처리기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "폐기물처리기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-폐기물처리산업기사",
+      "slug": "폐기물처리산업기사",
+      "label": "폐기물처리산업기사",
+      "shortLabel": "폐기물처리산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "폐기물처리산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-포장기사",
+      "slug": "포장기사",
+      "label": "포장기사",
+      "shortLabel": "포장기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "포장기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-포장산업기사",
+      "slug": "포장산업기사",
+      "label": "포장산업기사",
+      "shortLabel": "포장산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "포장산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-표면실장장비기능사",
+      "slug": "표면실장장비기능사",
+      "label": "표면실장장비기능사",
+      "shortLabel": "표면실장장비기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "표면실장장비기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-표면처리기능사",
+      "slug": "표면처리기능사",
+      "label": "표면처리기능사",
+      "shortLabel": "표면처리기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "표면처리기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-표면처리기능장",
+      "slug": "표면처리기능장",
+      "label": "표면처리기능장",
+      "shortLabel": "표면처리기능장",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "표면처리기능장",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-표면처리산업기사",
+      "slug": "표면처리산업기사",
+      "label": "표면처리산업기사",
+      "shortLabel": "표면처리산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "표면처리산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-품질경영기사",
+      "slug": "품질경영기사",
+      "label": "품질경영기사",
+      "shortLabel": "품질경영기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "품질경영기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-품질경영산업기사",
+      "slug": "품질경영산업기사",
+      "label": "품질경영산업기사",
+      "shortLabel": "품질경영산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "품질경영산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-프로그래밍기능사",
+      "slug": "프로그래밍기능사",
+      "label": "프로그래밍기능사",
+      "shortLabel": "프로그래밍기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "프로그래밍기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-플라스틱창호기능사",
+      "slug": "플라스틱창호기능사",
+      "label": "플라스틱창호기능사",
+      "shortLabel": "플라스틱창호기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "플라스틱창호기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-피아노조율기능사",
+      "slug": "피아노조율기능사",
+      "label": "피아노조율기능사",
+      "shortLabel": "피아노조율기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "피아노조율기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-피아노조율산업기사",
+      "slug": "피아노조율산업기사",
+      "label": "피아노조율산업기사",
+      "shortLabel": "피아노조율산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "피아노조율산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-한국사능력검정시험-기본",
+      "slug": "한국사능력검정시험-기본",
+      "label": "한국사능력검정시험 기본",
+      "shortLabel": "한국사능력검정시험 기본",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "한국사능력검정시험-기본",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-한국사능력검정시험-심화",
+      "slug": "한국사능력검정시험-심화",
+      "label": "한국사능력검정시험 심화",
+      "shortLabel": "한국사능력검정시험 심화",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "한국사능력검정시험-심화",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-한국사능력검정시험-중급폐지",
+      "slug": "한국사능력검정시험-중급폐지",
+      "label": "한국사능력검정시험 중급(폐지)",
+      "shortLabel": "한국사능력검정시험 중급(폐…",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "한국사능력검정시험-중급폐지",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-한국사능력검정시험-초급폐지",
+      "slug": "한국사능력검정시험-초급폐지",
+      "label": "한국사능력검정시험 초급(폐지)",
+      "shortLabel": "한국사능력검정시험 초급(폐…",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "한국사능력검정시험-초급폐지",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-한국수어교원자격검정",
+      "slug": "한국수어교원자격검정",
+      "label": "한국수어교원자격검정",
+      "shortLabel": "한국수어교원자격검정",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "한국수어교원자격검정",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-한복기능사",
+      "slug": "한복기능사",
+      "label": "한복기능사",
+      "shortLabel": "한복기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "한복기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-한복산업기사",
+      "slug": "한복산업기사",
+      "label": "한복산업기사",
+      "shortLabel": "한복산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "한복산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-한식조리기능사",
+      "slug": "한식조리기능사",
+      "label": "한식조리기능사",
+      "shortLabel": "한식조리기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "한식조리기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-항공기관정비기능사",
+      "slug": "항공기관정비기능사",
+      "label": "항공기관정비기능사",
+      "shortLabel": "항공기관정비기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "항공기관정비기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-항공기사",
+      "slug": "항공기사",
+      "label": "항공기사",
+      "shortLabel": "항공기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "항공기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-항공기체정비기능사",
+      "slug": "항공기체정비기능사",
+      "label": "항공기체정비기능사",
+      "shortLabel": "항공기체정비기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "항공기체정비기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-항공무선통신사",
+      "slug": "항공무선통신사",
+      "label": "항공무선통신사",
+      "shortLabel": "항공무선통신사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "항공무선통신사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-항공산업기사",
+      "slug": "항공산업기사",
+      "label": "항공산업기사",
+      "shortLabel": "항공산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "항공산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-항공장비정비기능사",
+      "slug": "항공장비정비기능사",
+      "label": "항공장비정비기능사",
+      "shortLabel": "항공장비정비기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "항공장비정비기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-항공전자정비기능사",
+      "slug": "항공전자정비기능사",
+      "label": "항공전자정비기능사",
+      "shortLabel": "항공전자정비기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "항공전자정비기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-항로표지기능사",
+      "slug": "항로표지기능사",
+      "label": "항로표지기능사",
+      "shortLabel": "항로표지기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "항로표지기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-항로표지기사",
+      "slug": "항로표지기사",
+      "label": "항로표지기사",
+      "shortLabel": "항로표지기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "항로표지기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-항로표지산업기사",
+      "slug": "항로표지산업기사",
+      "label": "항로표지산업기사",
+      "shortLabel": "항로표지산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "항로표지산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-해상무선통신사",
+      "slug": "해상무선통신사",
+      "label": "해상무선통신사",
+      "shortLabel": "해상무선통신사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "해상무선통신사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-해양공학기사",
+      "slug": "해양공학기사",
+      "label": "해양공학기사",
+      "shortLabel": "해양공학기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "해양공학기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-해양자원개발기사",
+      "slug": "해양자원개발기사",
+      "label": "해양자원개발기사",
+      "shortLabel": "해양자원개발기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "해양자원개발기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-해양조사산업기사",
+      "slug": "해양조사산업기사",
+      "label": "해양조사산업기사",
+      "shortLabel": "해양조사산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "해양조사산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-해양환경기사",
+      "slug": "해양환경기사",
+      "label": "해양환경기사",
+      "shortLabel": "해양환경기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "해양환경기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-화공기사",
+      "slug": "화공기사",
+      "label": "화공기사",
+      "shortLabel": "화공기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "화공기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-화공기사구",
+      "slug": "화공기사구",
+      "label": "화공기사(구)",
+      "shortLabel": "화공기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "화공기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-화공기사구구",
+      "slug": "화공기사구구",
+      "label": "화공기사(구)(구)",
+      "shortLabel": "화공기사(구)(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "화공기사구구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-화약류관리기사",
+      "slug": "화약류관리기사",
+      "label": "화약류관리기사",
+      "shortLabel": "화약류관리기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "화약류관리기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-화약류관리산업기사",
+      "slug": "화약류관리산업기사",
+      "label": "화약류관리산업기사",
+      "shortLabel": "화약류관리산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "화약류관리산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-화약취급기능사",
+      "slug": "화약취급기능사",
+      "label": "화약취급기능사",
+      "shortLabel": "화약취급기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "화약취급기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-화재감식평가기사",
+      "slug": "화재감식평가기사",
+      "label": "화재감식평가기사",
+      "shortLabel": "화재감식평가기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "화재감식평가기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-화재감식평가산업기사",
+      "slug": "화재감식평가산업기사",
+      "label": "화재감식평가산업기사",
+      "shortLabel": "화재감식평가산업기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "화재감식평가산업기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-화학분석기능사",
+      "slug": "화학분석기능사",
+      "label": "화학분석기능사",
+      "shortLabel": "화학분석기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "화학분석기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-화학분석기사",
+      "slug": "화학분석기사",
+      "label": "화학분석기사",
+      "shortLabel": "화학분석기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "화학분석기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-화학분석기사구",
+      "slug": "화학분석기사구",
+      "label": "화학분석기사(구)",
+      "shortLabel": "화학분석기사(구)",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "화학분석기사구",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-화훼장식기능사",
+      "slug": "화훼장식기능사",
+      "label": "화훼장식기능사",
+      "shortLabel": "화훼장식기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "화훼장식기능사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-화훼장식기사",
+      "slug": "화훼장식기사",
+      "label": "화훼장식기사",
+      "shortLabel": "화훼장식기사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "화훼장식기사",
+        "status": "live"
+      }
+    },
+    {
+      "id": "subj-환경기능사",
+      "slug": "환경기능사",
+      "label": "환경기능사",
+      "shortLabel": "환경기능사",
+      "status": "live",
+      "description": "",
+      "phase": 1,
+      "questionPool": {
+        "stem": "환경기능사",
+        "status": "live"
+      }
+    }
+  ]
+}

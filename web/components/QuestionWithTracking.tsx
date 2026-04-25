@@ -2,6 +2,7 @@
 
 import { Question, Exam } from "@/lib/types";
 import { handleAnswerResult } from "@/lib/wrong-answers";
+import { useCurrentExamSlug, useCurrentSubjectSlug } from "@/lib/exam-context";
 import { markAnswered } from "./QuestionNav";
 import QuestionCard, { type RelatedNoteLink } from "./QuestionCard";
 
@@ -23,8 +24,10 @@ interface Props {
  * Also marks the question as answered for the nav dot coloring.
  */
 export default function QuestionWithTracking({ question, exam, youtube, relatedNotes }: Props) {
+  const examSlug = useCurrentExamSlug();
+  const subjectSlug = useCurrentSubjectSlug();
   const handleSubmit = (selectedAnswer: number, isCorrect: boolean) => {
-    // Save wrong answer / auto-resolve
+    // Save wrong answer / auto-resolve (per-(exam,subject) scoped)
     handleAnswerResult(
       question.id,
       exam.id,
@@ -36,7 +39,9 @@ export default function QuestionWithTracking({ question, exam, youtube, relatedN
       question.content,
       question.era,
       question.category,
-      question.points
+      question.points,
+      examSlug,
+      subjectSlug
     );
 
     // Mark answered for nav dot

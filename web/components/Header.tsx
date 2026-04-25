@@ -3,14 +3,45 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import ExamSelector from "@/components/ExamSelector";
+import { getExamSlugFromPath, getSubjectSlugFromPath } from "@/lib/exam-context";
+import type { ExamType, Subject } from "@/lib/exam-types";
 
-const NAV_ITEMS = [
-  { href: "/exam",          label: "기출문제", match: ["/exam", "/study"] },
-  { href: "/notes",         label: "요약노트", match: ["/notes"] },
-  { href: "/wrong-answers", label: "오답노트", match: ["/wrong-answers"] },
-  { href: "/my-record",     label: "내 기록",   match: ["/my-record"] },
-  { href: "/board",         label: "게시판",   match: ["/board"] },
-];
+/**
+ * Learning nav items (기출문제 / 요약노트 / 오답노트 / 내 기록).
+ * 게시판은 별도 우측 노출이라 여기 포함 안 함.
+ *
+ * 표시 규칙:
+ * - 한능검 / hub → legacy URLs (/exam, /notes, etc.)
+ * - 단일 과목 시험 (한능검) → 위와 동일 (legacy) 또는 subject 단위
+ * - 다과목 시험 페이지 (e.g. /9급-국가직) → null 반환 (학습 nav 숨김)
+ * - 과목 컨텍스트 (e.g. /9급-국가직/국어) → 그 과목 디테일 URL
+ */
+function buildNavItems(
+  examSlug: string | null,
+  subjectSlugInUrl: string | null,
+  isMultiSubjectExamPage: boolean,
+): Array<{ href: string; label: string; match: string[] }> | null {
+  if (isMultiSubjectExamPage) return null; // 시험 단위에선 학습 nav 숨김
+
+  const isHistory = !examSlug || examSlug === "한능검";
+  if (isHistory) {
+    return [
+      { href: "/exam", label: "기출문제", match: ["/exam", "/study", "/한능검"] },
+      { href: "/notes", label: "요약노트", match: ["/notes"] },
+      { href: "/wrong-answers", label: "오답노트", match: ["/wrong-answers"] },
+      { href: "/my-record", label: "내 기록", match: ["/my-record"] },
+    ];
+  }
+  const base = `/${encodeURIComponent(examSlug)}`;
+  const subjBase = subjectSlugInUrl ? `${base}/${encodeURIComponent(subjectSlugInUrl)}` : base;
+  return [
+    { href: `${subjBase}/exam`, label: "기출문제", match: [`${subjBase}/exam`] },
+    { href: `${subjBase}/notes`, label: "요약노트", match: [`${subjBase}/notes`] },
+    { href: `${subjBase}/wrong-answers`, label: "오답노트", match: [`${subjBase}/wrong-answers`] },
+    { href: `${subjBase}/my-record`, label: "내 기록", match: [`${subjBase}/my-record`] },
+  ];
+}
 
 const ink     = "var(--gc-ink)";
 const subtle  = "var(--gc-subtle)";
@@ -19,9 +50,19 @@ const paper   = "var(--gc-paper)";
 const bg      = "var(--gc-bg)";
 const hair    = "var(--gc-hairline)";
 
-export default function Header() {
+interface HeaderProps {
+  examTypes: ExamType[];
+  subjects: Subject[];
+}
+
+export default function Header({ examTypes, subjects }: HeaderProps) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const examSlug = getExamSlugFromPath(pathname);
+  // Selector always visible. Default = 한능검 if no exam context (hub or site-wide pages).
+  const DEFAULT_EXAM_SLUG = "한능검";
+  const effectiveSlug = examSlug ?? DEFAULT_EXAM_SLUG;
+  const currentExam = examTypes.find((e) => e.slug === effectiveSlug) ?? null;
 
   useEffect(() => {
     setMobileOpen(false);
@@ -34,6 +75,29 @@ export default function Header() {
 
   const isActive = (matches: string[]) =>
     matches.some((m) => pathname === m || pathname.startsWith(m + "/"));
+
+  // getSubjectSlugFromPath: /[examSlug]/[subjectSlug]/... 형태일 때만 subjectSlug 반환
+  // (legacy 사이트 라우트면 default "한국사" 반환, 그건 nav 분기에 영향 없음 — 한능검 분기로 가서 무시됨)
+  const subjectSlugInUrl = getSubjectSlugFromPath(pathname);
+  // 다과목 시험 페이지 (과목 미선택)인지 판정 — 학습 nav 숨김 조건
+  const examData = examTypes.find((e) => e.slug === effectiveSlug);
+  const liveSubjectCount = examData
+    ? [
+        ...examData.subjects.required,
+        ...(examData.subjects.selectable ?? []),
+      ].filter((r) => r.status === "live").length
+    : 0;
+  const isMultiSubjectExamPage =
+    liveSubjectCount > 1 &&
+    !subjectSlugInUrl &&
+    pathname !== "/" &&
+    !pathname.startsWith("/exam") &&
+    !pathname.startsWith("/notes") &&
+    !pathname.startsWith("/study") &&
+    !pathname.startsWith("/wrong-answers") &&
+    !pathname.startsWith("/my-record");
+
+  const navItems = buildNavItems(effectiveSlug, subjectSlugInUrl, isMultiSubjectExamPage);
 
   return (
     <>
@@ -61,102 +125,63 @@ export default function Header() {
             >
               기출노트
             </span>
-            <span
-              className="font-sans-kr"
-              style={{
-                fontSize: 14,
-                color: amber,
-                fontWeight: 800,
-                marginLeft: 4,
-                letterSpacing: "-0.01em",
-              }}
-            >
-              한능검
-            </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-7 shrink-0">
-            {NAV_ITEMS.map(({ href, label, match }) => {
-              const active = isActive(match);
-              return (
-                <Link
-                  key={href}
-                  href={href}
-                  className="font-sans-kr no-underline transition-colors"
-                  style={{
-                    color: active ? ink : subtle,
-                    fontSize: 15,
-                    fontWeight: active ? 700 : 500,
-                    padding: "8px 2px",
-                    borderBottom: active
-                      ? `2px solid ${amber}`
-                      : "2px solid transparent",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {label}
-                </Link>
-              );
-            })}
-          </nav>
+          {/* Exam selector — always visible, default = 한능검 */}
+          <div className="hidden sm:block">
+            <ExamSelector
+              current={currentExam}
+              currentSubjectSlug={subjectSlugInUrl}
+              examTypes={examTypes}
+              subjects={subjects}
+            />
+          </div>
+
+          {/* Desktop Nav (학습 메뉴) — 다과목 시험 페이지에선 숨김 */}
+          {navItems && (
+            <nav className="hidden md:flex items-center gap-7 shrink-0">
+              {navItems.map(({ href, label, match }) => {
+                const active = isActive(match);
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="font-sans-kr no-underline transition-colors"
+                    style={{
+                      color: active ? ink : subtle,
+                      fontSize: 15,
+                      fontWeight: active ? 700 : 500,
+                      padding: "8px 2px",
+                      borderBottom: active
+                        ? `2px solid ${amber}`
+                        : "2px solid transparent",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {label}
+                  </Link>
+                );
+              })}
+            </nav>
+          )}
 
           <div className="flex-1" />
 
-          {/* Search (hidden <1100px) */}
-          <div
-            className="gc-search hidden lg:flex items-center gap-2 whitespace-nowrap"
-            style={{
-              padding: "8px 14px",
-              background: paper,
-              border: `1px solid ${hair}`,
-              borderRadius: 999,
-              fontFamily: "var(--gc-font-sans)",
-              fontSize: 13,
-              color: subtle,
-              minWidth: 220,
-            }}
-          >
-            <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="11" cy="11" r="7" />
-              <path d="m20 20-4-4" />
-            </svg>
-            <span>단원·키워드 검색</span>
-            <span className="flex-1" />
-            <span
-              className="font-mono-kr"
-              style={{
-                fontSize: 10,
-                padding: "2px 6px",
-                borderRadius: 4,
-                background: bg,
-                color: subtle,
-                fontWeight: 700,
-              }}
-            >
-              ⌘ K
-            </span>
-          </div>
-
-          {/* CTA */}
+          {/* 게시판 — 항상 우측 별도 노출 */}
           <Link
-            href="/exam"
-            className="hidden md:inline-flex items-center gap-2 whitespace-nowrap no-underline shrink-0"
+            href="/board"
+            className="hidden md:flex font-sans-kr items-center gap-1 shrink-0 no-underline transition-colors"
             style={{
-              padding: "10px 20px",
-              background: ink,
-              color: bg,
-              borderRadius: 999,
-              fontFamily: "var(--gc-font-sans)",
-              fontSize: 14,
-              fontWeight: 700,
+              color: pathname.startsWith("/board") ? ink : subtle,
+              fontSize: 15,
+              fontWeight: pathname.startsWith("/board") ? 700 : 500,
+              padding: "8px 2px",
+              borderBottom: pathname.startsWith("/board")
+                ? `2px solid ${amber}`
+                : "2px solid transparent",
             }}
           >
-            지금 풀기
-            <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14" />
-              <path d="m13 5 7 7-7 7" />
-            </svg>
+            게시판
           </Link>
 
           {/* Mobile menu button */}
@@ -197,7 +222,7 @@ export default function Header() {
             }}
           >
             <div className="mx-auto max-w-[1280px] px-6 py-3">
-              {NAV_ITEMS.map(({ href, label, match }) => {
+              {(navItems ?? []).map(({ href, label, match }) => {
                 const active = isActive(match);
                 return (
                   <Link
@@ -224,22 +249,20 @@ export default function Header() {
                 );
               })}
               <Link
-                href="/exam"
-                className="mt-4 flex items-center justify-center gap-2 no-underline"
+                href="/board"
+                className="flex items-center no-underline transition-colors"
                 style={{
-                  padding: "14px",
-                  background: ink,
-                  color: bg,
-                  borderRadius: 999,
-                  fontSize: 15,
-                  fontWeight: 700,
+                  padding: "14px 4px",
+                  fontSize: 16,
+                  fontWeight: pathname.startsWith("/board") ? 700 : 500,
+                  color: pathname.startsWith("/board") ? ink : subtle,
+                  borderBottom: `1px solid ${hair}`,
                 }}
               >
-                지금 풀기
-                <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14" />
-                  <path d="m13 5 7 7-7 7" />
-                </svg>
+                <span>게시판</span>
+                {pathname.startsWith("/board") && (
+                  <span className="ml-auto w-1.5 h-1.5 rounded-full" style={{ background: amber }} />
+                )}
               </Link>
             </div>
           </nav>

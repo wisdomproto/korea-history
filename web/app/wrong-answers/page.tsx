@@ -8,6 +8,7 @@ import {
   saveWrongAnswers,
   WrongAnswer,
 } from "@/lib/wrong-answers";
+import { useCurrentExamSlug, useCurrentSubjectSlug } from "@/lib/exam-context";
 
 type MainTab = "all" | "analysis";
 type StatusFilter = "all" | "unresolved" | "resolved";
@@ -15,6 +16,8 @@ type AnalysisTab = "era" | "category";
 
 export default function WrongAnswersPage() {
   const router = useRouter();
+  const examSlug = useCurrentExamSlug();
+  const subjectSlug = useCurrentSubjectSlug();
   const [answers, setAnswers] = useState<WrongAnswer[]>([]);
   const [mounted, setMounted] = useState(false);
   const [mainTab, setMainTab] = useState<MainTab>("all");
@@ -26,13 +29,13 @@ export default function WrongAnswersPage() {
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
 
   useEffect(() => {
-    setAnswers(getWrongAnswers());
+    setAnswers(getWrongAnswers(examSlug, subjectSlug));
     setMounted(true);
-  }, []);
+  }, [examSlug, subjectSlug]);
 
   const refresh = useCallback(() => {
-    setAnswers(getWrongAnswers());
-  }, []);
+    setAnswers(getWrongAnswers(examSlug, subjectSlug));
+  }, [examSlug, subjectSlug]);
 
   // Stats
   const unresolvedCount = useMemo(
@@ -93,7 +96,7 @@ export default function WrongAnswersPage() {
         ? { ...a, resolved: true, resolvedAt: new Date().toISOString() }
         : a
     );
-    saveWrongAnswers(updated);
+    saveWrongAnswers(updated, examSlug, subjectSlug);
     setAnswers(updated);
     cancelEdit();
   };
@@ -104,7 +107,7 @@ export default function WrongAnswersPage() {
         ? { ...a, resolved: false, resolvedAt: undefined }
         : a
     );
-    saveWrongAnswers(updated);
+    saveWrongAnswers(updated, examSlug, subjectSlug);
     setAnswers(updated);
     cancelEdit();
   };
@@ -112,7 +115,7 @@ export default function WrongAnswersPage() {
   const batchDelete = () => {
     if (!confirm(`${selectedIds.size}개의 오답을 삭제하시겠습니까?`)) return;
     const updated = answers.filter((a) => !selectedIds.has(a.questionId));
-    saveWrongAnswers(updated);
+    saveWrongAnswers(updated, examSlug, subjectSlug);
     setAnswers(updated);
     cancelEdit();
   };
@@ -134,7 +137,7 @@ export default function WrongAnswersPage() {
           <button
             onClick={() => {
               if (!confirm("오답 기록을 모두 초기화하시겠습니까?")) return;
-              saveWrongAnswers([]);
+              saveWrongAnswers([], examSlug, subjectSlug);
               setAnswers([]);
             }}
             className="text-[11px] font-semibold text-slate-400 hover:text-red-500 transition-colors"

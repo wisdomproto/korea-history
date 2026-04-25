@@ -1,0 +1,128 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Metadata } from "next";
+import { getExamTypeBySlug, getSubjectBySlug } from "@/lib/exam-types";
+import { getCbtExam, getCbtManifest } from "@/lib/cbt-data";
+import { adaptCbtQuestion, adaptCbtExamMeta } from "@/lib/cbt-adapter";
+import QuestionWithTracking from "@/components/QuestionWithTracking";
+import BreadCrumb from "@/components/BreadCrumb";
+
+interface PageProps {
+  params: Promise<{
+    examSlug: string;
+    subjectSlug: string;
+    examId: string;
+    questionNumber: string;
+  }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { examSlug, subjectSlug, examId, questionNumber } = await params;
+  const exam = getExamTypeBySlug(decodeURIComponent(examSlug));
+  const subject = getSubjectBySlug(decodeURIComponent(subjectSlug));
+  if (!exam || !subject) return { title: "문제 없음" };
+  return {
+    title: `${exam.shortLabel} ${subject.label} ${examId} ${questionNumber}번 — 기출노트`,
+    description: `${exam.label} ${subject.label} 기출 ${examId} ${questionNumber}번 문제 풀이.`,
+    alternates: {
+      canonical: `${exam.routes.main}/${subject.slug}/exam/${examId}/${questionNumber}`,
+    },
+  };
+}
+
+export default async function CbtQuestionPage({ params }: PageProps) {
+  const { examSlug, subjectSlug, examId, questionNumber } = await params;
+  const exam = getExamTypeBySlug(decodeURIComponent(examSlug));
+  const subject = getSubjectBySlug(decodeURIComponent(subjectSlug));
+  if (!exam || !subject) notFound();
+
+  const ref =
+    exam.subjects.required.find((r) => r.subjectId === subject.id) ??
+    exam.subjects.selectable?.find((r) => r.subjectId === subject.id);
+  const stem = ref?.stem ?? subject.questionPool?.stem;
+  if (!stem) notFound();
+
+  const [manifest, examData] = await Promise.all([
+    getCbtManifest(stem),
+    getCbtExam(stem, examId),
+  ]);
+  if (!examData) notFound();
+
+  const qNum = parseInt(questionNumber, 10);
+  const cbtQ = examData.questions.find((q) => q.number === qNum);
+  if (!cbtQ) notFound();
+
+  const meta = manifest?.exams.find((e) => e.exam_id === examId);
+  const adaptedExam = meta ? adaptCbtExamMeta(meta) : adaptCbtExamMeta({
+    exam_id: examData.exam_id,
+    label: examData.label,
+    date: examData.date,
+    question_count: examData.question_count,
+  });
+  const question = adaptCbtQuestion(cbtQ, adaptedExam.id);
+
+  const total = examData.question_count;
+  const prev = qNum > 1 ? qNum - 1 : null;
+  const next = qNum < total ? qNum + 1 : null;
+
+  const baseUrl = `${exam.routes.main}/${subject.slug}/exam/${examId}`;
+
+  return (
+    <main className="bg-[var(--gc-bg)] min-h-screen">
+      <div className="mx-auto max-w-3xl px-5 sm:px-6 md:px-8 py-6 md:py-10">
+        <BreadCrumb
+          items={[
+            { label: "기출노트", href: "/" },
+            { label: exam.label, href: exam.routes.main },
+            { label: subject.label, href: `${exam.routes.main}/${subject.slug}/exam` },
+            { label: meta?.label ?? examId, href: baseUrl },
+            { label: `${qNum}번` },
+          ]}
+        />
+
+        <div className="mt-4 mb-6 flex items-baseline justify-between">
+          <h1 className="font-serif-kr text-xl md:text-2xl font-bold text-[var(--gc-ink)]">
+            {qNum} / {total}
+          </h1>
+          <Link
+            href={baseUrl}
+            className="text-xs font-bold text-[var(--gc-amber)] hover:underline"
+          >
+            전체 회차 →
+          </Link>
+        </div>
+
+        <QuestionWithTracking question={question} exam={adaptedExam} />
+
+        <nav className="mt-8 flex items-center justify-between gap-2">
+          {prev ? (
+            <Link
+              href={`${baseUrl}/${prev}`}
+              className="rounded-full border border-[var(--gc-hairline)] bg-white px-4 py-2 text-sm font-bold text-[var(--gc-ink)] hover:border-[var(--gc-amber)]"
+            >
+              ← {prev}번
+            </Link>
+          ) : (
+            <span />
+          )}
+          <Link
+            href={baseUrl}
+            className="rounded-full bg-[var(--gc-ink)] text-white px-4 py-2 text-sm font-bold"
+          >
+            문제 목록
+          </Link>
+          {next ? (
+            <Link
+              href={`${baseUrl}/${next}`}
+              className="rounded-full bg-[var(--gc-amber)] text-white px-4 py-2 text-sm font-bold hover:opacity-90"
+            >
+              {next}번 →
+            </Link>
+          ) : (
+            <span />
+          )}
+        </nav>
+      </div>
+    </main>
+  );
+}

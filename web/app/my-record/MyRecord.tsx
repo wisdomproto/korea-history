@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { getExamHistory, getGradeColor, type ExamRecord } from "@/lib/exam-history";
 import { getWrongAnswers, type WrongAnswer } from "@/lib/wrong-answers";
+import { useCurrentExamSlug, useCurrentSubjectSlug } from "@/lib/exam-context";
 
 const ERA_ORDER = ["선사·고조선", "삼국", "남북국", "고려", "조선 전기", "조선 후기", "근대", "현대"];
 
@@ -20,15 +21,17 @@ function getPctColor(pct: number) {
 }
 
 export default function MyRecord() {
+  const examSlug = useCurrentExamSlug();
+  const subjectSlug = useCurrentSubjectSlug();
   const [history, setHistory] = useState<ExamRecord[]>([]);
   const [wrongAnswers, setWrongAnswers] = useState<WrongAnswer[]>([]);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setHistory(getExamHistory());
-    setWrongAnswers(getWrongAnswers());
+    setHistory(getExamHistory(examSlug, subjectSlug));
+    setWrongAnswers(getWrongAnswers(examSlug, subjectSlug));
     setMounted(true);
-  }, []);
+  }, [examSlug, subjectSlug]);
 
   const stats = useMemo(() => {
     if (history.length === 0) return null;

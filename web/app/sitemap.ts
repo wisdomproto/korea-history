@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { getAllExams, getAllQuestionParams } from "@/lib/data";
 import { getAllNoteIds } from "@/lib/notes";
+import { getAllExamTypes, getCategories } from "@/lib/exam-types";
 
 export const dynamic = "force-static";
 
@@ -94,5 +95,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...questionPages, ...notePages];
+  // Multi-exam hub pages — main landing per exam type + category indexes
+  const examTypePages: MetadataRoute.Sitemap = getAllExamTypes().map((e) => ({
+    url: `${BASE_URL}${e.routes.main}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: e.featured ? 0.9 : 0.6,
+  }));
+
+  return [...staticPages, ...questionPages, ...notePages, ...examTypePages];
 }
