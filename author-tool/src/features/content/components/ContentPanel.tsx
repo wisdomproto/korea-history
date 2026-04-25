@@ -4,6 +4,7 @@ import { useContent, useDeleteContent } from '../hooks/useContent';
 import { CHANNEL_TABS } from '../../../lib/content-types';
 import { BaseArticlePanel } from './BaseArticlePanel';
 import { BlogPanel } from './BlogPanel';
+import { WordPressPanel } from './WordPressPanel';
 import { CardNewsPanel } from './CardNewsPanel';
 import { ThreadsPanel } from './ThreadsPanel';
 import { LongFormPanel } from './LongFormPanel';
@@ -97,6 +98,7 @@ export function ContentPanel() {
       <div className="flex-1 overflow-y-auto">
         {activeTab === 'base' && <BaseArticlePanel contentFile={contentFile} />}
         {activeTab === 'blog' && <BlogPanel contentFile={contentFile} />}
+        {activeTab === 'wordpress' && <WordPressPanel contentFile={contentFile} />}
         {activeTab === 'instagram' && <CardNewsPanel contentFile={contentFile} />}
         {activeTab === 'threads' && <ThreadsPanel contentFile={contentFile} />}
         {activeTab === 'longform' && <LongFormPanel contentFile={contentFile} />}

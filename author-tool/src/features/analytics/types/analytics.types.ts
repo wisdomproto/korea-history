@@ -38,6 +38,52 @@ export interface HourlyData { hour: number; sessions: number; }
 export interface DayOfWeekData { dayOfWeek: number; name: string; sessions: number; }
 export interface DailyData { date: string; sessions: number; users: number; pageViews: number; avgSessionDuration: number; }
 
+export interface VideoEventsData {
+  play: number;
+  complete: number;
+  completionRate: number;
+  bySurface: Array<{ surface: string; play: number; complete: number }>;
+  topVideos: Array<{ videoId: string; title: string; play: number; complete: number }>;
+}
+
+export interface SearchKeywordData {
+  term: string;
+  source: string;
+  sessions: number;
+  users: number;
+}
+
+export interface GscQueryRow {
+  query: string;
+  clicks: number;
+  impressions: number;
+  ctr: number;
+  position: number;
+}
+
+export interface GscPageRow {
+  page: string;
+  clicks: number;
+  impressions: number;
+  ctr: number;
+  position: number;
+}
+
+export interface GscTotals {
+  clicks: number;
+  impressions: number;
+  ctr: number;
+  position: number;
+}
+
+export interface SearchConsoleData {
+  siteUrl: string;
+  totals: GscTotals;
+  queries: GscQueryRow[];
+  pages: GscPageRow[];
+  cachedAt?: string;
+}
+
 export interface DashboardData {
   overview: KpiData;
   channels: ChannelData[];
@@ -46,5 +92,7 @@ export interface DashboardData {
   devices: DeviceData[];
   hourly: HourlyData[];
   dayOfWeek: DayOfWeekData[];
+  videoEvents: VideoEventsData;
+  searchKeywords: SearchKeywordData[];
   cachedAt?: string;
 }

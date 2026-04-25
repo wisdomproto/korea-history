@@ -9,6 +9,9 @@ import DeviceChart from './DeviceChart';
 import HourlyChart from './HourlyChart';
 import DayOfWeekChart from './DayOfWeekChart';
 import DailyTrendChart from './DailyTrendChart';
+import VideoEventsCard from './VideoEventsCard';
+import SearchKeywordsTable from './SearchKeywordsTable';
+import SearchConsoleCard from './SearchConsoleCard';
 
 function getDefault7d(): DateRange {
   const today = new Date();
@@ -117,6 +120,11 @@ export default function AnalyticsDashboard() {
             <div className="grid grid-cols-1 md:grid-cols-1 gap-3">
               <DayOfWeekChart data={data.dayOfWeek} />
             </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <VideoEventsCard data={data.videoEvents} />
+              <SearchKeywordsTable data={data.searchKeywords} />
+            </div>
+            <SearchConsoleCard range={range} />
           </>
         ) : null}
       </div>

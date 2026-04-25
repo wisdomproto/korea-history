@@ -1,8 +1,19 @@
 import { create } from 'zustand';
 
-export type ActiveView ='analytics' | 'dashboard' | 'exam' | 'question' | 'generator' | 'card-news' | 'note-card-news' | 'card-news-gallery' | 'notes' | 'content' | 'notes-editor' | 'cbt-exam' | 'summary-notes-editor';
-type ContentTab = 'base' | 'blog' | 'instagram' | 'threads' | 'longform' | 'shortform';
-type SidebarSection = 'exam' | 'notes' | 'content' | null;
+export type ActiveView ='analytics' | 'dashboard' | 'exam' | 'question' | 'generator' | 'card-news' | 'note-card-news' | 'card-news-gallery' | 'notes' | 'content' | 'notes-editor' | 'cbt-exam' | 'summary-notes-editor' | 'marketing';
+type ContentTab = 'base' | 'blog' | 'wordpress' | 'instagram' | 'threads' | 'longform' | 'shortform';
+type SidebarSection = 'exam' | 'notes' | 'marketing' | null;
+export type MarketingSubmenu =
+  | 'settings'
+  | 'ideas'
+  | 'content'
+  | 'publish'
+  | 'monitoring'
+  | 'ads'
+  | 'site-analytics'
+  | 'channel-analytics'
+  | 'competitor'
+  | 'strategy';
 
 interface EditorStore {
   // Sidebar collapsed
@@ -41,6 +52,10 @@ interface EditorStore {
   // CBT exam
   selectedCbtExamId: string | null;
   setSelectedCbtExamId: (id: string | null) => void;
+
+  // Marketing
+  marketingSubmenu: MarketingSubmenu;
+  setMarketingSubmenu: (submenu: MarketingSubmenu) => void;
 }
 
 export const useEditorStore = create<EditorStore>((set) => ({
@@ -73,11 +88,23 @@ export const useEditorStore = create<EditorStore>((set) => ({
 
   // Content system
   selectedContentId: null,
-  setSelectedContentId: (id) => set({ selectedContentId: id, activeView: id ? 'content' : 'dashboard', activeContentTab: 'base' }),
+  setSelectedContentId: (id) => set((s) => {
+    // If already in marketing workspace, stay there; otherwise use legacy direct view.
+    const stayInMarketing = s.activeView === 'marketing';
+    return {
+      selectedContentId: id,
+      activeView: stayInMarketing ? 'marketing' : id ? 'content' : 'dashboard',
+      activeContentTab: 'base',
+    };
+  }),
   activeContentTab: 'base',
   setActiveContentTab: (tab) => set({ activeContentTab: tab }),
 
   // CBT exam
   selectedCbtExamId: null,
   setSelectedCbtExamId: (id) => set({ selectedCbtExamId: id, activeView: id ? 'cbt-exam' : 'dashboard', selectedExamId: null, editingQuestionId: null }),
+
+  // Marketing
+  marketingSubmenu: 'content',
+  setMarketingSubmenu: (submenu) => set({ marketingSubmenu: submenu, activeView: 'marketing' }),
 }));

@@ -21,6 +21,14 @@ import summaryNoteRoutes from './routes/summary-note.routes.js';
 import cardnewsTemplateRoutes from './routes/cardnews-template.routes.js';
 import instagramRoutes from './routes/instagram.routes.js';
 import weeklyReportRoutes from './routes/weekly-report.routes.js';
+import envStatusRoutes from './routes/env-status.routes.js';
+import ideasRoutes from './routes/ideas.routes.js';
+import publishJobRoutes from './routes/publish-job.routes.js';
+import commentsRoutes from './routes/comments.routes.js';
+import adCampaignsRoutes from './routes/ad-campaigns.routes.js';
+import channelAnalyticsRoutes from './routes/channel-analytics.routes.js';
+import competitorsRoutes from './routes/competitors.routes.js';
+import strategyRoutes from './routes/strategy.routes.js';
 import { startCron } from './services/cron.service.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -75,6 +83,14 @@ async function startServer() {
   app.use('/api/cardnews-templates', cardnewsTemplateRoutes);
   app.use('/api/instagram', instagramRoutes);
   app.use('/api/weekly-reports', weeklyReportRoutes);
+  app.use('/api/env-status', envStatusRoutes);
+  app.use('/api/ideas', ideasRoutes);
+  app.use('/api/publish-jobs', publishJobRoutes);
+  app.use('/api/comments', commentsRoutes);
+  app.use('/api/ad-campaigns', adCampaignsRoutes);
+  app.use('/api/channel-analytics', channelAnalyticsRoutes);
+  app.use('/api/competitors', competitorsRoutes);
+  app.use('/api/strategy', strategyRoutes);
 
   app.use(errorMiddleware as express.ErrorRequestHandler);
 

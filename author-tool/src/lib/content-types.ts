@@ -156,9 +156,10 @@ export interface ContentFile {
 // ─── Channel type union ───
 export type ChannelType = 'blog' | 'instagram' | 'threads' | 'longform' | 'shortform';
 
-export const CHANNEL_TABS: { key: ChannelType | 'base'; label: string; icon: string }[] = [
+export const CHANNEL_TABS: { key: ChannelType | 'base' | 'wordpress'; label: string; icon: string }[] = [
   { key: 'base', label: '기본글', icon: '📝' },
-  { key: 'blog', label: '블로그', icon: '📖' },
+  { key: 'blog', label: 'N 블로그', icon: '📖' },
+  { key: 'wordpress', label: 'WordPress', icon: '🌐' },
   { key: 'instagram', label: '카드뉴스', icon: '📸' },
   { key: 'threads', label: '스레드', icon: '🧵' },
   { key: 'longform', label: '롱폼', icon: '🎬' },

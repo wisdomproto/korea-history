@@ -9,6 +9,7 @@ import { NoteEditorPanel } from '@/features/notes/components/NoteEditorPanel';
 import { CbtExamPanel } from '@/features/cbt-import/components/CbtExamPanel';
 import { SummaryNoteViewer } from '@/features/summary-notes/components/SummaryNoteViewer';
 import AnalyticsView from '@/features/analytics/components/AnalyticsView';
+import { MarketingView } from '@/features/marketing/components/MarketingView';
 import { QuestionList } from '@/features/question/components/QuestionList';
 import { QuestionEditor } from '@/features/question/components/QuestionEditor';
 import { Button } from './Button';
@@ -120,9 +121,14 @@ export function ViewRouter({
         <NotesPanel />
       )}
 
-      {/* Content */}
+      {/* Content (legacy direct view — keep for exam→content deeplinks) */}
       {activeView === 'content' && (
         <ContentPanel />
+      )}
+
+      {/* Marketing (new multi-submenu workspace) */}
+      {activeView === 'marketing' && (
+        <MarketingView />
       )}
 
       {/* Notes Editor */}

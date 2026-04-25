@@ -5,16 +5,183 @@ import { config } from '../config.js';
 const PROJECTS_DIR = path.resolve(config.dataDir, '../projects');
 const INDEX_PATH = path.join(PROJECTS_DIR, 'index.json');
 
+export interface ProjectBrand {
+  name?: string;
+  description?: string;
+  usp?: string;
+  tone?: string;
+  industry?: string;
+  targetAudience?: string;
+  marketerName?: string;
+  marketerExpertise?: string;
+  marketerStyle?: string;
+  marketerPhrases?: string[];
+  bannedKeywords?: string[];
+  snsGoal?: string;
+}
+
+export interface ProjectWritingGuide {
+  global?: string;
+  blog?: string;
+  instagram?: string;
+  threads?: string;
+  youtube?: string;
+}
+
+export interface ReferenceFile {
+  id: string;
+  name: string;
+  url?: string;
+  extractedText?: string;
+  addedAt: string;
+}
+
+export interface ChannelCredentials {
+  wordpress?: {
+    siteUrl?: string;
+    username?: string;
+    appPassword?: string;
+  };
+  youtube?: {
+    channelId?: string;
+    handle?: string;
+  };
+  naverBlog?: {
+    blogId?: string;
+  };
+  threads?: {
+    handle?: string;
+  };
+}
+
+export type KeywordSource = 'naver' | 'gsc' | 'manual' | 'ai';
+export type KeywordStatus = 'backlog' | 'exploring' | 'in_content' | 'archived';
+
+export interface SavedKeyword {
+  id: string;
+  term: string;
+  source: KeywordSource;
+  savedAt: string;
+  status: KeywordStatus;
+  memo?: string;
+  // Naver metrics
+  volume?: number;
+  pcVolume?: number;
+  mobileVolume?: number;
+  competition?: string;
+  // GSC metrics
+  gscClicks?: number;
+  gscImpressions?: number;
+  gscCtr?: number;
+  gscPosition?: number;
+}
+
+export type IdeaChannel = 'blog' | 'instagram' | 'threads' | 'longform' | 'shortform';
+export type IdeaStatus = 'backlog' | 'in_progress' | 'published' | 'archived';
+
+export interface SavedIdea {
+  id: string;
+  title: string;
+  hook?: string;
+  description?: string;
+  keywords: string[];
+  targetChannel?: IdeaChannel;
+  savedAt: string;
+  status: IdeaStatus;
+  source?: 'manual' | 'ai';
+  priority?: number;
+}
+
+export interface IcpSpec {
+  summary?: string;
+  ageRange?: string;
+  occupation?: string;
+  pains?: string[];
+  motivations?: string[];
+  buyingTriggers?: string[];
+}
+
+export interface JtbdSpec {
+  id: string;
+  situation: string;
+  motivation: string;
+  outcome: string;
+}
+
+export type FunnelStageName = 'awareness' | 'interest' | 'evaluation' | 'conversion' | 'retention' | 'advocacy';
+
+export interface FunnelStage {
+  id: string;
+  name: FunnelStageName;
+  label: string;
+  description?: string;
+  kpiName?: string;
+  kpiTarget?: number;
+  kpiCurrent?: number;
+  channels?: string[];
+}
+
+export interface ChannelMixItem {
+  id: string;
+  channel: string;        // 'blog' | 'instagram' | 'youtube' | 'threads' | 'email' | 'ads' | 'community' ...
+  weightPct: number;
+  purpose?: string;
+}
+
+export interface SeasonEvent {
+  id: string;
+  date: string;            // YYYY-MM-DD
+  name: string;
+  type: 'exam' | 'campaign' | 'launch' | 'holiday' | 'other';
+  notes?: string;
+}
+
+export interface KeyResult {
+  id: string;
+  text: string;
+  target?: number;
+  current?: number;
+  unit?: string;
+}
+
+export interface Okr {
+  id: string;
+  quarter: string;
+  objective: string;
+  keyResults: KeyResult[];
+}
+
+export interface ProjectStrategy {
+  icp?: IcpSpec;
+  jtbds?: JtbdSpec[];
+  funnel?: { stages: FunnelStage[] };
+  channelMix?: ChannelMixItem[];
+  seasonCalendar?: SeasonEvent[];
+  okrs?: Okr[];
+}
+
 export interface Project {
   id: string;
   name: string;
   icon: string;
   createdAt: string;
+  updatedAt?: string;
   // NEW
   type: 'korean-history' | 'cbt';
   categoryCode?: string;
   examCount?: number;
   questionCount?: number;
+  // Settings
+  brand?: ProjectBrand;
+  writingGuide?: ProjectWritingGuide;
+  referenceFiles?: ReferenceFile[];
+  referenceSummary?: string;
+  channelCredentials?: ChannelCredentials;
+  // Ideas
+  savedKeywords?: SavedKeyword[];
+  savedIdeas?: SavedIdea[];
+  // Strategy
+  strategy?: ProjectStrategy;
 }
 
 interface CreateProjectParams {
@@ -94,12 +261,39 @@ export async function deleteProject(id: string): Promise<boolean> {
   return true;
 }
 
-export async function updateProject(id: string, updates: Partial<Pick<Project, 'name' | 'icon'>>): Promise<Project | null> {
+const UPDATABLE_FIELDS: Array<keyof Project> = [
+  'name',
+  'icon',
+  'brand',
+  'writingGuide',
+  'referenceFiles',
+  'referenceSummary',
+  'channelCredentials',
+  'savedKeywords',
+  'savedIdeas',
+  'strategy',
+];
+
+export async function updateProject(
+  id: string,
+  updates: Partial<Project>
+): Promise<Project | null> {
   const projects = await readProjects();
   const idx = projects.findIndex((p) => p.id === id);
   if (idx < 0) return null;
-  if (updates.name !== undefined) projects[idx].name = updates.name;
-  if (updates.icon !== undefined) projects[idx].icon = updates.icon;
+  const proj = projects[idx];
+  for (const key of UPDATABLE_FIELDS) {
+    if (updates[key] !== undefined) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (proj as any)[key] = updates[key];
+    }
+  }
+  proj.updatedAt = new Date().toISOString();
   await writeProjects(projects);
-  return projects[idx];
+  return proj;
+}
+
+export async function getProject(id: string): Promise<Project | null> {
+  const projects = await readProjects();
+  return projects.find((p) => p.id === id) ?? null;
 }

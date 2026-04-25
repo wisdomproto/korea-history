@@ -56,6 +56,21 @@ export interface DayOfWeekData {
   sessions: number;
 }
 
+export interface VideoEventsData {
+  play: number;
+  complete: number;
+  completionRate: number;
+  bySurface: Array<{ surface: string; play: number; complete: number }>;
+  topVideos: Array<{ videoId: string; title: string; play: number; complete: number }>;
+}
+
+export interface SearchKeywordData {
+  term: string;
+  source: string;
+  sessions: number;
+  users: number;
+}
+
 export interface DashboardData {
   overview: KpiData;
   channels: ChannelData[];
@@ -64,6 +79,8 @@ export interface DashboardData {
   devices: DeviceData[];
   hourly: HourlyData[];
   dayOfWeek: DayOfWeekData[];
+  videoEvents: VideoEventsData;
+  searchKeywords: SearchKeywordData[];
   cachedAt?: string;
 }
 
@@ -510,6 +527,182 @@ export async function getDayOfWeekPattern(
   return result;
 }
 
+// ─── Video Events ───
+
+export async function getVideoEvents(
+  startDate: string,
+  endDate: string
+): Promise<VideoEventsData> {
+  const cacheKey = `video:${startDate}:${endDate}`;
+  const cached = getCached<VideoEventsData>(cacheKey);
+  if (cached) return cached;
+
+  const analyticsClient = getClient();
+  const property = getPropertyId();
+
+  // Totals always work; surface/video breakdowns require custom dimensions
+  // registered in GA4 Admin (24~48h propagation) — gracefully degrade if missing.
+  const tryReport = async (opts: Parameters<typeof analyticsClient.runReport>[0]) => {
+    try {
+      const [r] = await analyticsClient.runReport(opts);
+      return r;
+    } catch (err) {
+      const msg = (err as Error).message || '';
+      if (msg.includes('INVALID_ARGUMENT') || msg.includes('customEvent')) return null;
+      throw err;
+    }
+  };
+
+  const [totalsRes, surfaceRes, topVidRes] = await Promise.all([
+    tryReport({
+      property,
+      dateRanges: [{ startDate, endDate }],
+      dimensions: [{ name: 'eventName' }],
+      metrics: [{ name: 'eventCount' }],
+      dimensionFilter: {
+        filter: {
+          fieldName: 'eventName',
+          inListFilter: { values: ['video_play', 'video_complete'] },
+        },
+      },
+    }),
+    tryReport({
+      property,
+      dateRanges: [{ startDate, endDate }],
+      dimensions: [
+        { name: 'eventName' },
+        { name: 'customEvent:surface' },
+      ],
+      metrics: [{ name: 'eventCount' }],
+      dimensionFilter: {
+        filter: {
+          fieldName: 'eventName',
+          inListFilter: { values: ['video_play', 'video_complete'] },
+        },
+      },
+    }),
+    tryReport({
+      property,
+      dateRanges: [{ startDate, endDate }],
+      dimensions: [
+        { name: 'eventName' },
+        { name: 'customEvent:video_id' },
+        { name: 'customEvent:video_title' },
+      ],
+      metrics: [{ name: 'eventCount' }],
+      dimensionFilter: {
+        filter: {
+          fieldName: 'eventName',
+          inListFilter: { values: ['video_play', 'video_complete'] },
+        },
+      },
+      orderBys: [{ metric: { metricName: 'eventCount' }, desc: true }],
+      limit: 40,
+    }),
+  ]);
+
+  let play = 0;
+  let complete = 0;
+  for (const r of totalsRes?.rows || []) {
+    const name = r.dimensionValues?.[0]?.value || '';
+    const c = Number(r.metricValues?.[0]?.value || 0);
+    if (name === 'video_play') play = c;
+    else if (name === 'video_complete') complete = c;
+  }
+
+  const surfaceMap = new Map<string, { play: number; complete: number }>();
+  for (const r of surfaceRes?.rows || []) {
+    const name = r.dimensionValues?.[0]?.value || '';
+    const surfaceRaw = r.dimensionValues?.[1]?.value || '(not set)';
+    const surface = surfaceRaw === '(not set)' || !surfaceRaw ? '기타' : surfaceRaw;
+    const c = Number(r.metricValues?.[0]?.value || 0);
+    const entry = surfaceMap.get(surface) || { play: 0, complete: 0 };
+    if (name === 'video_play') entry.play += c;
+    else if (name === 'video_complete') entry.complete += c;
+    surfaceMap.set(surface, entry);
+  }
+
+  const videoMap = new Map<string, { title: string; play: number; complete: number }>();
+  for (const r of topVidRes?.rows || []) {
+    const name = r.dimensionValues?.[0]?.value || '';
+    const videoId = r.dimensionValues?.[1]?.value || '';
+    const title = r.dimensionValues?.[2]?.value || '';
+    if (!videoId || videoId === '(not set)') continue;
+    const c = Number(r.metricValues?.[0]?.value || 0);
+    const entry = videoMap.get(videoId) || { title, play: 0, complete: 0 };
+    if (title && !entry.title) entry.title = title;
+    if (name === 'video_play') entry.play += c;
+    else if (name === 'video_complete') entry.complete += c;
+    videoMap.set(videoId, entry);
+  }
+
+  const topVideos = Array.from(videoMap.entries())
+    .map(([videoId, v]) => ({ videoId, title: v.title || videoId, play: v.play, complete: v.complete }))
+    .sort((a, b) => b.play - a.play)
+    .slice(0, 10);
+
+  const bySurface = Array.from(surfaceMap.entries())
+    .map(([surface, v]) => ({
+      surface: surface === 'question' ? '문제풀이' : surface === 'note' ? '요약노트' : surface,
+      play: v.play,
+      complete: v.complete,
+    }))
+    .sort((a, b) => b.play - a.play);
+
+  const result: VideoEventsData = {
+    play,
+    complete,
+    completionRate: play > 0 ? Math.round((complete / play) * 1000) / 10 : 0,
+    bySurface,
+    topVideos,
+  };
+
+  const ttl = getCacheTtl(startDate, endDate);
+  if (ttl > 0) setCache(cacheKey, result, ttl);
+  return result;
+}
+
+// ─── Search Keywords (유입 검색어) ───
+
+export async function getSearchKeywords(
+  startDate: string,
+  endDate: string
+): Promise<SearchKeywordData[]> {
+  const cacheKey = `keywords:${startDate}:${endDate}`;
+  const cached = getCached<SearchKeywordData[]>(cacheKey);
+  if (cached) return cached;
+
+  const analyticsClient = getClient();
+  const property = getPropertyId();
+
+  const [res] = await analyticsClient.runReport({
+    property,
+    dateRanges: [{ startDate, endDate }],
+    dimensions: [
+      { name: 'sessionManualTerm' },
+      { name: 'sessionSource' },
+    ],
+    metrics: [{ name: 'sessions' }, { name: 'totalUsers' }],
+    orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],
+    limit: 50,
+  });
+
+  const rows = res.rows ?? [];
+  const result: SearchKeywordData[] = rows
+    .map((r) => ({
+      term: r.dimensionValues?.[0]?.value ?? '',
+      source: r.dimensionValues?.[1]?.value ?? '(direct)',
+      sessions: Number(r.metricValues?.[0]?.value ?? 0),
+      users: Number(r.metricValues?.[1]?.value ?? 0),
+    }))
+    .filter((k) => k.term && k.term !== '(not set)' && k.term !== '(none)')
+    .slice(0, 30);
+
+  const ttl = getCacheTtl(startDate, endDate);
+  if (ttl > 0) setCache(cacheKey, result, ttl);
+  return result;
+}
+
 // ─── Dashboard (all-in-one) ───
 
 export async function getDashboard(
@@ -520,7 +713,7 @@ export async function getDashboard(
   const cached = getCached<DashboardData>(cacheKey);
   if (cached) return cached;
 
-  const [overview, channels, topPages, campaigns, devices, hourly, dayOfWeek] =
+  const [overview, channels, topPages, campaigns, devices, hourly, dayOfWeek, videoEvents, searchKeywords] =
     await Promise.all([
       getOverview(startDate, endDate),
       getChannelBreakdown(startDate, endDate),
@@ -529,6 +722,8 @@ export async function getDashboard(
       getDeviceBreakdown(startDate, endDate),
       getHourlyPattern(startDate, endDate),
       getDayOfWeekPattern(startDate, endDate),
+      getVideoEvents(startDate, endDate),
+      getSearchKeywords(startDate, endDate),
     ]);
 
   const result: DashboardData = {
@@ -539,6 +734,8 @@ export async function getDashboard(
     devices,
     hourly,
     dayOfWeek,
+    videoEvents,
+    searchKeywords,
     cachedAt: new Date().toISOString(),
   };
 

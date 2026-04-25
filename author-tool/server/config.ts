@@ -35,6 +35,9 @@ export const config = {
     clientEmail: process.env.GA4_CLIENT_EMAIL ?? '',
     privateKey: process.env.GA4_PRIVATE_KEY ?? '',
   },
+  gsc: {
+    siteUrl: process.env.GSC_SITE_URL ?? 'sc-domain:gcnote.co.kr',
+  },
   instagram: {
     userId: process.env.INSTAGRAM_USER_ID ?? '',
     accessToken: process.env.INSTAGRAM_ACCESS_TOKEN ?? '',

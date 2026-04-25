@@ -4,13 +4,12 @@ import { useEditorStore } from '@/store/editor.store';
 import { useQuery } from '@tanstack/react-query';
 import { apiGet } from '@/lib/axios';
 import { useState } from 'react';
-import { useContents } from '@/features/content/hooks/useContent';
 import { examApi } from '@/features/exam/api/exam.api';
 import { ProjectSelector } from './sidebar/ProjectSelector';
 import { ExamList } from './sidebar/ExamList';
 import { CbtExamList } from './sidebar/CbtExamList';
 import { NotesList } from './sidebar/NotesList';
-import { ContentList } from './sidebar/ContentList';
+import { MarketingSubmenu } from './sidebar/MarketingSubmenu';
 export { ERA_COLORS } from './sidebar/NotesList';
 
 interface Project {
@@ -31,7 +30,6 @@ interface SidebarProps {
 export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
   const {
     selectedExamId, setSelectedExamId,
-    selectedContentId, setSelectedContentId,
     selectedProjectId, setSelectedProjectId,
     sidebarSection, setSidebarSection,
     selectedNoteId, setSelectedNoteId,
@@ -42,7 +40,6 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
 
   const { data: exams } = useExams();
   const { data: notes } = useNotes();
-  const { data: contents } = useContents(selectedProjectId);
 
   const { data: projects } = useQuery<Project[]>({
     queryKey: ['projects'],
@@ -84,10 +81,10 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
             title="노트"
           >📝</button>
           <button
-            onClick={() => { setSidebarSection('content'); toggleSidebar(); }}
-            className={`p-1.5 rounded-lg text-sm transition-colors ${sidebarSection === 'content' ? 'bg-emerald-100' : 'hover:bg-gray-100'}`}
-            title="컨텐츠"
-          >✏️</button>
+            onClick={() => { setSidebarSection('marketing'); toggleSidebar(); }}
+            className={`p-1.5 rounded-lg text-sm transition-colors ${sidebarSection === 'marketing' ? 'bg-emerald-100' : 'hover:bg-gray-100'}`}
+            title="마케팅"
+          >📣</button>
         </div>
       </aside>
     );
@@ -147,11 +144,14 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
           {[
             { key: 'exam' as const, label: '📋 시험', count: exams?.length },
             { key: 'notes' as const, label: '📝 노트', count: notes?.length },
-            { key: 'content' as const, label: '✏️ 컨텐츠', count: contents?.length },
+            { key: 'marketing' as const, label: '📣 마케팅', count: undefined },
           ].map((t) => (
             <button
               key={t.key}
-              onClick={() => setSidebarSection(t.key)}
+              onClick={() => {
+                setSidebarSection(t.key);
+                if (t.key === 'marketing') setActiveView('marketing');
+              }}
               className={`flex-1 py-2 text-[11px] font-semibold transition-colors ${
                 sidebarSection === t.key
                   ? 'border-b-2 border-emerald-500 text-emerald-700'
@@ -195,14 +195,8 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
             />
           )}
 
-          {/* ─── ✏️ 컨텐츠 Tab ─── */}
-          {sidebarSection === 'content' && (
-            <ContentList
-              selectedProjectId={selectedProjectId}
-              selectedContentId={selectedContentId}
-              setSelectedContentId={setSelectedContentId}
-            />
-          )}
+          {/* ─── 📣 마케팅 Tab ─── */}
+          {sidebarSection === 'marketing' && <MarketingSubmenu />}
         </div>
       </div>
 

@@ -26,7 +26,23 @@ router.post('/', async (req, res, next) => {
   } catch (err) { next(err); }
 });
 
+router.get('/:id', async (req, res, next) => {
+  try {
+    const project = await projectService.getProject(req.params.id);
+    if (!project) return res.status(404).json({ success: false, error: 'Not found' });
+    res.json({ success: true, data: project });
+  } catch (err) { next(err); }
+});
+
 router.put('/:id', async (req, res, next) => {
+  try {
+    const project = await projectService.updateProject(req.params.id, req.body);
+    if (!project) return res.status(404).json({ success: false, error: 'Not found' });
+    res.json({ success: true, data: project });
+  } catch (err) { next(err); }
+});
+
+router.patch('/:id', async (req, res, next) => {
   try {
     const project = await projectService.updateProject(req.params.id, req.body);
     if (!project) return res.status(404).json({ success: false, error: 'Not found' });
