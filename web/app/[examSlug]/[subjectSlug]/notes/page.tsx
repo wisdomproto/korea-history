@@ -17,10 +17,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const exam = getExamTypeBySlug(decodeURIComponent(examSlug));
   const subject = getSubjectBySlug(decodeURIComponent(subjectSlug));
   if (!exam || !subject) return { title: "요약노트" };
+  // 한국사만 콘텐츠 LIVE (한능검 87노트 reuse), 그 외엔 placeholder → noindex
+  const hasContent = subject.id === "korean-history";
   return {
     title: `${exam.shortLabel} ${subject.label} 요약노트 — 기출노트`,
     description: `${exam.label} ${subject.label} 시대별/주제별 요약노트.`,
     alternates: { canonical: `${exam.routes.main}/${subject.slug}/notes` },
+    ...(hasContent ? {} : { robots: { index: false, follow: true } }),
   };
 }
 

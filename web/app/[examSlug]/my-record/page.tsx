@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${exam.shortLabel} 내 기록 — 기출노트`,
     description: `${exam.label} 학습 기록 (과목별 점수 / 약점 분석).`,
     alternates: { canonical: `${exam.routes.main}/my-record` },
+    robots: { index: false, follow: true },
   };
 }
 

@@ -9,7 +9,18 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/admin/", "/api/", "/study/session"],
+      disallow: [
+        "/admin/",
+        "/api/",
+        "/study/session",
+        // localStorage UI — 색인 X (AdSense 콘텐츠 평가에서 빈 페이지 제외)
+        "/wrong-answers",
+        "/my-record",
+        "/*/wrong-answers",
+        "/*/my-record",
+        "/*/*/wrong-answers",
+        "/*/*/my-record",
+      ],
     },
     sitemap: `${BASE_URL}/sitemap.xml`,
   };

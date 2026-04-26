@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${exam.shortLabel} ${subject.label} 오답노트 — 기출노트`,
     description: `${exam.label} ${subject.label} 학습 중 자동 수집된 오답.`,
     alternates: { canonical: `${exam.routes.main}/${subject.slug}/wrong-answers` },
+    robots: { index: false, follow: true }, // localStorage UI — 색인 X
   };
 }
 
