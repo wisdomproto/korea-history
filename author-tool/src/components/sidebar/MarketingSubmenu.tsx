@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useEditorStore, type MarketingSubmenu } from '@/store/editor.store';
 
 interface MenuItem {
@@ -11,10 +12,40 @@ interface MenuGroup {
   items: MenuItem[];
 }
 
-const MENU: MenuGroup[] = [
+/**
+ * 사이트 단위 마케팅 — 브랜드/광고/GA4/채널 통합 관리.
+ * 시험별 콘텐츠/발행/모니터링은 제외 (개별 시험 프로젝트로).
+ */
+const SITE_MENU: MenuGroup[] = [
   {
     label: null,
-    items: [{ id: 'settings', label: '프로젝트 설정', icon: '⚙️' }],
+    items: [{ id: 'settings', label: '브랜드 / API 연동', icon: '⚙️' }],
+  },
+  {
+    label: '유료 마케팅',
+    items: [{ id: 'ads', label: '사이트 광고 통합', icon: '📣' }],
+  },
+  {
+    label: '분석',
+    items: [
+      { id: 'site-analytics', label: 'GA4 사이트 분석', icon: '📊' },
+      { id: 'channel-analytics', label: '채널 분석 (IG·YT)', icon: '📈' },
+    ],
+  },
+  {
+    label: '전략',
+    items: [{ id: 'strategy', label: '사이트 마케팅 전략', icon: '🧭' }],
+  },
+];
+
+/**
+ * 시험별 마케팅 — 개별 ExamType (한능검·9급·자격증 등) 단위.
+ * 시험 시즌 콘텐츠/광고/모니터링/경쟁사.
+ */
+const EXAM_MENU: MenuGroup[] = [
+  {
+    label: null,
+    items: [{ id: 'settings', label: '시험 설정 / 글쓰기 가이드', icon: '⚙️' }],
   },
   {
     label: '오가닉 마케팅',
@@ -30,24 +61,33 @@ const MENU: MenuGroup[] = [
   },
   {
     label: '유료 마케팅',
-    items: [{ id: 'ads', label: '광고 관리', icon: '📣' }],
+    items: [{ id: 'ads', label: '시험 시즌 광고', icon: '📣' }],
   },
   {
     label: '분석',
-    items: [
-      { id: 'site-analytics', label: '사이트 분석', icon: '📊' },
-      { id: 'channel-analytics', label: '채널 분석', icon: '📈' },
-      { id: 'competitor', label: '경쟁사', icon: '🎯' },
-    ],
+    items: [{ id: 'competitor', label: '경쟁사', icon: '🎯' }],
   },
   {
     label: '전략',
-    items: [{ id: 'strategy', label: '마케팅 전략', icon: '🧭' }],
+    items: [{ id: 'strategy', label: '시험 마케팅 전략', icon: '🧭' }],
   },
 ];
 
-export function MarketingSubmenu() {
+interface MarketingSubmenuProps {
+  scope?: 'site' | 'exam';
+}
+
+export function MarketingSubmenu({ scope = 'exam' }: MarketingSubmenuProps) {
   const { marketingSubmenu, setMarketingSubmenu } = useEditorStore();
+  const MENU = scope === 'site' ? SITE_MENU : EXAM_MENU;
+
+  // scope이 바뀌었는데 현재 선택된 메뉴가 새 scope에 없으면 첫 메뉴로 reset
+  useEffect(() => {
+    const allIds = MENU.flatMap((g) => g.items.map((i) => i.id));
+    if (marketingSubmenu && !allIds.includes(marketingSubmenu)) {
+      setMarketingSubmenu(allIds[0]);
+    }
+  }, [scope, marketingSubmenu, setMarketingSubmenu, MENU]);
 
   return (
     <nav className="flex flex-col gap-0.5 px-2 py-2">

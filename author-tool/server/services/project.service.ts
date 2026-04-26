@@ -160,14 +160,25 @@ export interface ProjectStrategy {
   okrs?: Okr[];
 }
 
+/**
+ * 마케팅 프로젝트 scope (2026-04-26):
+ * - 'site' = 사이트 단위 (gcnote.co.kr 전체 브랜드/광고/GA4) — 1개 고정
+ * - 'exam' = 시험별 (개별 ExamType 콘텐츠/발행/모니터링)
+ */
+export type ProjectScope = 'site' | 'exam';
+
 export interface Project {
   id: string;
   name: string;
   icon: string;
   createdAt: string;
   updatedAt?: string;
-  // NEW
-  type: 'korean-history' | 'cbt';
+  // 2-layer 마케팅 구조 (NEW 2026-04-26)
+  scope: ProjectScope;
+  /** scope='exam'일 때 — web ExamType.id 참조 (예: 'korean-history', 'civil-9n-haengjeong') */
+  examTypeId?: string;
+  // Legacy (CBT 시스템용 — 유지)
+  type: 'korean-history' | 'cbt' | 'site';
   categoryCode?: string;
   examCount?: number;
   questionCount?: number;
@@ -187,10 +198,30 @@ export interface Project {
 interface CreateProjectParams {
   name: string;
   icon?: string;
-  type?: 'korean-history' | 'cbt';
+  type?: 'korean-history' | 'cbt' | 'site';
+  scope?: ProjectScope;
+  examTypeId?: string;
   categoryCode?: string;
   examCount?: number;
   questionCount?: number;
+}
+
+const SITE_PROJECT_ID = 'site-gcnote';
+
+function buildSiteProject(): Project {
+  return {
+    id: SITE_PROJECT_ID,
+    name: 'gcnote.co.kr',
+    icon: '🌐',
+    createdAt: new Date().toISOString(),
+    scope: 'site',
+    type: 'site',
+    brand: {
+      name: '기출노트',
+      description: '한능검·공무원·자격증 기출 학습 플랫폼',
+      tone: '실용적·간결',
+    },
+  };
 }
 
 async function ensureDir() {
@@ -203,31 +234,73 @@ export async function readProjects(): Promise<Project[]> {
     const raw = await fs.readFile(INDEX_PATH, 'utf-8');
     const projects: Project[] = JSON.parse(raw);
 
-    // Migration: add type field if missing
     let migrated = false;
+
+    // Migration 1: legacy `type` 필드 추가
     for (const proj of projects) {
       if (!proj.type) {
         proj.type = proj.id === 'proj-default' ? 'korean-history' : 'cbt';
         migrated = true;
       }
     }
+
+    // Migration 2 (2026-04-26): scope 필드 추가
+    for (const proj of projects) {
+      if (!proj.scope) {
+        proj.scope = 'exam';
+        if (proj.id === 'proj-default') {
+          proj.examTypeId = 'korean-history';
+        } else if (proj.type === 'cbt' && proj.categoryCode && !proj.examTypeId) {
+          // cbt 프로젝트는 categoryCode를 examTypeId 후보로 — UI에서 사용자가 ExamType selector로 정정
+          proj.examTypeId = proj.categoryCode;
+        }
+        migrated = true;
+      }
+    }
+
+    // Migration 3 (2026-04-26): site 프로젝트 자동 생성 (없으면)
+    if (!projects.some((p) => p.id === SITE_PROJECT_ID)) {
+      projects.unshift(buildSiteProject());
+      migrated = true;
+    }
+
     if (migrated) {
       await writeProjects(projects);
     }
 
     return projects;
   } catch {
-    // Create default project
-    const defaultProject: Project = {
+    // Bootstrap: site + 한능검 두 프로젝트 동시 생성
+    const sitePr = buildSiteProject();
+    const koreanHist: Project = {
       id: 'proj-default',
       name: '한국사능력검정시험',
       icon: '📚',
       createdAt: new Date().toISOString(),
+      scope: 'exam',
+      examTypeId: 'korean-history',
       type: 'korean-history',
     };
-    await writeProjects([defaultProject]);
-    return [defaultProject];
+    await writeProjects([sitePr, koreanHist]);
+    return [sitePr, koreanHist];
   }
+}
+
+/** 사이트 단위 프로젝트 (단일, 항상 존재) */
+export async function getSiteProject(): Promise<Project> {
+  const projects = await readProjects();
+  const site = projects.find((p) => p.id === SITE_PROJECT_ID || p.scope === 'site');
+  if (site) return site;
+  // Defensive: readProjects가 보장하지만 안전 장치
+  const fresh = buildSiteProject();
+  await writeProjects([...projects, fresh]);
+  return fresh;
+}
+
+/** 시험별 프로젝트들 (scope='exam') */
+export async function getExamProjects(): Promise<Project[]> {
+  const projects = await readProjects();
+  return projects.filter((p) => p.scope === 'exam');
 }
 
 async function writeProjects(projects: Project[]): Promise<void> {
@@ -237,12 +310,15 @@ async function writeProjects(projects: Project[]): Promise<void> {
 
 export async function createProject(params: CreateProjectParams): Promise<Project> {
   const projects = await readProjects();
+  const scope: ProjectScope = params.scope ?? 'exam';
   const project: Project = {
     id: `proj-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
     name: params.name,
     icon: params.icon ?? '📁',
     createdAt: new Date().toISOString(),
-    type: params.type ?? 'korean-history',
+    scope,
+    examTypeId: params.examTypeId,
+    type: params.type ?? (scope === 'site' ? 'site' : 'korean-history'),
     categoryCode: params.categoryCode,
     examCount: params.examCount,
     questionCount: params.questionCount,
@@ -253,7 +329,7 @@ export async function createProject(params: CreateProjectParams): Promise<Projec
 }
 
 export async function deleteProject(id: string): Promise<boolean> {
-  if (id === 'proj-default') return false; // Can't delete default
+  if (id === 'proj-default' || id === SITE_PROJECT_ID) return false; // 사이트/한국사 보호
   const projects = await readProjects();
   const filtered = projects.filter((p) => p.id !== id);
   if (filtered.length === projects.length) return false;
@@ -272,6 +348,7 @@ const UPDATABLE_FIELDS: Array<keyof Project> = [
   'savedKeywords',
   'savedIdeas',
   'strategy',
+  'examTypeId',
 ];
 
 export async function updateProject(

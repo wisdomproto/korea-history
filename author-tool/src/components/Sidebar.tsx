@@ -16,7 +16,9 @@ interface Project {
   id: string;
   name: string;
   icon: string;
-  type?: 'korean-history' | 'cbt';
+  type?: 'korean-history' | 'cbt' | 'site';
+  scope?: 'site' | 'exam';
+  examTypeId?: string;
   categoryCode?: string;
   examCount?: number;
   questionCount?: number;
@@ -48,6 +50,7 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
 
   const currentProject = projects?.find((p) => p.id === selectedProjectId);
   const isCbt = currentProject?.type === 'cbt';
+  const isSite = currentProject?.scope === 'site' || currentProject?.type === 'site';
 
   // ─── Collapsed sidebar ───
   if (sidebarCollapsed) {
@@ -139,64 +142,77 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
       {/* ═══ 3. Tabs + Tab Content ═══ */}
       <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
 
-        {/* Tabs */}
-        <div className="flex border-b bg-white sticky top-0 z-10">
-          {[
-            { key: 'exam' as const, label: '📋 시험', count: exams?.length },
-            { key: 'notes' as const, label: '📝 노트', count: notes?.length },
-            { key: 'marketing' as const, label: '📣 마케팅', count: undefined },
-          ].map((t) => (
-            <button
-              key={t.key}
-              onClick={() => {
-                setSidebarSection(t.key);
-                if (t.key === 'marketing') setActiveView('marketing');
-              }}
-              className={`flex-1 py-2 text-[11px] font-semibold transition-colors ${
-                sidebarSection === t.key
-                  ? 'border-b-2 border-emerald-500 text-emerald-700'
-                  : 'text-gray-400 hover:text-gray-600'
-              }`}
-            >
-              {t.label} <span className="text-[9px] font-normal">{t.count ?? ''}</span>
-            </button>
-          ))}
-        </div>
+        {/* Tabs — site project는 마케팅만 의미 있음 */}
+        {!isSite ? (
+          <div className="flex border-b bg-white sticky top-0 z-10">
+            {[
+              { key: 'exam' as const, label: '📋 시험', count: exams?.length },
+              { key: 'notes' as const, label: '📝 노트', count: notes?.length },
+              { key: 'marketing' as const, label: '📣 마케팅', count: undefined },
+            ].map((t) => (
+              <button
+                key={t.key}
+                onClick={() => {
+                  setSidebarSection(t.key);
+                  if (t.key === 'marketing') setActiveView('marketing');
+                }}
+                className={`flex-1 py-2 text-[11px] font-semibold transition-colors ${
+                  sidebarSection === t.key
+                    ? 'border-b-2 border-emerald-500 text-emerald-700'
+                    : 'text-gray-400 hover:text-gray-600'
+                }`}
+              >
+                {t.label} <span className="text-[9px] font-normal">{t.count ?? ''}</span>
+              </button>
+            ))}
+          </div>
+        ) : (
+          <div className="border-b bg-emerald-50 px-4 py-2 text-[11px] font-bold text-emerald-700">
+            🌐 사이트 마케팅
+          </div>
+        )}
 
         {/* Tab content */}
         <div className="flex-1 overflow-y-auto">
-          {/* ─── 📋 시험 Tab ─── */}
-          {sidebarSection === 'exam' && (
-            isCbt ? (
-              <CbtExamList
-                categoryCode={currentProject?.categoryCode}
-                selectedCbtExamId={selectedCbtExamId}
-                setSelectedCbtExamId={setSelectedCbtExamId}
-              />
-            ) : (
-              <ExamList
-                selectedExamId={selectedExamId}
-                setSelectedExamId={setSelectedExamId}
-                setActiveView={setActiveView}
-                onCreateExam={onCreateExam}
-                onDeleteExam={onDeleteExam}
-              />
-            )
-          )}
+          {/* site 프로젝트 → 마케팅만 */}
+          {isSite ? (
+            <MarketingSubmenu scope="site" />
+          ) : (
+            <>
+              {/* ─── 📋 시험 Tab ─── */}
+              {sidebarSection === 'exam' && (
+                isCbt ? (
+                  <CbtExamList
+                    categoryCode={currentProject?.categoryCode}
+                    selectedCbtExamId={selectedCbtExamId}
+                    setSelectedCbtExamId={setSelectedCbtExamId}
+                  />
+                ) : (
+                  <ExamList
+                    selectedExamId={selectedExamId}
+                    setSelectedExamId={setSelectedExamId}
+                    setActiveView={setActiveView}
+                    onCreateExam={onCreateExam}
+                    onDeleteExam={onDeleteExam}
+                  />
+                )
+              )}
 
-          {/* ─── 📝 요약노트 Tab ─── */}
-          {sidebarSection === 'notes' && (
-            <NotesList
-              isCbt={isCbt}
-              categoryCode={currentProject?.categoryCode}
-              selectedNoteId={selectedNoteId}
-              setSelectedNoteId={setSelectedNoteId}
-              setActiveView={setActiveView}
-            />
-          )}
+              {/* ─── 📝 요약노트 Tab ─── */}
+              {sidebarSection === 'notes' && (
+                <NotesList
+                  isCbt={isCbt}
+                  categoryCode={currentProject?.categoryCode}
+                  selectedNoteId={selectedNoteId}
+                  setSelectedNoteId={setSelectedNoteId}
+                  setActiveView={setActiveView}
+                />
+              )}
 
-          {/* ─── 📣 마케팅 Tab ─── */}
-          {sidebarSection === 'marketing' && <MarketingSubmenu />}
+              {/* ─── 📣 마케팅 Tab ─── */}
+              {sidebarSection === 'marketing' && <MarketingSubmenu scope="exam" />}
+            </>
+          )}
         </div>
       </div>
 

@@ -7,11 +7,15 @@ export interface Project {
   id: string;
   name: string;
   icon: string;
-  type?: 'korean-history' | 'cbt';
+  type?: 'korean-history' | 'cbt' | 'site';
+  scope?: 'site' | 'exam';
+  examTypeId?: string;
   categoryCode?: string;
   examCount?: number;
   questionCount?: number;
 }
+
+const SITE_PROJECT_ID = 'site-gcnote';
 
 interface ProjectSelectorProps {
   selectedProjectId: string;
@@ -54,15 +58,18 @@ export function ProjectSelector({ selectedProjectId, setSelectedProjectId }: Pro
 
   const selected = projects?.find((p) => p.id === selectedProjectId);
 
-  const sorted = [...(projects || [])].sort((a, b) => {
-    if (a.type === 'korean-history') return -1;
-    if (b.type === 'korean-history') return 1;
-    return a.name.localeCompare(b.name, 'ko');
-  });
+  const siteProject = projects?.find((p) => p.scope === 'site' || p.id === SITE_PROJECT_ID);
+  const examProjects = (projects || [])
+    .filter((p) => p.scope !== 'site' && p.id !== SITE_PROJECT_ID)
+    .sort((a, b) => {
+      if (a.type === 'korean-history') return -1;
+      if (b.type === 'korean-history') return 1;
+      return a.name.localeCompare(b.name, 'ko');
+    });
 
   const filtered = search.trim()
-    ? sorted.filter((p) => p.name.toLowerCase().includes(search.trim().toLowerCase()))
-    : sorted;
+    ? examProjects.filter((p) => p.name.toLowerCase().includes(search.trim().toLowerCase()))
+    : examProjects;
 
   const handleAddProject = () => {
     const name = newProjectName.trim();
@@ -103,8 +110,34 @@ export function ProjectSelector({ selectedProjectId, setSelectedProjectId }: Pro
             />
           </div>
 
-          {/* Project list */}
+          {/* Project list — 2-section (사이트 / 시험별) */}
           <div className="overflow-y-auto flex-1">
+            {/* 🌐 사이트 마케팅 */}
+            {siteProject && (
+              <>
+                <div className="sticky top-0 bg-gray-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-gray-500">
+                  사이트 마케팅
+                </div>
+                <div
+                  onClick={() => { setSelectedProjectId(siteProject.id); setOpen(false); }}
+                  className={`group flex cursor-pointer items-center justify-between px-3 py-2 transition-colors ${
+                    siteProject.id === selectedProjectId ? 'bg-emerald-50 text-emerald-700' : 'hover:bg-gray-50'
+                  }`}
+                >
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <span className="text-sm">{siteProject.icon}</span>
+                    <span className={`text-xs font-bold truncate ${siteProject.id === selectedProjectId ? 'text-emerald-700' : 'text-gray-700'}`}>
+                      {siteProject.name}
+                    </span>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {/* 📚 시험별 마케팅 */}
+            <div className="sticky top-0 bg-gray-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-gray-500">
+              시험별 마케팅 ({filtered.length})
+            </div>
             {filtered.map((p) => (
               <div
                 key={p.id}
