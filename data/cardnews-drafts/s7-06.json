@@ -1,0 +1,72 @@
+{
+  "noteId": "s7-06",
+  "noteTitle": "한국 전쟁 (1950~1953)",
+  "questionCount": 21,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "한국 전쟁",
+      "era": "현대",
+      "year_label": "1950",
+      "vol": "VOL.S7-06",
+      "next_topic": "이승만 정권 개헌",
+      "next_subtitle": "발췌·사사오입 두 차례 개헌"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1950",
+      "era_chip": "現代 · 1950 · 動亂",
+      "title_lines": ["6·25", "동란"],
+      "subtitle": "남침과 인천상륙,\n3년의 동족상잔.",
+      "imagePrompt": "Contemporary Korean minimal illustration. Gray, red, blue simple palette. Suits, military uniforms, civilian clothing. Gwanghwamun, National Assembly, democracy plaza background. CENTER: a wide gray map silhouette of the Korean peninsula with a thick red dashed arrow descending from the north and a blue arrow rising from Incheon (west coast) toward the center. Small soldier silhouettes (one in helmet on each side, profile view) facing each other across a low ridge. Background: smoke wisps rising from a distant city silhouette. Color: gray base + red southward arrow + blue Incheon landing arrow + small amber explosion accent. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "남침", "sub": "1950.6.25 북한 기습 침공" },
+        { "word": "낙동강", "sub": "8~9월 최후 방어선" },
+        { "word": "인천상륙", "sub": "9.15 맥아더 작전 성공" },
+        { "word": "한미동맹", "sub": "1953.10 상호방위조약" }
+      ]
+    },
+    "facts": {
+      "headline_top": "한 전쟁의",
+      "headline_accent": "다섯 국면.",
+      "image": null,
+      "timeline": [
+        { "year": "1950", "month": "6월", "text": "북한 남침, 사흘 만에 서울 함락." },
+        { "year": "1950", "month": "9월", "text": "인천상륙작전, 9.28 서울 수복." },
+        { "year": "1950", "month": "12월", "text": "중공군 개입, 흥남 철수 작전." },
+        { "year": "1953", "month": "10월", "text": "한미상호방위조약 체결." }
+      ]
+    },
+    "people": {
+      "headline_top": "전쟁의 결정,",
+      "headline_accent": "세 인물.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "이승만", "role": "대통령", "desc": "작전 지휘권 유엔군에 이양.", "portrait_src": null },
+        { "name": "맥아더", "role": "유엔군 사령관", "desc": "인천상륙 성공, 압록강까지 진격.", "portrait_src": null },
+        { "name": "김일성", "role": "북한 수상", "desc": "남침 결정, 중공군 개입 요청.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["분단은 굳어지고,", "동맹이 시작됐다."],
+      "items": [
+        { "title": "휴전 협정", "desc": "1953.7 판문점 정전 체결." },
+        { "title": "한미동맹", "desc": "10월 상호방위조약 체결." },
+        { "title": "흥남 철수", "desc": "10만 피난민 선박 대피." },
+        { "title": "분단 고착", "desc": "DMZ 설정, 분단 영속화." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"남침·낙동·인천·중공\"\n네 국면 순서를 외울 것.",
+      "tip_body": "심화 시험에서는 인천상륙(9.15)과 1.4 후퇴의 시간 순서, 흥남 철수의 의의, 한미상호방위조약 체결 시점이 자주 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open Korean classical book icon next to a small Korean peninsula silhouette with a thin red horizontal line at the middle. Cream #F5EFE4 base + amber #B45309 accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

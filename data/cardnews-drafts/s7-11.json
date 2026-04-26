@@ -1,0 +1,72 @@
+{
+  "noteId": "s7-11",
+  "noteTitle": "제5공화국",
+  "questionCount": 58,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "제5공화국",
+      "era": "현대",
+      "year_label": "1980~1988",
+      "vol": "VOL.S7-11",
+      "next_topic": "6월 민주항쟁",
+      "next_subtitle": "1987, 직선제를 쟁취한 시민의 6월"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1980",
+      "era_chip": "現代 · 1980 · 新軍部",
+      "title_lines": ["신군부", "광주"],
+      "subtitle": "12·12로 빼앗고,\n5·18로 응답받다.",
+      "imagePrompt": "Contemporary Korean minimal illustration. Gray, red, blue simple palette. Suits, military uniforms, civilian clothing. Gwanghwamun, National Assembly, democracy plaza background. CENTER: a wide low-angle view of Gwangju Geumnamno street with a tall granite memorial spire (5·18 memorial) silhouette in the distance. FOREGROUND: a single white camellia bloom resting on the ground. Color palette: cold gray + concrete white + a single crimson accent on the camellia. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "12·12", "sub": "1979, 신군부의 권력 장악" },
+        { "word": "5·18", "sub": "1980, 광주 민주화운동" },
+        { "word": "8차개헌", "sub": "7년 단임·간선제" },
+        { "word": "3저호황", "sub": "저금리·저달러·저유가" }
+      ]
+    },
+    "facts": {
+      "headline_top": "한 시대의",
+      "headline_accent": "다섯 사건.",
+      "image": null,
+      "timeline": [
+        { "year": "1979", "month": "12월", "text": "12·12 사태. 전두환 등 신군부 권력 장악." },
+        { "year": "1980", "month": "5월", "text": "5·18 광주 민주화운동. 계엄군 진압." },
+        { "year": "1980", "month": "10월", "text": "제8차 개헌. 7년 단임 간선제 확정." },
+        { "year": "1985", "month": "9월", "text": "최초 이산가족 고향방문·예술공연단 교환." }
+      ]
+    },
+    "people": {
+      "headline_top": "권력과 저항,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "전두환", "role": "대통령", "desc": "12·12로 집권, 7년 단임 정권 운영.", "portrait_src": null },
+        { "name": "최규하", "role": "10대 대통령", "desc": "10·26 직후 잠시 재임, 신군부에 밀려남.", "portrait_src": null },
+        { "name": "광주시민", "role": "5·18 주역", "desc": "시민군 결성, 민주화운동 상징.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["강압과 유화,", "두 얼굴의 정권."],
+      "items": [
+        { "title": "삼청교육대", "desc": "강제 교육·인권 침해 상징." },
+        { "title": "보도지침", "desc": "언론 통폐합 후 통제." },
+        { "title": "교복 자율화", "desc": "야간통금 해제·해외여행 자유." },
+        { "title": "프로야구", "desc": "1982, 우민화 정책 비판도." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"12·12 1979 · 5·18 1980\"\n신군부와 광주를 묶어라.",
+      "tip_body": "심화에서는 8차 개헌의 핵심(7년·단임·간선제), 5·18 기록물의 유네스코 등재, 3저 호황의 3요소, 최저임금 위원회(1987) 설립 시점이 잘 출제된다.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open Korean classical book icon next to a small silhouette of a memorial spire and a single white camellia bloom (no readable text). Cream #F2EDE3 base + amber #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

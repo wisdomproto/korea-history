@@ -1,0 +1,67 @@
+{
+  "noteId": "s2-10",
+  "noteTitle": "경제, 토지, 신분",
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "경제·토지·신분",
+      "era": "고려",
+      "year_label": "10~14세기",
+      "vol": "VOL.S2-10",
+      "next_topic": "고려 문화",
+      "next_subtitle": "역사서·유학·불교"
+    },
+    "cover": {
+      "year_top": "HISTORY · 10–14C",
+      "era_chip": "高麗 · 經濟·土地·身分",
+      "title_lines": ["경제", "신분"],
+      "subtitle": "전시과·해동통보·신분제,\n고려 사회의 세 축.",
+      "imagePrompt": "12th century Goryeo dynasty composite illustration. Foreground: a Goryeo court official with a land registry scroll. Middle: a coin (haedong tongbo) and silver bottle (eunbyeong) on a low wooden table. Background: tiered rice paddies and a small village of thatch-roof houses. Color: jade-green + harvest gold + earth-brown. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO READABLE SCROLLS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "전시과",   "sub": "관료 분급, 5단계 변천" },
+        { "word": "공음전",   "sub": "5품 이상, 세습 가능" },
+        { "word": "은병",     "sub": "활구, 고가 화폐" },
+        { "word": "신분제",   "sub": "양천 + 4신분 구조" }
+      ]
+    },
+    "facts": {
+      "headline_top": "토지·화폐·신분,",
+      "headline_accent": "한 사회의 세 면."
+,
+      "image": null,
+      "timeline": [
+        { "year": "940",  "month": "—", "text": "태조 역분전. 토지 분급 시작." },
+        { "year": "976",  "month": "—", "text": "경종 시정 전시과. 토지 제도 정립." },
+        { "year": "996",  "month": "—", "text": "건원중보 주조. 화폐 경제 시도." },
+        { "year": "고려", "month": "—", "text": "음서·공음전. 문벌 귀족 세습 토대." }
+      ]
+    },
+    "people": {
+      "headline_top": "사회의",
+      "headline_accent": "세 축.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "토지", "role": "전시과·공음전",  "desc": "수조권 분급, 5품 이상 세습.", "portrait_src": null },
+        { "name": "화폐", "role": "건원·해동·은병", "desc": "동전·은병 주조, 도시 중심 유통.", "portrait_src": null },
+        { "name": "신분", "role": "양인·천인",      "desc": "귀족·중류·양민·천민 4신분.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["세 구조가 얽혀,", "고려 사회를 만들었다."],
+      "items": [
+        { "title": "관료 사회 정립",   "desc": "전시과로 관료의 경제 기반 보장." },
+        { "title": "도시 상업 성장",   "desc": "벽란도·개경 시전 활성화." },
+        { "title": "신분 세습",       "desc": "음서·공음전으로 문벌 형성." },
+        { "title": "농촌 양극화",     "desc": "권문세족 대농장, 양민 노비화." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"전시과(토지) · 해동통보(화폐) · 음서(신분)\"\n세 축을 묶을 것.",
+      "tip_body": "심화 시험은 전시과 5단계 변천, 화폐 종류(건원·해동·은병), 신분제(귀족·중류·양민·천민)와 향·소·부곡, 음서 제도를 종합적으로 묶어 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: three small icons arranged in a triangle — a land map, a coin, a tiered figure suggesting class hierarchy. Jade-green + amber #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

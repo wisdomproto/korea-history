@@ -1,0 +1,72 @@
+{
+  "noteId": "s7-02",
+  "noteTitle": "모스크바 삼국 외상 회의 (1945.12)",
+  "questionCount": 48,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "모스크바 3상회의",
+      "era": "현대",
+      "year_label": "1945",
+      "vol": "VOL.S7-02",
+      "next_topic": "좌·우합작 운동",
+      "next_subtitle": "여운형·김규식의 통일 시도"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1945",
+      "era_chip": "現代 · 1945 · 三相",
+      "title_lines": ["삼상", "회의"],
+      "subtitle": "임시정부와 신탁통치,\n좌우가 갈라선 12월.",
+      "imagePrompt": "Contemporary Korean minimal illustration. Gray, red, blue simple palette. Suits, military uniforms, civilian clothing. Gwanghwamun, National Assembly, democracy plaza background. CENTER: three formally-dressed diplomat silhouettes (US, UK, Soviet) seated at a long round conference table, viewed from the side. On the table: an open document folder with abstract paper sheets (no readable text). Background: dark blue-gray wall with a stylized world map silhouette. Two small Korean civilian groups stand on opposite sides outside, one holding a red banner, one holding a blue banner. Color: gray suits + red and blue banner accents. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "임시정부", "sub": "한국인 자력 수립이 핵심" },
+        { "word": "미소공위", "sub": "1·2차 모두 결렬" },
+        { "word": "신탁통치", "sub": "최대 5년, 4개국 신탁" },
+        { "word": "찬·반탁", "sub": "좌익 1946.1.3 찬탁 전환" }
+      ]
+    },
+    "facts": {
+      "headline_top": "한 회의의",
+      "headline_accent": "다섯 결정.",
+      "image": null,
+      "timeline": [
+        { "year": "1945", "month": "12월", "text": "모스크바 3상회의 개최, 27일 발표." },
+        { "year": "1946", "month": "1월", "text": "좌익 반탁→찬탁 전환, 좌우 분열." },
+        { "year": "1946", "month": "3월", "text": "1차 미소공위 개최, 5월 결렬." },
+        { "year": "1947", "month": "5월", "text": "2차 미소공위 결렬, 유엔 이관." }
+      ]
+    },
+    "people": {
+      "headline_top": "찬과 반,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "이승만", "role": "반탁 우익", "desc": "신탁=제2식민, 즉시 독립론.", "portrait_src": null },
+        { "name": "김구", "role": "반탁 우익", "desc": "한국독립당 중심 반탁 운동 주도.", "portrait_src": null },
+        { "name": "박헌영", "role": "찬탁 좌익", "desc": "조선공산당, 모스크바 결정 지지.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["임정 수립이 핵심,", "신탁만 부각됐다."],
+      "items": [
+        { "title": "오보 보도", "desc": "동아일보가 신탁만 강조해 왜곡." },
+        { "title": "좌우 분열", "desc": "찬탁·반탁으로 정치권 양분." },
+        { "title": "공위 결렬", "desc": "협의 단체 문제로 합의 실패." },
+        { "title": "유엔 이관", "desc": "5·10 단독 선거의 출발점." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"임정 → 공위 → 신탁\"\n결정 순서를 외울 것.",
+      "tip_body": "심화 시험에서는 결정 사항의 순서, 좌익 찬탁 전환 시점(1946.1.3), 미소공위 결렬 원인(반탁 단체 배제 여부), 유엔 이관 흐름이 자주 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open Korean classical book icon next to a small round conference table silhouette with three tiny chairs. Cream #F5EFE4 base + amber #B45309 accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "noteId": "s2-04",
+  "noteTitle": "별무반과 여진 정벌",
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "별무반과 여진",
+      "era": "고려",
+      "year_label": "1104~1109",
+      "vol": "VOL.S2-04",
+      "next_topic": "고려 중앙 정치 조직",
+      "next_subtitle": "2성 6부와 도병마사"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1104–1109",
+      "era_chip": "高麗 · 別武班",
+      "title_lines": ["별무", "구성"],
+      "subtitle": "기병에 진 고려가,\n새로 만든 특수 부대.",
+      "imagePrompt": "12th century Goryeo dynasty illustration. ONE Korean general (Yun Gwan) on horseback in lamellar armor with a fur-trimmed helmet, leading three groups of soldiers: cavalry with bows (sin-gi-gun), infantry with spears (sin-bo-gun), and Buddhist monk-warriors with staves (hang-ma-gun). Snowy northern mountain landscape (East Asia 9 fortresses region). Color: steel-gray + crimson + ink-black. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO READABLE BANNERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "별무반",   "sub": "윤관, 신기·신보·항마군" },
+        { "word": "윤관",     "sub": "17만 대군 여진 정벌" },
+        { "word": "동북 9성", "sub": "1108 축조, 1109 반환" },
+        { "word": "천리장성", "sub": "1033~1044, 압록~도련포" }
+      ]
+    },
+    "facts": {
+      "headline_top": "기병에 진",
+      "headline_accent": "고려의 답.",
+      "image": null,
+      "timeline": [
+        { "year": "1104", "month": "—", "text": "윤관 1차 여진 정벌. 기병에 패배." },
+        { "year": "1104", "month": "—", "text": "숙종에 건의해 별무반 편성." },
+        { "year": "1107", "month": "—", "text": "윤관 17만 대군으로 여진 정벌, 대승." },
+        { "year": "1108", "month": "—", "text": "동북 9성 축조. 1년 후 반환." }
+      ]
+    },
+    "people": {
+      "headline_top": "별무반의",
+      "headline_accent": "세 부대.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "신기군", "role": "기병 부대",     "desc": "여진 기병에 대항하는 기마 부대.", "portrait_src": null },
+        { "name": "신보군", "role": "보병 부대",     "desc": "근접 전투를 담당한 주력 보병.", "portrait_src": null },
+        { "name": "항마군", "role": "승려 부대",     "desc": "불교 승려로 구성된 특수 부대.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["땅을 얻고도,", "1년 만에 돌려줬다."],
+      "items": [
+        { "title": "동북 9성 반환",   "desc": "여진 요청과 국력 소모로 반환." },
+        { "title": "금 건국",         "desc": "1115 여진이 금 건국, 사대 요구." },
+        { "title": "이자겸이 수용",   "desc": "고려가 금에 사대 관계 수락." },
+        { "title": "북진의 한계",     "desc": "기병 전력 한계로 영토 확장 좌절." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"신기·신보·항마\"\n별무반 3부대 외울 것.",
+      "tip_body": "심화 시험은 별무반 3부대 구성(신기군 기병·신보군 보병·항마군 승려), 윤관 동북 9성 축조와 1년 후 반환, 거란(서희·강감찬) vs 여진(윤관) 대응 비교 빈출.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: three small soldier silhouettes in a row — one mounted, one on foot with spear, one in monk's robe with staff — suggesting the three units of Byeolmuban. Cream #F2EDE3 base + amber #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

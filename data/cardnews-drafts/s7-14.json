@@ -1,0 +1,72 @@
+{
+  "noteId": "s7-14",
+  "noteTitle": "남북관계",
+  "questionCount": 38,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "남북관계",
+      "era": "현대",
+      "year_label": "1972~2018",
+      "vol": "VOL.S7-14",
+      "next_topic": "주요 사건·정책",
+      "next_subtitle": "역대 정부 경제·사회사 총정리"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1972",
+      "era_chip": "現代 · 1972 · 統一",
+      "title_lines": ["남북", "합의"],
+      "subtitle": "7·4 성명에서 판문점까지,\n네 번의 약속.",
+      "imagePrompt": "Contemporary Korean minimal illustration. Gray, red, blue simple palette. Suits, military uniforms, civilian clothing. Gwanghwamun, National Assembly, democracy plaza background. CENTER: two hands clasped in a handshake across a wide horizontal line representing the DMZ, with a small Panmunjom-style blue building roof silhouette in the background. Below the handshake: a delicate Korean peninsula outline. Color palette: cold gray + navy + a single sky-blue accent on the building roof. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "7·4성명", "sub": "1972, 자주·평화·민족대단결" },
+        { "word": "기본합의서", "sub": "1991, 화해·불가침·교류" },
+        { "word": "6·15선언", "sub": "2000, 1차 정상회담 결과" },
+        { "word": "10·4선언", "sub": "2007, 2차 정상회담 결과" }
+      ]
+    },
+    "facts": {
+      "headline_top": "한 시대의",
+      "headline_accent": "다섯 사건.",
+      "image": null,
+      "timeline": [
+        { "year": "1972", "month": "7월", "text": "7·4 남북공동성명. 3대 원칙 합의." },
+        { "year": "1991", "month": "12월", "text": "남북기본합의서·한반도 비핵화 선언." },
+        { "year": "2000", "month": "6월", "text": "제1차 남북정상회담. 김대중·김정일." },
+        { "year": "2007", "month": "10월", "text": "제2차 남북정상회담. 10·4 공동선언." }
+      ]
+    },
+    "people": {
+      "headline_top": "통일의 길,",
+      "headline_accent": "세 정부.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "박정희정부", "role": "1972", "desc": "7·4 성명·통일 3대 원칙 천명.", "portrait_src": null },
+        { "name": "노태우정부", "role": "1991", "desc": "남북 UN 동시 가입·기본합의서.", "portrait_src": null },
+        { "name": "김대중정부", "role": "2000", "desc": "햇빛정책·금강산 관광·1차 정상.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["만남과 협력,", "그 결실들."],
+      "items": [
+        { "title": "금강산 관광", "desc": "1998, 햇빛정책의 첫 결실." },
+        { "title": "경의선 복원", "desc": "끊긴 철도를 다시 잇다." },
+        { "title": "개성공단", "desc": "2002 합의·2007 가동." },
+        { "title": "이산가족상봉", "desc": "1985 첫 방문, 이후 정례화." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"7·4·91·00·07\"\n네 약속의 연도를 묶어라.",
+      "tip_body": "심화에서는 7·4 성명의 3대 원칙(자주·평화·민족대단결), 남북기본합의서의 성격, 6·15와 10·4 선언의 주체 구분이 빈출. 금강산·개성공단·경의선의 시기도 함께 정리.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open Korean classical book icon next to a small silhouette of two clasped hands and a Korean peninsula outline (no readable text). Cream #F2EDE3 base + amber #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

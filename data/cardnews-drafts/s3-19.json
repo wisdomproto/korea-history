@@ -1,0 +1,67 @@
+{
+  "noteId": "s3-19",
+  "noteTitle": "경제 활동",
+  "questionCount": 50,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "경제 활동",
+      "era": "조선 전기",
+      "year_label": "15c~16c",
+      "vol": "VOL.S3-19",
+      "next_topic": "대외 사절",
+      "next_subtitle": "사대와 교린의 두 얼굴"
+    },
+    "cover": {
+      "year_top": "HISTORY · 15c–16c",
+      "era_chip": "朝鮮 前期 · 經濟",
+      "title_lines": ["시전", "장시"],
+      "subtitle": "관허 상점과 5일장,\n중농억상의 그림자.",
+      "imagePrompt": "Joseon folk minhwa + genre-painting tones. Hanji beige, ink-black, crimson, navy. Scene: a busy Hanyang market street with rows of small wooden sijeon shops selling bolts of cloth and stacks of paper, and a few traveling bobusang merchants with A-frame backpacks (jige) walking past. A magistrate official in dopo and gat oversees the scene. Behind: tile-roofed shops and a glimpse of Jongno street. Composition: lively but orderly commerce. Color: hanji beige + ink-black + warm earth-brown + small crimson signboard accents. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "육의전", "sub": "시전의 6대 어용 상인" },
+        { "word": "보부상", "sub": "보상·부상, 행상 조직" },
+        { "word": "저화",   "sub": "태종, 한국 최초 지폐" },
+        { "word": "조선통보", "sub": "세종, 조선 최초 동전" }
+      ]
+    },
+    "facts": {
+      "headline_top": "통화는 실패하고,",
+      "headline_accent": "포가 돌았다.",
+      "image": null,
+      "timeline": [
+        { "year": "1391", "month": "5월",  "text": "과전법, 경기 토지 수조권 분급." },
+        { "year": "1401", "month": "전후", "text": "태종, 저화(닥나무 지폐) 발행." },
+        { "year": "1423", "month": "전후", "text": "세종, 조선통보(동전) 발행." },
+        { "year": "1466", "month": "8월",  "text": "세조, 직전법으로 현직만 수조." }
+      ]
+    },
+    "people": {
+      "headline_top": "경제를 설계한",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "태종", "role": "조선 3대 왕", "desc": "저화 발행, 화폐 유통 첫 시도.", "portrait_src": null },
+        { "name": "세종", "role": "조선 4대 왕", "desc": "조선통보 발행, 농사직설 편찬.", "portrait_src": null },
+        { "name": "강희맹", "role": "성종 신하",  "desc": "금양잡록 저술, 농업 기술 보급.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["국가는 화폐를 강제했고,", "백성은 포로 거래했다."],
+      "items": [
+        { "title": "관허 시전", "desc": "한양 종로, 독점 판매권 부여." },
+        { "title": "5일장 확산", "desc": "15c 후반 전라도 → 16c 전국." },
+        { "title": "포·미 거래", "desc": "면포·쌀이 실질 화폐로 통용." },
+        { "title": "왜관 무역", "desc": "3포 개항, 계해약조 50척 제한." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"저화=태종, 조선통보=세종\"\n화폐를 왕에 묶을 것.",
+      "tip_body": "심화에서는 조선 전기 화폐(저화·조선통보) 모두 유통 실패, 상평통보(숙종, 1678)는 조선 후기임을 구분할 것. 과전법(전·현직) → 직전법(현직만)의 변화도 핵심.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized round Korean coin with a square hole, and to the right a folded bolt of cloth (po) suggesting practical currency. Cream #F2EDE3 base + ink-black outline + warm copper-amber #B45309 accent on the coin. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

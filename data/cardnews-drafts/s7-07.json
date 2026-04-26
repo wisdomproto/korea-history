@@ -1,0 +1,72 @@
+{
+  "noteId": "s7-07",
+  "noteTitle": "이승만 정권 시대 개헌과 정치",
+  "questionCount": 90,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "이승만 정권 개헌",
+      "era": "현대",
+      "year_label": "1952",
+      "vol": "VOL.S7-07",
+      "next_topic": "제2공화국",
+      "next_subtitle": "장면 내각의 9개월"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1952",
+      "era_chip": "現代 · 1952 · 改憲",
+      "title_lines": ["발췌", "사사오입"],
+      "subtitle": "두 차례 개헌으로\n장기집권을 시도하다.",
+      "imagePrompt": "Contemporary Korean minimal illustration. Gray, red, blue simple palette. Suits, military uniforms, civilian clothing. Gwanghwamun, National Assembly, democracy plaza background. CENTER: a large stack of legal documents (constitution-style) on a wooden government desk, with a wooden gavel resting on top. Behind the desk: an empty tall-backed leather chair facing forward. To one side: a small line of military police silhouettes in helmets standing at attention. Background: a dark blue-gray wall with a faint stylized Korean flag silhouette. Color: warm gray base + amber gavel + small red accent on a torn paper. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "발췌개헌", "sub": "1952 직선제, 부산 파동" },
+        { "word": "사사오입", "sub": "1954 중임 제한 철폐" },
+        { "word": "진보당", "sub": "1958 조봉암 사형" },
+        { "word": "3·15", "sub": "1960 부정선거, 4·19 도화선" }
+      ]
+    },
+    "facts": {
+      "headline_top": "한 정권의",
+      "headline_accent": "다섯 사건.",
+      "image": null,
+      "timeline": [
+        { "year": "1952", "month": "7월", "text": "발췌개헌, 직선제 + 부산 정치 파동." },
+        { "year": "1954", "month": "11월", "text": "사사오입 개헌, 중임 제한 철폐." },
+        { "year": "1958", "month": "1월", "text": "진보당 사건, 조봉암 사형." },
+        { "year": "1960", "month": "3월", "text": "3·15 부정선거, 4·19 혁명 발발." }
+      ]
+    },
+    "people": {
+      "headline_top": "독재의 길,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "이승만", "role": "대통령", "desc": "두 차례 개헌으로 영구 집권 시도.", "portrait_src": null },
+        { "name": "이기붕", "role": "부통령 후보", "desc": "3·15 부정선거의 핵심 표적.", "portrait_src": null },
+        { "name": "조봉암", "role": "진보당 당수", "desc": "평화통일론, 간첩 혐의로 사형.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["헌법은 두 번 꺾였고,", "혁명이 이를 끝냈다."],
+      "items": [
+        { "title": "부산 파동", "desc": "계엄령 + 야당 의원 협박." },
+        { "title": "반올림 표결", "desc": "135.33→135 가결 강변." },
+        { "title": "보안법 강화", "desc": "경향신문 폐간, 언론 탄압." },
+        { "title": "4·19 혁명", "desc": "이승만 하야, 1공화국 붕괴." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"발췌→사사오입→3·15\"\n3대 정치 사건 순서를 외울 것.",
+      "tip_body": "심화 시험에서는 발췌개헌(직선제)과 사사오입(중임 제한 철폐)의 차이, 진보당 사건의 평화통일론, 3·15 부정선거가 4·19 혁명의 직접 원인이라는 점이 자주 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open Korean classical book icon next to a small wooden gavel silhouette with a constitution-style document. Cream #F5EFE4 base + amber #B45309 accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

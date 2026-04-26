@@ -8,7 +8,7 @@ import { CARD_NEWS_TEMPLATES, DEFAULT_CANVAS, applyTemplate } from './cardnews-t
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiGet, apiPost, apiPut, apiDelete } from '../../../lib/axios';
 
-import { SlideCanvas } from './cardnews/SlideCanvas';
+import { SlideCanvas, computeCommonTitleSize } from './cardnews/SlideCanvas';
 import { SlideCard } from './cardnews/SlideCard';
 import { SavedTemplateCard } from './cardnews/SavedTemplateCard';
 import { NewPresetInput } from './cardnews/NewPresetInput';
@@ -392,7 +392,12 @@ export function CardNewsPanel({ contentFile }: Props) {
                             ...tmpl.canvas,
                             textBlocks: tmpl.canvas.textBlocks.map((b: any) => {
                               const existing = s.canvas?.textBlocks.find((eb: TextBlock) => eb.id === b.id);
-                              return { ...b, text: existing?.text || '' };
+                              // 우선순위: 기존 textBlock.text → slide.title/body → 템플릿 기본 text
+                              const fallback =
+                                b.id === 'title' ? s.title :
+                                b.id === 'body'  ? s.body :
+                                undefined;
+                              return { ...b, text: existing?.text || fallback || b.text || '' };
                             }),
                           },
                         }));
@@ -544,6 +549,7 @@ export function CardNewsPanel({ contentFile }: Props) {
                       }}
                       onSaveImage={() => downloadSlide(slide, i)}
                       isGeneratingImage={genImage.isPending}
+                      commonTitleSize={computeCommonTitleSize(slides.map((s) => s.title || ''))}
                     />
                     {/* Inline editor under selected card */}
                     {selectedSlideIdx === i && (

@@ -16,6 +16,8 @@ export function ContentList({ selectedProjectId, selectedContentId, setSelectedC
   const [showNewContent, setShowNewContent] = useState(false);
   const [contentFilter, setContentFilter] = useState<'all' | 'exam' | 'note' | 'free'>('all');
   const [contentSearch, setContentSearch] = useState('');
+  const [sortBy, setSortBy] = useState<'title' | 'created' | 'updated'>('title');
+  const [sortDir, setSortDir] = useState<'asc' | 'desc'>('asc');
 
   return (
     <>
@@ -46,13 +48,45 @@ export function ContentList({ selectedProjectId, selectedContentId, setSelectedC
             </button>
           ))}
         </div>
+        {/* 정렬 controls */}
+        <div className="flex items-center gap-1.5">
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value as 'title' | 'created' | 'updated')}
+            className="flex-1 rounded border border-gray-200 px-2 py-1 text-[10px] focus:border-primary-500 focus:outline-none"
+          >
+            <option value="title">제목순</option>
+            <option value="created">생성일</option>
+            <option value="updated">수정일</option>
+          </select>
+          <button
+            onClick={() => setSortDir((d) => (d === 'asc' ? 'desc' : 'asc'))}
+            className="rounded border border-gray-200 px-2 py-1 text-[10px] hover:bg-gray-50"
+            title={sortDir === 'asc' ? '오름차순 (#01 → #87)' : '내림차순 (#87 → #01)'}
+          >
+            {sortDir === 'asc' ? '↑' : '↓'}
+          </button>
+        </div>
       </div>
-      <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 420px)' }}>
-        {contents?.filter((c: ContentMeta) => {
-          if (contentFilter !== 'all' && c.sourceType !== contentFilter) return false;
-          if (contentSearch && !c.title.includes(contentSearch)) return false;
-          return true;
-        }).map((c: ContentMeta) => (
+      <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 460px)' }}>
+        {contents
+          ?.filter((c: ContentMeta) => {
+            if (contentFilter !== 'all' && c.sourceType !== contentFilter) return false;
+            if (contentSearch && !c.title.includes(contentSearch)) return false;
+            return true;
+          })
+          .slice()
+          .sort((a: ContentMeta, b: ContentMeta) => {
+            const dir = sortDir === 'asc' ? 1 : -1;
+            if (sortBy === 'title') {
+              // localeCompare with numeric — "#01" vs "#10" 자연 정렬
+              return a.title.localeCompare(b.title, 'ko', { numeric: true }) * dir;
+            }
+            const aT = sortBy === 'created' ? a.createdAt : a.updatedAt || a.createdAt;
+            const bT = sortBy === 'created' ? b.createdAt : b.updatedAt || b.createdAt;
+            return (new Date(aT).getTime() - new Date(bT).getTime()) * dir;
+          })
+          .map((c: ContentMeta) => (
           <div
             key={c.id}
             onClick={() => setSelectedContentId(c.id)}

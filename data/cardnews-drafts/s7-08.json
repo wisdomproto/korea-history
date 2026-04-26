@@ -1,0 +1,72 @@
+{
+  "noteId": "s7-08",
+  "noteTitle": "제2공화국 (1960.6~1961.5)",
+  "questionCount": 61,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "제2공화국 장면 내각",
+      "era": "현대",
+      "year_label": "1960",
+      "vol": "VOL.S7-08",
+      "next_topic": "5·16 군사정변",
+      "next_subtitle": "박정희와 군부의 등장"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1960",
+      "era_chip": "現代 · 1960 · 革命",
+      "title_lines": ["4·19", "혁명"],
+      "subtitle": "학생과 시민이 세운\n9개월의 짧은 봄.",
+      "imagePrompt": "Contemporary Korean minimal illustration. Gray, red, blue simple palette. Suits, military uniforms, civilian clothing. Gwanghwamun, National Assembly, democracy plaza background. CENTER: a crowd of young Korean university students in 1960s school uniforms — boys in dark jackets, girls in white blouses — marching forward together with raised fists, viewed at a slight upward angle. One student in front holds a long blank cloth banner above his head (no readable text). Background: a wide stone plaza in front of a classical National Assembly building silhouette. Color: warm gray crowd + red banner accent + blue sky. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "4·19", "sub": "1960 학생·시민 혁명" },
+        { "word": "허정", "sub": "과도정부, 내각제 개헌" },
+        { "word": "장면", "sub": "국무총리, 실질 행정 수반" },
+        { "word": "양원제", "sub": "민의원·참의원 두 의회" }
+      ]
+    },
+    "facts": {
+      "headline_top": "한 공화국의",
+      "headline_accent": "다섯 장면.",
+      "image": null,
+      "timeline": [
+        { "year": "1960", "month": "4월", "text": "4·19 혁명, 이승만 26일 하야." },
+        { "year": "1960", "month": "6월", "text": "허정 과도정부, 내각제 개헌." },
+        { "year": "1960", "month": "7월", "text": "7·29 총선거, 민주당 압승." },
+        { "year": "1961", "month": "5월", "text": "5·16 군사정변, 제2공화국 붕괴." }
+      ]
+    },
+    "people": {
+      "headline_top": "공화국 9개월,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "윤보선", "role": "대통령", "desc": "의례적 국가원수, 구파 대표.", "portrait_src": null },
+        { "name": "장면", "role": "국무총리", "desc": "실질 행정 수반, 신파 대표.", "portrait_src": null },
+        { "name": "허정", "role": "과도정부 수반", "desc": "내각제·양원제 개헌 추진.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["내각제는 출범했고,", "9개월 만에 끝났다."],
+      "items": [
+        { "title": "김주열 시신", "desc": "마산 발견, 4·19 도화선." },
+        { "title": "양원제 도입", "desc": "민의원·참의원 첫 운영." },
+        { "title": "신구파 갈등", "desc": "민주당 분열, 정국 혼란." },
+        { "title": "5·16 정변", "desc": "박정희 군부, 9개월 만 붕괴." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"4·19→허정→장면→5·16\"\n네 단계 흐름을 외울 것.",
+      "tip_body": "심화 시험에서는 4·19 혁명의 도화선(김주열), 내각책임제 + 양원제 개헌, 장면 내각의 경제개발 5개년 계획 수립, 5·16 정변 시점이 자주 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open Korean classical book icon next to a small raised-fist silhouette with a blank cloth banner. Cream #F5EFE4 base + amber #B45309 accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

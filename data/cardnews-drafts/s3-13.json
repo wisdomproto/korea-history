@@ -1,0 +1,67 @@
+{
+  "noteId": "s3-13",
+  "noteTitle": "조선 과거제·교육 제도",
+  "questionCount": 128,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "과거제·교육",
+      "era": "조선 전기",
+      "year_label": "1392~1543",
+      "vol": "VOL.S3-13",
+      "next_topic": "서원과 향약",
+      "next_subtitle": "사림이 만든 향촌 질서"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1392–1543",
+      "era_chip": "朝鮮 前期 · 科擧·敎育",
+      "title_lines": ["과거", "교육"],
+      "subtitle": "소과에서 대과까지,\n관학과 사학의 두 길.",
+      "imagePrompt": "Joseon folk minhwa + genre-painting tones. Hanji beige, ink-black, crimson, navy. Scene: rows of scholars in white dopo and black gat seated cross-legged in a courtyard at Sungkyunkwan, each writing on a low desk with a brush and inkstone. In the background, a tile-roofed Myeongryundang lecture hall with wooden columns and a large stone Daeseongjeon shrine. Cherry blossoms or pine trees frame the scene. Soft morning light. Composition: orderly grid of scholars, formal authority. Color: hanji beige + ink-black + deep crimson banner accent. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "소과",   "sub": "생원·진사시, 백패 합격증" },
+        { "word": "대과",   "sub": "문과 33명, 홍패 합격증" },
+        { "word": "성균관", "sub": "최고 관학, 명륜당·대성전" },
+        { "word": "서원",   "sub": "사림 사립, 선현 제향" }
+      ]
+    },
+    "facts": {
+      "headline_top": "관료의 길은",
+      "headline_accent": "두 단계로.",
+      "image": null,
+      "timeline": [
+        { "year": "1398", "month": "윤5월", "text": "태조, 성균관 한양 이전 설립." },
+        { "year": "1418", "month": "전후", "text": "세종, 향교 전국 329곳 정비." },
+        { "year": "1543", "month": "8월", "text": "주세붕, 백운동서원 건립(최초 서원)." },
+        { "year": "1550", "month": "2월", "text": "이황 건의, 소수서원으로 사액." }
+      ]
+    },
+    "people": {
+      "headline_top": "교육을 세운",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "태조", "role": "조선 1대 왕", "desc": "성균관 설립, 향교 장려.", "portrait_src": null },
+        { "name": "주세붕", "role": "풍기 군수", "desc": "백운동서원 건립, 사림 거점.", "portrait_src": null },
+        { "name": "이황", "role": "성리학자", "desc": "소수서원 사액 건의, 서원 확산.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["관학이 약해진 자리,", "사학이 채워갔다."],
+      "items": [
+        { "title": "소과 합격",   "desc": "성균관 입학·하급 관직 자격." },
+        { "title": "대과 합격",   "desc": "문과 33명, 고위 관직 진출." },
+        { "title": "잡과 신분",   "desc": "역과·의과·음양과·율과, 중인." },
+        { "title": "서원 사액",   "desc": "면세·면역, 사림 경제 기반." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"백패는 소과, 홍패는 대과\"\n색깔로 단계를 묶을 것.",
+      "tip_body": "심화에서는 백패(소과)와 홍패(대과·무과) 합격증을 구분해야 한다. 성균관·향교는 공자 문묘 제향, 서원은 우리나라 선현 제향이 핵심 차이.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open scroll with a small wax seal on the right edge, and a tile-roofed gate silhouette behind it suggesting Sungkyunkwan. Cream #F2EDE3 base + amber #B45309 accent + ink-black outline. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "noteId": "s6-07",
+  "noteTitle": "광주 학생 항일 운동 (1929)",
+  "questionCount": 54,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "광주학생항일운동",
+      "era": "일제 강점기",
+      "year_label": "1929",
+      "vol": "VOL.S6-07",
+      "next_topic": "사회적 민족운동",
+      "next_subtitle": "노동·농민·여성·소년 운동"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1929",
+      "era_chip": "日帝 强占 · 1929 · 光州 抗日",
+      "title_lines": ["나주", "광주"],
+      "subtitle": "통학 열차의 한 사건,\n5만 학생을 흔들었다.",
+      "imagePrompt": "Japanese-occupation era illustration, November 1929. TWO Korean high-school students in dark navy school uniforms with high collars and round caps, walking briskly side by side down a tree-lined Gwangju street, fists tightened, alert determined three-quarter view. In the misty distance behind them: a small steam train pausing at a tiny rural station platform with a single bare lamp (Naju station reference). On the ground around their feet: scattered fallen autumn leaves. Color: dark blue-gray + crimson autumn-leaf accent + sepia background + warm amber lamp. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "나주역 충돌", "sub": "한일 학생 발단 사건" },
+        { "word": "11월 3일", "sub": "광주 시내 대규모 시위" },
+        { "word": "신간회", "sub": "진상조사단 파견" },
+        { "word": "5만 4천 명", "sub": "전국 194개교 참여" }
+      ]
+    },
+    "facts": {
+      "headline_top": "5개월의",
+      "headline_accent": "네 장면.",
+      "image": null,
+      "timeline": [
+        { "year": "1929", "month": "10월", "text": "나주역 충돌. 한일 학생 간 통학열차 마찰." },
+        { "year": "1929", "month": "11월", "text": "광주 시내 시위. 학생의 날에 만세 시위 시작." },
+        { "year": "1929", "month": "12월", "text": "신간회 진상조사단 파견. 민중대회 계획." },
+        { "year": "1930", "month": "3월",  "text": "전국 확산 종료. 194개교 5만 4천 명 참여." }
+      ]
+    },
+    "people": {
+      "headline_top": "학생을 도운,",
+      "headline_accent": "세 자리.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "광주고보 학생", "role": "시위 주역",   "desc": "광주여고보·광주농업과 함께 거리로.", "portrait_src": null },
+        { "name": "신간회",      "role": "전국 확산 지원", "desc": "조사단 파견·민중대회 계획.", "portrait_src": null },
+        { "name": "조선·동아",   "role": "언론 보도",     "desc": "검열에도 사건 전국에 알림.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["3·1 이후 최대,", "학생 항일의 절정."],
+      "items": [
+        { "title": "민족차별 폭로",  "desc": "일경의 편파 처벌로 분노 폭발." },
+        { "title": "전국 동맹휴학",  "desc": "서울·평양·대구 등 잇따른 시위." },
+        { "title": "신간회 해소 영향", "desc": "민중대회 좌절 후 노선 갈등 심화." },
+        { "title": "국제적 지지",    "desc": "중국·일본 유학생까지 지지 확산." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"나주역 → 11·3 → 진상조사단\"\n전국 확산 흐름.",
+      "tip_body": "심화 시험에서는 발단 장소(나주역) 구분, 학생의 날(11월 3일) 의미, 신간회 진상조사단·민중대회 계획의 좌절과 신간회 해소(1931)와의 인과, 3·1·6·10과의 규모 비교가 자주 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized small school cap silhouette overlapping a single train track line. RIGHT: a tiny clenched fist silhouette raised. Cream #F2EDE3 base + dark navy #2E3A4A accent + crimson #B23A3A line. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

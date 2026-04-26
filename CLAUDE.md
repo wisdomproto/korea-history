@@ -25,6 +25,8 @@ korea_history/
 │   └── {sectionId}.json   # 개별 노트 (s1-01 ~ s7-16)
 ├── data/contents/         # (레거시) 과거 로컬 저장본 잔재 — 현재는 R2 `contents/` 사용
 ├── data/card-news/        # 카드뉴스 저장 인덱스 (index.json, 레거시)
+├── data/cardnews-drafts/  # 87편 카드뉴스 design-guide-A v1 JSON (s1-01 ~ s7-16) + _style-guide.json
+├── data/threads-drafts/   # 스레드 배치 (md + csv, 수동 운영용)
 ├── data/images/           # 문제 이미지 (R2 업로드 + 로컬 백업)
 ├── scripts/               # 유틸리티 스크립트
 ├── design/                # 디자인 참고 파일
@@ -223,6 +225,27 @@ korea_history/
 - 이미지 생성/저장/삭제/재생성 버튼 (per slide), 전체 배치 생성 + 중지
 - 블로그 카드 기반 생성 (블로그 있으면 블로그 소스, 없으면 기본글)
 - 로컬 상태 + debounce 저장 (race condition 방지)
+
+**카드뉴스 design-guide-A v1** (2026-04-26~27, 87편 작성 완료):
+- 스키마: `data/cardnews-drafts/{noteId}.json` — `data.{meta, cover, keywords, facts, people, impact, outro}` (6장 슬라이드)
+- 톤: 페이퍼 베이지 `#F2EDE3` + Noto Serif KR + 앰버 `#C77B3D` 액센트
+- 6장 구성: cover (4:3 풀블리드 이미지) → keywords (4행 테이블) → facts (timeline) → people (3행 테이블) → impact (4행 테이블) → outro (TIP + 사이트 가치제안 + CTA 박스)
+- **모든 본문 슬라이드 통일된 row-table 형식**: 좌측 150px anchor (KW/P/I 01) + 우측 (primary label 42px serif + secondary desc 30px sans) + 1px hairline 분리선
+- **세트 내 제목 사이즈 통일**: `computeCommonTitleSize()` — 6개 슬라이드 중 가장 긴 제목 기준
+- **fitTitle()**: 1줄 (108~84px) 또는 2줄 (자연 분할점 기반, 100~64px) auto-fit
+- 제목/본문 사이: 짧은 앰버 accent bar + 검정 1px hairline (전체폭) 더블 디바이더
+- 푸터: "● 기출노트 한능검" (32px serif) + "gcnote.co.kr" (30px mono)
+- 핵심 파일: `cardnews/SlideCanvas.tsx` (메인 렌더러, fitTitle/renderStructuredBody/computeCommonTitleSize export), `cardnews-export.ts` (html2canvas 1080×1350 PNG)
+- 운영 스크립트:
+  - `seed-korean-history-contents.mjs` — 87 노트로 콘텐츠 시드
+  - `fill-baseArticle-from-notes.mjs` — baseArticle에 노트 HTML 채움
+  - `sync-cardnews-to-authortool.mjs` — drafts → IG 채널 PUT (slide.imageUrl 보존, 경로 `data.instagram[]`)
+  - `gen-cardnews-cover-images.mjs` — Gemini 2.5 Flash Image 4:5 87 커버 일괄 생성
+  - `validate-cardnews-drafts.mjs` — 87 드래프트 글자수/항목수/era 일관성 검증
+  - `seed-cardnews-templates.mjs` — 디자인 가이드 A 빌트인 템플릿 4개
+  - `preview-cardnews.mjs` — Puppeteer로 6장 미리보기 캡처 (모달 800/1080 px 확장)
+  - `batch-export-cardnews.mjs` — 87 × 6 PNG 캡처 + zip 생성 (`scripts/output/cardnews-87.zip`)
+  - `export-cardnews-captions.mjs` — 87 캡션 + 해시태그 → CSV (UTF-8 BOM)
 
 **데이터 구조**: Content → BaseArticle(1:1) → ChannelContent[](1:N × 5채널)
 - 스펙: `docs/superpowers/specs/2026-03-23-multi-channel-content-design.md`
@@ -454,6 +477,13 @@ YOUTUBE_API_KEY=                         # 선택 — 채널 분석/경쟁사 Yo
 - Google Search Console + 네이버 서치어드바이저 등록
 - JSON-LD: Quiz (문제), BreadcrumbList (문제+노트), Article + VideoObject (노트)
 - OG 이미지 (4,100+ 정적 생성)
+
+## 스레드 운영 (수동, 2026-04-27 시작)
+- 저작도구의 "1 노트 → N 채널" 모델이 스레드처럼 소스 무관 짧은 글에 안 맞아 **파일 기반 수동 운영** 채택.
+- 위치: `data/threads-drafts/2026-04-27-batch-50.md` (57 게시물 + 운영 가이드) + `threads-batch-57.csv` (Excel 호환)
+- 스크립트: `scripts/export-threads-csv.mjs` (md → csv 변환)
+- 카테고리 비율: 빌더 일지 26% / 한국사 한 입 35% / 수험생 공감 18% / 데이터·발견 9% / 공무원 확장 12%
+- Meta API 자동발행은 보류 — 수동 복붙 운영
 
 ## 주의사항
 - 요약노트 및 컨텐츠 생성 프롬프트에 "자막", "YouTube", "강의" 등 출처 언급 절대 금지

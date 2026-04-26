@@ -1,0 +1,67 @@
+{
+  "noteId": "s1-06",
+  "noteTitle": "삼국의 통치체제",
+  "questionCount": 175,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "삼국 통치체제",
+      "era": "삼국",
+      "year_label": "AD 4~7c",
+      "vol": "VOL.S1-06",
+      "next_topic": "통일신라 왕업적",
+      "next_subtitle": "무열·문무·신문왕의 체제 정비"
+    },
+    "cover": {
+      "year_top": "GOVERNANCE · 4~7c",
+      "era_chip": "三國 統治體制",
+      "title_lines": ["관등", "골품"],
+      "subtitle": "대대로·정사암·화백,\n세 나라 세 회의.",
+      "imagePrompt": "Three Kingdoms governance illustration, 6th century. ONE Silla nobleman figure in deep purple official robe seated cross-legged at a low lacquer desk, brush poised over a rank-color silk strip. Behind him a folding screen showing 17-rank palette in faint stripes. Background: stone palace courtyard. Composition: deliberative, scholarly. Color: deep purple + gold + ink-black + jade. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "대대로", "sub": "고구려, 귀족 선거 3년 임기" },
+        { "word": "정사암", "sub": "백제, 바위에 이름 써 재상 선출" },
+        { "word": "화백회의", "sub": "신라, 만장일치제" },
+        { "word": "골품제", "sub": "신라, 혈통으로 관직 제한" }
+      ]
+    },
+    "facts": {
+      "headline_top": "관등·회의·지방,",
+      "headline_accent": "세 나라 세 색.",
+      "image": null,
+      "timeline": [
+        { "year": "고구려", "month": "관등", "text": "14관등, 대대로·제가회의·5부 욕살." },
+        { "year": "백제", "month": "관등", "text": "16관등, 6좌평·정사암·22담로 왕족." },
+        { "year": "신라", "month": "관등", "text": "17관등, 골품제·화백회의·상대등." },
+        { "year": "공통", "month": "구분", "text": "수도 5~6부, 지방관 파견 체계 구축." }
+      ]
+    },
+    "people": {
+      "headline_top": "수상으로 보는",
+      "headline_accent": "세 나라.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "대대로", "role": "고구려 수상", "desc": "귀족 선거로 선출, 임기 3년.", "portrait_src": null },
+        { "name": "상좌평", "role": "백제 수상", "desc": "왕이 임명, 6좌평의 으뜸.", "portrait_src": null },
+        { "name": "상대등", "role": "신라 수상", "desc": "진골 대표, 화백회의 주재.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["회의가 다르면,", "왕권도 다르다."],
+      "items": [
+        { "title": "6좌평", "desc": "백제 중앙 6부서, 1관등 좌평." },
+        { "title": "22담로", "desc": "백제 무령왕, 왕족 지방 파견." },
+        { "title": "골품제", "desc": "성골·진골·6두품 관직 상한." },
+        { "title": "욕살", "desc": "고구려 5부 지방관, 군사·행정." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"선거=고구려 · 바위=백제 · 만장=신라\"\n회의로 나라를 구분.",
+      "tip_body": "심화 시험에서는 회의 명칭(제가·정사암·화백)과 수상(대대로·상좌평·상대등)을 섞어서 묻는다. '선거로 뽑는 대대로'와 '바위에 이름 쓰는 정사암'을 헷갈리지 말 것. 골품제는 신라 전용임도 잊지 말 것.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized official cap (gat-style nobleman headwear) icon shown from a slight angle. RIGHT: a small standing rock (jeongsaam) silhouette with brush propped against it. Cream #F2EDE3 base + deep purple #6B4F8A accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

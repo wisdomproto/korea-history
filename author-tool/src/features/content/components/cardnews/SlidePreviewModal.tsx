@@ -1,5 +1,5 @@
 import type { InstagramSlide } from '../../../../lib/content-types';
-import { SlideCanvas } from './SlideCanvas';
+import { SlideCanvas, computeCommonTitleSize } from './SlideCanvas';
 
 interface Props {
   slides: InstagramSlide[];
@@ -9,12 +9,13 @@ interface Props {
 
 export function SlidePreviewModal({ slides, previewIdx, setPreviewIdx }: Props) {
   if (previewIdx === null || slides.length === 0) return null;
+  const commonTitleSize = computeCommonTitleSize(slides.map((s) => s.title || ''));
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center" onClick={() => setPreviewIdx(null)}>
       {/* Card — uses same SlideCanvas component */}
       <div className="relative" style={{ width: '400px' }} onClick={(e) => e.stopPropagation()}>
-        <SlideCanvas slide={slides[previewIdx]} className="rounded-xl" />
+        <SlideCanvas slide={slides[previewIdx]} className="rounded-xl" commonTitleSize={commonTitleSize} />
 
         {/* Slide counter */}
         <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-white text-sm">

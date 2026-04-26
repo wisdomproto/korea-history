@@ -1,0 +1,72 @@
+{
+  "noteId": "s7-10",
+  "noteTitle": "제4공화국 (유신체제, 1972~1979)",
+  "questionCount": 60,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "유신체제",
+      "era": "현대",
+      "year_label": "1972~1979",
+      "vol": "VOL.S7-10",
+      "next_topic": "제5공화국",
+      "next_subtitle": "신군부의 등장과 5·18 민주화운동"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1972",
+      "era_chip": "現代 · 1972 · 維新",
+      "title_lines": ["유신", "독재"],
+      "subtitle": "긴급조치 7년,\n10·26으로 막을 내리다.",
+      "imagePrompt": "Contemporary Korean minimal illustration. Gray, red, blue simple palette. Suits, military uniforms, civilian clothing. Gwanghwamun, National Assembly, democracy plaza background. CENTER: a tall granite government building facade with closed shutters and a single chained door (suggesting the suspended constitution). FOREGROUND silhouettes: a row of riot police helmets seen from behind. Sky: heavy gray with a single crimson torn flag fragment fluttering. Color palette: cold steel-gray + black + crimson accent. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "유신헌법", "sub": "1972, 제7차 개헌 · 6년 임기" },
+        { "word": "긴급조치", "sub": "초법적 통치권 발동" },
+        { "word": "부마항쟁", "sub": "1979.10, 부산·마산 시위" },
+        { "word": "10·26", "sub": "1979, 박정희 피살" }
+      ]
+    },
+    "facts": {
+      "headline_top": "한 시대의",
+      "headline_accent": "다섯 사건.",
+      "image": null,
+      "timeline": [
+        { "year": "1972", "month": "7월", "text": "7·4 남북공동성명. 자주·평화·민족대단결." },
+        { "year": "1972", "month": "12월", "text": "유신헌법 공포. 통일주체국민회의 출범." },
+        { "year": "1976", "month": "3월", "text": "3·1 민주구국선언. 명동성당 발표." },
+        { "year": "1979", "month": "10월", "text": "부마 민주항쟁 → 10·26 사태." }
+      ]
+    },
+    "people": {
+      "headline_top": "유신과 저항,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "박정희", "role": "대통령", "desc": "유신 선포, 1979 10·26 피살.", "portrait_src": null },
+        { "name": "장준하", "role": "재야 지도자", "desc": "백만인 개헌 청원 서명운동 주도.", "portrait_src": null },
+        { "name": "김영삼", "role": "신민당 총재", "desc": "1979.8 국회 제명, 부마항쟁 촉발.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["헌정을 멈춘 7년,", "민주화의 진통."],
+      "items": [
+        { "title": "긴급조치", "desc": "헌법 위에 군림한 통치권." },
+        { "title": "인혁당 사건", "desc": "1974, 사법살인의 상징." },
+        { "title": "민청학련", "desc": "1974, 학생 대규모 구속." },
+        { "title": "YH 사건", "desc": "1979.8, 노동·정치 격변 시작." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"유신 1972 · 10·26 1979\"\n시작과 끝을 묶어라.",
+      "tip_body": "심화에서는 7차 개헌의 특징(6년·중임 제한 철폐·1/3 임명·국회해산권), 통일주체국민회의의 역할, 3·1 민주구국선언과 부마항쟁의 시기 구분이 핵심.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open Korean classical book icon next to a silhouette of a closed government building with a single chain across the door (no readable text). Cream #F2EDE3 base + amber #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

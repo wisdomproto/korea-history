@@ -1,0 +1,67 @@
+{
+  "noteId": "s3-12",
+  "noteTitle": "신분 구조",
+  "questionCount": 35,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "신분 구조",
+      "era": "조선 전기",
+      "year_label": "15c~16c",
+      "vol": "VOL.S3-12",
+      "next_topic": "과거제·교육",
+      "next_subtitle": "성균관·향교·서원의 길"
+    },
+    "cover": {
+      "year_top": "HISTORY · 15c–16c",
+      "era_chip": "朝鮮 前期 · 身分構造",
+      "title_lines": ["양반", "천민"],
+      "subtitle": "네 신분으로 나뉜 사회,\n태어나면 정해진 자리.",
+      "imagePrompt": "Joseon folk minhwa + genre-painting tones. Hanji beige, ink-black, crimson, navy. Composition: a vertical four-tier scene from top to bottom — top, a yangban scholar in white dopo and black gat reading a book; second, a jungin technical official in lighter robe holding a brush; third, a sangmin peasant woman in hanbok carrying a basket; bottom, a cheonmin servant in plain clothes bowing. Soft horizontal hanji bands separate the tiers. Color: hanji beige + ink-black + crimson + navy. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "양반",   "sub": "문반·무반, 지배 신분층" },
+        { "word": "중인",   "sub": "기술관·서리·향리·서얼" },
+        { "word": "상민",   "sub": "농민·수공업자·상인 다수" },
+        { "word": "천민",   "sub": "공·사노비, 일천즉천" }
+      ]
+    },
+    "facts": {
+      "headline_top": "네 신분,",
+      "headline_accent": "각자의 길.",
+      "image": null,
+      "timeline": [
+        { "year": "15c", "month": "전반", "text": "양천제 원칙, 실제는 4신분으로 운영." },
+        { "year": "15c", "month": "후반", "text": "서얼차대법, 첩 자손 문과 응시 금지." },
+        { "year": "15c", "month": "후반", "text": "일천즉천 적용, 부모 한쪽이 노비면 노비." },
+        { "year": "16c", "month": "전반", "text": "사림 향촌 진출로 양반 지배 구조 강화." }
+      ]
+    },
+    "people": {
+      "headline_top": "신분 속에 살아간",
+      "headline_accent": "사람들.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "양반", "role": "지배 계층", "desc": "신진사대부 출신, 관직·토지 독점.", "portrait_src": null },
+        { "name": "중인", "role": "기술 실무층", "desc": "역관·의관·향리, 직역을 세습.", "portrait_src": null },
+        { "name": "서얼", "role": "차별 계층", "desc": "양반의 첩 자손, 문과 응시 불가.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["신분은 법이었고,", "삶은 그 법에 갇혔다."],
+      "items": [
+        { "title": "양반 특권", "desc": "관직 독점, 군역·잡역 면제." },
+        { "title": "중인 한계", "desc": "기술직 세습, 고위직 진출 제한." },
+        { "title": "노비 매매", "desc": "재산 취급, 매매·상속 가능." },
+        { "title": "여성 호적", "desc": "아들·딸 구분 없이 등재, 윤회 봉사." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"양천제 원칙, 실제는 사신분\"\n법과 현실을 묶을 것.",
+      "tip_body": "심화에서는 법제상 양천제(양인·천민)와 실제 4신분(양반·중인·상민·천민)을 구분해야 한다. 일천즉천은 부모 중 한쪽이 노비면 자식도 노비.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: four stacked stylized silhouettes from top to bottom — a scholar with gat, an official with brush, a peasant with basket, a kneeling figure — separated by thin ink lines. Cream #F2EDE3 base + ink-black + crimson #B45309 accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

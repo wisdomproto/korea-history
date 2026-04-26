@@ -1,0 +1,67 @@
+{
+  "noteId": "s4-01",
+  "noteTitle": "왕정과 정치체제",
+  "questionCount": 346,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "탕평 정치",
+      "era": "조선 후기",
+      "year_label": "1724~1800",
+      "vol": "VOL.S4-01",
+      "next_topic": "경제와 사회",
+      "next_subtitle": "대동법·균역법·이앙법의 시대"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1724–1800",
+      "era_chip": "朝鮮 後期 · 英祖·正祖",
+      "title_lines": ["탕평", "왕정"],
+      "subtitle": "붕당을 다스린 두 왕,\n그 뒤에 온 세도의 시대.",
+      "imagePrompt": "Late Joseon dynasty illustration, 18th century. ONE Korean king (King Yeongjo or Jeongjo) in deep crimson royal robe seated at a low writing desk in a Gyeongbokgung throne room interior. On the desk: an open law book and a bronze brush stand. Behind him a folding screen showing mountain ink-painting. Soft golden lamp light. Composition: contemplative, scholarly authority. Color: deep crimson + ink-black + warm amber. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "탕평비",   "sub": "영조의 붕당 타파 의지" },
+        { "word": "균역법",   "sub": "군포 2필 → 1필 감면" },
+        { "word": "규장각",   "sub": "정조의 학문·정책 자문" },
+        { "word": "세도정치", "sub": "정조 사후 안동 김씨 독점" }
+      ]
+    },
+    "facts": {
+      "headline_top": "두 왕의 탕평,",
+      "headline_accent": "세 시대의 흐름.",
+      "image": null,
+      "timeline": [
+        { "year": "1742", "month": "3월",  "text": "영조 탕평비 건립. 성균관에 세워 의지 표명." },
+        { "year": "1750", "month": "7월",  "text": "균역법 시행. 군포 부담 절반으로 줄임." },
+        { "year": "1776", "month": "9월",  "text": "정조 즉위. 규장각 설치, 초계문신제 시행." },
+        { "year": "1800", "month": "6월",  "text": "정조 사후 세도 정치 시작. 안동 김씨 독점." }
+      ]
+    },
+    "people": {
+      "headline_top": "탕평과 세도,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "영조", "role": "조선 21대 왕", "desc": "완론 탕평. 균역법·속대전·청계천 준설.", "portrait_src": null },
+        { "name": "정조", "role": "조선 22대 왕", "desc": "준론 탕평. 규장각·장용영·수원 화성.", "portrait_src": null },
+        { "name": "정약용", "role": "정조의 신하", "desc": "초계문신 출신. 수원 화성 거중기 설계.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["왕권은 강해졌으나,", "백성의 삶은 무너졌다."],
+      "items": [
+        { "title": "법전 정비",       "desc": "속대전·대전통편으로 통치 체계 재정비." },
+        { "title": "왕권 강화 기구",   "desc": "규장각·장용영으로 친위 세력 확보." },
+        { "title": "수원 화성",       "desc": "정조의 개혁 정치 상징, 유네스코 등재." },
+        { "title": "삼정의 문란",     "desc": "전정·군정·환곡 부패가 농민 봉기로." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"영조 균역법 · 정조 신해통공\"\n시기와 정책을 묶을 것.",
+      "tip_body": "심화 시험에서는 영조의 균역법과 정조의 신해통공을 혼동하지 말 것. 탕평비는 영조, 규장각·장용영·수원 화성은 정조의 트레이드마크.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open Korean classical book icon (Sok-daejeon or Daejeon-tong-pyeon law book) shown from a slight angle, blank pages. RIGHT: a small fortress wall silhouette suggesting Suwon Hwaseong. Cream #F2EDE3 base + amber #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

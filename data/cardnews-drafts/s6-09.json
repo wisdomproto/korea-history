@@ -1,0 +1,72 @@
+{
+  "noteId": "s6-09",
+  "noteTitle": "신간회 (1927~1931)",
+  "questionCount": 70,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "신간회",
+      "era": "일제 강점기",
+      "year_label": "1927",
+      "vol": "VOL.S6-09",
+      "next_topic": "무장 독립 투쟁",
+      "next_subtitle": "봉오동·청산리에서 자유시까지"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1927",
+      "era_chip": "日帝 强占 · 1927 · 民族 唯一",
+      "title_lines": ["좌우", "합작"],
+      "subtitle": "비타협 민족과 사회주의,\n손을 맞잡은 4년.",
+      "imagePrompt": "Late-Joseon-to-Japanese-occupation illustration. Dark blue-gray, crimson accent, sepia. ONE Korean man in white dopo robe (representing nationalist) shaking hands with ONE Korean man in dark Western suit and round glasses (representing socialist), profile view facing each other against a misty Seoul cityscape with low-rise tile-roofed buildings. A faint banner shape behind them (no text). Color: dark blue-gray + ink-black, accent of crimson. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "신간회", "sub": "1927년 결성, 좌우합작 단체" },
+        { "word": "이상재", "sub": "신간회 초대 회장" },
+        { "word": "근우회", "sub": "자매 여성 단체, 1927.5" },
+        { "word": "광주학생", "sub": "1929년 진상조사단 파견" }
+      ]
+    },
+    "facts": {
+      "headline_top": "결성에서",
+      "headline_accent": "해소까지.",
+      "image": null,
+      "timeline": [
+        { "year": "1926", "month": "6월",  "text": "6·10 만세운동, 좌우 합작 필요성 확인." },
+        { "year": "1927", "month": "2월",  "text": "신간회 창립, 회장 이상재. 자매 근우회 결성." },
+        { "year": "1929", "month": "11월", "text": "광주학생항일운동에 진상조사단 파견." },
+        { "year": "1931", "month": "5월",  "text": "해소대회에서 해산 결의, 4년 만에 막내림." }
+      ]
+    },
+    "people": {
+      "headline_top": "민족유일당,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "이상재",   "role": "초대 회장",     "desc": "전국 120여 지회를 묶은 항일 거점 구축.", "portrait_src": null },
+        { "name": "안재홍",   "role": "총무 간사",     "desc": "비타협 민족주의 진영 핵심 실무자.",     "portrait_src": null },
+        { "name": "이광수",   "role": "자치론자",       "desc": "타협 자치론 주장, 신간회 결성 명분 됨.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["일제 강점기 최대,", "항일 사회운동."],
+      "items": [
+        { "title": "3대 강령",      "desc": "각성·단결·기회주의 부인 명문화." },
+        { "title": "120여 지회",    "desc": "회원 2~4만, 전국 단위 조직망." },
+        { "title": "민중대회",      "desc": "광주학생 지원 시도, 일제 저지." },
+        { "title": "해소론",        "desc": "코민테른 노선 변경으로 내부 분열." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"이상재 회장,\n근우회는 자매단체.\"",
+      "tip_body": "심화 시험에서는 신간회 결성 배경(자치론·6·10 만세·민족유일당), 3대 강령, 광주학생항일운동 지원, 해소(1931) 시기 구분이 단골 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open Korean classical book icon next to two clasping hands silhouettes suggesting solidarity. Cream #F2EDE3 base + amber #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

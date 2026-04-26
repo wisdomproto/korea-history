@@ -1,0 +1,67 @@
+{
+  "noteId": "s1-02",
+  "noteTitle": "연맹국가 (부여, 고구려, 옥저, 동예, 삼한)",
+  "questionCount": 141,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "초기 연맹국가",
+      "era": "삼국",
+      "year_label": "BC 1c~AD 3c",
+      "vol": "VOL.S1-02",
+      "next_topic": "고조선",
+      "next_subtitle": "단군조선과 위만조선의 흐름"
+    },
+    "cover": {
+      "year_top": "FEDERATION · BC1~AD3",
+      "era_chip": "扶餘 · 高句麗 · 三韓",
+      "title_lines": ["연맹", "왕국"],
+      "subtitle": "다섯 나라, 다섯 풍습,\n제천행사로 기억하라.",
+      "imagePrompt": "Ancient Korean federation-era illustration, 1st century BC. ONE chieftain figure (gun-jang) in long fur-lined robe and bronze ornament, standing on a wooden platform raising a bronze cup toward the sky during a sky-worship rite. Background: bonfire, log palisade, dark mountains. Composition: ceremonial, solemn. Color: clay-brown + bronze + amber firelight. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "영고", "sub": "부여 12월 제천행사" },
+        { "word": "동맹", "sub": "고구려 10월 제천행사" },
+        { "word": "서옥제", "sub": "고구려 데릴사위 풍습" },
+        { "word": "소도", "sub": "삼한 천군의 신성구역" }
+      ]
+    },
+    "facts": {
+      "headline_top": "다섯 나라,",
+      "headline_accent": "다섯 풍습.",
+      "image": null,
+      "timeline": [
+        { "year": "부여", "month": "송화강", "text": "사출도·1책12법·12월 영고 제천행사." },
+        { "year": "고구려", "month": "압록강", "text": "5부족 연맹·제가회의·서옥제 혼인풍속." },
+        { "year": "옥저", "month": "함경도", "text": "민며느리제·골장제, 고구려에 공물." },
+        { "year": "삼한", "month": "남부", "text": "신지·읍차+천군, 변한 철 생산 수출." }
+      ]
+    },
+    "people": {
+      "headline_top": "다섯 나라의",
+      "headline_accent": "지배자들.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "마가·우가", "role": "부여 4가", "desc": "사출도를 다스린 부족장.", "portrait_src": null },
+        { "name": "대대로", "role": "고구려 수상", "desc": "제가회의의 대표 귀족.", "portrait_src": null },
+        { "name": "천군", "role": "삼한 제사장", "desc": "소도를 다스린 신성한 사제.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["연맹왕국에서,", "고대국가로."],
+      "items": [
+        { "title": "사출도", "desc": "부여 4가가 다스린 사방." },
+        { "title": "제가회의", "desc": "고구려 귀족 합의 기구." },
+        { "title": "민며느리제", "desc": "옥저의 매매혼 풍습." },
+        { "title": "책화", "desc": "동예, 영역 침범 시 배상." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"영고 부여 · 동맹 고구려 · 무천 동예\"\n제천행사로 나라를 구분.",
+      "tip_body": "심화 시험에서는 풍습만 보여주고 나라를 묻는 자료형 문제가 자주 나온다. 영고(부여)·동맹(고구려)·무천(동예)의 달과 짝, 서옥제(고구려)와 민며느리제(옥저)의 혼인 풍속을 절대 혼동하지 말 것.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized bronze ritual bell icon shown from a slight angle. RIGHT: a small wooden sotdae pole silhouette with bird perched on top. Cream #F2EDE3 base + bronze #A98142 accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

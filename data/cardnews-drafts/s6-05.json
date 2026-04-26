@@ -1,0 +1,73 @@
+{
+  "noteId": "s6-05",
+  "noteTitle": "실력양성운동",
+  "questionCount": 55,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "실력양성운동",
+      "era": "일제 강점기",
+      "year_label": "1920~1934",
+      "vol": "VOL.S6-05",
+      "next_topic": "6·10만세운동",
+      "next_subtitle": "순종 인산일과 좌우 연대"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1920–1934",
+      "era_chip": "日帝 强占 · 物産 · 民立",
+      "title_lines": ["내살림", "내것"],
+      "subtitle": "조선 사람 조선 것으로,\n비폭력의 또 다른 길.",
+      "imagePrompt": "Japanese-occupation era illustration, 1920s. ONE Korean middle-aged man (Cho Mansik reference) in white durumagi coat and round black hat, standing in a busy Pyongyang market street, holding up a bolt of plain Korean hand-woven cotton cloth with both hands, calm earnest expression. Around him: blurred silhouettes of Korean shoppers in white hanbok looking on. Behind him: a low wooden shopfront with hanging bolts of cloth and a single straw broom. Color: warm cream + earth-brown + dark blue-gray + faint amber morning light. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "물산장려회", "sub": "1923 서울, 조만식" },
+        { "word": "민립대학", "sub": "1923 기성회, 이상재" },
+        { "word": "브나로드", "sub": "동아일보, 1931" },
+        { "word": "문자보급", "sub": "조선일보, 1929" }
+      ]
+    },
+    "facts": {
+      "headline_top": "10년의",
+      "headline_accent": "다섯 운동.",
+      "image": null,
+      "timeline": [
+        { "year": "1920", "month": "8월",  "text": "물산장려운동. 평양에서 조만식 주도 시작." },
+        { "year": "1922", "month": "11월", "text": "민립대학설립운동. 이상재 등 발기." },
+        { "year": "1923", "month": "1월",  "text": "조선물산장려회 창립. 서울로 운동 확산." },
+        { "year": "1924", "month": "5월",  "text": "경성제국대학 설립. 일제의 민립 운동 좌초 의도." },
+        { "year": "1931", "month": "7월",  "text": "브나로드 운동. 동아일보 농촌 한글 보급." }
+      ]
+    },
+    "people": {
+      "headline_top": "역량을 키운,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "조만식", "role": "물산장려회 이사", "desc": "평양 출발, 토산품 애용 운동 선도.", "portrait_src": null },
+        { "name": "이상재", "role": "민립대학 발기인", "desc": "1천만 1원 모금 운동 주도.", "portrait_src": null },
+        { "name": "이승훈", "role": "오산학교 설립자", "desc": "민족 교육과 물산장려 함께 추동.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["역량은 모았으나,", "한계도 분명했다."],
+      "items": [
+        { "title": "내 살림 내 것",   "desc": "토산품 애용·일본 상품 배척 구호." },
+        { "title": "민립대학 좌절",   "desc": "경성제대 설립으로 모금 동력 상실." },
+        { "title": "브나로드 한글",   "desc": "방학 중 학생들이 농촌에 한글 보급." },
+        { "title": "사회주의 비판",   "desc": "부르주아 운동이라는 노선 갈등 발생." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"동아 브나로드 · 조선 문자보급\"\n신문–운동 매칭.",
+      "tip_body": "심화 시험에서는 물산장려운동의 시작 도시(평양 1920)와 본부(서울 1923) 구분, 민립대학 모금 구호와 일제 대응(경성제대 1924), 동아일보·조선일보의 농촌 계몽 운동 명칭 매칭이 자주 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized small bolt of Korean cotton cloth silhouette next to a tiny open book. RIGHT: a small plowed-field row silhouette suggesting rural enlightenment. Cream #F2EDE3 base + earth-brown #8B6F3A accent + faint teal #0D9488 line. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

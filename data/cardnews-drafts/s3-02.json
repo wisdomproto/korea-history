@@ -1,0 +1,67 @@
+{
+  "noteId": "s3-02",
+  "noteTitle": "조선 왕업적 (태조~성종)",
+  "questionCount": 297,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "왕업적",
+      "era": "조선 전기",
+      "year_label": "1392~1494",
+      "vol": "VOL.S3-02",
+      "next_topic": "사화",
+      "next_subtitle": "훈구와 사림, 4번의 충돌"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1392–1494",
+      "era_chip": "朝鮮 前期 · 太祖–成宗",
+      "title_lines": ["성군", "체제"],
+      "subtitle": "다섯 왕이 세운 나라,\n경국대전으로 닫혔다.",
+      "imagePrompt": "Early Joseon dynasty illustration, 15th century. ONE Korean king (King Sejong) in deep crimson royal robe seated cross-legged at a low writing desk in Jiphyeonjeon hall interior. On the desk: Hangul-style script blocks suggested as abstract shapes (no actual letters), a brush, an inkstone. Behind him a folding screen with mountain ink-painting. Soft amber lamp light. Composition: scholarly authority, calm focus. Color: deep crimson + navy + ink-black + hanji beige. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "6조직계제", "sub": "태종·세조의 왕권 강화책" },
+        { "word": "훈민정음", "sub": "세종 1443 창제, 1446 반포" },
+        { "word": "4군6진", "sub": "세종 김종서·최윤덕 개척" },
+        { "word": "경국대전", "sub": "성종 1485 반포, 통치 완성" }
+      ]
+    },
+    "facts": {
+      "headline_top": "다섯 왕,",
+      "headline_accent": "백 년의 완성.",
+      "image": null,
+      "timeline": [
+        { "year": "1394", "month": "10월", "text": "태조 한양 천도. 정도전 재상 중심 정치." },
+        { "year": "1418", "month": "8월", "text": "세종 즉위. 집현전·의정부 서사제 운영." },
+        { "year": "1455", "month": "윤6월", "text": "세조 즉위. 6조 직계제 부활, 직전법 시행." },
+        { "year": "1485", "month": "1월", "text": "성종 경국대전 반포. 6전 체제 완성." }
+      ]
+    },
+    "people": {
+      "headline_top": "다섯 왕,",
+      "headline_accent": "세 얼굴.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "태종", "role": "조선 3대", "desc": "사병 혁파·호패법·신문고로 왕권 강화.", "portrait_src": null },
+        { "name": "세종", "role": "조선 4대", "desc": "훈민정음·측우기·4군6진, 문화 전성기.", "portrait_src": null },
+        { "name": "성종", "role": "조선 9대", "desc": "경국대전 완성, 홍문관·3사 체제 확립.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["왕권과 신권,", "균형의 실험."],
+      "items": [
+        { "title": "왕권 강화", "desc": "태종·세조의 6조 직계제." },
+        { "title": "신권 협치", "desc": "세종·성종의 의정부 서사제." },
+        { "title": "법전 완성", "desc": "경국대전 6전 체제 500년 기준." },
+        { "title": "국경 확정", "desc": "4군6진으로 압록·두만강 경계." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"태종·세조 직계제 / 세종·성종 서사제\"\n왕과 체제를 묶어라.",
+      "tip_body": "심화 시험에서는 6조 직계제(태종·세조)와 의정부 서사제(세종·성종)를 왕별로 짝지어 묻는다. 계유정난(1453), 집현전 폐지(세조), 홍문관 설치(성종)도 빈출 포인트.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open Korean classical law book icon (Gyeongguk-daejeon) shown from a slight angle, blank pages. RIGHT: a small royal crown silhouette suggesting kingship. Cream #F2EDE3 base + crimson #B91C1C accent + amber #C77B3D detail. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

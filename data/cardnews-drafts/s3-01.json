@@ -1,0 +1,67 @@
+{
+  "noteId": "s3-01",
+  "noteTitle": "조선의 건국과정",
+  "questionCount": 104,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "조선 건국",
+      "era": "조선 전기",
+      "year_label": "1388~1394",
+      "vol": "VOL.S3-01",
+      "next_topic": "왕업적",
+      "next_subtitle": "태조부터 성종까지, 통치의 완성"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1388–1394",
+      "era_chip": "朝鮮 前期 · 太祖",
+      "title_lines": ["회군", "건국"],
+      "subtitle": "위화도에서 한양까지,\n새 왕조가 열린 7년.",
+      "imagePrompt": "Late 14th century Korean illustration. ONE Korean general in deep crimson and navy military robe with leather scale armor, standing on a riverbank at Wihwa Island looking back toward the south. Wide Amnok river behind, dark mountains, soft overcast sky. Composition: single decisive figure, hand on sword hilt, contemplative resolve. Color: deep crimson + navy + ink-black + hanji beige. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "위화도회군", "sub": "1388, 이성계 4불가론" },
+        { "word": "과전법", "sub": "1391, 경기 지역 수조권" },
+        { "word": "정몽주", "sub": "선죽교에서 이방원에게 피살" },
+        { "word": "한양천도", "sub": "1394, 정도전이 도성 설계" }
+      ]
+    },
+    "facts": {
+      "headline_top": "회군에서 천도까지,",
+      "headline_accent": "7년의 흐름.",
+      "image": null,
+      "timeline": [
+        { "year": "1388", "month": "5월", "text": "위화도 회군. 이성계가 군대를 돌려 개경 진격." },
+        { "year": "1391", "month": "5월", "text": "과전법 시행. 조준·정도전이 사전 개혁 주도." },
+        { "year": "1392", "month": "7월", "text": "공양왕 양위. 이성계 즉위, 국호 조선 확정." },
+        { "year": "1394", "month": "10월", "text": "한양 천도. 정도전이 경복궁·도성 설계." }
+      ]
+    },
+    "people": {
+      "headline_top": "역성혁명,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "이성계", "role": "조선 태조", "desc": "황산대첩으로 명성, 위화도 회군으로 집권.", "portrait_src": null },
+        { "name": "정도전", "role": "건국 설계자", "desc": "과전법 주도, 한양 도성·경복궁 설계.", "portrait_src": null },
+        { "name": "정몽주", "role": "온건 개혁파", "desc": "고려 유지 주장, 선죽교에서 이방원에게 피살.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["고려가 무너지고,", "조선이 일어섰다."],
+      "items": [
+        { "title": "권문세족 몰락", "desc": "사전 소각으로 경제 기반 붕괴." },
+        { "title": "신진사대부", "desc": "과전법으로 경제 기반 확보." },
+        { "title": "성리학 채택", "desc": "조선의 통치 이념으로 자리잡음." },
+        { "title": "한양 도성", "desc": "정도전이 근정전·광화문까지 작명." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"위화도 1388 · 과전법 1391\"\n연도와 사건을 묶어라.",
+      "tip_body": "심화 시험에서는 위화도 회군의 4불가론 내용과 과전법의 수조권 지급 범위(경기 지역)를 정확히 묻는다. 정몽주는 온건파, 정도전은 급진파로 구분할 것.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized horse silhouette turned mid-stride suggesting the Wihwa-do return, simple ink-line. RIGHT: a small palace gate silhouette suggesting Gyeongbokgung. Cream #F2EDE3 base + crimson #B91C1C accent + ink-black outline. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

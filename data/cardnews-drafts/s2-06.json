@@ -1,0 +1,66 @@
+{
+  "noteId": "s2-06",
+  "noteTitle": "무신정변과 원간섭기",
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "무신정변·원 간섭기",
+      "era": "고려",
+      "year_label": "1170~1356",
+      "vol": "VOL.S2-06",
+      "next_topic": "고려 토지 제도",
+      "next_subtitle": "전시과의 시작과 변화"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1170–1356",
+      "era_chip": "高麗 · 武臣·元 干涉",
+      "title_lines": ["무신", "원간"],
+      "subtitle": "100년 무신 정권과,\n80년 원의 그림자.",
+      "imagePrompt": "12th century Goryeo dynasty illustration of the Bohyeonwon coup. Foreground: ONE Korean military officer (Jeong Jung-bu) in dark armor with a long sword raised, standing over fallen civilian officials in white scholarly robes scattered on stone palace floor. Night scene with warm torchlight. Pillars of red wood in background. Color: deep crimson + ink-black + warm orange torch glow. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "무신정변",   "sub": "1170, 정중부의 거사" },
+        { "word": "최씨 정권",  "sub": "최충헌·최우, 60년 권력" },
+        { "word": "삼별초",    "sub": "대몽 항쟁, 진도·제주" },
+        { "word": "공민왕",    "sub": "반원 자주, 쌍성총관부 회복" }
+      ]
+    },
+    "facts": {
+      "headline_top": "무신에서",
+      "headline_accent": "공민왕까지.",
+      "image": null,
+      "timeline": [
+        { "year": "1170", "month": "8월", "text": "무신정변. 정중부·이의방·이고가 거사." },
+        { "year": "1196", "month": "—",   "text": "최충헌 집권. 최씨 정권 60년 시작." },
+        { "year": "1231", "month": "—",   "text": "몽골 1차 침입. 강화도 천도(1232)." },
+        { "year": "1356", "month": "—",   "text": "공민왕 반원 자주. 쌍성총관부 회복." }
+      ]
+    },
+    "people": {
+      "headline_top": "권력의",
+      "headline_accent": "세 갈래.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "최충헌",   "role": "최씨 정권 시조",  "desc": "도방·교정도감 설치, 무단 통치.", "portrait_src": null },
+        { "name": "김윤후",   "role": "대몽 항쟁",       "desc": "처인성·충주성에서 몽골 격퇴.", "portrait_src": null },
+        { "name": "공민왕",   "role": "고려 31대 왕",    "desc": "기철 제거, 정동행성 폐지.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["문벌이 무너지고,", "민중이 일어섰다."],
+      "items": [
+        { "title": "문벌 귀족 몰락",   "desc": "무신정변으로 문신 중심 사회 붕괴." },
+        { "title": "농민·천민 봉기",   "desc": "망이·망소이의 난, 만적의 난 등." },
+        { "title": "삼별초 항쟁",     "desc": "강화·진도·제주에서 대몽 결사 항전." },
+        { "title": "원 간섭기",       "desc": "정동행성·결혼도감, 80년간 간섭." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"정중부 1170 · 공민왕 1356\"\n시대의 양 끝을 외울 것.",
+      "tip_body": "심화 시험은 무신정권의 권력 기구(도방·교정도감·정방), 대몽 항쟁의 영웅(김윤후·삼별초 배중손), 공민왕 반원 정책(기철 제거·쌍성총관부 회복) 빈출.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized broken sword crossed with a Mongolian spear, suggesting both military rule and Mongol interference. Jade-green + crimson + amber #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

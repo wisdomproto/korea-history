@@ -1,0 +1,67 @@
+{
+  "noteId": "s1-07",
+  "noteTitle": "통일신라 왕업적표",
+  "questionCount": 246,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "통일신라 왕업적",
+      "era": "삼국",
+      "year_label": "AD 654~935",
+      "vol": "VOL.S1-07",
+      "next_topic": "통일신라 말기",
+      "next_subtitle": "후삼국 시대의 개막"
+    },
+    "cover": {
+      "year_top": "UNIFIED SILLA · 7~9c",
+      "era_chip": "統一新羅 · 中代",
+      "title_lines": ["통일", "신라"],
+      "subtitle": "신문왕의 9주 5소경,\n전제왕권의 정점.",
+      "imagePrompt": "Unified Silla golden-age illustration, 7th century. ONE Silla king figure (King Sinmun) in gold-embroidered red royal robe and tall crown, seated on a low throne raising a small bamboo flute (manpasikjeok) toward a coastal sunrise. Background: temple silhouette and East Sea waves. Composition: serene authority, dawn light. Color: deep red + gold + ocean blue + clay-brown. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "신문왕", "sub": "9주5소경·관료전·녹읍 폐지" },
+        { "word": "국학", "sub": "유교 교육기관 설립" },
+        { "word": "정전", "sub": "성덕왕, 백성에게 토지 지급" },
+        { "word": "독서삼품과", "sub": "원성왕, 유학으로 관리 선발" }
+      ]
+    },
+    "facts": {
+      "headline_top": "중대의 정비,",
+      "headline_accent": "하대의 동요.",
+      "image": null,
+      "timeline": [
+        { "year": "676", "month": "문무왕", "text": "매소성·기벌포 승리, 삼국통일 완성." },
+        { "year": "682", "month": "신문왕", "text": "국학 설립, 9주5소경·9서당10정 정비." },
+        { "year": "722", "month": "성덕왕", "text": "정전 지급, 농민 생활 안정 도모." },
+        { "year": "828", "month": "흥덕왕", "text": "장보고 청해진 설치, 해상무역 장악." }
+      ]
+    },
+    "people": {
+      "headline_top": "중대를 만든",
+      "headline_accent": "세 왕.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "무열왕", "role": "최초 진골 왕", "desc": "나당동맹·백제 멸망(660).", "portrait_src": null },
+        { "name": "문무왕", "role": "삼국통일 완성", "desc": "고구려 멸망·나당전쟁 승리.", "portrait_src": null },
+        { "name": "신문왕", "role": "체제 정비 완성", "desc": "김흠돌의 난 진압, 녹읍 폐지.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["관료전이 들어오자,", "귀족이 흔들린다."],
+      "items": [
+        { "title": "9주 5소경", "desc": "전국 행정 체계의 완성." },
+        { "title": "9서당 10정", "desc": "중앙군·지방군 군사 체계." },
+        { "title": "녹읍 폐지", "desc": "신문왕, 귀족 경제 기반 약화." },
+        { "title": "혜공왕 피살", "desc": "780년, 중대 종결·하대 개막." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"신문왕 폐지 → 경덕왕 부활\"\n녹읍의 운명을 기억.",
+      "tip_body": "심화 시험에서는 토지 제도(녹읍 폐지/정전 지급/녹읍 부활)를 왕과 짝지어 묻는다. '신문왕 녹읍 폐지·관료전 → 성덕왕 정전 → 경덕왕 녹읍 부활' 순서를 외울 것. 신문왕의 5대 정비(국학·9주5소경·9서당10정·관료전·녹읍 폐지)는 단골.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized bamboo flute (manpasikjeok) icon shown from a slight angle. RIGHT: a small Emille bell silhouette with dragon-shaped hanger. Cream #F2EDE3 base + deep red #B23A3A accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

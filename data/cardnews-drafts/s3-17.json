@@ -1,0 +1,67 @@
+{
+  "noteId": "s3-17",
+  "noteTitle": "예송논쟁 (1차·2차)",
+  "questionCount": 41,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "예송논쟁",
+      "era": "조선 전기",
+      "year_label": "1659~1674",
+      "vol": "VOL.S3-17",
+      "next_topic": "환국",
+      "next_subtitle": "숙종의 세 차례 정국 교체"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1659–1674",
+      "era_chip": "朝鮮 · 禮訟論爭",
+      "title_lines": ["기해", "갑인"],
+      "subtitle": "효종은 장자인가 차자인가,\n상복으로 갈린 권력.",
+      "imagePrompt": "Joseon folk minhwa + genre-painting tones. Hanji beige, ink-black, crimson, navy. Scene: a solemn royal mourning hall with TWO groups of yangban officials in plain white mourning robes (sangbok) standing on opposite sides of a covered low altar, gesturing toward a folded white hemp robe at the center. A queen-mother figure (Jouedaebi) sits veiled on a low platform behind. Composition: ritualistic, tense, monochrome with crimson seal accents. Color: dominant white-beige hanji + ink-black + small crimson seal accents. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "기년복", "sub": "1년 상복, 효종=차자" },
+        { "word": "삼년복", "sub": "3년 상복, 효종=장자" },
+        { "word": "기해예송", "sub": "1659, 서인 승리(기년)" },
+        { "word": "갑인예송", "sub": "1674, 남인 승리·집권" }
+      ]
+    },
+    "facts": {
+      "headline_top": "두 차례 예송,",
+      "headline_accent": "권력의 교체.",
+      "image": null,
+      "timeline": [
+        { "year": "1659", "month": "5월",  "text": "효종 사망, 자의대비 상복 논쟁 시작." },
+        { "year": "1659", "month": "전후", "text": "1차 예송, 서인 기년복 채택 승리." },
+        { "year": "1674", "month": "2월",  "text": "인선왕후 사망, 2차 예송 발발." },
+        { "year": "1674", "month": "전후", "text": "남인 기년복 승리, 서인 대거 축출." }
+      ]
+    },
+    "people": {
+      "headline_top": "상복을 둘러싼",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "송시열", "role": "서인 영수", "desc": "효종은 차자, 기년복·대공설 주장.", "portrait_src": null },
+        { "name": "허목",   "role": "남인 영수", "desc": "효종은 왕통 장자, 삼년복 주장.", "portrait_src": null },
+        { "name": "현종",   "role": "조선 18대 왕", "desc": "2차 예송에서 남인 손 들어줌.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["예법 논쟁이었으나,", "본질은 권력 투쟁."],
+      "items": [
+        { "title": "1차 결과", "desc": "서인 승리, 기년복 채택." },
+        { "title": "2차 결과", "desc": "남인 승리, 서인 축출." },
+        { "title": "왕통 해석", "desc": "효종의 정통성을 둘러싼 논쟁." },
+        { "title": "환국 예고", "desc": "숙종 즉위 후 환국으로 이어짐." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"기해는 서인, 갑인은 남인\"\n승자를 묶을 것.",
+      "tip_body": "심화에서는 1차 기해예송(1659)에서 서인 기년복이, 2차 갑인예송(1674)에서 남인 기년복이 채택된 점을 구분해야 한다. 본질은 효종의 왕통(장자/차자) 해석.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized folded white mourning robe (sangbok) on a low stand, with two small ink calendar marks on either side suggesting different mourning durations. Cream #F2EDE3 base + ink-black + small crimson #B45309 seal accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

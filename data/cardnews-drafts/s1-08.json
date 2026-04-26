@@ -1,0 +1,67 @@
+{
+  "noteId": "s1-08",
+  "noteTitle": "통일신라 말기 및 후삼국",
+  "questionCount": 201,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "후삼국 시대",
+      "era": "삼국",
+      "year_label": "AD 889~936",
+      "vol": "VOL.S1-08",
+      "next_topic": "발해",
+      "next_subtitle": "고구려를 계승한 해동성국"
+    },
+    "cover": {
+      "year_top": "LATER THREE · 9~10c",
+      "era_chip": "後三國 · 9~10c",
+      "title_lines": ["후삼", "국기"],
+      "subtitle": "견훤·궁예·왕건,\n다시 셋으로 나뉘다.",
+      "imagePrompt": "Later Three Kingdoms illustration, late 9th century. ONE warlord-monk figure (resembling Gungye) in dark robe with shaved head and an iron helmet beside him, standing on a hilltop overlooking burning villages. Background: ruined Silla pagoda silhouette and chaotic plains. Composition: rebellion, brewing storm. Color: storm-gray + crimson + bronze + clay-brown. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "원종·애노", "sub": "889 사벌주 농민 봉기" },
+        { "word": "후백제", "sub": "900 견훤, 완산주 도읍" },
+        { "word": "후고구려", "sub": "901 궁예, 송악 도읍" },
+        { "word": "일리천", "sub": "936 왕건, 후삼국 통일 완성" }
+      ]
+    },
+    "facts": {
+      "headline_top": "원종의 봉기에서",
+      "headline_accent": "왕건의 통일까지.",
+      "image": null,
+      "timeline": [
+        { "year": "889", "month": "진성여왕", "text": "원종·애노의 난, 사벌주에서 봉기." },
+        { "year": "900", "month": "견훤", "text": "후백제 건국, 완산주(전주) 도읍." },
+        { "year": "927", "month": "공산", "text": "공산 전투, 신숭겸 전사·후백제 우세." },
+        { "year": "936", "month": "왕건", "text": "일리천 전투, 후삼국 통일 완성." }
+      ]
+    },
+    "people": {
+      "headline_top": "후삼국의",
+      "headline_accent": "세 영웅.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "견훤", "role": "후백제", "desc": "상주 출신, 백제 계승 표방.", "portrait_src": null },
+        { "name": "궁예", "role": "후고구려", "desc": "신라 왕족, 마진·태봉으로 개칭.", "portrait_src": null },
+        { "name": "왕건", "role": "고려 태조", "desc": "송악 호족, 호족 포섭으로 통일.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["호족이 일어서고,", "신라가 무너진다."],
+      "items": [
+        { "title": "골품제 모순", "desc": "6두품 불만, 진골 왕위 쟁탈전." },
+        { "title": "광평성", "desc": "궁예 태봉의 최고 정치 기구." },
+        { "title": "고창 전투", "desc": "930년, 왕건 대승·전세 역전." },
+        { "title": "경순왕 항복", "desc": "935년, 신라 자발적 귀부." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"공산은 견훤 · 고창은 왕건\"\n전투의 승자를 외운다.",
+      "tip_body": "심화 시험에서는 공산 전투(927·후백제 우세·신숭겸 전사)와 고창 전투(930·고려 우세·전세 역전)를 헷갈리게 묻는다. 궁예의 국호 변천(후고구려→마진→태봉)과 천도(송악→철원)도 단골 출제 포인트.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized scroll-and-spear icon shown from a slight angle. RIGHT: a small fortress gate silhouette suggesting Cheorwon. Cream #F2EDE3 base + storm-gray #5C5C66 accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

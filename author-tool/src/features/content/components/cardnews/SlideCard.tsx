@@ -1,7 +1,7 @@
 import type { InstagramSlide } from '../../../../lib/content-types';
 import { SlideCanvas } from './SlideCanvas';
 
-export function SlideCard({ slide, index, isSelected, onSelect, onDelete, onGenerateImage, onDeleteImage, onSaveImage, isGeneratingImage }: {
+export function SlideCard({ slide, index, isSelected, onSelect, onDelete, onGenerateImage, onDeleteImage, onSaveImage, isGeneratingImage, commonTitleSize }: {
   slide: InstagramSlide;
   index: number;
   isSelected: boolean;
@@ -11,6 +11,7 @@ export function SlideCard({ slide, index, isSelected, onSelect, onDelete, onGene
   onDeleteImage: () => void;
   onSaveImage: () => void;
   isGeneratingImage: boolean;
+  commonTitleSize?: number;
 }) {
   const hasImage = !!(slide.canvas?.imageUrl || slide.imageUrl);
 
@@ -21,7 +22,7 @@ export function SlideCard({ slide, index, isSelected, onSelect, onDelete, onGene
       }`}
       onClick={onSelect}
     >
-      <SlideCanvas slide={slide} />
+      <SlideCanvas slide={slide} commonTitleSize={commonTitleSize} />
 
       {/* Footer */}
       <div className="p-1.5 bg-white space-y-1">

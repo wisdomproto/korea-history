@@ -1,0 +1,72 @@
+{
+  "noteId": "s5-01",
+  "noteTitle": "흥선대원군과 개항기",
+  "questionCount": 362,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "흥선대원군",
+      "era": "근대",
+      "year_label": "1866",
+      "vol": "VOL.01",
+      "next_topic": "강화도 조약",
+      "next_subtitle": "조선의 첫 근대 조약과 개항"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1866",
+      "era_chip": "朝鮮 · 1866 · 開港 前夜",
+      "title_lines": ["통상", "거부"],
+      "subtitle": "외세 차단의 10년,\n끝의 시작이 된 시대.",
+      "imagePrompt": "Late-Joseon late-19th-century Korean illustration. ONE middle-aged Korean man (Heungseon Daewongun) — black gat (Korean traditional hat) + teal-green dopo robe + white beard, hands clasped behind back, determined profile view. In front of him: a head-high gray granite rectangular stele (척화비) with abstract carved indentations (no readable characters). Background: misty sea horizon, tiny silhouette of a 19th-century Western steamship spewing dark smoke. Color: dark blue-gray + ink-black, accent of crimson glow on stele carving. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "병인양요", "sub": "프랑스 침공, 1866년" },
+        { "word": "셔먼호", "sub": "미국 상선, 평양 격침" },
+        { "word": "오페르트", "sub": "독일인 묘 도굴, 1868" },
+        { "word": "신미양요", "sub": "미국 침공, 1871년" }
+      ]
+    },
+    "facts": {
+      "headline_top": "한 시대의",
+      "headline_accent": "다섯 사건.",
+      "image": null,
+      "timeline": [
+        { "year": "1866", "month": "9월",  "text": "병인양요. 프랑스 침공, 양헌수가 정족산성 격퇴." },
+        { "year": "1868", "month": "4월",  "text": "오페르트 도굴. 남연군 묘 시도, 주민 항거로 실패." },
+        { "year": "1871", "month": "6월",  "text": "신미양요. 광성보 어재연 전사, 척화비 건립." },
+        { "year": "1875", "month": "9월",  "text": "운요호 강화도 포격. 다음 해 개항으로 이어짐." }
+      ]
+    },
+    "people": {
+      "headline_top": "거부와 항전,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "흥선대원군", "role": "통상수교 거부 정책",  "desc": "10년간 외세 차단. 척화비 전국 건립.", "portrait_src": null },
+        { "name": "박규수",     "role": "평양 감사",           "desc": "셔먼호 격침 주도. 후일 통상 개화로 전환.", "portrait_src": null },
+        { "name": "어재연",     "role": "광성보 수비대장",     "desc": "신미양요 광성보 전투에서 전사.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["외세를 막았으나,", "근대를 늦췄다."],
+      "items": [
+        { "title": "척화비 건립",       "desc": "통상수교를 매국으로 규정해 못 박음." },
+        { "title": "외규장각 약탈",     "desc": "병인양요 때 프랑스가 의궤를 가져감." },
+        { "title": "통상거부 강화",     "desc": "오페르트 사건으로 거부 정책이 굳어짐." },
+        { "title": "운요호 → 개항",     "desc": "1875 사건이 강화도 조약으로 이어짐." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"병인 1866 · 신미 1871\"\n양요 두 해를 외울 것.",
+      "tip_body": "심화 시험에서는 두 양요의 상대국 구분, 외규장각·수자기 약탈국, 척화비 건립 시기, 운요호와 강화도 조약의 인과가 자주 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open Korean classical book icon next to a small Korean granite stele silhouette suggesting cheokhwabi. Cream #F2EDE3 base + amber #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

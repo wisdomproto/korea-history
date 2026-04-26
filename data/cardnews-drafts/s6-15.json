@@ -1,0 +1,72 @@
+{
+  "noteId": "s6-15",
+  "noteTitle": "민족사학",
+  "questionCount": 96,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "민족사학",
+      "era": "일제 강점기",
+      "year_label": "1915",
+      "vol": "VOL.S6-15",
+      "next_topic": "종교활동",
+      "next_subtitle": "천도교·대종교·원불교의 항일"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1915",
+      "era_chip": "日帝 强占 · 1915 · 國魂",
+      "title_lines": ["국혼", "낭가"],
+      "subtitle": "역사로 민족의 얼을\n지켜낸 사람들.",
+      "imagePrompt": "Late-Joseon-to-Japanese-occupation illustration. Dark blue-gray, crimson accent, sepia. ONE Korean elder scholar (Park Eun-sik / Shin Chae-ho composite) in long dark dopo robe with white beard and round spectacles, seated cross-legged at a low writing desk, brush in hand poised over a stack of bound traditional books, profile view. Background: a window opening to misty distant mountains and a faint silhouette of an ancient stone fortress suggesting Goguryeo. Color: dark blue-gray + ink-black, accent of crimson on a small inkstone. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "박은식", "sub": "한국통사, 국혼 사상" },
+        { "word": "신채호", "sub": "조선상고사, 낭가사상" },
+        { "word": "정인보", "sub": "5천년간 조선의 얼" },
+        { "word": "식민사관", "sub": "타율·정체·당파성론 비판" }
+      ]
+    },
+    "facts": {
+      "headline_top": "한 시대의",
+      "headline_accent": "다섯 저서.",
+      "image": null,
+      "timeline": [
+        { "year": "1915", "month": "6월",  "text": "박은식 한국통사 간행, 국혼 강조." },
+        { "year": "1920", "month": "12월", "text": "박은식 한국독립운동지혈사 발간." },
+        { "year": "1923", "month": "1월",  "text": "신채호 조선혁명선언 작성." },
+        { "year": "1931", "month": "6월",  "text": "신채호 조선상고사 신문 연재 시작." }
+      ]
+    },
+    "people": {
+      "headline_top": "민족의 얼,",
+      "headline_accent": "세 사학자.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "박은식",   "role": "국혼 사상",     "desc": "한국통사·지혈사, 임정 2대 대통령.",   "portrait_src": null },
+        { "name": "신채호",   "role": "낭가 사상",     "desc": "아와 비아의 투쟁, 묘청의 난 재평가.", "portrait_src": null },
+        { "name": "정인보",   "role": "얼 사상",       "desc": "5천년간 조선의 얼, 광복 후 고조선.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["식민사관에", "맞선 역사학."],
+      "items": [
+        { "title": "주체성",     "desc": "민족 시각으로 역사 재해석." },
+        { "title": "고대사",     "desc": "고조선·고구려 발전 입증." },
+        { "title": "독립정신",   "desc": "독립운동의 정신적 지주 역할." },
+        { "title": "낭가사상",   "desc": "화랑도 정신을 민족 정화로." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"박은식 국혼,\n신채호 낭가, 정인보 얼.\"",
+      "tip_body": "심화 시험에서는 박은식의 한국통사·국혼, 신채호의 조선상고사·아와 비아의 투쟁·묘청의 난 평가, 정인보의 얼 사상, 안재홍·문일평의 신민족주의 사관 매칭이 자주 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open Korean classical book icon next to a small ink brush silhouette suggesting historical writing. Cream #F2EDE3 base + amber #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

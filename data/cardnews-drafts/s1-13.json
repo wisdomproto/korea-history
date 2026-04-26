@@ -1,0 +1,67 @@
+{
+  "noteId": "s1-13",
+  "noteTitle": "불상",
+  "questionCount": 70,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "한국 불상",
+      "era": "삼국",
+      "year_label": "AD 6~10c",
+      "vol": "VOL.S1-13",
+      "next_topic": "고려 정치",
+      "next_subtitle": "왕건의 호족 통합 정책"
+    },
+    "cover": {
+      "year_top": "BUDDHA STATUES · 6~10c",
+      "era_chip": "佛像 · 三國~高麗",
+      "title_lines": ["불상", "조각"],
+      "subtitle": "백제의 미소, 신라의 비례,\n흙·돌·금동의 천 년.",
+      "imagePrompt": "Ancient Korean Buddha statue illustration, 7th century. ONE seated bronze pensive bodhisattva (Bangasayusang) figure with one leg crossed and a finger touching the cheek, half-smiling, set in a softly lit stone niche. Around the niche, faintly carved cliff-side rock suggests Seosan rock-carved triad. Composition: serene, intimate. Color: aged gilt + bronze + clay-brown + warm amber halo. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "서산 마애", "sub": "백제, 백제의 미소" },
+        { "word": "반가사유", "sub": "삼국 금동, 일본 고류지" },
+        { "word": "석굴암", "sub": "통일신라 본존불 걸작" },
+        { "word": "관촉사", "sub": "고려 은진미륵, 거대·투박" }
+      ]
+    },
+    "facts": {
+      "headline_top": "재료가 바뀌면,",
+      "headline_accent": "시대가 보인다.",
+      "image": null,
+      "timeline": [
+        { "year": "삼국", "month": "금동", "text": "연가7년명·반가사유, 중국 영향." },
+        { "year": "백제", "month": "마애", "text": "서산 마애삼존불, 백제의 미소." },
+        { "year": "통일", "month": "석조", "text": "석굴암 본존불, 항마촉지인 걸작." },
+        { "year": "고려", "month": "철·석", "text": "관촉사 은진미륵, 지방 호족 후원." }
+      ]
+    },
+    "people": {
+      "headline_top": "불상이 보여준",
+      "headline_accent": "세 시대.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "백제 미소", "role": "서산 마애", "desc": "온화한 부조, 본존+보살+반가.", "portrait_src": null },
+        { "name": "석굴암", "role": "통일신라", "desc": "사실적 표현·이상적 비례 걸작.", "portrait_src": null },
+        { "name": "은진미륵", "role": "고려 관촉사", "desc": "약 18m 거대·투박한 지방 양식.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["사실에서 거대로,", "양식의 변천."],
+      "items": [
+        { "title": "금동 반가", "desc": "국보 78·83호, 일본에 영향." },
+        { "title": "소조아미타", "desc": "부석사, 통일신라 흙 빚은 불상." },
+        { "title": "철불 유행", "desc": "고려 지방 사찰의 호족 후원." },
+        { "title": "항마촉지인", "desc": "석굴암 본존불의 대표 수인." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"서산 미소 · 석굴암 비례 · 은진 거대\"\n시대별 키워드를 묶는다.",
+      "tip_body": "심화 시험에서는 불상 사진을 보고 시대·재료·국가를 묻는다. 백제(서산 마애·금동 반가)·통일신라(석굴암·소조)·고려(관촉사 은진미륵·철불)의 양식 변화를 사진과 함께 정리할 것. 반가사유상의 일본 고류지 영향도 단골 포인트.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized seated Buddha silhouette icon shown from a slight angle. RIGHT: a small stone niche frame silhouette suggesting Seokguram dome. Cream #F2EDE3 base + warm amber #C9A24A accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

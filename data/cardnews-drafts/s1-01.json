@@ -1,0 +1,67 @@
+{
+  "noteId": "s1-01",
+  "noteTitle": "시대별 유물/유적지",
+  "questionCount": 89,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "구석기·신석기 유물",
+      "era": "삼국",
+      "year_label": "선사~신석기",
+      "vol": "VOL.S1-01",
+      "next_topic": "연맹국가",
+      "next_subtitle": "부여·고구려·옥저·동예·삼한"
+    },
+    "cover": {
+      "year_top": "PREHISTORY · 선사",
+      "era_chip": "舊石器 · 新石器",
+      "title_lines": ["선사", "유물"],
+      "subtitle": "주먹도끼와 빗살무늬 토기,\n한반도 최초의 흔적.",
+      "imagePrompt": "Prehistoric Korea illustration. ONE early human figure in roughly stitched leather wrapping, kneeling beside a riverbank with a hand axe (jumeokdokki) and a comb-pattern pottery jar (bitsalmunui togi) half-buried in sand. Background: simple cave silhouette and pine forest. Composition: quiet discovery. Color: clay-brown + ochre + bronze. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "주먹도끼", "sub": "구석기 대표 뗀석기" },
+        { "word": "연천 전곡리", "sub": "주먹도끼 출토지" },
+        { "word": "빗살무늬", "sub": "신석기 대표 토기" },
+        { "word": "암사동", "sub": "서울, 신석기 유적지" }
+      ]
+    },
+    "facts": {
+      "headline_top": "뗀석기에서",
+      "headline_accent": "농경의 시작까지.",
+      "image": null,
+      "timeline": [
+        { "year": "구석기", "month": "전기", "text": "뗀석기·주먹도끼 사용. 동굴·막집 거주." },
+        { "year": "전곡리", "month": "발굴", "text": "경기 연천에서 주먹도끼 출토." },
+        { "year": "신석기", "month": "초기", "text": "농경·정착 시작. 움집·간석기 사용." },
+        { "year": "암사동", "month": "유적", "text": "서울 한강변 빗살무늬 토기 출토지." }
+      ]
+    },
+    "people": {
+      "headline_top": "유물이 말해준",
+      "headline_accent": "세 가지 삶.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "뗀석기 인", "role": "구석기인", "desc": "사냥·채집, 동굴과 막집에서 이동.", "portrait_src": null },
+        { "name": "간석기 인", "role": "신석기인", "desc": "움집에 정착, 농경과 토기 제작.", "portrait_src": null },
+        { "name": "흥수아이", "role": "청원 두루봉", "desc": "구석기 인골 발견(논란 존재).", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["도구가 바뀌면,", "삶의 방식이 바뀐다."],
+      "items": [
+        { "title": "뗀석기", "desc": "돌을 부딪쳐 만든 구석기 도구." },
+        { "title": "간석기", "desc": "돌을 갈아 만든 신석기 도구." },
+        { "title": "가락바퀴", "desc": "신석기, 실 잣는 도구." },
+        { "title": "패총", "desc": "부산 동삼동, 조개무덤 유적." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"주먹도끼=전곡리, 빗살무늬=암사동\"\n유물과 유적지를 한 짝으로.",
+      "tip_body": "심화 시험에서는 유물 사진과 유적지를 짝지어 묻는 문항이 많다. 주먹도끼-연천 전곡리, 빗살무늬 토기-서울 암사동, 패총-부산 동삼동을 묶어서 외울 것.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized hand axe (jumeokdokki) icon shown from a slight angle. RIGHT: a small comb-patterned jar silhouette. Cream #F2EDE3 base + clay-brown #B58A5E accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

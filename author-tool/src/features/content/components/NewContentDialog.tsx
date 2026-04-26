@@ -43,7 +43,7 @@ export function NewContentDialog({ open, onClose }: Props) {
   // Fetch notes
   const { data: notes } = useQuery({
     queryKey: ['notes-list'],
-    queryFn: () => apiGet<{ id: string; title: string; sectionId: string }[]>('/notes'),
+    queryFn: () => apiGet<{ id: string; title: string; sectionId: string; era: string; eraLabel: string; questionCount: number; order: number }[]>('/notes'),
     enabled: open && sourceType === 'note',
   });
 
@@ -181,7 +181,7 @@ export function NewContentDialog({ open, onClose }: Props) {
         {/* Note picker */}
         {sourceType === 'note' && (
           <div className="mb-3">
-            <div className="text-xs font-bold mb-1 text-gray-700">노트 선택</div>
+            <div className="text-xs font-bold mb-1 text-gray-700">노트 선택 ({notes?.length || 0}개)</div>
             <select
               className="w-full p-2 border border-gray-200 rounded-lg text-sm"
               value={selectedNote}
@@ -189,18 +189,33 @@ export function NewContentDialog({ open, onClose }: Props) {
             >
               <option value="">선택...</option>
               {(() => {
-                const ERAS: Record<string, string> = { s1: '선사·고조선', s2: '삼국', s3: '남북국', s4: '고려', s5: '조선 전기', s6: '조선 후기', s7: '근대·현대' };
+                if (!notes) return null;
+                // 시대 순서 (노트의 era 필드 그대로 사용)
+                const ERA_ORDER = ['삼국', '고려', '조선 전기', '조선 후기', '근대', '현대'];
                 const groups: Record<string, any[]> = {};
-                notes?.forEach((n: any) => {
-                  const era = ERAS[n.sectionId?.split('-')[0]] || '기타';
+                // order 필드로 정렬 (인덱스 기준 — index.json 순서)
+                const sorted = [...notes].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+                sorted.forEach((n) => {
+                  const era = n.era || '기타';
                   if (!groups[era]) groups[era] = [];
                   groups[era].push(n);
                 });
-                return Object.entries(groups).map(([era, items]) => (
-                  <optgroup key={era} label={era}>
-                    {items.map((n: any) => (
-                      <option key={n.id} value={n.id}>[{era}] {n.title}</option>
-                    ))}
+                // 시대 순서대로 정렬
+                const orderedEras = [
+                  ...ERA_ORDER.filter((e) => groups[e]),
+                  ...Object.keys(groups).filter((e) => !ERA_ORDER.includes(e)),
+                ];
+                let counter = 0;
+                return orderedEras.map((era) => (
+                  <optgroup key={era} label={era + ' (' + groups[era].length + '개)'}>
+                    {groups[era].map((n: any) => {
+                      counter++;
+                      return (
+                        <option key={n.id} value={n.id}>
+                          #{String(counter).padStart(2, '0')} {n.title} [{n.id}] · {n.questionCount}문제
+                        </option>
+                      );
+                    })}
                   </optgroup>
                 ));
               })()}

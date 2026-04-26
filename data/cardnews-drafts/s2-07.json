@@ -1,0 +1,67 @@
+{
+  "noteId": "s2-07",
+  "noteTitle": "고려 토지 제도",
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "전시과 제도",
+      "era": "고려",
+      "year_label": "940~1391",
+      "vol": "VOL.S2-07",
+      "next_topic": "고려 경제",
+      "next_subtitle": "해동통보·은병의 시대"
+    },
+    "cover": {
+      "year_top": "HISTORY · 940–1391",
+      "era_chip": "高麗 · 田柴科",
+      "title_lines": ["전시", "분급"],
+      "subtitle": "관리에게 토지를,\n474년 이어진 분급 제도.",
+      "imagePrompt": "10th-12th century Goryeo dynasty rural landscape illustration. Foreground: a Goryeo official in jade-green robe holding a land registry scroll, standing at the edge of terraced rice paddies and a small wooded hillside. Distant farmers tending fields. Color: jade-green + harvest gold + earth-brown. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO READABLE SCROLLS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "역분전",   "sub": "태조, 공신·호족 분급" },
+        { "word": "전시과",   "sub": "전지(곡식)+시지(땔감)" },
+        { "word": "공음전",   "sub": "5품 이상, 세습 가능" },
+        { "word": "과전법",   "sub": "1391, 신진 사대부 토대" }
+      ]
+    },
+    "facts": {
+      "headline_top": "분급의",
+      "headline_accent": "다섯 단계.",
+      "image": null,
+      "timeline": [
+        { "year": "940",  "month": "—", "text": "태조 역분전. 공신·호족 공로 분급." },
+        { "year": "976",  "month": "—", "text": "경종 시정 전시과. 전·현직 모두." },
+        { "year": "998",  "month": "—", "text": "목종 개정 전시과. 18과 등급 정비." },
+        { "year": "1076", "month": "—", "text": "문종 경정 전시과. 현직만 분급." },
+        { "year": "1391", "month": "—", "text": "과전법 시행. 조선 토지 제도 토대." }
+      ]
+    },
+    "people": {
+      "headline_top": "전시과의",
+      "headline_accent": "세 종류.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "전지", "role": "곡식 수조지",   "desc": "곡식을 거둘 수 있는 토지의 분급.", "portrait_src": null },
+        { "name": "시지", "role": "땔감 채취지",   "desc": "땔감을 채취할 산림의 분급.", "portrait_src": null },
+        { "name": "공음전", "role": "세습 토지",   "desc": "5품 이상에 분급, 자손에 세습.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["관료에 토지를 주어,", "통치를 굳혔다."],
+      "items": [
+        { "title": "관료제 정착",     "desc": "전시과로 관료의 경제 기반 보장." },
+        { "title": "공음전 세습",     "desc": "문벌 귀족 세력 형성의 토대." },
+        { "title": "수조권만 분급",    "desc": "토지 자체 X, 거두는 권리만." },
+        { "title": "과전법 계승",     "desc": "1391 신진 사대부의 토지 개혁." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"역분전 → 시정 → 개정 → 경정 → 과전법\"\n5단계 변천 외울 것.",
+      "tip_body": "심화 시험은 전시과 4단계 변천(역분전·시정·개정·경정)과 각 시기 왕(태조·경종·목종·문종), 공음전(5품 이상 세습) 특징, 과전법으로 이어지는 흐름 빈출.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized aerial-view of divided rice paddies in geometric grid pattern, with a small scroll icon to the side suggesting land registry. Jade-green + amber #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

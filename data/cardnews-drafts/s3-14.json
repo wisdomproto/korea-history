@@ -1,0 +1,67 @@
+{
+  "noteId": "s3-14",
+  "noteTitle": "서원과 향약",
+  "questionCount": 60,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "서원과 향약",
+      "era": "조선 전기",
+      "year_label": "1543~16c",
+      "vol": "VOL.S3-14",
+      "next_topic": "문화와 성리학",
+      "next_subtitle": "이황과 이이의 시대"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1543–16c",
+      "era_chip": "朝鮮 前期 · 書院·鄕約",
+      "title_lines": ["서원", "향약"],
+      "subtitle": "사림이 만든 학교,\n사림이 세운 규약.",
+      "imagePrompt": "Joseon folk minhwa + genre-painting tones. Hanji beige, ink-black, crimson, navy. Scene: a hilltop seowon (Confucian academy) with curved tile roofs, wooden columns, and a small inner sadang (shrine) surrounded by old pine trees. In the foreground courtyard, two yangban scholars in white dopo and black gat are reading scrolls together. A stone monument stands to the side. Composition: serene, scholarly retreat. Color: hanji beige + ink-black + crimson signboard accent + soft pine green. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "백운동", "sub": "주세붕, 1543년 최초" },
+        { "word": "소수서원", "sub": "1550년 최초의 사액서원" },
+        { "word": "여씨향약", "sub": "조광조, 향약 보급 시도" },
+        { "word": "4대 강목", "sub": "덕업·과실·예속·환난" }
+      ]
+    },
+    "facts": {
+      "headline_top": "사림의 향촌,",
+      "headline_accent": "두 기둥.",
+      "image": null,
+      "timeline": [
+        { "year": "1518", "month": "전후", "text": "조광조, 여씨 향약 전국 보급 시도." },
+        { "year": "1543", "month": "8월", "text": "주세붕, 영주에 백운동서원 건립." },
+        { "year": "1550", "month": "2월", "text": "이황 건의, 소수서원 사액 받음." },
+        { "year": "1571", "month": "전후", "text": "이이, 해주 향약·서원 향약 제정." }
+      ]
+    },
+    "people": {
+      "headline_top": "향촌을 다스린",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "조광조", "role": "중종 신하", "desc": "여씨 향약 보급, 사림 개혁 추진.", "portrait_src": null },
+        { "name": "주세붕", "role": "풍기 군수", "desc": "백운동서원 건립, 안향 제향.", "portrait_src": null },
+        { "name": "이이",   "role": "성리학자", "desc": "해주 향약 제정, 향촌 자치 실천.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["향촌은 학교가 되고,", "규약이 되었다."],
+      "items": [
+        { "title": "사액 특권", "desc": "면세·면역, 사림 경제 강화." },
+        { "title": "선현 제향", "desc": "사림의 정신적 구심점 형성." },
+        { "title": "향촌 교화", "desc": "유교 윤리로 농민 생활 규제." },
+        { "title": "여론 형성", "desc": "사림 중앙 진출의 발판." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"덕업·과실·예속·환난\"\n4대 강목을 묶을 것.",
+      "tip_body": "심화에서는 향약 4대 강목(덕업상권·과실상규·예속상교·환난상휼)과 향약별 인물(조광조 여씨, 이황 예안, 이이 해주)을 묶어 외울 것.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized seowon gate silhouette with curved tile roof, and to the right a small folded paper scroll suggesting the hyangyak rules. Cream #F2EDE3 base + amber #B45309 accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

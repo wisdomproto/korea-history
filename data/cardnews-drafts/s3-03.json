@@ -1,0 +1,67 @@
+{
+  "noteId": "s3-03",
+  "noteTitle": "사화 (무오/갑자/기묘/을사)",
+  "questionCount": 150,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "4대 사화",
+      "era": "조선 전기",
+      "year_label": "1498~1545",
+      "vol": "VOL.S3-03",
+      "next_topic": "중앙 행정",
+      "next_subtitle": "의정부·6조·삼사의 균형"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1498–1545",
+      "era_chip": "朝鮮 前期 · 燕山–明宗",
+      "title_lines": ["사화", "충돌"],
+      "subtitle": "네 번의 피바람,\n훈구와 사림이 부딪쳤다.",
+      "imagePrompt": "Early 16th century Korean illustration. ONE Korean scholar in white scholarly robe and black gat (horsehair hat) standing in a dim seowon (Confucian academy) courtyard at dusk, brush in hand, looking down at a wooden desk with blank scroll. Long shadows from courtyard pillars, fallen autumn leaves. Composition: solitary figure, tense quiet before storm. Color: ink-black + crimson accent + hanji beige + cool gray dusk. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "무오사화", "sub": "1498, 김종직 조의제문" },
+        { "word": "갑자사화", "sub": "1504, 폐비 윤씨 복수" },
+        { "word": "기묘사화", "sub": "1519, 조광조 위훈삭제" },
+        { "word": "을사사화", "sub": "1545, 대윤·소윤 외척 다툼" }
+      ]
+    },
+    "facts": {
+      "headline_top": "네 번의 사화,",
+      "headline_accent": "한 흐름.",
+      "image": null,
+      "timeline": [
+        { "year": "1498", "month": "7월", "text": "무오사화. 조의제문이 사초에 실려 김일손 처형." },
+        { "year": "1504", "month": "3월", "text": "갑자사화. 폐비 윤씨 사사 진상으로 무차별 숙청." },
+        { "year": "1519", "month": "11월", "text": "기묘사화. 조광조 사약, 현량과·위훈삭제 좌절." },
+        { "year": "1545", "month": "8월", "text": "을사사화. 윤원형의 소윤이 대윤 윤임 제거." }
+      ]
+    },
+    "people": {
+      "headline_top": "사화의",
+      "headline_accent": "세 얼굴.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "김종직", "role": "사림 종조", "desc": "조의제문 저술, 무오사화로 부관참시.", "portrait_src": null },
+        { "name": "조광조", "role": "기묘 사림", "desc": "현량과·소격서 폐지·위훈삭제 추진.", "portrait_src": null },
+        { "name": "연산군", "role": "조선 10대", "desc": "무오·갑자사화 주도, 폭정 끝에 폐위.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["사림은 죽었으나,", "결국 살아남았다."],
+      "items": [
+        { "title": "훈구 득세", "desc": "사화 직후 중앙 권력 독점." },
+        { "title": "서원 확산", "desc": "1543 백운동서원, 향촌 거점." },
+        { "title": "향약 보급", "desc": "사림이 지방 자치로 세력 유지." },
+        { "title": "선조 장악", "desc": "사림이 끝내 중앙 정계 차지." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"무오 조의제문 · 기묘 위훈삭제\"\n원인을 사화에 묶어라.",
+      "tip_body": "심화 시험에서는 4대 사화의 직접 원인(조의제문/폐비 윤씨/위훈삭제/대윤소윤)과 왕(연산군·중종·명종)을 짝지어 묻는다. 조광조의 현량과는 추천제 과거임을 기억할 것.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized broken brush icon with a single ink drop falling, simple ink-line. RIGHT: a small crumpled scroll silhouette suggesting suppressed writings. Cream #F2EDE3 base + crimson #B91C1C accent + ink-black outline. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

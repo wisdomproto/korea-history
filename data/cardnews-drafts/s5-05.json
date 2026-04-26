@@ -1,0 +1,73 @@
+{
+  "noteId": "s5-05",
+  "noteTitle": "근대 문화와 시설",
+  "questionCount": 332,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "근대 문물의 도입",
+      "era": "근대",
+      "year_label": "1883~1899",
+      "vol": "VOL.S5-05",
+      "next_topic": "일제의 통치방식",
+      "next_subtitle": "무단·문화·민족말살의 세 시기"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1883–1899",
+      "era_chip": "近代 文物 · 電燈 · 鐵道",
+      "title_lines": ["전등", "철도"],
+      "subtitle": "한성에 켜진 빛,\n인천까지 달린 첫 기차.",
+      "imagePrompt": "Late-19th-century Korean illustration. ONE 19th-century steam locomotive of the Gyeongin Line emerging from a tunnel of misty trees, billowing dark gray smoke, on a single track running across a low embankment. Beside the track: ONE Korean man in white dopo robe and small black gat, holding a small folded newspaper, watching the train with quiet astonishment. In the far distance: a row of utility poles with a single line of electric wire heading toward a tile-roofed government building (한성전기회사 reference). Color: dark blue-gray + sepia + amber lamp accent. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "박문국", "sub": "1883, 한성순보 발행" },
+        { "word": "광혜원", "sub": "1885, 최초 근대식 병원" },
+        { "word": "독립신문", "sub": "1896, 서재필 한글·영문" },
+        { "word": "경인선", "sub": "1899, 최초의 철도" }
+      ]
+    },
+    "facts": {
+      "headline_top": "16년의",
+      "headline_accent": "다섯 첫걸음.",
+      "image": null,
+      "timeline": [
+        { "year": "1883", "month": "8월",  "text": "박문국 설치. 한성순보 발행 시작." },
+        { "year": "1885", "month": "4월",  "text": "광혜원 설립. 알렌 요청, 곧 제중원 개칭." },
+        { "year": "1886", "month": "9월",  "text": "육영공원 개교. 최초의 관립 근대 학교." },
+        { "year": "1887", "month": "1월",  "text": "전등 점등. 경복궁 건청궁이 최초." },
+        { "year": "1899", "month": "9월",  "text": "경인선 개통. 노량진–제물포 33km." }
+      ]
+    },
+    "people": {
+      "headline_top": "처음을 연,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "알렌",   "role": "미국인 의사",  "desc": "광혜원 설립 요청, 갑신정변 부상자 치료.", "portrait_src": null },
+        { "name": "서재필", "role": "독립신문 창간", "desc": "1896 한글·영문 신문 발행.", "portrait_src": null },
+        { "name": "주시경", "role": "한글 학자",    "desc": "국문 연구소, 국어문법 정립.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["문물은 빨랐고,", "주권은 흔들렸다."],
+      "items": [
+        { "title": "한성순보",        "desc": "박문국에서 발행한 첫 근대 신문." },
+        { "title": "원산학사",        "desc": "1883 최초의 사립 근대 학교." },
+        { "title": "전환국·백동화",    "desc": "1883, 후일 화폐정리사업으로 폐지." },
+        { "title": "경부·경의선",     "desc": "러일전쟁 수행 목적, 1904 이후 부설." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"박문국·전환국·기기창·우정총국\"\n1883~84 4대 시설.",
+      "tip_body": "심화 시험에서는 시설 설립 연도와 기능, 신문 5종(한성순보·독립신문·황성신문·제국신문·대한매일신보)의 발행 주체와 특징, 경인선과 경부·경의선의 부설 목적 구분이 자주 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized small electric bulb silhouette next to a tiny folded newspaper. RIGHT: a small steam locomotive silhouette in profile. Cream #F2EDE3 base + amber #C77B3D accent + faint sepia line. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

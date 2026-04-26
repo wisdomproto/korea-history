@@ -1,0 +1,67 @@
+{
+  "noteId": "s3-04",
+  "noteTitle": "중앙 행정 조직",
+  "questionCount": 115,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "중앙 행정",
+      "era": "조선 전기",
+      "year_label": "15c~16c",
+      "vol": "VOL.S3-04",
+      "next_topic": "지방 행정",
+      "next_subtitle": "8도와 수령, 향촌 자치"
+    },
+    "cover": {
+      "year_top": "HISTORY · 15–16c",
+      "era_chip": "朝鮮 前期 · 中央",
+      "title_lines": ["의정", "삼사"],
+      "subtitle": "왕과 신하 사이,\n견제와 균형의 설계.",
+      "imagePrompt": "Early Joseon dynasty illustration, 15th century. THREE Korean officials in deep navy court robes with red rank insignia patches on chest, seated at low writing desks arranged in a Uijeongbu council hall interior. Brush stands and document scrolls on desks. Behind them a folding screen with mountain ink-painting. Composition: tri-fold symmetry, deliberation. Color: deep navy + crimson rank patches + ink-black + hanji beige. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "의정부", "sub": "영·좌·우의정 3정승 합의" },
+        { "word": "6조", "sub": "이호예병형공 실무 분담" },
+        { "word": "삼사", "sub": "사헌부·사간원·홍문관 언론" },
+        { "word": "승정원", "sub": "왕의 비서, 6승지가 출납" }
+      ]
+    },
+    "facts": {
+      "headline_top": "의정부와 6조,",
+      "headline_accent": "삼사가 견제했다.",
+      "image": null,
+      "timeline": [
+        { "year": "1400", "month": "11월", "text": "태종 6조 직계제. 6조가 왕에게 직접 보고." },
+        { "year": "1436", "month": "4월", "text": "세종 의정부 서사제. 의정부 심의 후 보고." },
+        { "year": "1455", "month": "윤6월", "text": "세조 6조 직계제 부활. 왕권 강화 환원." },
+        { "year": "1478", "month": "3월", "text": "성종 홍문관 설치. 3사 체제 완성." }
+      ]
+    },
+    "people": {
+      "headline_top": "삼사,",
+      "headline_accent": "세 기관.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "사헌부", "role": "감찰 기관", "desc": "관리 비위 탄핵, 서경권으로 인사 심사.", "portrait_src": null },
+        { "name": "사간원", "role": "간쟁 기관", "desc": "왕의 잘못 직언, 봉박권으로 왕명 거부.", "portrait_src": null },
+        { "name": "홍문관", "role": "자문 기관", "desc": "경연 주관, 학문 연구와 정책 자문.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["권력은 분산되어야", "오래간다."],
+      "items": [
+        { "title": "의정부", "desc": "3정승 합의로 국정 심의." },
+        { "title": "6조 실무", "desc": "이·호·예·병·형·공 분장." },
+        { "title": "대간 서경", "desc": "5품 이하 인사 동의권." },
+        { "title": "의금부", "desc": "왕 직속 특별 사법 기관." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"6조 직계 = 태종·세조 / 의정부 서사 = 세종·성종\"\n왕과 체제를 묶어라.",
+      "tip_body": "심화 시험에서는 사헌부(감찰)·사간원(간쟁)·홍문관(자문)의 기능 구분이 반드시 출제된다. 대간(사헌부+사간원)의 서경권과 봉박권은 별개 기관 권한임을 혼동하지 말 것.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized scale (balance) icon with three small books on each side, simple ink-line. RIGHT: a small writing brush silhouette suggesting censorial review. Cream #F2EDE3 base + navy #1E3A8A accent + ink-black outline. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

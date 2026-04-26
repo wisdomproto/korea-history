@@ -1,0 +1,67 @@
+{
+  "noteId": "s3-09",
+  "noteTitle": "광해군 중립외교와 호란",
+  "questionCount": 150,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "호란과 중립외교",
+      "era": "조선 전기",
+      "year_label": "1608~1659",
+      "vol": "VOL.S3-09",
+      "next_topic": "토지 제도",
+      "next_subtitle": "과전법에서 직전법까지"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1608–1659",
+      "era_chip": "朝鮮 前期 · 光海–孝宗",
+      "title_lines": ["호란", "굴욕"],
+      "subtitle": "중립을 버린 대가,\n삼전도에서 끝났다.",
+      "imagePrompt": "Early 17th century Korean illustration. ONE Korean king (King Injo) in deep crimson royal robe kneeling on a stone-paved riverbank at Samjeondo, head bowed low. Behind him: snowy bare trees and an overcast winter sky. In the distance: a raised dais suggested as silhouette only. Composition: solitary humbled figure, weight of surrender. Color: deep crimson robe + ink-black + cool gray winter + hanji beige sky. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "중립외교", "sub": "광해군, 명·후금 사이 실리" },
+        { "word": "인조반정", "sub": "1623 서인, 친명배금 전환" },
+        { "word": "정묘호란", "sub": "1627 후금, 형제관계" },
+        { "word": "병자호란", "sub": "1636 청, 군신관계 강요" }
+      ]
+    },
+    "facts": {
+      "headline_top": "중립에서 굴욕까지,",
+      "headline_accent": "50년의 흐름.",
+      "image": null,
+      "timeline": [
+        { "year": "1608", "month": "5월", "text": "광해군 즉위. 경기도 대동법 최초 시행." },
+        { "year": "1623", "month": "3월", "text": "인조반정. 서인이 광해군 폐위, 친명배금." },
+        { "year": "1627", "month": "1월", "text": "정묘호란. 후금 침입, 형제관계 화약." },
+        { "year": "1637", "month": "1월", "text": "삼전도 항복. 청과 군신관계, 세자 인질." }
+      ]
+    },
+    "people": {
+      "headline_top": "외교의",
+      "headline_accent": "세 인물.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "광해군", "role": "조선 15대", "desc": "중립외교·대동법·동의보감, 폐모살제로 폐위.", "portrait_src": null },
+        { "name": "인조", "role": "조선 16대", "desc": "친명배금 전환, 남한산성 47일 항전.", "portrait_src": null },
+        { "name": "효종", "role": "조선 17대", "desc": "송시열과 북벌 추진, 급서로 무산.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["굴욕은 분노가 되어,", "북벌로 흘렀다."],
+      "items": [
+        { "title": "대동법", "desc": "경기도 시범 시작, 공납 개혁." },
+        { "title": "동의보감", "desc": "1610 허준 완성, 의학 집대성." },
+        { "title": "삼배구고두", "desc": "삼전도에서 인조의 항복례." },
+        { "title": "북벌 운동", "desc": "효종·송시열, 어영청 확대." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"정묘 = 형제 / 병자 = 군신\"\n관계를 헷갈리지 마라.",
+      "tip_body": "심화 시험에서는 정묘호란(1627·형제관계)과 병자호란(1636·군신관계)의 구분이 핵심이다. 광해군의 폐모살제가 인조반정의 명분, 효종의 나선 정벌(1654·1658)도 빈출 포인트.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized snow-capped mountain silhouette suggesting Namhansanseong fortress, simple ink-line. RIGHT: a small Joseon royal hat silhouette bowed forward. Cream #F2EDE3 base + cool gray #475569 accent + crimson #B91C1C detail. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

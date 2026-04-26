@@ -1,0 +1,66 @@
+{
+  "noteId": "s2-11",
+  "noteTitle": "문화 (역사서, 유학, 불교)",
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "고려 문화",
+      "era": "고려",
+      "year_label": "10~14세기",
+      "vol": "VOL.S2-11",
+      "next_topic": "조선의 건국과정",
+      "next_subtitle": "위화도 회군에서 정도전까지"
+    },
+    "cover": {
+      "year_top": "HISTORY · 10–14C",
+      "era_chip": "高麗 · 文化",
+      "title_lines": ["삼국", "유사"],
+      "subtitle": "사기와 유사,\n천태와 조계.",
+      "imagePrompt": "12th century Goryeo dynasty Buddhist temple library illustration. Foreground: a Buddhist monk-scholar (Uicheon or Jinul) in jade-green monk's robe, brushing characters onto rice paper at a low desk. Wooden Tripitaka Koreana printing blocks stacked beside him. Background: a celadon-colored Buddha statue and folding screen with mountain ink-painting. Soft golden incense smoke. Color: jade-green + warm amber + ink-black. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO READABLE CHARACTERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "삼국사기", "sub": "김부식, 1145, 기전체" },
+        { "word": "삼국유사", "sub": "일연, 1281, 단군 신화" },
+        { "word": "팔만대장경", "sub": "대몽 항쟁, 해인사" },
+        { "word": "지눌",     "sub": "조계종, 정혜쌍수" }
+      ]
+    },
+    "facts": {
+      "headline_top": "역사·불교·유학,",
+      "headline_accent": "고려의 세 줄기.",
+      "image": null,
+      "timeline": [
+        { "year": "1145", "month": "—", "text": "김부식 삼국사기. 기전체, 유교 사관." },
+        { "year": "1101", "month": "—", "text": "의천 천태종. 교종 중심 통합." },
+        { "year": "1208", "month": "—", "text": "지눌 조계종. 선·교 통합, 정혜쌍수." },
+        { "year": "1281", "month": "—", "text": "일연 삼국유사. 단군 신화 수록." }
+      ]
+    },
+    "people": {
+      "headline_top": "고려 학문의",
+      "headline_accent": "세 거장.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "김부식", "role": "유학자",         "desc": "1145 삼국사기 편찬, 기전체.", "portrait_src": null },
+        { "name": "의천",   "role": "대각국사",       "desc": "천태종 창시, 교관겸수 주장.", "portrait_src": null },
+        { "name": "지눌",   "role": "보조국사",       "desc": "조계종 창시, 돈오점수·정혜쌍수.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["문화가 다양해지자,", "사상이 깊어졌다."],
+      "items": [
+        { "title": "팔만대장경",     "desc": "대몽 항쟁 중 조성, 해인사 보존." },
+        { "title": "직지심체요절",   "desc": "1377, 세계 최초 금속활자 인쇄." },
+        { "title": "성리학 도입",     "desc": "안향이 원에서 도입, 신진 사대부." },
+        { "title": "고려청자",       "desc": "비색·상감 기법, 동아시아 명품." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"삼국사기(김부식) · 삼국유사(일연)\"\n저자·시기 혼동 주의.",
+      "tip_body": "심화 시험은 삼국사기(1145·김부식·기전체·유교)와 삼국유사(1281·일연·단군 신화) 비교, 의천 천태종·지눌 조계종 매칭, 직지심체요절(1377)·팔만대장경 빈출.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open Korean classical book next to a small celadon-colored Buddhist pagoda silhouette. Jade-green + amber #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

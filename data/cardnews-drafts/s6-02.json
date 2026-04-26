@@ -1,0 +1,73 @@
+{
+  "noteId": "s6-02",
+  "noteTitle": "3·1운동 이전 민족운동 (1910년대)",
+  "questionCount": 162,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "1910년대 민족운동",
+      "era": "일제 강점기",
+      "year_label": "1910~1918",
+      "vol": "VOL.S6-02",
+      "next_topic": "3·1운동",
+      "next_subtitle": "1919년 거족적 만세운동"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1910–1918",
+      "era_chip": "日帝 强占 · 國外 基地 · 秘密結社",
+      "title_lines": ["기지", "결사"],
+      "subtitle": "국경 너머에 학교를 세우고,\n안에서는 비밀로 모였다.",
+      "imagePrompt": "Japanese-occupation era illustration, 1910s. ONE Korean independence activist (Yi Hoeyeong reference) — long padded gray Manchurian-style robe, fur cap, holding a folded land deed and a small book, walking through a snow-dusted Manchurian plain (서간도 reference). Behind him in the misty distance: a small log schoolhouse with a single chimney smoke (신흥무관학교 reference). Color: dark blue-gray + sepia + faint warm amber from the chimney + cold white snow. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "신흥무관학교", "sub": "서간도, 이회영 6형제" },
+        { "word": "권업회", "sub": "연해주, 최재형" },
+        { "word": "독립의군부", "sub": "임병찬, 복벽주의" },
+        { "word": "대한광복회", "sub": "박상진, 공화정 지향" }
+      ]
+    },
+    "facts": {
+      "headline_top": "안과 밖,",
+      "headline_accent": "다섯 거점.",
+      "image": null,
+      "timeline": [
+        { "year": "1911", "month": "—", "text": "서간도 경학사·신흥강습소. 이회영 6형제 헌신." },
+        { "year": "1911", "month": "12월", "text": "연해주 권업회 결성. 권업신문 발행." },
+        { "year": "1912", "month": "9월", "text": "독립의군부. 임병찬, 고종 밀명, 복벽주의." },
+        { "year": "1914", "month": "—", "text": "대한광복군 정부. 이상설·이동휘 연해주." },
+        { "year": "1915", "month": "7월", "text": "대한광복회. 박상진, 공화정·만주 군관학교." }
+      ]
+    },
+    "people": {
+      "headline_top": "기지를 세운,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "이회영", "role": "신민회 출신",  "desc": "전 재산 처분, 6형제 서간도 망명.", "portrait_src": null },
+        { "name": "이상설", "role": "헤이그 특사",  "desc": "서전서숙 설립, 광복군 정부 주도.", "portrait_src": null },
+        { "name": "박상진", "role": "대한광복회 총사령", "desc": "대구 본부, 친일 부호 처단 활동.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["국외엔 학교를,", "국내엔 비밀결사."],
+      "items": [
+        { "title": "서전서숙·명동학교", "desc": "북간도 민족 교육의 두 축." },
+        { "title": "중광단",         "desc": "대종교 계열, 후일 북로군정서 모체." },
+        { "title": "신한청년당",     "desc": "상하이, 여운형, 파리강화회의 파견." },
+        { "title": "대한인국민회",   "desc": "미주, 안창호 주도 외교 활동." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"서간도 신흥 · 북간도 중광\"\n지역–단체 매칭 필수.",
+      "tip_body": "심화 시험에서는 지역(서간도/북간도/연해주/상하이/미주)과 단체·학교·군대 매칭, 독립의군부(복벽주의)와 대한광복회(공화주의)의 이념 차이, 신민회 해체(1911 105인 사건) 후 인맥 흐름이 자주 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized small log cabin silhouette suggesting Sinheung Mugwan School. RIGHT: a small folded newspaper suggesting Gwoneop Sinmun. Cream #F2EDE3 base + dark blue-gray #2E3A4A accent + sepia line. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

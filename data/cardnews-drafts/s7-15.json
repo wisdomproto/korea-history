@@ -1,0 +1,72 @@
+{
+  "noteId": "s7-15",
+  "noteTitle": "주요 사건 및 정책",
+  "questionCount": 64,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "주요 사건·정책",
+      "era": "현대",
+      "year_label": "1960~1990s",
+      "vol": "VOL.S7-15",
+      "next_topic": "유네스코 유산",
+      "next_subtitle": "세계가 인정한 한국의 유산"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1962",
+      "era_chip": "現代 · 1962 · 開發",
+      "title_lines": ["성장", "전환"],
+      "subtitle": "경공업에서 IMF까지,\n한 세대의 경제사.",
+      "imagePrompt": "Contemporary Korean minimal illustration. Gray, red, blue simple palette. Suits, military uniforms, civilian clothing. Gwanghwamun, National Assembly, democracy plaza background. CENTER: a stack of three layered horizontal panels — top panel shows a small textile factory silhouette with a sewing machine, middle panel shows a heavy steel mill smokestack, bottom panel shows a single skyscraper outline with a downward red arrow (suggesting growth then crisis). Color palette: cold gray + navy + a single crimson accent on the arrow. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "경공업", "sub": "1·2차 5개년, 신발·의류 수출" },
+        { "word": "중화학", "sub": "3·4차, 포항제철·수출 100억불" },
+        { "word": "3저호황", "sub": "저금리·저달러·저유가" },
+        { "word": "IMF위기", "sub": "1997, 외환·구조조정" }
+      ]
+    },
+    "facts": {
+      "headline_top": "한 시대의",
+      "headline_accent": "다섯 사건.",
+      "image": null,
+      "timeline": [
+        { "year": "1970", "month": "11월", "text": "전태일 분신. 근로기준법 준수 요구." },
+        { "year": "1977", "month": "12월", "text": "수출 100억 달러 달성." },
+        { "year": "1986", "month": "—", "text": "최저임금법 제정. 3저 호황 시작." },
+        { "year": "1997", "month": "12월", "text": "IMF 외환위기. 구제금융 신청." }
+      ]
+    },
+    "people": {
+      "headline_top": "성장의 그늘,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "전태일", "role": "노동운동가", "desc": "1970 평화시장 분신, 노동권 각성.", "portrait_src": null },
+        { "name": "파독광부", "role": "외화 획득", "desc": "1963 서독 파견, 차관 3천만 달러.", "portrait_src": null },
+        { "name": "참전장병", "role": "베트남 파병", "desc": "1964~73 브라운 각서로 경제 원조.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["고도성장의", "빛과 그림자."],
+      "items": [
+        { "title": "경부고속도로", "desc": "1970, 산업 동맥 개통." },
+        { "title": "새마을운동", "desc": "1970, 농촌 근대화 캠페인." },
+        { "title": "오일쇼크", "desc": "1973·1978, 중동 건설로 극복." },
+        { "title": "광주대단지", "desc": "1971, 도시빈민 항거." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"경공업 60s · 중화학 70s\"\n시대별 주력 산업을 묶어라.",
+      "tip_body": "심화에서는 5개년 계획 차수별 주력 산업, 자금 확보 방안 3가지(한일수교·베트남파병·파독), 3저 호황의 3요소, 우루과이 라운드 시기가 자주 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open Korean classical book icon next to a small silhouette of a factory smokestack and a coin stack (no readable text). Cream #F2EDE3 base + amber #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "noteId": "s1-04",
+  "noteTitle": "삼국시대 왕업적",
+  "questionCount": 371,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "삼국 왕업적",
+      "era": "삼국",
+      "year_label": "BC 18~AD 668",
+      "vol": "VOL.S1-04",
+      "next_topic": "가야",
+      "next_subtitle": "낙동강 연맹왕국의 흥망"
+    },
+    "cover": {
+      "year_top": "THREE KINGDOMS · 4~7c",
+      "era_chip": "高句麗 · 百濟 · 新羅",
+      "title_lines": ["삼국", "왕업"],
+      "subtitle": "근초고왕·광개토대왕·진흥왕,\n전성기를 지배한 자들.",
+      "imagePrompt": "Three Kingdoms era illustration, 5th century. ONE Goguryeo king figure (King Gwanggaeto) in deep crimson and gold royal robe with pointed crown, standing atop a fortress wall overlooking the Liaodong plain. Behind him a tall stele silhouette suggesting Gwanggaeto Stele. Composition: conquering authority, sweeping landscape. Color: gold + clay-brown + bronze + sky blue. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "소수림왕", "sub": "불교·태학·율령 정비" },
+        { "word": "근초고왕", "sub": "백제 최전성기, 칠지도" },
+        { "word": "광개토", "sub": "영락 연호, 만주 정복" },
+        { "word": "진흥왕", "sub": "한강 장악, 순수비" }
+      ]
+    },
+    "facts": {
+      "headline_top": "체제 정비에서",
+      "headline_accent": "삼국통일까지.",
+      "image": null,
+      "timeline": [
+        { "year": "372", "month": "고구려", "text": "소수림왕, 불교 수용·태학 설립." },
+        { "year": "475", "month": "백제", "text": "장수왕 남하, 한성 함락·개로왕 전사." },
+        { "year": "527", "month": "신라", "text": "법흥왕, 이차돈 순교로 불교 공인." },
+        { "year": "676", "month": "통일", "text": "문무왕, 나당전쟁 승리·삼국통일 완성." }
+      ]
+    },
+    "people": {
+      "headline_top": "삼국 전성기의",
+      "headline_accent": "세 군주.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "광개토대왕", "role": "고구려 전성기", "desc": "영락 연호, 만주·요동 정복.", "portrait_src": null },
+        { "name": "근초고왕", "role": "백제 전성기", "desc": "마한 병합, 칠지도, 고국원왕 전사.", "portrait_src": null },
+        { "name": "진흥왕", "role": "신라 전성기", "desc": "한강 장악, 순수비, 화랑도 개편.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["체제·영토·통일,", "그리고 멸망."],
+      "items": [
+        { "title": "평양 천도", "desc": "장수왕 427년, 남하 정책 추진." },
+        { "title": "사비 천도", "desc": "성왕 538년, 국호 남부여 변경." },
+        { "title": "황산벌 전투", "desc": "660년 계백, 백제 멸망의 항전." },
+        { "title": "매소성·기벌포", "desc": "676년 나당전쟁, 신라 승리." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"체제 정비 = 소수림·법흥, 전성기 = 광개토·근초고·진흥\"\n역할로 묶어 외운다.",
+      "tip_body": "심화 시험에서는 왕의 업적을 시대순으로 배열하거나, 비슷한 업적의 왕(예: 광개토 vs 장수)을 헷갈리게 묻는다. '체제 정비 트리오(소수림·법흥)'와 '전성기 트리오(광개토·근초고·진흥)'를 묶어서 정리할 것.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized seven-pronged sword (chiljido) icon shown from a slight angle. RIGHT: a small Gwanggaeto stele silhouette. Cream #F2EDE3 base + gold #C9A24A accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

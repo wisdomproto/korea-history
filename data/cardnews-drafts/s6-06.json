@@ -1,0 +1,72 @@
+{
+  "noteId": "s6-06",
+  "noteTitle": "6·10만세운동 (1926)",
+  "questionCount": 47,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "6·10만세운동",
+      "era": "일제 강점기",
+      "year_label": "1926",
+      "vol": "VOL.S6-06",
+      "next_topic": "광주학생운동",
+      "next_subtitle": "1929년 학생 항일의 절정"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1926",
+      "era_chip": "日帝 强占 · 1926 · 純宗 因山",
+      "title_lines": ["인산", "만세"],
+      "subtitle": "마지막 황제의 장례 행렬에,\n학생들의 격문이 뿌려졌다.",
+      "imagePrompt": "Japanese-occupation era illustration, June 1926. ONE young Korean male student in dark navy school uniform with high collar and round student cap, mid-throw of a single white paper leaflet that flutters above his head, alert side view. In the misty middle distance: the silhouette of a long imperial funeral procession with somber white-robed mourners and a single tall white funeral palanquin (순종 인산 reference) moving slowly down a Seoul street. Color: dark blue-gray + ink-black + soft white funeral cloth + pale crimson autumn-leaf accent. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "순종 인산일", "sub": "1926.6.10 장례일" },
+        { "word": "조선공산당", "sub": "격문 인쇄, 사전 검거" },
+        { "word": "학생 주도", "sub": "연희전문·중앙고보" },
+        { "word": "신간회", "sub": "1927 좌우합작 결성" }
+      ]
+    },
+    "facts": {
+      "headline_top": "한 날의",
+      "headline_accent": "네 장면.",
+      "image": null,
+      "timeline": [
+        { "year": "1926", "month": "4월",  "text": "순종 승하. 4월 25일, 거사 분위기 무르익음." },
+        { "year": "1926", "month": "6월",  "text": "사전 발각. 조선공산당 지도부 대거 검거." },
+        { "year": "1926", "month": "6월",  "text": "6·10 만세. 인산 행렬에 학생들이 격문 배포." },
+        { "year": "1927", "month": "2월",  "text": "신간회 결성. 좌우합작 민족유일당 운동." }
+      ]
+    },
+    "people": {
+      "headline_top": "거리에 선,",
+      "headline_accent": "세 주체.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "조선공산당", "role": "사전 준비 세력", "desc": "격문 10만 장 인쇄, 시위 계획 주도.", "portrait_src": null },
+        { "name": "천도교",     "role": "독립자금 지원",  "desc": "구파 인사 일부도 거사에 합류.", "portrait_src": null },
+        { "name": "학생 단체",  "role": "실제 시위 주체", "desc": "연희전문·중앙고보 격문 배포.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["좌우는 처음 만났고,", "신간회로 이어졌다."],
+      "items": [
+        { "title": "좌우 연대 시도",   "desc": "사회주의·민족주의 첫 합작 모델." },
+        { "title": "학생 주체 부각",   "desc": "기성세대 검거 후 학생이 실질 주도." },
+        { "title": "신간회 결성 계기", "desc": "1927 민족유일당 운동의 직접 동력." },
+        { "title": "광주학생 선구",    "desc": "1929 광주학생운동의 모델이 됨." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"고종 인산 → 순종 인산 → 광주\"\n3대 운동 계기 정리.",
+      "tip_body": "심화 시험에서는 3·1(고종 인산)·6·10(순종 인산)·광주학생(나주역 충돌)의 계기 구분, 6·10의 좌우합작 시도가 신간회(1927) 결성으로 이어진 흐름, 사전 검거로 인한 학생 주도 양상이 자주 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized small school cap silhouette next to a single fluttering paper leaflet. LEFT: a tiny white funeral lantern silhouette. Cream #F2EDE3 base + dark navy #2E3A4A accent + pale crimson #B23A3A line. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "noteId": "s5-04",
+  "noteTitle": "대한제국과 국권 피탈",
+  "questionCount": 423,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "대한제국과 국권 피탈",
+      "era": "근대",
+      "year_label": "1897~1910",
+      "vol": "VOL.S5-04",
+      "next_topic": "근대 문화와 시설",
+      "next_subtitle": "철도·전등·신문이 들어온 시대"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1897–1910",
+      "era_chip": "大韓帝國 · 光武 · 國權 被奪",
+      "title_lines": ["광무", "피탈"],
+      "subtitle": "황제국 13년의 짧은 빛,\n다섯 조약으로 빼앗긴 나라.",
+      "imagePrompt": "Late-Joseon-to-Japanese-occupation illustration, year 1897. ONE Korean emperor (Gojong) seated on a low throne inside Hwangungu (환구단) interior — dark crimson robe with gold embroidery, deep crown with strings of beads, solemn frontal view. Behind him: a folding screen with sun and moon and five peaks (일월오봉도) but rendered minimally. Soft amber lamp light from upper right. On the floor near the throne: a small dragon-engraved bronze ritual vessel. Color: deep crimson + gold-amber + ink-black + dark blue-gray shadows. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "광무개혁", "sub": "구본신참, 양전·지계" },
+        { "word": "을사늑약", "sub": "1905, 외교권 박탈" },
+        { "word": "헤이그특사", "sub": "1907, 이상설·이준·이위종" },
+        { "word": "한일병합", "sub": "1910.8.29, 경술국치" }
+      ]
+    },
+    "facts": {
+      "headline_top": "황제국 13년,",
+      "headline_accent": "다섯 조약.",
+      "image": null,
+      "timeline": [
+        { "year": "1897", "month": "10월", "text": "대한제국 선포. 환구단에서 황제 즉위식." },
+        { "year": "1904", "month": "2월",  "text": "한일의정서. 군사용지 자유 사용 허용." },
+        { "year": "1905", "month": "11월", "text": "을사늑약. 외교권 박탈, 통감부 설치." },
+        { "year": "1907", "month": "7월",  "text": "정미7조약. 군대 해산, 차관 정치." },
+        { "year": "1910", "month": "8월",  "text": "한일병합조약. 조선총독부 설치." }
+      ]
+    },
+    "people": {
+      "headline_top": "지킨 자와 빼앗은 자,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "고종",   "role": "대한제국 황제",   "desc": "헤이그 특사 파견, 1907 강제 퇴위.", "portrait_src": null },
+        { "name": "이상설", "role": "헤이그 특사",     "desc": "이준·이위종과 만국평화회의 파견.", "portrait_src": null },
+        { "name": "이토 히로부미", "role": "초대 통감",  "desc": "을사늑약 강요, 1909 안중근 의거.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["황제국은 짧았고,", "저항은 길어졌다."],
+      "items": [
+        { "title": "양전·지계 사업", "desc": "근대적 토지 소유권 증명서 발급." },
+        { "title": "을사의병",       "desc": "민종식·최익현 등 전국 봉기." },
+        { "title": "신민회",         "desc": "1907 비밀결사, 무관학교 추진." },
+        { "title": "정미의병 합류",  "desc": "해산 군인 가담, 13도 창의군 결성." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"한일의정서 → 을사 → 정미 → 병합\"\n네 단계를 외울 것.",
+      "tip_body": "심화 시험에서는 광무개혁의 구본신참 원칙, 을사·정미·병합 조약의 핵심 조항 구분, 헤이그 특사 3인과 안중근 하얼빈 의거(1909)의 시점 정렬이 자주 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized small imperial seal silhouette (square stamp) overlapping a folded paper scroll suggesting an unequal treaty. RIGHT: a small broken sword silhouette suggesting disbanded army. Cream #F2EDE3 base + deep crimson #8B1E1E accent + faint gold #C9A45C line. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

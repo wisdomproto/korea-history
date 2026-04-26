@@ -1,0 +1,73 @@
+{
+  "noteId": "s6-01",
+  "noteTitle": "일제의 통치방식",
+  "questionCount": 205,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "일제 통치 3시기",
+      "era": "일제 강점기",
+      "year_label": "1910~1945",
+      "vol": "VOL.S6-01",
+      "next_topic": "1910년대 민족운동",
+      "next_subtitle": "비밀결사와 국외 기지 건설"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1910–1945",
+      "era_chip": "日帝 强占 · 武斷·文化·末殺",
+      "title_lines": ["헌병", "총칼"],
+      "subtitle": "이름만 바뀐 35년,\n수탈은 더 깊어졌다.",
+      "imagePrompt": "Japanese-occupation era illustration, 1910s. ONE Japanese military police officer (헌병경찰) in dark olive uniform with a tall cap, long sword at his side, standing rigidly in front of a closed wooden gate of a Korean government building. Behind him in shadow: a pale silhouette of a Korean man in white hanbok with bowed head, holding a folded paper. The ground: dry packed earth with one fallen crimson leaf. Color: dark olive + ink-black + crimson accent on the leaf + sepia background. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "헌병경찰제", "sub": "1910년대 무단통치 상징" },
+        { "word": "산미증식계획", "sub": "1920년대 쌀 수탈" },
+        { "word": "치안유지법", "sub": "1925, 사상 탄압 악법" },
+        { "word": "국가총동원법", "sub": "1938, 인적·물적 수탈" }
+      ]
+    },
+    "facts": {
+      "headline_top": "35년의",
+      "headline_accent": "다섯 법령.",
+      "image": null,
+      "timeline": [
+        { "year": "1910", "month": "12월", "text": "회사령 공포. 한국인 기업 설립을 총독 허가제로." },
+        { "year": "1912", "month": "3월",  "text": "조선태형령. 한국인에게만 태형 적용." },
+        { "year": "1920", "month": "—",    "text": "산미증식계획 시작. 일본으로 쌀 반출 본격화." },
+        { "year": "1925", "month": "5월",  "text": "치안유지법. 사회주의·독립운동 탄압 도구." },
+        { "year": "1940", "month": "2월",  "text": "창씨개명 강제. 황국신민화 정책 정점." }
+      ]
+    },
+    "people": {
+      "headline_top": "통치와 수탈,",
+      "headline_accent": "세 자리.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "조선총독", "role": "최고 통치자",   "desc": "현역 군인 임명, 입법·행정·사법 장악.", "portrait_src": null },
+        { "name": "동양척식", "role": "토지 수탈 회사", "desc": "토지조사사업 미신고지 불하 받음.", "portrait_src": null },
+        { "name": "중추원",   "role": "친일 자문기구",  "desc": "조선사편수회와 함께 역사 왜곡.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["이름은 문화통치,", "본질은 분열정책."],
+      "items": [
+        { "title": "토지조사사업",   "desc": "1910~18, 미신고 토지 총독부 몰수." },
+        { "title": "보통경찰제",     "desc": "1920년대, 경찰 수는 3배로 증가." },
+        { "title": "황국신민서사",   "desc": "1937, 매일 암송 강요." },
+        { "title": "징용·징병·위안부", "desc": "1938~44 인적 자원 강제 동원." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"무단 → 문화 → 말살\"\n전환 계기를 묶을 것.",
+      "tip_body": "심화 시험에서는 무단/문화/민족말살 시기의 핵심 법령(조선태형령·치안유지법·국가총동원법) 매칭, 3·1운동(1919)이 무단→문화 전환의 계기, 만주사변(1931)·중일전쟁(1937)이 민족말살 강화 계기임이 자주 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized small Japanese military cap silhouette overlapping a crumpled folded paper suggesting the 국가총동원법. LEFT: a small chain link silhouette. Cream #F2EDE3 base + dark olive #4A4A2C accent + crimson #B23A3A line. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

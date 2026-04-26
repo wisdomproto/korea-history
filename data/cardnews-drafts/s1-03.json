@@ -1,0 +1,67 @@
+{
+  "noteId": "s1-03",
+  "noteTitle": "고조선 및 위만조선",
+  "questionCount": 79,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "고조선·위만조선",
+      "era": "삼국",
+      "year_label": "BC 2333~108",
+      "vol": "VOL.S1-03",
+      "next_topic": "삼국시대 왕업적",
+      "next_subtitle": "고구려·백제·신라의 왕들"
+    },
+    "cover": {
+      "year_top": "GOJOSEON · BC 2333",
+      "era_chip": "古朝鮮 · 衛滿朝鮮",
+      "title_lines": ["고조", "선국"],
+      "subtitle": "한국 최초의 국가,\n홍익인간의 기억.",
+      "imagePrompt": "Ancient Gojoseon-era illustration, 2333 BC mood. ONE Dangun-Wanggeom figure in bronze-decorated robe and head ornament, holding a bronze ritual mirror and standing in front of a stone altar (godol) atop a wooded hill. Background: pine forest, distant misty mountains, dolmen silhouette. Composition: founding ritual, mythic dignity. Color: bronze + clay-brown + deep forest green. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "단군왕검", "sub": "제정일치, 아사달 도읍" },
+        { "word": "8조법", "sub": "한국 최초의 성문법" },
+        { "word": "비파형동검", "sub": "고조선 세력 범위" },
+        { "word": "왕검성", "sub": "위만조선 수도, 평양" }
+      ]
+    },
+    "facts": {
+      "headline_top": "단군에서 위만,",
+      "headline_accent": "한사군까지.",
+      "image": null,
+      "timeline": [
+        { "year": "BC 2333", "month": "건국", "text": "단군왕검, 아사달에 고조선 건국." },
+        { "year": "BC 4c", "month": "발전", "text": "세형동검 사용, 부왕·준왕 왕호 등장." },
+        { "year": "BC 194", "month": "위만", "text": "위만이 준왕 축출, 왕검성에 도읍." },
+        { "year": "BC 108", "month": "멸망", "text": "한 무제 침공, 왕검성 함락·멸망." }
+      ]
+    },
+    "people": {
+      "headline_top": "최초의 국가,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "단군왕검", "role": "건국 시조", "desc": "아사달에 도읍, 홍익인간 이념.", "portrait_src": null },
+        { "name": "위만", "role": "위만조선 왕", "desc": "연 출신, 준왕 몰아내고 집권.", "portrait_src": null },
+        { "name": "우거왕", "role": "위만조선 마지막", "desc": "한 무제와 대립, 왕검성에서 피살.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["법과 무덤이,", "사회를 증명한다."],
+      "items": [
+        { "title": "8조법", "desc": "생명·사유재산·노비 사회 반영." },
+        { "title": "탁자식 고인돌", "desc": "북방식, 지배층의 무덤." },
+        { "title": "미송리식 토기", "desc": "고조선 문화권 대표 토기." },
+        { "title": "낙랑군", "desc": "313년 미천왕이 축출, 한사군 종결." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"비파형 → 세형동검\"\n초기·후기를 동검으로.",
+      "tip_body": "심화 시험에서는 비파형동검(초기 고조선·요령~한반도)과 세형동검(후기 고조선·한국식)을 구분해 묻는다. 위만은 '연 출신·철기·중계무역', 멸망은 BC 108년 한 무제임을 묶어서 기억할 것.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized bipa-shaped bronze dagger (bipahyeong dongeom) icon shown from a slight angle. RIGHT: a small table-style dolmen silhouette. Cream #F2EDE3 base + bronze #8B7E5A accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

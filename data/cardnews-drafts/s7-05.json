@@ -1,0 +1,72 @@
+{
+  "noteId": "s7-05",
+  "noteTitle": "대한민국 정부 수립 (제1공화국)",
+  "questionCount": 55,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "대한민국 정부 수립",
+      "era": "현대",
+      "year_label": "1948",
+      "vol": "VOL.S7-05",
+      "next_topic": "한국 전쟁",
+      "next_subtitle": "1950년 6월 25일, 동족상잔"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1948",
+      "era_chip": "現代 · 1948 · 建國",
+      "title_lines": ["정부", "수립"],
+      "subtitle": "8월 15일 중앙청,\n제1공화국이 출범하다.",
+      "imagePrompt": "Contemporary Korean minimal illustration. Gray, red, blue simple palette. Suits, military uniforms, civilian clothing. Gwanghwamun, National Assembly, democracy plaza background. CENTER: a wide neoclassical government building (Jungang-cheong) silhouette with tall columns, viewed from front. In front of the steps: a small crowd of Korean civilians in suits and white hanbok, raising hands in celebration. A single tall pole with a stylized Korean flag silhouette flying (no readable taegeuk details). Color: warm gray building + small red and blue flag accents + amber sunlight from above. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "제헌헌법", "sub": "1948.7.17 대통령 간선제" },
+        { "word": "이승만", "sub": "초대 대통령, 국회 간선" },
+        { "word": "반민특위", "sub": "친일 청산 시도, 무력화" },
+        { "word": "농지개혁", "sub": "유상매수·유상분배 1949" }
+      ]
+    },
+    "facts": {
+      "headline_top": "한 정부의",
+      "headline_accent": "다섯 출발.",
+      "image": null,
+      "timeline": [
+        { "year": "1948", "month": "5월", "text": "제헌국회 개원, 의장 이승만." },
+        { "year": "1948", "month": "7월", "text": "제헌헌법 공포, 대통령 간선제." },
+        { "year": "1948", "month": "8월", "text": "8.15 대한민국 정부 수립 선포." },
+        { "year": "1949", "month": "6월", "text": "농지개혁법 제정, 반민특위 해체." }
+      ]
+    },
+    "people": {
+      "headline_top": "정부 수립,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "이승만", "role": "초대 대통령", "desc": "국회 간선으로 선출, 자유당 결성.", "portrait_src": null },
+        { "name": "이시영", "role": "초대 부통령", "desc": "임정 출신, 1948년 함께 선출.", "portrait_src": null },
+        { "name": "신익희", "role": "국회 부의장", "desc": "임정 출신, 제헌국회 부의장.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["헌정은 시작됐고,", "친일 청산은 좌절됐다."],
+      "items": [
+        { "title": "임정 법통", "desc": "헌법에 임시정부 계승 명시." },
+        { "title": "반민특위", "desc": "프락치 사건으로 사실상 해체." },
+        { "title": "농지 분배", "desc": "지주제 해체, 자작농 육성." },
+        { "title": "분단 고착", "desc": "9월 북한 정권 수립, 분단化." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"5.10 → 7.17 → 8.15\"\n수립 3단계를 외울 것.",
+      "tip_body": "심화 시험에서는 제헌헌법의 간선제 구조, 반민특위 무력화 과정(국회 프락치·공소시효 축소), 농지개혁의 유상매수·유상분배 원칙이 자주 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open Korean classical book icon next to a small classical government building silhouette with columns. Cream #F5EFE4 base + amber #B45309 accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "noteId": "s3-05",
+  "noteTitle": "지방 행정 조직",
+  "questionCount": 40,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "지방 행정",
+      "era": "조선 전기",
+      "year_label": "15c~16c",
+      "vol": "VOL.S3-05",
+      "next_topic": "군사 제도",
+      "next_subtitle": "5위와 진관, 양인개병"
+    },
+    "cover": {
+      "year_top": "HISTORY · 15–16c",
+      "era_chip": "朝鮮 前期 · 八道",
+      "title_lines": ["8도", "수령"],
+      "subtitle": "전국을 여덟으로 갈라,\n수령을 모든 군현에 보냈다.",
+      "imagePrompt": "Early Joseon dynasty illustration, 15th century. ONE Korean magistrate (suryeong) in deep navy official robe and black gat (official cap) seated cross-legged on a raised dais inside a county hall (gwana) interior. Below the dais two clerks (hyangri) in lighter robes kneel with document scrolls. Wooden pillars, paper-screen windows, dim lamp light. Composition: hierarchical authority, calm administration. Color: deep navy + ink-black + hanji beige + warm amber lamp. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "8도", "sub": "관찰사가 도 전체 감독" },
+        { "word": "수령", "sub": "임기 1800일, 수령 7사" },
+        { "word": "유향소", "sub": "지방 양반의 자치 기구" },
+        { "word": "경재소", "sub": "서울에서 유향소 통제" }
+      ]
+    },
+    "facts": {
+      "headline_top": "전국 8도,",
+      "headline_accent": "다층 견제 구조.",
+      "image": null,
+      "timeline": [
+        { "year": "1413", "month": "10월", "text": "태종 8도제 확립. 전국 행정 구역 정비." },
+        { "year": "1428", "month": "6월", "text": "세종 향·소·부곡 폐지 완료. 일반 군현화." },
+        { "year": "1485", "month": "1월", "text": "성종 경국대전 수령 7사 명문화." },
+        { "year": "1488", "month": "2월", "text": "성종 유향소 부활. 향촌 자치 재정비." }
+      ]
+    },
+    "people": {
+      "headline_top": "지방의",
+      "headline_accent": "세 주체.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "관찰사", "role": "도 책임자", "desc": "임기 1년, 수령 감독·순찰 의무.", "portrait_src": null },
+        { "name": "수령", "role": "군현 책임자", "desc": "행정·사법·군사, 상피제 적용.", "portrait_src": null },
+        { "name": "향리", "role": "세습 아전", "desc": "6방 실무, 고려보다 권한 대폭 축소.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["중앙이 다스리고,", "양반이 견제했다."],
+      "items": [
+        { "title": "특수구역 폐지", "desc": "향·소·부곡 사라짐." },
+        { "title": "수령 파견", "desc": "모든 군현에 중앙관 배치." },
+        { "title": "상피제", "desc": "수령은 출신지 부임 금지." },
+        { "title": "유향소 견제", "desc": "양반이 수령·향리 감시." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"유향소 = 지방 양반 / 경재소 = 중앙 통제\"\n역할을 헷갈리지 마라.",
+      "tip_body": "심화 시험에서는 고려와 조선의 지방 제도 비교(특수구역 폐지·수령 전면 파견)가 자주 출제된다. 유향소(지방)와 경재소(중앙)의 위치·역할을 정확히 구분할 것.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized eight-petal flower icon suggesting eight provinces (paldo), simple ink-line. RIGHT: a small county-office gate silhouette suggesting suryeong's gwana. Cream #F2EDE3 base + navy #1E3A8A accent + ink-black outline. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

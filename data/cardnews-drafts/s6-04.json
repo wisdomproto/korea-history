@@ -1,0 +1,72 @@
+{
+  "noteId": "s6-04",
+  "noteTitle": "대동단결선언서",
+  "questionCount": 145,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "대동단결선언서",
+      "era": "일제 강점기",
+      "year_label": "1917",
+      "vol": "VOL.S6-04",
+      "next_topic": "실력양성운동",
+      "next_subtitle": "물산장려와 민립대학"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1917",
+      "era_chip": "日帝 强占 · 1917 · 大同團結",
+      "title_lines": ["주권", "공화"],
+      "subtitle": "황제권은 국민에게 이양되었다,\n임정의 사상적 뿌리.",
+      "imagePrompt": "Japanese-occupation era illustration, year 1917. ONE late-30s Korean independence scholar (Bak Eun-sik reference) — dark gray padded jacket, round wire-rimmed glasses, thinning hair pulled back, seated at a low wooden writing desk with a single oil lamp, calmly inscribing characters onto a long sheet of paper with a brush. Behind him: a single tall paper-screen window casting cold pale light. On the desk corner: a small folded map of the Russian Far East. Color: dark blue-gray + sepia + warm amber lamp light + ink-black. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "1917년", "sub": "1차 대전 중 발표" },
+        { "word": "연해주", "sub": "신규식·박은식 등" },
+        { "word": "국민주권", "sub": "황제권 → 국민에게" },
+        { "word": "공화주의", "sub": "민주공화제 천명" }
+      ]
+    },
+    "facts": {
+      "headline_top": "임시정부의",
+      "headline_accent": "세 뿌리.",
+      "image": null,
+      "timeline": [
+        { "year": "1907", "month": "—",  "text": "헤이그 특사 실패. 외교 독립론 좌절 경험." },
+        { "year": "1910", "month": "8월", "text": "경술국치. 황제 통치권 사실상 소멸." },
+        { "year": "1917", "month": "7월", "text": "대동단결선언서 발표. 신규식 등 14인 서명." },
+        { "year": "1919", "month": "4월", "text": "대한민국 임시정부 수립. 민주공화제 채택." }
+      ]
+    },
+    "people": {
+      "headline_top": "선언에 서명한,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "신규식", "role": "동제사 주도", "desc": "상하이 망명, 선언서 발의 중심.", "portrait_src": null },
+        { "name": "박은식", "role": "사학자",     "desc": "한국통사·한국독립운동지혈사 저술.", "portrait_src": null },
+        { "name": "조소앙", "role": "독립운동가",  "desc": "후일 삼균주의 정립의 사상적 기초.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["황제국은 끝났고,", "공화국이 시작됐다."],
+      "items": [
+        { "title": "주권재민 천명",  "desc": "융희제 양위로 주권 국민 이양 선언." },
+        { "title": "민족대회 촉구",  "desc": "흩어진 독립운동의 통일 정부 요구." },
+        { "title": "임정의 법통",   "desc": "1919 임시정부 헌장의 사상적 토대." },
+        { "title": "삼균주의 씨앗",  "desc": "조소앙 사상이 후일 임정 강령으로." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"1917 대동단결 → 1919 임정\"\n2년의 인과 외울 것.",
+      "tip_body": "심화 시험에서는 대동단결선언(1917)과 무오독립선언(1919.2)·2·8선언·기미선언의 선후 정렬, 발표 장소(연해주/만주/도쿄/한성), 국민주권·공화주의 천명이 임정의 민주공화제로 이어지는 흐름이 자주 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized small unfurled scroll silhouette next to a single ink brush. LEFT: a tiny crown silhouette tipped over (suggesting end of monarchy). Cream #F2EDE3 base + sepia #8B6F3A accent + faint crimson #B23A3A line. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

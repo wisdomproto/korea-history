@@ -1,0 +1,67 @@
+{
+  "noteId": "s1-12",
+  "noteTitle": "석탑 (백제~조선)",
+  "questionCount": 163,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "한국 석탑",
+      "era": "삼국",
+      "year_label": "AD 639~1467",
+      "vol": "VOL.S1-12",
+      "next_topic": "불상",
+      "next_subtitle": "시대별 대표 불상의 양식"
+    },
+    "cover": {
+      "year_top": "STONE PAGODAS · 7~15c",
+      "era_chip": "石塔 · 百濟~朝鮮",
+      "title_lines": ["석탑", "양식"],
+      "subtitle": "미륵사지·석가탑·다보탑,\n돌이 만든 천 년의 선.",
+      "imagePrompt": "Ancient Korean stone pagoda illustration. ONE solitary multi-tiered stone pagoda (suggesting Mireuksa-ji or Seokga-tap) standing in a temple courtyard at dawn, with a single monk figure in gray robe sweeping the stone path beside it. Background: temple gate silhouette and distant misty mountains. Composition: vertical, contemplative. Color: weathered stone-gray + clay-brown + soft amber dawn light. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "미륵사지", "sub": "익산, 한국 최고·최대 석탑" },
+        { "word": "정림사지", "sub": "부여, 백제 전형·평제탑" },
+        { "word": "감은사지", "sub": "신문왕, 신라 정형 확립" },
+        { "word": "원각사지", "sub": "세조, 경천사지탑 모방" }
+      ]
+    },
+    "facts": {
+      "headline_top": "백제에서 조선,",
+      "headline_accent": "양식의 변천.",
+      "image": null,
+      "timeline": [
+        { "year": "639", "month": "백제 무왕", "text": "미륵사지 석탑, 한국 최고·최대." },
+        { "year": "634", "month": "선덕여왕", "text": "분황사 모전석탑, 신라 최초." },
+        { "year": "682", "month": "신문왕", "text": "감은사지 3층석탑, 정형 확립." },
+        { "year": "1467", "month": "세조", "text": "원각사지 10층석탑, 대리석 조각." }
+      ]
+    },
+    "people": {
+      "headline_top": "탑이 말해준",
+      "headline_accent": "세 사찰.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "미륵사", "role": "백제 익산", "desc": "무왕, 금제 사리봉안기 발견.", "portrait_src": null },
+        { "name": "불국사", "role": "통일신라", "desc": "석가탑·다보탑 쌍탑 배치.", "portrait_src": null },
+        { "name": "경천사", "role": "고려 개경", "desc": "10층석탑, 원 라마탑 영향.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["일반형과 특수형,", "정형과 변형."],
+      "items": [
+        { "title": "석가탑", "desc": "신라 일반형, 무구정광다라니경." },
+        { "title": "다보탑", "desc": "특수형, 10원 동전 도안." },
+        { "title": "분황사 탑", "desc": "안산암을 벽돌처럼 가공." },
+        { "title": "경천사지", "desc": "대리석, 다각다층, 원 영향." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"미륵사 최고 · 정림사 평제탑\"\n백제 두 탑을 한 짝으로.",
+      "tip_body": "심화 시험에서는 석탑 사진을 보고 시대·소재지를 묻는다. 미륵사지(익산·최고·금제 사리봉안기)와 정림사지(부여·평제탑)를 묶고, 감은사지(신문왕·정형 확립)와 석가탑(무구정광대다라니경)을 통일신라로 연결할 것.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized three-tiered stone pagoda silhouette icon shown from a slight angle. RIGHT: a small woodblock-print scroll suggesting Mugujeonggwang dharani sutra. Cream #F2EDE3 base + stone-gray #888278 accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

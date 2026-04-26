@@ -1,0 +1,67 @@
+{
+  "noteId": "s4-05",
+  "noteTitle": "문화와 예술",
+  "questionCount": 157,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "조선 후기 문화",
+      "era": "조선 후기",
+      "year_label": "18~19세기",
+      "vol": "VOL.S4-05",
+      "next_topic": "흥선대원군과 개항기",
+      "next_subtitle": "외세 차단의 10년"
+    },
+    "cover": {
+      "year_top": "HISTORY · 18–19C",
+      "era_chip": "朝鮮 後期 · 庶民 文化",
+      "title_lines": ["풍속", "탈춤"],
+      "subtitle": "양반에서 서민으로,\n문화의 주체가 바뀐 시대.",
+      "imagePrompt": "Late Joseon dynasty 18th century genre painting (Kim Hong-do style) illustration. Foreground: ordinary Korean villagers (men in white hemp clothes, women in colorful hanbok) gathered watching a ssireum wrestling match. Two wrestlers grappling at center. Background: a crowd in a circle, vendors with snacks, a low thatched-roof building. Warm earthy tones, lively folk-painting feel. Color: earth-brown + crimson + indigo + ink-black. Style: flat illustration, hand-drawn lines, simple shading, paper texture background, in the style of Kim Hong-do genre paintings. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "진경산수", "sub": "정선, 우리 산천 실경" },
+        { "word": "풍속화",   "sub": "김홍도·신윤복" },
+        { "word": "판소리",   "sub": "신재효, 6마당 정리" },
+        { "word": "한글소설", "sub": "홍길동전·춘향전" }
+      ]
+    },
+    "facts": {
+      "headline_top": "회화·문학·공연,",
+      "headline_accent": "서민의 시대.",
+      "image": null,
+      "timeline": [
+        { "year": "18C 초", "month": "—", "text": "정선 진경산수화. 인왕제색도·금강전도." },
+        { "year": "18C 후", "month": "—", "text": "김홍도 풍속화. 씨름·서당·무동." },
+        { "year": "19C 초", "month": "—", "text": "신윤복 풍속화. 미인도·단오풍정." },
+        { "year": "19C 중", "month": "—", "text": "신재효, 판소리 6마당 정리." }
+      ]
+    },
+    "people": {
+      "headline_top": "회화의",
+      "headline_accent": "세 거장.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "정선",     "role": "겸재, 진경산수",    "desc": "우리 산천 실경. 인왕제색도·금강전도.", "portrait_src": null },
+        { "name": "김홍도",   "role": "단원, 풍속화",      "desc": "서민의 노동·일상. 씨름·서당·무동.", "portrait_src": null },
+        { "name": "신윤복",   "role": "혜원, 풍속화",      "desc": "양반·기녀의 풍류. 미인도·단오풍정.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["주체가 바뀌자,", "내용이 바뀌었다."],
+      "items": [
+        { "title": "민화 유행",       "desc": "서민 장식용. 까치호랑이·책가도·문자도." },
+        { "title": "한글소설 확산",   "desc": "홍길동전·춘향전. 양반전 사회 풍자." },
+        { "title": "판소리 체계화",   "desc": "신재효 6마당. 광대와 고수의 공연 예술." },
+        { "title": "탈춤 풍자",       "desc": "양반·승려의 위선 풍자, 마당극 형식." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"정선 진경 · 김홍도 서민 · 신윤복 풍류\"\n화가 3인 매칭이 핵심.",
+      "tip_body": "심화 시험은 화가별 대표작과 주제(정선=인왕제색도·금강전도, 김홍도=씨름·서당, 신윤복=미인도·단오풍정)를 정확히 매칭하는 문제 빈출. 김정희=세한도·추사체도 함께.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized rolled Korean traditional painting scroll with a small wooden mask (Korean folk talchum mask) silhouette next to it. Cream #F2EDE3 base + amber #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

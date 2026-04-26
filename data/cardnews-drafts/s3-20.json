@@ -1,0 +1,67 @@
+{
+  "noteId": "s3-20",
+  "noteTitle": "대외 사절",
+  "questionCount": 60,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "대외 사절",
+      "era": "조선 전기",
+      "year_label": "15c~16c",
+      "vol": "VOL.S3-20",
+      "next_topic": "왜란과 호란",
+      "next_subtitle": "임진왜란에서 병자호란까지"
+    },
+    "cover": {
+      "year_top": "HISTORY · 15c–16c",
+      "era_chip": "朝鮮 前期 · 事大交隣",
+      "title_lines": ["사대", "교린"],
+      "subtitle": "큰 명에는 사대,\n이웃엔 교린의 외교.",
+      "imagePrompt": "Joseon folk minhwa + genre-painting tones. Hanji beige, ink-black, crimson, navy. Scene: a Joseon diplomatic mission — a row of envoys in deep crimson and dark blue official robes with black sa-mo caps, riding horses and carrying tribute boxes wrapped in silk, departing through a tall stone palace gate. A few servants carry banners on long poles (no text on banners). Mountains in the background. Composition: ceremonial procession, dignified motion. Color: hanji beige + ink-black + deep crimson + navy. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "사군육진", "sub": "세종, 4군 6진 개척" },
+        { "word": "이종무",   "sub": "1419, 쓰시마섬 정벌" },
+        { "word": "삼포 개항", "sub": "부산·제포·염포 개방" },
+        { "word": "계해약조", "sub": "1443, 세견선 50척 제한" }
+      ]
+    },
+    "facts": {
+      "headline_top": "강경과 온건,",
+      "headline_accent": "두 손의 외교.",
+      "image": null,
+      "timeline": [
+        { "year": "1419", "month": "6월",  "text": "이종무, 쓰시마섬(대마도) 정벌." },
+        { "year": "1433", "month": "전후", "text": "최윤덕, 4군 개척(여진 강경책)." },
+        { "year": "1437", "month": "전후", "text": "김종서, 6진 개척으로 국경 확립." },
+        { "year": "1443", "month": "전후", "text": "계해약조, 일본 세견선 50척 제한." }
+      ]
+    },
+    "people": {
+      "headline_top": "북방과 남방을 다스린",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "세종", "role": "조선 4대 왕", "desc": "사군육진·삼포 개항 동시 추진.", "portrait_src": null },
+        { "name": "최윤덕", "role": "북방 무신", "desc": "압록강 유역 4군 개척.", "portrait_src": null },
+        { "name": "김종서", "role": "북방 무신", "desc": "두만강 유역 6진 개척.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["국경은 확립되고,", "통상은 통제되었다."],
+      "items": [
+        { "title": "사대 실리", "desc": "조공·답례로 경제적 이득." },
+        { "title": "북방 개척", "desc": "사민·토관 정책으로 안정." },
+        { "title": "왜관 통제", "desc": "3포 한정, 계해약조로 제한." },
+        { "title": "북평·무역소", "desc": "여진과 교역 창구 운영." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"4군은 최윤덕, 6진은 김종서\"\n장군과 지역을 묶을 것.",
+      "tip_body": "심화에서는 사군(최윤덕, 압록강)과 육진(김종서, 두만강)을 구분해야 한다. 쓰시마 정벌은 1419년 이종무, 계해약조는 1443년 일본 세견선 50척·세사미두 200석 제한.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized Korean peninsula silhouette outline with four small dots along the upper-left border (4군) and six small dots along the upper-right border (6진), and a small ship icon at the lower-right suggesting trade with Japan. Cream #F2EDE3 base + ink-black outline + crimson #B45309 accent dots. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

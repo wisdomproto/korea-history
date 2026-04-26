@@ -1,0 +1,67 @@
+{
+  "noteId": "s3-11",
+  "noteTitle": "수취 체제 (전세·공납·역)",
+  "questionCount": 106,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "수취 체제",
+      "era": "조선 전기",
+      "year_label": "15c~16c",
+      "vol": "VOL.S3-11",
+      "next_topic": "신분 구조",
+      "next_subtitle": "양반·중인·상민·천민의 사회"
+    },
+    "cover": {
+      "year_top": "HISTORY · 15c–16c",
+      "era_chip": "朝鮮 前期 · 收取體制",
+      "title_lines": ["전세", "공납"],
+      "subtitle": "토지엔 전세, 집엔 공납,\n사람엔 역의 시대.",
+      "imagePrompt": "Joseon folk minhwa + genre-painting tones. Hanji beige, ink-black, crimson, navy. Early Joseon scene: a low official in dark dopo and gat receiving sacks of rice and bolts of cloth from kneeling peasants in front of a thatched village granary. Wooden measuring scoop and ledger book on a low table. Behind: rice paddies and a small Korean tile-roof magistrate's office. Composition: orderly, hierarchical, slightly somber. Color: hanji beige + ink-black + deep crimson sash accent. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "전분6등법", "sub": "세종, 토지 비옥도 6등급" },
+        { "word": "연분9등법", "sub": "세종, 풍흉 9등급 차등" },
+        { "word": "방납",       "sub": "공납을 대신 내고 폭리" },
+        { "word": "군역",       "sub": "양인 16~60세 의무 부담" }
+      ]
+    },
+    "facts": {
+      "headline_top": "세 가지 세금,",
+      "headline_accent": "한 사람의 부담.",
+      "image": null,
+      "timeline": [
+        { "year": "1391", "month": "5월", "text": "과전법 제정. 수확량의 1/10 전세 원칙." },
+        { "year": "1444", "month": "11월", "text": "세종, 전분6등법·연분9등법 시행." },
+        { "year": "1466", "month": "8월", "text": "세조, 직전법으로 현직 관리만 수조." },
+        { "year": "1500", "month": "전후", "text": "방납·방군수포 폐단 확산, 농민 부담 가중." }
+      ]
+    },
+    "people": {
+      "headline_top": "세금을 설계한",
+      "headline_accent": "사람들.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "세종", "role": "조선 4대 왕", "desc": "전분6등법·연분9등법으로 공정성 시도.", "portrait_src": null },
+        { "name": "세조", "role": "조선 7대 왕", "desc": "직전법 시행, 현직 관리에만 수조권.", "portrait_src": null },
+        { "name": "성종", "role": "조선 9대 왕", "desc": "관수관급제 도입, 수조권 사실상 소멸.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["제도는 정교했으나,", "현장은 무너졌다."],
+      "items": [
+        { "title": "전세 차등화", "desc": "땅과 풍흉 따라 세액 조정." },
+        { "title": "공납의 변질", "desc": "방납 폐단으로 농민 이중 부담." },
+        { "title": "군역 대립",   "desc": "방군수포·대립으로 군역 회피." },
+        { "title": "조운 체계",   "desc": "조창에서 한양으로 세곡 운송." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"전세는 토지, 공납은 호, 역은 사람\"\n부과 기준을 묶을 것.",
+      "tip_body": "심화에서는 전세=토지, 공납=호(가호), 역=인정(사람)을 구분해야 한다. 전분6등·연분9등은 세종, 직전법은 세조의 트레이드마크.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: three stylized Korean traditional icons in a row — a small rice paddy plot, a clay jar (gongnap tribute item), and a silhouette of a peasant carrying a load. Soft separators between them. Cream #F2EDE3 base + crimson #B45309 accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

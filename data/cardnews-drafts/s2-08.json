@@ -1,0 +1,66 @@
+{
+  "noteId": "s2-08",
+  "noteTitle": "고려 경제",
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "고려 경제",
+      "era": "고려",
+      "year_label": "10~14세기",
+      "vol": "VOL.S2-08",
+      "next_topic": "고려 사회·신분",
+      "next_subtitle": "양인과 천인의 4신분"
+    },
+    "cover": {
+      "year_top": "HISTORY · 10–14C",
+      "era_chip": "高麗 · 經濟",
+      "title_lines": ["해동", "은병"],
+      "subtitle": "최초의 화폐와,\n벽란도의 국제 무역.",
+      "imagePrompt": "12th century Goryeo dynasty Byeongnando international trading port illustration. Foreground: foreign merchants (Arab in turban, Song Chinese in silk robes) trading with Korean merchants on a bustling dock. Wooden trading ships with sails behind. Cargo of celadon pots, silk bolts, fragrant goods. Color: jade-green + warm crimson + earth-brown. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO READABLE FLAGS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "해동통보", "sub": "고려 최초 동전, 1102" },
+        { "word": "은병",     "sub": "활구, 은 1근의 화폐" },
+        { "word": "벽란도",   "sub": "예성강 국제 무역항" },
+        { "word": "송상",     "sub": "고려와 송의 교역 상인" }
+      ]
+    },
+    "facts": {
+      "headline_top": "화폐와 무역,",
+      "headline_accent": "네 가지 발달.",
+      "image": null,
+      "timeline": [
+        { "year": "996",  "month": "—", "text": "건원중보 주조. 고려 최초의 화폐." },
+        { "year": "1097", "month": "—", "text": "주전도감 설치. 화폐 주조 본격화." },
+        { "year": "1101", "month": "—", "text": "은병(활구) 주조. 은 1근 가치." },
+        { "year": "1102", "month": "—", "text": "해동통보 주조. 동전 보급 시도." }
+      ]
+    },
+    "people": {
+      "headline_top": "고려 경제의",
+      "headline_accent": "세 무대.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "벽란도",   "role": "국제 무역항",   "desc": "예성강 하구. 송·요·아라비아 교역.", "portrait_src": null },
+        { "name": "경시서",   "role": "시장 감독 기구", "desc": "개경 시전 감독, 물가 통제.", "portrait_src": null },
+        { "name": "주전도감", "role": "화폐 주조 기관", "desc": "1097 설치, 동전·은병 주조.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["벽란도가 열리고,", "코리아가 알려졌다."],
+      "items": [
+        { "title": "고려=코리아",     "desc": "아라비아 상인이 'Corea'로 전파." },
+        { "title": "송과의 교역",     "desc": "비단·서적·자기 수입, 인삼 수출." },
+        { "title": "화폐 보급 한계",   "desc": "쌀·포가 주류, 동전은 도시만." },
+        { "title": "시장 감독",       "desc": "경시서가 시전 물가·매매 감독." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"건원중보 → 해동통보 → 은병\"\n화폐 발달 순서 외울 것.",
+      "tip_body": "심화 시험은 고려 화폐 종류(건원중보·해동통보·삼한통보·은병)와 시기, 벽란도(예성강) 국제 무역항, 경시서의 시장 감독 기능 빈출.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized round Korean traditional coin shape next to an elongated silver bottle (eunbyeong/hwalgu shape suggesting Korean peninsula). Jade-green + silver + amber #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

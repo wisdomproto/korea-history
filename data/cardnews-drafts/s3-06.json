@@ -1,0 +1,67 @@
+{
+  "noteId": "s3-06",
+  "noteTitle": "조선 군사 제도",
+  "questionCount": 46,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "군사 제도",
+      "era": "조선 전기",
+      "year_label": "15c~16c",
+      "vol": "VOL.S3-06",
+      "next_topic": "사림과 붕당",
+      "next_subtitle": "동인·서인의 시작"
+    },
+    "cover": {
+      "year_top": "HISTORY · 15–16c",
+      "era_chip": "朝鮮 前期 · 五衛",
+      "title_lines": ["5위", "진관"],
+      "subtitle": "한양은 5위가 지키고,\n지방은 진관이 막았다.",
+      "imagePrompt": "Early Joseon dynasty illustration, 15th century. ONE Korean royal guard (gapsa) in deep crimson and navy military uniform with leather armor and brimmed iron helmet, holding a long spear standing watch at a Gyeongbokgung palace gate. Stone wall with crenellations behind. Soft early-morning light, low fog. Composition: solitary disciplined figure, watchful stillness. Color: deep crimson + navy + ink-black + hanji beige. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "5위", "sub": "한양 도성 방위 중앙군" },
+        { "word": "진관체제", "sub": "세조 완성, 향토 방위" },
+        { "word": "양인개병", "sub": "16~60세 양인 군역 의무" },
+        { "word": "봉수제", "sub": "5단계 신호로 위급 보고" }
+      ]
+    },
+    "facts": {
+      "headline_top": "중앙은 5위,",
+      "headline_accent": "지방은 진관.",
+      "image": null,
+      "timeline": [
+        { "year": "1457", "month": "10월", "text": "세조 진관 체제 완성. 지역 단위 향토 방위." },
+        { "year": "1464", "month": "5월", "text": "세조 5위 체제 정비. 의흥위 등 5개 위." },
+        { "year": "1541", "month": "6월", "text": "중종 군적수포제 시행. 군포 납부 공식화." },
+        { "year": "1593", "month": "8월", "text": "선조 훈련도감·속오군 창설. 임란 대응." }
+      ]
+    },
+    "people": {
+      "headline_top": "군역의",
+      "headline_accent": "세 기둥.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "갑사", "role": "직업 군인", "desc": "5위 핵심, 국가에서 급료 받음.", "portrait_src": null },
+        { "name": "정군", "role": "현역", "desc": "양인 남성, 16~60세 실제 복무.", "portrait_src": null },
+        { "name": "보인", "role": "보조", "desc": "정군 경비 부담, 군포로 지원.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["진관은 무너지고,", "속오군이 일어섰다."],
+      "items": [
+        { "title": "5위 체제", "desc": "한양 도성·궁궐 숙위 전담." },
+        { "title": "제승방략", "desc": "임란 직전 도입, 초기 패배." },
+        { "title": "방군수포", "desc": "군역 회피, 군포로 대체." },
+        { "title": "속오군", "desc": "양반~노비 신분 망라 편제." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"진관 → 제승방략 → 속오군\"\n순서를 외워라.",
+      "tip_body": "심화 시험에서는 진관(향토 방위)→제승방략(집결)→속오군(임란 후) 순서가 자주 출제된다. 5위는 중앙군, 진관은 지방군임을 혼동하지 말 것. 봉수 신호는 5단계로 표현됨을 기억.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized beacon-tower (bongsu) icon with a thin smoke wisp rising, simple ink-line. RIGHT: a small spear and helmet silhouette suggesting royal guard. Cream #F2EDE3 base + crimson #B91C1C accent + ink-black outline. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

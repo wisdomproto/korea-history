@@ -1,0 +1,67 @@
+{
+  "noteId": "s3-15",
+  "noteTitle": "문화, 성리학, 예술",
+  "questionCount": 153,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "문화·성리학",
+      "era": "조선 전기",
+      "year_label": "15c~16c",
+      "vol": "VOL.S3-15",
+      "next_topic": "붕당 분화",
+      "next_subtitle": "동인과 서인의 갈림길"
+    },
+    "cover": {
+      "year_top": "HISTORY · 15c–16c",
+      "era_chip": "朝鮮 前期 · 性理學",
+      "title_lines": ["퇴계", "율곡"],
+      "subtitle": "이를 따른 영남,\n기를 따른 기호.",
+      "imagePrompt": "Joseon folk minhwa + genre-painting tones. Hanji beige, ink-black, crimson, navy. Scene: TWO Joseon scholars in white dopo and black gat seated facing each other at a low desk, with open books and brushes between them, debating philosophy. Behind them: a folding screen showing ink mountain landscape, and a tall white porcelain (baekja) vase on a stand. Soft natural light through hanji paper window. Composition: contemplative, parallel scholarly authority. Color: hanji beige + ink-black + warm amber accents + soft white porcelain highlight. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "성학십도", "sub": "이황, 선조에게 올린 도설" },
+        { "word": "성학집요", "sub": "이이, 선조에게 올린 정치서" },
+        { "word": "분청사기", "sub": "15c, 자유분방·서민적" },
+        { "word": "몽유도원도", "sub": "안견, 안평대군의 꿈을 그림" }
+      ]
+    },
+    "facts": {
+      "headline_top": "이와 기,",
+      "headline_accent": "두 학파의 시대.",
+      "image": null,
+      "timeline": [
+        { "year": "1446", "month": "9월",  "text": "세종, 훈민정음 반포(해례본 UNESCO)." },
+        { "year": "1447", "month": "전후", "text": "안견, 몽유도원도 완성(안평대군 의뢰)." },
+        { "year": "1568", "month": "12월", "text": "이황, 성학십도를 선조에게 올림." },
+        { "year": "1575", "month": "전후", "text": "이이, 성학집요를 선조에게 올림." }
+      ]
+    },
+    "people": {
+      "headline_top": "두 학파,",
+      "headline_accent": "한 화가.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "이황", "role": "퇴계, 주리론", "desc": "이기호발설, 영남학파 → 동인.", "portrait_src": null },
+        { "name": "이이", "role": "율곡, 주기론", "desc": "기발이승일도설, 기호학파 → 서인.", "portrait_src": null },
+        { "name": "안견", "role": "조선 전기 화가", "desc": "몽유도원도, 산수화의 대표작.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["성리학이 사회를,", "예술이 정신을 빚었다."],
+      "items": [
+        { "title": "사단칠정", "desc": "이황·기대승 → 이이·성혼 논쟁." },
+        { "title": "도자기 변천", "desc": "분청사기 → 백자, 사대부 선호." },
+        { "title": "예안·해주", "desc": "이황·이이의 향약, 향촌에 보급." },
+        { "title": "한글 문학",   "desc": "16c 이후 홍길동전 등 등장." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"성학십도는 이황, 성학집요는 이이\"\n저서를 인물에 묶을 것.",
+      "tip_body": "심화에서는 이기호발설=이황, 기발이승일도설=이이의 학설을 구분해야 한다. 안견=몽유도원도, 강희안=고사관수도, 신사임당=초충도로 그림 작가도 함께 기억할 것.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized white porcelain (baekja) jar with simple ink-blue accent, and to the left a small open book icon suggesting Seonghak-sipdo. Cream #F2EDE3 base + ink-blue #1E3A5F accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

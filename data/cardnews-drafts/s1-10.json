@@ -1,0 +1,67 @@
+{
+  "noteId": "s1-10",
+  "noteTitle": "종교",
+  "questionCount": 175,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "삼국·남북국 종교",
+      "era": "삼국",
+      "year_label": "AD 372~9c",
+      "vol": "VOL.S1-10",
+      "next_topic": "고대 국가의 고분",
+      "next_subtitle": "돌무지·굴식 돌방·돌무지덧널"
+    },
+    "cover": {
+      "year_top": "RELIGION · 4~9c",
+      "era_chip": "佛敎 · 儒敎 · 道敎",
+      "title_lines": ["불교", "수용"],
+      "subtitle": "고구려·백제·신라,\n순서까지 외워야 한다.",
+      "imagePrompt": "Three Kingdoms Buddhism arrival illustration, 4th century. ONE foreign monk figure (Sundo) in saffron robe with shaven head, holding a sutra scroll, walking through a Goguryeo palace gate where a king kneels in greeting. Background: temple eaves under construction and pine forest. Composition: solemn arrival, threshold. Color: saffron + clay-brown + gold + jade. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "이차돈", "sub": "527 신라 불교 공인, 순교" },
+        { "word": "원효", "sub": "화쟁사상·아미타신앙·무애가" },
+        { "word": "의상", "sub": "화엄종·부석사·화엄일승법계도" },
+        { "word": "혜초", "sub": "왕오천축국전, 인도 순례기" }
+      ]
+    },
+    "facts": {
+      "headline_top": "수용 순서와",
+      "headline_accent": "대중화의 흐름.",
+      "image": null,
+      "timeline": [
+        { "year": "372", "month": "고구려", "text": "소수림왕, 전진 순도가 불교 전래." },
+        { "year": "384", "month": "백제", "text": "침류왕, 동진 마라난타가 불교 전래." },
+        { "year": "527", "month": "신라", "text": "법흥왕, 이차돈 순교로 불교 공인." },
+        { "year": "9c", "month": "선종", "text": "9산 선문, 호족과 결탁 유행." }
+      ]
+    },
+    "people": {
+      "headline_top": "통일신라의",
+      "headline_accent": "세 승려.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "원효", "role": "대중 불교", "desc": "화쟁사상, 무애가로 대중화.", "portrait_src": null },
+        { "name": "의상", "role": "화엄종", "desc": "부석사 건립, 화엄일승법계도 저술.", "portrait_src": null },
+        { "name": "혜초", "role": "구법승", "desc": "왕오천축국전, 인도·중앙아 기행.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["불교가 들어오자,", "왕권이 강해졌다."],
+      "items": [
+        { "title": "태학·국학", "desc": "고구려·신라 유교 교육기관." },
+        { "title": "금동 대향로", "desc": "백제, 도교 신선세계 표현." },
+        { "title": "사신도", "desc": "고구려 고분벽화, 도교 영향." },
+        { "title": "풍수지리", "desc": "도선이 체계화, 호족이 활용." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"고구려 372 → 백제 384 → 신라 527\"\n불교 수용 순서를 외운다.",
+      "tip_body": "심화 시험에서는 원효(화쟁·아미타·무애가)와 의상(화엄종·부석사·일승법계도)을 헷갈리게 묻는다. 교종(중대·왕실·귀족)과 선종(하대·호족·9산 선문)의 시기·후원 세력 대비도 단골 포인트다.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open lotus sutra book icon shown from a slight angle. RIGHT: a small white incense burner silhouette suggesting Baekje gilt-bronze incense. Cream #F2EDE3 base + saffron #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

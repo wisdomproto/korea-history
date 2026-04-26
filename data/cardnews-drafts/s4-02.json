@@ -1,0 +1,67 @@
+{
+  "noteId": "s4-02",
+  "noteTitle": "경제와 사회",
+  "questionCount": 344,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "수취 3대 개혁",
+      "era": "조선 후기",
+      "year_label": "1608~1791",
+      "vol": "VOL.S4-02",
+      "next_topic": "정치체제와 군사",
+      "next_subtitle": "분당 정치와 5군영 체제"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1608–1791",
+      "era_chip": "朝鮮 後期 · 收取 改革",
+      "title_lines": ["대동", "균역"],
+      "subtitle": "공납과 군역을 바꾼,\n100년의 개혁사.",
+      "imagePrompt": "Late Joseon dynasty 17th-18th century rural marketplace illustration. Foreground: Korean farmers in white hemp clothing carrying rice sacks and exchanging coins (sangpyeong tongbo). Middle ground: a merchant (gongin) in dark dopo robe holding an account book. Background: thatched roof market stalls under autumn sky. Color: warm earth-brown + harvest gold + ink-black. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "대동법",   "sub": "공납 → 쌀 12두, 광해군~숙종" },
+        { "word": "균역법",   "sub": "군포 2필 → 1필, 영조" },
+        { "word": "이앙법",   "sub": "모내기로 노동력 절감" },
+        { "word": "신해통공", "sub": "1791, 금난전권 폐지" }
+      ]
+    },
+    "facts": {
+      "headline_top": "세금과 시장,",
+      "headline_accent": "100년의 변혁.",
+      "image": null,
+      "timeline": [
+        { "year": "1608", "month": "5월",  "text": "광해군, 경기에 대동법 시범 시행. 선혜청 설치." },
+        { "year": "1635", "month": "11월", "text": "인조, 영정법. 토지 1결당 미곡 4두로 고정." },
+        { "year": "1750", "month": "7월",  "text": "영조, 균역법. 군포 1필 감면, 결작으로 보충." },
+        { "year": "1791", "month": "1월",  "text": "정조, 신해통공. 육의전 외 금난전권 폐지." }
+      ]
+    },
+    "people": {
+      "headline_top": "개혁과 상인,",
+      "headline_accent": "세 주체.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "공인",   "role": "관청 어용 상인",   "desc": "대동법의 산물. 상품 화폐 경제 촉매.", "portrait_src": null },
+        { "name": "송상",   "role": "개성 상인",       "desc": "인삼 재배·판매. 사개치부법 사용.", "portrait_src": null },
+        { "name": "만상",   "role": "의주 상인",       "desc": "대청 무역의 중심. 중계 무역 수행.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["세금이 쌀로 바뀌자,", "시장이 열렸다."],
+      "items": [
+        { "title": "공인 등장",       "desc": "대동미로 물품 조달, 상업 활성화." },
+        { "title": "상평통보 유통",   "desc": "1678 숙종, 전국 최초 상용 화폐." },
+        { "title": "광작 농업",       "desc": "이앙법으로 부농 성장, 빈농 몰락." },
+        { "title": "농촌 양극화",     "desc": "상품작물·임노동자 등장, 신분 동요." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"영정법(전세) · 대동법(공납) · 균역법(군역)\"\n세목 구분이 핵심.",
+      "tip_body": "심화 시험은 세 법의 대상 세목과 시행 왕을 혼동시키는 문제 빈출. 공인 등장은 대동법, 결작은 균역법 보충 재원이라는 인과관계도 자주 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: stylized stack of three rice straw bundles with a small bronze coin (sangpyeong tongbo) shape resting on top. Cream #F2EDE3 base + amber #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

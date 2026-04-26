@@ -1,0 +1,67 @@
+{
+  "noteId": "s1-09",
+  "noteTitle": "발해 (698~)",
+  "questionCount": 105,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "발해",
+      "era": "삼국",
+      "year_label": "AD 698~926",
+      "vol": "VOL.S1-09",
+      "next_topic": "종교",
+      "next_subtitle": "삼국·통일신라의 불교와 도교"
+    },
+    "cover": {
+      "year_top": "BALHAE · 698~926",
+      "era_chip": "渤海 · 海東盛國",
+      "title_lines": ["발해", "성국"],
+      "subtitle": "고구려를 잇는 나라,\n해동의 융성한 국가.",
+      "imagePrompt": "Balhae kingdom illustration, 8th century. ONE Balhae king figure (King Mun) in deep indigo robe with Goguryeo-style fur-trimmed collar, standing on a stone-paved Sanggyeong palace boulevard at dawn. Behind him a tall stone lantern (seokdeung) and a tiled Goguryeo-style roof. Composition: imperial dignity, cool morning light. Color: deep indigo + bronze + clay-brown + amber. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "대조영", "sub": "동모산에서 발해 건국(698)" },
+        { "word": "장문휴", "sub": "무왕, 산둥반도 등주 공격" },
+        { "word": "주자감", "sub": "문왕, 유교 교육기관 설치" },
+        { "word": "해동성국", "sub": "선왕, 발해 전성기 칭호" }
+      ]
+    },
+    "facts": {
+      "headline_top": "건국에서 멸망,",
+      "headline_accent": "228년의 역사.",
+      "image": null,
+      "timeline": [
+        { "year": "698", "month": "대조영", "text": "동모산에 발해 건국, 고구려 계승." },
+        { "year": "732", "month": "무왕", "text": "장문휴, 당 산둥반도 등주 공격." },
+        { "year": "문왕", "month": "대흥", "text": "3성6부 정비·신라도 개설·상경 천도." },
+        { "year": "926", "month": "거란", "text": "거란(요)의 침입으로 멸망." }
+      ]
+    },
+    "people": {
+      "headline_top": "발해를 키운",
+      "headline_accent": "세 왕.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "무왕", "role": "반당 정책", "desc": "인안 연호, 장문휴로 등주 공격.", "portrait_src": null },
+        { "name": "문왕", "role": "친당 정책", "desc": "대흥 연호, 3성6부·주자감 정비.", "portrait_src": null },
+        { "name": "선왕", "role": "전성기", "desc": "건흥 연호, 5경15부62주·해동성국.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["당을 받아들이되,", "고구려를 잊지 않다."],
+      "items": [
+        { "title": "3성 6부", "desc": "당 제도 수용+충인의지예신 독자명." },
+        { "title": "솔빈부의 말", "desc": "발해 특산품, 주요 수출품." },
+        { "title": "온돌·이불병좌", "desc": "고구려 계승의 명백한 증거." },
+        { "title": "고려국왕", "desc": "문왕이 일본 국서에서 자칭." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"인안·대흥·건흥\"\n무왕·문왕·선왕 연호 트리오.",
+      "tip_body": "심화 시험에서는 발해 왕의 연호(인안=무왕, 대흥=문왕, 건흥=선왕)와 업적을 섞어서 묻는다. '고구려 계승 근거 5종(일본 국서·지배층·온돌·이불병좌·석등)'은 거의 매회 출제되는 핵심 포인트다.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized stone lantern (seokdeung) icon shown from a slight angle. RIGHT: a small twin-Buddha (ibulbyeongjwa) silhouette. Cream #F2EDE3 base + deep indigo #3D4A6B accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

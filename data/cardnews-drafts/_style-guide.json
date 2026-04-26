@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "purpose": "87개 한능검 노트 카드뉴스 스타일 가이드",
+    "createdAt": "2026-04-26",
+    "version": "v1"
+  },
+  "globalRules": {
+    "slideCount": 10,
+    "aspectRatio": "4:5",
+    "tone": "학습형",
+    "ctaPosition": "마지막 1장 (Slide 10)",
+    "imageStyle": "일러스트 통일 (사진 X, 만화 X)"
+  },
+  "globalImagePromptSuffix": "Style: flat illustration, hand-drawn lines, simple shading, paper texture background, NO TEXT IN IMAGE, no captions, no logos, no watermarks, no realistic photo quality, no anime, no modern anachronism (no phones, cars, modern buildings).",
+  "eraStylePrefix": {
+    "삼국": "Ancient Korean ink-wash + dongyanghwa illustration. Gold, clay-brown, bronze tones. Silla/Baekje/Goguryeo costumes (long hair, leather armor, robe). Tomb mounds, temples, palaces background.",
+    "고려": "Goryeo celadon-tone illustration. Blue-green, jade, ink-black. Robes + official caps + Mongol/Khitan attire. Temples, fortresses background.",
+    "조선 전기": "Joseon folk minhwa + genre-painting tones. Hanji beige, ink-black, crimson, navy. Gat (black hat) + dopo + court robes + female hanbok. Gyeongbokgung, seowon, hyanggyo background.",
+    "조선 후기": "Late Joseon genre painting (Kim Hong-do/Shin Yun-bok tone). Earth-brown, crimson, blue-gray. Yangban + commoner + scholar attire. Markets, schools, gentry homes background.",
+    "근대": "Late-Joseon-to-Japanese-occupation illustration. Dark blue-gray, crimson accent, sepia. Costumes from Heungseon Daewongun era to independence movement (dopo, suits, military uniforms). Ganghwa Island, Gyeongbokgung, Manchuria background.",
+    "현대": "Contemporary Korean minimal illustration. Gray, red, blue simple palette. Suits, military uniforms, civilian clothing. Gwanghwamun, National Assembly, democracy plaza background."
+  },
+  "commonSlides": {
+    "slide_9_keywords": {
+      "title": "한능검 단골 — 외워둘 키워드",
+      "bodyTemplate": "(노트 keywords를 4분류 — 사건/인물/장소/기타)",
+      "imagePromptTemplate": "[era prefix]. Hanji or parchment background with scattered floating cards (no text on cards — just shape suggestions). Slightly bent corners. Shadows soft. Color palette matches era."
+    },
+    "slide_10_cta": {
+      "titleTemplate": "[시대]의 기출 [N]문제",
+      "body": "더 자세한 정리 + 한능검 기출 풀이 → gcnote.co.kr\n@기출노트 팔로우 — 매일 한국사 한 장",
+      "imagePrompt": "Minimal hanji-beige background. Center: book-shaped icon (representing summary note). Right: stylized 'D-30' shape (no actual numbers/text). Cream #F5EFE4 base + amber #B45309 accent. Flat design, bold outline, simple shading."
+    }
+  }
+}

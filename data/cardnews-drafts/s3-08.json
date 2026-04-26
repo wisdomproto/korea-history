@@ -1,0 +1,68 @@
+{
+  "noteId": "s3-08",
+  "noteTitle": "임진왜란과 정유재란",
+  "questionCount": 175,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "임진왜란",
+      "era": "조선 전기",
+      "year_label": "1592~1598",
+      "vol": "VOL.S3-08",
+      "next_topic": "광해군과 호란",
+      "next_subtitle": "중립외교에서 삼전도까지"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1592–1598",
+      "era_chip": "朝鮮 前期 · 壬辰倭亂",
+      "title_lines": ["7년", "전쟁"],
+      "subtitle": "부산에서 명량까지,\n조선이 둘로 나뉘었다.",
+      "imagePrompt": "Late 16th century Korean illustration. ONE Korean naval admiral (Yi Sun-sin) in dark navy military robe with red command sash and brimmed iron helmet, standing on the deck of a turtle ship (geobukseon) at sea. Curved spiked roof of the turtle ship visible behind, distant Japanese ships on horizon, choppy gray waves. Composition: solitary commanding figure, calm before battle. Color: deep navy + crimson sash + ink-black + sea gray + hanji beige sky. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "이순신", "sub": "한산도·명량 대첩 승리" },
+        { "word": "훈련도감", "sub": "포·사·살수 삼수병 편성" },
+        { "word": "의병", "sub": "곽재우·정문부·조헌 활약" },
+        { "word": "공명첩", "sub": "전후 재정난, 신분제 동요" }
+      ]
+    },
+    "facts": {
+      "headline_top": "1592 부산에서,",
+      "headline_accent": "1598 노량까지.",
+      "image": null,
+      "timeline": [
+        { "year": "1592", "month": "4월", "text": "부산 함락·탄금대 패전. 신립 자결, 한양 함락." },
+        { "year": "1592", "month": "7월", "text": "한산도 대첩. 이순신이 일본 수군 격파." },
+        { "year": "1593", "month": "1월", "text": "평양성 수복. 조명 연합군 반격 시작." },
+        { "year": "1597", "month": "9월", "text": "명량 대첩. 정유재란, 13척으로 대승." }
+      ]
+    },
+    "people": {
+      "headline_top": "전쟁의",
+      "headline_accent": "세 영웅.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "이순신", "role": "삼도수군통제사", "desc": "한산도·명량·노량 해전 승리.", "portrait_src": null },
+        { "name": "곽재우", "role": "홍의장군", "desc": "경상도 의병장, 진주·정암진 활약.", "portrait_src": null },
+        { "name": "권율", "role": "도원수", "desc": "행주대첩 승리, 육전 반격의 주역.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["전쟁이 끝나도,", "조선은 변했다."],
+      "items": [
+        { "title": "훈련도감", "desc": "포수·사수·살수 삼수병 신설." },
+        { "title": "공명첩", "desc": "납속책으로 양반 신분 매매." },
+        { "title": "기유약조", "desc": "1609 일본과 제한 무역 재개." },
+        { "title": "송상 성장", "desc": "전후 상업, 송상·만상 발달." }
+      ]
+    },
+    "tip_headline_skip": null,
+    "outro": {
+      "tip_headline": "\"한산도 1592 · 명량 1597\"\n해전과 연도를 묶어라.",
+      "tip_body": "심화 시험에서는 임진왜란(1592)과 정유재란(1597) 구분, 한산도(임란)·명량(정유) 해전이 자주 출제된다. 훈련도감의 삼수병(포·사·살수) 구성과 속오군의 신분 망라도 빈출 포인트.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized turtle-ship (geobukseon) silhouette from side view with spiked back, simple ink-line. RIGHT: a small wave silhouette suggesting naval battle. Cream #F2EDE3 base + navy #1E3A8A accent + crimson #B91C1C detail. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

@@ -10,6 +10,7 @@ import { ExamList } from './sidebar/ExamList';
 import { CbtExamList } from './sidebar/CbtExamList';
 import { NotesList } from './sidebar/NotesList';
 import { MarketingSubmenu } from './sidebar/MarketingSubmenu';
+import { StrategyDocsButton } from './sidebar/StrategyDocsButton';
 export { ERA_COLORS } from './sidebar/NotesList';
 
 interface Project {
@@ -88,6 +89,11 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
             className={`p-1.5 rounded-lg text-sm transition-colors ${sidebarSection === 'marketing' ? 'bg-emerald-100' : 'hover:bg-gray-100'}`}
             title="마케팅"
           >📣</button>
+        </div>
+
+        {/* 하단 문서 버튼 */}
+        <div className="mt-auto flex flex-col items-center gap-1 border-t py-2">
+          <StrategyDocsButton collapsed />
         </div>
       </aside>
     );
@@ -217,8 +223,15 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
       </div>
 
       {/* ═══ 4. Footer ═══ */}
-      <div className="flex justify-end border-t bg-gray-50 px-4 py-2">
-        <DeployButton />
+      <div className="border-t bg-gray-50">
+        {/* 전략 문서 (왼쪽 아래) */}
+        <div className="px-3 py-2 border-b border-gray-200/70">
+          <StrategyDocsButton />
+        </div>
+        {/* 웹 배포 */}
+        <div className="flex justify-end px-4 py-2">
+          <DeployButton />
+        </div>
       </div>
     </aside>
   );

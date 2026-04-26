@@ -1,0 +1,67 @@
+{
+  "noteId": "s3-18",
+  "noteTitle": "환국 (경신/기사/갑술)",
+  "questionCount": 70,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "환국 정치",
+      "era": "조선 전기",
+      "year_label": "1680~1694",
+      "vol": "VOL.S3-18",
+      "next_topic": "경제 활동",
+      "next_subtitle": "시전·장시·왜관의 시대"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1680–1694",
+      "era_chip": "朝鮮 · 換局 三大",
+      "title_lines": ["환국", "숙종"],
+      "subtitle": "숙종의 한 마디로,\n붕당이 통째로 바뀐다.",
+      "imagePrompt": "Joseon folk minhwa + genre-painting tones. Hanji beige, ink-black, crimson, navy. Scene: a Joseon king in deep crimson royal robe seated on a raised throne dais inside Gyeongbokgung, with one hand raised in command. Below the dais, two groups of yangban officials in court robes — one group bowing low and being escorted out by guards on the left, another group bowing in greeting on the right. Composition: dramatic power shift, dynamic asymmetry. Color: hanji beige + ink-black + dominant deep crimson on the king + navy court robes. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "경신환국", "sub": "1680, 남인 → 서인" },
+        { "word": "기사환국", "sub": "1689, 서인 → 남인" },
+        { "word": "갑술환국", "sub": "1694, 남인 → 서인" },
+        { "word": "장희빈",   "sub": "기사 왕비, 갑술 강등" }
+      ]
+    },
+    "facts": {
+      "headline_top": "세 번의 환국,",
+      "headline_accent": "한 사람의 결단.",
+      "image": null,
+      "timeline": [
+        { "year": "1680", "month": "4월",  "text": "경신환국, 허적·윤휴 사사·남인 축출." },
+        { "year": "1689", "month": "2월",  "text": "기사환국, 원자 책봉·송시열 사사." },
+        { "year": "1694", "month": "4월",  "text": "갑술환국, 인현왕후 복위·남인 몰락." },
+        { "year": "1701", "month": "10월", "text": "장희빈 사사, 노론 주도권 확립." }
+      ]
+    },
+    "people": {
+      "headline_top": "환국의 중심에 선",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "숙종", "role": "조선 19대 왕", "desc": "왕권 강화 위해 환국 직접 주도.", "portrait_src": null },
+        { "name": "송시열", "role": "노론 영수", "desc": "기사환국에서 사사, 노론 분립.", "portrait_src": null },
+        { "name": "장희빈", "role": "숙종의 빈", "desc": "왕비 책봉·강등·사사로 운명 갈림.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["왕권은 일시 강해졌고,", "붕당은 변질되었다."],
+      "items": [
+        { "title": "일당전제", "desc": "반대파 완전 축출 패턴 정착." },
+        { "title": "노·소 분립", "desc": "경신 후 서인 노론·소론 분기." },
+        { "title": "남인 몰락", "desc": "갑술 후 남인 정치 회복 불가." },
+        { "title": "탕평 배경", "desc": "변질된 붕당이 영조 탕평 자극." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"경신=허적, 기사=송시열, 갑술=인현\"\n사건과 인물을 묶을 것.",
+      "tip_body": "심화에서는 경신환국(1680, 허적 역모), 기사환국(1689, 원자 책봉·송시열 사사), 갑술환국(1694, 인현왕후 복위)의 핵심 키워드를 분리 암기해야 한다.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: three stylized swap arrows in a vertical column, each showing two small silhouettes exchanging positions. Cream #F2EDE3 base + ink-black + crimson #B45309 and navy #1E3A5F accent for opposing factions. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "noteId": "s6-12",
+  "noteTitle": "한국광복군 (1940)",
+  "questionCount": 97,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "한국광복군",
+      "era": "일제 강점기",
+      "year_label": "1940",
+      "vol": "VOL.S6-12",
+      "next_topic": "식민지 교육정책",
+      "next_subtitle": "조선교육령으로 본 차별 학제"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1940",
+      "era_chip": "日帝 强占 · 1940 · 重慶",
+      "title_lines": ["광복군", "창설"],
+      "subtitle": "임시정부의 정규군,\n충칭에서 깃발을 들다.",
+      "imagePrompt": "Late-Joseon-to-Japanese-occupation illustration. Dark blue-gray, crimson accent, sepia. ONE Korean independence general (Ji Cheong-cheon) in dark green wool military uniform with peaked cap, sash, and beard, standing in salute, profile view. Behind him: silhouettes of three Korean soldiers in similar uniforms in formation, holding rifles. Background: a Chinese stone-arched building gate suggesting Chongqing's Jialing Hotel. Color: dark blue-gray + ink-black, accent of crimson on sash and shoulder mark. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "광복군", "sub": "1940 충칭, 임시정부 정규군" },
+        { "word": "지청천", "sub": "총사령관, 만주 독립군 출신" },
+        { "word": "OSS", "sub": "미국 전략사무국, 특수 훈련" },
+        { "word": "정진군", "sub": "국내진공작전, 8.15로 무산" }
+      ]
+    },
+    "facts": {
+      "headline_top": "창설에서",
+      "headline_accent": "광복까지.",
+      "image": null,
+      "timeline": [
+        { "year": "1940", "month": "9월",  "text": "한국광복군 창설, 충칭 자링빈관." },
+        { "year": "1941", "month": "12월", "text": "대일 선전포고, 연합국 지위 시도." },
+        { "year": "1943", "month": "8월",  "text": "인면전구공작대 인도·미얀마 파견." },
+        { "year": "1945", "month": "8월",  "text": "독수리 작전 준비, 일본 항복으로 무산." }
+      ]
+    },
+    "people": {
+      "headline_top": "임정 정규군,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "지청천",   "role": "총사령관",     "desc": "만주 독립군 출신, 광복군 창설 지휘.",   "portrait_src": null },
+        { "name": "이범석",   "role": "참모장",       "desc": "광복군 작전·OSS 훈련 협력 주도.",       "portrait_src": null },
+        { "name": "김구",     "role": "임정 주석",     "desc": "광복군 창설 결단, 외교적 후원자.",       "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["연합국과 함께,", "민족 통합 군대."],
+      "items": [
+        { "title": "선전포고",   "desc": "1941 일·독·이에 공식 교전 의지." },
+        { "title": "한영 협정",  "desc": "1943 인도·미얀마 전선 합동 작전." },
+        { "title": "OSS 합작",   "desc": "1944 미국과 정보·파괴 공작 훈련." },
+        { "title": "좌우 통합",  "desc": "1942 조선의용대 1지대 편입." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"1940 충칭 지청천,\n1941 대일 선전포고.\"",
+      "tip_body": "심화 시험에서는 광복군 창설 시기·장소·총사령관, 9개 행동준승 폐지(1944), 인면전구공작대, OSS 협력과 국내진공작전 무산(8.15)이 자주 출제.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open Korean classical book icon next to a small Taegeukgi-shape silhouette suggesting national flag (no actual flag pattern detail). Cream #F2EDE3 base + amber #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}

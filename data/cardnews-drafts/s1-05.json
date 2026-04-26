@@ -1,0 +1,67 @@
+{
+  "noteId": "s1-05",
+  "noteTitle": "가야",
+  "questionCount": 61,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "가야 연맹왕국",
+      "era": "삼국",
+      "year_label": "AD 42~562",
+      "vol": "VOL.S1-05",
+      "next_topic": "삼국의 통치체제",
+      "next_subtitle": "관등제·귀족회의·지방제도"
+    },
+    "cover": {
+      "year_top": "GAYA · AD 42~562",
+      "era_chip": "金官 · 大伽倻",
+      "title_lines": ["가야", "연맹"],
+      "subtitle": "덩이쇠로 부를 쌓고도\n연맹에서 멈춘 나라.",
+      "imagePrompt": "Gaya federation illustration, 5th century. ONE Gaya ironworker figure in earth-toned robe and leather apron, holding a flat iron ingot (deongi-soe) up to forge fire, sparks rising. Background: Daeseong-dong burial mound silhouette and Nakdong river bend. Composition: artisan focus, glowing forge. Color: iron-gray + clay-brown + amber forge light. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "금관가야", "sub": "김해 중심, 전기 연맹 주도" },
+        { "word": "대가야", "sub": "고령 중심, 후기 연맹 주도" },
+        { "word": "덩이쇠", "sub": "낙랑·왜에 수출, 부의 원천" },
+        { "word": "김수로", "sub": "구지가, 금관가야 시조" }
+      ]
+    },
+    "facts": {
+      "headline_top": "전기·후기 연맹,",
+      "headline_accent": "두 중심의 흥망.",
+      "image": null,
+      "timeline": [
+        { "year": "42", "month": "건국", "text": "김수로왕, 김해에 금관가야 건국." },
+        { "year": "400", "month": "광개토", "text": "광개토대왕 왜 격퇴, 금관가야 쇠퇴." },
+        { "year": "532", "month": "법흥왕", "text": "신라 법흥왕, 금관가야 병합." },
+        { "year": "562", "month": "진흥왕", "text": "신라 진흥왕, 대가야 정복." }
+      ]
+    },
+    "people": {
+      "headline_top": "낙동강의",
+      "headline_accent": "세 인물.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "김수로왕", "role": "금관가야 시조", "desc": "구지가 설화의 주인공.", "portrait_src": null },
+        { "name": "이진아시왕", "role": "대가야 시조", "desc": "고령 지산동 일대를 다스림.", "portrait_src": null },
+        { "name": "우륵", "role": "가야 음악가", "desc": "가야금 12곡, 신라 진흥왕에 귀순.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["철은 강했지만,", "왕권은 약했다."],
+      "items": [
+        { "title": "대성동 고분", "desc": "김해, 금관가야 지배층의 무덤." },
+        { "title": "지산동 고분", "desc": "고령, 대가야의 거대 봉토분." },
+        { "title": "중개무역", "desc": "낙랑·왜에 철 수출로 성장." },
+        { "title": "연맹 한계", "desc": "중앙집권 실패로 신라에 흡수." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"법흥=금관가야 · 진흥=대가야\"\n신라 왕과 짝지어 외운다.",
+      "tip_body": "심화 시험에서는 금관가야(전기·김해·법흥왕 532)와 대가야(후기·고령·진흥왕 562)를 헷갈리게 묻는다. '김해=금관, 고령=대가야' 지명 매칭과 멸망 시킨 신라 왕을 한 묶음으로 외울 것.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized flat iron ingot (deongi-soe) icon shown from a slight angle. RIGHT: a small Gaya gold crown silhouette with three prongs. Cream #F2EDE3 base + iron-gray #6B6E72 accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

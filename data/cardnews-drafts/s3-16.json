@@ -1,0 +1,67 @@
+{
+  "noteId": "s3-16",
+  "noteTitle": "붕당 분화 계보도",
+  "questionCount": 106,
+  "_meta": { "schemaVersion": "design-guide-A v1", "createdBy": "Claude", "createdAt": "2026-04-26", "approved": false },
+  "data": {
+    "meta": {
+      "topic": "붕당 분화",
+      "era": "조선 전기",
+      "year_label": "1575~1683",
+      "vol": "VOL.S3-16",
+      "next_topic": "예송논쟁",
+      "next_subtitle": "효종의 상복을 둘러싼 논쟁"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1575–1683",
+      "era_chip": "朝鮮 · 朋黨 系譜",
+      "title_lines": ["동인", "서인"],
+      "subtitle": "이조전랑 한 자리에서,\n붕당의 강이 갈렸다.",
+      "imagePrompt": "Joseon folk minhwa + genre-painting tones. Hanji beige, ink-black, crimson, navy. Scene: a wide royal court interior at Gyeongbokgung with two distinct groups of yangban officials standing apart from each other on opposite sides of a polished wooden floor, all wearing court robes and black sa-mo official caps. Between them, an empty central walkway leading to a low throne dais. Composition: symmetric, tense confrontation, formal. Color: hanji beige + ink-black + deep crimson on one side + navy blue on the other. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "이조전랑", "sub": "1575, 김효원·심의겸 대립" },
+        { "word": "정여립",   "sub": "1589, 동인 → 남인·북인" },
+        { "word": "회니시비", "sub": "서인 → 노론·소론 분기" },
+        { "word": "인조반정", "sub": "1623, 북인 몰락·서인 집권" }
+      ]
+    },
+    "facts": {
+      "headline_top": "한 세대마다",
+      "headline_accent": "갈라지는 길.",
+      "image": null,
+      "timeline": [
+        { "year": "1575", "month": "전후", "text": "선조, 동인·서인 분립(이조전랑 문제)." },
+        { "year": "1589", "month": "10월", "text": "정여립 모반(기축옥사) → 남인·북인." },
+        { "year": "1623", "month": "3월",  "text": "인조반정, 북인 몰락·서인 장기 집권." },
+        { "year": "1683", "month": "전후", "text": "회니시비로 서인 → 노론·소론." }
+      ]
+    },
+    "people": {
+      "headline_top": "붕당의 학통,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "이황", "role": "동인의 학통", "desc": "주리론, 영남학파 → 남인 학통.", "portrait_src": null },
+        { "name": "이이", "role": "서인의 학통", "desc": "주기론, 기호학파 → 노론 적통.", "portrait_src": null },
+        { "name": "송시열", "role": "노론 영수", "desc": "이이 적통, 의리명분 강조.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["붕당은 견제였다가,", "독점이 되었다."],
+      "items": [
+        { "title": "1차 분화", "desc": "1575 동인·서인, 학통 차이." },
+        { "title": "2차 분화", "desc": "1589 남인·북인, 처벌 강도." },
+        { "title": "3차 분화", "desc": "1683 노론·소론, 회니시비." },
+        { "title": "변질",     "desc": "환국·일당전제 → 탕평정치로." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"동인=이황, 서인=이이\"\n학통을 인물에 묶을 것.",
+      "tip_body": "심화에서는 동인=이황·김효원, 서인=이이·심의겸, 남인=유성룡, 북인=조식·정인홍, 노론=송시열, 소론=윤증으로 학통과 인물을 연결해야 한다.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized tree-like genealogy diagram in ink lines — one root that splits into two branches, each branch splitting again into two smaller branches, ending in four small dots. Cream #F2EDE3 base + ink-black + crimson #B45309 accent on one branch and navy #1E3A5F on the other. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "noteId": "s7-09",
+  "noteTitle": "제3공화국",
+  "questionCount": 84,
+  "_meta": {
+    "schemaVersion": "design-guide-A v1",
+    "createdBy": "Claude",
+    "createdAt": "2026-04-26",
+    "approved": false
+  },
+  "data": {
+    "meta": {
+      "topic": "제3공화국",
+      "era": "현대",
+      "year_label": "1961~1972",
+      "vol": "VOL.S7-09",
+      "next_topic": "유신체제",
+      "next_subtitle": "긴급조치와 10·26으로 막을 내린 권위주의"
+    },
+    "cover": {
+      "year_top": "HISTORY · 1961",
+      "era_chip": "現代 · 1961 · 軍政",
+      "title_lines": ["군정", "개발"],
+      "subtitle": "5·16으로 시작된 11년,\n경제와 독재가 함께 컸다.",
+      "imagePrompt": "Contemporary Korean minimal illustration. Gray, red, blue simple palette. Suits, military uniforms, civilian clothing. Gwanghwamun, National Assembly, democracy plaza background. CENTER: ONE Korean military officer in 1960s khaki uniform with peaked cap and sunglasses, arms crossed, standing in front of an unfinished concrete highway viaduct (Gyeongbu Expressway construction). Behind him: factory smokestacks and silhouettes of construction cranes. Color palette: cold gray + olive khaki + crimson accent on a single armband. Style: flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image. No realistic photo quality, no anime, no modern anachronism."
+    },
+    "keywords": {
+      "headline": ["꼭 기억할", "네 단어."],
+      "items": [
+        { "word": "5·16정변", "sub": "1961, 박정희 군부 집권" },
+        { "word": "한일협정", "sub": "1965, 6·3 항쟁의 도화선" },
+        { "word": "베트남파병", "sub": "1964~73, 브라운 각서" },
+        { "word": "3선개헌", "sub": "1969, 장기집권의 출발" }
+      ]
+    },
+    "facts": {
+      "headline_top": "한 시대의",
+      "headline_accent": "다섯 사건.",
+      "image": null,
+      "timeline": [
+        { "year": "1961", "month": "5월", "text": "5·16 군사정변. 국가재건최고회의 설립." },
+        { "year": "1964", "month": "6월", "text": "6·3 항쟁. 굴욕적 한일 회담 반대 시위." },
+        { "year": "1965", "month": "6월", "text": "한·일 기본조약 체결. 국교 정상화." },
+        { "year": "1969", "month": "10월", "text": "3선 개헌. 대통령 3선 연임 허용." }
+      ]
+    },
+    "people": {
+      "headline_top": "권력과 개발,",
+      "headline_accent": "세 사람.",
+      "use_portrait_slot": false,
+      "items": [
+        { "name": "박정희", "role": "대통령", "desc": "군정·3공 주도. 경제개발 5개년 추진.", "portrait_src": null },
+        { "name": "김종필", "role": "중앙정보부장", "desc": "한일회담 비밀협상, 오히라 메모.", "portrait_src": null },
+        { "name": "윤보선", "role": "경쟁 후보", "desc": "5대 대선에서 박정희에 패배.", "portrait_src": null }
+      ]
+    },
+    "impact": {
+      "headline": ["고도성장의 기틀,", "장기집권의 씨앗."],
+      "items": [
+        { "title": "경부고속도로", "desc": "1970 개통, 산업 동맥 확보." },
+        { "title": "포항제철", "desc": "1973 1기 준공, 중화학 시동." },
+        { "title": "새마을운동", "desc": "1970 시작, 농촌 근대화." },
+        { "title": "3선 개헌", "desc": "유신체제로 가는 길 열림." }
+      ]
+    },
+    "outro": {
+      "tip_headline": "\"5·16 1961 · 한일 1965\"\n두 해를 묶어 외울 것.",
+      "tip_body": "심화에서는 브라운 각서·오히라 메모의 구분, 6·3 항쟁의 원인, 3선 개헌의 차수(제6차)와 경제개발 5개년 차수별 주력 산업이 자주 출제된다.",
+      "imagePrompt": "Minimal hanji-beige background. CENTER: a stylized open Korean classical book icon next to a small silhouette of a 1970s factory smokestack and a highway sign shape (no readable text). Cream #F2EDE3 base + amber #C77B3D accent. Flat illustration, hand-drawn lines, simple shading, paper texture background. NO TEXT, NO LETTERS, NO NUMBERS, NO CAPTIONS, NO LOGOS anywhere in image."
+    }
+  }
+}
