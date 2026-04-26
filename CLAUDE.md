@@ -29,6 +29,7 @@ korea_history/
 ├── scripts/               # 유틸리티 스크립트
 ├── design/                # 디자인 참고 파일
 ├── docs/                  # 프로젝트 문서
+│   ├── multi-exam-hub-strategy.html   # ⭐ 통합 허브 전략 v2 (대표 보고용 — 한눈에 + 정밀 모델)
 │   ├── marketing-strategy.html        # 마케팅 전략 보고서 v1
 │   ├── marketing-plan-community.html  # 커뮤니티 마케팅 종합 플랜
 │   └── card-news-feature-plan.html    # 카드뉴스 생성 기능 기획서
