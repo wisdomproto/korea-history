@@ -76,8 +76,15 @@ export default async function ExamSlugPage({ params }: PageProps) {
     (r) => r.subject.id === "korean-history" && r.certAccepted?.length,
   );
 
+  const childExams = exam.isContainer ? getJobSeriesChildren(exam.id) : [];
+  const jsonLd = buildExamPageJsonLd(exam, category?.label ?? "시험", childExams);
+
   return (
     <main className="bg-[var(--gc-bg)] min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="mx-auto max-w-6xl px-5 sm:px-6 md:px-8 py-10 md:py-14">
         <BreadCrumb
           items={[
@@ -297,6 +304,66 @@ function CtaCard({
       </div>
     </Link>
   );
+}
+
+// ============================================================
+// JSON-LD 구조화 데이터 (BreadcrumbList + Course/Program)
+// ============================================================
+
+function buildExamPageJsonLd(
+  exam: ExamTypeWithSubjects,
+  categoryLabel: string,
+  children: ExamType[],
+) {
+  const baseUrl = "https://gcnote.co.kr";
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "기출노트", item: baseUrl },
+      { "@type": "ListItem", position: 2, name: categoryLabel, item: `${baseUrl}/` },
+      { "@type": "ListItem", position: 3, name: exam.label, item: `${baseUrl}${exam.routes.main}` },
+    ],
+  };
+
+  // 컨테이너 부모: EducationalOccupationalProgram (직렬 = potentialOccupation)
+  if (exam.isContainer && children.length > 0) {
+    const program = {
+      "@context": "https://schema.org",
+      "@type": "EducationalOccupationalProgram",
+      name: exam.label,
+      description: exam.description,
+      url: `${baseUrl}${exam.routes.main}`,
+      provider: {
+        "@type": "Organization",
+        name: "기출노트",
+        url: baseUrl,
+      },
+      hasCourse: children.map((c) => ({
+        "@type": "Course",
+        name: c.label,
+        description: c.description,
+        url: `${baseUrl}${c.routes.main}`,
+        provider: { "@type": "Organization", name: "기출노트", url: baseUrl },
+      })),
+    };
+    return [breadcrumb, program];
+  }
+
+  // 단일/직렬 ExamType: Course
+  const course = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: exam.label,
+    description: exam.description,
+    url: `${baseUrl}${exam.routes.main}`,
+    provider: { "@type": "Organization", name: "기출노트", url: baseUrl },
+    learningResourceType: "기출문제 + 요약노트 + 자동 오답노트",
+    isAccessibleForFree: true,
+    inLanguage: "ko",
+    educationalLevel: "공무원·자격증·한능검 응시생",
+  };
+  return [breadcrumb, course];
 }
 
 // ============================================================

@@ -50,7 +50,7 @@ const JOB_SERIES = [
   { id: 'env', label: '환경', icon: '🌱', subjects: ['환경공학개론', '화학', '물리', '생물'] },
   { id: 'navy', label: '선박항해', icon: '🚢', subjects: ['선박일반', '항해', '자동차구조원리', '자동차구조원리(유공자)'] },
   { id: 'localTax', label: '지방세', icon: '💰', subjects: ['지방세법'] },
-  { id: 'specialVeteran', label: '유공자 특별', icon: '🎖️', subjects: ['사회(유공자)', '한국사(유공자)', '자동차구조원리(유공자)'] },
+  { id: 'specialVeteran', label: '유공자특별', icon: '🎖️', subjects: ['사회(유공자)', '한국사(유공자)', '자동차구조원리(유공자)'] },
 ];
 
 const COMMON_SUBJECTS = ['한국사', '국어', '영어']; // 모든 직렬 공통

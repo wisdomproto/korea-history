@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { getAllExams, getAllQuestionParams } from "@/lib/data";
 import { getAllNoteIds } from "@/lib/notes";
-import { getAllExamTypes, getCategories } from "@/lib/exam-types";
+import { getAllExamTypes, getCategories, getSubjectById } from "@/lib/exam-types";
 
 export const dynamic = "force-static";
 
@@ -95,13 +95,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // Multi-exam hub pages — main landing per exam type + category indexes
-  const examTypePages: MetadataRoute.Sitemap = getAllExamTypes().map((e) => ({
+  // Multi-exam hub pages — main landing per exam type
+  const allExamTypes = getAllExamTypes();
+  const examTypePages: MetadataRoute.Sitemap = allExamTypes.map((e) => ({
     url: `${BASE_URL}${e.routes.main}`,
     lastModified: now,
     changeFrequency: "weekly" as const,
-    priority: e.featured ? 0.9 : 0.6,
+    // 컨테이너(부모): 직렬 카드만 노출 — priority 약간 낮게
+    priority: e.featured ? 0.9 : e.isContainer ? 0.5 : 0.6,
   }));
 
-  return [...staticPages, ...questionPages, ...notePages, ...examTypePages];
+  // (examSlug, subjectSlug) 조합 페이지 — 754개
+  const subjectPages: MetadataRoute.Sitemap = [];
+  for (const e of allExamTypes) {
+    if (e.isContainer) continue; // 컨테이너 부모는 자식 직렬에서 처리
+    const refs = [...e.subjects.required, ...(e.subjects.selectable ?? [])];
+    for (const r of refs) {
+      if (r.status !== "live") continue;
+      const subj = getSubjectById(r.subjectId);
+      if (!subj) continue;
+      subjectPages.push({
+        url: `${BASE_URL}${e.routes.main}/${encodeURIComponent(subj.slug)}`,
+        lastModified: now,
+        changeFrequency: "weekly" as const,
+        priority: e.featured ? 0.7 : 0.5,
+      });
+    }
+  }
+
+  return [...staticPages, ...questionPages, ...notePages, ...examTypePages, ...subjectPages];
 }
