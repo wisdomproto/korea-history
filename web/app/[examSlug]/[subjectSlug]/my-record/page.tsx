@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { getExamTypeBySlug, getSubjectBySlug } from "@/lib/exam-types";
 import MyRecord from "@/app/my-record/MyRecord";
 
+export const dynamic = "force-dynamic";
+
 interface PageProps {
   params: Promise<{ examSlug: string; subjectSlug: string }>;
 }

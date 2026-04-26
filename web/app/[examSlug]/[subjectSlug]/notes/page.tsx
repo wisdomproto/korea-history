@@ -5,6 +5,9 @@ import { getExamTypeBySlug, getSubjectBySlug } from "@/lib/exam-types";
 import { getNotesIndex, getNotesGroupedBySection } from "@/lib/notes";
 import NotesHome from "@/app/notes/NotesHome";
 
+// 한국사 외엔 placeholder — prerender 안 함. 첫 요청 시 dynamic.
+export const dynamic = "force-dynamic";
+
 interface PageProps {
   params: Promise<{ examSlug: string; subjectSlug: string }>;
 }

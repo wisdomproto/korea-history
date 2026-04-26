@@ -15,9 +15,14 @@ interface PageProps {
   params: Promise<{ examSlug: string; subjectSlug: string }>;
 }
 
+// dynamicParams: true (default) — featured ExamType만 prerender, 나머지는 첫 요청 시 SSR + cache
+export const revalidate = 3600;
+
 export function generateStaticParams() {
   const out: Array<{ examSlug: string; subjectSlug: string }> = [];
   for (const exam of getAllExamTypes()) {
+    // featured/highlight ExamType만 prerender (1098 → ~100 정도로 축소, ENOSPC 회피)
+    if (!exam.featured && !exam.highlight) continue;
     const refs = [...exam.subjects.required, ...(exam.subjects.selectable ?? [])];
     for (const ref of refs) {
       if (ref.status !== "live") continue;

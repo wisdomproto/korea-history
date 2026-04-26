@@ -2,10 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import {
-  getAllExamTypes,
   getExamTypeBySlug,
   getSubjectBySlug,
-  getSubjectById,
 } from "@/lib/exam-types";
 import { getCbtManifest } from "@/lib/cbt-data";
 import BreadCrumb from "@/components/BreadCrumb";
@@ -15,25 +13,13 @@ interface PageProps {
   params: Promise<{ examSlug: string; subjectSlug: string }>;
 }
 
-// SSG: pre-generate (examSlug, subjectSlug) pairs for live subjects with a CBT stem
-// (either subject.questionPool.stem OR per-exam SubjectRef.stem override)
+// 회차 목록은 R2 fetch — SSG 1098개는 Vercel ENOSPC 일으킴.
+// dynamic + revalidate 1h 로 변경 (첫 요청 SSR, 이후 1시간 cache).
+export const dynamic = "force-dynamic";
+export const revalidate = 3600;
+
 export function generateStaticParams() {
-  const out: Array<{ examSlug: string; subjectSlug: string }> = [];
-  for (const exam of getAllExamTypes()) {
-    const allRefs = [
-      ...exam.subjects.required,
-      ...(exam.subjects.selectable ?? []),
-    ];
-    for (const ref of allRefs) {
-      if (ref.status !== "live") continue;
-      const subj = getSubjectById(ref.subjectId);
-      if (!subj) continue;
-      const stem = ref.stem ?? subj.questionPool?.stem;
-      if (!stem) continue; // 한능검 같이 R2 stem 없는 과목은 제외 (legacy /exam routes 사용)
-      out.push({ examSlug: exam.slug, subjectSlug: subj.slug });
-    }
-  }
-  return out;
+  return [];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

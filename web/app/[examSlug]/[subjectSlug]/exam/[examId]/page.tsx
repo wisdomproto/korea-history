@@ -3,6 +3,9 @@ import { notFound, redirect } from "next/navigation";
 import { getExamTypeBySlug, getSubjectBySlug } from "@/lib/exam-types";
 import { getCbtExam } from "@/lib/cbt-data";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 3600;
+
 interface PageProps {
   params: Promise<{ examSlug: string; subjectSlug: string; examId: string }>;
 }

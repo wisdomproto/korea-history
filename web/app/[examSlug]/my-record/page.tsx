@@ -9,12 +9,14 @@ import {
 } from "@/lib/exam-types";
 import ExamRecordSummary from "./ExamRecordSummary";
 
+export const dynamic = "force-dynamic";
+
 interface PageProps {
   params: Promise<{ examSlug: string }>;
 }
 
 export function generateStaticParams() {
-  return getAllExamTypes().map((e) => ({ examSlug: e.slug }));
+  return [];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

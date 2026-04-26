@@ -7,6 +7,10 @@ import { adaptCbtQuestion, adaptCbtExamMeta } from "@/lib/cbt-adapter";
 import QuestionWithTracking from "@/components/QuestionWithTracking";
 import BreadCrumb from "@/components/BreadCrumb";
 
+// 잠재 prerender 폭발 (수만개) 방지 — 첫 요청 SSR + ISR cache
+export const dynamic = "force-dynamic";
+export const revalidate = 3600;
+
 interface PageProps {
   params: Promise<{
     examSlug: string;

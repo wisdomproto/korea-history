@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import { getExamTypeBySlug, getSubjectBySlug } from "@/lib/exam-types";
 import WrongAnswersPage from "@/app/wrong-answers/page";
 
+// localStorage 기반 (사용자별) → SSG 의미 X. 첫 요청 시 dynamic 렌더.
+export const dynamic = "force-dynamic";
+
 interface PageProps {
   params: Promise<{ examSlug: string; subjectSlug: string }>;
 }
