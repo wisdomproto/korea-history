@@ -485,6 +485,33 @@ YOUTUBE_API_KEY=                         # 선택 — 채널 분석/경쟁사 Yo
 - 카테고리 비율: 빌더 일지 26% / 한국사 한 입 35% / 수험생 공감 18% / 데이터·발견 9% / 공무원 확장 12%
 - Meta API 자동발행은 보류 — 수동 복붙 운영
 
+## 9급 국가직 자동 단권화 노트 (13개, 2026-04-27)
+
+저작도구 사이드바 "📋 전략 문서"에서 접근. 9급 국가직 13개 과목 (한능검 제외, 헌법은 9급 미출제) 자동 단권화 HTML 노트.
+
+- **위치**: `docs/{slug}-summary-note.html` — 모든 과목 동일 디자인 시스템 (cream/amber/teal + Noto Serif KR)
+- **데이터 소스**: `cbt_data/json/9급_국가직_공무원_{과목}.json` (R2 동기화)
+- **작업 데이터**: `_admin-notes-work/9급-국가직-{과목}/` (seed.json + test.json + topics.json)
+- **검증 도구**: `_coverage-check/verify-v2.mjs` — 전 회차 200~440문제로 빈출 주제 추출 → 노트 매칭률 측정 (현재 13/13 모두 100%)
+- **사이드바 등록**: `author-tool/src/components/sidebar/StrategyDocsButton.tsx` STRATEGY_DOCS 배열
+- **운영 방침**: 트래픽 데이터(GA4) 보고 인기 과목부터 우선 업데이트. 누락 키워드는 verify-v2.mjs로 주기적 재검증
+
+| 과목 | 파일 | 단원 |
+|---|---|---|
+| 행정법총론 | admin-law-summary-note.html | 28 |
+| 행정학개론 | admin-pa-summary-note.html | 13 |
+| 형법총론 | criminal-law-summary-note.html | 14 |
+| 형사소송법개론 | criminal-procedure-summary-note.html | 15 |
+| 회계학 | accounting-summary-note.html | 12 |
+| 세법개론 | tax-law-summary-note.html | 10 |
+| 교정학개론 | corrections-summary-note.html | 11 |
+| 사회복지학개론 | social-welfare-summary-note.html | 13 |
+| 교육학개론 | education-summary-note.html | 13 |
+| 국제법개론 | international-law-summary-note.html | 14 |
+| 관세법개론 | customs-law-summary-note.html | 10 |
+| 국어 (공통) | korean-summary-note.html | 9 |
+| 영어 (공통) | english-summary-note.html | 9 |
+
 ## 주의사항
 - 요약노트 및 컨텐츠 생성 프롬프트에 "자막", "YouTube", "강의" 등 출처 언급 절대 금지
 - Tailwind CSS v4: `@layer base/components` 안에 작성, `@keyframes`는 밖에

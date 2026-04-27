@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>9급 국가직 형법총론 — 자동 단권화</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg:#F5EFE4;--paper:#FFF;--ink:#1F1A14;--ink-soft:#5A4F3F;--ink-mute:#94724D;--amber:#B45309;--amber-soft:#FED7AA;--amber-bg:#FFF7ED;--teal:#0D9488;--teal-soft:#CCFBF1;--teal-bg:#F0FDFA;--rose:#BE123C;--rose-soft:#FECDD3;--rose-bg:#FFF1F2;--hairline:rgba(31,26,20,.12);--serif:'Noto Serif KR',ui-serif,Georgia,serif;--sans:'Pretendard Variable',Pretendard,system-ui,-apple-system,sans-serif;--mono:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace; }
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;font-size:15px;word-break:keep-all;-webkit-font-smoothing:antialiased}
+  .container{max-width:980px;margin:0 auto;padding:48px 28px 80px} @media(max-width:720px){.container{padding:32px 16px 60px}}
+  header.hero{text-align:center;padding:36px 0 24px;border-bottom:1px solid var(--hairline);margin-bottom:32px}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--amber);text-transform:uppercase;margin-bottom:12px;font-weight:700}
+  h1{font-family:var(--serif);font-weight:900;font-size:clamp(26px,4vw,38px);line-height:1.1;margin:0 0 12px;letter-spacing:-.02em} h1 .amber{color:var(--amber)}
+  .subtitle{font-size:15px;color:var(--ink-soft);max-width:680px;margin:0 auto}
+  .meta{margin-top:16px;display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center;font-family:var(--mono);font-size:11px;color:var(--ink-soft)} .meta span:not(:first-child)::before{content:'·';margin-right:12px;color:var(--hairline)}
+  nav.toc{background:var(--paper);border:1px solid var(--hairline);border-radius:12px;padding:18px 22px;margin-bottom:32px}
+  nav.toc h2{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 8px}
+  nav.toc ol{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:4px 18px;font-size:13px} @media(max-width:720px){nav.toc ol{grid-template-columns:1fr}}
+  nav.toc a{color:var(--ink);text-decoration:none;padding:4px 0;display:flex;gap:8px;align-items:baseline} nav.toc a:hover{color:var(--amber)}
+  nav.toc .freq{font-family:var(--mono);font-size:9px;letter-spacing:.06em;background:var(--bg);padding:2px 6px;border-radius:4px;color:var(--ink-soft);font-weight:700;min-width:38px;text-align:center}
+  nav.toc .freq.hot{background:var(--rose);color:#fff} nav.toc .freq.warm{background:var(--amber);color:#fff} nav.toc .freq.med{background:var(--teal-soft);color:var(--teal)}
+  section.topic{background:var(--paper);border:1px solid var(--hairline);border-radius:14px;padding:26px 30px;margin-bottom:22px}
+  section.topic.tier1{border-left:5px solid var(--rose)} section.topic.tier2{border-left:5px solid var(--amber)} section.topic.tier3{border-left:5px solid var(--teal)}
+  .topic-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:8px;padding-bottom:12px;border-bottom:1px solid var(--hairline)}
+  .topic-name{font-family:var(--serif);font-size:22px;font-weight:900;margin:0;line-height:1.15;letter-spacing:-.015em}
+  .topic-num{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-mute);font-weight:700}
+  .topic-freq{display:inline-flex;gap:6px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+  .topic-freq .badge{padding:3px 9px;border-radius:999px;font-weight:700} .badge-freq{background:var(--amber);color:#fff} .badge-freq.hot{background:var(--rose)} .badge-freq.med{background:var(--teal)}
+  h3{font-family:var(--serif);font-size:16px;font-weight:800;margin:18px 0 8px;color:var(--ink);border-left:3px solid var(--amber);padding-left:10px}
+  h4{font-family:var(--sans);font-size:14px;font-weight:800;margin:12px 0 6px;color:var(--ink)}
+  .topic p{margin:6px 0;line-height:1.7;font-size:14px} .topic ul{padding-left:22px;margin:6px 0} .topic li{margin-bottom:4px;font-size:14px;line-height:1.7} .topic strong{color:var(--ink);font-weight:700}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;background:#fff;border:1px solid var(--hairline);border-radius:8px;overflow:hidden}
+  th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--hairline);vertical-align:top}
+  th{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;background:var(--bg)}
+  .law-box{background:var(--amber-bg);border:1px solid var(--amber-soft);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:13px;line-height:1.6}
+  .law-box-title{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--amber);text-transform:uppercase;font-weight:700;margin-bottom:4px}
+  .case-box{background:var(--teal-bg);border:1px solid var(--teal-soft);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:13px;line-height:1.6}
+  .case-box-title{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--teal);text-transform:uppercase;font-weight:700;margin-bottom:4px}
+  .exam-box{background:var(--bg);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:12px;line-height:1.6;color:var(--ink-soft)}
+  .exam-box-title{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--ink-mute);text-transform:uppercase;font-weight:700;margin-bottom:4px}
+  .trap-box{background:var(--rose-bg);border:1px solid var(--rose-soft);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:13px;line-height:1.6}
+  .trap-box-title{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;font-weight:700;margin-bottom:4px}
+  code{font-family:var(--mono);font-size:12px;background:var(--bg);padding:2px 5px;border-radius:3px;color:var(--amber)}
+  .footnote{font-size:11px;color:var(--ink-soft);margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--hairline)}
+  .freq-chart{background:var(--paper);border:1px solid var(--hairline);border-radius:14px;padding:20px 24px;margin-bottom:32px}
+  .fc-title{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--amber);text-transform:uppercase;font-weight:700;margin-bottom:4px}
+  .fc-sub{font-family:var(--serif);font-size:18px;font-weight:800;margin:0 0 16px}
+  .fc-row{display:grid;grid-template-columns:220px 1fr 50px;gap:12px;align-items:center;padding:5px 0;font-size:12px} @media(max-width:720px){.fc-row{grid-template-columns:130px 1fr 40px;font-size:11px}}
+  .fc-name{font-weight:600;color:var(--ink)} .fc-bar{background:var(--bg);border-radius:4px;height:14px;overflow:hidden}
+  .fc-fill{height:100%;background:linear-gradient(90deg,var(--amber) 0%,var(--amber-soft) 100%);border-radius:4px}
+  .fc-fill.hot{background:linear-gradient(90deg,var(--rose) 0%,var(--rose-soft) 100%)} .fc-fill.warm{background:linear-gradient(90deg,var(--amber) 0%,var(--amber-soft) 100%)} .fc-fill.med{background:linear-gradient(90deg,var(--teal) 0%,var(--teal-soft) 100%)}
+  .fc-num{font-family:var(--mono);font-size:11px;color:var(--ink-soft);text-align:right;font-weight:700}
+  hr.divider{border:none;border-top:1px solid var(--hairline);margin:32px 0}
+  footer{border-top:1px solid var(--hairline);padding-top:24px;margin-top:32px;text-align:center;color:var(--ink-soft);font-size:12px}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="hero">
+    <div class="eyebrow">Auto Summary Note · 9급 국가직 · 2026-04-27</div>
+    <h1>9급 국가직 <span class="amber">형법총론</span> 자동 단권화</h1>
+    <p class="subtitle">기출 10회분 (2016~2025) 200문제 → 13개 단원. 검찰사무·교정·보호 직렬 핵심.</p>
+    <div class="meta"><span>10회분 / 200문제 / 13단원</span><span>1차 출처: 형법 + 대법원 판례</span><span>2026-04-27</span></div>
+  </header>
+
+  <div class="freq-chart">
+    <div class="fc-title">출제 빈도 분석</div>
+    <h2 class="fc-sub">200문제 — 단원별 출현 횟수</h2>
+    <div class="fc-row"><div class="fc-name">공범론 (공동정범·간접·교사·종범)</div><div class="fc-bar"><div class="fc-fill hot" style="width:100%"></div></div><div class="fc-num">28</div></div>
+    <div class="fc-row"><div class="fc-name">미수범 (장애·중지·불능)</div><div class="fc-bar"><div class="fc-fill hot" style="width:86%"></div></div><div class="fc-num">24</div></div>
+    <div class="fc-row"><div class="fc-name">위법성·위법성조각사유</div><div class="fc-bar"><div class="fc-fill warm" style="width:79%"></div></div><div class="fc-num">22</div></div>
+    <div class="fc-row"><div class="fc-name">구성요건·고의·과실</div><div class="fc-bar"><div class="fc-fill warm" style="width:71%"></div></div><div class="fc-num">20</div></div>
+    <div class="fc-row"><div class="fc-name">책임론·법률의 착오·책임능력</div><div class="fc-bar"><div class="fc-fill warm" style="width:64%"></div></div><div class="fc-num">18</div></div>
+    <div class="fc-row"><div class="fc-name">죄수론 (일죄·수죄·포괄일죄·경합)</div><div class="fc-bar"><div class="fc-fill warm" style="width:54%"></div></div><div class="fc-num">15</div></div>
+    <div class="fc-row"><div class="fc-name">죄형법정주의·형법의 적용범위</div><div class="fc-bar"><div class="fc-fill warm" style="width:50%"></div></div><div class="fc-num">14</div></div>
+    <div class="fc-row"><div class="fc-name">부작위범</div><div class="fc-bar"><div class="fc-fill med" style="width:46%"></div></div><div class="fc-num">13</div></div>
+    <div class="fc-row"><div class="fc-name">형벌론 (형의 종류·집행·선고유예)</div><div class="fc-bar"><div class="fc-fill med" style="width:39%"></div></div><div class="fc-num">11</div></div>
+    <div class="fc-row"><div class="fc-name">인과관계·객관적 귀속</div><div class="fc-bar"><div class="fc-fill med" style="width:32%"></div></div><div class="fc-num">9</div></div>
+    <div class="fc-row"><div class="fc-name">결과적 가중범</div><div class="fc-bar"><div class="fc-fill med" style="width:25%"></div></div><div class="fc-num">7</div></div>
+    <div class="fc-row"><div class="fc-name">기타 특수범죄 (계속·예비·목적)</div><div class="fc-bar"><div class="fc-fill med" style="width:21%"></div></div><div class="fc-num">6</div></div>
+    <div class="fc-row"><div class="fc-name">몰수·추징</div><div class="fc-bar"><div class="fc-fill med" style="width:14%"></div></div><div class="fc-num">4</div></div>
+  </div>
+
+  <nav class="toc">
+    <h2>13개 단원 — 빈도 순</h2>
+    <ol>
+      <li><a href="#t1"><span class="freq hot">28</span>1. 공범론</a></li>
+      <li><a href="#t2"><span class="freq hot">24</span>2. 미수범</a></li>
+      <li><a href="#t3"><span class="freq warm">22</span>3. 위법성·조각사유</a></li>
+      <li><a href="#t4"><span class="freq warm">20</span>4. 구성요건·고의·과실</a></li>
+      <li><a href="#t5"><span class="freq warm">18</span>5. 책임론·착오</a></li>
+      <li><a href="#t6"><span class="freq warm">15</span>6. 죄수론</a></li>
+      <li><a href="#t7"><span class="freq warm">14</span>7. 죄형법정주의·적용범위</a></li>
+      <li><a href="#t8"><span class="freq med">13</span>8. 부작위범</a></li>
+      <li><a href="#t9"><span class="freq med">11</span>9. 형벌론</a></li>
+      <li><a href="#t10"><span class="freq med">9</span>10. 인과관계·객관적 귀속</a></li>
+      <li><a href="#t11"><span class="freq med">7</span>11. 결과적 가중범</a></li>
+      <li><a href="#t12"><span class="freq med">6</span>12. 특수범죄</a></li>
+      <li><a href="#t13"><span class="freq med">4</span>13. 몰수·추징</a></li>
+    </ol>
+  </nav>
+
+  <section class="topic tier1" id="t1">
+    <div class="topic-head"><h2 class="topic-name">1. 공범론 (공동정범·간접정범·교사범·종범·합동범)</h2><div><span class="topic-num">TOPIC 01</span><span class="topic-freq"><span class="badge badge-freq hot">28회 / 10년</span></span></div></div>
+    <h3>정범 vs 공범 구별</h3>
+    <ul><li><strong>정범</strong>: 직접·간접·공동으로 범죄 실행 — 처벌 정범 형으로</li><li><strong>공범 (협의)</strong>: 교사범·종범 — 정범의 실행 행위에 가공</li></ul>
+
+    <h3>공동정범 (§30)</h3>
+    <ul>
+      <li><strong>요건</strong>: ① 2인 이상 ② 공동 가공의 의사 (공동의사) ③ 공동 실행행위</li>
+      <li><strong>학설</strong>: 범죄공동설(통설·구판례) vs 행위공동설(현 판례) — 본질 행위 공동</li>
+      <li><strong>공모공동정범</strong>: 공모만 참여, 실행 X — 판례 인정 (지능범·조직범죄)</li>
+      <li><strong>승계적 공동정범</strong>: 실행 도중 가담 — 가담 후 부분만 책임</li>
+      <li><strong>합동범 (§331·§334·§146)</strong>: 시간·장소 동일 + 공모 (특수절도·강도·도주) — 공동정범보다 무거운 처벌</li>
+    </ul>
+
+    <h3>간접정범 (§34)</h3>
+    <ul>
+      <li>"어느 행위로 인하여 처벌되지 아니하는 자 또는 과실범으로 처벌되는 자를 교사 또는 방조하여 범죄행위의 결과를 발생하게 한 자"</li>
+      <li>도구로 사용된 자의 책임이 없거나 약한 경우 — 정범 처벌 (자기 행위로 인정)</li>
+      <li>예: 의사가 사정 모르는 간호사에게 독약 주사케 함 → 의사 = 간접정범</li>
+      <li><strong>특수교사·특수방조 (§34 ②)</strong>: 자기의 지휘·감독 하에 있는 자를 교사·방조 → 정범의 형 또는 1/2 가중</li>
+    </ul>
+
+    <h3>교사범 (§31) vs 종범 (§32)</h3>
+    <table><thead><tr><th>구분</th><th>교사범</th><th>종범 (방조범)</th></tr></thead><tbody>
+      <tr><td>행위</td><td>범죄 결의 발생</td><td>이미 결의된 범죄 도움</td></tr>
+      <tr><td>처벌</td><td>정범의 형</td><td>정범의 형 감경 (필요적)</td></tr>
+      <tr><td>중지미수 시</td><td>교사된 범죄가 미수면 교사범도 미수</td><td>방조한 범죄가 미수면 미수의 종범</td></tr>
+    </tbody></table>
+
+    <h3>공범과 신분 (§33)</h3>
+    <ul>
+      <li><strong>구성적 신분</strong> (진정신분범 — 수뢰죄 등): 신분자 정범 + 비신분자 공범 가능 → 비신분자도 신분범 처벌</li>
+      <li><strong>가감적 신분</strong> (부진정신분범 — 영아살해죄·존속살해죄): 신분 없는 자에게는 일반 형 적용</li>
+    </ul>
+
+    <div class="case-box"><div class="case-box-title">⚖️ 핵심 판례</div><ul style="margin:0;padding-left:20px;"><li>대판 1997.10.10. 97도1720: 공모공동정범은 단순 공모만으로 부족 — <strong>본질적 기여</strong> 필요.</li><li>대판 2010.4.29. 2010도2810: 합동범의 합동성 — 시간·장소적 협동.</li></ul></div>
+
+    <div class="trap-box"><div class="trap-box-title">⚠️ 자주 틀리는 함정</div><ul style="margin:0;padding-left:20px;"><li>"교사범은 정범보다 가볍게 처벌" → ❌ <strong>정범의 형</strong>.</li><li>"종범도 정범과 동일 형" → ❌ <strong>필요적 감경</strong>.</li><li>"간접정범의 도구는 항상 처벌 X" → ❌ 도구 책임 없는 경우만. 과실범 도구는 과실 처벌.</li></ul></div>
+
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제 (10회 중 28회)</div>2025-3·7·15·20 / 2024-10·11·18 / 2023-10·14·15. 매년 2~3건.</div>
+    <div class="footnote">출처: 형법 §30~§34 [<a href="https://www.law.go.kr/법령/형법" target="_blank">law.go.kr/형법</a>]</div>
+  </section>
+
+  <section class="topic tier1" id="t2">
+    <div class="topic-head"><h2 class="topic-name">2. 미수범 (장애·중지·불능)</h2><div><span class="topic-num">TOPIC 02</span><span class="topic-freq"><span class="badge badge-freq hot">24회 / 10년</span></span></div></div>
+    <h3>미수의 의의</h3>
+    <p>범죄의 실행에 착수하여 행위를 종료하지 못하였거나(<strong>착수미수</strong>) 결과가 발생하지 아니한(<strong>실행미수</strong>) 경우. 미수범은 <strong>법률에 미수범 처벌 규정이 있는 죄에만</strong> 처벌 (§29).</p>
+
+    <h3>실행의 착수 시기</h3>
+    <ul>
+      <li><strong>주관설</strong>: 범의의 비약적 표현 시</li>
+      <li><strong>객관설</strong>: 구성요건적 행위의 일부 실행 시 (형식적 객관설) / 법익에 대한 직접적 위험 (실질적 객관설)</li>
+      <li><strong>판례</strong>: 절도 — 타인 재물 물색 시 / 강간 — 폭행·협박 개시 시 / 사기 — 기망행위 개시 시</li>
+    </ul>
+
+    <h3>장애미수 (§25)</h3>
+    <p>외부 장애로 미수에 그친 경우. <strong>임의적 감경</strong> (감경할 수 있다).</p>
+
+    <h3>중지미수 (§26)</h3>
+    <ul>
+      <li>"범인이 자의로 실행에 착수한 행위를 중지하거나 그 행위로 인한 결과의 발생을 방지한 때" — <strong>형의 감경 또는 면제</strong> (필요적)</li>
+      <li><strong>자의성 판단</strong>: ① 주관설 (윤리적 동기) ② 객관설 ③ 절충설 (사회 통념상 자유로운 의사) — <strong>판례 절충설</strong></li>
+      <li><strong>공범의 중지</strong>: 다른 공범의 실행을 적극적으로 저지해야 자기에게 중지 효과</li>
+    </ul>
+
+    <h3>불능미수 (§27)</h3>
+    <ul>
+      <li>"실행의 수단 또는 대상의 착오로 인하여 결과의 발생이 불가능하더라도 위험성이 있는 때" — <strong>임의적 감경 또는 면제</strong></li>
+      <li>대상의 불능: 시체에 대한 살인 → 위험성 없음 → 불능범 (불벌)</li>
+      <li>수단의 불능: 살인 의도로 설탕 먹임 → 위험성 X → 불능범</li>
+      <li><strong>위험성 판단</strong>: 구체적 위험설·추상적 위험설·인상설 (다수설). <strong>판례 추상적 위험설</strong></li>
+    </ul>
+
+    <h3>예비·음모 (§28)</h3>
+    <p>범죄 실행에 착수하기 전 단계. 법률에 특별 규정 있는 죄에만 처벌 (살인·강도·내란 등).</p>
+
+    <div class="trap-box"><div class="trap-box-title">⚠️ 자주 틀리는 함정</div><ul style="margin:0;padding-left:20px;"><li>"중지미수는 모두 형 면제" → ❌ <strong>감경 또는 면제</strong> (필요적).</li><li>"불능미수는 절대 처벌" → ❌ 위험성 X면 불벌.</li><li>"공범 중 한명만 중지하면 모두 중지효과" → ❌ <strong>실행 저지</strong> 필요.</li></ul></div>
+
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-10 / 2024-9·16·17 / 2023-12·17 / 2022 등. 매년.</div>
+    <div class="footnote">출처: 형법 §25~§29 / 대판 2008.4.10. 2007도9354 (자의성)</div>
+  </section>
+
+  <section class="topic tier1" id="t3">
+    <div class="topic-head"><h2 class="topic-name">3. 위법성·위법성조각사유</h2><div><span class="topic-num">TOPIC 03</span><span class="topic-freq"><span class="badge badge-freq hot">22회 / 10년</span></span></div></div>
+    <h3>위법성조각사유 5종</h3>
+    <ol>
+      <li><strong>정당행위 (§20)</strong>: 법령에 의한 행위·업무로 인한 행위·기타 사회상규에 위배되지 아니하는 행위</li>
+      <li><strong>정당방위 (§21)</strong>: <strong>현재의 부당한 침해</strong>를 방위하기 위한 상당한 이유 있는 행위 — 임의적 감면 (방위과잉)</li>
+      <li><strong>긴급피난 (§22)</strong>: <strong>현재의 위난</strong>을 피하기 위한 상당한 이유 있는 행위 — 보충성 + 균형성 필요</li>
+      <li><strong>자구행위 (§23)</strong>: 법정 절차에 의한 청구권 보전 불가능한 경우 자력 구제 — 임의적 감면</li>
+      <li><strong>피해자의 승낙 (§24)</strong>: 처분할 수 있는 자의 승낙 — 한국법 통설은 양해(구성요건 해당성 X) vs 승낙 구별</li>
+    </ol>
+
+    <h3>정당방위 vs 긴급피난</h3>
+    <table><thead><tr><th></th><th>정당방위</th><th>긴급피난</th></tr></thead><tbody>
+      <tr><td>대상</td><td>위법한 침해 (사람의 행위만)</td><td>위난 (자연재해·동물 포함)</td></tr>
+      <tr><td>침해자에 대한 행위</td><td>침해자에게만</td><td>제3자에게도 가능</td></tr>
+      <tr><td>균형성</td><td>요구 X (정 不 法)</td><td>균형성 필요</td></tr>
+      <tr><td>보충성</td><td>요구 X</td><td>요구 (보충성)</td></tr>
+    </tbody></table>
+
+    <h3>주관적 정당화요소</h3>
+    <p>위법성조각사유에 객관적 요건 외 주관적 요소도 필요한가? <strong>학설 대립</strong>: 필요설 (다수설·판례) vs 불요설. 필요설에 따르면 정당방위 의사 없이 우연히 적합한 결과 → 위법성 조각 X.</p>
+
+    <h3>오상방위·오상피난</h3>
+    <p>위법성조각사유의 객관적 전제사실에 대한 착오. <strong>학설 분기</strong>: 엄격책임설(고의범) / 제한책임설(과실범 처리) / 구성요건착오설(과실범).</p>
+
+    <div class="case-box"><div class="case-box-title">⚖️ 핵심 판례</div><ul style="margin:0;padding-left:20px;"><li>대판 2003.11.13. 2003도3606: 정당방위의 상당성 — 침해의 강도·방위 수단 종합.</li><li>대판 2017.3.15. 2013도2168: 사회상규에 위배되지 않는 행위 — 목적 정당성 + 수단 상당성 + 보충성 + 긴급성 + 법익 균형성 5요건.</li></ul></div>
+
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-5·9·16 / 2024-3·5·8 / 2023-2·8·11 등. 매년 2~3건.</div>
+    <div class="footnote">출처: 형법 §20~§24</div>
+  </section>
+
+  <section class="topic tier1" id="t4">
+    <div class="topic-head"><h2 class="topic-name">4. 구성요건·고의·과실</h2><div><span class="topic-num">TOPIC 04</span><span class="topic-freq"><span class="badge badge-freq warm">20회 / 10년</span></span></div></div>
+    <h3>구성요건요소</h3>
+    <ul><li><strong>객관적 요소</strong>: 행위·결과·인과관계·행위주체·객체·행위상황</li><li><strong>주관적 요소</strong>: 고의·과실·목적·동기 등</li></ul>
+
+    <h3>고의 (§13)</h3>
+    <ul>
+      <li>"죄의 성립요소인 사실을 인식하지 못한 행위는 벌하지 아니한다."</li>
+      <li><strong>확정적 고의</strong>: 직접고의 (의욕)</li>
+      <li><strong>미필적 고의</strong>: 결과 발생을 인식하고 그 결과를 용인 (감수)하는 의사. 인식설 vs 용인설 vs 감수설 — <strong>판례 용인설</strong></li>
+      <li><strong>택일적·중첩적 고의</strong>: 여러 객체 중 하나·여러 객체 모두</li>
+    </ul>
+
+    <h3>구성요건적 착오 (§15)</h3>
+    <ul>
+      <li>"특별히 무거운 죄가 되는 사실을 인식하지 못한 행위는 무거운 죄로 벌하지 아니한다."</li>
+      <li><strong>객체의 착오</strong>: 사람을 사람으로 잘못 본 경우 → 책임 X (구체적 부합설) 또는 같은 죄 → 책임 (법정적 부합설·판례)</li>
+      <li><strong>방법의 착오</strong>: 의도한 객체 빗나가 다른 객체에 결과 → <strong>법정적 부합설(판례)</strong>: 같은 구성요건 내면 고의기수</li>
+      <li><strong>인과관계의 착오</strong>: 다른 인과로 결과 → 객관적 귀속 인정 시 고의기수</li>
+    </ul>
+
+    <h3>과실 (§14)</h3>
+    <ul>
+      <li>"정상적으로 기울여야 할 주의를 게을리하여 죄의 성립요소인 사실을 인식하지 못한 행위는 법률에 특별한 규정이 있는 경우에만 처벌한다."</li>
+      <li><strong>인식 있는 과실</strong>: 결과 인식 + 발생 X 신뢰</li>
+      <li><strong>인식 없는 과실</strong>: 결과 인식 X (주의의무 위반)</li>
+      <li><strong>업무상 과실</strong>: 가중처벌 (의사·운전자·교사 등)</li>
+      <li><strong>중과실</strong>: 현저한 주의의무 위반 — 특별 규정 시 처벌</li>
+    </ul>
+
+    <div class="trap-box"><div class="trap-box-title">⚠️ 자주 틀리는 함정</div><ul style="margin:0;padding-left:20px;"><li>"과실범은 모두 처벌" → ❌ <strong>법률 특별 규정</strong> 있을 때만.</li><li>"방법의 착오는 항상 책임 X" → ❌ 법정적 부합설(판례) — 같은 죄 내 고의기수.</li><li>"미필적 고의는 과실" → ❌ <strong>고의의 일종</strong>.</li></ul></div>
+
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-1·4·8 / 2024-1·4·7 / 2023-6·7. 매년.</div>
+  </section>
+
+  <section class="topic tier2" id="t5">
+    <div class="topic-head"><h2 class="topic-name">5. 책임론·법률의 착오·책임능력</h2><div><span class="topic-num">TOPIC 05</span><span class="topic-freq"><span class="badge badge-freq warm">18회 / 10년</span></span></div></div>
+    <h3>책임능력</h3>
+    <ul>
+      <li><strong>형사미성년자 (§9)</strong>: 14세 미만 — 절대 책임 무능력</li>
+      <li><strong>심신상실 (§10 ①)</strong>: 책임 X (벌하지 아니한다)</li>
+      <li><strong>심신미약 (§10 ②)</strong>: 형 감경 가능 (임의적 감경 — 2018 개정)</li>
+      <li><strong>원인에서 자유로운 행위 (§10 ③)</strong>: 위험 발생 예견 + 자의로 심신장애 야기 → §10 ①·② 적용 X</li>
+      <li><strong>청각·언어장애인 (§11)</strong>: 형 감경</li>
+    </ul>
+
+    <h3>법률의 착오 (§16)</h3>
+    <p>"자기의 행위가 법령에 의하여 죄가 되지 아니하는 것으로 오인한 행위는 그 오인에 정당한 이유가 있는 때에 한하여 벌하지 아니한다."</p>
+    <ul>
+      <li><strong>직접적 착오</strong>: 법령 존재 X 인식 / 법령 효력 부정 인식</li>
+      <li><strong>간접적 착오</strong>: 위법성조각사유 존재 인식 / 한계 착오</li>
+      <li><strong>정당한 이유</strong>: ① 자기 행위가 위법함을 알지 못한 데 정당한 사유 ② 회피 가능성 (조회 가능성)</li>
+    </ul>
+
+    <h3>위법성의 인식</h3>
+    <ul>
+      <li><strong>고의설</strong>: 위법성 인식 = 고의 요소</li>
+      <li><strong>책임설 (다수설·판례)</strong>: 위법성 인식 = 책임 요소 (고의와 별개) — 형법 §16 채용</li>
+    </ul>
+
+    <h3>기대가능성</h3>
+    <p>행위자에게 적법행위를 기대할 수 있을 가능성. 기대가능성 X → 책임 X. <strong>강요된 행위 (§12)</strong>: 저항할 수 없는 폭력·협박으로 강요 — 벌하지 X. 일종의 책임조각사유.</p>
+
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-1·13 / 2024-4·8 / 2023-3·9. 매년.</div>
+  </section>
+
+  <section class="topic tier2" id="t6">
+    <div class="topic-head"><h2 class="topic-name">6. 죄수론 (일죄·수죄·포괄일죄·경합)</h2><div><span class="topic-num">TOPIC 06</span><span class="topic-freq"><span class="badge badge-freq warm">15회 / 10년</span></span></div></div>
+    <h3>일죄 vs 수죄</h3>
+    <ul>
+      <li><strong>일죄 (단순일죄)</strong>: 한 개의 행위로 하나의 죄 성립 — 한 개의 형 부과</li>
+      <li><strong>법조경합</strong>: 외관상 여러 구성요건 해당하지만 실질적으로 한 죄 (특별·보충·흡수·택일 관계)</li>
+    </ul>
+
+    <h3>포괄일죄</h3>
+    <p>여러 행위가 하나의 죄로 평가. 4가지 유형:</p>
+    <ul>
+      <li><strong>접속범</strong>: 같은 일시·장소에서 같은 객체에 같은 죄 (예: 한 자리서 여러 번 폭행)</li>
+      <li><strong>연속범</strong>: 같은 의사로 단기간 연속 (예: 한 달간 매일 절도) — <strong>판례 제한적 인정</strong></li>
+      <li><strong>집합범</strong>: 영업범·직업범·상습범 (반복 의사·습벽)</li>
+      <li><strong>결합범</strong>: 여러 죄를 한 죄로 결합 (예: 강도살인 = 강도+살인)</li>
+    </ul>
+
+    <h3>수죄 (실질적 수죄)</h3>
+    <ul>
+      <li><strong>상상적 경합 (§40)</strong>: 한 개의 행위 + 여러 죄 — <strong>가장 무거운 죄의 형으로 처벌</strong></li>
+      <li><strong>실체적 경합 (§37)</strong>: 여러 행위 + 여러 죄 — <strong>가중주의 (§38)</strong>: 가장 무거운 죄의 형 + 1/2까지 가중</li>
+    </ul>
+
+    <h3>실체적 경합의 종류</h3>
+    <ul>
+      <li><strong>동시적 경합 (§37 전단)</strong>: 판결 확정 전 여러 죄 — 동시 심판</li>
+      <li><strong>사후적 경합 (§37 후단)</strong>: 판결 확정 후 발견된 다른 죄 — 별도 심판 + §39 형평 조정</li>
+    </ul>
+
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-11 / 2024-12 / 2023 등. 매년.</div>
+  </section>
+
+  <section class="topic tier2" id="t7">
+    <div class="topic-head"><h2 class="topic-name">7. 죄형법정주의·형법의 적용범위</h2><div><span class="topic-num">TOPIC 07</span><span class="topic-freq"><span class="badge badge-freq warm">14회 / 10년</span></span></div></div>
+    <h3>죄형법정주의 (헌법 §12·§13)</h3>
+    <p>"법률이 없으면 범죄도 없고, 형벌도 없다 (Nullum crimen sine lege)". 4파생원칙:</p>
+    <ul>
+      <li><strong>법률주의</strong>: 성문법 (관습형법 금지). 위임입법 시 — <strong>구체적 위임</strong> 필요 (포괄위임 X)</li>
+      <li><strong>소급효 금지</strong>: 행위 시 법률에 없으면 처벌 X (§1 ①)</li>
+      <li><strong>유추해석 금지</strong>: 피고인에게 불리한 유추 X. 단 유리 유추는 가능</li>
+      <li><strong>명확성 원칙</strong>: 구성요건이 명확해야 (애매한 규정 위헌)</li>
+      <li><strong>적정성 원칙</strong>: 행위와 형벌의 균형 (비례원칙)</li>
+    </ul>
+
+    <h3>형법 §1 (시간적 적용범위)</h3>
+    <ul>
+      <li><strong>§1 ①</strong>: 범죄 성립과 처벌은 <strong>행위 시 법률</strong>에 의함 (행위시법주의)</li>
+      <li><strong>§1 ②</strong>: 범죄 후 법률 변경으로 범죄 X 또는 형이 가벼워진 때 → <strong>신법 적용</strong> (경한법 적용)</li>
+      <li><strong>§1 ③</strong>: 재판 확정 후 법률 변경으로 범죄 X → <strong>형 집행 면제</strong></li>
+      <li><strong>한시법</strong>: 시행 기간 정해진 법률. 폐지 후 추급효 인정 여부 — 학설 대립</li>
+    </ul>
+
+    <h3>장소적 적용범위</h3>
+    <ul>
+      <li><strong>속지주의 (§2)</strong>: 대한민국 영역 내 (영토·영해·영공) 모든 사람에게 적용</li>
+      <li><strong>속인주의 (§3)</strong>: 대한민국 국민이 외국에서 죄 범한 경우</li>
+      <li><strong>보호주의 (§5·§6)</strong>: 외국인이 한국 또는 한국 국민에게 죄 범한 경우</li>
+      <li><strong>세계주의 (§296-2)</strong>: 인신매매 등 국제범죄</li>
+    </ul>
+
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-14·17 / 2024-6·14 / 2023-1·18. 매년.</div>
+  </section>
+
+  <section class="topic tier3" id="t8">
+    <div class="topic-head"><h2 class="topic-name">8. 부작위범</h2><div><span class="topic-num">TOPIC 08</span><span class="topic-freq"><span class="badge badge-freq med">13회 / 10년</span></span></div></div>
+    <h3>부작위범의 종류</h3>
+    <ul>
+      <li><strong>진정부작위범</strong>: 법률이 직접 부작위로 구성요건 규정 (예: 다중불해산죄·퇴거불응죄)</li>
+      <li><strong>부진정부작위범 (§18)</strong>: 작위로 규정된 죄를 부작위로 실현 — <strong>보증인 지위</strong> 필요</li>
+    </ul>
+
+    <h3>보증인 지위 (Garantenstellung)</h3>
+    <p>법적 작위의무가 있는 자만 부진정부작위범의 정범. 보증인 지위 발생 사유:</p>
+    <ul>
+      <li>법령 (가족법상 부양·교호의무)</li>
+      <li>계약 (간호사·경비원)</li>
+      <li>선행행위 (자기가 위험 야기)</li>
+      <li>사회상규·조리</li>
+    </ul>
+
+    <h3>인과관계와 동가치성</h3>
+    <ul>
+      <li><strong>가설적 인과관계</strong>: 작위했다면 결과 발생 안 됐을 것</li>
+      <li><strong>동가치성</strong>: 부작위가 작위와 같은 정도의 비난가능성</li>
+    </ul>
+
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-2 / 2024-2 / 2023-20. 매년 1~2건.</div>
+  </section>
+
+  <section class="topic tier3" id="t9">
+    <div class="topic-head"><h2 class="topic-name">9. 형벌론 (형의 종류·집행유예·선고유예·가석방)</h2><div><span class="topic-num">TOPIC 09</span><span class="topic-freq"><span class="badge badge-freq med">11회 / 10년</span></span></div></div>
+    <h3>형의 종류 (§41) — 9종</h3>
+    <ol>
+      <li><strong>사형</strong> (헌법재판소 합헌, 사형 미집행국)</li>
+      <li><strong>징역</strong>: 정역 부과 / 무기 + 유기 (1개월~30년, 가중 시 50년)</li>
+      <li><strong>금고</strong>: 정역 X / 정치범·과실범 위주</li>
+      <li><strong>자격상실</strong>: 사형·무기 시 자동 (공무원 자격·선거권 등)</li>
+      <li><strong>자격정지</strong>: 일정 기간 정지 (당연정지·선고정지)</li>
+      <li><strong>벌금</strong>: 5만원 이상 (납입 X 시 노역장 유치 1일 5만원)</li>
+      <li><strong>구류</strong>: 1일 ~ 30일 미만 / 경범죄</li>
+      <li><strong>과료</strong>: 2천원 ~ 5만원 미만 / 경범죄</li>
+      <li><strong>몰수</strong>: 부가형 (단독 X 원칙)</li>
+    </ol>
+
+    <h3>집행유예 (§62)</h3>
+    <ul>
+      <li>요건: ① 3년 이하 징역·금고 또는 500만원 이하 벌금 ② 정상 참작 ③ 금고 이상 형의 집행 종료/면제 후 3년 이내 새 범죄 X</li>
+      <li>기간: 1년 ~ 5년</li>
+      <li>실효 (§63): 유예 기간 중 금고 이상 실형 확정 → 자동 실효</li>
+      <li>취소 (§64): 형 집행 종료/면제 후 3년 이내 발견 → 직권 취소</li>
+    </ul>
+
+    <h3>선고유예 (§59)</h3>
+    <ul>
+      <li>요건: ① 1년 이하 징역·금고·자격정지·벌금 ② 개전의 정 ③ 자격정지 이상 형 받은 적 X</li>
+      <li>기간: 2년 (자동 면소)</li>
+      <li>실효 (§61): 자격정지 이상 형 확정 시</li>
+    </ul>
+
+    <h3>가석방 (§72)</h3>
+    <p>형 집행 중 — 무기 20년 / 유기 형기 1/3 경과 + 행상 양호 → 행정처분으로 가석방. 가석방 기간 = 무기 10년 / 유기 잔형. 결격 시 가석방 실효.</p>
+
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2024-13 / 2023-4 등.</div>
+  </section>
+
+  <section class="topic tier3" id="t10">
+    <div class="topic-head"><h2 class="topic-name">10. 인과관계·객관적 귀속</h2><div><span class="topic-num">TOPIC 10</span><span class="topic-freq"><span class="badge badge-freq med">9회 / 10년</span></span></div></div>
+    <h3>인과관계 학설</h3>
+    <ul>
+      <li><strong>조건설 (등가설)</strong>: 결과 발생에 기여한 모든 조건은 동등 — 인과관계 너무 광범위</li>
+      <li><strong>상당인과관계설 (판례)</strong>: 사회 통념상 상당한 조건만 인과관계 인정</li>
+      <li><strong>합법칙적 조건설 (다수설·이론)</strong>: 조건 + 객관적 귀속</li>
+    </ul>
+
+    <h3>객관적 귀속 (Objektive Zurechnung)</h3>
+    <p>합법칙적 조건이 인정되어도 다음 모두 충족 시 결과를 행위자에게 객관적으로 귀속:</p>
+    <ul>
+      <li><strong>위험 창출</strong>: 행위가 법적으로 허용되지 않은 위험 창출</li>
+      <li><strong>위험 실현</strong>: 그 위험이 결과로 실현</li>
+      <li><strong>구성요건 보호 범위</strong>: 결과가 침해된 법규의 보호 범위 내</li>
+    </ul>
+
+    <h3>대법원 판례 입장</h3>
+    <p>대법원은 <strong>"상당인과관계설"</strong> 통설로 사용. 단 최근 일부 판결에서 객관적 귀속 이론 수용 경향.</p>
+
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-4 / 2024-7. 매년 1건.</div>
+  </section>
+
+  <section class="topic tier3" id="t11">
+    <div class="topic-head"><h2 class="topic-name">11. 결과적 가중범</h2><div><span class="topic-num">TOPIC 11</span><span class="topic-freq"><span class="badge badge-freq med">7회 / 10년</span></span></div></div>
+    <h3>의의 (§15 ②)</h3>
+    <p>"결과로 인하여 형이 무거워지는 죄에 있어서 그 결과의 발생을 예견할 수 없었을 때에는 무거운 죄로 벌하지 아니한다." → 기본범죄 + 중한 결과 + 예견가능성 (과실)</p>
+
+    <h3>유형</h3>
+    <ul>
+      <li><strong>진정 결과적 가중범</strong>: 기본 고의 + 중한 결과 과실 (예: 상해치사·강간치상)</li>
+      <li><strong>부진정 결과적 가중범</strong>: 기본 고의 + 중한 결과 고의 가능 (예: 폭행치사)</li>
+    </ul>
+
+    <h3>예견가능성 + 인과관계</h3>
+    <ul>
+      <li>예견가능성 = 통상의 일반인 기준</li>
+      <li>인과관계 = 기본범죄와 중한 결과 사이 직접·합리적 인과</li>
+      <li>예견 불가능 + 단순 우연 → 결과적 가중범 X (기본죄만)</li>
+    </ul>
+
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2023-5. 매년 1건 정도.</div>
+  </section>
+
+  <section class="topic tier3" id="t12">
+    <div class="topic-head"><h2 class="topic-name">12. 특수범죄 (계속범·예비죄·목적범)</h2><div><span class="topic-num">TOPIC 12</span><span class="topic-freq"><span class="badge badge-freq med">6회 / 10년</span></span></div></div>
+    <h3>상태범 vs 계속범</h3>
+    <ul>
+      <li><strong>상태범</strong>: 결과 발생 시 범죄 종료 (살인·절도)</li>
+      <li><strong>계속범</strong>: 위법 상태 지속 (감금죄·주거침입죄·도주죄) — 위법 상태 지속 중 모든 시간이 범죄 시간</li>
+    </ul>
+
+    <h3>예비죄 (§28)</h3>
+    <p>실행 착수 전 단계. <strong>법률 특별 규정</strong> 있는 죄에만 처벌 (살인·강도·내란·외환·국교 등). 미수범보다 가벼운 처벌.</p>
+
+    <h3>목적범</h3>
+    <ul>
+      <li>구성요건상 일정 목적 필요한 죄 — 목적은 <strong>초과주관적 구성요건요소</strong></li>
+      <li>예: 통화위조죄(행사 목적), 무고죄(타인 형사처분 받게 할 목적), 강도죄(절취 목적)</li>
+      <li>목적 인식 필요 — 미필적 목적도 가능</li>
+    </ul>
+
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-6 (계속범) · 2024-15 (목적범) · 2023-13 (예비죄).</div>
+  </section>
+
+  <section class="topic tier3" id="t13">
+    <div class="topic-head"><h2 class="topic-name">13. 몰수·추징</h2><div><span class="topic-num">TOPIC 13</span><span class="topic-freq"><span class="badge badge-freq med">4회 / 10년</span></span></div></div>
+    <h3>몰수 (§48)</h3>
+    <ul>
+      <li><strong>임의적 몰수</strong>: 일반 원칙 (몰수할 수 있다)</li>
+      <li><strong>필요적 몰수</strong>: 특별 규정 시 (뇌물·범죄수익은닉규제법)</li>
+      <li>대상: ① 범죄 행위에 제공·제공하려 한 물건 ② 범죄로 생긴·취득한 물건 ③ 그 대가</li>
+      <li><strong>제3자 소유물</strong>: 몰수 X (예외: 정보 알았던 자)</li>
+    </ul>
+
+    <h3>추징 (§48 ②)</h3>
+    <p>몰수 대상이 소비·은닉·양도되어 몰수 불가능 시 그 가액 추징. 가액 산정 = 행위 시 또는 재판 시 (학설 대립 / 판례는 재판 시).</p>
+
+    <h3>몰수와 부가형성</h3>
+    <p>몰수는 원칙 부가형 (주형에 부가). 단 행위자에게 유죄판결 안 해도 몰수만 선고 가능 (§49).</p>
+
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-12 / 2023-16.</div>
+  </section>
+
+  <section class="topic" id="reinforce" style="margin-top:32px;border-left:5px solid #BE123C;background:#fff;border:1px solid rgba(31,26,20,.12);border-radius:14px;padding:26px 30px;">
+    <h2 style="font-family:var(--serif);font-size:22px;font-weight:900;margin:0 0 16px;">14. 보강 — 빈출 누락 개념</h2>
+
+    <h3 style="font-family:var(--serif);font-size:16px;font-weight:800;margin:18px 0 8px;border-left:3px solid #B45309;padding-left:10px;">형사책임 (책임론 핵심 정리)</h3>
+    <ul>
+      <li><strong>책임의 본질</strong>: 비난가능성 (행위에 대한 도덕적 비난 가능성)</li>
+      <li><strong>책임주의</strong>: 책임 없으면 형벌 없다 (nulla poena sine culpa)</li>
+      <li><strong>책임능력</strong> (제9~11조):
+        <ul>
+          <li>14세 미만 (형사미성년자): 책임능력 X (절대적)</li>
+          <li>심신상실 (책임능력 X) / 심신미약 (감경 — 임의적, 2018 개정)</li>
+          <li>농아자: 감경 (임의적)</li>
+        </ul>
+      </li>
+      <li><strong>위법성 인식</strong>: 자기 행위가 위법함을 인식했는가</li>
+      <li><strong>법률의 착오 (제16조)</strong>: 정당한 이유 있는 경우만 책임 조각 (엄격책임설)</li>
+      <li><strong>기대가능성</strong>: 적법행위를 기대할 수 있었는가. 면책적 긴급피난이 대표 예</li>
+    </ul>
+
+    <h3 style="font-family:var(--serif);font-size:16px;font-weight:800;margin:18px 0 8px;border-left:3px solid #B45309;padding-left:10px;">결과적가중범</h3>
+    <ul>
+      <li><strong>의의</strong>: 기본범죄 + 중한 결과 발생 → 가중처벌 (예: 상해치사, 강도치사상, 폭행치사)</li>
+      <li><strong>구조</strong>:
+        <ul>
+          <li>기본범죄: 고의범</li>
+          <li>중한 결과: 과실 (예견가능성) — <strong>예견가능성 없으면 결과적가중범 성립 X</strong></li>
+        </ul>
+      </li>
+      <li><strong>제15조 2항</strong>: "결과로 인하여 형이 중한 죄에 해당하는 경우, 그 결과를 과실로 인한 때에는 ... 처벌"</li>
+      <li><strong>진정 결과적가중범</strong>: 기본은 고의 + 결과는 과실만 (예: 폭행치사)</li>
+      <li><strong>부진정 결과적가중범</strong>: 기본·결과 모두 고의도 가능하지만 결과 발생만으로 가중 (예: 현주건조물방화치사상)</li>
+      <li><strong>공동정범 인정</strong>: 결과적가중범도 공동정범 가능 (예견가능성 공유 시)</li>
+    </ul>
+
+    <h3 style="font-family:var(--serif);font-size:16px;font-weight:800;margin:18px 0 8px;border-left:3px solid #B45309;padding-left:10px;">죄수관계 (1죄 vs 수죄)</h3>
+    <table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:13px;">
+      <tr style="background:#ede2cd;"><th style="border:1px solid #d6cdb8;padding:8px;">구분</th><th style="border:1px solid #d6cdb8;padding:8px;">내용</th><th style="border:1px solid #d6cdb8;padding:8px;">예</th></tr>
+      <tr><td rowspan="3" style="border:1px solid #d6cdb8;padding:8px;"><strong>일죄 (1죄)</strong></td><td style="border:1px solid #d6cdb8;padding:8px;">법조경합</td><td style="border:1px solid #d6cdb8;padding:8px;">특별법·보충관계·흡수관계 → 한 죄만 적용 (예: 강도살인 = 살인 + 강도 흡수)</td></tr>
+      <tr><td style="border:1px solid #d6cdb8;padding:8px;">포괄일죄</td><td style="border:1px solid #d6cdb8;padding:8px;">계속범, 접속범, 연속범, 결합범 (예: 감금 = 계속, 절도 반복 = 연속)</td></tr>
+      <tr><td style="border:1px solid #d6cdb8;padding:8px;">상상적경합 (제40조)</td><td style="border:1px solid #d6cdb8;padding:8px;">1행위 → 수죄 → 가장 중한 죄로 처벌 (예: 1발의 총탄으로 2명 살해)</td></tr>
+      <tr><td rowspan="2" style="border:1px solid #d6cdb8;padding:8px;"><strong>수죄 (실체적 경합)</strong></td><td style="border:1px solid #d6cdb8;padding:8px;">동시적 경합범 (제37조 전단)</td><td style="border:1px solid #d6cdb8;padding:8px;">한 절차에서 함께 재판</td></tr>
+      <tr><td style="border:1px solid #d6cdb8;padding:8px;">사후적 경합범 (제37조 후단)</td><td style="border:1px solid #d6cdb8;padding:8px;">판결 확정 전 다른 죄 발견 → 분리 재판</td></tr>
+    </table>
+    <ul>
+      <li><strong>경합범 처벌 (제38조)</strong>:
+        <ul>
+          <li>가장 중한 죄의 형 + 1/2까지 가중 (단 각 죄의 장기·다액의 합 초과 X)</li>
+          <li>사형·무기 + 다른 형: 무거운 형으로 흡수</li>
+          <li>벌금 + 다른 형: 병과</li>
+        </ul>
+      </li>
+      <li><strong>상상적경합 vs 실체적경합 차이</strong>: 행위의 단복(單複) — 상상은 1행위, 실체는 수행위</li>
+    </ul>
+  </section>
+
+  <hr class="divider" />
+  <footer>
+    <div class="eyebrow" style="color:var(--ink-soft);">기출노트 · 9급 형법총론 자동 단권화</div>
+    <p style="margin:0 0 4px;">2026-04-27 · 10회 200문제 → 14단원 (보강 후)</p>
+    <p style="margin:0;font-family:var(--mono);font-size:11px;">관련: docs/admin-law-summary-note.html · admin-pa-summary-note.html</p>
+  </footer>
+
+</div>
+</body>
+</html>

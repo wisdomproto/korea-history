@@ -1,0 +1,955 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>기출노트 — 광고 위치 Spec (AdSense + 카카오 애드핏)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #F5EFE4;
+    --paper: #FFFFFF;
+    --ink: #1F1A14;
+    --ink-soft: #5A4F3F;
+    --ink-mute: #94724D;
+    --amber: #B45309;
+    --amber-soft: #FED7AA;
+    --amber-bg: #FFF7ED;
+    --teal: #0D9488;
+    --teal-soft: #CCFBF1;
+    --teal-bg: #F0FDFA;
+    --rose: #BE123C;
+    --rose-soft: #FECDD3;
+    --rose-bg: #FFF1F2;
+    --slate: #475569;
+    --hairline: rgba(31, 26, 20, 0.12);
+    --serif: 'Noto Serif KR', ui-serif, Georgia, serif;
+    --sans: 'Pretendard Variable', Pretendard, system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.65;
+    font-size: 16px;
+    word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1080px; margin: 0 auto; padding: 56px 32px 96px; }
+  @media (max-width: 720px) { .container { padding: 36px 18px 64px; } }
+
+  /* HERO */
+  header.hero {
+    text-align: center;
+    padding: 48px 0 32px;
+    border-bottom: 1px solid var(--hairline);
+    margin-bottom: 40px;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(28px, 4.6vw, 44px);
+    line-height: 1.1;
+    margin: 0 0 14px;
+    letter-spacing: -0.02em;
+  }
+  h1 .amber { color: var(--amber); }
+  .subtitle {
+    font-size: 16px;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .meta {
+    margin-top: 18px;
+    display: inline-flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .meta span:not(:first-child)::before {
+    content: '·';
+    margin-right: 14px;
+    color: var(--hairline);
+  }
+
+  /* TOC */
+  nav.toc {
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 18px 24px;
+    margin-bottom: 40px;
+  }
+  nav.toc h2 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin: 0 0 10px;
+  }
+  nav.toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px 24px;
+    font-size: 13px;
+  }
+  @media (max-width: 720px) { nav.toc ol { grid-template-columns: 1fr; } }
+  nav.toc a {
+    color: var(--ink);
+    text-decoration: none;
+    padding: 4px 0;
+    display: flex;
+    gap: 10px;
+  }
+  nav.toc a:hover { color: var(--amber); }
+  nav.toc .num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--amber);
+    font-weight: 700;
+    min-width: 28px;
+  }
+
+  /* SECTIONS */
+  section { margin-bottom: 56px; }
+  h2.sec {
+    font-family: var(--serif);
+    font-size: clamp(22px, 3.4vw, 30px);
+    font-weight: 900;
+    margin: 0 0 4px;
+    letter-spacing: -0.018em;
+    line-height: 1.15;
+  }
+  h2.sec .num {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--amber);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .sec-lead {
+    font-size: 15px;
+    color: var(--ink-soft);
+    max-width: 800px;
+    margin: 8px 0 20px;
+    line-height: 1.7;
+  }
+  h3 {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 800;
+    margin: 28px 0 10px;
+    letter-spacing: -0.01em;
+  }
+  hr.divider { border: none; border-top: 1px solid var(--hairline); margin: 48px 0; }
+
+  /* CARDS */
+  .grid { display: grid; gap: 12px; }
+  .cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .cols-4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 880px) { .cols-3, .cols-4 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 580px) { .cols-2, .cols-3, .cols-4 { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .card.amber { background: var(--amber-bg); border-color: var(--amber-soft); }
+  .card.teal { background: var(--teal-bg); border-color: var(--teal-soft); }
+  .card.rose { background: var(--rose-bg); border-color: var(--rose-soft); }
+  .card.ink { background: var(--ink); color: var(--bg); border: none; }
+  .card h4 { margin: 0 0 8px; font-size: 14px; font-weight: 800; }
+  .card.ink h4 { color: var(--amber-soft); }
+  .card p, .card ul { margin: 0; font-size: 13px; line-height: 1.6; }
+  .card ul { padding-left: 18px; margin-top: 6px; }
+  .card li { margin-bottom: 3px; }
+
+  /* TABLES */
+  .table-wrap { overflow-x: auto; margin: 14px 0 18px; border: 1px solid var(--hairline); border-radius: 12px; background: var(--paper); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 10px 13px; border-bottom: 1px solid var(--hairline); vertical-align: top; }
+  th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); font-weight: 700; background: var(--bg); }
+  td.center, th.center { text-align: center; }
+  tbody tr:last-child td { border-bottom: none; }
+  tr.row-good { background: rgba(13,148,136,0.06); }
+  tr.row-warn { background: rgba(180,83,9,0.06); }
+  tr.row-bad { background: rgba(190,18,60,0.05); }
+  code { font-family: var(--mono); font-size: 11px; background: var(--bg); padding: 2px 6px; border-radius: 4px; color: var(--amber); }
+  pre { background: var(--ink); color: var(--bg); padding: 16px; border-radius: 10px; font-family: var(--mono); font-size: 12px; overflow-x: auto; line-height: 1.6; }
+  pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
+
+  /* BADGES */
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .badge.live { background: var(--teal-soft); color: var(--teal); }
+  .badge.wait { background: var(--amber-soft); color: var(--amber); }
+  .badge.todo { background: #DBEAFE; color: #1D4ED8; }
+  .badge.no { background: var(--rose-soft); color: var(--rose); }
+  .badge.mute { background: var(--hairline); color: var(--ink-soft); }
+
+  /* CALLOUT */
+  .callout {
+    background: var(--paper);
+    border-left: 4px solid var(--amber);
+    padding: 16px 20px;
+    margin: 16px 0;
+    border-radius: 0 10px 10px 0;
+  }
+  .callout-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--amber);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .callout p { margin: 0; font-size: 14px; line-height: 1.6; }
+
+  /* WIREFRAME (페이지 시각화) */
+  .wireframe {
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 14px 0;
+  }
+  .wf-page {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 16px 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.8;
+  }
+  .wf-block {
+    background: white;
+    border: 1px solid var(--hairline);
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    color: var(--ink-soft);
+  }
+  .wf-block.ad {
+    background: linear-gradient(135deg, var(--amber-bg) 0%, var(--amber-soft) 100%);
+    border-color: var(--amber);
+    color: var(--amber);
+    font-weight: 700;
+    text-align: center;
+    padding: 14px;
+  }
+  .wf-block.protected {
+    background: var(--rose-bg);
+    border-color: var(--rose-soft);
+    border-style: dashed;
+    color: var(--rose);
+  }
+
+  /* PROVIDER FLOW */
+  .flow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin: 14px 0;
+  }
+  .flow-step {
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 12px;
+    flex: 1;
+    min-width: 140px;
+    text-align: center;
+  }
+  .flow-step strong { display: block; font-family: var(--mono); font-size: 10px; color: var(--amber); margin-bottom: 2px; letter-spacing: 0.1em; }
+  .flow-arrow { font-family: var(--mono); color: var(--ink-mute); font-weight: 700; }
+
+  /* FOOTNOTE */
+  .footnote { font-size: 12px; color: var(--ink-soft); margin: 8px 0 0; line-height: 1.6; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--hairline); padding-top: 28px; margin-top: 40px; text-align: center; color: var(--ink-soft); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow">Engineering Spec · 2026-04-26</div>
+    <h1><span class="amber">광고 위치</span> Spec — AdSense + 카카오 애드핏 듀얼 운영</h1>
+    <p class="subtitle">Phase A (컴포넌트 확장) + Phase B (위치 추가) 완료. ID 발급 후 ENV 채우면 즉시 LIVE. 학습 핵심 페이지는 광고 X — 정체성 보호.</p>
+    <div class="meta">
+      <span>gcnote.co.kr</span>
+      <span>web/components/AdSlot.tsx</span>
+      <span>v1.0</span>
+    </div>
+  </header>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#overview"><span class="num">01</span>전체 구조 한눈에</a></li>
+      <li><a href="#provider"><span class="num">02</span>Provider 결정 로직</a></li>
+      <li><a href="#placements"><span class="num">03</span>광고 위치 매핑 (5곳)</a></li>
+      <li><a href="#protected"><span class="num">04</span>광고 안 띄우는 곳</a></li>
+      <li><a href="#component"><span class="num">05</span>AdSlot 컴포넌트 사용법</a></li>
+      <li><a href="#env"><span class="num">06</span>환경변수 + 활성화 절차</a></li>
+      <li><a href="#future"><span class="num">07</span>향후 추가 위치</a></li>
+      <li><a href="#design-rules"><span class="num">08</span>광고 디자인 원칙</a></li>
+    </ol>
+  </nav>
+
+  <!-- ============================================== -->
+  <!-- 01. OVERVIEW -->
+  <!-- ============================================== -->
+  <section id="overview">
+    <h2 class="sec"><span class="num">01 — Overview</span>전체 구조 한눈에</h2>
+
+    <div class="grid cols-3">
+      <div class="card amber">
+        <h4>🎯 Phase A 완료 (컴포넌트)</h4>
+        <p>AdSlot에 provider 추상화 추가 — AdSense + 카카오 애드핏 듀얼 운영. 'auto' 모드는 디바이스 기반 자동 선택. 기존 코드 backward compat.</p>
+      </div>
+      <div class="card teal">
+        <h4>🚀 Phase B 완료 (위치)</h4>
+        <p>광고 위치 5곳 정의 + 코드 삽입. 학습 핵심 페이지 (study/wrong-answers/my-record)는 명시적으로 광고 제외. ID 통과 후 즉시 LIVE.</p>
+      </div>
+      <div class="card ink">
+        <h4>⏳ Phase C 대기 (활성화)</h4>
+        <p>카카오 애드핏 신청 (이번주) + AdSense 결과 (4/25 신청). ID 받아서 ENV 채우면 자동 노출. 디바이스 분리로 도배 X.</p>
+      </div>
+    </div>
+
+    <h3>현재 상태</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Provider</th>
+            <th class="center">상태</th>
+            <th>SDK 로드</th>
+            <th>ENV 활성화</th>
+            <th>광고 표시</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>AdSense</strong></td>
+            <td class="center"><span class="badge wait">심사 대기</span></td>
+            <td>항상 (심사 위해 필수)</td>
+            <td><code>NEXT_PUBLIC_ADSENSE_ENABLED=false</code></td>
+            <td>OFF (통과 후 ON)</td>
+          </tr>
+          <tr>
+            <td><strong>카카오 애드핏</strong></td>
+            <td class="center"><span class="badge todo">신청 예정</span></td>
+            <td>ENV 조건부</td>
+            <td><code>NEXT_PUBLIC_ADFIT_ENABLED=false</code></td>
+            <td>OFF (이번주 신청)</td>
+          </tr>
+          <tr>
+            <td>Ezoic</td>
+            <td class="center"><span class="badge no">보류</span></td>
+            <td>—</td>
+            <td>—</td>
+            <td>안 함 (페이지 속도 손해)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 02. PROVIDER LOGIC -->
+  <!-- ============================================== -->
+  <section id="provider">
+    <h2 class="sec"><span class="num">02 — Provider Logic</span>Provider 결정 로직</h2>
+    <p class="sec-lead">'auto' 모드 (default)는 디바이스 + ENV 활성화 + ID 존재 여부를 모두 보고 자동 결정. SSR-safe (useEffect mount 후 결정).</p>
+
+    <h3>'auto' 모드 결정 트리</h3>
+    <div class="flow">
+      <div class="flow-step">
+        <strong>Step 1</strong>
+        Mount 후 디바이스 감지<br/>
+        <code>window.innerWidth &lt; 768</code>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <strong>Step 2</strong>
+        모바일이면 AdFit 우선<br/>
+        데스크톱이면 AdSense 우선
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <strong>Step 3</strong>
+        ENV 활성화 + ID 있는지 확인<br/>
+        없으면 다른 provider fallback
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <strong>Step 4</strong>
+        둘 다 없으면 <code>null</code><br/>
+        (광고 영역 안 보임)
+      </div>
+    </div>
+
+    <h3>3가지 호출 모드</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Provider</th>
+            <th>동작</th>
+            <th>사용 예시</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-good">
+            <td><code>provider="auto"</code><br/><small>(default)</small></td>
+            <td>모바일 → AdFit / 데스크톱 → AdSense / fallback 자동</td>
+            <td>대부분 케이스. 디바이스 분리 자동 처리</td>
+          </tr>
+          <tr>
+            <td><code>provider="adsense"</code></td>
+            <td>AdSense만 (디바이스 무관)</td>
+            <td>AdSense 전용 위치 (예: 데스크톱 사이드바)</td>
+          </tr>
+          <tr>
+            <td><code>provider="adfit"</code></td>
+            <td>AdFit만 (디바이스 무관)</td>
+            <td>AdFit 전용 위치 (예: 모바일 하단 banner)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">왜 디바이스 분리?</div>
+      <p>한 페이지에 두 provider 동시 노출은 광고 도배감 + AdSense 정책 가까운 광고 금지에 걸릴 수 있음. <strong>디바이스 분리로 사용자별 한 provider만 보임</strong> → 깨끗.</p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 03. PLACEMENTS -->
+  <!-- ============================================== -->
+  <section id="placements">
+    <h2 class="sec"><span class="num">03 — Placements</span>광고 위치 매핑 (5곳)</h2>
+    <p class="sec-lead">"쉬는 타이밍" + "콘텐츠 충분히 본 후" 위주. 학습 흐름 끊는 위치는 X.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="center">#</th>
+            <th>페이지</th>
+            <th>위치</th>
+            <th>사이즈</th>
+            <th>ENV slot</th>
+            <th>왜 이 자리</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-good">
+            <td class="center">1</td>
+            <td><code>/exam/{n}/{q}</code><br/><small>문제 풀이</small></td>
+            <td>정답 확인 후, 해설 ↔ YouTube 사이</td>
+            <td>rectangle (300×250)</td>
+            <td><code>AD_SLOT_QUESTION</code></td>
+            <td>정답 확인 = 학습 완료 순간 = 가장 높은 CPM 자리. 학습 흐름 X 방해</td>
+          </tr>
+          <tr class="row-good">
+            <td class="center">2</td>
+            <td><code>/notes/{id}</code><br/><small>요약노트</small></td>
+            <td>강의 영상 직후, 본문 끝나는 자리</td>
+            <td>rectangle (300×250)</td>
+            <td><code>AD_SLOT_NOTE</code></td>
+            <td>강의 시청 후 자연스러운 휴식 자리. 학습 끝난 시점</td>
+          </tr>
+          <tr class="row-good">
+            <td class="center">3</td>
+            <td><code>/notes/{id}</code><br/><small>요약노트</small></td>
+            <td>NoteActions 직후 (관련 문제 풀기 후)</td>
+            <td>rectangle (300×250)</td>
+            <td><code>AD_SLOT_NOTE_BOTTOM</code></td>
+            <td>두 번째 광고 — 관련 문제까지 둘러본 후 학습 완전히 끝난 시점</td>
+          </tr>
+          <tr class="row-good">
+            <td class="center">4</td>
+            <td><code>/exam/{n}/result</code><br/><small>시험 결과</small></td>
+            <td>점수 카드 ↔ 액션 버튼 사이</td>
+            <td>rectangle (300×250)</td>
+            <td><code>AD_SLOT_RESULT</code></td>
+            <td>달성감 순간 = engagement 높은 자리. 다음 액션 전 노출</td>
+          </tr>
+          <tr class="row-good">
+            <td class="center">5</td>
+            <td><code>/한능검</code><br/><small>랜딩</small></td>
+            <td>LinkedPreview ↔ LatestExamsBand 사이</td>
+            <td>rectangle (300×250)</td>
+            <td><code>AD_SLOT_LANDING</code></td>
+            <td>콘텐츠 둘러본 후 자연스러운 자리. Above the fold X (신뢰 보호)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>페이지별 위치 시각화 (wireframe)</h3>
+
+    <div class="grid cols-2">
+      <!-- QuestionCard -->
+      <div class="wireframe">
+        <div style="font-family: var(--mono); font-size: 10px; color: var(--amber); font-weight: 700; margin-bottom: 8px;">📋 /exam/{n}/{q} — 문제 풀이</div>
+        <div class="wf-page">
+          <div class="wf-block">[지문 + 이미지]</div>
+          <div class="wf-block">[선지 1~5]</div>
+          <div class="wf-block">[정답 확인 버튼]</div>
+          <div class="wf-block">[정답 + AI 해설]</div>
+          <div class="wf-block ad">⬇ AD_SLOT_QUESTION (rectangle)</div>
+          <div class="wf-block">[YouTube 영상 해설]</div>
+          <div class="wf-block">[관련 요약노트 링크]</div>
+        </div>
+      </div>
+
+      <!-- Note -->
+      <div class="wireframe">
+        <div style="font-family: var(--mono); font-size: 10px; color: var(--amber); font-weight: 700; margin-bottom: 8px;">📝 /notes/{id} — 요약노트</div>
+        <div class="wf-page">
+          <div class="wf-block">[노트 제목 + 시대 뱃지]</div>
+          <div class="wf-block">[본문 HTML]</div>
+          <div class="wf-block">[키워드 태그]</div>
+          <div class="wf-block">[강의 영상 (최태성)]</div>
+          <div class="wf-block ad">⬇ AD_SLOT_NOTE (rectangle)</div>
+          <div class="wf-block">[NoteActions — 관련 문제 풀기]</div>
+          <div class="wf-block ad">⬇ AD_SLOT_NOTE_BOTTOM (rectangle)</div>
+          <div class="wf-block">[이전/다음 노트]</div>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="wireframe">
+        <div style="font-family: var(--mono); font-size: 10px; color: var(--amber); font-weight: 700; margin-bottom: 8px;">🏆 /exam/{n}/result — 시험 결과</div>
+        <div class="wf-page">
+          <div class="wf-block">[점수 + 급수 카드]</div>
+          <div class="wf-block">[정답률 차트]</div>
+          <div class="wf-block ad">⬇ AD_SLOT_RESULT (rectangle)</div>
+          <div class="wf-block">[액션 버튼 — 다시 풀기 / 오답 보기]</div>
+          <div class="wf-block">[공유 버튼]</div>
+        </div>
+      </div>
+
+      <!-- Landing -->
+      <div class="wireframe">
+        <div style="font-family: var(--mono); font-size: 10px; color: var(--amber); font-weight: 700; margin-bottom: 8px;">🏠 / — 랜딩 (한능검)</div>
+        <div class="wf-page">
+          <div class="wf-block">[Hero — Q카드 + 노트카드 콜라주]</div>
+          <div class="wf-block">[Stats Band — 1900문제 / 87노트]</div>
+          <div class="wf-block">[Feature Grid 2×2]</div>
+          <div class="wf-block">[Exam Preview — 브라우저 프레임]</div>
+          <div class="wf-block">[Notes Preview — 시대 스택]</div>
+          <div class="wf-block">[Linked Preview — 자동 매핑 시각화]</div>
+          <div class="wf-block ad">⬇ AD_SLOT_LANDING (rectangle)</div>
+          <div class="wf-block">[Latest Exams + Keywords]</div>
+          <div class="wf-block">[Pricing Band — 다크]</div>
+          <div class="wf-block">[SEO Prose]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 04. PROTECTED -->
+  <!-- ============================================== -->
+  <section id="protected">
+    <h2 class="sec"><span class="num">04 — Protected</span>광고 안 띄우는 곳 (학습 보호)</h2>
+    <p class="sec-lead">정체성 보호 + 학습 핵심 가치 보호. v3 §01 Core Values "(2) 광고가 학습을 방해하면 안 된다" 원칙.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>페이지</th>
+            <th>왜 광고 X</th>
+            <th>대신 해야 할 것</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-bad">
+            <td><code>/study/session</code></td>
+            <td>학습 진행 중 — 집중 보호</td>
+            <td>광고 X. 진행 바 + 시간 표시만</td>
+          </tr>
+          <tr class="row-bad">
+            <td><code>/wrong-answers</code></td>
+            <td>오답 복습 — 핵심 가치 페이지</td>
+            <td>광고 X. retention 자산</td>
+          </tr>
+          <tr class="row-bad">
+            <td><code>/my-record</code></td>
+            <td>개인 기록 — 사용자 자산</td>
+            <td>광고 X. 약점 분석 강화로 retention</td>
+          </tr>
+          <tr class="row-bad">
+            <td><code>/admin/*</code></td>
+            <td>관리자 페이지</td>
+            <td>광고 X. 의미 없음</td>
+          </tr>
+          <tr class="row-bad">
+            <td><code>/board/{kind}/write</code></td>
+            <td>글 작성 집중 보호</td>
+            <td>광고 X. 글 작성 후 상세 페이지에서 노출</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">원칙</div>
+      <p><strong>학습 진행 중 / 핵심 가치 페이지 / 작성 페이지</strong>는 광고 절대 X. 학습 끝난 후 / 콘텐츠 둘러본 후 / 결과 확인 후 = OK. 광고가 사용자 행동을 방해하면 retention 손상 → LTV 하락 → 광고 매출보다 큰 손해.</p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 05. COMPONENT USAGE -->
+  <!-- ============================================== -->
+  <section id="component">
+    <h2 class="sec"><span class="num">05 — Component</span>AdSlot 컴포넌트 사용법</h2>
+    <p class="sec-lead">파일: <code>web/components/AdSlot.tsx</code>. 단일 컴포넌트로 두 provider 모두 처리. import 후 props만 정의.</p>
+
+    <h3>기본 사용 (auto 모드, 권장)</h3>
+    <pre><code>import AdSlot from "@/components/AdSlot";
+
+// 'auto' = 모바일 AdFit / 데스크톱 AdSense / fallback 자동
+&lt;AdSlot
+  size="rectangle"
+  slot={process.env.NEXT_PUBLIC_AD_SLOT_LANDING}
+  className="my-6"
+/&gt;</code></pre>
+
+    <h3>Provider 명시 (특수 케이스)</h3>
+    <pre><code>// AdSense만 (예: 데스크톱 전용 사이드바)
+&lt;AdSlot
+  size="skyscraper"
+  provider="adsense"
+  adsenseSlot={process.env.NEXT_PUBLIC_AD_SLOT_SIDE}
+/&gt;
+
+// AdFit만 (예: 모바일 하단 banner)
+&lt;AdSlot
+  size="banner"
+  provider="adfit"
+  adfitUnit={process.env.NEXT_PUBLIC_ADFIT_UNIT_BANNER}
+/&gt;</code></pre>
+
+    <h3>Props 정리</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Prop</th>
+            <th>Type</th>
+            <th>Required</th>
+            <th>설명</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>size</code></td><td><code>AdSize</code></td><td class="center">✅</td><td>banner / rectangle / leaderboard / skyscraper / large-skyscraper</td></tr>
+          <tr><td><code>provider</code></td><td><code>'adsense' | 'adfit' | 'auto'</code></td><td class="center">기본 'auto'</td><td>provider 명시. 'auto'가 권장</td></tr>
+          <tr><td><code>adsenseSlot</code></td><td><code>string</code></td><td class="center">—</td><td>AdSense slot ID. 미제공 시 <code>slot</code>으로 fallback</td></tr>
+          <tr><td><code>adfitUnit</code></td><td><code>string</code></td><td class="center">—</td><td>AdFit unit ID. 미제공 시 size별 ENV 기본값 사용</td></tr>
+          <tr><td><code>slot</code></td><td><code>string</code></td><td class="center">deprecated</td><td>backward compat용 (AdSense slot)</td></tr>
+          <tr><td><code>className</code></td><td><code>string</code></td><td class="center">—</td><td>wrapper div의 추가 className</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>지원 사이즈</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Size</th><th>Pixels</th><th>위치 추천</th></tr></thead>
+        <tbody>
+          <tr><td><code>banner</code></td><td>320 × 100</td><td>모바일 상단 / 게시판 글 사이 (가벼운 노출)</td></tr>
+          <tr><td><code>rectangle</code></td><td>300 × 250</td><td>본문 중간 / 시험 결과 (가장 흔한 자리)</td></tr>
+          <tr><td><code>leaderboard</code></td><td>728 × 90</td><td>데스크톱 헤더 아래 / 페이지 상단</td></tr>
+          <tr><td><code>skyscraper</code></td><td>160 × 600</td><td>데스크톱 사이드바 (좁은 형)</td></tr>
+          <tr><td><code>large-skyscraper</code></td><td>300 × 600</td><td>데스크톱 사이드바 (넓은 형)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 06. ENV + ACTIVATION -->
+  <!-- ============================================== -->
+  <section id="env">
+    <h2 class="sec"><span class="num">06 — Env</span>환경변수 + 활성화 절차</h2>
+    <p class="sec-lead">위치: <code>web/.env.local</code> (로컬) + Vercel Dashboard → Settings → Environment Variables (배포).</p>
+
+    <h3>환경변수 spec</h3>
+    <pre><code># ─── AdSense (심사 통과 후 활성화) ───
+NEXT_PUBLIC_ADSENSE_ENABLED=false
+NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-6002059361162458
+
+NEXT_PUBLIC_AD_SLOT_QUESTION=     # 정답 확인 후
+NEXT_PUBLIC_AD_SLOT_NOTE=         # 노트 강의 후
+NEXT_PUBLIC_AD_SLOT_NOTE_BOTTOM=  # 노트 끝
+NEXT_PUBLIC_AD_SLOT_RESULT=       # 시험 결과
+NEXT_PUBLIC_AD_SLOT_LANDING=      # 랜딩
+
+# ─── AdFit 카카오 애드핏 (통과 후 활성화) ───
+NEXT_PUBLIC_ADFIT_ENABLED=false
+
+NEXT_PUBLIC_ADFIT_UNIT_RECTANGLE=DAN-xxxxxxxxxx  # 300×250
+NEXT_PUBLIC_ADFIT_UNIT_BANNER=DAN-xxxxxxxxxx     # 320×100
+NEXT_PUBLIC_ADFIT_UNIT_SIDE=DAN-xxxxxxxxxx       # 160×600 / 300×600</code></pre>
+
+    <h3>카카오 애드핏 통과 시 절차</h3>
+    <div class="grid cols-2">
+      <div class="card amber">
+        <h4>1. 광고 단위 생성</h4>
+        <ol style="font-size: 13px; padding-left: 18px; margin: 0;">
+          <li><a href="https://adfit.kakao.com" style="color: var(--amber);">adfit.kakao.com</a> 로그인</li>
+          <li>매체관리 → 광고단위 추가</li>
+          <li>3개 단위 생성: rectangle (300×250), banner (320×100), side (160×600)</li>
+          <li>각 <code>DAN-xxxxxxxxxx</code> ID 복사</li>
+        </ol>
+      </div>
+      <div class="card teal">
+        <h4>2. ENV 적용</h4>
+        <ol style="font-size: 13px; padding-left: 18px; margin: 0;">
+          <li><code>web/.env.local</code> 열기</li>
+          <li><code>NEXT_PUBLIC_ADFIT_ENABLED=true</code></li>
+          <li>3개 unit ID 채우기</li>
+          <li>Vercel dashboard에도 동일 적용</li>
+          <li>dev server 재시작 / Vercel redeploy</li>
+        </ol>
+      </div>
+    </div>
+
+    <h3>AdSense 통과 시 절차</h3>
+    <div class="grid cols-2">
+      <div class="card amber">
+        <h4>1. 광고 단위 생성</h4>
+        <ol style="font-size: 13px; padding-left: 18px; margin: 0;">
+          <li>AdSense → 광고 → 광고 단위 → 광고 단위 만들기</li>
+          <li>5개 단위 생성 (모두 rectangle 형):
+            <ul style="font-size: 12px; margin: 4px 0;">
+              <li>QUESTION (정답 확인)</li>
+              <li>NOTE (노트 강의 후)</li>
+              <li>NOTE_BOTTOM (노트 끝)</li>
+              <li>RESULT (시험 결과)</li>
+              <li>LANDING (랜딩)</li>
+            </ul>
+          </li>
+          <li>각 slot ID 복사</li>
+        </ol>
+      </div>
+      <div class="card teal">
+        <h4>2. ENV 적용</h4>
+        <ol style="font-size: 13px; padding-left: 18px; margin: 0;">
+          <li><code>web/.env.local</code> 열기</li>
+          <li><code>NEXT_PUBLIC_ADSENSE_ENABLED=true</code></li>
+          <li>5개 slot ID 채우기</li>
+          <li>Vercel dashboard에도 동일 적용</li>
+          <li>dev server 재시작 / Vercel redeploy</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">검증</div>
+      <p>활성화 후 5곳 페이지 (랜딩 / 문제풀이 / 노트 / 결과)에서 광고가 보이는지 확인. 모바일 viewport (devtools) → AdFit 표시 / 데스크톱 → AdSense 표시. 둘 다 동시 보이면 X — provider 분리 작동 확인.</p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 07. FUTURE -->
+  <!-- ============================================== -->
+  <section id="future">
+    <h2 class="sec"><span class="num">07 — Future</span>향후 추가 위치</h2>
+    <p class="sec-lead">광고 통과 후 또는 트래픽 도달 후 추가할 위치들. 우선순위 표시.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>위치</th>
+            <th>사이즈</th>
+            <th class="center">우선순위</th>
+            <th>트리거 조건</th>
+            <th>비고</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-warn">
+            <td><code>/board</code> (hub)</td>
+            <td>banner</td>
+            <td class="center"><span class="badge wait">P2</span></td>
+            <td>광고 통과 후</td>
+            <td>탭 아래 가벼운 노출. 사용자 결정 (4/26): "나중에 하자"</td>
+          </tr>
+          <tr class="row-warn">
+            <td><code>/board/{kind}</code> (글 목록)</td>
+            <td>banner</td>
+            <td class="center"><span class="badge wait">P2</span></td>
+            <td>광고 통과 후</td>
+            <td>글 5번째와 6번째 사이</td>
+          </tr>
+          <tr class="row-warn">
+            <td><code>/board/{kind}/{id}</code> (글 상세)</td>
+            <td>rectangle</td>
+            <td class="center"><span class="badge wait">P2</span></td>
+            <td>광고 통과 후</td>
+            <td>본문 끝, 댓글 위 자연스러운 자리</td>
+          </tr>
+          <tr>
+            <td>노트 데스크톱 사이드</td>
+            <td>large-skyscraper</td>
+            <td class="center"><span class="badge todo">P3</span></td>
+            <td>월 PV 100K + layout grid 변경</td>
+            <td>현재 노트 페이지가 단일 column — grid 변경 필요</td>
+          </tr>
+          <tr>
+            <td>문제 풀이 데스크톱 사이드</td>
+            <td>skyscraper</td>
+            <td class="center"><span class="badge todo">P3</span></td>
+            <td>월 PV 100K + layout grid 변경</td>
+            <td>체류 길어 CPM 최고. layout 변경 필요</td>
+          </tr>
+          <tr>
+            <td>기출 목록 <code>/exam</code> 중간</td>
+            <td>leaderboard</td>
+            <td class="center"><span class="badge todo">P3</span></td>
+            <td>월 PV 100K</td>
+            <td>리스트 5번째와 6번째 사이</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="footnote">P2 = Phase C 활성화 후 즉시 가능 / P3 = 트래픽 milestone 도달 후 + layout 변경 (별도 sprint).</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 08. DESIGN RULES -->
+  <!-- ============================================== -->
+  <section id="design-rules">
+    <h2 class="sec"><span class="num">08 — Rules</span>광고 디자인 원칙</h2>
+    <p class="sec-lead">v3 마케팅 전략 §01 Core Values + §07 Counter Metrics 기반.</p>
+
+    <div class="grid cols-2">
+      <div class="card teal">
+        <h4 style="color: var(--teal);">✅ DO</h4>
+        <ul>
+          <li>학습 끝난 직후 또는 결과 확인 시점에 노출</li>
+          <li>한 페이지에 광고 ≤ 2개 (도배 X)</li>
+          <li>디바이스 분리 (모바일 AdFit / 데스크톱 AdSense)</li>
+          <li>Above the fold X (Hero 첫 화면엔 광고 X)</li>
+          <li>광고와 콘텐츠 사이 충분한 여백 (<code>my-6</code> 이상)</li>
+          <li>학습 흐름 핵심 페이지는 명시적으로 광고 X</li>
+        </ul>
+      </div>
+      <div class="card rose">
+        <h4 style="color: var(--rose);">❌ DON'T</h4>
+        <ul>
+          <li>학습 진행 중 (<code>/study/session</code>) 광고 노출</li>
+          <li>오답노트 / 내 기록 등 retention 자산 페이지에 광고</li>
+          <li>한 페이지에 같은 provider 광고 3개+</li>
+          <li>Pop-up / Interstitial / 자동 재생 광고 (절대 X)</li>
+          <li>콘텐츠와 광고 구분 안 되는 디자인 (AdSense 정책 위반)</li>
+          <li>"광고 도배 없이"라는 카피 사용 (실제 운영과 모순)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Counter Metric — 광고 도배 감지</h3>
+    <p style="font-size: 14px; color: var(--ink-soft);">v3 §07 Measurement Framework의 counter metrics 중 광고 관련:</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>지표</th>
+            <th>경계 (Watch)</th>
+            <th>위험 (Warn)</th>
+            <th>의미</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>광고비 ÷ 매출 비율</td><td>≥ 30%</td><td>≥ 50%</td><td>광고 의존 — 오가닉 약화 신호</td></tr>
+          <tr><td>세션당 페이지</td><td>≤ 4</td><td>≤ 2</td><td>광고 때문에 사용자 이탈 가능</td></tr>
+          <tr><td>Direct 비율</td><td>≤ 30%</td><td>≤ 15%</td><td>retention 손상 — 광고가 원인일 수 있음</td></tr>
+          <tr><td>광고 클릭률 (CTR)</td><td>&gt; 2%</td><td>&gt; 5%</td><td>실수 클릭 의심 — 광고 위치 점검</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="footnote">한 지표라도 'Warn' 진입 시 즉시 광고 위치 stop &amp; review.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="eyebrow" style="color: var(--ink-soft);">기출노트 · Ad Placement Spec</div>
+    <p style="margin: 0 0 4px;">2026-04-26 · realproto1 · gcnote.co.kr</p>
+    <p style="margin: 0; font-family: var(--mono); font-size: 11px;">
+      관련 문서: docs/multi-exam-hub-strategy-v3.html (마케팅 전략) · docs/monetization-alternatives.html (수익화 대안)
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>

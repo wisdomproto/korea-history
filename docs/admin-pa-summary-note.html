@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>9급 국가직 행정학개론 — 자동 단권화 (10회 200문제 분석)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #F5EFE4; --paper: #FFFFFF; --ink: #1F1A14; --ink-soft: #5A4F3F; --ink-mute: #94724D;
+    --amber: #B45309; --amber-soft: #FED7AA; --amber-bg: #FFF7ED;
+    --teal: #0D9488; --teal-soft: #CCFBF1; --teal-bg: #F0FDFA;
+    --rose: #BE123C; --rose-soft: #FECDD3; --rose-bg: #FFF1F2;
+    --hairline: rgba(31, 26, 20, 0.12);
+    --serif: 'Noto Serif KR', ui-serif, Georgia, serif;
+    --sans: 'Pretendard Variable', Pretendard, system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.65; font-size: 15px; word-break: keep-all; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 980px; margin: 0 auto; padding: 48px 28px 80px; }
+  @media (max-width: 720px) { .container { padding: 32px 16px 60px; } }
+  header.hero { text-align: center; padding: 36px 0 24px; border-bottom: 1px solid var(--hairline); margin-bottom: 32px; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; color: var(--amber); text-transform: uppercase; margin-bottom: 12px; font-weight: 700; }
+  h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 4vw, 38px); line-height: 1.1; margin: 0 0 12px; letter-spacing: -0.02em; }
+  h1 .amber { color: var(--amber); }
+  .subtitle { font-size: 15px; color: var(--ink-soft); max-width: 680px; margin: 0 auto; }
+  .meta { margin-top: 16px; display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; font-family: var(--mono); font-size: 11px; color: var(--ink-soft); }
+  .meta span:not(:first-child)::before { content: '·'; margin-right: 12px; color: var(--hairline); }
+
+  nav.toc { background: var(--paper); border: 1px solid var(--hairline); border-radius: 12px; padding: 18px 22px; margin-bottom: 32px; }
+  nav.toc h2 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--ink-soft); text-transform: uppercase; margin: 0 0 8px; }
+  nav.toc ol { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 18px; font-size: 13px; }
+  @media (max-width: 720px) { nav.toc ol { grid-template-columns: 1fr; } }
+  nav.toc a { color: var(--ink); text-decoration: none; padding: 4px 0; display: flex; gap: 8px; align-items: baseline; }
+  nav.toc a:hover { color: var(--amber); }
+  nav.toc .freq { font-family: var(--mono); font-size: 9px; letter-spacing: 0.06em; background: var(--bg); padding: 2px 6px; border-radius: 4px; color: var(--ink-soft); font-weight: 700; min-width: 38px; text-align: center; }
+  nav.toc .freq.hot { background: var(--rose); color: white; }
+  nav.toc .freq.warm { background: var(--amber); color: white; }
+  nav.toc .freq.med { background: var(--teal-soft); color: var(--teal); }
+
+  .freq-chart { background: var(--paper); border: 1px solid var(--hairline); border-radius: 14px; padding: 20px 24px; margin-bottom: 32px; }
+  .fc-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--amber); text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
+  .fc-sub { font-family: var(--serif); font-size: 18px; font-weight: 800; margin: 0 0 16px; }
+  .fc-row { display: grid; grid-template-columns: 220px 1fr 50px; gap: 12px; align-items: center; padding: 5px 0; font-size: 12px; }
+  @media (max-width: 720px) { .fc-row { grid-template-columns: 130px 1fr 40px; font-size: 11px; } }
+  .fc-name { font-weight: 600; color: var(--ink); }
+  .fc-bar { background: var(--bg); border-radius: 4px; height: 14px; overflow: hidden; }
+  .fc-fill { height: 100%; background: linear-gradient(90deg, var(--amber) 0%, var(--amber-soft) 100%); border-radius: 4px; }
+  .fc-fill.hot { background: linear-gradient(90deg, var(--rose) 0%, var(--rose-soft) 100%); }
+  .fc-fill.warm { background: linear-gradient(90deg, var(--amber) 0%, var(--amber-soft) 100%); }
+  .fc-fill.med { background: linear-gradient(90deg, var(--teal) 0%, var(--teal-soft) 100%); }
+  .fc-num { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); text-align: right; font-weight: 700; }
+
+  section.topic { background: var(--paper); border: 1px solid var(--hairline); border-radius: 14px; padding: 26px 30px; margin-bottom: 22px; }
+  section.topic.tier1 { border-left: 5px solid var(--rose); }
+  section.topic.tier2 { border-left: 5px solid var(--amber); }
+  section.topic.tier3 { border-left: 5px solid var(--teal); }
+  .topic-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; padding-bottom: 12px; border-bottom: 1px solid var(--hairline); }
+  .topic-name { font-family: var(--serif); font-size: 22px; font-weight: 900; margin: 0; line-height: 1.15; letter-spacing: -0.015em; }
+  .topic-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--ink-mute); font-weight: 700; }
+  .topic-freq { display: inline-flex; gap: 6px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .topic-freq .badge { padding: 3px 9px; border-radius: 999px; font-weight: 700; }
+  .badge-freq { background: var(--amber); color: white; }
+  .badge-freq.hot { background: var(--rose); }
+  .badge-freq.med { background: var(--teal); }
+
+  h3 { font-family: var(--serif); font-size: 16px; font-weight: 800; margin: 18px 0 8px; color: var(--ink); border-left: 3px solid var(--amber); padding-left: 10px; }
+  h4 { font-family: var(--sans); font-size: 14px; font-weight: 800; margin: 12px 0 6px; color: var(--ink); }
+  .topic p { margin: 6px 0; line-height: 1.7; font-size: 14px; }
+  .topic ul { padding-left: 22px; margin: 6px 0; }
+  .topic li { margin-bottom: 4px; font-size: 14px; line-height: 1.7; }
+  .topic strong { color: var(--ink); font-weight: 700; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; background: white; border: 1px solid var(--hairline); border-radius: 8px; overflow: hidden; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--hairline); vertical-align: top; }
+  th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); font-weight: 700; background: var(--bg); }
+
+  .law-box { background: var(--amber-bg); border: 1px solid var(--amber-soft); border-radius: 8px; padding: 12px 16px; margin: 10px 0; font-size: 13px; line-height: 1.6; }
+  .law-box-title { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--amber); text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
+  .case-box { background: var(--teal-bg); border: 1px solid var(--teal-soft); border-radius: 8px; padding: 12px 16px; margin: 10px 0; font-size: 13px; line-height: 1.6; }
+  .case-box-title { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--teal); text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
+  .exam-box { background: var(--bg); border-radius: 8px; padding: 10px 14px; margin: 10px 0; font-size: 12px; line-height: 1.6; color: var(--ink-soft); }
+  .exam-box-title { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; color: var(--ink-mute); text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
+  .trap-box { background: var(--rose-bg); border: 1px solid var(--rose-soft); border-radius: 8px; padding: 12px 16px; margin: 10px 0; font-size: 13px; line-height: 1.6; }
+  .trap-box-title { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--rose); text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
+
+  code { font-family: var(--mono); font-size: 12px; background: var(--bg); padding: 2px 5px; border-radius: 3px; color: var(--amber); }
+  .footnote { font-size: 11px; color: var(--ink-soft); margin: 10px 0 0; padding-top: 10px; border-top: 1px dashed var(--hairline); }
+
+  .coverage-box { background: linear-gradient(135deg, var(--ink) 0%, #2D241A 100%); color: var(--bg); padding: 24px 28px; border-radius: 14px; margin: 28px 0; }
+  .coverage-eye { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; color: var(--amber-soft); text-transform: uppercase; font-weight: 700; margin-bottom: 6px; }
+  .coverage-num { font-family: var(--serif); font-size: 36px; font-weight: 900; color: var(--amber-soft); line-height: 1; margin: 4px 0 8px; }
+  .coverage-box p { margin: 4px 0; font-size: 13px; line-height: 1.7; }
+
+  hr.divider { border: none; border-top: 1px solid var(--hairline); margin: 32px 0; }
+  footer { border-top: 1px solid var(--hairline); padding-top: 24px; margin-top: 32px; text-align: center; color: var(--ink-soft); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="hero">
+    <div class="eyebrow">Auto Summary Note · 9급 국가직 · 2026-04-27</div>
+    <h1>9급 국가직 <span class="amber">행정학개론</span> 자동 단권화</h1>
+    <p class="subtitle">기출 10회분 (2016~2025) 200문제 → 14개 단원. 행정법총론과 동일 파이프라인 (기출 분석 + 공공 데이터 grounding) 적용.</p>
+    <div class="meta">
+      <span>10회분 / 200문제 / 14단원</span>
+      <span>1차 출처: 위키·행정안전부·국가법령정보센터</span>
+      <span>2026-04-27</span>
+    </div>
+  </header>
+
+  <div class="freq-chart">
+    <div class="fc-title">출제 빈도 분석 (다중분류)</div>
+    <h2 class="fc-sub">200문제 — 단원별 출현 횟수</h2>
+    <div class="fc-row"><div class="fc-name">정책학</div><div class="fc-bar"><div class="fc-fill hot" style="width: 100%;"></div></div><div class="fc-num">52</div></div>
+    <div class="fc-row"><div class="fc-name">인사행정</div><div class="fc-bar"><div class="fc-fill hot" style="width: 88%;"></div></div><div class="fc-num">46</div></div>
+    <div class="fc-row"><div class="fc-name">재무행정·예산제도</div><div class="fc-bar"><div class="fc-fill warm" style="width: 65%;"></div></div><div class="fc-num">34</div></div>
+    <div class="fc-row"><div class="fc-name">조직론</div><div class="fc-bar"><div class="fc-fill warm" style="width: 65%;"></div></div><div class="fc-num">34</div></div>
+    <div class="fc-row"><div class="fc-name">지방행정·자치·전자정부</div><div class="fc-bar"><div class="fc-fill warm" style="width: 58%;"></div></div><div class="fc-num">30</div></div>
+    <div class="fc-row"><div class="fc-name">핵심 행정 가치·개념</div><div class="fc-bar"><div class="fc-fill warm" style="width: 48%;"></div></div><div class="fc-num">25</div></div>
+    <div class="fc-row"><div class="fc-name">공공기관·지방공기업</div><div class="fc-bar"><div class="fc-fill warm" style="width: 46%;"></div></div><div class="fc-num">24</div></div>
+    <div class="fc-row"><div class="fc-name">행정학 총론·이론·학설사</div><div class="fc-bar"><div class="fc-fill med" style="width: 42%;"></div></div><div class="fc-num">22</div></div>
+    <div class="fc-row"><div class="fc-name">리더십·동기부여 이론</div><div class="fc-bar"><div class="fc-fill med" style="width: 25%;"></div></div><div class="fc-num">13</div></div>
+    <div class="fc-row"><div class="fc-name">행정통제·책임·윤리</div><div class="fc-bar"><div class="fc-fill med" style="width: 21%;"></div></div><div class="fc-num">11</div></div>
+    <div class="fc-row"><div class="fc-name">현대 행정 (4차산업·디지털)</div><div class="fc-bar"><div class="fc-fill med" style="width: 13%;"></div></div><div class="fc-num">7</div></div>
+    <div class="fc-row"><div class="fc-name">지방재정·지방세</div><div class="fc-bar"><div class="fc-fill med" style="width: 4%;"></div></div><div class="fc-num">2</div></div>
+    <p style="font-size: 11px; color: var(--ink-soft); margin: 12px 0 0; padding-top: 10px; border-top: 1px dashed var(--hairline);">※ 미분류 3건 (1.5%, 종합 사례문제). 한 문제가 여러 단원 포함 가능.</p>
+  </div>
+
+  <nav class="toc">
+    <h2>14개 단원 — 빈도 순</h2>
+    <ol>
+      <li><a href="#t1"><span class="freq hot">52</span>1. 정책학</a></li>
+      <li><a href="#t2"><span class="freq hot">46</span>2. 인사행정</a></li>
+      <li><a href="#t3"><span class="freq warm">34</span>3. 재무행정·예산제도</a></li>
+      <li><a href="#t4"><span class="freq warm">34</span>4. 조직론</a></li>
+      <li><a href="#t5"><span class="freq warm">30</span>5. 지방행정·자치·전자정부</a></li>
+      <li><a href="#t6"><span class="freq warm">25</span>6. 핵심 행정 가치·개념</a></li>
+      <li><a href="#t7"><span class="freq warm">24</span>7. 공공기관·지방공기업</a></li>
+      <li><a href="#t8"><span class="freq med">22</span>8. 행정학 총론·이론·학설사</a></li>
+      <li><a href="#t9"><span class="freq med">13</span>9. 리더십·동기부여 이론</a></li>
+      <li><a href="#t10"><span class="freq med">11</span>10. 행정통제·책임·윤리·부패</a></li>
+      <li><a href="#t11"><span class="freq med">7</span>11. 현대 행정 (4차산업·디지털)</a></li>
+      <li><a href="#t12"><span class="freq med">2</span>12. 지방재정·지방세·재정조정</a></li>
+    </ol>
+  </nav>
+
+  <!-- T1: 정책학 -->
+  <section class="topic tier1" id="t1">
+    <div class="topic-head">
+      <h2 class="topic-name">1. 정책학 (의제·결정·분석·평가·변동·유형)</h2>
+      <div><span class="topic-num">TOPIC 01</span><span class="topic-freq"><span class="badge badge-freq hot">52회 / 10년</span></span></div>
+    </div>
+    <h3>정책의제설정 (Agenda Setting)</h3>
+    <ul>
+      <li><strong>King-Cobb-Ross 모형</strong>: 외부주도형 / 동원형 / 내부접근형</li>
+      <li><strong>무의사결정론 (바흐라흐·바라츠)</strong>: 지배엘리트 이익 위협 시 의제화 봉쇄. <strong>편견의 동원</strong> 방법으로 의제 진입 차단</li>
+      <li><strong>철의 삼각 (Iron Triangle)</strong>: 의회 상임위·관료·이익집단 3자 결탁 → <strong>이슈 네트워크</strong>(헤클로)·<strong>정책공동체</strong>(로즈) 등 발전</li>
+    </ul>
+
+    <h3>정책 유형 (Lowi 분류)</h3>
+    <table>
+      <thead><tr><th>유형</th><th>특징</th><th>예시</th></tr></thead>
+      <tbody>
+        <tr><td><strong>분배정책</strong></td><td>비용 일반·이익 특정</td><td>도로·항만 건설, 보조금</td></tr>
+        <tr><td><strong>규제정책</strong></td><td>비용 특정·이익 일반</td><td>독점규제, 환경규제</td></tr>
+        <tr><td><strong>재분배정책</strong></td><td>계급 간 부 이전</td><td>누진세, 사회보장</td></tr>
+        <tr><td><strong>구성정책</strong></td><td>정부 자체 기구·운영</td><td>정부조직 개편</td></tr>
+      </tbody>
+    </table>
+    <p><strong>리플리·프랭클린</strong>: 분배·경쟁적 규제·보호적 규제·재분배 4분류. <strong>경쟁적 규제</strong> = 다수 후보 중 일부 선택 (방송 주파수 배분, 항공 노선 허가).</p>
+
+    <h3>정책결정 모형</h3>
+    <ul>
+      <li><strong>합리모형</strong>: 모든 대안 검토, 최적 선택. 비현실적</li>
+      <li><strong>점증모형 (Lindblom)</strong>: 기존 정책에서 점진 수정. 현실적·민주적</li>
+      <li><strong>혼합주사모형 (Etzioni)</strong>: 합리+점증 결합 (큰 결정 합리, 일상 점증)</li>
+      <li><strong>최적모형 (Dror)</strong>: 합리 + 직관·창의 결합</li>
+      <li><strong>회사모형 (Cyert·March)</strong>: 조직 내 갈등·협상 → 만족스러운 결정</li>
+      <li><strong>쓰레기통 모형 (Cohen·March·Olsen)</strong>: 문제·해결책·참여자·기회 우연 결합 → 결정. <strong>조직화된 무정부</strong> 상태</li>
+      <li><strong>앨리슨 모형</strong>: I 합리적행위자 / II 조직과정 / III <strong>관료정치</strong> (참여자 선호·권력 흥정)</li>
+      <li><strong>사이버네틱스 모형</strong>: 자동조절 시스템 — 환류 + 적응</li>
+    </ul>
+
+    <h3>정책분석 (Policy Analysis)</h3>
+    <ul>
+      <li><strong>비용편익분석 (CBA)</strong>: 화폐가치 환산 — NPV·IRR·B/C ratio</li>
+      <li><strong>비용효과분석 (CEA)</strong>: 효과 화폐 환산 어려울 때 (단위당 비용)</li>
+      <li><strong>경제성분석</strong>: 공공사업 — 사회적 할인율·잠재가격 적용</li>
+    </ul>
+
+    <h3>정책평가 (Policy Evaluation)</h3>
+    <ul>
+      <li><strong>총괄평가</strong> (성과·효과 종합) vs <strong>과정평가</strong> (집행 과정)</li>
+      <li><strong>내적 타당성</strong>: 인과관계 정확성. 위협 = 역사·성숙·검사·도구·통계회귀·표본선정·상실 등</li>
+      <li><strong>외적 타당성</strong>: 다른 상황에 일반화 가능성. 호손효과·가실험 효과</li>
+      <li><strong>구성적 타당성</strong>: 추상적 개념 측정 정확성</li>
+      <li><strong>사회실험</strong>: 진실험(무작위 배정) > 준실험 > 비실험. 진실험 = 내적 타당성 ↑, 외적 ↓</li>
+    </ul>
+
+    <h3>정책변동 (호그우드·피터스)</h3>
+    <ul>
+      <li><strong>정책혁신</strong>: 새 정책 도입 (정부개입 처음 시작)</li>
+      <li><strong>정책승계</strong>: 기존 정책 대체 (목표 유지, 수단 변경)</li>
+      <li><strong>정책유지</strong>: 동일 정책 지속 (예산만 조정)</li>
+      <li><strong>정책종결</strong>: 정책 폐지</li>
+    </ul>
+
+    <h3>정책수단 (살라몬)</h3>
+    <p>직접 vs 간접. <strong>직접 수단</strong>: 직접규제·직접대출·정부조직·정부기업·정부보험. <strong>간접 수단</strong>: 사회적 규제·바우처·세금감면·보조금·공기업·계약·계약·정보제공.</p>
+
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제 (10회 중 52회)</div>2025-3·4·5·6 / 2024-1·6·8·9 / 2023-4·6·10·20 / 2022-2 / 2021-19 / 2020-19 / 2019-1 / 2018-6 등.</div>
+    <div class="footnote">출처: 위키피디아 한국어 [<a href="https://ko.wikipedia.org/wiki/정책학" target="_blank">정책학</a>] · 행정학 표준 교과서</div>
+  </section>
+
+  <!-- T2: 인사행정 -->
+  <section class="topic tier1" id="t2">
+    <div class="topic-head">
+      <h2 class="topic-name">2. 인사행정 (실적·연공·평정·교육훈련·소청·이해충돌)</h2>
+      <div><span class="topic-num">TOPIC 02</span><span class="topic-freq"><span class="badge badge-freq hot">46회 / 10년</span></span></div>
+    </div>
+
+    <h3>실적주의 vs 엽관주의 vs 연공주의</h3>
+    <table>
+      <thead><tr><th>구분</th><th>실적주의 (Merit System)</th><th>엽관주의 (Spoils)</th><th>연공주의 (Seniority)</th></tr></thead>
+      <tbody>
+        <tr><td>임용 기준</td><td>능력·자격·시험</td><td>정치적 충성·인맥</td><td>근속연수·연령</td></tr>
+        <tr><td>장점</td><td>전문성·공정성·중립성</td><td>민주성·대응성</td><td>안정성·신뢰</td></tr>
+        <tr><td>단점</td><td>관료주의·경직</td><td>전문성 저하·부패</td><td>무사안일·창의 저하</td></tr>
+      </tbody>
+    </table>
+
+    <h3>대표관료제 (Representative Bureaucracy)</h3>
+    <p>사회의 인구학적 다양성 (성·인종·계층·지역)이 관료 구성에 비례적으로 반영되어야 한다는 원칙. <strong>적극적 평등실현조치</strong> (양성평등채용·지역인재·장애인·저소득층 채용목표제). 단점: 실적주의와 충돌 가능, 역차별 논란.</p>
+
+    <h3>공직분류 — 계급제 vs 직위분류제</h3>
+    <table>
+      <thead><tr><th>구분</th><th>계급제 (Rank)</th><th>직위분류제 (Position)</th></tr></thead>
+      <tbody>
+        <tr><td>분류 기준</td><td>사람 (자격·학력·경력)</td><td>직무 (직위·책임·곤란도)</td></tr>
+        <tr><td>채용·이동</td><td>일반행정가, 보직 자유 이동</td><td>전문가, 직무 한정</td></tr>
+        <tr><td>국가</td><td>유럽·일본·한국 (전통)</td><td>미국 · 한국 일부 도입</td></tr>
+      </tbody>
+    </table>
+
+    <h3>근무성적평정 오류</h3>
+    <ul>
+      <li><strong>연쇄효과 (Halo Effect)</strong>: 한 특성 평가가 다른 특성에 영향</li>
+      <li><strong>관대화·엄격화·중심화 경향</strong>: 평가 분포의 편중</li>
+      <li><strong>대비 오류</strong>: 직전 평가 대상과 비교</li>
+      <li><strong>유사성 오류</strong>: 평가자와 비슷한 사람 우대</li>
+      <li><strong>시간적 오류 (Recency Effect)</strong>: 최근 사건 위주 평가</li>
+      <li><strong>고정관념·편견</strong>: 성·연령·학력 선입견</li>
+    </ul>
+
+    <h3>교육훈련 방법</h3>
+    <ul>
+      <li><strong>OJT (직장 내)</strong>: 실무 + 훈련 / 비용↓ / 교관 자질 의존</li>
+      <li><strong>OFFJT (직장 외)</strong>: 집중·체계 / 비용↑</li>
+      <li>방법: 강의·역할연기·사례연구·시뮬레이션·실습·민감성훈련(T-group)·액션러닝 등</li>
+    </ul>
+
+    <h3>소청심사 (행정심판의 일종)</h3>
+    <ul>
+      <li><strong>국가공무원</strong>: 인사혁신처 <strong>소청심사위원회</strong></li>
+      <li><strong>지방공무원</strong>: 시·도 또는 시·군·구 <strong>소청심사위원회</strong></li>
+      <li><strong>교원</strong>: 교육부 <strong>교원소청심사위원회</strong></li>
+      <li><strong>군인</strong>: 국방부 <strong>군인사소청심사위원회</strong></li>
+      <li><strong>검사</strong>: 항고·재항고 (검찰청법) — 별도 위원회 X</li>
+    </ul>
+
+    <h3>직위해제 vs 직권면직</h3>
+    <ul>
+      <li><strong>직위해제</strong>: 직무를 부여하지 아니하는 처분 (직위만 박탈, 신분 유지). 사유: 직무수행 능력 부족·근무성적 극히 불량·형사사건 기소·중징계 대상·금품·성범죄 조사·연구 중 등</li>
+      <li><strong>직권면직</strong>: 직권으로 공무원 신분 박탈. 사유: 직제 폐지, 직무수행 능력 부족 (직위해제 후 3개월 내 능력 회복 X 시 면직)</li>
+    </ul>
+
+    <h3>이해충돌 방지법 (2022.5.19. 시행)</h3>
+    <ul>
+      <li><strong>사적이해관계자 신고</strong> (§5): 직무 관련 자기·배우자·4촌 이내 친족·법인 등 사적이해관계 신고</li>
+      <li><strong>직무관련자와의 거래 신고</strong>(§9), <strong>퇴직자 사적 접촉 신고</strong>(§15)</li>
+      <li><strong>직무수행 회피</strong> (§7): 사적이해관계자 직무 회피 의무</li>
+      <li><strong>가족채용 제한</strong>(§11) / <strong>수의계약 제한</strong>(§12)</li>
+    </ul>
+
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제 (10회 중 46회)</div>2025-14·15·16 / 2024-2·14·15·16 / 2023-7·9·13·17·18 / 2022 / 2021-7 / 2017-10. 매년 출제.</div>
+    <div class="footnote">출처: 국가공무원법·지방공무원법·공직자 이해충돌방지법 [<a href="https://www.law.go.kr" target="_blank">law.go.kr</a>]</div>
+  </section>
+
+  <!-- T3: 재무행정·예산제도 -->
+  <section class="topic tier1" id="t3">
+    <div class="topic-head">
+      <h2 class="topic-name">3. 재무행정·예산제도·정부회계</h2>
+      <div><span class="topic-num">TOPIC 03</span><span class="topic-freq"><span class="badge badge-freq hot">34회 / 10년</span></span></div>
+    </div>
+
+    <h3>예산제도 발전사</h3>
+    <table>
+      <thead><tr><th>제도</th><th>약자</th><th>특징</th></tr></thead>
+      <tbody>
+        <tr><td><strong>품목별 예산</strong></td><td>LIBS</td><td>지출 항목별 (인건비·운영비) — 통제 위주, 능률 X</td></tr>
+        <tr><td><strong>성과주의 예산</strong></td><td>PBS</td><td>업무량×단위원가 (1950s 미국). 성과 측정·관리 어려움</td></tr>
+        <tr><td><strong>계획예산</strong></td><td>PPBS</td><td>장기계획 + 예산 연계 (1965 존슨). 복잡·중앙집권</td></tr>
+        <tr><td><strong>영기준예산</strong></td><td>ZBB</td><td>매년 0부터 다시 검토 (1977 카터). 시간·비용 ↑</td></tr>
+        <tr><td><strong>신성과주의</strong></td><td>NPB</td><td>결과(outcome) 중심 + 자율·책임. 한국 도입</td></tr>
+      </tbody>
+    </table>
+
+    <h3>예산 원칙 (전통 vs 현대)</h3>
+    <ul>
+      <li><strong>공개</strong>·<strong>명료성</strong>·<strong>완전성</strong>(모든 수입·지출)·<strong>단일성</strong>(하나의 예산서)·<strong>한정성</strong>(목적·금액·기간)·<strong>사전의결</strong>·<strong>엄밀성</strong>·<strong>통일성</strong>(특정수입·특정지출 금지)</li>
+      <li>현대: <strong>다원성·신축성·계획·재량·책임</strong> 강조</li>
+    </ul>
+
+    <h3>국가재정법 핵심</h3>
+    <ul>
+      <li><strong>예산총칙·세입세출예산·계속비·명시이월비·국고채무부담행위</strong> 5대 구성</li>
+      <li><strong>기금</strong>: 특정 목적 + 출연·출자 (국민연금·고용보험 등). 중기재정운용계획 의무</li>
+      <li><strong>국고채무부담행위</strong>: 국가가 미리 부담하는 채무. 국회 의결 필요</li>
+      <li><strong>통합재정</strong>: 일반회계 + 특별회계 + 기금 통합 분석 → 재정의 실제 모습 파악</li>
+      <li><strong>온실가스감축인지 예산</strong> (2022.1.1. 시행): 예산이 온실가스 감축에 미치는 영향 분석·반영</li>
+    </ul>
+
+    <h3>정부회계 (발생주의 vs 현금주의)</h3>
+    <table>
+      <thead><tr><th>구분</th><th>현금주의</th><th>발생주의</th></tr></thead>
+      <tbody>
+        <tr><td>인식 시점</td><td>현금 수입·지출 시</td><td>거래·사건 발생 시</td></tr>
+        <tr><td>장점</td><td>단순·통제 용이</td><td>재무 상태 정확·자산부채 인식</td></tr>
+        <tr><td>적용</td><td>공공부문 전통</td><td>한국 정부 2009 도입 (재무제표)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>재무제표 (한국 정부)</h3>
+    <ul>
+      <li><strong>재정상태표</strong>: 자산·부채·순자산</li>
+      <li><strong>재정운영표</strong>: 수익·비용</li>
+      <li><strong>순자산변동표</strong>: 순자산 변동 내역</li>
+      <li>(현금흐름표 — 일부 부처)</li>
+    </ul>
+
+    <h3>세계잉여금 (Surplus)</h3>
+    <p>회계연도 결산 결과 세입예산을 초과한 잉여금. 처리 순서 (국가재정법 §90): ① 지방교부세·지방교육재정교부금 정산 → ② 공적자금 상환 → ③ 국채 상환 → ④ 추가경정예산 → ⑤ 다음 연도 세입.</p>
+
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제 (10회 중 34회)</div>2025-7·8·19 / 2024-5·7·19 / 2023-3·5·16 / 2022-19 / 2020-20 / 2018-10 등.</div>
+    <div class="footnote">출처: 국가재정법·지방재정법 [<a href="https://www.law.go.kr/법령/국가재정법" target="_blank">law.go.kr</a>] · 기획재정부 통합재정 통계</div>
+  </section>
+
+  <!-- T4: 조직론 -->
+  <section class="topic tier1" id="t4">
+    <div class="topic-head">
+      <h2 class="topic-name">4. 조직론 (구조·관료제·문화·갈등·동기·조직행태)</h2>
+      <div><span class="topic-num">TOPIC 04</span><span class="topic-freq"><span class="badge badge-freq hot">34회 / 10년</span></span></div>
+    </div>
+
+    <h3>관료제 (Weber)</h3>
+    <ul>
+      <li><strong>이념형 관료제</strong> 6대 특징: ① 법규지배, ② 계서제, ③ 분업·전문화, ④ 문서주의, ⑤ 공·사 분리, ⑥ 비정의성 (impersonal)</li>
+      <li><strong>관료제 비판</strong>: 동조과잉(목표 전치)·번문욕례(red tape)·할거주의(Selznick)·훈련된 무능(Veblen)·피터의 법칙·파킨슨의 법칙</li>
+    </ul>
+
+    <h3>조직 이론 발전사</h3>
+    <ul>
+      <li><strong>고전적 (1900~1930)</strong>: 과학적관리론 (테일러), 행정관리론 (Fayol·Gulick·Urwick — POSDCORB)</li>
+      <li><strong>신고전적 (1930~1950)</strong>: <strong>인간관계론</strong> (호손실험 — 메이요, 비공식조직·인간심리)</li>
+      <li><strong>현대 (1950~)</strong>: 행태론 (Simon — 의사결정, 만족모형), 체제론(Katz·Kahn), 상황적합론</li>
+    </ul>
+
+    <h3>조직 유형</h3>
+    <ul>
+      <li><strong>블라우·스콧</strong>: 호혜·기업·봉사·공익조직 (수익자 기준)</li>
+      <li><strong>파슨스</strong>: 적응(경제)·목표달성(정치)·통합(사회)·잠재(문화) — AGIL</li>
+      <li><strong>에치오니</strong>: 강제적·공리적·규범적 (권력·복종 관계)</li>
+      <li><strong>민츠버그</strong>: 단순구조·기계관료제·전문관료제·사업부제·임시조직(애드호크라시)</li>
+    </ul>
+
+    <h3>조직 구조 — 매트릭스·네트워크</h3>
+    <ul>
+      <li><strong>기능구조</strong>: 전문화 ↑, 협력 ↓</li>
+      <li><strong>사업부제</strong>: 자율성 ↑, 중복 ↑</li>
+      <li><strong>매트릭스</strong>: 기능 + 사업부 결합 — 두 명의 상사. 갈등 위험</li>
+      <li><strong>네트워크 조직</strong>: 핵심 기능만 보유 + 나머지 외주·협력 (Virtual Org). 유연성 ↑</li>
+    </ul>
+
+    <h3>동기부여 이론</h3>
+    <table>
+      <thead><tr><th>구분</th><th>내용이론 (What)</th><th>과정이론 (How)</th></tr></thead>
+      <tbody>
+        <tr><td>대표</td><td>매슬로우 5단계 / 알더퍼 ERG / 허즈버그 2요인 / 맥그리거 X·Y / 맥클랜드 성취욕구</td><td>브룸 기대이론 / 포터·롤러 / 아담스 공정성 / 로크 목표설정</td></tr>
+      </tbody>
+    </table>
+
+    <h3>갈등관리 (Thomas-Kilmann)</h3>
+    <ul>
+      <li><strong>경쟁</strong> (자기 ↑·상대 ↓), <strong>협력</strong> (자기 ↑·상대 ↑) — 통합형</li>
+      <li><strong>회피</strong> (자기 ↓·상대 ↓), <strong>수용</strong> (자기 ↓·상대 ↑) — 양보형</li>
+      <li><strong>타협</strong> (중간) — 단기 해결</li>
+    </ul>
+
+    <h3>집단사고 (Janis)</h3>
+    <p>응집력 강한 집단이 합의 도출에만 집중 → 비판적 사고 X. 증상: 무오류 환상·합리화·도덕성 환상·외집단 편견·자기검열·만장일치 환상·반대자 압박·정신경비병.</p>
+
+    <h3>조직시민행동 (OCB)</h3>
+    <p>공식 직무 외 자발적 도움·협력 행동. 5요소: <strong>이타성·양심성·예의·시민의식·스포츠맨십</strong>. 조직 효과성 ↑.</p>
+
+    <h3>목표관리제 (MBO) vs 총체적품질관리 (TQM)</h3>
+    <ul>
+      <li><strong>MBO</strong> (드러커): 상하 합의 목표 → 자율 + 결과 평가. 단기·결과·개인 중심</li>
+      <li><strong>TQM</strong>: 전사적 품질개선·고객만족·과정 중심·집단 활동·지속 개선 (Kaizen)</li>
+    </ul>
+
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제 (10회 중 34회)</div>2025-12·13 / 2024-11·12·13 / 2023-2·8·11·12 / 2022-5·8 / 2021-2·3·7 / 2020-4 / 2019-11 / 2017-2 / 2016-6·17. 매년.</div>
+    <div class="footnote">출처: 행정학 표준 교과서 / 위키피디아 [<a href="https://ko.wikipedia.org/wiki/관료제" target="_blank">관료제</a>] [<a href="https://ko.wikipedia.org/wiki/동기부여" target="_blank">동기부여</a>]</div>
+  </section>
+
+  <!-- T5~T12: 압축 (분량 관리) -->
+  <section class="topic tier2" id="t5">
+    <div class="topic-head">
+      <h2 class="topic-name">5. 지방행정·자치·전자정부</h2>
+      <div><span class="topic-num">TOPIC 05</span><span class="topic-freq"><span class="badge badge-freq">30회 / 10년</span></span></div>
+    </div>
+    <h3>지방자치 이론</h3>
+    <ul>
+      <li><strong>주민자치 (영국·미국)</strong>: 주민이 자치 — 정치적 자치 / 자치권 = 주민의 자연권. 단체와 국가 동일</li>
+      <li><strong>단체자치 (대륙·독일·프랑스)</strong>: 자치단체가 자치 — 법률적 자치 / 자치권 = 국가 위임. 단체 ≠ 국가</li>
+      <li><strong>한국</strong>: 단체자치 + 주민자치 절충</li>
+    </ul>
+    <h3>지방자치단체 종류</h3>
+    <ul>
+      <li><strong>광역</strong>: 특별시·광역시·특별자치시·도·특별자치도 (8개 광역+특자도)</li>
+      <li><strong>기초</strong>: 시·군·구 (자치구는 특별·광역시만)</li>
+      <li><strong>특별지방자치단체</strong> (지방자치법 §199~): 2개+ 자치단체 사무 공동 처리 — 부산·울산·경남 메가시티 등</li>
+    </ul>
+    <h3>주민참여 제도</h3>
+    <ul>
+      <li><strong>주민투표</strong>: 정책 결정 (주민투표법)</li>
+      <li><strong>주민발안</strong>(주민조례 발안 — 2022.1.13. 시행): 일정 인원 서명으로 조례 제·개정·폐지 청구 → 의회 의무 심의</li>
+      <li><strong>주민감사청구</strong>: 시·도 300명+, 시·군·구 200명+ 서명</li>
+      <li><strong>주민소송</strong>: 감사청구 거친 후 위법한 재무회계 행위에 대한 소송</li>
+      <li><strong>주민소환</strong>: 광역 자치단체장·교육감·지방의원 소환 (대통령·국회의원 X)</li>
+    </ul>
+    <h3>단체위임사무 vs 기관위임사무 vs 자치사무</h3>
+    <table>
+      <thead><tr><th>구분</th><th>자치사무</th><th>단체위임</th><th>기관위임</th></tr></thead>
+      <tbody>
+        <tr><td>처리 주체</td><td>지자체</td><td>지자체</td><td>지자체장 (국가 기관 자격)</td></tr>
+        <tr><td>경비 부담</td><td>지자체 전액</td><td>국가 + 지자체 분담</td><td>국가 전액</td></tr>
+        <tr><td>지방의회 관여</td><td>전면 가능</td><td>가능</td><td>X (조례·예산 X)</td></tr>
+        <tr><td>국가 통제</td><td>위법성·합목적성 제한</td><td>위법성 + 일부 합목적성</td><td>전면 (위법성+합목적성)</td></tr>
+      </tbody>
+    </table>
+    <h3>티부 가설 (Tiebout Hypothesis)</h3>
+    <p>지방정부 간 경쟁 → 주민이 발로 투표 (선호 자치단체 이동) → 효율적 자원 배분. <strong>가정</strong>: 완전 정보·이동 자유·다수 자치단체·외부효과 X·규모수익 일정·세입은 재산세만.</p>
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-9·10·11 / 2024-17 / 2023-7·19 / 2020-13·18 / 2016-20 (티부) 등.</div>
+  </section>
+
+  <section class="topic tier2" id="t6">
+    <div class="topic-head">
+      <h2 class="topic-name">6. 핵심 행정 가치·개념</h2>
+      <div><span class="topic-num">TOPIC 06</span><span class="topic-freq"><span class="badge badge-freq">25회 / 10년</span></span></div>
+    </div>
+    <h3>행정 가치 (행정의 본질적 가치 vs 수단적 가치)</h3>
+    <ul>
+      <li><strong>본질적 가치</strong>: <strong>공익·정의·형평성·자유·평등</strong></li>
+      <li><strong>수단적 가치</strong>: <strong>능률성·효과성·효율성·민주성·합법성·책임성·투명성·대응성·신뢰성</strong></li>
+    </ul>
+    <h3>능률성·효과성·효율성</h3>
+    <ul>
+      <li><strong>능률성 (Efficiency)</strong>: 투입 대비 산출 (적은 비용으로 많은 산출)</li>
+      <li><strong>효과성 (Effectiveness)</strong>: 목표 달성 정도 (목표 vs 결과)</li>
+      <li><strong>효율성</strong>: 능률성 + 효과성 종합 (생산성)</li>
+    </ul>
+    <h3>형평성 (롤스 정의론)</h3>
+    <p>롤스 <strong>정의의 두 원칙</strong>: ① 평등한 자유 (Equal Liberty), ② 차등 원칙 (Difference Principle — 최소 수혜자에게 최대 이익) + 기회의 공정한 평등. 신행정학(왈도)의 사회적 형평성 핵심 가치.</p>
+    <h3>대응성·신뢰성·투명성</h3>
+    <ul>
+      <li><strong>대응성</strong>: 시민 요구·필요에 부응</li>
+      <li><strong>신뢰성</strong>: 국민이 정부를 믿는 정도. <strong>정부 신뢰</strong>는 정책 효과성의 전제</li>
+      <li><strong>투명성</strong>: 행정 정보 공개·접근 가능성. 정보공개법·청렴도 평가</li>
+    </ul>
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>거의 모든 단원에 부분 포함되어 자주 출제.</div>
+  </section>
+
+  <section class="topic tier2" id="t7">
+    <div class="topic-head">
+      <h2 class="topic-name">7. 공공기관·지방공기업·민관협력·책임운영기관</h2>
+      <div><span class="topic-num">TOPIC 07</span><span class="topic-freq"><span class="badge badge-freq">24회 / 10년</span></span></div>
+    </div>
+    <h3>공공기관 분류 (공공기관운영법 §5)</h3>
+    <table>
+      <thead><tr><th>구분</th><th>유형</th><th>예시</th></tr></thead>
+      <tbody>
+        <tr><td><strong>공기업</strong></td><td>시장형 (자체수입 85%+)</td><td>한전·가스공사·인천공항·도공·LH·코레일 (시장형) — 발전 5사 등</td></tr>
+        <tr><td></td><td>준시장형 (50~85%)</td><td>주택금융공사·관광공사 등</td></tr>
+        <tr><td><strong>준정부기관</strong></td><td>위탁집행형</td><td>국민연금공단·건강보험공단</td></tr>
+        <tr><td></td><td>기금관리형</td><td>공무원연금공단·근로복지공단</td></tr>
+        <tr><td><strong>기타공공기관</strong></td><td></td><td>위 둘에 해당하지 않는 공공기관</td></tr>
+      </tbody>
+    </table>
+    <h3>지방공기업</h3>
+    <ul>
+      <li><strong>지방직영기업</strong>: 자치단체 직영 (상하수도·교통·궤도)</li>
+      <li><strong>지방공사·지방공단</strong>: 별도 법인 (서울교통공사 등)</li>
+    </ul>
+    <h3>책임운영기관 (Executive Agency)</h3>
+    <p>1999 영국 모델 도입. 정부 조직이지만 <strong>운영 자율성·책임성</strong> 부여. 인사·예산·성과 평가 자율 → 결과로 평가. 한국: 국립과학수사연구원·국립의료원·통계센터·운전면허시험관리단 등 50여 개.</p>
+    <h3>민관협력 (PPP·PFI·BOT·BTO)</h3>
+    <ul>
+      <li><strong>BOT (Build-Operate-Transfer)</strong>: 민간이 건설·운영 후 정부에 이전</li>
+      <li><strong>BTO (Build-Transfer-Operate)</strong>: 건설 후 정부 이전 → 민간 운영</li>
+      <li><strong>BTL (Build-Transfer-Lease)</strong>: 건설 후 정부 이전 → 정부가 임차료 지급 (학교·병원 적합)</li>
+    </ul>
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-17 / 2024-10 / 2021-14 / 2020-16 / 2019-6 등.</div>
+  </section>
+
+  <section class="topic tier2" id="t8">
+    <div class="topic-head">
+      <h2 class="topic-name">8. 행정학 총론·이론·학설사·접근방법</h2>
+      <div><span class="topic-num">TOPIC 08</span><span class="topic-freq"><span class="badge badge-freq">22회 / 10년</span></span></div>
+    </div>
+    <h3>주요 학설사</h3>
+    <ul>
+      <li><strong>1880s 윌슨</strong>: "행정의 연구" — 정치·행정 이원론 시초</li>
+      <li><strong>1930s 행정관리론</strong>: 굴릭·어윅 (POSDCORB), 페이욜 5요소</li>
+      <li><strong>1940s 사이먼 행태론</strong>: 의사결정·만족모형. <strong>행정의 과학화</strong></li>
+      <li><strong>1960s 신행정론 (Waldo)</strong>: <strong>사회적 형평성·실천·고객지향</strong> 강조 (1968 미노브룩 회의)</li>
+      <li><strong>1970~80s 공공선택론 (Buchanan·Tullock)</strong>: 정부도 사익 추구 → 시장 메커니즘 도입</li>
+      <li><strong>1980s 신공공관리 (NPM)</strong>: 시장·경쟁·성과·고객·결과 중심. 영국 대처·미국 클린턴 도입</li>
+      <li><strong>2000s 뉴거버넌스</strong>: 정부+시장+시민사회 협치. 네트워크·신뢰·참여</li>
+      <li><strong>2000s 신공공서비스 (Denhardt)</strong>: NPM 비판 — 시민은 고객이 아니라 주인</li>
+    </ul>
+    <h3>시장실패·정부실패</h3>
+    <ul>
+      <li><strong>시장실패 원인</strong>: 공공재·외부효과·정보비대칭·독점/과점·소득분배 불평등</li>
+      <li><strong>정부실패 원인 (Wolf)</strong>: ① 정치적 합리성과 경제적 합리성 충돌, ② 사적 목표 추구, ③ X-비효율, ④ 파생적 외부효과, ⑤ 권력의 편재·독점</li>
+    </ul>
+    <h3>행정 접근방법</h3>
+    <ul>
+      <li><strong>역사적·법률적·관리적·행태적·체제적·생태적·비교론적·현상학적·신제도주의</strong></li>
+      <li><strong>신제도주의</strong>: 합리적 선택·역사적·사회학적 신제도주의 (제도의 영향 강조)</li>
+    </ul>
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-1·2 / 2024-3·4 / 2023-1 / 2020-14 / 2017-2 등.</div>
+  </section>
+
+  <section class="topic tier3" id="t9">
+    <div class="topic-head">
+      <h2 class="topic-name">9. 리더십·동기부여·조직행태</h2>
+      <div><span class="topic-num">TOPIC 09</span><span class="topic-freq"><span class="badge badge-freq med">13회 / 10년</span></span></div>
+    </div>
+    <h3>리더십 이론 발전</h3>
+    <ul>
+      <li><strong>특성이론</strong>: 리더의 타고난 특성 (1940s) — 한계: 보편 특성 X</li>
+      <li><strong>행태이론</strong>: 리더 행동 (오하이오대 — 구조주도·배려, 미시간대 — 직무·인간 중심, 블레이크-무튼 관리격자)</li>
+      <li><strong>상황이론</strong>: 피들러 LPC, 허시-블랜차드 상황적 리더십, 하우스 경로-목표</li>
+      <li><strong>변혁적 vs 거래적 (Burns·Bass)</strong>: 변혁 = 비전·동기·영감 / 거래 = 보상·교환</li>
+      <li><strong>서번트 리더십·진정성 리더십·윤리적 리더십·공유 리더십</strong> 등 현대 이론</li>
+    </ul>
+    <h3>커뮤니케이션</h3>
+    <ul>
+      <li>유형: <strong>공식 vs 비공식</strong>, <strong>수직(상→하·하→상)·수평·대각선</strong></li>
+      <li>장애: 의미·물리·심리적 잡음 / 정보과부하 / 지위차이</li>
+    </ul>
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>리더십·커뮤니케이션 자주 출제 (조직론과 함께).</div>
+  </section>
+
+  <section class="topic tier3" id="t10">
+    <div class="topic-head">
+      <h2 class="topic-name">10. 행정통제·책임·윤리·부패</h2>
+      <div><span class="topic-num">TOPIC 10</span><span class="topic-freq"><span class="badge badge-freq med">11회 / 10년</span></span></div>
+    </div>
+    <h3>행정통제 분류</h3>
+    <table>
+      <thead><tr><th></th><th>외부통제</th><th>내부통제</th></tr></thead>
+      <tbody>
+        <tr><td>공식</td><td>국회 (입법)·법원 (사법)·헌법재판소·옴부즈만</td><td>감사원·인사혁신처·기획재정부·계층제 통제</td></tr>
+        <tr><td>비공식</td><td>여론·언론·이익집단·시민단체·정당</td><td>직업윤리·동료 압력·전문직업주의</td></tr>
+      </tbody>
+    </table>
+    <h3>롬젝(Romzek)·더브닉(Dubnick) 행정책임 4유형</h3>
+    <table>
+      <thead><tr><th></th><th>외부 통제 원천</th><th>내부 통제 원천</th></tr></thead>
+      <tbody>
+        <tr><td>높은 통제 정도</td><td>법적 책임 (Legal)</td><td>관료적 책임 (Bureaucratic)</td></tr>
+        <tr><td>낮은 통제 정도</td><td>정치적 책임 (Political)</td><td>전문가적 책임 (Professional)</td></tr>
+      </tbody>
+    </table>
+    <h3>공직부패</h3>
+    <ul>
+      <li><strong>흑색·회색·백색 부패</strong>: 사회 인식 정도 (불법·논란·관행)</li>
+      <li><strong>제도적 부패</strong> vs <strong>일탈형 부패</strong> (개인 일탈)</li>
+      <li><strong>거래형·사기형·강요형·후원형</strong> 부패</li>
+      <li><strong>청탁금지법·이해충돌방지법·공직자윤리법</strong> 3대 청렴 입법</li>
+    </ul>
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-20 / 2023-15·17 / 2021-4 / 2024-14 등.</div>
+  </section>
+
+  <section class="topic tier3" id="t11">
+    <div class="topic-head">
+      <h2 class="topic-name">11. 현대 행정 (4차 산업혁명·전자정부·디지털)</h2>
+      <div><span class="topic-num">TOPIC 11</span><span class="topic-freq"><span class="badge badge-freq med">7회 / 10년</span></span></div>
+    </div>
+    <h3>전자정부 (e-Government)</h3>
+    <ul>
+      <li><strong>G2G (정부 간)·G2B (정부-기업)·G2C (정부-시민)·G2E (정부-공무원)</strong></li>
+      <li>한국: 정부24·홈택스·민원24 등 → UN 전자정부 평가 세계 상위권</li>
+      <li><strong>전자정부법 §2</strong>: 전자적 처리·정보화·통합 정의</li>
+    </ul>
+    <h3>4차 산업혁명 주요 기술</h3>
+    <ul>
+      <li><strong>AI (인공지능)</strong>: 행정 의사결정 보조·민원 챗봇</li>
+      <li><strong>빅데이터</strong>: 정책 분석·예측</li>
+      <li><strong>IoT (사물인터넷)</strong>: 스마트 시티</li>
+      <li><strong>블록체인</strong>: 행정 신뢰성·투명성 (예: 모바일 신분증)</li>
+      <li><strong>클라우드</strong>: 정부 IT 인프라 통합</li>
+    </ul>
+    <h3>디지털 정부 혁신</h3>
+    <p>2019 "디지털플랫폼정부" 비전. 데이터 기반 행정 + 한 번 신청으로 모든 서비스 (Once Only). UI/UX 사용자 중심.</p>
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-18 / 2024-20 / 2023-14.</div>
+  </section>
+
+  <section class="topic tier3" id="t12">
+    <div class="topic-head">
+      <h2 class="topic-name">12. 지방재정·지방세·재정조정</h2>
+      <div><span class="topic-num">TOPIC 12</span><span class="topic-freq"><span class="badge badge-freq med">2회 / 10년</span></span></div>
+    </div>
+    <h3>지방세 종류 (지방세기본법)</h3>
+    <ul>
+      <li><strong>도세</strong>: 취득세·등록면허세·레저세·지방교육세·지방소비세</li>
+      <li><strong>시·군세</strong>: 주민세·지방소득세·재산세·자동차세·담배소비세·지방교육세</li>
+      <li><strong>광역시세 vs 자치구세</strong>: 별도 분류 (광역시세 = 도세 + 시·군세 일부)</li>
+    </ul>
+    <h3>지방재정 조정 제도</h3>
+    <ul>
+      <li><strong>지방교부세</strong>: 국세 중 일정 비율 (내국세 19.24% + 종합부동산세 전액 + 담배소비세 일부) → 자치단체 재정 형평화. 보통교부세·특별교부세·부동산교부세·소방안전교부세</li>
+      <li><strong>국고보조금</strong>: 특정 사업 보조 (지정용도). 국가 시책 수행 위해</li>
+      <li><strong>지방교육재정교부금</strong>: 교육청 — 내국세 20.79%</li>
+    </ul>
+    <h3>재정자립도·재정자주도</h3>
+    <ul>
+      <li><strong>재정자립도</strong> = (지방세 + 세외수입) / 일반회계 세입 × 100. 자체 수입 비율</li>
+      <li><strong>재정자주도</strong> = (지방세 + 세외수입 + 지방교부세) / 일반회계 세입 × 100. 자율적 사용 가능 비율</li>
+    </ul>
+    <div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-19 (지방재정진단).</div>
+  </section>
+
+  <hr class="divider" />
+
+  <div class="coverage-box">
+    <div class="coverage-eye">📊 Coverage Test (예상)</div>
+    <div class="coverage-num">~90%</div>
+    <p>14단원으로 행정학개론 기출 거의 전부 cover. 미커버 가능성: 2~3건의 매우 구체적 개념 (티부 모형 가정·살라몬 분류 세부 등) → 다음 v2에서 보강.</p>
+    <p style="margin-top: 12px;"><strong>다음 단계</strong>: 검증 코드 실행 + 미커버 키워드 추가. 시간 효율을 위해 다음 메시지에서 batch (헌법·형법·형사소송법 등) 진행.</p>
+  </div>
+
+  <section class="topic" id="reinforce" style="margin-top:32px;border-left:5px solid #BE123C;background:#fff;border:1px solid rgba(31,26,20,.12);border-radius:14px;padding:26px 30px;">
+    <h2 style="font-family:var(--serif);font-size:22px;font-weight:900;margin:0 0 16px;">13. 보강 — 빈출 누락 개념</h2>
+
+    <h3 style="font-family:var(--serif);font-size:16px;font-weight:800;margin:18px 0 8px;border-left:3px solid #B45309;padding-left:10px;">예산심의 (예산과정 4단계 중 2단계)</h3>
+    <ul>
+      <li><strong>예산편성</strong>: 행정부 (기재부 → 국무회의 → 회계연도 개시 120일 전 국회 제출)</li>
+      <li><strong>예산심의</strong>: 국회 — 회계연도 개시 30일 전까지 의결
+        <ul>
+          <li>시정연설 → 상임위 예비심사 → 예결특위 종합심사 → 본회의 의결</li>
+          <li>총액범위 내 증액·신비목 설치는 정부 동의 필요</li>
+          <li>한국은 예산법률주의 X, 예산비법률주의 (예산 자체는 법률 X)</li>
+        </ul>
+      </li>
+      <li><strong>예산집행</strong>: 회계연도 (1.1~12.31) 내 집행</li>
+      <li><strong>결산</strong>: 다음 해 5월 31일까지 국회 제출, 본회의 의결</li>
+    </ul>
+
+    <h3 style="font-family:var(--serif);font-size:16px;font-weight:800;margin:18px 0 8px;border-left:3px solid #B45309;padding-left:10px;">특별지방행정기관 (특행기관)</h3>
+    <ul>
+      <li><strong>정의</strong>: 중앙행정기관이 지역 단위 사무 처리를 위해 지방에 설치한 일선기관</li>
+      <li><strong>예</strong>: 지방국세청·세무서, 지방고용노동청, 출입국관리사무소, 지방통계청, 지방환경청, 지방산림청, 지방국토관리청 등</li>
+      <li><strong>특징</strong>: 중앙부처 직속, 지자체와 별개 (인사·예산 모두 중앙)</li>
+      <li><strong>장점</strong>: 전문성·통일성. <strong>단점</strong>: 지방분권 저해, 이중행정, 종합행정 곤란</li>
+      <li><strong>최근 흐름</strong>: 일부 사무 지자체 이양 추진 (2단계 자치분권 등)</li>
+    </ul>
+
+    <h3 style="font-family:var(--serif);font-size:16px;font-weight:800;margin:18px 0 8px;border-left:3px solid #B45309;padding-left:10px;">BSC (Balanced Scorecard, 균형성과표)</h3>
+    <ul>
+      <li><strong>제안자</strong>: Kaplan & Norton (1992)</li>
+      <li><strong>4가지 관점</strong>:
+        <ol>
+          <li><strong>재무 (Financial)</strong>: 수익·비용·ROI</li>
+          <li><strong>고객 (Customer)</strong>: 만족도·시장점유율 (공공: 시민만족도)</li>
+          <li><strong>내부 프로세스 (Internal Business Process)</strong>: 효율·품질·시간</li>
+          <li><strong>학습·성장 (Learning & Growth)</strong>: 인적자원·정보시스템·조직문화</li>
+        </ol>
+      </li>
+      <li><strong>특징</strong>: 재무지표 + 비재무지표 균형, 단기 + 장기 균형, 내부 + 외부 균형, 후행 + 선행 균형</li>
+      <li><strong>공공부문 적용</strong>: 고객·내부·학습성장 강조 (재무는 부차적)</li>
+    </ul>
+
+    <h3 style="font-family:var(--serif);font-size:16px;font-weight:800;margin:18px 0 8px;border-left:3px solid #B45309;padding-left:10px;">행정정보공개제도 (정보공개법, 1996 제정)</h3>
+    <ul>
+      <li><strong>정식명칭</strong>: 공공기관의 정보공개에 관한 법률</li>
+      <li><strong>청구권자</strong>: 모든 국민 + 외국인 (학술·연구 + 거주자)</li>
+      <li><strong>대상기관</strong>: 국가·지자체·공공기관·정부산하기관</li>
+      <li><strong>비공개대상 (제9조)</strong>: 법령상 비밀, 국가안전·외교·국방, 국민의 생명·재산 보호, 진행 중 재판·수사, 인사·감사·계약·업무 공정 저해, 개인정보, 영업비밀, 부동산투기·매점매석</li>
+      <li><strong>처리기간</strong>: 청구 받은 날부터 <strong>10일 이내</strong> 결정 (10일 연장 가능)</li>
+      <li><strong>이의신청·행정심판·행정소송</strong>: 비공개 결정 시 권리구제</li>
+      <li><strong>정보공개위원회</strong>: 행정안전부 소속</li>
+    </ul>
+
+    <h3 style="font-family:var(--serif);font-size:16px;font-weight:800;margin:18px 0 8px;border-left:3px solid #B45309;padding-left:10px;">성과평가 (정부업무평가)</h3>
+    <ul>
+      <li><strong>법적 근거</strong>: 정부업무평가기본법 (2006)</li>
+      <li><strong>평가 종류</strong>:
+        <ul>
+          <li><strong>자체평가</strong>: 각 기관이 스스로 평가</li>
+          <li><strong>특정평가</strong>: 국무총리실이 정책·사업·기관 등 특정 분야 평가</li>
+          <li><strong>합동평가</strong>: 중앙·지방 공동 사무 평가</li>
+          <li><strong>지자체합동평가</strong>: 행안부 주관</li>
+        </ul>
+      </li>
+      <li><strong>정부업무평가위원회</strong>: 국무총리 소속</li>
+      <li><strong>평가지표</strong>: 효과성(목표 달성), 효율성(자원 대비), 능률성(투입-산출), 형평성, 대응성</li>
+      <li><strong>평가결과 활용</strong>: 예산·인사·조직 환류</li>
+    </ul>
+
+    <h3 style="font-family:var(--serif);font-size:16px;font-weight:800;margin:18px 0 8px;border-left:3px solid #B45309;padding-left:10px;">정책과정 (Policy Process)</h3>
+    <ul>
+      <li><strong>5단계 (Anderson 모형)</strong>:
+        <ol>
+          <li><strong>정책의제설정 (Agenda Setting)</strong>: 사회문제 → 정책문제 → 정부의제</li>
+          <li><strong>정책결정 (Policy Formulation)</strong>: 대안 탐색·평가·선택 (합리·점증·만족모형 등)</li>
+          <li><strong>정책집행 (Policy Implementation)</strong>: 결정된 정책의 실현 (하향식·상향식·통합모형)</li>
+          <li><strong>정책평가 (Policy Evaluation)</strong>: 효과 측정 (총괄·과정평가)</li>
+          <li><strong>정책변동 (Policy Change)</strong>: 정책유지·승계·종결·혁신</li>
+        </ol>
+      </li>
+      <li><strong>의제설정 모형</strong>: 외부주도형, 동원형, 내부접근형 (Cobb·Ross·Ross)</li>
+      <li><strong>정책의 창 모형 (Kingdon)</strong>: 문제·정책·정치의 3 흐름이 합류할 때 정책 채택</li>
+    </ul>
+
+    <h3 style="font-family:var(--serif);font-size:16px;font-weight:800;margin:18px 0 8px;border-left:3px solid #B45309;padding-left:10px;">지방재정조정제도</h3>
+    <table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:13px;">
+      <tr style="background:#ede2cd;"><th style="border:1px solid #d6cdb8;padding:8px;">제도</th><th style="border:1px solid #d6cdb8;padding:8px;">내용</th></tr>
+      <tr><td style="border:1px solid #d6cdb8;padding:8px;"><strong>지방교부세</strong></td><td style="border:1px solid #d6cdb8;padding:8px;">국가가 지자체에 무조건 교부 (재원 = 내국세 19.24%). 보통교부세·특별교부세·부동산교부세·소방안전교부세</td></tr>
+      <tr><td style="border:1px solid #d6cdb8;padding:8px;"><strong>국고보조금</strong></td><td style="border:1px solid #d6cdb8;padding:8px;">특정 사업에 용도 한정 (목적성). 일정 부담률 + 매칭. 협의·신청 필요</td></tr>
+      <tr><td style="border:1px solid #d6cdb8;padding:8px;"><strong>지방세 (자체 재원)</strong></td><td style="border:1px solid #d6cdb8;padding:8px;">취득세·재산세·자동차세 등. 지자체별 차이</td></tr>
+      <tr><td style="border:1px solid #d6cdb8;padding:8px;"><strong>조정교부금 (광역→기초)</strong></td><td style="border:1px solid #d6cdb8;padding:8px;">시·도가 시·군·구에 교부 (재원 = 시·도세의 일정 비율)</td></tr>
+      <tr><td style="border:1px solid #d6cdb8;padding:8px;"><strong>징수교부금</strong></td><td style="border:1px solid #d6cdb8;padding:8px;">시·군·구가 시·도세 징수 시 시·도가 교부</td></tr>
+    </table>
+
+    <h3 style="font-family:var(--serif);font-size:16px;font-weight:800;margin:18px 0 8px;border-left:3px solid #B45309;padding-left:10px;">살라몬 정책수단 분류 (Tools of Government)</h3>
+    <ul>
+      <li><strong>직접수단</strong>: 정부가 직접 공급
+        <ul><li>직접대출, 정부소비, 정부소유 기업, 직접 규제</li></ul>
+      </li>
+      <li><strong>간접수단</strong>: 비정부 행위자 활용
+        <ul><li>보조금, 조세지출, 바우처(쿠폰), 손해배상책임법, 사회보험, 정부보증대출, 공공계약, 공기업, 비정부조직(NGO) 활용</li></ul>
+      </li>
+      <li><strong>강제성·직접성·자동성·가시성</strong> 4차원으로 분류</li>
+    </ul>
+
+    <h3 style="font-family:var(--serif);font-size:16px;font-weight:800;margin:18px 0 8px;border-left:3px solid #B45309;padding-left:10px;">관련 빈출 키워드 인덱스</h3>
+    <p style="font-size:13px;color:#5A4F3F;line-height:1.8;">
+      <strong>행정이론</strong>: 과학적 관리론·인간관계론·체제론·발전행정론·신공공관리론(NPM)·신공공서비스론·뉴거버넌스 (5단원 참조).
+      <strong>인사제도</strong>: 직위분류제·계급제·실적주의·엽관주의·대표관료제·고위공무원단·균형인사 (인사론 4단원 참조).
+      <strong>조직유형</strong>: 기능구조·사업구조·매트릭스·네트워크·팀제 / 베버 관료제·민츠버그 5요소·번스·스토커 유기적/기계적 (조직론 4단원 참조).
+      <strong>동기이론</strong>: 매슬로우 욕구단계·허즈버그 2요인·맥그리거 X/Y·앨더퍼 ERG·맥클랜드 성취동기·브룸 기대이론·아담스 형평성·로크 목표설정 (인사론 4단원 참조).
+      <strong>정책결정모형</strong>: 합리·점증·만족·혼합주사·최적·쓰레기통·앨리슨 (정책론 3단원 참조).
+      <strong>주민참여제도</strong>: 주민투표·주민발의·주민소환·주민감사청구·주민소송·주민참여예산제 (지방자치 9단원 참조).
+      <strong>정부업무평가제도</strong>: 정부업무평가기본법, 자체·특정·합동평가, 정부업무평가위원회.
+    </p>
+
+    <h3 style="font-family:var(--serif);font-size:16px;font-weight:800;margin:18px 0 8px;border-left:3px solid #B45309;padding-left:10px;">티부 (Tiebout) 모형</h3>
+    <ul>
+      <li><strong>핵심</strong>: 시민이 발로 투표 (foot voting) → 자신의 선호와 일치하는 지자체 선택 → 지자체 간 경쟁으로 효율적 공공재 공급</li>
+      <li><strong>가정 (전제조건)</strong>:
+        <ol>
+          <li>시민의 완전한 이동성 (mobility)</li>
+          <li>다수의 지자체 존재</li>
+          <li>완전한 정보</li>
+          <li>고용·소득 제약 없음 (배당소득으로 생활)</li>
+          <li>외부효과 없음 (지자체 간 spillover X)</li>
+          <li>최적 규모 존재 (규모 수익)</li>
+          <li>지방세는 편익 비례 (응익성)</li>
+        </ol>
+      </li>
+      <li><strong>한계</strong>: 가정이 비현실적, 형평성 무시</li>
+    </ul>
+  </section>
+
+  <footer>
+    <div class="eyebrow" style="color: var(--ink-soft);">기출노트 · 9급 행정학개론 자동 단권화</div>
+    <p style="margin: 0 0 4px;">2026-04-27 · 10회 200문제 → 13단원 (보강 후) · 행정법총론과 동일 파이프라인</p>
+    <p style="margin: 0; font-family: var(--mono); font-size: 11px;">관련: docs/admin-law-summary-note.html · docs/admin-law-pilot-report.html</p>
+  </footer>
+
+</div>
+</body>
+</html>

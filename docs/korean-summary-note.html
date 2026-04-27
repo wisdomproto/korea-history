@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9급 국가직 국어 자동 단권화 — 9단원</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Serif KR', 'Pretendard Variable', serif; background: #F5EFE4; color: #1F1A14; line-height: 1.7; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 48px 32px 96px; }
+  header { border-bottom: 2px solid #1F1A14; padding-bottom: 24px; margin-bottom: 32px; }
+  h1 { font-size: 38px; letter-spacing: -0.02em; }
+  .sub { color: #B45309; font-size: 14px; margin-top: 8px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; }
+  .meta { display: flex; gap: 24px; margin-top: 16px; font-size: 13px; color: #6b6258; }
+  .meta strong { color: #1F1A14; }
+  h2 { font-size: 26px; margin: 48px 0 16px; padding-bottom: 8px; border-bottom: 1px solid #1F1A14; }
+  h2 .freq { font-size: 13px; color: #B45309; font-family: 'JetBrains Mono', monospace; font-weight: 400; margin-left: 12px; }
+  h3 { font-size: 18px; margin: 24px 0 12px; color: #0D9488; }
+  p { margin: 12px 0; }
+  ul, ol { padding-left: 24px; margin: 12px 0; }
+  li { margin: 6px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; background: #fff; }
+  th, td { padding: 10px 12px; border: 1px solid #d6cdb8; text-align: left; vertical-align: top; }
+  th { background: #ede2cd; font-weight: 700; }
+  .exam-box { background: #fff7ed; border-left: 4px solid #B45309; padding: 12px 16px; margin: 16px 0; font-size: 14px; }
+  .exam-box strong { color: #B45309; }
+  .toc { background: #fff; border: 1px solid #d6cdb8; padding: 20px 28px; border-radius: 6px; margin: 24px 0; }
+  .toc h3 { color: #1F1A14; margin: 0 0 12px; }
+  .toc ol { columns: 2; column-gap: 32px; }
+  .toc a { color: #1F1A14; text-decoration: none; }
+  .toc a:hover { color: #B45309; }
+  .freq-chart { background: #fff; padding: 20px; border-radius: 6px; margin: 24px 0; }
+  .freq-row { display: flex; align-items: center; gap: 12px; margin: 6px 0; font-size: 13px; }
+  .freq-label { width: 220px; flex-shrink: 0; }
+  .freq-bar { background: #B45309; height: 18px; border-radius: 3px; }
+  .freq-num { color: #6b6258; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .verify { background: #ecfdf5; border: 1px solid #10b981; padding: 16px 20px; border-radius: 6px; margin: 32px 0; font-size: 14px; }
+  .verify strong { color: #047857; }
+  .alert { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 14px 18px; margin: 16px 0; font-size: 14px; }
+  footer { text-align: center; margin-top: 64px; padding-top: 24px; border-top: 1px solid #d6cdb8; color: #6b6258; font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>국어 자동 단권화 (9급 국가직)</h1>
+  <div class="sub">전 직렬 공통과목 · PSAT형 개편 후 9단원 자동 분류</div>
+  <div class="meta">
+    <span><strong>시드:</strong> 10회 196문제</span>
+    <span><strong>검증:</strong> 2회 40문제</span>
+    <span><strong>커버리지:</strong> 95.4% (187/196)</span>
+    <span><strong>업데이트:</strong> 2026-04-27</span>
+  </div>
+</header>
+
+<div class="alert">
+  <strong>⚠️ 2025년 개편 주의:</strong> 9급 국가직 국어가 <strong>PSAT형 (의사소통·자료해석)</strong>으로 개편되면서 문법·고전문학 비중이 급감하고 <strong>독해(읽기)가 50% 이상</strong>을 차지하게 됨. 본 노트는 신경향(2024~)과 구경향(~2023)을 모두 반영.
+</div>
+
+<div class="toc">
+  <h3>목차 (출제 빈도순)</h3>
+  <ol>
+    <li><a href="#reading-modern">현대문 읽기 (구조·삽입·순서) — 106</a></li>
+    <li><a href="#vocabulary">어휘·한자·한자성어 — 31</a></li>
+    <li><a href="#grammar">문법·어법 — 18</a></li>
+    <li><a href="#literature-modern">현대문학 — 13</a></li>
+    <li><a href="#discourse">화법·작문 — 9</a></li>
+    <li><a href="#spelling">맞춤법·표준어·로마자 — 8</a></li>
+    <li><a href="#history-language">국어사·언어 일반 — 2</a></li>
+    <li><a href="#literature-classic">고전문학 — 0~소수</a></li>
+    <li><a href="#rhetoric">수사·표현·문체 (현대문 통합)</a></li>
+  </ol>
+</div>
+
+<div class="freq-chart">
+  <h3>단원별 출제 빈도 (10회 시드)</h3>
+  <div class="freq-row"><div class="freq-label">현대문 읽기 (구조)</div><div class="freq-bar" style="width: 100%;"></div><div class="freq-num">106 (54%)</div></div>
+  <div class="freq-row"><div class="freq-label">어휘·한자성어</div><div class="freq-bar" style="width: 29%;"></div><div class="freq-num">31</div></div>
+  <div class="freq-row"><div class="freq-label">문법·어법</div><div class="freq-bar" style="width: 17%;"></div><div class="freq-num">18</div></div>
+  <div class="freq-row"><div class="freq-label">현대문학</div><div class="freq-bar" style="width: 12%;"></div><div class="freq-num">13</div></div>
+  <div class="freq-row"><div class="freq-label">화법·작문</div><div class="freq-bar" style="width: 8%;"></div><div class="freq-num">9</div></div>
+  <div class="freq-row"><div class="freq-label">맞춤법·표준어</div><div class="freq-bar" style="width: 7%;"></div><div class="freq-num">8</div></div>
+  <div class="freq-row"><div class="freq-label">국어사·언어 일반</div><div class="freq-bar" style="width: 2%;"></div><div class="freq-num">2</div></div>
+</div>
+
+<h2 id="reading-modern">1. 현대문 읽기 (구조·삽입·순서) <span class="freq">출제 106회 (절반)</span></h2>
+<p>국어 시험의 절반 이상. PSAT형 개편 이후 더욱 비중 증가. <strong>5개 패턴</strong>만 마스터하면 50%는 보장.</p>
+
+<h3>패턴 1 — 글의 주제·요지 찾기</h3>
+<ul>
+  <li><strong>전략</strong>: 첫 문단 + 마지막 문단 우선. 접속어 (그러나·따라서·결국)에서 결론 찾기</li>
+  <li><strong>함정</strong>: 너무 좁은 사례·예시는 주제 아님. 가장 포괄적인 진술 선택</li>
+  <li><strong>중심 화제</strong>: 글에 가장 자주 등장하는 개념</li>
+</ul>
+
+<h3>패턴 2 — 글의 순서 배열 (가)~(라)</h3>
+<ul>
+  <li><strong>전략 1</strong>: 지시어(이·그·저)와 접속어(하지만·따라서·또한) 추적</li>
+  <li><strong>전략 2</strong>: <strong>일반 → 구체</strong>, <strong>원인 → 결과</strong>, <strong>문제제기 → 해결</strong> 흐름 파악</li>
+  <li><strong>전략 3</strong>: 첫 문장 후보 2~3개 → 마지막 문장 → 중간 채우기</li>
+  <li><strong>대표 함정</strong>: 시간 순서가 아닌 논리적 순서</li>
+</ul>
+
+<h3>패턴 3 — 문장·문단 삽입 위치</h3>
+<ul>
+  <li><strong>전략</strong>: 삽입할 문장의 지시어·접속어 분석 → 그 문장이 가리키는 대상이 직전에 와야 함</li>
+  <li>예: "이러한 현상은…" → '현상'에 해당하는 내용 직후</li>
+  <li>예: "그러나…" → 반대 내용 직후</li>
+</ul>
+
+<h3>패턴 4 — 빈칸 추론 (㉠·㉡·㉢)</h3>
+<ul>
+  <li><strong>전략</strong>: 빈칸 앞뒤 문장의 논리 관계 (인과·대조·예시) 파악</li>
+  <li>접속어가 단서: 따라서/그러므로 → 결론, 그러나/반면 → 대조</li>
+  <li>여러 빈칸이 있으면 짝짓기 (각 빈칸의 단서 → 선지 매칭)</li>
+</ul>
+
+<h3>패턴 5 — 내용 일치·불일치</h3>
+<ul>
+  <li><strong>전략</strong>: 선지 키워드 → 본문에서 직접 확인 (추론 금지)</li>
+  <li><strong>함정 5종</strong>: ① 부분 사실 + 일부 왜곡, ② 정도 과장 (모두/항상/절대), ③ 인과 역전, ④ 본문에 없는 정보 추가, ⑤ 비교 대상 바꾸기</li>
+</ul>
+
+<div class="exam-box"><strong>출제 패턴:</strong> "글에 대한 이해로 적절하지 않은 것은?" — 4개 선지 중 3개는 본문 일치, 1개가 함정. 함정 유형 5종을 의식하면 정답률 급상승.</div>
+
+<h2 id="vocabulary">2. 어휘·한자·한자성어 <span class="freq">출제 31회</span></h2>
+
+<h3>어휘력 — 동의어·유의어·반의어</h3>
+<table>
+  <tr><th>관계</th><th>예시</th></tr>
+  <tr><td><strong>동의어</strong></td><td>달걀=계란, 옥수수=강냉이</td></tr>
+  <tr><td><strong>유의어</strong></td><td>예쁘다·곱다·아름답다 (강도 차이)</td></tr>
+  <tr><td><strong>반의어</strong></td><td>크다↔작다, 살다↔죽다</td></tr>
+  <tr><td><strong>다의어</strong></td><td>한 단어가 여러 관련 의미 ('손'=손/일꾼/도움)</td></tr>
+  <tr><td><strong>동음이의어</strong></td><td>발음 같으나 의미 무관 (배=과일/배=선박/배=신체)</td></tr>
+</table>
+
+<h3>고유어·한자어·외래어</h3>
+<ul>
+  <li><strong>고유어</strong>: 우리말 본래 단어 (마음, 사랑, 집)</li>
+  <li><strong>한자어</strong>: 한자 기원 (학교, 시간, 인간) — 70% 이상 차지</li>
+  <li><strong>외래어</strong>: 외국에서 들어와 정착 (라디오, 컴퓨터, 빵)</li>
+  <li><strong>외국어</strong>: 정착하지 못한 외국어 (보쥬르, 댄스)</li>
+</ul>
+
+<h3>주요 한자성어 (자주 출제)</h3>
+<table>
+  <tr><th>성어</th><th>의미</th></tr>
+  <tr><td>각주구검 (刻舟求劍)</td><td>융통성 없이 옛 방식 고집</td></tr>
+  <tr><td>견리사의 (見利思義)</td><td>이익을 보면 의로움 생각</td></tr>
+  <tr><td>고진감래 (苦盡甘來)</td><td>고생 끝에 즐거움</td></tr>
+  <tr><td>과유불급 (過猶不及)</td><td>지나친 것은 미치지 못한 것과 같다</td></tr>
+  <tr><td>교각살우 (矯角殺牛)</td><td>작은 흠 고치려다 큰 일 그르침</td></tr>
+  <tr><td>구사일생 (九死一生)</td><td>죽을 고비 넘기고 살아남</td></tr>
+  <tr><td>금상첨화 (錦上添花)</td><td>좋은 일에 더 좋은 일</td></tr>
+  <tr><td>대기만성 (大器晩成)</td><td>큰 그릇은 늦게 이루어짐</td></tr>
+  <tr><td>동상이몽 (同床異夢)</td><td>같이 있으나 생각은 다름</td></tr>
+  <tr><td>등하불명 (燈下不明)</td><td>등잔 밑이 어둡다</td></tr>
+  <tr><td>망양보뢰 (亡羊補牢)</td><td>잃고 나서 외양간 고침 (사후약방문)</td></tr>
+  <tr><td>설상가상 (雪上加霜)</td><td>좋지 않은 일이 잇따름</td></tr>
+  <tr><td>새옹지마 (塞翁之馬)</td><td>인생사 길흉화복 알 수 없음</td></tr>
+  <tr><td>오비이락 (烏飛梨落)</td><td>까마귀 날자 배 떨어진다 (우연한 오해)</td></tr>
+  <tr><td>유비무환 (有備無患)</td><td>준비가 있으면 걱정 없음</td></tr>
+  <tr><td>일거양득 (一擧兩得)</td><td>한 가지로 두 가지 이득</td></tr>
+  <tr><td>전화위복 (轉禍爲福)</td><td>화가 변하여 복이 됨</td></tr>
+  <tr><td>주마간산 (走馬看山)</td><td>대충 훑어봄</td></tr>
+  <tr><td>청출어람 (靑出於藍)</td><td>제자가 스승보다 나음</td></tr>
+  <tr><td>호가호위 (狐假虎威)</td><td>남의 권세를 빌려 위세 부림</td></tr>
+</table>
+
+<h3>속담·관용구</h3>
+<ul>
+  <li><strong>속담</strong>: 민중의 지혜를 압축한 짧은 표현 (예: "가는 말이 고와야 오는 말이 곱다")</li>
+  <li><strong>관용구</strong>: 두 단어 이상이 결합해 글자 그대로의 뜻과 다른 새 의미 (예: "발이 넓다" = 인맥이 많다)</li>
+</ul>
+
+<h2 id="grammar">3. 문법·어법 <span class="freq">출제 18회</span></h2>
+
+<h3>음운</h3>
+<ul>
+  <li><strong>음운</strong>: 자음 19개 + 모음 21개 = 40개</li>
+  <li><strong>음운 변동</strong>:
+    <ul>
+      <li>교체: 음절끝소리규칙 (꽃[꼳]), 자음동화 (국물[궁물])</li>
+      <li>탈락: 자음군 단순화 (값[갑]), 'ㅎ' 탈락 (낳은[나은])</li>
+      <li>첨가: 사이시옷 (시냇가[시낻까]), 'ㄴ' 첨가 (솜이불[솜니불])</li>
+      <li>축약: 거센소리되기 (좋다[조타])</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>품사 (9품사)</h3>
+<table>
+  <tr><th>분류</th><th>품사</th><th>예</th></tr>
+  <tr><td rowspan="3">체언</td><td>명사</td><td>학교, 사랑</td></tr>
+  <tr><td>대명사</td><td>나, 그</td></tr>
+  <tr><td>수사</td><td>하나, 첫째</td></tr>
+  <tr><td rowspan="2">용언</td><td>동사</td><td>먹다, 가다</td></tr>
+  <tr><td>형용사</td><td>예쁘다, 좋다</td></tr>
+  <tr><td rowspan="2">수식언</td><td>관형사</td><td>이, 그, 새</td></tr>
+  <tr><td>부사</td><td>매우, 잘</td></tr>
+  <tr><td>독립언</td><td>감탄사</td><td>아, 어</td></tr>
+  <tr><td>관계언</td><td>조사</td><td>이/가, 을/를</td></tr>
+</table>
+
+<h3>문장 성분</h3>
+<ul>
+  <li><strong>주성분</strong>: 주어, 서술어, 목적어, 보어</li>
+  <li><strong>부속성분</strong>: 관형어, 부사어</li>
+  <li><strong>독립성분</strong>: 독립어 (호격, 감탄사)</li>
+</ul>
+
+<h3>문장의 짜임</h3>
+<ul>
+  <li><strong>홑문장</strong>: 주어+서술어 1쌍</li>
+  <li><strong>겹문장</strong>:
+    <ul>
+      <li>이어진문장: 대등 (-고, -지만), 종속 (-아서, -면)</li>
+      <li>안은문장: 명사절(-기/-ㅁ), 관형절(-ㄴ/-ㄹ), 부사절(-게/-듯이), 인용절(-라고/-고), 서술절(주어+서술어)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>높임법</h3>
+<table>
+  <tr><th>종류</th><th>대상</th><th>방법</th></tr>
+  <tr><td>주체높임</td><td>주어</td><td>-시-, 께서, 진지/계시다</td></tr>
+  <tr><td>객체높임</td><td>목적어·부사어</td><td>드리다, 모시다, 여쭙다</td></tr>
+  <tr><td>상대높임</td><td>듣는 이</td><td>합쇼체, 해요체, 하오체, 하게체, 해체, 해라체</td></tr>
+</table>
+
+<h3>시제·피동·사동</h3>
+<ul>
+  <li><strong>시제</strong>: 과거 (-았/었), 현재 (-는다), 미래 (-겠/리)</li>
+  <li><strong>피동</strong>: -이/히/리/기, -되다, -어지다 (예: 물리다, 닫히다)</li>
+  <li><strong>사동</strong>: -이/히/리/기/우/구/추, -시키다, -게 하다 (예: 먹이다, 읽히다)</li>
+</ul>
+
+<h2 id="literature-modern">4. 현대문학 (시·소설·수필) <span class="freq">출제 13회</span></h2>
+
+<h3>현대시</h3>
+<ul>
+  <li><strong>화자(시적 자아)</strong>: 시 안에서 말하는 사람. 시인 ≠ 화자</li>
+  <li><strong>운율</strong>: 외형률(정형시), 내재율(자유시·산문시)</li>
+  <li><strong>심상(이미지)</strong>: 시각·청각·후각·미각·촉각·공감각</li>
+  <li><strong>주요 시인</strong>: 김소월(진달래꽃), 한용운(님의 침묵), 윤동주(서시), 정지용(향수), 백석(여승), 김수영(풀)</li>
+</ul>
+
+<h3>현대소설</h3>
+<ul>
+  <li><strong>3요소</strong>: 인물·사건·배경</li>
+  <li><strong>시점</strong>: 1인칭 주인공/관찰자, 3인칭 전지적 작가/관찰자</li>
+  <li><strong>구성</strong>: 발단·전개·위기·절정·결말 (5단 구성)</li>
+  <li><strong>주요 작가</strong>: 김동인(감자), 현진건(운수 좋은 날), 염상섭(만세전), 채만식(태평천하), 이상(날개), 황순원(소나기), 박완서, 이청준</li>
+</ul>
+
+<h3>수필·희곡·시나리오</h3>
+<ul>
+  <li><strong>수필</strong>: 형식 자유, 개성적, 1인칭, 비전문적</li>
+  <li><strong>희곡</strong>: 무대 상연 목적, 대사+지문, 갈등 중심</li>
+  <li><strong>시나리오</strong>: 영화 대본, S#(scene), F.I/F.O 등 영상 용어</li>
+</ul>
+
+<h2 id="discourse">5. 화법·작문 <span class="freq">출제 9회</span></h2>
+
+<h3>화법의 원리</h3>
+<ul>
+  <li><strong>그라이스 협력의 원리</strong>: 양·질·관련성·태도</li>
+  <li><strong>공손성의 원리</strong>: 요령·관용·찬동·겸양·동의</li>
+  <li><strong>순서 교대</strong>: 대화의 기본 구조</li>
+</ul>
+
+<h3>토의 vs 토론</h3>
+<table>
+  <tr><th>구분</th><th>토의</th><th>토론</th></tr>
+  <tr><td>목적</td><td>문제 해결·합의 도출</td><td>주장 관철·승패 가르기</td></tr>
+  <tr><td>참여자</td><td>같은 입장에서 협력</td><td>찬·반 대립</td></tr>
+  <tr><td>형태</td><td>심포지엄, 패널, 포럼, 원탁</td><td>입론·반론·교차질의·최종변론</td></tr>
+</table>
+
+<h3>작문 — 글쓰기 단계</h3>
+<ol>
+  <li><strong>계획하기</strong>: 주제·목적·예상 독자·매체 결정</li>
+  <li><strong>내용 생성</strong>: 자료 수집·정리</li>
+  <li><strong>내용 조직</strong>: 개요 작성, 짜임</li>
+  <li><strong>표현하기</strong>: 초고 작성</li>
+  <li><strong>고쳐쓰기</strong>: 수정·보완</li>
+</ol>
+
+<h3>설명문·논설문 짜임</h3>
+<ul>
+  <li><strong>설명문</strong>: 처음(화제 제시) → 중간(설명) → 끝(요약·정리)</li>
+  <li><strong>논설문</strong>: 서론(문제제기) → 본론(주장+논거) → 결론(주장 강조)</li>
+</ul>
+
+<h2 id="spelling">6. 맞춤법·표준어·로마자 <span class="freq">출제 8회</span></h2>
+
+<h3>한글 맞춤법 핵심 규정</h3>
+<ul>
+  <li><strong>제1항</strong>: "한글 맞춤법은 표준어를 소리대로 적되, 어법에 맞도록 함을 원칙으로 한다"</li>
+  <li><strong>두음법칙</strong>: 한자어 첫소리 'ㄴ·ㄹ' → 'ㅇ·ㄴ' (예: 녀자→여자, 락원→낙원)</li>
+  <li><strong>사이시옷</strong>: 순우리말 합성어, 뒷말 첫소리 된소리/ㄴ첨가/ㄴㄴ첨가 (예: 나뭇가지, 콧날)</li>
+  <li><strong>자주 틀리는 표기</strong>:
+    <ul>
+      <li>되 vs 돼: '되어'로 풀어 자연스러우면 '돼' (예: 돼요, 안 돼)</li>
+      <li>안 vs 않: '아니'면 '안', '아니하'면 '않' (예: 안 가다, 가지 않다)</li>
+      <li>왠 vs 웬: '왜인지' 줄임은 '왠지', 그 외는 '웬'</li>
+      <li>몇일 (X) → 며칠 (O)</li>
+      <li>설겆이 (X) → 설거지 (O)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>띄어쓰기</h3>
+<ul>
+  <li>조사는 앞말에 붙임 (예: 학교에서)</li>
+  <li>의존명사는 띄움 (예: 먹을 것, 한 번)</li>
+  <li>단위 명사는 띄움. 단 순서·숫자와 결합 시 붙임 가능 (예: 두 시 = 2시)</li>
+  <li>보조용언은 원칙 띄어쓰기, 허용 붙임 (예: 도와 주다 = 도와주다)</li>
+</ul>
+
+<h3>표준어 규정</h3>
+<ul>
+  <li><strong>표준어 사정 원칙</strong>: 교양 있는 사람들이 두루 쓰는 현대 서울말</li>
+  <li>주요 표준어: 강낭콩(O)/강남콩(X), 깡총깡총(X)/깡충깡충(O), 미루나무(O)/미류나무(X)</li>
+</ul>
+
+<h3>로마자 표기</h3>
+<ul>
+  <li><strong>국어의 로마자 표기법 (2000)</strong>: 표준발음에 따라 적음</li>
+  <li>예: 김치 = kimchi, 비빔밥 = bibimbap, 종로 = Jongno (자음동화 반영)</li>
+  <li>이름은 성과 이름 띄어 씀 (예: Hong Gildong)</li>
+</ul>
+
+<h3>외래어 표기</h3>
+<ul>
+  <li>받침은 'ㄱ·ㄴ·ㄹ·ㅁ·ㅂ·ㅅ·ㅇ' 7개만</li>
+  <li>파열음 표기는 된소리 쓰지 않음 (예: cafe = 카페 O, 까페 X)</li>
+  <li>예: 초콜릿(O)/쵸콜렛(X), 카메라(O)/카메라(X), 바비큐(O)/바베큐(X)</li>
+</ul>
+
+<h2 id="history-language">7. 국어사·언어 일반 <span class="freq">출제 2회</span></h2>
+
+<h3>국어의 시대 구분</h3>
+<table>
+  <tr><th>시대</th><th>기간</th><th>특징</th></tr>
+  <tr><td>고대국어</td><td>~10세기</td><td>한자 차용 (이두·향찰)</td></tr>
+  <tr><td>중세국어</td><td>10~16세기</td><td>고려·조선 전기. 훈민정음 창제 (1443)</td></tr>
+  <tr><td>근대국어</td><td>17~19세기</td><td>조선 후기. 음운·문법 단순화</td></tr>
+  <tr><td>현대국어</td><td>20세기~</td><td>표준어 정립</td></tr>
+</table>
+
+<h3>훈민정음 (1443 창제, 1446 반포)</h3>
+<ul>
+  <li><strong>창제자</strong>: 세종대왕</li>
+  <li><strong>제자 원리</strong>: 자음 — 발음기관 모방 (ㄱㄴㅁㅅㅇ 기본 5자 + 가획) / 모음 — 천(·)·지(ㅡ)·인(ㅣ) 3재</li>
+  <li><strong>해례본</strong>: 28자 (자음 17 + 모음 11). 현재 24자 (자음 14 + 모음 10)</li>
+  <li><strong>훈민정음 해례본</strong>: 1997 유네스코 세계기록유산</li>
+</ul>
+
+<h3>언어의 일반적 특성</h3>
+<ul>
+  <li><strong>자의성</strong>: 의미와 형식의 관계가 필연적이지 않음</li>
+  <li><strong>사회성</strong>: 사회적 약속 (개인이 마음대로 바꾸지 못함)</li>
+  <li><strong>역사성</strong>: 시간에 따라 변화</li>
+  <li><strong>창조성</strong>: 무한히 새로운 문장 생성</li>
+  <li><strong>분절성</strong>: 연속된 사실을 분절해 표현</li>
+  <li><strong>추상성</strong>: 개별 사물에서 공통 속성 추출</li>
+</ul>
+
+<h2 id="literature-classic">8. 고전문학 (참고) <span class="freq">출제 0~소수</span></h2>
+<p>PSAT형 개편 후 거의 출제되지 않음. 단 7급·지방직에서 가끔 출제.</p>
+
+<h3>주요 갈래</h3>
+<ul>
+  <li><strong>향가</strong>: 신라~고려. 25수 전함 (제망매가, 처용가)</li>
+  <li><strong>고려가요(속요)</strong>: 평민층 노래 (청산별곡, 가시리, 동동)</li>
+  <li><strong>경기체가</strong>: 사대부 노래 (한림별곡)</li>
+  <li><strong>시조</strong>: 고려말~조선. 평시조·엇시조·사설시조</li>
+  <li><strong>가사</strong>: 4·4조 4음보 연속체 (관동별곡, 사미인곡)</li>
+  <li><strong>판소리</strong>: 12마당 → 신재효 6마당 정리 (춘향가·심청가·흥보가·수궁가·적벽가·변강쇠가)</li>
+  <li><strong>고소설</strong>: 김시습 금오신화 (최초 한문소설), 허균 홍길동전 (최초 한글소설), 박지원 양반전·허생전</li>
+</ul>
+
+<h2 id="rhetoric">9. 수사·표현·문체 <span class="freq">현대문학 통합</span></h2>
+
+<h3>주요 표현법</h3>
+<table>
+  <tr><th>분류</th><th>기법</th><th>예</th></tr>
+  <tr><td rowspan="3">비유법</td><td>직유</td><td>~처럼·~같이 (꽃처럼 예쁘다)</td></tr>
+  <tr><td>은유</td><td>A는 B (내 마음은 호수)</td></tr>
+  <tr><td>의인</td><td>사물 인격화 (바람이 속삭인다)</td></tr>
+  <tr><td rowspan="3">강조법</td><td>과장</td><td>실제보다 크게 (산더미 같은)</td></tr>
+  <tr><td>반복</td><td>같은 말 되풀이</td></tr>
+  <tr><td>점층</td><td>점차 강해짐</td></tr>
+  <tr><td rowspan="3">변화법</td><td>대구</td><td>같은 구조 짝 (산은 산이요 물은 물이로다)</td></tr>
+  <tr><td>설의</td><td>의문형으로 강조 (어찌 잊으랴)</td></tr>
+  <tr><td>도치</td><td>어순 바꿈</td></tr>
+</table>
+
+<div class="verify">
+  <strong>✅ 검증 결과:</strong> test set 2회 40문제 분석 — 9단원 키워드 매칭으로 38/40 (95%) 직접 분류. 미분류 2문제는 ① 수사법, ② 글의 어조. <strong>현대문 읽기가 절반 이상</strong>인 PSAT형 트렌드 반영. 문법·고전문학 비중 감소.
+</div>
+
+<footer>
+  9급 국가직 국어 자동 단권화 v1 · 196문제 시드 + 40문제 검증 · 자동 분류 9단원<br>
+  전 직렬 공통과목 · 한능검·기출노트 학습 플랫폼
+</footer>
+</div>
+</body>
+</html>

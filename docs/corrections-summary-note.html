@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>9급 국가직 교정학개론 — 자동 단권화</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F5EFE4;--paper:#FFF;--ink:#1F1A14;--ink-soft:#5A4F3F;--ink-mute:#94724D;--amber:#B45309;--amber-soft:#FED7AA;--teal:#0D9488;--teal-soft:#CCFBF1;--rose:#BE123C;--rose-soft:#FECDD3;--hairline:rgba(31,26,20,.12);--serif:'Noto Serif KR',ui-serif,Georgia,serif;--sans:'Pretendard Variable',Pretendard,system-ui,-apple-system,sans-serif;--mono:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;font-size:15px;word-break:keep-all;-webkit-font-smoothing:antialiased}
+.container{max-width:980px;margin:0 auto;padding:48px 28px 80px}
+header.hero{text-align:center;padding:36px 0 24px;border-bottom:1px solid var(--hairline);margin-bottom:32px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--amber);text-transform:uppercase;margin-bottom:12px;font-weight:700}
+h1{font-family:var(--serif);font-weight:900;font-size:clamp(26px,4vw,38px);line-height:1.1;margin:0 0 12px;letter-spacing:-.02em}h1 .amber{color:var(--amber)}
+.subtitle{font-size:15px;color:var(--ink-soft);max-width:680px;margin:0 auto}
+.meta{margin-top:16px;display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center;font-family:var(--mono);font-size:11px;color:var(--ink-soft)}.meta span:not(:first-child)::before{content:'·';margin-right:12px;color:var(--hairline)}
+nav.toc{background:var(--paper);border:1px solid var(--hairline);border-radius:12px;padding:18px 22px;margin-bottom:32px}
+nav.toc h2{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 8px}
+nav.toc ol{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:4px 18px;font-size:13px}
+nav.toc a{color:var(--ink);text-decoration:none;padding:4px 0;display:flex;gap:8px}nav.toc a:hover{color:var(--amber)}
+nav.toc .freq{font-family:var(--mono);font-size:9px;background:var(--bg);padding:2px 6px;border-radius:4px;color:var(--ink-soft);font-weight:700;min-width:38px;text-align:center}
+nav.toc .freq.hot{background:var(--rose);color:#fff}nav.toc .freq.warm{background:var(--amber);color:#fff}nav.toc .freq.med{background:var(--teal-soft);color:var(--teal)}
+section.topic{background:var(--paper);border:1px solid var(--hairline);border-radius:14px;padding:26px 30px;margin-bottom:22px}
+section.topic.tier1{border-left:5px solid var(--rose)}section.topic.tier2{border-left:5px solid var(--amber)}section.topic.tier3{border-left:5px solid var(--teal)}
+.topic-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:8px;padding-bottom:12px;border-bottom:1px solid var(--hairline)}
+.topic-name{font-family:var(--serif);font-size:22px;font-weight:900;margin:0}
+.topic-num{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-mute);font-weight:700}
+.topic-freq .badge{padding:3px 9px;border-radius:999px;font-weight:700;font-family:var(--mono);font-size:10px}.badge-freq{background:var(--amber);color:#fff}.badge-freq.hot{background:var(--rose)}.badge-freq.med{background:var(--teal)}
+h3{font-family:var(--serif);font-size:16px;font-weight:800;margin:18px 0 8px;border-left:3px solid var(--amber);padding-left:10px}
+.topic p{margin:6px 0;font-size:14px;line-height:1.7}.topic ul{padding-left:22px;margin:6px 0}.topic li{margin-bottom:4px;font-size:14px;line-height:1.7}.topic strong{font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;background:#fff;border:1px solid var(--hairline);border-radius:8px;overflow:hidden}th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--hairline);vertical-align:top}th{font-family:var(--mono);font-size:10px;color:var(--ink-soft);font-weight:700;background:var(--bg);text-transform:uppercase}
+.exam-box{background:var(--bg);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:12px;color:var(--ink-soft)}.exam-box-title{font-family:var(--mono);font-size:9px;color:var(--ink-mute);text-transform:uppercase;font-weight:700;margin-bottom:4px;letter-spacing:.14em}
+code{font-family:var(--mono);font-size:12px;background:var(--bg);padding:2px 5px;border-radius:3px;color:var(--amber)}
+hr.divider{border:none;border-top:1px solid var(--hairline);margin:32px 0}
+footer{border-top:1px solid var(--hairline);padding-top:24px;margin-top:32px;text-align:center;color:var(--ink-soft);font-size:12px}
+</style></head><body><div class="container">
+
+<header class="hero"><div class="eyebrow">Auto Summary Note · 9급 국가직 · 2026-04-27</div>
+<h1>9급 국가직 <span class="amber">교정학개론</span> 자동 단권화</h1>
+<p class="subtitle">기출 10회분 200문제 → 10단원. 교정직 핵심 과목.</p>
+<div class="meta"><span>10회분 / 200문제 / 10단원</span><span>형집행법 + 범죄학</span></div></header>
+
+<nav class="toc"><h2>10개 단원</h2><ol>
+<li><a href="#t1"><span class="freq hot">52</span>1. 형집행법 — 수용자 처우</a></li>
+<li><a href="#t2"><span class="freq hot">28</span>2. 범죄학 이론</a></li>
+<li><a href="#t3"><span class="freq warm">22</span>3. 분류심사·경비처우급</a></li>
+<li><a href="#t4"><span class="freq warm">18</span>4. 교도작업·자비구매</a></li>
+<li><a href="#t5"><span class="freq warm">15</span>5. 귀휴·가석방·사회복귀</a></li>
+<li><a href="#t6"><span class="freq med">12</span>6. 미결수용·체포·진정실</a></li>
+<li><a href="#t7"><span class="freq med">10</span>7. 소년사법·치료감호</a></li>
+<li><a href="#t8"><span class="freq med">8</span>8. 징벌·편지수수</a></li>
+<li><a href="#t9"><span class="freq med">7</span>9. 교정 역사 (갑오개혁~)</a></li>
+<li><a href="#t10"><span class="freq med">5</span>10. 형의 실효·복권</a></li>
+</ol></nav>
+
+<section class="topic tier1" id="t1">
+<div class="topic-head"><h2 class="topic-name">1. 형집행법 — 수용자 처우</h2><div><span class="topic-num">TOPIC 01</span><span class="topic-freq"><span class="badge badge-freq hot">52회</span></span></div></div>
+<h3>형의 집행 및 수용자의 처우에 관한 법률</h3>
+<ul>
+<li>2007 제정. 수용자 인권 보장 + 사회복귀 촉진</li>
+<li><strong>수용자 분류</strong>: 미결수용자 / 수형자 / 사형확정자</li>
+<li><strong>수용 원칙</strong>: 분리수용 (남녀·성인소년·미결수형자 분리) + 독거 우선</li>
+</ul>
+<h3>수용자의 권리</h3>
+<ul>
+<li>접견권·서신수수권·전화통화권·종교활동·도서열람·정보공개청구권</li>
+<li>편지수수: 원칙 자유 — 단 도주 우려·범죄 우려 등 검열 가능</li>
+<li><strong>정보공개청구</strong>: 수용자도 정보공개법 적용. 단 수용자 안전·시설 운영 위해 일부 제한</li>
+</ul>
+<h3>수용자 보호</h3>
+<ul>
+<li><strong>의료처우</strong>: 정기·수시 건강진단</li>
+<li><strong>여성·노인·장애인·외국인 특별 처우</strong></li>
+<li><strong>고충처리</strong>: 소장 면담·서면 신청·변호인 접견</li>
+</ul>
+<div class="exam-box"><div class="exam-box-title">📌 출제</div>2025-2·5·9·12·13·14 / 2024-2·4·5·12. 매년 5건+.</div>
+</section>
+
+<section class="topic tier1" id="t2">
+<div class="topic-head"><h2 class="topic-name">2. 범죄학 이론</h2><div><span class="topic-num">TOPIC 02</span><span class="topic-freq"><span class="badge badge-freq hot">28회</span></span></div></div>
+<h3>고전주의 vs 실증주의</h3>
+<table><thead><tr><th></th><th>고전주의 (베카리아·벤담)</th><th>실증주의 (롬브로조·페리)</th></tr></thead><tbody>
+<tr><td>전제</td><td>자유의지·합리적 선택</td><td>결정론·생물학·심리·사회 요인</td></tr>
+<tr><td>처벌</td><td>비례·확실·신속</td><td>처우·재활</td></tr>
+<tr><td>대표</td><td>억제이론</td><td>생물학·심리학·사회학적 범죄학</td></tr>
+</tbody></table>
+<h3>주요 이론</h3>
+<ul>
+<li><strong>억제이론</strong>: 처벌의 확실성·신속성·엄중성 → 범죄 억제</li>
+<li><strong>차별접촉이론 (Sutherland)</strong>: 범죄도 학습 — 친밀한 집단과의 차별적 접촉</li>
+<li><strong>사회유대이론 (Hirschi)</strong>: 4요소 (애착·전념·참여·신념) 약화 시 범죄</li>
+<li><strong>낙인이론 (Becker·Lemert)</strong>: 사회의 낙인 → 2차 일탈</li>
+<li><strong>상호작용이론 (Thornberry)</strong>: 통합이론 — 차별접촉 + 사회유대 + 낙인 결합. 청소년 비행 단계별 영향</li>
+<li><strong>긴장이론 (Merton)</strong>: 문화적 목표 vs 제도적 수단 괴리 → 5가지 적응양식 (동조·혁신·의례·도피·반항)</li>
+<li><strong>중화이론 (Sykes·Matza)</strong>: 5가지 중화기술로 범죄 합리화</li>
+</ul>
+<h3>암수범죄 (Hidden Crime)</h3>
+<p>공식 통계에 잡히지 않는 범죄. 측정방법: 자기보고식·피해자조사·정보원접근. 절대적 암수 vs 상대적 암수.</p>
+<div class="exam-box"><div class="exam-box-title">📌 출제</div>2025-1·10 / 2024-1·6·9. 매년.</div>
+</section>
+
+<section class="topic tier1" id="t3">
+<div class="topic-head"><h2 class="topic-name">3. 분류심사·경비처우급</h2><div><span class="topic-num">TOPIC 03</span><span class="topic-freq"><span class="badge badge-freq warm">22회</span></span></div></div>
+<h3>분류심사 (시행규칙)</h3>
+<ul>
+<li><strong>신입심사</strong>: 입소 시 — 인성·환경·범죄성·처우 필요사항</li>
+<li><strong>재심사</strong>: 정기 (6개월·1년) + 부정기 (사유 발생 시)</li>
+<li>분류처우위원회: 시설 내</li>
+</ul>
+<h3>경비처우급 (4단계)</h3>
+<table><thead><tr><th>등급</th><th>특징</th></tr></thead><tbody>
+<tr><td><strong>S1 (개방)</strong></td><td>도주 위험 매우 낮음 — 외부통근·통학·휴가 등</td></tr>
+<tr><td><strong>S2 (완화)</strong></td><td>완화경비 — 일부 외부 활동</td></tr>
+<tr><td><strong>S3 (일반)</strong></td><td>일반경비 — 시설 내 처우</td></tr>
+<tr><td><strong>S4 (중)</strong></td><td>중(重)경비 — 격리 처우</td></tr>
+</tbody></table>
+<h3>경비처우급 조정</h3>
+<ul>
+<li>모범수형자 — 상향 조정 (S3→S2→S1)</li>
+<li>규율 위반 — 하향 조정</li>
+<li>분류처우위원회 의결</li>
+</ul>
+<div class="exam-box"><div class="exam-box-title">📌 출제</div>2025-4·12·15. 매년 2~3건.</div>
+</section>
+
+<section class="topic tier2" id="t4">
+<div class="topic-head"><h2 class="topic-name">4. 교도작업·자비구매</h2><div><span class="topic-num">TOPIC 04</span><span class="topic-freq"><span class="badge badge-freq warm">18회</span></span></div></div>
+<h3>교도작업의 종류</h3>
+<ul>
+<li><strong>직영작업</strong>: 시설 내 직접 운영</li>
+<li><strong>위탁작업</strong>: 민간업체 위탁 (특별회계)</li>
+<li><strong>노무작업</strong>: 시설 외 노무 제공</li>
+<li><strong>도급작업</strong>: 시설 내 민간업체 작업</li>
+</ul>
+<h3>작업시간</h3>
+<ul>
+<li>1일 8시간 원칙. 주 40시간 (탄력적 운영)</li>
+<li>휴식·점심·세면 시간 별도</li>
+<li>수형자 동의 시 1일 12시간까지 연장 가능</li>
+</ul>
+<h3>작업장려금</h3>
+<p>작업 성과에 따라 지급. 출소 시 일시금. 일부 수용 중 사용 가능 (자비구매·접견 비용).</p>
+<h3>자비구매물품</h3>
+<ul>
+<li>수용자가 자기 비용으로 구입 — 음식·의류·서적·문구·생활용품</li>
+<li>품목 제한 (안전 위해·사행성·풍속 위배)</li>
+<li>구매 횟수·금액 제한 (월별 한도)</li>
+</ul>
+<div class="exam-box"><div class="exam-box-title">📌 출제</div>2025-3·8·9 / 2024-10. 매년 2건.</div>
+</section>
+
+<section class="topic tier2" id="t5">
+<div class="topic-head"><h2 class="topic-name">5. 귀휴·가석방·사회복귀</h2><div><span class="topic-num">TOPIC 05</span><span class="topic-freq"><span class="badge badge-freq warm">15회</span></span></div></div>
+<h3>귀휴 (시행규칙)</h3>
+<ul>
+<li><strong>일반귀휴</strong>: 형기 1/3 + S1·S2 + 1년 이상 복역</li>
+<li><strong>특별귀휴</strong>: 가족 사망·중병·결혼·출산 등 특별 사유 — 5일 이내</li>
+<li>귀휴 중 도주 시 가석방 등 불가</li>
+</ul>
+<h3>가석방 (형법 §72)</h3>
+<ul>
+<li>요건: 무기 20년 / 유기 형기 1/3 경과 + 행상 양호</li>
+<li>가석방심사위원회 심사 → 법무부장관 결정</li>
+<li>가석방 기간 = 무기 10년 / 유기 잔형 (그 기간 보호관찰)</li>
+<li>가석방 실효 시 잔형 집행</li>
+</ul>
+<h3>사회복귀</h3>
+<ul>
+<li><strong>중간처우</strong>: 시설 내 → 시설 외 처우 점진 이행 (개방시설·외부통근·반자유)</li>
+<li><strong>지역사회 교정</strong>: 보호관찰·사회봉사명령·수강명령</li>
+<li><strong>수형자자치제</strong>: 수형자가 자율적 운영 — 책임감·자기개선 효과</li>
+</ul>
+<div class="exam-box"><div class="exam-box-title">📌 출제</div>2025-14 / 2024-3·13·14. 매년 2건.</div>
+</section>
+
+<section class="topic tier3" id="t6">
+<div class="topic-head"><h2 class="topic-name">6. 미결수용·체포·진정실</h2><div><span class="topic-num">TOPIC 06</span><span class="topic-freq"><span class="badge badge-freq med">12회</span></span></div></div>
+<h3>미결수용자 처우</h3>
+<ul>
+<li>무죄추정 원칙 적용 → 처우상 자유 보장</li>
+<li>수형자와 분리수용</li>
+<li>변호인 접견·서신수수 자유 (검열 X)</li>
+<li>도주·증거인멸 우려가 있을 때만 일정 제한</li>
+</ul>
+<h3>진정실 수용</h3>
+<ul>
+<li>의료적 처우가 필요한 자 — 정신질환·자살우려·전염병 등</li>
+<li>일반 거실과 분리</li>
+<li>수용 사유 소멸 시 즉시 일반 거실</li>
+</ul>
+<h3>수용을 위한 체포</h3>
+<p>도주한 수형자 등에 대한 체포. 교도관 직무규칙. 신체 위해 시 정당방위 적용.</p>
+<div class="exam-box"><div class="exam-box-title">📌 출제</div>2025-2 / 2024-5·12. 매년 1건.</div>
+</section>
+
+<section class="topic tier3" id="t7">
+<div class="topic-head"><h2 class="topic-name">7. 소년사법·치료감호</h2><div><span class="topic-num">TOPIC 07</span><span class="topic-freq"><span class="badge badge-freq med">10회</span></span></div></div>
+<h3>소년법</h3>
+<ul>
+<li><strong>대상</strong>: 19세 미만</li>
+<li><strong>분류</strong>: 범죄소년 (14~19세) / 촉법소년 (10~14세) / 우범소년 (10세+ 범죄성)</li>
+<li><strong>보호처분 10종</strong>: 보호자 위탁·수강명령·사회봉사·보호관찰·소년원 송치 등</li>
+<li>보호사건 — 소년부에서 심리</li>
+</ul>
+<h3>치료감호 (치료감호 등에 관한 법률)</h3>
+<ul>
+<li>심신장애·약물중독·정신성적 장애가 있는 자가 금고 이상의 형에 해당하는 죄를 범한 경우</li>
+<li>치료감호 + 형 병과 가능 (형 집행 X 또는 형 집행 후)</li>
+<li>최장 15년 (정신성적 장애·약물중독은 2년)</li>
+</ul>
+<div class="exam-box"><div class="exam-box-title">📌 출제</div>2025-6 / 2024-15. 매년 1건.</div>
+</section>
+
+<section class="topic tier3" id="t8">
+<div class="topic-head"><h2 class="topic-name">8. 징벌·편지수수</h2><div><span class="topic-num">TOPIC 08</span><span class="topic-freq"><span class="badge badge-freq med">8회</span></span></div></div>
+<h3>징벌</h3>
+<ul>
+<li><strong>종류</strong>: 경고·30일 내 작업장려금 삭감·접견 제한·서신수수 제한·금치(독거) 등</li>
+<li>징벌위원회 심의 → 소장 결정</li>
+<li><strong>금치</strong>: 최대 30일 (15일 + 15일 연장)</li>
+<li>징벌 중에도 변호인 접견·종교활동 보장</li>
+</ul>
+<h3>편지수수</h3>
+<ul>
+<li>원칙 자유 (헌법상 통신의 자유)</li>
+<li>검열 사유: 도주·증거인멸·범죄 우려</li>
+<li>변호인·관계 행정청 등에 대한 편지는 검열 X</li>
+</ul>
+<div class="exam-box"><div class="exam-box-title">📌 출제</div>2024-4·11. 매년 1건.</div>
+</section>
+
+<section class="topic tier3" id="t9">
+<div class="topic-head"><h2 class="topic-name">9. 교정 역사 (갑오개혁~)</h2><div><span class="topic-num">TOPIC 09</span><span class="topic-freq"><span class="badge badge-freq med">7회</span></span></div></div>
+<h3>한국 교정사</h3>
+<ul>
+<li><strong>갑오개혁 (1894)</strong>: 근대 행형제도 도입 — 감옥서 설치, 형벌 단순화 (사형·징역·태형 폐지 추진)</li>
+<li><strong>일제강점기</strong>: 감옥법 (1923) — 강제노역 중심</li>
+<li><strong>1945~</strong>: 행형법 (1950) → 행형법 개정 → <strong>형의 집행 및 수용자의 처우에 관한 법률 (2007)</strong></li>
+<li><strong>현대 추세</strong>: 응보 → 교화·재사회화. 인권 강화. 지역사회 교정 확대</li>
+</ul>
+<h3>외국 교정사</h3>
+<ul>
+<li>퀘이커 교도소 (펜실베이니아 시스템 — 격리·침묵)</li>
+<li>오번 시스템 (낮 작업·밤 격리·침묵)</li>
+<li>아일랜드제 (점진 자유·중간처우)</li>
+<li>엘마이라 시스템 (부정기형·교정교육)</li>
+</ul>
+<div class="exam-box"><div class="exam-box-title">📌 출제</div>2025-7. 매년 1건.</div>
+</section>
+
+<section class="topic tier3" id="t10">
+<div class="topic-head"><h2 class="topic-name">10. 형의 실효·복권</h2><div><span class="topic-num">TOPIC 10</span><span class="topic-freq"><span class="badge badge-freq med">5회</span></span></div></div>
+<h3>형의 실효 (형법 §81 / 실효등에 관한 법률)</h3>
+<ul>
+<li><strong>당연실효</strong>: 형 집행 종료 또는 면제 후 — 자격정지 이상 형 받지 아니하고 일정 기간 경과
+  <ul><li>3년 초과 징역·금고 — 10년</li><li>3년 이하 징역·금고 — 5년</li><li>벌금 — 2년</li></ul>
+</li>
+<li><strong>판결에 의한 실효</strong>: 자격정지 이상 형 받지 X + 본인 신청 → 법원 결정</li>
+</ul>
+<h3>복권</h3>
+<p>자격정지 형 받은 자 — 형 집행 종료·면제 후 자격 회복 — 본인 신청 → 법원 결정.</p>
+<div class="exam-box"><div class="exam-box-title">📌 출제</div>2024-8. 매년 1건.</div>
+</section>
+
+<section class="topic tier1" id="reinforce">
+<div class="topic-head">
+<h2 class="topic-name">11. 보강 — 빈출 누락 개념</h2>
+<div class="topic-freq"><span class="badge badge-freq hot">200문제 검증 보강</span></div>
+</div>
+
+<h3>치료감호법 (특정 범죄자 치료감호 등에 관한 법률)</h3>
+<ul>
+<li><strong>대상</strong>: ① 심신장애자 (책임능력 결함), ② 약물·알코올 중독자, ③ 정신성적장애 성폭력범</li>
+<li><strong>요건</strong>: 재범의 위험성 + 치료 필요성</li>
+<li><strong>치료감호 기간</strong>:
+  <ul>
+    <li>심신장애·정신성적장애: <strong>최대 15년</strong></li>
+    <li>약물·알코올 중독: <strong>최대 2년</strong></li>
+  </ul>
+</li>
+<li><strong>치료감호심의위원회</strong>: 법무부 소속, 가종료·종료·감호계속 결정</li>
+<li><strong>보호관찰 부과</strong>: 가종료자 3년 보호관찰</li>
+<li><strong>치료명령</strong>: 통원치료 명령 (집행유예·가석방 시)</li>
+</ul>
+
+<h3>성폭력범죄자의 성충동 약물치료에 관한 법률</h3>
+<ul>
+<li><strong>대상</strong>: <strong>19세 이상</strong> 성폭력범죄자 + 성도착증환자 + 재범 위험성 인정</li>
+<li><strong>치료기간</strong>: <strong>최대 15년</strong></li>
+<li><strong>치료방법</strong>: 호르몬 약물치료 (3개월~1년 단위 주사) + 인지행동치료 병행</li>
+<li><strong>청구·결정</strong>: 검사 청구 → 법원 판결 또는 치료감호심의위원회 결정</li>
+<li><strong>본인 동의 (가석방 시)</strong>: 가석방·가종료 받기 위해 본인 동의 필요</li>
+</ul>
+
+<h3>민영교도소 등의 설치·운영에 관한 법률</h3>
+<ul>
+<li><strong>목적</strong>: 교정시설 운영 효율 + 수용자 처우 개선</li>
+<li><strong>한국 사례</strong>: 소망교도소 (2010~, 여주, 아가페재단 운영) — 국내 유일 민영교도소</li>
+<li><strong>위탁</strong>: 법무부장관이 비영리법인 또는 비영리민간단체에 위탁</li>
+<li><strong>위탁기간</strong>: 10년 이내 (1회 연장 가능, 총 20년)</li>
+<li><strong>국가 감독</strong>: 운영 전반 감독 + 시정명령 + 위탁 취소</li>
+<li><strong>한계</strong>: 형 집행 권한은 국가 고유 → 분리·격리·징벌 등은 국가 공무원만</li>
+</ul>
+
+<h3>갱생보호제도</h3>
+<ul>
+<li><strong>주체</strong>: 한국법무보호복지공단 (1995 법인화) + 갱생보호사업 허가법인</li>
+<li><strong>대상</strong>: 출소자, 보호관찰대상자, 가석방·가종료자, 형 집행정지자</li>
+<li><strong>보호 종류</strong>:
+  <ul>
+    <li><strong>숙식제공</strong>: 6개월 이내 (3개월 연장)</li>
+    <li><strong>주거지원</strong>: 자립 임대주택</li>
+    <li><strong>직업훈련·취업알선</strong>: 직업능력 + 취업 연계</li>
+    <li><strong>창업지원·학업지원</strong></li>
+    <li><strong>심리상담·가족관계 회복</strong></li>
+  </ul>
+</li>
+<li><strong>임의적 갱생보호</strong>: 본인 신청 또는 동의 (강제 X)</li>
+</ul>
+
+<h3>가석방제도</h3>
+<ul>
+<li><strong>요건 (형법 제72조)</strong>:
+  <ul>
+    <li>유기형: 형기의 <strong>1/3</strong> 경과</li>
+    <li>무기형: <strong>20년</strong> 경과</li>
+    <li>행상이 양호 + 뉘우침 분명</li>
+  </ul>
+</li>
+<li><strong>가석방심사위원회</strong>: 법무부 소속, 위원장 포함 5~9명</li>
+<li><strong>가석방 기간</strong>: 잔여 형기 (무기 = 10년). 보호관찰 의무</li>
+<li><strong>실효</strong>: 가석방 기간 중 금고 이상 형 선고 시 실효 → 잔여 형 집행</li>
+<li><strong>실무 통계</strong>: 9급 교정학 기출 매년 출제</li>
+</ul>
+
+<h3>외부통근제도·중간처우</h3>
+<ul>
+<li><strong>외부통근작업</strong>: 수형자가 교도소 외 직장 통근 작업
+  <ul>
+    <li>요건: 가석방 적격 가능성 + 도주 우려 적음</li>
+    <li>대상: 1·2급 수형자, 형기 1/3 경과</li>
+  </ul>
+</li>
+<li><strong>중간처우의 집 (Halfway House)</strong>: 출소 전 사회 적응 훈련</li>
+<li><strong>가족만남의 집·가족만남의 날</strong>: 가족관계 유지</li>
+<li><strong>주말구금·반(半)구금</strong>: 한국은 도입 안 됨</li>
+</ul>
+
+<h3>권리구제제도</h3>
+<ul>
+<li><strong>청원 (형집행법 제117조)</strong>: 처우에 불복 시 법무부장관·순회점검공무원·소장에게 서면 청원</li>
+<li><strong>소장 면담 (제116조)</strong>: 소장은 면담 신청에 응함 (특별한 사정 외)</li>
+<li><strong>행정심판·행정소송</strong>: 행정처분 (징벌·접견제한 등)에 대해 가능</li>
+<li><strong>국가인권위원회 진정</strong>: 인권 침해 시 가능</li>
+<li><strong>헌법소원</strong>: 기본권 침해 시</li>
+<li><strong>옴부즈맨</strong>: 한국은 별도 옴부즈맨 없음 (국가인권위가 유사 기능)</li>
+</ul>
+
+<h3>금품관리·작업장려금</h3>
+<ul>
+<li><strong>휴대금품·보관금</strong>: 입소 시 검사 후 보관. 출소 시 반환</li>
+<li><strong>영치금</strong>: 외부에서 송금 받은 금원 — 사용 시 신청</li>
+<li><strong>작업장려금 (제73조)</strong>: 수형자 작업의 결과로 지급. 출소 시 또는 가족 송금</li>
+<li><strong>작업수입의 귀속</strong>: 국고 (수형자에게 직접 지급 X, 작업장려금만 지급)</li>
+</ul>
+
+<h3>비범죄화·다이버전 (Diversion)</h3>
+<ul>
+<li><strong>비범죄화 (Decriminalization)</strong>: 형사처벌 대상에서 제외 (예: 간통죄 폐지 2015, 낙태죄 헌법불합치 2019)</li>
+<li><strong>비형벌화 (Depenalization)</strong>: 형벌 없는 처분 (벌금 → 과태료)</li>
+<li><strong>다이버전</strong>: 형사사법 절차 우회 (기소유예·선도조건부 기소유예·소년사건 보호처분)</li>
+<li><strong>회복적 사법</strong>: 가해자·피해자·공동체 회복 (피해자-가해자 조정 VOM, 가족·집단 회의)</li>
+</ul>
+
+<h3>범죄원인론 (현대 이론 정리)</h3>
+<table>
+<tr><th>이론</th><th>핵심</th><th>대표 학자</th></tr>
+<tr><td>고전주의</td><td>자유의지·합리적 선택</td><td>Beccaria, Bentham</td></tr>
+<tr><td>실증주의 (생물학)</td><td>유전·체형·뇌</td><td>Lombroso, Sheldon</td></tr>
+<tr><td>실증주의 (심리)</td><td>인격·정신병질</td><td>Freud, Eysenck</td></tr>
+<tr><td>아노미·긴장</td><td>목표-수단 격차</td><td>Merton, Agnew</td></tr>
+<tr><td>차별교제</td><td>비행은 학습</td><td>Sutherland</td></tr>
+<tr><td>사회유대</td><td>사회 결속 약화</td><td>Hirschi</td></tr>
+<tr><td>낙인</td><td>일탈은 사회반응 산물</td><td>Becker, Lemert</td></tr>
+<tr><td>비판범죄학</td><td>권력·계급 구조</td><td>Quinney, Taylor</td></tr>
+<tr><td>일상활동·합리적선택</td><td>피해자·표적·감시 부재</td><td>Cohen·Felson</td></tr>
+<tr><td>발달·생애과정</td><td>연령별 비행 궤적</td><td>Sampson·Laub, Moffitt</td></tr>
+</table>
+
+<h3>현행 형벌제도·구금제도</h3>
+<ul>
+<li><strong>형의 종류 (형법 제41조)</strong>: 사형·징역·금고·자격상실·자격정지·벌금·구류·과료·몰수 (9가지)</li>
+<li><strong>사형</strong>: 1997년 이후 집행 정지 (사실상 폐지). 사형 선고 시 무기수와 같이 처우</li>
+<li><strong>징역 vs 금고</strong>: 징역 = 정역(작업) 강제 / 금고 = 정역 없음 (단 본인 신청 시 작업 가능)</li>
+<li><strong>구류</strong>: 1일~30일 미만 구금 (경범죄 중심)</li>
+<li><strong>구금시설</strong>: 교도소(기결수), 구치소(미결수·30일 미만 구류), 소년교도소</li>
+<li><strong>독거수용·혼거수용</strong>: 독거가 원칙, 혼거는 예외 (시설 부족·교화 목적)</li>
+</ul>
+
+<h3>관련 키워드 인덱스</h3>
+<p>현행법령 기준 본 노트 작성: 형의 집행 및 수용자의 처우에 관한 법률 (형집행법, 2024 시행) / 치료감호법 / 성폭력범죄자의 성충동 약물치료법 / 보호관찰법 / 민영교도소법 / 소년법 / 가석방심사규정 / 보호관찰 등에 관한 법률.</p>
+
+<h3>직업훈련 (수형자 작업·교육)</h3>
+<ul>
+<li><strong>법적 근거</strong>: 형집행법 제65조 (작업), 제69조 (직업훈련)</li>
+<li><strong>주체</strong>: 교도소 내 직업훈련, 외부 위탁훈련 가능</li>
+<li><strong>훈련 종류</strong>: 자동차정비·용접·요리·이미용·정보처리·바리스타·제과제빵 등</li>
+<li><strong>국가기술자격 취득</strong>: 출소 후 취업 연계</li>
+<li><strong>외부통근 직업훈련</strong>: 가석방 적격 + 자격 충족 수형자</li>
+</ul>
+</section>
+
+<hr class="divider"/>
+<footer><div class="eyebrow" style="color:var(--ink-soft);">기출노트 · 9급 교정학개론</div><p style="margin:0;font-family:var(--mono);font-size:11px;">2026-04-27 · 10회 200문제 → 11단원 (보강 후)</p></footer>
+
+</div></body></html>

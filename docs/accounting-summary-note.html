@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>9급 국가직 회계학 — 자동 단권화</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F5EFE4;--paper:#FFF;--ink:#1F1A14;--ink-soft:#5A4F3F;--ink-mute:#94724D;--amber:#B45309;--amber-soft:#FED7AA;--amber-bg:#FFF7ED;--teal:#0D9488;--teal-soft:#CCFBF1;--teal-bg:#F0FDFA;--rose:#BE123C;--rose-soft:#FECDD3;--rose-bg:#FFF1F2;--hairline:rgba(31,26,20,.12);--serif:'Noto Serif KR',ui-serif,Georgia,serif;--sans:'Pretendard Variable',Pretendard,system-ui,-apple-system,sans-serif;--mono:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;font-size:15px;word-break:keep-all;-webkit-font-smoothing:antialiased}
+.container{max-width:980px;margin:0 auto;padding:48px 28px 80px}@media(max-width:720px){.container{padding:32px 16px 60px}}
+header.hero{text-align:center;padding:36px 0 24px;border-bottom:1px solid var(--hairline);margin-bottom:32px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--amber);text-transform:uppercase;margin-bottom:12px;font-weight:700}
+h1{font-family:var(--serif);font-weight:900;font-size:clamp(26px,4vw,38px);line-height:1.1;margin:0 0 12px;letter-spacing:-.02em}h1 .amber{color:var(--amber)}
+.subtitle{font-size:15px;color:var(--ink-soft);max-width:680px;margin:0 auto}
+.meta{margin-top:16px;display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center;font-family:var(--mono);font-size:11px;color:var(--ink-soft)}.meta span:not(:first-child)::before{content:'·';margin-right:12px;color:var(--hairline)}
+nav.toc{background:var(--paper);border:1px solid var(--hairline);border-radius:12px;padding:18px 22px;margin-bottom:32px}
+nav.toc h2{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 8px}
+nav.toc ol{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:4px 18px;font-size:13px}@media(max-width:720px){nav.toc ol{grid-template-columns:1fr}}
+nav.toc a{color:var(--ink);text-decoration:none;padding:4px 0;display:flex;gap:8px;align-items:baseline}nav.toc a:hover{color:var(--amber)}
+nav.toc .freq{font-family:var(--mono);font-size:9px;letter-spacing:.06em;background:var(--bg);padding:2px 6px;border-radius:4px;color:var(--ink-soft);font-weight:700;min-width:38px;text-align:center}
+nav.toc .freq.hot{background:var(--rose);color:#fff}nav.toc .freq.warm{background:var(--amber);color:#fff}nav.toc .freq.med{background:var(--teal-soft);color:var(--teal)}
+section.topic{background:var(--paper);border:1px solid var(--hairline);border-radius:14px;padding:26px 30px;margin-bottom:22px}
+section.topic.tier1{border-left:5px solid var(--rose)}section.topic.tier2{border-left:5px solid var(--amber)}section.topic.tier3{border-left:5px solid var(--teal)}
+.topic-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:8px;padding-bottom:12px;border-bottom:1px solid var(--hairline)}
+.topic-name{font-family:var(--serif);font-size:22px;font-weight:900;margin:0;line-height:1.15;letter-spacing:-.015em}
+.topic-num{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-mute);font-weight:700}
+.topic-freq{display:inline-flex;gap:6px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.topic-freq .badge{padding:3px 9px;border-radius:999px;font-weight:700}.badge-freq{background:var(--amber);color:#fff}.badge-freq.hot{background:var(--rose)}.badge-freq.med{background:var(--teal)}
+h3{font-family:var(--serif);font-size:16px;font-weight:800;margin:18px 0 8px;color:var(--ink);border-left:3px solid var(--amber);padding-left:10px}
+.topic p{margin:6px 0;line-height:1.7;font-size:14px}.topic ul{padding-left:22px;margin:6px 0}.topic li{margin-bottom:4px;font-size:14px;line-height:1.7}.topic strong{color:var(--ink);font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;background:#fff;border:1px solid var(--hairline);border-radius:8px;overflow:hidden}
+th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--hairline);vertical-align:top}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;background:var(--bg)}
+.law-box{background:var(--amber-bg);border:1px solid var(--amber-soft);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:13px;line-height:1.6}
+.law-box-title{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--amber);text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.exam-box{background:var(--bg);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:12px;line-height:1.6;color:var(--ink-soft)}
+.exam-box-title{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--ink-mute);text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.trap-box{background:var(--rose-bg);border:1px solid var(--rose-soft);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:13px;line-height:1.6}
+.trap-box-title{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;font-weight:700;margin-bottom:4px}
+code{font-family:var(--mono);font-size:12px;background:var(--bg);padding:2px 5px;border-radius:3px;color:var(--amber)}
+.footnote{font-size:11px;color:var(--ink-soft);margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--hairline)}
+hr.divider{border:none;border-top:1px solid var(--hairline);margin:32px 0}
+footer{border-top:1px solid var(--hairline);padding-top:24px;margin-top:32px;text-align:center;color:var(--ink-soft);font-size:12px}
+</style></head><body><div class="container">
+
+<header class="hero"><div class="eyebrow">Auto Summary Note · 9급 국가직 · 2026-04-27</div>
+<h1>9급 국가직 <span class="amber">회계학</span> 자동 단권화</h1>
+<p class="subtitle">기출 10회분 200문제 → 11개 단원. 세무직 핵심 과목.</p>
+<div class="meta"><span>10회분 / 200문제 / 11단원</span><span>K-IFRS + 국가회계기준</span><span>2026-04-27</span></div></header>
+
+<nav class="toc"><h2>11개 단원</h2><ol>
+<li><a href="#t1"><span class="freq hot">42</span>1. 자산회계 (재고·유형·무형·금융)</a></li>
+<li><a href="#t2"><span class="freq hot">35</span>2. 부채·자본 (사채·충당부채·자본)</a></li>
+<li><a href="#t3"><span class="freq hot">28</span>3. 수익·비용 (고객계약·인식)</a></li>
+<li><a href="#t4"><span class="freq warm">22</span>4. 재무제표·재무보고 개념체계</a></li>
+<li><a href="#t5"><span class="freq warm">20</span>5. 원가회계 (개별·종합·활동기준)</a></li>
+<li><a href="#t6"><span class="freq warm">17</span>6. 관리회계 (CVP·변동원가·손익분기점)</a></li>
+<li><a href="#t7"><span class="freq warm">15</span>7. 정부회계 (국가·지방자치단체)</a></li>
+<li><a href="#t8"><span class="freq med">10</span>8. 매출채권·손실충당금</a></li>
+<li><a href="#t9"><span class="freq med">8</span>9. 회계상 거래·분개·결산</a></li>
+<li><a href="#t10"><span class="freq med">5</span>10. 현금흐름표</a></li>
+<li><a href="#t11"><span class="freq med">3</span>11. 회계변경·오류수정</a></li>
+</ol></nav>
+
+<section class="topic tier1" id="t1">
+<div class="topic-head"><h2 class="topic-name">1. 자산회계 (재고·유형·무형·금융자산)</h2><div><span class="topic-num">TOPIC 01</span><span class="topic-freq"><span class="badge badge-freq hot">42회</span></span></div></div>
+<h3>재고자산 (K-IFRS 1002)</h3>
+<ul>
+<li><strong>취득원가</strong>: 매입가 + 매입부대비용 (운송·하역·관세·환급불가능 매입세금) - 매입할인·에누리·환출</li>
+<li><strong>단가산정</strong>: 개별법·선입선출(FIFO)·가중평균법. <strong>후입선출(LIFO) 금지</strong> (K-IFRS 1002)</li>
+<li><strong>저가법 (LCNRV)</strong>: 취득원가 vs 순실현가능가치 중 낮은 금액. 평가손실 = 매출원가 가산</li>
+<li><strong>차감 손실 환입 가능</strong>: 후속기에 NRV 회복 시 (단 원래 평가손실 한도)</li>
+</ul>
+
+<h3>유형자산 (K-IFRS 1016)</h3>
+<ul>
+<li><strong>인식조건</strong>: 미래경제적 효익 유입 가능 + 원가 신뢰성 측정</li>
+<li><strong>최초측정</strong>: 원가 = 구입가격 + 직접관련원가 (운송·설치·전문가수수료) + 복구비용 추정치 - 매입할인</li>
+<li><strong>후속측정</strong>: 원가모형 vs 재평가모형 (선택 가능, 자산 분류별)</li>
+<li><strong>감가상각</strong>: 정액법·정률법·연수합계법·생산량비례법. 잔존가치·내용연수·방법은 매년 재검토</li>
+<li><strong>손상</strong> (K-IFRS 1036): 회수가능액 (사용가치·공정가치 - 처분비용 중 큰 금액) &lt; 장부금액 시 손상차손</li>
+</ul>
+
+<h3>무형자산 (K-IFRS 1038)</h3>
+<ul>
+<li>인식조건: 식별가능성·통제·미래경제효익</li>
+<li><strong>내부창출 무형자산</strong>: 연구단계 비용 처리, 개발단계 — 6개 요건 충족 시 자본화 (기술적 실현가능성·완료 의도·사용·시장 존재·자원 충분·신뢰성 측정)</li>
+<li><strong>영업권</strong>: 자체 창출 인식 X. 기업결합으로 취득한 영업권만 (상각 X, 매년 손상검사)</li>
+<li><strong>내용연수 비한정 무형자산</strong>: 상각 X, 매년 손상검사</li>
+</ul>
+
+<h3>금융자산</h3>
+<ul>
+<li><strong>분류</strong>: ① 상각후원가측정 (AC), ② 기타포괄손익공정가치측정 (FVOCI), ③ 당기손익공정가치측정 (FVPL)</li>
+<li>분류 기준: 사업모형 + 계약상 현금흐름 특성</li>
+<li>지분상품: 원칙 FVPL. 단 단기매매 X면 FVOCI 선택 가능 (취소불가)</li>
+</ul>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-4·5·10·11·12·19·20 / 2024-8·9·11. 매년 4~5건.</div>
+</section>
+
+<section class="topic tier1" id="t2">
+<div class="topic-head"><h2 class="topic-name">2. 부채·자본 (사채·충당부채·자본)</h2><div><span class="topic-num">TOPIC 02</span><span class="topic-freq"><span class="badge badge-freq hot">35회</span></span></div></div>
+<h3>사채 (K-IFRS 1109)</h3>
+<ul>
+<li><strong>발행가</strong>: 미래현금흐름의 현재가치 (시장이자율 = 유효이자율 할인)</li>
+<li><strong>액면발행·할인발행·할증발행</strong>: 표시이자율 vs 유효이자율 비교</li>
+<li><strong>유효이자율법</strong>: 매기 사채이자비용 = 기초장부금액 × 유효이자율. 사채할인발행차금 상각액 = 이자비용 - 표시이자</li>
+<li><strong>장부금액 변화</strong>: 할인발행 — 매기 증가 (액면금액 수렴) / 할증발행 — 매기 감소</li>
+</ul>
+
+<h3>충당부채 (K-IFRS 1037)</h3>
+<ul>
+<li><strong>인식조건</strong>: ① 과거사건의 결과로 현재의무 존재 ② 자원유출 가능성 높음 ③ 신뢰성 추정 가능</li>
+<li>측정: 의무이행에 필요한 지출의 최선의 추정치 (현재가치)</li>
+<li><strong>우발부채</strong>: 자원유출 가능성 낮음 또는 신뢰성 추정 X — 인식 X (주석 공시)</li>
+<li><strong>우발자산</strong>: 인식 X (실현 거의 확실 시만 자산 인식)</li>
+</ul>
+
+<h3>자본</h3>
+<ul>
+<li><strong>구성</strong>: 자본금·자본잉여금·자본조정·기타포괄손익누계액·이익잉여금</li>
+<li><strong>주식배당</strong>: 자본 변동 X (이익잉여금 → 자본금 대체)</li>
+<li><strong>현금배당</strong>: 자본 감소 (이익잉여금 ↓)</li>
+<li><strong>자기주식</strong>: 자본조정 차감</li>
+</ul>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-3·11 / 2024-4·10. 매년 3건.</div>
+</section>
+
+<section class="topic tier1" id="t3">
+<div class="topic-head"><h2 class="topic-name">3. 수익·비용 (고객계약·인식)</h2><div><span class="topic-num">TOPIC 03</span><span class="topic-freq"><span class="badge badge-freq hot">28회</span></span></div></div>
+<h3>고객과의 계약에서 생기는 수익 (K-IFRS 1115)</h3>
+<p><strong>5단계 모형</strong>:</p>
+<ol>
+<li><strong>계약의 식별</strong>: 당사자 승인·권리 식별·지급조건·상업적 실질·회수가능성 5요건</li>
+<li><strong>수행의무 식별</strong>: 구별가능한 재화·용역 단위로 분리</li>
+<li><strong>거래가격 산정</strong>: 변동대가·금융요소·비현금대가·고객지급대가 고려</li>
+<li><strong>거래가격 배분</strong>: 개별판매가격 비율로</li>
+<li><strong>수익 인식</strong>: <strong>수행의무 이행 시점</strong> (한 시점 또는 기간에 걸쳐)</li>
+</ol>
+
+<h3>한 시점 vs 기간에 걸쳐</h3>
+<ul>
+<li><strong>한 시점</strong>: 통제 이전 시 (일반 재화 판매)</li>
+<li><strong>기간에 걸쳐</strong>: ① 동시 효익 ② 자산 통제 진행 ③ 다른 대체용도 X + 지급권리 — 진행률 측정</li>
+</ul>
+
+<h3>변동대가</h3>
+<p>할인·리베이트·환불·인센티브·성과보너스 등. 기댓값 또는 가능성이 가장 높은 금액 추정. 변동대가 제약 — 누적수익 유의적 환원 가능성 X 한도까지만 인식.</p>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-2·6·7 / 2024-12. 매년 2~3건.</div>
+</section>
+
+<section class="topic tier2" id="t4">
+<div class="topic-head"><h2 class="topic-name">4. 재무제표·재무보고 개념체계</h2><div><span class="topic-num">TOPIC 04</span><span class="topic-freq"><span class="badge badge-freq warm">22회</span></span></div></div>
+<h3>재무제표 종류 (K-IFRS 1001)</h3>
+<ul>
+<li><strong>재무상태표</strong>: 자산·부채·자본 (기말)</li>
+<li><strong>포괄손익계산서</strong>: 당기순이익 + 기타포괄손익. 단일/별개 표시 선택</li>
+<li><strong>자본변동표</strong>: 자본 변동내역</li>
+<li><strong>현금흐름표</strong>: 영업·투자·재무활동 현금흐름</li>
+<li><strong>주석</strong>: 회계정책·계산내역·주요사건</li>
+</ul>
+
+<h3>재무보고 개념체계</h3>
+<ul>
+<li><strong>목적</strong>: 정보이용자 (투자자·채권자) 의사결정에 유용한 정보 제공</li>
+<li><strong>질적특성</strong>:
+  <ul>
+    <li><strong>근본적</strong>: 목적적합성 (예측가치·확인가치·중요성) + 표현충실성 (완전·중립·오류무)</li>
+    <li><strong>보강적</strong>: 비교가능성·검증가능성·적시성·이해가능성</li>
+  </ul>
+</li>
+<li><strong>제약</strong>: 원가</li>
+<li><strong>측정기준</strong>: 역사적원가·공정가치·사용가치·이행가치·현행원가</li>
+</ul>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-16 / 2024-2·6·7. 매년 2건.</div>
+</section>
+
+<section class="topic tier2" id="t5">
+<div class="topic-head"><h2 class="topic-name">5. 원가회계 (개별·종합·활동기준)</h2><div><span class="topic-num">TOPIC 05</span><span class="topic-freq"><span class="badge badge-freq warm">20회</span></span></div></div>
+<h3>원가의 분류</h3>
+<ul>
+<li><strong>제조원가 vs 비제조원가</strong>: 제품원가 vs 기간비용</li>
+<li><strong>직접원가 vs 간접원가</strong>: 추적가능성</li>
+<li><strong>변동원가 vs 고정원가</strong>: 조업도 변동에 따른 변화</li>
+<li><strong>관련원가 vs 매몰원가</strong>: 의사결정 관련성</li>
+</ul>
+
+<h3>개별원가계산 (Job-order Costing)</h3>
+<ul>
+<li>고객 주문별 원가 집계 (주택건설·항공기·맞춤제품)</li>
+<li><strong>실제원가계산 vs 정상원가계산</strong>: 정상원가 = 직접원가는 실제 + 제조간접원가는 예정배부</li>
+<li>예정배부율 = 예정 제조간접원가 ÷ 예정 배부기준 (직접노무시간·기계시간 등)</li>
+<li><strong>배부차이</strong>: 실제 - 배부 → 비례배분/매출원가 가감</li>
+</ul>
+
+<h3>종합원가계산 (Process Costing)</h3>
+<ul>
+<li>대량생산·표준화 (석유화학·화학·식품)</li>
+<li><strong>완성품환산량</strong>: 재공품의 완성도 반영</li>
+<li><strong>가중평균법 vs 선입선출법(FIFO)</strong>: 기초재공품 처리 방식</li>
+<li>완성품원가 + 기말재공품원가 산출</li>
+</ul>
+
+<h3>활동기준원가계산 (ABC)</h3>
+<p>전통 원가계산이 다품종 소량생산에서 왜곡 → ABC는 활동(activity)을 원가대상으로. 원가동인(cost driver)에 따라 자원 → 활동 → 제품 배부.</p>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-13·14·19·20 / 2024-14·17. 매년 3~4건.</div>
+</section>
+
+<section class="topic tier2" id="t6">
+<div class="topic-head"><h2 class="topic-name">6. 관리회계 (CVP·변동원가·손익분기점)</h2><div><span class="topic-num">TOPIC 06</span><span class="topic-freq"><span class="badge badge-freq warm">17회</span></span></div></div>
+<h3>CVP 분석 (Cost-Volume-Profit)</h3>
+<ul>
+<li><strong>공헌이익</strong> = 매출액 - 변동비. 공헌이익률 = 공헌이익 ÷ 매출액</li>
+<li><strong>손익분기점 매출액</strong> = 고정원가 ÷ 공헌이익률</li>
+<li><strong>손익분기점 판매량</strong> = 고정원가 ÷ 단위당 공헌이익</li>
+<li><strong>목표이익 분석</strong>: 목표매출 = (고정원가 + 목표이익) ÷ 공헌이익률</li>
+<li><strong>안전한계율</strong>: (실제매출 - 손익분기매출) ÷ 실제매출</li>
+</ul>
+
+<h3>변동원가계산 vs 전부원가계산</h3>
+<table><thead><tr><th></th><th>변동원가계산</th><th>전부원가계산</th></tr></thead><tbody>
+<tr><td>제품원가</td><td>변동제조원가만</td><td>변동 + 고정제조원가</td></tr>
+<tr><td>고정제조간접원가</td><td>기간비용</td><td>제품원가 (재고에 포함)</td></tr>
+<tr><td>외부보고</td><td>X (K-IFRS는 전부원가)</td><td>O</td></tr>
+<tr><td>관리목적</td><td>의사결정 유용</td><td>X</td></tr>
+</tbody></table>
+
+<h3>이익 차이 (전부원가 - 변동원가)</h3>
+<p>= 기말재고에 포함된 고정제조간접원가 - 기초재고에 포함된 고정제조간접원가. 생산량 = 판매량이면 이익 같음.</p>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2024-15·16. 매년 1~2건.</div>
+</section>
+
+<section class="topic tier2" id="t7">
+<div class="topic-head"><h2 class="topic-name">7. 정부회계 (국가회계기준·지방자치단체회계기준)</h2><div><span class="topic-num">TOPIC 07</span><span class="topic-freq"><span class="badge badge-freq warm">15회</span></span></div></div>
+<h3>국가회계기준에 관한 규칙</h3>
+<ul>
+<li><strong>발생주의·복식부기</strong> 적용 (2009 시행)</li>
+<li><strong>재무제표</strong>: 재정상태표·재정운영표·순자산변동표·주석 (현금흐름표 X)</li>
+<li><strong>재정상태표</strong>: 자산·부채·순자산</li>
+<li><strong>재정운영표</strong>: 프로그램순원가 + 관리운영비 + 비배분비용 - 비배분수익 = 재정운영순원가</li>
+<li><strong>순자산변동표</strong>: 기초·재정운영순원가·재원조달·기말</li>
+</ul>
+
+<h3>지방자치단체 회계기준에 관한 규칙</h3>
+<ul>
+<li>국가회계와 거의 동일 + 지방자치단체 특성 반영</li>
+<li>5대 재무제표: 재정상태표·재정운영표·순자산변동표·현금흐름표·주석</li>
+<li><strong>현금흐름표 포함</strong> (국가회계와 차이)</li>
+</ul>
+
+<h3>자산·부채 평가 원칙</h3>
+<ul>
+<li>역사적 원가가 원칙. 단 일부 자산은 공정가치</li>
+<li><strong>일반유형자산</strong>: 취득원가 + 감가상각</li>
+<li><strong>사회기반시설</strong>: 취득원가 + 감가상각 또는 재평가 (내용연수 비한정 — 도로 등)</li>
+<li><strong>국가안보 자산</strong> (군사장비): 비공시 가능</li>
+</ul>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-1·9 / 2024-18·19. 매년 2~3건.</div>
+</section>
+
+<section class="topic tier3" id="t8">
+<div class="topic-head"><h2 class="topic-name">8. 매출채권·손실충당금</h2><div><span class="topic-num">TOPIC 08</span><span class="topic-freq"><span class="badge badge-freq med">10회</span></span></div></div>
+<h3>매출채권 측정 (K-IFRS 1109)</h3>
+<ul>
+<li>최초인식: 거래가격</li>
+<li>후속측정: 상각후원가</li>
+<li><strong>손상 — 기대신용손실 모형 (ECL)</strong>: 12개월 ECL 또는 전체기간 ECL</li>
+<li><strong>매출채권 단순화</strong>: 항상 전체기간 ECL — 충당금설정률표 사용</li>
+</ul>
+
+<h3>대손회계처리</h3>
+<ul>
+<li>손상발생 시: (차) 손실충당금 (대) 매출채권</li>
+<li>손상 환입: (차) 매출채권 (대) 손실충당금환입</li>
+<li>기말 평가: 손실충당금 잔액 조정</li>
+</ul>
+
+<h3>받을어음 할인</h3>
+<ul>
+<li>위험과 보상 이전 → 매출채권 제거</li>
+<li>이전 X → 차입거래 (받을어음 유지)</li>
+</ul>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-12 / 2024-11. 매년 1건.</div>
+</section>
+
+<section class="topic tier3" id="t9">
+<div class="topic-head"><h2 class="topic-name">9. 회계상 거래·분개·결산</h2><div><span class="topic-num">TOPIC 09</span><span class="topic-freq"><span class="badge badge-freq med">8회</span></span></div></div>
+<h3>회계상 거래의 요건</h3>
+<ul>
+<li>① 자산·부채·자본 변동 ② 화폐액 측정 가능</li>
+<li><strong>회계상 거래 X</strong>: 단순 계약·주문·약정 (변동 X) / 임대차 계약 체결만 / 직원 채용 등</li>
+<li><strong>회계상 거래 O</strong>: 화재로 자산 손실 / 자산 분실 / 도난</li>
+</ul>
+
+<h3>분개의 원칙</h3>
+<ul>
+<li>차변과 대변 합계 일치</li>
+<li>거래 8요소: 자산↑·자산↓·부채↑·부채↓·자본↑·자본↓·수익·비용</li>
+</ul>
+
+<h3>결산절차</h3>
+<ol>
+<li>수정전 시산표</li>
+<li>기말수정분개 (선급·미지급·감가상각·재고조사)</li>
+<li>수정후 시산표</li>
+<li>마감분개 (수익·비용 → 집합손익 → 이익잉여금)</li>
+<li>이월시산표</li>
+<li>재무제표 작성</li>
+</ol>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-15·17·18.</div>
+</section>
+
+<section class="topic tier3" id="t10">
+<div class="topic-head"><h2 class="topic-name">10. 현금흐름표</h2><div><span class="topic-num">TOPIC 10</span><span class="topic-freq"><span class="badge badge-freq med">5회</span></span></div></div>
+<h3>3대 활동</h3>
+<ul>
+<li><strong>영업활동</strong>: 주된 수익창출 활동 + 투자·재무 외 활동</li>
+<li><strong>투자활동</strong>: 장기자산 취득·처분, 다른 기업 지분</li>
+<li><strong>재무활동</strong>: 자본·차입금 변동</li>
+</ul>
+
+<h3>영업활동 표시방법</h3>
+<ul>
+<li><strong>직접법</strong>: 총현금유입 - 총현금유출. 권장 (이용자 정보 ↑)</li>
+<li><strong>간접법</strong>: 당기순이익 ± 비현금항목 ± 운전자본 변동</li>
+</ul>
+
+<h3>간접법 조정 항목</h3>
+<ul>
+<li><strong>+</strong>: 감가상각비·무형자산상각·손상차손·충당부채 증가·이자비용·법인세비용·매출채권 감소·재고자산 감소·매입채무 증가</li>
+<li><strong>-</strong>: 매출채권 증가·재고자산 증가·매입채무 감소·유형자산처분이익·외화환산이익</li>
+</ul>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-8 / 2024-13.</div>
+</section>
+
+<section class="topic tier3" id="t11">
+<div class="topic-head"><h2 class="topic-name">11. 회계변경·오류수정</h2><div><span class="topic-num">TOPIC 11</span><span class="topic-freq"><span class="badge badge-freq med">3회</span></span></div></div>
+<h3>회계변경 (K-IFRS 1008)</h3>
+<table><thead><tr><th>유형</th><th>처리</th></tr></thead><tbody>
+<tr><td><strong>회계정책 변경</strong> (예: 재고자산 평가방법 FIFO → 가중평균)</td><td>소급법 (과거 재무제표 재작성)</td></tr>
+<tr><td><strong>회계추정 변경</strong> (예: 내용연수 변경)</td><td>전진법 (변경 시점부터 적용)</td></tr>
+<tr><td><strong>오류수정</strong> (중요한 오류)</td><td>소급법 (재작성)</td></tr>
+</tbody></table>
+
+<h3>회계정책 변경의 예외</h3>
+<ul>
+<li>K-IFRS·관련 해석서 변경</li>
+<li>새 정책이 더 신뢰성·목적적합성 ↑</li>
+<li>그 외 자발적 변경은 원칙 X</li>
+</ul>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>매년 1건 정도.</div>
+</section>
+
+<section class="topic tier1" id="reinforce">
+<div class="topic-head">
+<h2 class="topic-name">12. 보강 — 빈출 누락 개념</h2>
+<div class="topic-freq"><span class="badge badge-freq hot">200문제 검증 보강</span></div>
+</div>
+
+<h3>일반기업회계기준 (K-GAAP) vs K-IFRS</h3>
+<table>
+<tr><th>구분</th><th>K-IFRS</th><th>일반기업회계기준</th></tr>
+<tr><td>적용</td><td>상장기업·금융업 의무</td><td>비상장기업 (선택 적용)</td></tr>
+<tr><td>방식</td><td>원칙중심 (Principle-based)</td><td>규칙중심 (Rule-based)</td></tr>
+<tr><td>측정</td><td>공정가치 우선</td><td>역사적원가 + 일부 공정가치</td></tr>
+<tr><td>주재무제표</td><td>연결재무제표</td><td>개별재무제표</td></tr>
+<tr><td>구성</td><td>재무상태표·포괄손익계산서·자본변동표·현금흐름표·주석</td><td>재무상태표·손익계산서·자본변동표·현금흐름표·주석·이익잉여금처분계산서</td></tr>
+<tr><td>공정가치 측정</td><td>1·2·3 수준 위계</td><td>제한적 적용</td></tr>
+</table>
+
+<h3>재고자산 — 계속기록법 vs 실지재고조사법</h3>
+<table>
+<tr><th>구분</th><th>계속기록법</th><th>실지재고조사법</th></tr>
+<tr><td>매출원가</td><td>매출 시마다 인식</td><td>기말 재고조사 후 산출</td></tr>
+<tr><td>기말재고</td><td>장부에서 산출</td><td>실사로 결정</td></tr>
+<tr><td>매출원가 산식</td><td>판매수량 × 단가</td><td>기초재고 + 매입 - 기말재고</td></tr>
+<tr><td>장점</td><td>재고 추적 정확, 도난·감모 식별</td><td>업무 단순</td></tr>
+<tr><td>단점</td><td>업무 복잡, 시스템 필요</td><td>재고 부족 분실 차이 미파악</td></tr>
+<tr><td>병행</td><td colspan="2">대부분 병행 사용 (수량은 계속기록, 검증은 실사)</td></tr>
+</table>
+
+<h3>재고자산 단가결정 (원가흐름가정)</h3>
+<ul>
+<li><strong>개별법</strong>: 실제 매입원가 추적 (보석·자동차 등 고가)</li>
+<li><strong>선입선출법 (FIFO)</strong>: 먼저 매입 → 먼저 판매. 인플레이션 시 매출원가 ↓ 이익 ↑ (세금 ↑)</li>
+<li><strong>가중평균법 (이동·총평균)</strong>: 평균단가로 산출. 안정적 표시</li>
+<li><strong>후입선출법 (LIFO)</strong>: K-IFRS 금지 (역사적 원가 왜곡)</li>
+<li><strong>저가법</strong>: 취득원가 vs 순실현가능가치 중 낮은 것 (재고자산평가손실)</li>
+</ul>
+
+<h3>소매재고법 (Retail Inventory Method)</h3>
+<ul>
+<li><strong>의의</strong>: 백화점·마트 등 다품종 취급 사업의 재고자산 평가</li>
+<li><strong>원리</strong>: 매가 기준으로 기록한 재고자산을 원가 기준으로 환산
+  <ul>
+    <li>원가율 = (기초재고 원가 + 매입원가) / (기초재고 매가 + 매입매가 + 가격 인상 - 가격 인하)</li>
+    <li>매가 기준 기말재고 × 원가율 = 원가 기준 기말재고</li>
+  </ul>
+</li>
+<li><strong>변형</strong>: 평균법 소매재고법, 선입선출법 소매재고법, 저가법 소매재고법</li>
+</ul>
+
+<h3>매출가격환원법 (Gross Profit Method)</h3>
+<ul>
+<li><strong>의의</strong>: 매출총이익률을 이용해 매출원가 추정 → 기말재고 추정</li>
+<li><strong>산식</strong>: 추정매출원가 = 매출액 × (1 - 매출총이익률)</li>
+<li><strong>활용</strong>: 분기·월별 보고서 작성, 재해·도난으로 인한 재고손실 추정</li>
+<li><strong>한계</strong>: 정식 재무보고에는 사용 불가 (추정)</li>
+</ul>
+
+<h3>원가-조업도-이익 분석 — 고저점법 (High-Low Method)</h3>
+<ul>
+<li><strong>의의</strong>: 혼합원가에서 변동비와 고정비 분리하는 가장 단순한 방법</li>
+<li><strong>방법</strong>:
+  <ol>
+    <li>최고 조업도 + 최저 조업도 두 점만 사용</li>
+    <li>변동비율 = (최고 조업도 원가 - 최저 조업도 원가) ÷ (최고 조업도 - 최저 조업도)</li>
+    <li>고정비 = 총원가 - (변동비율 × 조업도)</li>
+  </ol>
+</li>
+<li><strong>장점</strong>: 계산 간단</li>
+<li><strong>단점</strong>: 두 점만 사용 → 비대표성, 회귀분석보다 부정확</li>
+</ul>
+
+<h3>원가배부 — 단계배부법 (Step Method)</h3>
+<table>
+<tr><th>방법</th><th>특징</th></tr>
+<tr><td><strong>직접배부법</strong></td><td>보조부문 → 제조부문에만 직접 배부 (보조부문 간 무시)</td></tr>
+<tr><td><strong>단계배부법</strong></td><td>보조부문 간 일방적 배부 (배부순서 결정 후, 한 번 배부된 부문은 다시 배부 안 받음)</td></tr>
+<tr><td><strong>상호배부법</strong></td><td>보조부문 간 쌍방 배부 (연립방정식). 가장 정확</td></tr>
+</table>
+<ul>
+<li><strong>단계배부법 배부순서 결정</strong>: ① 다른 보조부문에 더 많이 배부하는 부문 우선, ② 원가가 큰 부문 우선, ③ 용역제공 비율이 큰 부문 우선</li>
+</ul>
+
+<h3>종합원가계산</h3>
+<ul>
+<li><strong>대상</strong>: 동종·대량 생산 (시멘트·정유·화학·제분)</li>
+<li><strong>완성품환산량</strong>: 진행중 작업을 완성품 단위로 환산
+  <ul>
+    <li>평균법: 기초재공품 + 당기투입을 함께 처리</li>
+    <li>선입선출법: 기초재공품과 당기투입 분리</li>
+  </ul>
+</li>
+<li><strong>공손·감손</strong>:
+  <ul>
+    <li>정상공손 (계획된 공손): 양품 원가에 배부</li>
+    <li>비정상공손: 당기 손실 처리</li>
+  </ul>
+</li>
+<li><strong>공정별 원가계산</strong>: 공정마다 원가 누적 → 다음 공정 전공정원가</li>
+</ul>
+
+<h3>관련 키워드 인덱스</h3>
+<p>종합원가계산방법 = 평균법·선입선출법 (위 종합원가계산 참조) / 매출가격환원법 = Gross Profit Method / 소매재고법 = Retail Inventory Method / 고저점법 / 단계배부법 / 계속기록법 / 실지재고조사법 / 기업회계기준 (K-IFRS·K-GAAP).</p>
+
+<h3>표준원가·차이분석</h3>
+<ul>
+<li><strong>표준원가 = 표준수량 × 표준가격</strong></li>
+<li><strong>직접재료비 차이</strong>:
+  <ul>
+    <li>가격차이 = (실제가격 - 표준가격) × 실제수량</li>
+    <li>능률차이 = (실제수량 - 표준수량) × 표준가격</li>
+  </ul>
+</li>
+<li><strong>직접노무비 차이</strong>:
+  <ul>
+    <li>임률차이 = (실제임률 - 표준임률) × 실제시간</li>
+    <li>능률차이 = (실제시간 - 표준시간) × 표준임률</li>
+  </ul>
+</li>
+<li><strong>변동제조간접비</strong>: 소비차이 + 능률차이</li>
+<li><strong>고정제조간접비</strong>: 예산차이 + 조업도차이</li>
+</ul>
+</section>
+
+<hr class="divider"/>
+<footer><div class="eyebrow" style="color:var(--ink-soft);">기출노트 · 9급 회계학 자동 단권화</div>
+<p style="margin:0 0 4px;">2026-04-27 · 10회 200문제 → 12단원 (보강 후) · K-IFRS + 정부회계</p></footer>
+
+</div></body></html>

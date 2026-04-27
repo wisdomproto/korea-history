@@ -1,0 +1,1012 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>기출노트 — 한국 무료 기출 사이트 경쟁사 분석</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #F5EFE4;
+    --paper: #FFFFFF;
+    --ink: #1F1A14;
+    --ink-soft: #5A4F3F;
+    --ink-mute: #94724D;
+    --amber: #B45309;
+    --amber-soft: #FED7AA;
+    --amber-bg: #FFF7ED;
+    --teal: #0D9488;
+    --teal-soft: #CCFBF1;
+    --teal-bg: #F0FDFA;
+    --rose: #BE123C;
+    --rose-soft: #FECDD3;
+    --rose-bg: #FFF1F2;
+    --hairline: rgba(31, 26, 20, 0.12);
+    --serif: 'Noto Serif KR', ui-serif, Georgia, serif;
+    --sans: 'Pretendard Variable', Pretendard, system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.65;
+    font-size: 16px;
+    word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1120px; margin: 0 auto; padding: 56px 32px 96px; }
+  @media (max-width: 720px) { .container { padding: 36px 18px 64px; } }
+
+  header.hero {
+    text-align: center;
+    padding: 48px 0 32px;
+    border-bottom: 1px solid var(--hairline);
+    margin-bottom: 40px;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(30px, 5vw, 46px);
+    line-height: 1.05;
+    margin: 0 0 14px;
+    letter-spacing: -0.02em;
+  }
+  h1 .amber { color: var(--amber); }
+  .subtitle { font-size: 16px; color: var(--ink-soft); max-width: 720px; margin: 0 auto; }
+  .meta { margin-top: 18px; display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: center; font-family: var(--mono); font-size: 12px; color: var(--ink-soft); }
+  .meta span:not(:first-child)::before { content: '·'; margin-right: 14px; color: var(--hairline); }
+
+  /* Executive summary */
+  .exec-summary {
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: 18px;
+    padding: 32px 36px;
+    margin-bottom: 48px;
+    box-shadow: 0 1px 0 rgba(31,26,20,0.04), 0 24px 48px rgba(31,26,20,0.05);
+  }
+  .es-eye { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--amber); text-transform: uppercase; font-weight: 700; margin-bottom: 6px; }
+  .es-title { font-family: var(--serif); font-size: 26px; font-weight: 900; margin: 0 0 18px; letter-spacing: -0.015em; line-height: 1.2; }
+  .es-title .amber { color: var(--amber); }
+
+  /* TOC */
+  nav.toc {
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 18px 24px;
+    margin-bottom: 40px;
+  }
+  nav.toc h2 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin: 0 0 10px;
+  }
+  nav.toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px 24px;
+    font-size: 13px;
+  }
+  @media (max-width: 720px) { nav.toc ol { grid-template-columns: 1fr; } }
+  nav.toc a { color: var(--ink); text-decoration: none; padding: 4px 0; display: flex; gap: 10px; }
+  nav.toc a:hover { color: var(--amber); }
+  nav.toc .num { font-family: var(--mono); font-size: 10px; color: var(--amber); font-weight: 700; min-width: 28px; }
+
+  section { margin-bottom: 56px; }
+  h2.sec {
+    font-family: var(--serif);
+    font-size: clamp(24px, 3.6vw, 32px);
+    font-weight: 900;
+    margin: 0 0 4px;
+    letter-spacing: -0.018em;
+    line-height: 1.15;
+  }
+  h2.sec .num {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--amber);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .sec-lead { font-size: 15px; color: var(--ink-soft); max-width: 800px; margin: 8px 0 24px; line-height: 1.7; }
+  h3 { font-family: var(--serif); font-size: 20px; font-weight: 800; margin: 28px 0 10px; letter-spacing: -0.01em; }
+  hr.divider { border: none; border-top: 1px solid var(--hairline); margin: 48px 0; }
+
+  /* Competitor card */
+  .comp-card {
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .comp-card.tier-1 { border-left: 5px solid var(--rose); }
+  .comp-card.tier-2 { border-left: 5px solid var(--amber); }
+  .comp-card.tier-3 { border-left: 5px solid var(--teal); }
+  .comp-card.tier-mute { border-left: 5px solid var(--ink-mute); }
+
+  .comp-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .comp-name { font-family: var(--serif); font-size: 24px; font-weight: 900; margin: 0; line-height: 1.1; }
+  .comp-url { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); }
+  .comp-url a { color: var(--amber); text-decoration: none; }
+
+  .threat-badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .threat-tier-1 { background: var(--rose); color: var(--bg); }
+  .threat-tier-2 { background: var(--amber); color: var(--bg); }
+  .threat-tier-3 { background: var(--teal); color: var(--bg); }
+  .threat-tier-mute { background: var(--ink-mute); color: var(--bg); }
+
+  .comp-tagline { font-size: 14px; color: var(--ink-soft); margin: 0 0 20px; line-height: 1.6; font-style: italic; }
+
+  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  @media (max-width: 720px) { .comp-grid { grid-template-columns: 1fr; } }
+  .comp-block {
+    background: var(--bg);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .comp-block-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .comp-block.strength { background: var(--teal-bg); }
+  .comp-block.strength .comp-block-title { color: var(--teal); }
+  .comp-block.weakness { background: var(--rose-bg); }
+  .comp-block.weakness .comp-block-title { color: var(--rose); }
+  .comp-block ul { padding-left: 18px; margin: 4px 0 0; }
+  .comp-block li { margin-bottom: 3px; }
+
+  .comp-vs {
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: 10px;
+    padding: 14px 20px;
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .comp-vs strong { color: var(--amber-soft); }
+  .comp-vs-title { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--amber-soft); text-transform: uppercase; font-weight: 700; margin-bottom: 6px; }
+
+  /* Comparison matrix table */
+  .table-wrap { overflow-x: auto; margin: 14px 0 18px; border: 1px solid var(--hairline); border-radius: 12px; background: var(--paper); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 11px 13px; border-bottom: 1px solid var(--hairline); vertical-align: top; }
+  th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); font-weight: 700; background: var(--bg); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.center, th.center { text-align: center; }
+  tbody tr:last-child td { border-bottom: none; }
+  tr.row-us { background: rgba(180,83,9,0.08); }
+  tr.row-good { background: rgba(13,148,136,0.06); }
+  code { font-family: var(--mono); font-size: 11px; background: var(--bg); padding: 2px 6px; border-radius: 4px; color: var(--amber); }
+
+  /* Position map */
+  .pos-map { background: var(--paper); border: 1px solid var(--hairline); border-radius: 14px; padding: 18px; margin: 16px 0; overflow-x: auto; }
+  .pos-map svg { width: 100%; height: auto; min-width: 560px; display: block; }
+
+  /* Cards */
+  .grid { display: grid; gap: 14px; }
+  .cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .cols-3 { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 880px) { .cols-3 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 580px) { .cols-2, .cols-3 { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 20px 22px;
+  }
+  .card.amber { background: var(--amber-bg); border-color: var(--amber-soft); }
+  .card.teal { background: var(--teal-bg); border-color: var(--teal-soft); }
+  .card.rose { background: var(--rose-bg); border-color: var(--rose-soft); }
+  .card.ink { background: var(--ink); color: var(--bg); border: none; }
+  .card.ink h4 { color: var(--amber-soft); }
+  .card h4:first-child { margin-top: 0; }
+  .card p:last-child, .card ul:last-child { margin-bottom: 0; }
+  .card ul { padding-left: 20px; margin: 8px 0; }
+  .card li { margin-bottom: 4px; font-size: 14px; line-height: 1.6; }
+
+  /* Callout */
+  .callout {
+    background: var(--paper);
+    border-left: 4px solid var(--amber);
+    padding: 18px 22px;
+    margin: 20px 0;
+    border-radius: 0 10px 10px 0;
+  }
+  .callout-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--amber);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .callout p { margin: 0; font-size: 14px; line-height: 1.6; }
+  .callout.teal { border-left-color: var(--teal); }
+  .callout.teal .callout-title { color: var(--teal); }
+  .callout.rose { border-left-color: var(--rose); }
+  .callout.rose .callout-title { color: var(--rose); }
+
+  /* Badge */
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .badge.us { background: var(--amber); color: var(--bg); }
+  .badge.win { background: var(--teal-soft); color: var(--teal); }
+  .badge.lose { background: var(--rose-soft); color: var(--rose); }
+  .badge.tie { background: var(--hairline); color: var(--ink-soft); }
+  .badge.gov { background: #DBEAFE; color: #1D4ED8; }
+
+  .footnote { font-size: 12px; color: var(--ink-soft); margin: 8px 0 0; line-height: 1.6; }
+
+  footer { border-top: 1px solid var(--hairline); padding-top: 28px; margin-top: 40px; text-align: center; color: var(--ink-soft); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow">Competitive Analysis · 2026-04-27</div>
+    <h1>한국 <span class="amber">무료 기출 사이트</span> 경쟁사 분석</h1>
+    <p class="subtitle">한국 시험 학습 시장의 무료 기출 사이트 9곳 분석. 직접 경쟁자 / 인접 경쟁자 / 공식 기관 / 학원사 분리. 우리(gcnote)의 진짜 moat 정의.</p>
+    <div class="meta">
+      <span>gcnote.co.kr</span>
+      <span>경쟁사 9개 분석</span>
+      <span>2026-04-27</span>
+    </div>
+  </header>
+
+  <!-- EXECUTIVE SUMMARY -->
+  <div class="exec-summary">
+    <div class="es-eye">Executive Summary · 30초 요약</div>
+    <h2 class="es-title">한국 무료 기출 시장 = <span class="amber">공기출 vs 우리</span> 양강 + 카테고리 강자들</h2>
+
+    <div class="grid cols-3">
+      <div class="card rose">
+        <h4 style="color: var(--rose);">🔴 Tier 1 — 직접 경쟁</h4>
+        <p style="font-size:13px;"><strong>공기출 (0gichul.com)</strong> 1곳. 공무원·한능검·자격증 모두 다루는 유일한 직접 경쟁자. 콘텐츠 + 트래픽 우위, UI는 우리 우위.</p>
+      </div>
+      <div class="card amber">
+        <h4 style="color: var(--amber);">🟡 Tier 2 — 카테고리 강자</h4>
+        <p style="font-size:13px;"><strong>comcbt</strong> (자격증 CBT 500+) / <strong>맞추다</strong> (모던 UI + 프리미엄). 우리 자격증 카테고리 진출 시 충돌 예상.</p>
+      </div>
+      <div class="card teal">
+        <h4 style="color: var(--teal);">🟢 Tier 3 — 보완 / 비경쟁</h4>
+        <p style="font-size:13px;"><strong>historyexam.go.kr / gosi.kr</strong> (공식, UI 낙후) / <strong>해커스·에듀윌·EBS</strong> (학원 인강 유도용 무료 자료). 우리와 다른 게임.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 24px;">
+      <div class="callout-title">한 줄 결론</div>
+      <p><strong>"공기출은 콘텐츠량·트래픽 우위지만 자동 매핑·요약노트·모던 UI 없음.</strong> 우리는 시작 4주차로 콘텐츠량 따라잡지 못해도 <strong>UX × moat (문제↔노트 자동 매핑) × 다중시험 통합</strong>으로 차별화 가능. 12~24개월 SEO + SNS 자생 트래픽 + 광고 ₩2,000만/월 운영하면 공기출과 양강 구도 형성 가능."</p>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#landscape"><span class="num">01</span>한국 무료 기출 시장 지형</a></li>
+      <li><a href="#tier1"><span class="num">02</span>Tier 1 — 공기출 Deep Dive</a></li>
+      <li><a href="#tier2"><span class="num">03</span>Tier 2 — comcbt + 맞추다</a></li>
+      <li><a href="#tier3"><span class="num">04</span>Tier 3 — 공식 기관 + 학원사</a></li>
+      <li><a href="#matrix"><span class="num">05</span>경쟁 매트릭스 (10×8)</a></li>
+      <li><a href="#position"><span class="num">06</span>2×2 포지셔닝 맵</a></li>
+      <li><a href="#moat"><span class="num">07</span>우리 진짜 Moat (5개)</a></li>
+      <li><a href="#action"><span class="num">08</span>위협·기회 + 액션 함의</a></li>
+    </ol>
+  </nav>
+
+  <!-- ============================================== -->
+  <!-- 01. LANDSCAPE -->
+  <!-- ============================================== -->
+  <section id="landscape">
+    <h2 class="sec"><span class="num">01 — Landscape</span>한국 무료 기출 시장 지형</h2>
+    <p class="sec-lead">크게 4그룹으로 나뉨. <strong>직접 경쟁 (공기출 1개)</strong> · <strong>카테고리 강자 (CBT 자격증)</strong> · <strong>공식 기관 (정부)</strong> · <strong>학원사 무료 자료 (인강 유도)</strong>.</p>
+
+    <div class="grid cols-2">
+      <div class="card rose">
+        <h4 style="color: var(--rose);">🔴 직접 경쟁 (Tier 1) — 1개</h4>
+        <ul>
+          <li><strong>공기출 (0gichul.com)</strong> — 공무원 + 한능검 + 자격증 통합. 우리와 거의 동일 카테고리</li>
+        </ul>
+      </div>
+      <div class="card amber">
+        <h4 style="color: var(--amber);">🟡 카테고리 강자 (Tier 2) — 3개</h4>
+        <ul>
+          <li><strong>comcbt</strong> — 자격증 500+ CBT</li>
+          <li><strong>맞추다 (machuda)</strong> — 모던 UI + 프리미엄 (freemium)</li>
+          <li><strong>기출넷 (rlcnf.net)</strong> — 자격증 CBT (소형)</li>
+        </ul>
+      </div>
+      <div class="card teal">
+        <h4 style="color: var(--teal);">🟢 공식 기관 (Tier 3) — 2개</h4>
+        <ul>
+          <li><strong>한국사능력검정 (historyexam.go.kr)</strong> — 한능검 공식, 최근 15회차 무료</li>
+          <li><strong>사이버국가고시센터 (gosi.kr)</strong> — 공무원 공식, 통계·공고 위주</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>🟦 학원사 무료 자료 (Tier 3-2) — 4개</h4>
+        <ul>
+          <li><strong>해커스 (history.hackers.com)</strong> — 회원가입 후 다운로드</li>
+          <li><strong>에듀윌</strong> — 인강 트라이얼 유도</li>
+          <li><strong>EBS</strong> — 공교육 무료 강의</li>
+          <li><strong>NextStudy (구 메가공무원)</strong> — 매각 후 재정비 중</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="footnote">※ 위 9개 외 작은 사이트들 (자격닷컴·기출비밀·gichulpass.com·edupd.com 등)은 트래픽·기능 모두 미미해 별도 분석 X. 학교 내신 사이트 (족보닷컴·내신코치·기출로 등)는 대상 ICP 다름.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 02. TIER 1 — 공기출 -->
+  <!-- ============================================== -->
+  <section id="tier1">
+    <h2 class="sec"><span class="num">02 — Tier 1 (직접 경쟁)</span>공기출 Deep Dive</h2>
+
+    <div class="comp-card tier-1">
+      <div class="comp-head">
+        <div>
+          <h3 class="comp-name">공기출 <span class="threat-badge threat-tier-1">위협 ★★★★★</span></h3>
+          <div class="comp-url"><a href="https://0gichul.com" target="_blank">0gichul.com</a></div>
+        </div>
+      </div>
+      <p class="comp-tagline">"공무원기출, 문제해설, 본문검색" — 한국 무료 기출 시장 1위.</p>
+
+      <div class="comp-grid">
+        <div class="comp-block strength">
+          <div class="comp-block-title">✅ 강점</div>
+          <ul>
+            <li>가장 큰 콘텐츠 — 2000년부터 데이터, 200+ 과목 분류</li>
+            <li>공무원 5급~9급, 지방직, 경찰, 소방, 군무원, 한능검, PSAT, 수능까지 통합</li>
+            <li>전문직 (감정평가사·관세사·노무사·법무사·변리사·세무사) 망라</li>
+            <li>다크모드, 캘린더, 알림 기능</li>
+            <li>활발한 커뮤니티 (질문/합격수기/장터)</li>
+            <li><strong>AdSense + 카카오 듀얼 광고 운영 ✓</strong> (우리와 동일 전략)</li>
+            <li>AI 기반 자동 해설 생성</li>
+            <li>본문 검색 기능 (SEO + 사용자 가치)</li>
+          </ul>
+        </div>
+        <div class="comp-block weakness">
+          <div class="comp-block-title">❌ 약점</div>
+          <ul>
+            <li><strong>UI/UX 노후 (2010년대 디자인)</strong> — 모바일 first 아님</li>
+            <li>요약노트 X — 기출 풀이만</li>
+            <li><strong>문제 ↔ 노트 자동 매핑 X</strong> (우리 진짜 moat)</li>
+            <li>강의 영상 매칭 X</li>
+            <li>오답노트 자동 수집 X</li>
+            <li>개인 약점 분석 X</li>
+            <li>광고 도배 (사이드/상단/사이사이) — 학습 흐름 방해</li>
+            <li>모던 인터랙션 X (애니메이션/사운드/공유)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="comp-vs">
+        <div class="comp-vs-title">우리 vs 공기출</div>
+        <p>
+          <strong>콘텐츠량</strong>: 공기출 2000년+ 200과목 vs 우리 한능검 1,900문제 + 547시험 + 100만 R2 문제. <strong>우리 R2 데이터 절대량은 더 큼</strong>.
+          <br/><strong>UI/UX</strong>: <strong>우리 압도</strong> (2026 모던 디자인 vs 2010년대).
+          <br/><strong>학습 도구</strong>: <strong>우리 압도</strong> (요약노트 87개 + 자동 매핑 + 오답노트 + 개인 기록).
+          <br/><strong>커뮤니티</strong>: 공기출 압도 (활발한 게시판). 우리 게시판 시드 단계.
+          <br/><strong>SEO 권위</strong>: 공기출 압도 (도메인 연령 10+년 vs 우리 1개월).
+          <br/><strong>판단</strong>: 우리는 <strong>UX × moat × 다중시험 통합</strong>으로 차별화. 12~24개월 SEO + SNS로 트래픽 갭 좁힘. 공기출의 핵심 약점 = 모바일 + UX + 자동 매핑 → 우리가 모두 이김.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 03. TIER 2 — comcbt + machuda -->
+  <!-- ============================================== -->
+  <section id="tier2">
+    <h2 class="sec"><span class="num">03 — Tier 2 (카테고리 강자)</span>comcbt · 맞추다</h2>
+
+    <!-- comcbt -->
+    <div class="comp-card tier-2">
+      <div class="comp-head">
+        <div>
+          <h3 class="comp-name">comcbt (최강 자격증 기출문제 CBT) <span class="threat-badge threat-tier-2">위협 ★★★</span></h3>
+          <div class="comp-url"><a href="https://www.comcbt.com" target="_blank">comcbt.com</a></div>
+        </div>
+      </div>
+      <p class="comp-tagline">"500개+ 자격증 완전 무료 CBT" — 자격증 카테고리 절대 강자.</p>
+
+      <div class="comp-grid">
+        <div class="comp-block strength">
+          <div class="comp-block-title">✅ 강점</div>
+          <ul>
+            <li><strong>500개+ 자격증 망라</strong> (기사·산업기사·기능사·컴활·정보처리·전기·소방·기계 등)</li>
+            <li>"지구인 누구에게나 무료" 표방 — 강한 무료 정체성</li>
+            <li>오답노트 + 자동채점 + 모의고사 + 성적관리 (교사용/학생용)</li>
+            <li>모바일 전용 사이트 (m.comcbt.com) + Android 앱</li>
+            <li>도메인 연령 길어 SEO 권위 강함</li>
+          </ul>
+        </div>
+        <div class="comp-block weakness">
+          <div class="comp-block-title">❌ 약점</div>
+          <ul>
+            <li>UI/UX 매우 낙후 (90년대~2000년대 디자인)</li>
+            <li>요약노트 X (기출 풀이만)</li>
+            <li>광고 운영 정보 약함 (학원 추천 섹션 위주)</li>
+            <li>다운로드 위주 — 인터랙티브 학습 X</li>
+            <li>공무원·한능검 카테고리 약함</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="comp-vs">
+        <div class="comp-vs-title">우리 vs comcbt</div>
+        <p>
+          현재 <strong>겹침 작음</strong> — 우리는 한능검 + 공무원 위주, comcbt는 자격증 위주. 단 <strong>우리 자격증 카테고리 본격 진출 (Phase 3 / Q3 후)</strong> 시 충돌. 그때 우리 차별점: <strong>요약노트 + 자동 매핑 + 모던 UI</strong>로 "기출만" 사이트와 차별. comcbt는 SEO 권위 + 콘텐츠 망라 압도 → 정면 경쟁 X, <strong>"학습 도구가 있는 자격증 사이트"</strong> 포지션으로 차별화.
+        </p>
+      </div>
+    </div>
+
+    <!-- machuda -->
+    <div class="comp-card tier-2">
+      <div class="comp-head">
+        <div>
+          <h3 class="comp-name">맞추다 (MACHUDA) <span class="threat-badge threat-tier-2">위협 ★★★</span></h3>
+          <div class="comp-url"><a href="https://www.machuda.kr" target="_blank">machuda.kr</a></div>
+        </div>
+      </div>
+      <p class="comp-tagline">"AI 기반 맞춤학습 + 프리미엄 구독" — 모던 UI + freemium 모델.</p>
+
+      <div class="comp-grid">
+        <div class="comp-block strength">
+          <div class="comp-block-title">✅ 강점</div>
+          <ul>
+            <li><strong>모던 UI/UX</strong> (우리와 비슷한 수준)</li>
+            <li>전문가 해설 + 자동 채점 + 오답노트 자동</li>
+            <li>풀이 이력 분석 + 맞춤 학습</li>
+            <li>모바일 앱 중심 (iOS/Android 공식 배포)</li>
+            <li>매경TEST 기출문제 최초 공개 (단독 콘텐츠)</li>
+            <li>"10명 중 8.6명 합격권" 마케팅 — 강한 social proof</li>
+            <li>SNS 적극 운영 (YouTube, Instagram, Facebook, Naver Blog)</li>
+          </ul>
+        </div>
+        <div class="comp-block weakness">
+          <div class="comp-block-title">❌ 약점</div>
+          <ul>
+            <li><strong>Freemium 모델</strong> — 핵심 기능 일부 유료 (우리 완전 무료)</li>
+            <li>한능검 약함 (자격증·공무원 위주)</li>
+            <li>요약노트 X (학습 도구 중심)</li>
+            <li>도메인 연령 짧음 (우리와 비슷)</li>
+            <li>웹 < 앱 — SEO 약함</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="comp-vs">
+        <div class="comp-vs-title">우리 vs 맞추다</div>
+        <p>
+          가장 비슷한 신생 모던 사이트. 차별점: <strong>우리는 (1) 완전 무료 (2) 요약노트 87개 + 자동 매핑 (3) 한능검 강자</strong>. 맞추다는 freemium + 자격증·공무원 위주. 향후 우리 자격증 진출 시 직접 경쟁 가능 — 그때 <strong>"무료 + 자동 매핑"</strong>이 우리 무기. 맞추다의 SNS 활동은 벤치마크할 가치 있음 (우리도 같은 채널 시작 단계).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 04. TIER 3 — 공식 + 학원사 -->
+  <!-- ============================================== -->
+  <section id="tier3">
+    <h2 class="sec"><span class="num">04 — Tier 3 (보완 / 비경쟁)</span>공식 기관 + 학원사 무료 자료</h2>
+    <p class="sec-lead">우리와 다른 게임. 공식 기관은 신뢰도, 학원사는 인강 유도 목적. 우리 위협 X — 오히려 보완재.</p>
+
+    <h3>공식 기관 (Tier 3-1)</h3>
+    <div class="grid cols-2">
+      <div class="comp-card tier-mute" style="margin-bottom: 0;">
+        <div class="comp-head">
+          <div>
+            <h3 class="comp-name" style="font-size: 18px;">한국사능력검정 <span class="badge gov">공식</span></h3>
+            <div class="comp-url"><a href="https://historyexam.go.kr" target="_blank">historyexam.go.kr</a></div>
+          </div>
+        </div>
+        <p style="font-size: 13px; margin: 0 0 8px;">최근 15회차 한능검 기출 + 정답 PDF 무료 제공. 국사편찬위원회 공식. <strong>UI 90년대 정부 사이트 수준</strong>. 공식 신뢰도가 유일한 무기 — 우리는 공식 자료를 활용하면서 학습 도구 추가.</p>
+        <p style="font-size: 12px; color: var(--ink-soft); margin: 0;"><strong>경쟁 X</strong> — 우리 보완재. 사용자가 공식 PDF 받고 우리 사이트 와서 풀이.</p>
+      </div>
+      <div class="comp-card tier-mute" style="margin-bottom: 0;">
+        <div class="comp-head">
+          <div>
+            <h3 class="comp-name" style="font-size: 18px;">사이버국가고시센터 <span class="badge gov">공식</span></h3>
+            <div class="comp-url"><a href="https://www.gosi.kr" target="_blank">gosi.kr</a></div>
+          </div>
+        </div>
+        <p style="font-size: 13px; margin: 0 0 8px;">공무원 공고 + 통계 + 일부 문제/정답. 인사혁신처 운영. <strong>정보 전달 위주</strong>, 학습 도구 X. 광고 X (정부).</p>
+        <p style="font-size: 12px; color: var(--ink-soft); margin: 0;"><strong>경쟁 X</strong> — 우리 보완재. 공무원 응시자 정보 채널.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 32px;">학원사 무료 자료 (Tier 3-2)</h3>
+    <div class="grid cols-2">
+      <div class="comp-card tier-mute" style="margin-bottom: 0;">
+        <div class="comp-head">
+          <div>
+            <h3 class="comp-name" style="font-size: 18px;">해커스한국사</h3>
+            <div class="comp-url"><a href="https://history.hackers.com" target="_blank">history.hackers.com</a></div>
+          </div>
+        </div>
+        <p style="font-size: 13px; margin: 0;"><strong>"한능검 1위" 마케팅</strong>. 무료 콘텐츠 (레벨 테스트 / 기출 다운로드 / 데일리 퀴즈) 풍부하지만 <strong>인강 등록 유도</strong>가 진짜 목적. 회원가입 필수. 광고 도배 + 1타강사 푸시.</p>
+        <p style="font-size: 12px; color: var(--ink-soft); margin-top: 8px;"><strong>경쟁 X</strong> — 사용자가 인강 결제 거부하면 우리에게 옴.</p>
+      </div>
+      <div class="comp-card tier-mute" style="margin-bottom: 0;">
+        <div class="comp-head">
+          <div>
+            <h3 class="comp-name" style="font-size: 18px;">에듀윌 한국사</h3>
+            <div class="comp-url"><a href="https://history.eduwill.net" target="_blank">history.eduwill.net</a></div>
+          </div>
+        </div>
+        <p style="font-size: 13px; margin: 0;">기출팩 무료 + 무료특강 + PDF 다운로드. 인강 트라이얼 유도. 자격증·공무원 카테고리 강함 (우리 향후 affiliate 후보).</p>
+        <p style="font-size: 12px; color: var(--ink-soft); margin-top: 8px;"><strong>경쟁 X + Affiliate 후보</strong> (Q3 BD 미팅).</p>
+      </div>
+      <div class="comp-card tier-mute" style="margin-bottom: 0;">
+        <div class="comp-head">
+          <div>
+            <h3 class="comp-name" style="font-size: 18px;">EBS 공무원·한능검</h3>
+            <div class="comp-url"><a href="https://www.ebs.co.kr" target="_blank">ebs.co.kr</a></div>
+          </div>
+        </div>
+        <p style="font-size: 13px; margin: 0;">공교육 — 9급/한능검 무료 강의 + 자료. <strong>UI 낙후 + navigation 복잡</strong>. 신뢰도는 높음.</p>
+        <p style="font-size: 12px; color: var(--ink-soft); margin-top: 8px;"><strong>경쟁 X</strong> — 사용자가 EBS 영상 봐도 우리 사이트로 풀이 옴.</p>
+      </div>
+      <div class="comp-card tier-mute" style="margin-bottom: 0;">
+        <div class="comp-head">
+          <div>
+            <h3 class="comp-name" style="font-size: 18px;">NextStudy (구 메가공무원)</h3>
+            <div class="comp-url"><a href="https://megagong.vercel.app" target="_blank">megagong.vercel.app</a></div>
+          </div>
+        </div>
+        <p style="font-size: 13px; margin: 0;">2024-12 메가스터디교육이 NextStudy에 ₩114억 매각. <strong>현재 마케팅 재정비 단계 (6~12개월 marketing void)</strong> — 우리에게 골든 윈도우.</p>
+        <p style="font-size: 12px; color: var(--ink-soft); margin-top: 8px;"><strong>경쟁 X 현재 + Affiliate 1순위</strong> (Q3 BD 미팅 — 매각 직후 lead 절실).</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 05. MATRIX -->
+  <!-- ============================================== -->
+  <section id="matrix">
+    <h2 class="sec"><span class="num">05 — Matrix</span>경쟁 매트릭스 (10×8)</h2>
+    <p class="sec-lead">9개 사이트 + 우리(gcnote) × 8개 핵심 차원. <strong>green = 우위 / yellow = 평이 / red = 약점</strong>.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>사이트</th>
+            <th class="center">콘텐츠량</th>
+            <th class="center">UI/UX</th>
+            <th class="center">자동 매핑</th>
+            <th class="center">요약노트</th>
+            <th class="center">개인 학습 도구</th>
+            <th class="center">광고 운영</th>
+            <th class="center">SEO 권위</th>
+            <th class="center">커뮤니티</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-us">
+            <td><strong>🎯 gcnote (우리)</strong> <span class="badge us">US</span></td>
+            <td class="center"><span class="badge tie">중</span><br/><small>1.9K + 547시험</small></td>
+            <td class="center"><span class="badge win">상</span><br/><small>2026 모던</small></td>
+            <td class="center"><span class="badge win">⭐ 유일</span></td>
+            <td class="center"><span class="badge win">87개</span></td>
+            <td class="center"><span class="badge win">상</span><br/><small>오답·기록·약점</small></td>
+            <td class="center"><span class="badge tie">시작</span><br/><small>카카오 LIVE</small></td>
+            <td class="center"><span class="badge lose">하</span><br/><small>1개월</small></td>
+            <td class="center"><span class="badge tie">시드</span></td>
+          </tr>
+          <tr>
+            <td><strong>공기출 (0gichul)</strong></td>
+            <td class="center"><span class="badge win">최상</span><br/><small>2000년~ 200과목</small></td>
+            <td class="center"><span class="badge lose">하</span><br/><small>2010년대</small></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge tie">중</span></td>
+            <td class="center"><span class="badge win">상</span><br/><small>AdSense+카카오</small></td>
+            <td class="center"><span class="badge win">최상</span></td>
+            <td class="center"><span class="badge win">활발</span></td>
+          </tr>
+          <tr>
+            <td><strong>comcbt</strong></td>
+            <td class="center"><span class="badge win">최상</span><br/><small>500+ 자격증</small></td>
+            <td class="center"><span class="badge lose">하</span><br/><small>90년대</small></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge tie">중</span></td>
+            <td class="center"><span class="badge tie">약</span></td>
+            <td class="center"><span class="badge win">상</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+          </tr>
+          <tr>
+            <td><strong>맞추다 (machuda)</strong></td>
+            <td class="center"><span class="badge tie">중</span></td>
+            <td class="center"><span class="badge win">상</span><br/><small>모던 (앱)</small></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge win">상</span><br/><small>맞춤 + 분석</small></td>
+            <td class="center"><span class="badge tie">중</span></td>
+            <td class="center"><span class="badge tie">중</span></td>
+            <td class="center"><span class="badge tie">SNS</span></td>
+          </tr>
+          <tr>
+            <td>historyexam.go.kr <span class="badge gov">공식</span></td>
+            <td class="center"><span class="badge tie">15회차</span></td>
+            <td class="center"><span class="badge lose">최하</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge win">최상</span><br/><small>.go.kr</small></td>
+            <td class="center"><span class="badge lose">X</span></td>
+          </tr>
+          <tr>
+            <td>gosi.kr <span class="badge gov">공식</span></td>
+            <td class="center"><span class="badge tie">정보</span></td>
+            <td class="center"><span class="badge lose">하</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge win">최상</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+          </tr>
+          <tr>
+            <td>해커스한국사</td>
+            <td class="center"><span class="badge win">상</span></td>
+            <td class="center"><span class="badge tie">중</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge tie">강의 위주</span></td>
+            <td class="center"><span class="badge tie">중</span></td>
+            <td class="center"><span class="badge win">자체</span><br/><small>인강 유도</small></td>
+            <td class="center"><span class="badge win">상</span></td>
+            <td class="center"><span class="badge tie">중</span></td>
+          </tr>
+          <tr>
+            <td>에듀윌 한국사</td>
+            <td class="center"><span class="badge win">상</span></td>
+            <td class="center"><span class="badge tie">중</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge tie">강의</span></td>
+            <td class="center"><span class="badge tie">중</span></td>
+            <td class="center"><span class="badge win">자체</span></td>
+            <td class="center"><span class="badge win">상</span></td>
+            <td class="center"><span class="badge tie">중</span></td>
+          </tr>
+          <tr>
+            <td>EBS</td>
+            <td class="center"><span class="badge win">상</span></td>
+            <td class="center"><span class="badge lose">하</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge tie">강의</span></td>
+            <td class="center"><span class="badge lose">하</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge win">상</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+          </tr>
+          <tr>
+            <td>NextStudy (구 메가공무원)</td>
+            <td class="center"><span class="badge win">상</span><br/><small>매각 후 재정비</small></td>
+            <td class="center"><span class="badge tie">중</span></td>
+            <td class="center"><span class="badge lose">X</span></td>
+            <td class="center"><span class="badge tie">강의</span></td>
+            <td class="center"><span class="badge tie">중</span></td>
+            <td class="center"><span class="badge tie">축소</span></td>
+            <td class="center"><span class="badge tie">중</span></td>
+            <td class="center"><span class="badge tie">중</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="footnote">평가는 정성 기반 (직접 사이트 접속 + 검색 결과 종합). SEO 권위는 도메인 연령 + 백링크 추정. 콘텐츠량은 확인 가능한 시험·과목 수.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 06. POSITIONING MAP -->
+  <!-- ============================================== -->
+  <section id="position">
+    <h2 class="sec"><span class="num">06 — Position Map</span>2×2 포지셔닝 맵</h2>
+    <p class="sec-lead">두 축으로 시장 그리면 우리 포지션이 보임. <strong>X축 = 학습 도구 깊이 (단순 풀이 ↔ 자동 매핑·노트·기록)</strong> / <strong>Y축 = UI/UX 세대 (레거시 ↔ 모던)</strong>.</p>
+
+    <div class="pos-map">
+      <svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="2x2 포지셔닝 맵 — 학습도구깊이 × UI/UX">
+        <text x="500" y="22" text-anchor="middle" font-family="Pretendard Variable" font-size="13" fill="#1F1A14" font-weight="700">한국 무료 기출 사이트 — 학습 도구 깊이 × UI/UX 세대</text>
+        <text x="500" y="40" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#5A4F3F">우리(gcnote)는 우상단 (모던 UI + 깊은 학습도구) 거의 단독</text>
+
+        <!-- 4 quadrant background -->
+        <rect x="130" y="80" width="355" height="220" fill="#FFF1F2" opacity="0.55"/>
+        <rect x="485" y="80" width="355" height="220" fill="#FFF7ED" opacity="0.6"/>
+        <rect x="130" y="300" width="355" height="220" fill="#F5F3FF" opacity="0.45"/>
+        <rect x="485" y="300" width="355" height="220" fill="#F0FDFA" opacity="0.6"/>
+
+        <!-- Outer frame -->
+        <rect x="130" y="80" width="710" height="440" fill="none" stroke="#1F1A14" stroke-width="1" opacity="0.25"/>
+
+        <!-- Axes -->
+        <line x1="485" y1="80" x2="485" y2="520" stroke="#1F1A14" stroke-width="2"/>
+        <line x1="130" y1="300" x2="840" y2="300" stroke="#1F1A14" stroke-width="2"/>
+
+        <!-- Axis arrows -->
+        <line x1="120" y1="300" x2="850" y2="300" stroke="#1F1A14" stroke-width="1" opacity="0.3"/>
+        <line x1="485" y1="70" x2="485" y2="530" stroke="#1F1A14" stroke-width="1" opacity="0.3"/>
+        <polygon points="850,300 842,296 842,304" fill="#1F1A14" opacity="0.6"/>
+        <polygon points="120,300 128,296 128,304" fill="#1F1A14" opacity="0.6"/>
+        <polygon points="485,70 481,78 489,78" fill="#1F1A14" opacity="0.6"/>
+        <polygon points="485,530 481,522 489,522" fill="#1F1A14" opacity="0.6"/>
+
+        <!-- Axis labels -->
+        <text x="485" y="60" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#1F1A14" font-weight="700">▲ 모던 UI</text>
+        <text x="485" y="46" text-anchor="middle" font-family="Pretendard Variable" font-size="10" fill="#5A4F3F">2026 디자인 · 모바일 first · 인터랙티브</text>
+
+        <text x="485" y="552" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#1F1A14" font-weight="700">▼ 레거시 UI</text>
+        <text x="485" y="568" text-anchor="middle" font-family="Pretendard Variable" font-size="10" fill="#5A4F3F">2010년대 이전 · PC 위주</text>
+
+        <text x="20" y="296" font-family="JetBrains Mono" font-size="11" fill="#1F1A14" font-weight="700">◀ 단순 풀이</text>
+        <text x="20" y="310" font-family="Pretendard Variable" font-size="9" fill="#5A4F3F">기출만</text>
+
+        <text x="860" y="296" font-family="JetBrains Mono" font-size="11" fill="#1F1A14" font-weight="700">깊은 도구 ▶</text>
+        <text x="860" y="310" font-family="Pretendard Variable" font-size="9" fill="#5A4F3F">노트+매핑+분석</text>
+
+        <!-- Quadrant labels -->
+        <text x="140" y="100" font-family="Pretendard Variable" font-size="10" fill="#BE123C" font-weight="700">레거시 + 단순</text>
+        <text x="495" y="100" font-family="Pretendard Variable" font-size="10" fill="#B45309" font-weight="700">모던 + 단순</text>
+        <text x="140" y="320" font-family="Pretendard Variable" font-size="10" fill="#6D28D9" font-weight="700">레거시 + 깊은 도구</text>
+        <text x="495" y="320" font-family="Pretendard Variable" font-size="10" fill="#0D9488" font-weight="700">모던 + 깊은 도구 ⭐</text>
+
+        <!-- ============== Plot dots ============== -->
+
+        <!-- 우리 (gcnote) — 우상단, 큰 점 -->
+        <circle cx="720" cy="170" r="60" fill="none" stroke="#0D9488" stroke-width="1.5" stroke-dasharray="5 3" opacity="0.5"/>
+        <circle cx="720" cy="170" r="28" fill="#0D9488"/>
+        <text x="720" y="176" text-anchor="middle" font-family="Noto Serif KR" font-size="11" fill="white" font-weight="900">gcnote</text>
+        <text x="720" y="218" text-anchor="middle" font-family="Pretendard Variable" font-size="11" fill="#0D9488" font-weight="700">기출노트 (우리)</text>
+        <text x="720" y="232" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#5A4F3F">자동매핑 + 87 노트 + 모던</text>
+
+        <!-- 공기출 — 좌상단 (콘텐츠 깊지만 UI 낙후) -->
+        <circle cx="200" cy="220" r="26" fill="#BE123C" opacity="0.85"/>
+        <text x="200" y="225" text-anchor="middle" font-family="Pretendard Variable" font-size="10" fill="white" font-weight="700">공기출</text>
+        <text x="200" y="265" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#BE123C">200과목 · UI 노후</text>
+
+        <!-- comcbt — 좌하단 (자격증 강하지만 UI 매우 낙후) -->
+        <circle cx="190" cy="430" r="22" fill="#6D28D9" opacity="0.85"/>
+        <text x="190" y="434" text-anchor="middle" font-family="Pretendard Variable" font-size="9" fill="white" font-weight="700">comcbt</text>
+        <text x="190" y="470" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#6D28D9">500+ 자격증 · 90s UI</text>
+
+        <!-- 맞추다 — 우상단 (우리 가장 가까움) -->
+        <circle cx="600" cy="200" r="20" fill="#B45309" opacity="0.85"/>
+        <text x="600" y="204" text-anchor="middle" font-family="Pretendard Variable" font-size="9" fill="white" font-weight="700">맞추다</text>
+        <text x="600" y="238" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#B45309">freemium · 앱 중심</text>
+
+        <!-- historyexam.go.kr — 좌하단 (공식, UI 최하) -->
+        <circle cx="290" cy="475" r="14" fill="#1D4ED8" opacity="0.7"/>
+        <text x="290" y="478" text-anchor="middle" font-family="Pretendard Variable" font-size="8" fill="white" font-weight="700">history</text>
+        <text x="290" y="500" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#1D4ED8">공식·15회차</text>
+
+        <!-- gosi.kr — 좌하단 -->
+        <circle cx="370" cy="465" r="12" fill="#1D4ED8" opacity="0.7"/>
+        <text x="370" y="468" text-anchor="middle" font-family="Pretendard Variable" font-size="8" fill="white" font-weight="700">gosi</text>
+
+        <!-- 해커스/에듀윌 — 모던 + 단순 사이 (학원 인강 유도) -->
+        <circle cx="540" cy="140" r="16" fill="#94724D" opacity="0.6"/>
+        <text x="540" y="144" text-anchor="middle" font-family="Pretendard Variable" font-size="8" fill="white" font-weight="700">해커스</text>
+        <circle cx="580" cy="115" r="14" fill="#94724D" opacity="0.55"/>
+        <text x="580" y="119" text-anchor="middle" font-family="Pretendard Variable" font-size="8" fill="white" font-weight="700">에듀윌</text>
+
+        <!-- EBS — 좌하단 -->
+        <circle cx="240" cy="370" r="14" fill="#1D4ED8" opacity="0.55"/>
+        <text x="240" y="373" text-anchor="middle" font-family="Pretendard Variable" font-size="8" fill="white" font-weight="700">EBS</text>
+
+        <!-- NextStudy — 모던+단순 (재정비 중) -->
+        <circle cx="600" cy="115" r="14" fill="#94724D" opacity="0.4"/>
+        <text x="600" y="118" text-anchor="middle" font-family="Pretendard Variable" font-size="7" fill="white" font-weight="700">Next</text>
+        <text x="600" y="138" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#BE123C">재정비</text>
+
+        <!-- ⭐ 우리 자리 강조 라벨 -->
+        <text x="780" y="120" text-anchor="middle" font-family="Pretendard Variable" font-size="11" fill="#0D9488" font-weight="700">⭐ 거의 단독 점유</text>
+
+        <!-- Footer note -->
+        <text x="500" y="588" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#94724D" font-style="italic">맞추다가 가장 가까운 모던 + 학습도구 사이트지만 freemium + 자격증 위주 → 한능검·공무원에선 우리가 단독</text>
+      </svg>
+    </div>
+
+    <div class="callout teal">
+      <div class="callout-title">읽는 법</div>
+      <p>"모던 UI + 깊은 학습도구" 사분면(우상단)에 우리만 거의 단독. 맞추다는 가장 가까운 신생이지만 freemium 모델 + 자격증 위주 → 한능검·공무원 시장에선 우리만 차지. <strong>이 사분면이 비어있는 이유</strong>는 (1) 콘텐츠 + UI 둘 다 만들기 어려움 (2) 무료 + 깊은 도구 = 수익화 모델 명확 X. 우리가 풀어낸 답: <strong>"학원 affiliate + 광고 + (Phase 4) 멤버십"</strong> 다각화.</p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 07. MOAT -->
+  <!-- ============================================== -->
+  <section id="moat">
+    <h2 class="sec"><span class="num">07 — Moat</span>우리 진짜 Moat (5개)</h2>
+    <p class="sec-lead">경쟁사 분석으로 명확해진 5개 차별점. 콘텐츠량 + SEO 권위는 시간이 해결 (12~24개월). 단, 아래 5개는 우리가 코드 + 디자인 + 데이터 인프라로 만든 <strong>구조적 우위</strong> — 따라잡기 어려움.</p>
+
+    <div class="grid cols-2">
+      <div class="card amber">
+        <h4 style="color: var(--amber);">1. ⭐ 문제 ↔ 노트 자동 매핑</h4>
+        <p style="font-size: 14px;">정답 확인 순간 "이 문제는 노트의 X 부분과 관련" 자동 표시 + 1클릭 이동. <strong>9개 경쟁사 중 0곳 보유</strong>. 우리 콘텐츠 파이프라인에 강제 룰로 박혀 있음 — 신규 시험 추가해도 자동 매핑.</p>
+      </div>
+      <div class="card amber">
+        <h4 style="color: var(--amber);">2. 📚 요약노트 87개 + 강의 영상 매칭</h4>
+        <p style="font-size: 14px;">한능검 시대별 87개 노트 (203,922자) + 최태성 강의 영상 124개 매칭. <strong>공기출·comcbt 0개 / 학원사는 강의 위주, 텍스트 노트 X</strong>. 콘텐츠 깊이 차별화.</p>
+      </div>
+      <div class="card amber">
+        <h4 style="color: var(--amber);">3. 🎨 2026 모던 UI/UX</h4>
+        <p style="font-size: 14px;">cream + ink + amber + teal 디자인 시스템 / Noto Serif KR + Pretendard / 모바일 first 반응형 / 사운드 효과 + 애니메이션. <strong>9개 경쟁사 중 맞추다만 비슷한 수준 (그것도 freemium)</strong>.</p>
+      </div>
+      <div class="card amber">
+        <h4 style="color: var(--amber);">4. 🌐 다중시험 통합 (547 ExamType)</h4>
+        <p style="font-size: 14px;">한능검 + 9급 (24직렬) + 자격증 728개 R2 통합. 사용자 인생 시험 30년 동반 (운전→자격증→공무원→직무자격증). <strong>공기출 (200과목) 외엔 단일 카테고리만</strong>.</p>
+      </div>
+      <div class="card amber">
+        <h4 style="color: var(--amber);">5. 🔧 개인 학습 도구 풀세트</h4>
+        <p style="font-size: 14px;">오답노트 자동 수집 / 내 기록 (점수·급수·약점 분석) / 학습 세션 (맞춤형) / 키워드별 학습. localStorage 기반 즉시 작동. <strong>공기출·comcbt는 단편적 / 맞추다는 freemium에서만 풀세트</strong>.</p>
+      </div>
+      <div class="card ink">
+        <h4>✅ Moat 정리</h4>
+        <p style="font-size: 13px; color: rgba(245,239,228,0.85);">5개 모두 <strong>코드/디자인/데이터 인프라 기반 구조적 우위</strong>. 경쟁사가 1년 안에 따라잡기 어려움. 우리는 그 사이 SEO + SNS + 광고로 트래픽 갭 좁힘.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 08. ACTION -->
+  <!-- ============================================== -->
+  <section id="action">
+    <h2 class="sec"><span class="num">08 — Action</span>위협·기회 + 액션 함의</h2>
+
+    <h3>위협 (Threats)</h3>
+    <div class="grid cols-2">
+      <div class="card rose">
+        <h4 style="color: var(--rose);">🔴 공기출 — SEO 갭 너무 큼</h4>
+        <p style="font-size: 13px;">공기출 도메인 연령 10+년 + 200과목 백링크 누적. 구글 검색 "9급 공무원 기출"에서 우리가 1순위 진입까지 12~24개월 필요.</p>
+        <p style="font-size: 12px; color: var(--rose); margin-top: 8px;"><strong>대응</strong>: SEO 정면 경쟁 X → 모바일 + SNS (인스타·스레드) + longtail 키워드 (직렬별 합격 가이드)로 우회. 공기출이 약한 채널 점유.</p>
+      </div>
+      <div class="card rose">
+        <h4 style="color: var(--rose);">🔴 NextStudy 재정비 후 (~2026 Q4)</h4>
+        <p style="font-size: 13px;">매각 후 마케팅 공백 6~12개월. Q4 이후 재정비 완료 시 광고 + SNS 재가동 → 우리 SOV 줄어듦.</p>
+        <p style="font-size: 12px; color: var(--rose); margin-top: 8px;"><strong>대응</strong>: <strong>Q3까지 SOV 50%+ 확보 마지노선</strong>. 9급 24직렬 노트 + 인스타·스레드 일일 발행으로 골든 윈도우 활용.</p>
+      </div>
+      <div class="card rose">
+        <h4 style="color: var(--rose);">🔴 comcbt 자격증 SEO 압도</h4>
+        <p style="font-size: 13px;">우리 자격증 진출 (Phase 3 / Q3 후) 시 comcbt와 충돌. comcbt는 도메인 연령 + 500개 자격증 망라 우위.</p>
+        <p style="font-size: 12px; color: var(--rose); margin-top: 8px;"><strong>대응</strong>: 자격증 정면 경쟁 X → "학습 도구가 있는 자격증 사이트"로 차별. 변리사·노무사·감정평가사 등 고가치 자격증부터 진출.</p>
+      </div>
+      <div class="card rose">
+        <h4 style="color: var(--rose);">🔴 맞추다 추격 (가장 비슷한 신생)</h4>
+        <p style="font-size: 13px;">맞추다는 우리와 가장 비슷한 모던 사이트 + 자격증 강함. 향후 한능검·공무원 진출 시 직접 경쟁.</p>
+        <p style="font-size: 12px; color: var(--rose); margin-top: 8px;"><strong>대응</strong>: <strong>"완전 무료 + 자동 매핑"</strong> 차별화. 맞추다는 freemium 핵심 기능 유료화 — 우리는 모든 기능 무료 (광고만).</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 32px;">기회 (Opportunities)</h3>
+    <div class="grid cols-2">
+      <div class="card teal">
+        <h4 style="color: var(--teal);">🟢 모든 경쟁사 자동 매핑 X</h4>
+        <p style="font-size: 13px;">9개 사이트 중 0곳이 문제↔노트 매핑 보유. <strong>우리 진짜 moat</strong>. 마케팅 메시지 1순위로 강조 — "정답 확인 순간 노트로 1클릭 이동, 다른 사이트엔 없는 학습 경험".</p>
+      </div>
+      <div class="card teal">
+        <h4 style="color: var(--teal);">🟢 한국 EdTech SNS 부재</h4>
+        <p style="font-size: 13px;">맞추다 외엔 SNS 활동 거의 X (공기출도 X). 인스타·스레드 = 빈 공간. <strong>우리가 점유하면 SOV 독점 가능</strong>.</p>
+      </div>
+      <div class="card teal">
+        <h4 style="color: var(--teal);">🟢 공기출 UI 갭 = 우리 무기</h4>
+        <p style="font-size: 13px;">공기출 사용자 중 모바일 UX 불만 사용자 → 우리로 이동 가능. <strong>"공기출은 PC, 우리는 모바일"</strong> 마케팅 메시지.</p>
+      </div>
+      <div class="card teal">
+        <h4 style="color: var(--teal);">🟢 NextStudy 매각 = 광고 채널 비음</h4>
+        <p style="font-size: 13px;">메가공무원이 빠진 자리 = Naver/Google 광고 경쟁 약화. 우리 광고 ROAS ↑. <strong>광고비 max 사용 (₩2,000만/월)</strong> 시 효율 극대화.</p>
+      </div>
+    </div>
+
+    <div class="callout teal" style="margin-top: 28px;">
+      <div class="callout-title">액션 함의 — Q2 OKR 우선순위</div>
+      <p style="font-size: 14px; line-height: 1.7;">
+        ① <strong>마케팅 메시지 1순위 = "자동 매핑"</strong> — 인스타 카드뉴스/스레드/SEO 모두 이걸로 통일. "다른 사이트엔 없는 학습 경험".
+        <br/>② <strong>모바일 first 강조</strong> — "공기출보다 모바일에서 빠르고 깔끔" 비교 콘텐츠 (직접 사이트명 X, 정성 비교)
+        <br/>③ <strong>인스타·스레드 SOV 점유</strong> — 한국 EdTech 빈 공간. 일일 발행으로 6개월 안에 카테고리 1위.
+        <br/>④ <strong>Q3 9급 24직렬 노트 입력</strong> — 콘텐츠 깊이 차별화. 공기출 따라잡기 X, 직렬별 깊이 차별.
+        <br/>⑤ <strong>NextStudy BD 시드 컨택</strong> (Q3 PV 100K 도달 후) — 매각 직후 lead 절실 = 답신 확률 가장 높음.
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- 한 줄 결론 -->
+  <div style="background: linear-gradient(135deg, var(--ink) 0%, #2D241A 100%); color: var(--bg); padding: 28px 32px; border-radius: 16px; margin: 36px 0;">
+    <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--amber-soft); text-transform: uppercase; font-weight: 700; margin-bottom: 6px;">최종 한 줄 결론</div>
+    <p style="font-family: var(--serif); font-size: 18px; font-weight: 700; line-height: 1.6; margin: 0 0 12px;">
+      "한국 무료 기출 시장 = 공기출 1위 + 카테고리 강자들. 우리는 <strong style="color: var(--amber-soft);">'모던 UI + 자동 매핑 + 다중시험 통합'</strong> 사분면을 거의 단독 점유."
+    </p>
+    <p style="font-size: 14px; line-height: 1.6; margin: 0; color: rgba(245,239,228,0.85);">
+      콘텐츠량 + SEO는 12~24개월에 따라잡기 어려움 → 정면 경쟁 X. 대신 <strong>UX × moat × SNS 빈 공간 점유</strong>로 차별화. 12~24개월 후 공기출과 양강 구도 형성 + 자격증 카테고리 진출로 추가 시장 흡수 가능.
+    </p>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="eyebrow" style="color: var(--ink-soft);">기출노트 · Competitor Analysis</div>
+    <p style="margin: 0 0 4px;">2026-04-27 · realproto1 · gcnote.co.kr</p>
+    <p style="margin: 0; font-family: var(--mono); font-size: 11px;">
+      관련 문서: docs/multi-exam-hub-strategy-v3.html (마케팅 전략) · docs/monetization-alternatives.html (수익화) · docs/ad-placement-spec.html (광고 위치)
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>

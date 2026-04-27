@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>기출노트 — 광고/수익화 대안 (AdSense 외)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #F5EFE4;
+    --paper: #FFFFFF;
+    --ink: #1F1A14;
+    --ink-soft: #5A4F3F;
+    --ink-mute: #94724D;
+    --amber: #B45309;
+    --amber-soft: #FED7AA;
+    --amber-bg: #FFF7ED;
+    --teal: #0D9488;
+    --teal-soft: #CCFBF1;
+    --teal-bg: #F0FDFA;
+    --rose: #BE123C;
+    --rose-soft: #FECDD3;
+    --rose-bg: #FFF1F2;
+    --hairline: rgba(31, 26, 20, 0.12);
+    --serif: 'Noto Serif KR', ui-serif, Georgia, serif;
+    --sans: 'Pretendard Variable', Pretendard, system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.65;
+    font-size: 16px;
+    word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1080px; margin: 0 auto; padding: 56px 32px 96px; }
+  @media (max-width: 720px) { .container { padding: 36px 18px 64px; } }
+
+  /* HERO */
+  header.hero {
+    text-align: center;
+    padding: 48px 0 32px;
+    border-bottom: 1px solid var(--hairline);
+    margin-bottom: 40px;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(30px, 5vw, 48px);
+    line-height: 1.05;
+    margin: 0 0 14px;
+    letter-spacing: -0.02em;
+  }
+  h1 .amber { color: var(--amber); }
+  .subtitle {
+    font-size: 16px;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .meta {
+    margin-top: 18px;
+    display: inline-flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .meta span:not(:first-child)::before {
+    content: '·';
+    margin-right: 14px;
+    color: var(--hairline);
+  }
+
+  /* WHY box */
+  .why-box {
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-left: 4px solid var(--amber);
+    border-radius: 0 14px 14px 0;
+    padding: 22px 26px;
+    margin-bottom: 40px;
+  }
+  .why-box .eye { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; color: var(--amber); text-transform: uppercase; font-weight: 700; margin-bottom: 6px; }
+  .why-box h2 { font-family: var(--serif); font-size: 22px; font-weight: 800; margin: 0 0 10px; line-height: 1.25; }
+  .why-box p { margin: 0 0 8px; font-size: 14px; line-height: 1.7; }
+  .why-box ul { margin: 8px 0 0; padding-left: 22px; font-size: 13px; line-height: 1.7; }
+
+  /* SECTIONS */
+  section { margin-bottom: 56px; }
+  h2.sec {
+    font-family: var(--serif);
+    font-size: clamp(24px, 3.6vw, 32px);
+    font-weight: 900;
+    margin: 0 0 4px;
+    letter-spacing: -0.018em;
+    line-height: 1.15;
+  }
+  h2.sec .num {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--amber);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .sec-lead {
+    font-size: 15px;
+    color: var(--ink-soft);
+    max-width: 800px;
+    margin: 8px 0 24px;
+    line-height: 1.7;
+  }
+  hr.divider { border: none; border-top: 1px solid var(--hairline); margin: 48px 0; }
+
+  /* TABLES */
+  .table-wrap { overflow-x: auto; margin: 14px 0 18px; border: 1px solid var(--hairline); border-radius: 12px; background: var(--paper); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--hairline); vertical-align: top; }
+  th { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); font-weight: 700; background: var(--bg); }
+  td.center, th.center { text-align: center; }
+  tbody tr:last-child td { border-bottom: none; }
+  tr.row-hi { background: rgba(13,148,136,0.07); }
+  tr.row-bad { background: rgba(190,18,60,0.05); }
+
+  /* Badges */
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .badge.go      { background: var(--teal-soft); color: var(--teal); }
+  .badge.go2     { background: var(--teal); color: var(--bg); }
+  .badge.warn    { background: var(--amber-soft); color: var(--amber); }
+  .badge.no      { background: var(--rose-soft); color: var(--rose); }
+  .badge.mute    { background: var(--hairline); color: var(--ink-soft); }
+
+  /* PRIORITY blocks */
+  .priority {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 20px;
+    padding: 22px 24px;
+    background: var(--paper);
+    border-radius: 14px;
+    border: 1px solid var(--hairline);
+    margin-bottom: 14px;
+  }
+  .priority.now    { border-left: 4px solid var(--rose); }
+  .priority.soon   { border-left: 4px solid var(--amber); }
+  .priority.later  { border-left: 4px solid var(--teal); }
+  .priority.future { border-left: 4px solid var(--ink); }
+  @media (max-width: 720px) { .priority { grid-template-columns: 1fr; gap: 8px; } }
+  .pri-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.3;
+    padding-top: 4px;
+  }
+  .pri-when {
+    font-family: var(--serif);
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--ink);
+    margin-top: 2px;
+  }
+  .pri-body { font-size: 14px; line-height: 1.7; }
+  .pri-body ol { padding-left: 22px; margin: 0; }
+  .pri-body li { margin-bottom: 6px; }
+  .pri-body strong { color: var(--amber); }
+
+  /* Tag chips */
+  .tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    background: var(--bg);
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin: 0 2px;
+    color: var(--ink-soft);
+  }
+  code { font-family: var(--mono); font-size: 12px; background: var(--bg); padding: 2px 6px; border-radius: 4px; color: var(--amber); }
+
+  /* Callout */
+  .callout {
+    background: var(--paper);
+    border-left: 4px solid var(--amber);
+    padding: 18px 22px;
+    margin: 20px 0;
+    border-radius: 0 10px 10px 0;
+  }
+  .callout-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--amber);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .callout p { margin: 0; }
+
+  /* TL;DR */
+  .tldr {
+    background: linear-gradient(135deg, var(--ink) 0%, #2D241A 100%);
+    color: var(--bg);
+    padding: 28px 32px;
+    border-radius: 16px;
+    margin: 36px 0;
+  }
+  .tldr-eye {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--amber-soft);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .tldr h3 { font-family: var(--serif); font-size: 22px; font-weight: 900; margin: 0 0 12px; line-height: 1.3; color: var(--bg); }
+  .tldr p { margin: 0; font-size: 15px; line-height: 1.7; }
+  .tldr strong { color: var(--amber-soft); }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--hairline); padding-top: 28px; margin-top: 40px; text-align: center; color: var(--ink-soft); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow">Revenue Playbook · 2026-04-26</div>
+    <h1>AdSense 외 <span class="amber">광고/수익화 대안</span> 정리</h1>
+    <p class="subtitle">AdSense 심사가 빡세도 (또는 통과해도) 병행 가능한 7개 카테고리 대안. 한국 시험 학습 사이트(gcnote)의 단계별 우선순위 정리.</p>
+    <div class="meta">
+      <span>gcnote.co.kr</span>
+      <span>v3 마케팅 전략 보충</span>
+      <span>2026-04-26</span>
+    </div>
+  </header>
+
+  <!-- WHY -->
+  <div class="why-box">
+    <div class="eye">왜 이 문서가 필요한가</div>
+    <h2>한국 사이트는 AdSense 심사가 보통 1~3개월 걸리거나 탈락한다</h2>
+    <p>한국 신생 사이트가 자주 거절되는 이유:</p>
+    <ul>
+      <li>도메인 만든 지 6개월 미만</li>
+      <li>콘텐츠 30개 미만 또는 AI 생성 의심</li>
+      <li>중복/얇은 콘텐츠 (자동 생성 페이지 많음)</li>
+      <li>Privacy Policy / Terms 미흡</li>
+      <li>트래픽 너무 적음 (월 1만 PV 미만)</li>
+    </ul>
+    <p style="margin-top: 12px;"><strong>핵심 깨달음 1</strong>: AdSense RPM ₩2K vs Affiliate CPL ₩3~10K. 학원 affiliate 1건이 AdSense 한 달치보다 큼. <strong>AdSense는 보너스, Affiliate가 본업.</strong></p>
+    <p style="margin-top: 8px;"><strong>핵심 깨달음 2 (사용자 판단)</strong>: 학원 BD는 <strong>트래픽이 커진 후</strong>에. 월 PV 35K로 NextStudy 메일 보내면 협상력 0 — 단가 후려쳐지거나 무시당함. <strong>트래픽 키우기 → 협상력 확보 → 본격 BD</strong> 순서.</p>
+    <p style="margin-top: 8px;"><strong>현재 상태 (2026-04-26)</strong>: AdSense 심사 신청 완료 (4/25) → 결과 대기 중. <strong>카카오 애드핏을 병행 신청</strong>해 한국 광고주 base 확보 (한국 사용자 100% → 카카오가 우리 케이스에 더 자연스러움).</p>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MILESTONE TRIGGER MATRIX (NEW) -->
+  <!-- ============================================== -->
+  <section style="margin-bottom: 48px;">
+    <h2 class="sec"><span class="num">00 — Milestone</span>트래픽 Milestone 트리거 매트릭스</h2>
+    <p class="sec-lead">월 PV 기준으로 어떤 수익화 액션이 가능한지. 너무 일찍 시작하면 협상력 부족 / 너무 늦으면 시즌 윈도우 놓침. <strong>milestone 도달 시 자동 트리거</strong>.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>월 PV</th>
+            <th>도달 예상</th>
+            <th>광고 네트워크</th>
+            <th>학원 Affiliate (BD)</th>
+            <th>자체 수익화</th>
+            <th>B2B Sponsorship</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-bad">
+            <td><strong>35K</strong> (NOW)</td>
+            <td>2026-04 [실측]</td>
+            <td>AdSense 심사 대기 (4/25 신청) + <strong>카카오 애드핏 신청</strong></td>
+            <td>❌ 보류 — 협상력 부족</td>
+            <td>쿠팡·네이버 파트너스 (self-serve) + 응원 결제</td>
+            <td>❌ 보류</td>
+          </tr>
+          <tr>
+            <td><strong>50K</strong></td>
+            <td>2026-05~6 [추정]</td>
+            <td>카카오 애드핏 LIVE + AdSense LIVE (통과 시) — <em>Ezoic은 페이지 속도 테스트 후 선택</em></td>
+            <td>🟡 <strong>시드 컨택만</strong> — 자료집 PDF 보내고 "6개월 후" 약속</td>
+            <td>(준비) — 모의고사 PDF spec</td>
+            <td>❌ 보류</td>
+          </tr>
+          <tr class="row-hi">
+            <td><strong>100K</strong></td>
+            <td>2026-08~9 [추정]</td>
+            <td>+ AdSense LIVE (재신청 통과 시)</td>
+            <td>🟢 <strong>NextStudy + 에듀윌 본격 미팅</strong> — CPL ₩3~8K 정상 협상</td>
+            <td>모의고사 PDF LIVE / 광고 제거 멤버십 spec</td>
+            <td>🟡 시즌 광고 패키지 (10월 한능검·공인중개사)</td>
+          </tr>
+          <tr class="row-hi">
+            <td><strong>500K</strong></td>
+            <td>2027-01 [추정]</td>
+            <td>+ Mediavine 신청 (RPM 2~3×)</td>
+            <td>🟢🟢 학원 multi-deal (해커스 추가)</td>
+            <td>광고 제거 멤버십 LIVE / 합격 노트 PDF 시리즈</td>
+            <td>🟢 Banner sponsorship 정기화 (₩50~200만/월)</td>
+          </tr>
+          <tr class="row-hi">
+            <td><strong>1M+</strong></td>
+            <td>2027-04+ [추정]</td>
+            <td>AdThrive (Raptive) 신청</td>
+            <td>🟢🟢🟢 학원이 먼저 컨택해옴 / 인수 검토</td>
+            <td>AI 학습 가이드 멤버십 LIVE (Phase 4)</td>
+            <td>출판사 + 박람회 partnership</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">왜 이 순서인가</div>
+      <p style="font-size:14px;"><strong>학원 입장</strong>: 월 PV 100K 미만 = "주목할 만한 사이트 아님". 단가 후려쳐도 lead 양 적어 의미 없음. <strong>월 PV 100K+</strong> = 한 달 ₩10~30만 수익 보장 = 미팅·계약 가치. <strong>500K+</strong> = banner sponsorship 협상 권력 우리에게.</p>
+    </div>
+
+    <div class="callout" style="border-left-color: var(--teal); background: var(--teal-bg);">
+      <div class="callout-title" style="color: var(--teal);">📈 광고비 max 사용 원칙 (2026-04-26 추가)</div>
+      <p style="font-size:14px;"><strong>한국 학원 부재 채널 (Google·인스타·스레드·카카오)</strong>은 ROAS 6× 가정 가능. <strong>광고비 ₩30만 → ₩100만 → ₩300만 → ₩1,000만 → ₩2,000만 (max)</strong>까지 단계 확장. ROAS &gt; 4× 유지되는 한 광고비 늘리는 게 합리적. 한도는 channel capacity (Google·인스타 일 노출 한계 ≈ 월 ₩1,500~2,500만). v3 §05 ⑤-2 광고비 별 매출 시뮬 참조.</p>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 01. 광고 네트워크 -->
+  <!-- ============================================== -->
+  <section>
+    <h2 class="sec"><span class="num">01 — Ad Networks</span>광고 네트워크 (AdSense 대체/병행)</h2>
+    <p class="sec-lead">AdSense 외에도 한국 사이트가 쓸 수 있는 디스플레이 광고 네트워크 5종. 진입장벽 + RPM 비교.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>네트워크</th>
+            <th>진입 장벽</th>
+            <th>한국 RPM 추정</th>
+            <th>판정</th>
+            <th>비고</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-hi">
+            <td><strong>카카오 애드핏</strong></td>
+            <td>매우 낮음 (한국 사이트면 OK, 1~2일)</td>
+            <td>₩800~2,000</td>
+            <td class="center"><span class="badge go2">🥇 즉시</span></td>
+            <td>한국 광고주 100% (한능검 학원 자동 매칭) · 페이지 속도 영향 작음 · KRW 정산. <strong>우리 케이스 best fit</strong></td>
+          </tr>
+          <tr class="row-hi">
+            <td><strong>AdSense</strong></td>
+            <td>까다로움 (1~3개월 심사)</td>
+            <td>₩1,500~3,500</td>
+            <td class="center"><span class="badge go">심사 대기</span></td>
+            <td><strong>2026-04-25 신청 완료</strong> → 결과 대기 중. 통과 시 카카오와 병행 (위치 분리 — 모바일/데스크톱)</td>
+          </tr>
+          <tr>
+            <td><strong>Ezoic</strong></td>
+            <td>매우 낮음 (PV 10K+)</td>
+            <td>₩1,500~3,000</td>
+            <td class="center"><span class="badge warn">선택 (테스트)</span></td>
+            <td>AI 자동 최적화 강점이지만 <strong>script가 페이지 속도 -15~30%</strong>. 한국 사용자에 영어 광고 노출 가능. SEO 의존 사이트엔 신중. 1~2개월 후 카카오·AdSense 정착되면 추가 테스트</td>
+          </tr>
+          <tr class="row-hi">
+            <td><strong>Mediavine</strong></td>
+            <td>중간 (월 PV 50K+)</td>
+            <td>₩3,000~8,000</td>
+            <td class="center"><span class="badge go">PV 50K 후</span></td>
+            <td>AdSense보다 RPM 2~3×. Ezoic보다 광고 품질 좋음. 트래픽 도달 후 진지하게 검토</td>
+          </tr>
+          <tr>
+            <td><strong>AdThrive (Raptive)</strong></td>
+            <td>매우 높음 (월 100K UV+)</td>
+            <td>₩3,500~10,000</td>
+            <td class="center"><span class="badge warn">Phase 2+</span></td>
+            <td>최고 RPM. 12개월 후 도달 시 신청. 미국 광고주 base 강함</td>
+          </tr>
+          <tr class="row-bad">
+            <td>Adsterra / PropellerAds</td>
+            <td>거의 없음</td>
+            <td>₩300~800</td>
+            <td class="center"><span class="badge no">비추</span></td>
+            <td>광고 품질 낮음 (성인/grey) — 브랜드 손상 위험</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">즉시 액션 — 카카오 애드핏 신청</div>
+      <p style="font-size:14px;"><strong>AdSense는 4/25 신청 완료 → 대기 중</strong>. 그 사이 <strong><a href="https://adfit.kakao.com" style="color: var(--amber);">카카오 애드핏</a> 신청</strong> (1~2일 통과). 한국 사용자 100%인 우리 케이스 best fit (한능검 학원 광고 자동 매칭, 페이지 속도 영향 작음, KRW 정산). 두 개 LIVE 후 위치 분리 운영 — 카카오 모바일 / AdSense 데스크톱.</p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">왜 Ezoic은 보류로 변경했는가</div>
+      <p style="font-size:14px;">초기엔 1순위로 평가했지만 우리 사이트 분석 결과 <strong>(1) 한국 사용자 100%</strong> → Ezoic의 글로벌 광고주 base 강점이 무의미, <strong>(2) 페이지 속도 -15~30% 손상</strong> → 우리는 SEO organic 30% 의존하므로 GSC 순위 하락 위험, <strong>(3) 정산이 PayPal/USD</strong> → 환전 수수료. 카카오 + AdSense 정착 후 <strong>1~2개월 A/B 테스트</strong>로 net gain 확인 후 결정.</p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 02. AFFILIATE -->
+  <!-- ============================================== -->
+  <section>
+    <h2 class="sec"><span class="num">02 — Affiliate</span>학원 BD + 커머스 제휴</h2>
+    <p class="sec-lead">실제로 한국 시험 사이트에서 가장 큰 수익원. <strong>AdSense RPM ₩2K vs Affiliate CPL ₩3~10K</strong> — 트래픽이 작아도 매출 큼. 학원 1곳만 잡혀도 AdSense 한 달치 이상.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>제휴처</th>
+            <th>모델</th>
+            <th>단가 추정</th>
+            <th>판정</th>
+            <th>접근법</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-hi">
+            <td><strong>NextStudy<br/>(구 메가공무원)</strong></td>
+            <td>CPL (인강 등록)</td>
+            <td>₩5,000~10,000/lead</td>
+            <td class="center"><span class="badge go2">🥇 1순위</span></td>
+            <td>매각 직후 (2024-12) = 신규 lead 절실. <strong>이번주 메일 직접 가능</strong>. 답신 확률 가장 높음</td>
+          </tr>
+          <tr class="row-hi">
+            <td><strong>에듀윌</strong></td>
+            <td>CPL / Revenue Share</td>
+            <td>₩3,000~8,000/lead</td>
+            <td class="center"><span class="badge go">🥈 2순위</span></td>
+            <td>DB마케팅팀 / 제휴팀 컨택. 자격증 카테고리 강함 — 우리 547개 시험과 적합</td>
+          </tr>
+          <tr class="row-hi">
+            <td><strong>해커스공무원</strong></td>
+            <td>CPL</td>
+            <td>₩3,000~6,000/lead</td>
+            <td class="center"><span class="badge go">🥈 2순위</span></td>
+            <td>제휴 페이지 운영 중. 신청 양식 있음. 어학(한국사 X)과 묶음 가능</td>
+          </tr>
+          <tr>
+            <td>공단기</td>
+            <td>CPL</td>
+            <td>₩4,000~7,000/lead</td>
+            <td class="center"><span class="badge warn">3순위</span></td>
+            <td>사업부 축소 중 — 컨택 어려움. NextStudy 우선</td>
+          </tr>
+          <tr class="row-bad">
+            <td>링글 · 튜터링 · 산타토익</td>
+            <td>CPL (어학)</td>
+            <td>₩3,000~10,000</td>
+            <td class="center"><span class="badge no">비추</span></td>
+            <td>우리 ICP (공무원·자격증) 와 다름</td>
+          </tr>
+          <tr>
+            <td><strong>쿠팡 파트너스</strong></td>
+            <td>CPS 3% (commission)</td>
+            <td>₩300~1,500/책</td>
+            <td class="center"><span class="badge go">보조</span></td>
+            <td>한능검·공무원 책 추천. 진입 즉시 가능. 자동화 쉬움. <strong>이번주 가능</strong></td>
+          </tr>
+          <tr>
+            <td>네이버 쇼핑 파트너스</td>
+            <td>CPS 1~3%</td>
+            <td>₩100~800/상품</td>
+            <td class="center"><span class="badge warn">보조</span></td>
+            <td>쿠팡과 병행. 책 + 문구류. 단가 낮음</td>
+          </tr>
+          <tr>
+            <td>DBpia / RISS</td>
+            <td>CPL (학술 DB)</td>
+            <td>₩수천원</td>
+            <td class="center"><span class="badge no">비추</span></td>
+            <td>시험 ICP와 매칭 안 됨</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">접근 메일 양식 (요청 시 별도 작성 가능)</div>
+      <p style="font-size:14px;">"안녕하세요, 한능검·공무원·자격증 통합 학습 사이트 gcnote 운영자입니다. 547개 시험 · 100만 문항 인프라에 월 1.5K active users (Direct 61%, 11.9분 평균 세션). 저희 학습자가 인강 검토 단계에서 자연스럽게 [학원명]으로 연결되도록 제휴 검토드립니다…" → 데이터 자산 + 트래픽 품질 + win-win 구조 강조.</p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 03. SELF-MONETIZATION -->
+  <!-- ============================================== -->
+  <section>
+    <h2 class="sec"><span class="num">03 — Self-Monetization</span>자체 수익화 (멤버십/PDF/도구)</h2>
+    <p class="sec-lead">사이트 자체에서 결제받는 모델. 트래픽 자산이 어느 정도 쌓인 후 활성화. 1인 운영 + AI 자동화 가능한 것만 우선.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>모델</th>
+            <th>가격</th>
+            <th>잠재 매출/월</th>
+            <th>시작 시점</th>
+            <th>비고</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>응원 결제 (토스 후원, Buy Me a Coffee KR)</strong></td>
+            <td>₩1,000~5,000 일회</td>
+            <td>₩수만~수십만</td>
+            <td><span class="badge go">즉시</span></td>
+            <td>진성 fan 대상. 부담 적음. 1시간 작업으로 버튼만 추가</td>
+          </tr>
+          <tr class="row-hi">
+            <td><strong>모의고사 PDF</strong></td>
+            <td>₩3,000/회</td>
+            <td>₩30~100만</td>
+            <td><span class="badge warn">Q2 후반</span></td>
+            <td>직렬별 봉투 모의 — 1인 운영 가능. 한능검 79회 시즌 직전 출시 추천</td>
+          </tr>
+          <tr>
+            <td>합격 노트 PDF (직렬별)</td>
+            <td>₩5,000~10,000</td>
+            <td>₩50~200만</td>
+            <td><span class="badge warn">Phase 2</span></td>
+            <td>직렬 합격 후기 + 핵심 요약 묶음. 합격자 인터뷰 후 제작</td>
+          </tr>
+          <tr class="row-hi">
+            <td><strong>광고 제거 멤버십</strong></td>
+            <td>₩2,900/월</td>
+            <td>₩100~500만</td>
+            <td><span class="badge warn">월 PV 100K+</span></td>
+            <td>토스/카카오페이 결제 (Stripe 안 써도 가능). 베이직 멤버십</td>
+          </tr>
+          <tr>
+            <td>AI 학습 가이드 멤버십</td>
+            <td>₩9,900~14,000/월</td>
+            <td>₩100~1000만</td>
+            <td><span class="badge mute">Phase 4</span></td>
+            <td>v3 §05 ⑥ 모델. 약점 진단 + 개인화 학습 플랜 + 합격 환급</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="font-size: 13px; color: var(--ink-soft); margin-top: 8px;">
+      ※ <strong>시점 원칙</strong>: 멤버십은 월 PV 1M+ (Phase 4) 도달 후. 그 전엔 결제 인프라 비용 + 운영 부담이 매출보다 큼. 응원 결제와 PDF는 즉시~Phase 2에 활성화.
+    </p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 04. B2B SPONSORSHIP -->
+  <!-- ============================================== -->
+  <section>
+    <h2 class="sec"><span class="num">04 — B2B Sponsorship</span>기업/B2B 광고 (단가 가장 큼)</h2>
+    <p class="sec-lead">광고 1건당 단가가 가장 큼. 브랜드 인지 어느 정도 쌓인 후. Phase 2~3 활성화.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>모델</th>
+            <th>단가 추정</th>
+            <th>적합도</th>
+            <th>활성화 조건</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>학원 banner sponsorship</strong></td>
+            <td>₩50~200만/월</td>
+            <td><span class="badge go">시즌 (3·5·10월)</span></td>
+            <td>월 PV 50K + 브랜드 인지. 시즌 광고 패키지로 시작</td>
+          </tr>
+          <tr>
+            <td>출판사 책 노출 (시대고시·박문각 등)</td>
+            <td>₩30~100만/회</td>
+            <td><span class="badge warn">한국사·공무원 책</span></td>
+            <td>책 출간 시즌 (1·6·9월) 협상. 합격 노트 PDF와 시너지</td>
+          </tr>
+          <tr>
+            <td>공시 학원 박람회 partnership</td>
+            <td>₩100~500만</td>
+            <td><span class="badge warn">매년 1~2회</span></td>
+            <td>박람회 시즌 (3월·9월). 우리 데이터 발표 + 부스 제휴</td>
+          </tr>
+          <tr>
+            <td>공무원 합격자 → 사기업 채용 lead</td>
+            <td>CPL ₩10K~30K</td>
+            <td><span class="badge mute">Phase 3</span></td>
+            <td>회원 DB + 합격 인증 데이터 필요. 데이터/개인정보 처리 정비 필요</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- PRIORITY ACTION -->
+  <!-- ============================================== -->
+  <section>
+    <h2 class="sec"><span class="num">05 — Priority</span>시간순 우선순위 액션 플랜</h2>
+    <p class="sec-lead">언제 무엇을 시작할지. 4단계 (이번주 → 1개월 → 2~3개월 → 6개월+).</p>
+
+    <div class="priority now">
+      <div>
+        <div class="pri-label">🔥 NOW</div>
+        <div class="pri-when">이번주 (~5/2)<br/><span style="font-family:var(--mono); font-size:10px; color:var(--ink-mute); font-weight:600;">현재 PV 35K</span></div>
+      </div>
+      <div class="pri-body">
+        <p style="margin: 0 0 8px; font-weight: 700; color: var(--rose);">📌 학원 BD ❌ — 협상력 부족. 트래픽 키우기 + self-serve affiliate만.</p>
+        <p style="margin: 0 0 8px; font-weight: 700; color: var(--teal);">✅ AdSense는 4/25 신청 완료 → 결과 대기 중 (액션 X)</p>
+        <ol>
+          <li><strong>9급 24직렬 한국사 노트 일괄 입력</strong> — 트래픽 acquisition 핵심 (5월 시즌 직전) <span class="tag">트래픽 키우기</span></li>
+          <li><strong>인스타·스레드 일일 발행 시작</strong> — 카드뉴스 5장/주 + 스레드 1포스트/일 <span class="tag">트래픽 키우기</span></li>
+          <li><strong>카카오 애드핏 신청</strong> — 한국 사이트 best fit (한능검 학원 자동 매칭, 1~2일 통과) <span class="tag">광고 네트워크</span></li>
+          <li><strong>쿠팡 + 네이버 쇼핑 파트너스 가입</strong> — 협상 X, 자동 (한능검·공무원 책 추천) <span class="tag">CPS 보조</span></li>
+          <li><strong>응원 결제 버튼 (Buy Me a Coffee Korea 또는 토스 후원)</strong> — 1시간 작업 <span class="tag">자체</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="priority soon">
+      <div>
+        <div class="pri-label">📅 PV 50K</div>
+        <div class="pri-when">~6월 [추정]<br/><span style="font-family:var(--mono); font-size:10px; color:var(--ink-mute); font-weight:600;">한능검 5월 시즌 후</span></div>
+      </div>
+      <div class="pri-body">
+        <p style="margin: 0 0 8px; font-weight: 700; color: var(--amber);">📌 학원 시드 컨택만 (계약 X). 인지 형성 + 신뢰 시드.</p>
+        <ol>
+          <li><strong>학원 BD 자료집 PDF 작성</strong> — 트래픽·engagement·ICP demographics·앞으로 12개월 시나리오 (1장짜리) <span class="tag">학원 BD 준비</span></li>
+          <li><strong>NextStudy + 에듀윌 시드 메일</strong> — "현재 50K, 6개월 후 본격 미팅 제안" 톤. 계약 X, 인지만 <span class="tag">학원 BD 시드</span></li>
+          <li><strong>AdSense 결과 확인</strong> — 통과 시 카카오와 병행 (위치 분리 운영) / 탈락 시 콘텐츠 보강 후 재신청 <span class="tag">광고 네트워크</span></li>
+          <li><strong>모의고사 PDF spec 작성</strong> — 한능검 79회 (8월) 시즌 출시 준비 <span class="tag">자체 준비</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="priority later">
+      <div>
+        <div class="pri-label">📊 PV 100K</div>
+        <div class="pri-when">~8~9월 [추정]<br/><span style="font-family:var(--mono); font-size:10px; color:var(--ink-mute); font-weight:600;">9급 시즌 + 한능검 79회</span></div>
+      </div>
+      <div class="pri-body">
+        <p style="margin: 0 0 8px; font-weight: 700; color: var(--teal);">📌 학원 BD 본격 시작. 협상력 확보됨.</p>
+        <ol>
+          <li><strong>NextStudy 본격 미팅</strong> — 시드 컨택 후 6개월차 → CPL ₩3~8K 정상 협상 <span class="tag">학원 BD</span></li>
+          <li><strong>에듀윌 / 해커스 미팅</strong> — 두번째 학원 BD (multi-deal 시작) <span class="tag">학원 BD</span></li>
+          <li><strong>모의고사 PDF LIVE</strong> — 한능검 79회 (8/9) 직전 출시 <span class="tag">자체</span></li>
+          <li><strong>광고 제거 멤버십 ₩2,900/월 spec</strong> — Q4 LIVE 준비 <span class="tag">자체 준비</span></li>
+          <li><strong>학원 banner sponsorship 1건 (시즌 광고)</strong> — 10월 한능검·공인중개사 시즌 <span class="tag">B2B</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="priority future">
+      <div>
+        <div class="pri-label">🎯 PV 500K+</div>
+        <div class="pri-when">~12개월 [추정]<br/><span style="font-family:var(--mono); font-size:10px; color:var(--ink-mute); font-weight:600;">2027 Q1</span></div>
+      </div>
+      <div class="pri-body">
+        <p style="margin: 0 0 8px; font-weight: 700; color: var(--ink);">📌 협상 권력 우리에게. 학원이 먼저 컨택.</p>
+        <ol>
+          <li><strong>Mediavine 신청</strong> — RPM 2~3× 상승 (₩3K~8K). 카카오·AdSense·Mediavine 3중 운영 <span class="tag">광고 네트워크</span></li>
+          <li><strong>Ezoic 추가 테스트 (선택)</strong> — 카카오·AdSense·Mediavine 정착 후 1~2개월 A/B 테스트 → net gain 측정 <span class="tag">광고 네트워크</span></li>
+          <li><strong>학원 banner sponsorship 정기화</strong> — 시즌별 ₩50~200만/월 다년 계약 <span class="tag">B2B</span></li>
+          <li><strong>광고 제거 멤버십 LIVE</strong> — ₩2,900/월 (₩100~500만/월 매출 가능) <span class="tag">자체</span></li>
+          <li><strong>합격 노트 PDF 시리즈</strong> — 직렬별 합격자 인터뷰 후 ₩5K~10K <span class="tag">자체</span></li>
+          <li><strong>AI 학습 가이드 멤버십 spec 작성</strong> — Phase 4 LIVE 준비 (월 PV 1M+ 도달 시) <span class="tag">자체 준비</span></li>
+          <li><strong>학원 인수 검토 단계 진입</strong> — multi-학원 + 출판사 동시 협상 가능 <span class="tag">출구</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- TL;DR -->
+  <!-- ============================================== -->
+  <div class="tldr">
+    <div class="tldr-eye">한 줄 핵심</div>
+    <h3>AdSense는 대기. 카카오 애드핏 즉시. 학원 BD는 트래픽 100K 도달 후.</h3>
+    <p>한국 시험 사이트의 진짜 수익은 <strong>학원 affiliate (CPL ₩3K~10K)</strong>. 광고 RPM은 보너스. 단, <strong>월 PV 35K로 학원 메일 보내면 협상력 0</strong> — 단가 후려쳐짐. 이번주는 <strong>트래픽 키우기 (9급 노트 + 인스타·스레드 일일)</strong> + <strong>카카오 애드핏 신청</strong> + 쿠팡·응원결제만. AdSense는 4/25 신청 완료 → 결과 대기. 학원 BD는 <strong>50K 시드 컨택 → 100K 본격 미팅</strong> 순서.</p>
+  </div>
+
+  <!-- 추가 메모 -->
+  <section>
+    <h2 class="sec"><span class="num">06 — Notes</span>추가 참고</h2>
+
+    <h3 style="font-family: var(--serif); font-size: 18px; font-weight: 800; margin: 20px 0 10px;">AdSense 심사 보강 체크리스트</h3>
+    <p style="font-size: 14px; color: var(--ink-soft);">통과 가능성을 높이려면 재신청 전 점검:</p>
+    <ul style="font-size: 14px; line-height: 1.8;">
+      <li>✅ Privacy Policy + Terms 페이지 명시 (이미 있음)</li>
+      <li>✅ About / Contact 정보 명확 (메일 주소 푸터)</li>
+      <li>⚠️ 콘텐츠 30개 이상 (요약노트 87개 ✓, 시험 페이지 547개 ✓ — OK)</li>
+      <li>⚠️ AI 자동생성 콘텐츠 → 사람 검수 표시 (작성자/검토자 명시)</li>
+      <li>⚠️ <code>noindex</code> 페이지 정리 (이미 빈 페이지 noindex 처리됨)</li>
+      <li>⚠️ 도메인 연령 (gcnote.co.kr — 6개월 이상 권장)</li>
+      <li>⚠️ 트래픽 30일 평균 PV ≥ 1만 (현재 20K ✓)</li>
+    </ul>
+
+    <h3 style="font-family: var(--serif); font-size: 18px; font-weight: 800; margin: 28px 0 10px;">참고 링크</h3>
+    <ul style="font-size: 13px; line-height: 1.8;">
+      <li>Ezoic 신청: <a href="https://ezoic.com" style="color: var(--amber);">ezoic.com</a></li>
+      <li>Mediavine 신청 조건: <a href="https://mediavine.com" style="color: var(--amber);">mediavine.com</a> (월 50K sessions)</li>
+      <li>카카오 애드핏: <a href="https://adfit.kakao.com" style="color: var(--amber);">adfit.kakao.com</a></li>
+      <li>쿠팡 파트너스: <a href="https://partners.coupang.com" style="color: var(--amber);">partners.coupang.com</a></li>
+      <li>토스 후원: 토스 → 송금 → "기출노트" 식별자 부여 가능</li>
+      <li>Buy Me a Coffee: <a href="https://www.buymeacoffee.com" style="color: var(--amber);">buymeacoffee.com</a></li>
+      <li>해커스 제휴: <a href="https://www.hackers.co.kr" style="color: var(--amber);">hackers.co.kr</a> 푸터 "제휴문의"</li>
+      <li>에듀윌 제휴: <a href="https://www.eduwill.net" style="color: var(--amber);">eduwill.net</a> 푸터 "제휴/광고문의"</li>
+    </ul>
+
+    <h3 style="font-family: var(--serif); font-size: 18px; font-weight: 800; margin: 28px 0 10px;">의도적으로 안 하는 것</h3>
+    <div class="callout">
+      <div class="callout-title">No-Go List</div>
+      <p style="font-size: 14px;">
+        ❌ <strong>Adsterra/PropellerAds</strong> 등 low-tier 광고 — 브랜드 손상<br/>
+        ❌ <strong>인강 직접 판매</strong> — 강사 섭외 + 영상 제작 비용 + 정체성 충돌 (v3 §01 Core Values)<br/>
+        ❌ <strong>1:1 코칭</strong> — 1인 운영에 부적합 + 시간 비용 비대칭<br/>
+        ❌ <strong>네이버 1순위 입찰 (broad 키워드)</strong> — 9급공무원 1순위 ₩10,658, 학원 입찰 못 이김 (v3 §04)
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="eyebrow" style="color: var(--ink-soft);">기출노트 · Revenue Playbook</div>
+    <p style="margin: 0 0 4px;">2026-04-26 · realproto1 · gcnote.co.kr</p>
+    <p style="margin: 0; font-family: var(--mono); font-size: 11px;">
+      관련 문서: docs/multi-exam-hub-strategy-v3.html (마케팅 전략 전체 v3)
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>

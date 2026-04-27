@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>9급 국가직 세법개론 — 자동 단권화</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F5EFE4;--paper:#FFF;--ink:#1F1A14;--ink-soft:#5A4F3F;--ink-mute:#94724D;--amber:#B45309;--amber-soft:#FED7AA;--amber-bg:#FFF7ED;--teal:#0D9488;--teal-soft:#CCFBF1;--teal-bg:#F0FDFA;--rose:#BE123C;--rose-soft:#FECDD3;--rose-bg:#FFF1F2;--hairline:rgba(31,26,20,.12);--serif:'Noto Serif KR',ui-serif,Georgia,serif;--sans:'Pretendard Variable',Pretendard,system-ui,-apple-system,sans-serif;--mono:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;font-size:15px;word-break:keep-all;-webkit-font-smoothing:antialiased}
+.container{max-width:980px;margin:0 auto;padding:48px 28px 80px}@media(max-width:720px){.container{padding:32px 16px 60px}}
+header.hero{text-align:center;padding:36px 0 24px;border-bottom:1px solid var(--hairline);margin-bottom:32px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--amber);text-transform:uppercase;margin-bottom:12px;font-weight:700}
+h1{font-family:var(--serif);font-weight:900;font-size:clamp(26px,4vw,38px);line-height:1.1;margin:0 0 12px;letter-spacing:-.02em}h1 .amber{color:var(--amber)}
+.subtitle{font-size:15px;color:var(--ink-soft);max-width:680px;margin:0 auto}
+.meta{margin-top:16px;display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center;font-family:var(--mono);font-size:11px;color:var(--ink-soft)}.meta span:not(:first-child)::before{content:'·';margin-right:12px;color:var(--hairline)}
+nav.toc{background:var(--paper);border:1px solid var(--hairline);border-radius:12px;padding:18px 22px;margin-bottom:32px}
+nav.toc h2{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ink-soft);text-transform:uppercase;margin:0 0 8px}
+nav.toc ol{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:4px 18px;font-size:13px}@media(max-width:720px){nav.toc ol{grid-template-columns:1fr}}
+nav.toc a{color:var(--ink);text-decoration:none;padding:4px 0;display:flex;gap:8px;align-items:baseline}nav.toc a:hover{color:var(--amber)}
+nav.toc .freq{font-family:var(--mono);font-size:9px;letter-spacing:.06em;background:var(--bg);padding:2px 6px;border-radius:4px;color:var(--ink-soft);font-weight:700;min-width:38px;text-align:center}
+nav.toc .freq.hot{background:var(--rose);color:#fff}nav.toc .freq.warm{background:var(--amber);color:#fff}nav.toc .freq.med{background:var(--teal-soft);color:var(--teal)}
+section.topic{background:var(--paper);border:1px solid var(--hairline);border-radius:14px;padding:26px 30px;margin-bottom:22px}
+section.topic.tier1{border-left:5px solid var(--rose)}section.topic.tier2{border-left:5px solid var(--amber)}section.topic.tier3{border-left:5px solid var(--teal)}
+.topic-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:8px;padding-bottom:12px;border-bottom:1px solid var(--hairline)}
+.topic-name{font-family:var(--serif);font-size:22px;font-weight:900;margin:0;line-height:1.15;letter-spacing:-.015em}
+.topic-num{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-mute);font-weight:700}
+.topic-freq{display:inline-flex;gap:6px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.topic-freq .badge{padding:3px 9px;border-radius:999px;font-weight:700}.badge-freq{background:var(--amber);color:#fff}.badge-freq.hot{background:var(--rose)}.badge-freq.med{background:var(--teal)}
+h3{font-family:var(--serif);font-size:16px;font-weight:800;margin:18px 0 8px;color:var(--ink);border-left:3px solid var(--amber);padding-left:10px}
+.topic p{margin:6px 0;line-height:1.7;font-size:14px}.topic ul{padding-left:22px;margin:6px 0}.topic li{margin-bottom:4px;font-size:14px;line-height:1.7}.topic strong{color:var(--ink);font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;background:#fff;border:1px solid var(--hairline);border-radius:8px;overflow:hidden}
+th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--hairline);vertical-align:top}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;background:var(--bg)}
+.law-box{background:var(--amber-bg);border:1px solid var(--amber-soft);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:13px;line-height:1.6}
+.law-box-title{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--amber);text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.exam-box{background:var(--bg);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:12px;line-height:1.6;color:var(--ink-soft)}
+.exam-box-title{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--ink-mute);text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.trap-box{background:var(--rose-bg);border:1px solid var(--rose-soft);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:13px;line-height:1.6}
+.trap-box-title{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rose);text-transform:uppercase;font-weight:700;margin-bottom:4px}
+code{font-family:var(--mono);font-size:12px;background:var(--bg);padding:2px 5px;border-radius:3px;color:var(--amber)}
+.footnote{font-size:11px;color:var(--ink-soft);margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--hairline)}
+hr.divider{border:none;border-top:1px solid var(--hairline);margin:32px 0}
+footer{border-top:1px solid var(--hairline);padding-top:24px;margin-top:32px;text-align:center;color:var(--ink-soft);font-size:12px}
+</style></head><body><div class="container">
+
+<header class="hero"><div class="eyebrow">Auto Summary Note · 9급 국가직 · 2026-04-27</div>
+<h1>9급 국가직 <span class="amber">세법개론</span> 자동 단권화</h1>
+<p class="subtitle">기출 10회분 200문제 → 9개 단원. 세무직 핵심 과목.</p>
+<div class="meta"><span>10회분 / 200문제 / 9단원</span><span>국세기본법 + 5대 세법</span><span>2026-04-27</span></div></header>
+
+<nav class="toc"><h2>9개 단원</h2><ol>
+<li><a href="#t1"><span class="freq hot">48</span>1. 법인세법</a></li>
+<li><a href="#t2"><span class="freq hot">42</span>2. 소득세법</a></li>
+<li><a href="#t3"><span class="freq hot">35</span>3. 부가가치세법</a></li>
+<li><a href="#t4"><span class="freq hot">32</span>4. 국세기본법 (납세의무·심사심판)</a></li>
+<li><a href="#t5"><span class="freq warm">22</span>5. 국세징수법 (체납·압류·납세담보)</a></li>
+<li><a href="#t6"><span class="freq warm">15</span>6. 상속세 및 증여세법</a></li>
+<li><a href="#t7"><span class="freq warm">12</span>7. 세무조사·과세전적부심사</a></li>
+<li><a href="#t8"><span class="freq med">8</span>8. 양도소득세·종합소득</a></li>
+<li><a href="#t9"><span class="freq med">5</span>9. 지방세·기타</a></li>
+</ol></nav>
+
+<section class="topic tier1" id="t1">
+<div class="topic-head"><h2 class="topic-name">1. 법인세법</h2><div><span class="topic-num">TOPIC 01</span><span class="topic-freq"><span class="badge badge-freq hot">48회</span></span></div></div>
+<h3>납세의무자</h3>
+<ul>
+<li><strong>내국법인</strong>: 본점·주사무소 대한민국 (전세계 소득)</li>
+<li><strong>외국법인</strong>: 외국 본점 + 한국 원천소득만</li>
+<li><strong>비영리법인</strong>: 수익사업소득만 과세</li>
+</ul>
+
+<h3>각 사업연도 소득금액 계산</h3>
+<p><strong>당기순이익 (회계) → 익금산입·손금불산입 + → 익금불산입·손금산입 - = 각 사업연도 소득금액</strong> (세무조정)</p>
+
+<h3>익금 (§15)</h3>
+<ul>
+<li>사업수입금액·자산의 양도금액·자산의 평가차익·무상으로 받은 자산·채무의 면제·소득</li>
+<li><strong>익금불산입</strong>: 자본거래로 인한 수익 / 이미 과세된 소득 / 손해배상금 일부 / 국세 환급가산금</li>
+</ul>
+
+<h3>손금 (§19)</h3>
+<ul>
+<li>판매·판매관리비·각종 비용·인건비·세금·감가상각비</li>
+<li><strong>손금불산입</strong>: 자본거래 / 일정 한도 초과 (접대비·기부금·감가상각·인건비) / 가산세 / 벌금 / 부당행위계산</li>
+</ul>
+
+<h3>소득처분</h3>
+<table><thead><tr><th>유형</th><th>대상</th></tr></thead><tbody>
+<tr><td><strong>유보</strong></td><td>법인 내부 — 자본금과 적립금 조정명세서</td></tr>
+<tr><td><strong>배당</strong></td><td>주주 — 배당소득</td></tr>
+<tr><td><strong>상여</strong></td><td>임직원 — 근로소득</td></tr>
+<tr><td><strong>기타사외유출</strong></td><td>법인 외 — 출처 불명</td></tr>
+<tr><td><strong>기타</strong></td><td>법인 외 + 출처 명확 (주주·임원·종업원 외)</td></tr>
+</tbody></table>
+
+<h3>부당행위계산 부인</h3>
+<p>특수관계인과의 거래에서 정상가격 (시가)으로 보지 않는 거래 — 시가로 다시 계산. 가지급금 인정이자, 자산 고가매입·저가양도 등.</p>
+
+<h3>감가상각</h3>
+<ul>
+<li><strong>임의상각</strong> 원칙 (회계상 상각액 한도 내). 단 한도 초과 → 손금불산입</li>
+<li>방법: 정액법·정률법 (자산별 신고). 신고 X 시 — 정률법 (건축물·무형자산은 정액법)</li>
+</ul>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-3·7·15·16·19 / 2024-7·9·11·12·18. 매년 4~5건.</div>
+</section>
+
+<section class="topic tier1" id="t2">
+<div class="topic-head"><h2 class="topic-name">2. 소득세법</h2><div><span class="topic-num">TOPIC 02</span><span class="topic-freq"><span class="badge badge-freq hot">42회</span></span></div></div>
+<h3>납세의무자</h3>
+<ul>
+<li><strong>거주자</strong>: 국내에 주소 또는 183일 이상 거소 — 국내·국외 모든 소득 과세</li>
+<li><strong>비거주자</strong>: 국내 원천소득만</li>
+</ul>
+
+<h3>소득의 종류 (8종)</h3>
+<table><thead><tr><th>구분</th><th>종합과세</th><th>분리과세</th></tr></thead><tbody>
+<tr><td><strong>이자소득</strong></td><td>2,000만원 초과 시</td><td>2,000만원 이하</td></tr>
+<tr><td><strong>배당소득</strong></td><td>2,000만원 초과 시</td><td>2,000만원 이하</td></tr>
+<tr><td><strong>사업소득</strong></td><td>O</td><td>X</td></tr>
+<tr><td><strong>근로소득</strong></td><td>O</td><td>일용직</td></tr>
+<tr><td><strong>연금소득</strong></td><td>O</td><td>1,500만원 이하 (선택)</td></tr>
+<tr><td><strong>기타소득</strong></td><td>300만원 초과</td><td>300만원 이하 (선택)</td></tr>
+<tr><td><strong>퇴직소득</strong></td><td>X (별도 분류과세)</td><td></td></tr>
+<tr><td><strong>양도소득</strong></td><td>X (별도 분류과세)</td><td></td></tr>
+</tbody></table>
+
+<h3>비과세소득</h3>
+<ul>
+<li>학자금 / 일정한 실비변상적 급여 / 1세대 1주택 양도 (요건 충족 시)</li>
+<li><strong>농가부업소득</strong> 일정 한도 / 전통주 제조 / 민박 / 연근해어업 일정 한도</li>
+</ul>
+
+<h3>인적공제 (부양가족공제)</h3>
+<ul>
+<li><strong>본인공제</strong>: 150만원</li>
+<li><strong>배우자공제</strong>: 150만원 (소득 100만원 이하)</li>
+<li><strong>부양가족공제</strong>: 1인당 150만원</li>
+<li><strong>추가공제</strong>: 경로우대(70세+) 100만원 / 장애인 200만원 / 부녀자 50만원 / 한부모 100만원</li>
+</ul>
+
+<h3>종합소득세 신고·납부</h3>
+<ul>
+<li><strong>확정신고</strong>: 다음해 5/1 ~ 5/31 (성실신고 6/30)</li>
+<li><strong>분납</strong>: 1천만원 초과 시 2개월 내 분납 가능. <strong>2천만원 초과 시 일부만 1차 납부 + 잔액 분납</strong> (1천만원 초과분 또는 50% 중 적은 금액)</li>
+</ul>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-4·11·12·17 / 2024-8·10·16. 매년 3~4건.</div>
+</section>
+
+<section class="topic tier1" id="t3">
+<div class="topic-head"><h2 class="topic-name">3. 부가가치세법</h2><div><span class="topic-num">TOPIC 03</span><span class="topic-freq"><span class="badge badge-freq hot">35회</span></span></div></div>
+<h3>납세의무자</h3>
+<ul>
+<li><strong>사업자</strong>: 사업 목적의 영리·비영리 불문 + 독립적</li>
+<li><strong>일반과세자 vs 간이과세자</strong>:
+  <ul>
+    <li>일반: 매출 8,000만원 이상</li>
+    <li>간이: 매출 8,000만원 미만 + 일정 업종 (제조·도매·부동산 임대업 일부 제외)</li>
+  </ul>
+</li>
+</ul>
+
+<h3>과세대상</h3>
+<ul>
+<li><strong>재화의 공급</strong>: 사업자가 사업과 관련하여 재화 인도·양도</li>
+<li><strong>용역의 공급</strong>: 계약·법률에 따라 노무 제공</li>
+<li><strong>재화의 수입</strong>: 외국 → 국내</li>
+</ul>
+
+<h3>재화의 공급으로 보는 것·보지 않는 것</h3>
+<ul>
+<li><strong>의제공급</strong>: 자가공급·개인공급·사업상 증여 (특수 — 매입세액공제 받은 재화)</li>
+<li><strong>의제공급 X</strong>: 담보 제공 / 사업양도 / 합병·분할로 인한 이전</li>
+</ul>
+
+<h3>세금계산서 (§32)</h3>
+<ul>
+<li><strong>발급의무</strong>: 사업자 → 공급받는 자에게 (발급기한: 공급시기 다음달 10일까지)</li>
+<li><strong>전자세금계산서</strong>: 법인사업자 + 직전연도 매출 1억 이상 개인사업자 — 의무</li>
+<li>기재사항: 공급자·공급받는자·작성연월일·공급가액·세액·품목·수량·단가</li>
+</ul>
+
+<h3>간이과세자 특례</h3>
+<ul>
+<li>업종별 부가가치율 적용 (5~30%)</li>
+<li>세액 = 공급대가 × 부가가치율 × 10%</li>
+<li><strong>세금계산서 발급의무 X</strong> (4,800만원 미만은 영수증)</li>
+<li>매입세액공제: 0.5%</li>
+</ul>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-5·8·13·18 / 2024-4·5·17. 매년 3~4건.</div>
+</section>
+
+<section class="topic tier1" id="t4">
+<div class="topic-head"><h2 class="topic-name">4. 국세기본법 (납세의무·심사·심판)</h2><div><span class="topic-num">TOPIC 04</span><span class="topic-freq"><span class="badge badge-freq hot">32회</span></span></div></div>
+<h3>국세 부과의 원칙</h3>
+<ul>
+<li><strong>실질과세 (§14)</strong>: 명의 vs 실질 — <strong>실질에 따라 과세</strong></li>
+<li><strong>신의성실 (§15)</strong>: 과세관청·납세자 모두</li>
+<li><strong>근거과세 (§16)</strong>: 장부·증명서류에 의한 사실에 의함</li>
+<li><strong>조세감면의 사후관리 (§17)</strong>: 감면 후 사후 의무 위반 시 추징</li>
+</ul>
+
+<h3>납세의무의 성립·확정·소멸</h3>
+<table><thead><tr><th>국세</th><th>성립</th><th>확정</th></tr></thead><tbody>
+<tr><td>소득세·법인세·부가세·종합부동산세</td><td>과세기간 종료 시</td><td>신고 또는 결정</td></tr>
+<tr><td>상속세</td><td>상속 개시 시</td><td>결정</td></tr>
+<tr><td>증여세</td><td>증여 받은 시</td><td>결정</td></tr>
+<tr><td>인지세</td><td>과세문서 작성 시</td><td>자동확정</td></tr>
+<tr><td>원천징수</td><td>지급 시</td><td>자동확정</td></tr>
+</tbody></table>
+
+<h3>제2차 납세의무 (§38~§41)</h3>
+<ul>
+<li><strong>청산인 등</strong>: 법인 청산 시 미납국세에 대해</li>
+<li><strong>출자자</strong>: 무한책임사원·과점주주의 부담</li>
+<li><strong>법인의 제2차 납세의무</strong>: 출자자에게서 받지 못한 미납국세</li>
+<li><strong>사업양수인</strong>: 양도일 1년 이내 미납국세</li>
+</ul>
+
+<h3>심사·심판 (조세불복)</h3>
+<ol>
+<li><strong>이의신청</strong> (§66): 30일 내. 임의절차 (생략 가능)</li>
+<li><strong>심사청구</strong> (§61): 90일 내. 국세청장</li>
+<li><strong>심판청구</strong> (§68): 90일 내. 조세심판원</li>
+<li>심사·심판 결과 후 90일 내 <strong>행정소송</strong></li>
+</ol>
+<p><strong>심사·심판 중 1개</strong>만 선택. 행정소송 전 필수 (전치주의).</p>
+
+<h3>재조사 결정 (§81-21)</h3>
+<p>심사·심판에서 "재조사" 결정 시 → 처분청이 재조사 후 결과에 따라 처분 변경. 재조사 결과에 다시 불복 → 다시 심사·심판 가능.</p>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-1·6·10 / 2024-2·3·6·13·14. 매년 3~4건.</div>
+</section>
+
+<section class="topic tier2" id="t5">
+<div class="topic-head"><h2 class="topic-name">5. 국세징수법 (체납·압류·납세담보)</h2><div><span class="topic-num">TOPIC 05</span><span class="topic-freq"><span class="badge badge-freq warm">22회</span></span></div></div>
+<h3>독촉 (§10)</h3>
+<ul>
+<li>체납 시 — 납부기한 경과 후 <strong>10일 이내 독촉장</strong> 발급</li>
+<li><strong>독촉 면제</strong>: 국세 1만원 미만 / 시효 도래 임박 / 천재지변</li>
+</ul>
+
+<h3>압류·매각·청산 (강제징수)</h3>
+<ol>
+<li><strong>압류</strong>: 독촉기한 경과 후 — 체납자 재산 처분 제한</li>
+<li><strong>매각</strong>: 공매 또는 수의계약</li>
+<li><strong>청산</strong>: 매각대금 → 체납국세·가산금·강제징수비</li>
+</ol>
+
+<h3>납세담보 (§18~§22)</h3>
+<ul>
+<li><strong>종류</strong>: 금전·국채·지방채·납세보험·납세보증서·토지·건물·공장재단·광업재단</li>
+<li><strong>담보 제공 의무자</strong>: 납세자 일정 사유 발생 시 (분납·기한 연장 등)</li>
+<li>담보 가액 = 채권금액의 일정 비율 (110~120%)</li>
+</ul>
+
+<h3>압류금지 재산 (§41)</h3>
+<ul>
+<li>생활에 필수적 가구·생활용품 (의복·식기·가구 등)</li>
+<li><strong>월급여 1/2</strong> (월 185만원 한도)</li>
+<li>국민연금·산재보험 급여</li>
+<li>학자금·생계비</li>
+<li>의무이행에 필요한 직무용 도구</li>
+</ul>
+
+<h3>양도담보권자의 물적납세의무 (§7)</h3>
+<p>양도담보 설정자가 체납 시 — 양도담보권자에게 양도담보재산에 대해 납세의무. 단 양도담보권자에 사전 통지 필요 (납부고지서).</p>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-2·6·20 / 2024-1·15. 매년 2건.</div>
+</section>
+
+<section class="topic tier2" id="t6">
+<div class="topic-head"><h2 class="topic-name">6. 상속세 및 증여세법</h2><div><span class="topic-num">TOPIC 06</span><span class="topic-freq"><span class="badge badge-freq warm">15회</span></span></div></div>
+<h3>상속세</h3>
+<ul>
+<li><strong>납세의무자</strong>: 상속인·수유자 (상속재산 비례)</li>
+<li><strong>과세대상</strong>: 거주자 — 전세계 상속재산 / 비거주자 — 국내 상속재산</li>
+<li><strong>의제상속재산</strong>: 보험금·신탁재산·퇴직금</li>
+<li><strong>상속세 인적공제</strong>: 일괄공제 5억 또는 (기초 2억 + 그 외 인적공제) 중 큰 금액</li>
+<li><strong>배우자상속공제</strong>: 5억 ~ 30억 (상속분 비례)</li>
+</ul>
+
+<h3>증여세</h3>
+<ul>
+<li><strong>납세의무자</strong>: 수증자 (재산 받은 자)</li>
+<li><strong>과세대상</strong>: 거주자 수증자 — 전세계 증여재산</li>
+<li><strong>증여재산공제</strong> (10년 내 합산):
+  <ul>
+    <li>배우자: 6억</li>
+    <li>직계존속·직계비속: 5천만원 (미성년 2천만원)</li>
+    <li>기타 친족: 1천만원</li>
+  </ul>
+</li>
+<li><strong>완전포괄주의</strong>: 명시 X 거래도 실질이 증여면 과세</li>
+</ul>
+
+<h3>세율 (상속세·증여세 동일)</h3>
+<ul>
+<li>1억 이하 10% / 5억 이하 20% / 10억 이하 30% / 30억 이하 40% / 30억 초과 50%</li>
+</ul>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-9. 매년 1~2건.</div>
+</section>
+
+<section class="topic tier2" id="t7">
+<div class="topic-head"><h2 class="topic-name">7. 세무조사·과세전적부심사</h2><div><span class="topic-num">TOPIC 07</span><span class="topic-freq"><span class="badge badge-freq warm">12회</span></span></div></div>
+<h3>세무조사 (§81-2~§81-13)</h3>
+<ul>
+<li><strong>일반세무조사 vs 부분조사</strong>: 부분조사 = 같은 세목·과세기간 2회 초과 X</li>
+<li><strong>조사 대상 선정</strong>: 정기·비정기 (성실도 분석·신고 누락 의심·탈루 정보)</li>
+<li><strong>사전통지</strong>: 조사 시작 15일 전</li>
+<li><strong>조사 기간</strong>: 20일 이내. 연장 가능</li>
+<li><strong>중복조사 금지</strong>: 같은 세목·과세기간 X. 단 예외 (탈세 정보·재조사 결정 등)</li>
+</ul>
+
+<h3>세무조사 기간 제한 예외</h3>
+<ul>
+<li>조세범칙조사</li>
+<li>국제거래 관련 자료 외국 미수령</li>
+<li>천재지변·도주·증거인멸 우려</li>
+<li>납세자가 조사 거부·기피</li>
+</ul>
+
+<h3>과세전적부심사 (§81-15)</h3>
+<ul>
+<li>세무조사 결과 통지 받은 후 — 조사관서장·국세청장에게 청구</li>
+<li>기간: 통지받은 날부터 30일 내</li>
+<li><strong>청구 X 사유</strong>: 국세 부과제척기간 만료 임박 / 조세범칙·범죄 / 통지내용 X / 명백한 계산 오류</li>
+</ul>
+
+<h3>미납국세 등 열람 (§88)</h3>
+<p>임차인이 임대인에게 임차인 동의 → 임대인의 미납국세 열람 청구 가능 (체납 가능성 사전 확인).</p>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2025-10·14 / 2024-14. 매년 2건.</div>
+</section>
+
+<section class="topic tier3" id="t8">
+<div class="topic-head"><h2 class="topic-name">8. 양도소득세·종합소득</h2><div><span class="topic-num">TOPIC 08</span><span class="topic-freq"><span class="badge badge-freq med">8회</span></span></div></div>
+<h3>양도소득세</h3>
+<ul>
+<li><strong>과세대상</strong>: 토지·건물·부동산권리·주식·파생상품·기타자산</li>
+<li><strong>비과세</strong>: 1세대 1주택 (12억 이하·2년 이상 보유, 조정대상지역은 2년 거주)</li>
+<li><strong>장기보유특별공제</strong>: 토지·건물 3년 이상 보유 시 (보유기간 × 2~4%)</li>
+<li><strong>1세대 1주택 양도소득세</strong>: 비과세 — 단 12억 초과분은 과세</li>
+</ul>
+
+<h3>특수관계인 거래</h3>
+<ul>
+<li><strong>저가양도</strong>: 시가 - 양도가 ≥ 시가의 5% 또는 3억 → 시가로 양도가 의제</li>
+<li><strong>고가양수</strong>: 양수가 - 시가 ≥ 시가의 5% 또는 3억 → 시가로 양수가 의제</li>
+</ul>
+
+<h3>결손금·이월결손금 (사업소득)</h3>
+<ul>
+<li><strong>당해연도 결손금</strong>: 사업소득 결손 → 종합소득 다른 소득에서 공제</li>
+<li><strong>이월결손금</strong>: 향후 15년 이월 가능</li>
+<li>장부·증명서류 비치·기록 의무 충족 시만 인정</li>
+</ul>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>2024-8·16. 매년 1건.</div>
+</section>
+
+<section class="topic tier3" id="t9">
+<div class="topic-head"><h2 class="topic-name">9. 지방세·기타</h2><div><span class="topic-num">TOPIC 09</span><span class="topic-freq"><span class="badge badge-freq med">5회</span></span></div></div>
+<h3>지방세 (지방세기본법)</h3>
+<ul>
+<li><strong>도세</strong>: 취득세·등록면허세·레저세·지방교육세·지방소비세</li>
+<li><strong>시·군세</strong>: 주민세·지방소득세·재산세·자동차세·담배소비세</li>
+</ul>
+
+<h3>국세 vs 지방세</h3>
+<table><thead><tr><th></th><th>국세</th><th>지방세</th></tr></thead><tbody>
+<tr><td>과세권자</td><td>국가</td><td>지방자치단체</td></tr>
+<tr><td>대표</td><td>소득세·법인세·부가세·상속·증여세</td><td>취득세·재산세·지방소득세</td></tr>
+<tr><td>관할</td><td>국세청·세무서</td><td>시·군·구청</td></tr>
+</tbody></table>
+
+<h3>관세</h3>
+<p>국세이지만 별도 법체계. 관세법 + 관세평가운영지침. 9급 관세법개론에서 별도 다룸.</p>
+
+<div class="exam-box"><div class="exam-box-title">📌 대표 출제</div>거의 매년 1건.</div>
+</section>
+
+<section class="topic tier1" id="reinforce">
+<div class="topic-head">
+<h2 class="topic-name">10. 보강 — 빈출 누락 개념</h2>
+<div class="topic-freq"><span class="badge badge-freq hot">10회 200문제 검증 보강</span></div>
+</div>
+
+<h3>사업자등록 (부가가치세법)</h3>
+<ul>
+<li><strong>등록 시기</strong>: 사업개시일부터 <strong>20일 이내</strong>. 사업개시 전 등록도 가능</li>
+<li><strong>장소</strong>: 사업장마다 따로 등록 (사업장별 단위 과세 원칙)</li>
+<li><strong>사업장 단위 과세 → 사업자 단위 과세</strong>: 본점·주사무소 관할 세무서장에게 신청해 합산 가능</li>
+<li><strong>등록증 교부</strong>: 신청일부터 2일 이내 (단 사실 조사 필요 시 5일 연장)</li>
+<li><strong>미등록 가산세</strong>: 공급가액의 <strong>1%</strong></li>
+</ul>
+
+<h3>영세율 vs 면세</h3>
+<table>
+<tr><th>구분</th><th>영세율</th><th>면세</th></tr>
+<tr><td>세율</td><td>0% 적용 (완전면세)</td><td>부가가치세 자체 면제 (불완전면세)</td></tr>
+<tr><td>매입세액</td><td>환급</td><td>공제·환급 없음</td></tr>
+<tr><td>대상</td><td>수출, 외화획득, 국제운송</td><td>미가공 식료품, 도서·신문, 의료보건, 교육, 금융보험</td></tr>
+<tr><td>신고</td><td>의무</td><td>의무 (부가가치세 신고 X, 사업자현황신고 O)</td></tr>
+<tr><td>세금계산서</td><td>발급 가능 (영세율)</td><td>발급 불가 (계산서)</td></tr>
+</table>
+
+<h3>대손세액공제·대손충당금</h3>
+<ul>
+<li><strong>대손세액공제 (부가가치세법 제45조)</strong>: 외상매출금 등이 대손되어 매출세액 회수 불가 시 매출세액에서 공제. <strong>대손사유 확정일이 속하는 과세기간 확정신고 시 공제</strong></li>
+<li><strong>대손사유</strong>: 파산, 강제집행, 사망·실종, 회수기일 5년 경과 채권 등</li>
+<li><strong>대손금 한도</strong>: 회수 불능액 × 110/100 (공제율)</li>
+<li><strong>대손충당금 (법인세법 제34조)</strong>: 결산 시 채권손실 예상치를 비용으로 미리 인식. <strong>한도 = MAX[채권가액 × 1%, 대손실적률]</strong></li>
+</ul>
+
+<h3>경정청구·수정신고·기한 후 신고</h3>
+<table>
+<tr><th>구분</th><th>주체</th><th>시기</th></tr>
+<tr><td><strong>수정신고</strong></td><td>납세자 (과소신고)</td><td>법정신고기한 경과 후 ~ 결정·경정 통지 전 (5년 이내, 자진 시 가산세 감면)</td></tr>
+<tr><td><strong>경정청구</strong></td><td>납세자 (과대신고)</td><td>법정신고기한 후 <strong>5년 이내</strong></td></tr>
+<tr><td><strong>후발적 경정청구</strong></td><td>납세자</td><td>사유 발생일부터 <strong>3개월 이내</strong> (판결·결정·계약 변경 등)</td></tr>
+<tr><td><strong>기한 후 신고</strong></td><td>무신고자</td><td>결정·통지 전까지 (1개월 내 가산세 50% 감면)</td></tr>
+</table>
+
+<h3>국세 소멸시효·부과제척기간</h3>
+<ul>
+<li><strong>부과제척기간 (국세기본법 제26조의2)</strong>:
+  <ul>
+    <li>일반: <strong>5년</strong></li>
+    <li>무신고: <strong>7년</strong></li>
+    <li>부정행위 (사기·기타 부정): <strong>10년</strong></li>
+    <li>역외거래: 7년 (부정 시 15년)</li>
+    <li>상속·증여세: 10년 (부정 시 15년)</li>
+  </ul>
+</li>
+<li><strong>국세징수권 소멸시효 (국세기본법 제27조)</strong>:
+  <ul>
+    <li><strong>5억 원 미만: 5년</strong></li>
+    <li><strong>5억 원 이상: 10년</strong></li>
+  </ul>
+</li>
+<li><strong>중단 사유</strong>: 납부고지, 독촉, 교부청구, 압류</li>
+<li><strong>정지 사유</strong>: 분납기간, 징수유예, 연부연납, 체납처분유예 등</li>
+</ul>
+
+<h3>징수유예·체납처분</h3>
+<ul>
+<li><strong>징수유예 (국세징수법 제13조)</strong>: 납부기한·납부고지 이후 천재지변·재해·사업 휴폐업 등 사유로 일시 납부 곤란 시 <strong>9개월 이내 유예 + 9개월 연장 가능 (최장 1년 6개월)</strong>. 담보 제공 필요 (예외 인정)</li>
+<li><strong>체납처분 (강제징수, 국세징수법)</strong>: 독촉 → 압류 → 매각 → 청산 4단계
+  <ul>
+    <li>독촉장 발부: 납부기한 후 10일 이내</li>
+    <li>압류: 독촉장 발부일부터 10일 이내</li>
+    <li>매각: 공매 (한국자산관리공사) 또는 수의계약</li>
+    <li>청산: 체납액 + 가산금 + 비용 충당, 잔여 환급</li>
+  </ul>
+</li>
+<li><strong>체납처분유예</strong>: 체납자가 사업 정상화 가능성 등 사유로 신청 시 1년 이내 유예</li>
+<li><strong>조기환급 (부가가치세법 제59조)</strong>: 영세율, 사업설비 투자, 재무상태 부실 시 신고기한 경과 후 <strong>15일 이내 환급</strong> (일반 환급은 30일)</li>
+</ul>
+
+<h3>귀속시기·수입시기 (권리확정주의)</h3>
+<ul>
+<li><strong>법인세 귀속사업연도 (법인세법 제40조)</strong>: 권리·의무가 확정된 사업연도. 권리확정주의</li>
+<li><strong>소득세 수입시기 (소득세법 시행령 제45~50조)</strong>:
+  <ul>
+    <li>이자소득: 약정에 따른 지급일 (실제 수령일 X)</li>
+    <li>배당소득: 잉여금처분 결의일 (현금배당) / 주주총회 결의일</li>
+    <li>사업소득: 인도일·완료일</li>
+    <li>근로소득: 근로 제공일</li>
+    <li>퇴직소득: 퇴직일</li>
+    <li>양도소득: 잔금청산일·등기일 중 빠른 날</li>
+  </ul>
+</li>
+<li><strong>부가가치세 거래시기 (부가가치세법 제15조)</strong>: 재화 인도일 또는 용역 제공 완료일</li>
+</ul>
+
+<h3>공동사업·연대납세의무</h3>
+<ul>
+<li><strong>공동사업 (소득세법 제43조)</strong>: 동업자 각자가 손익분배비율에 따라 사업소득 신고. <strong>공동사업 단위로 1개 사업자등록</strong></li>
+<li><strong>가산법칙 (특수관계 + 조세회피 목적)</strong>: 공동사업자 중 출자공동사업자가 친족 관계이고 조세회피 목적이면 주된 사업자가 합산 신고 의무</li>
+<li><strong>연대납세의무</strong>: 공동사업장 부가가치세, 공유물·공동상속재산 등 연대 책임</li>
+</ul>
+
+<h3>영리내국법인·외국법인</h3>
+<ul>
+<li><strong>영리내국법인</strong>: 본점 또는 주사무소가 국내 + 영리 목적 + 법인. <strong>전 세계 소득에 대해 법인세 납세의무</strong> (전세계소득과세주의)</li>
+<li><strong>비영리내국법인</strong>: 수익사업 소득에 한해 과세</li>
+<li><strong>외국법인</strong>: 본점·주사무소가 외국. <strong>국내원천소득만 과세</strong></li>
+<li><strong>외국법인 국내사업장</strong>: 국내사업장 귀속 소득에 대해 신고납세 + 원천징수</li>
+</ul>
+
+<h3>불복절차 (국세기본법 제55~81조)</h3>
+<table>
+<tr><th>단계</th><th>절차</th><th>기간</th></tr>
+<tr><td>1단계 (선택)</td><td>이의신청 (세무서장 또는 지방국세청장)</td><td>처분 안 날부터 90일 이내</td></tr>
+<tr><td>2단계 (필수)</td><td>심사청구 (국세청장) 또는 심판청구 (조세심판원) 또는 감사원 심사청구</td><td>처분 안 날부터 90일 이내 (이의신청 거친 경우 결정 통지 후 90일)</td></tr>
+<tr><td>3단계</td><td>행정소송</td><td>심사·심판 결정 통지 후 90일 이내</td></tr>
+</table>
+<ul>
+<li><strong>필수적 전치주의</strong>: 심사·심판·감사원 중 1개 거치지 않고 행정소송 불가</li>
+<li><strong>중복 금지</strong>: 심사·심판은 동시에 한 가지만 선택</li>
+</ul>
+
+<h3>종합부동산세법</h3>
+<ul>
+<li><strong>과세대상</strong>: 주택 + 토지 (분리과세 제외 일정 토지)</li>
+<li><strong>납세의무자</strong>: 6월 1일 현재 소유자</li>
+<li><strong>과세표준</strong>: 공시가격 합산 - 공제액 (1주택자 12억, 다주택자 9억) → 공정시장가액비율 곱한 금액</li>
+<li><strong>세율</strong>: 0.5%~5% (다주택·법인 차등)</li>
+<li><strong>1세대 1주택 특별공제</strong>: 12억 (2023년 개정)</li>
+<li><strong>신고·납부</strong>: 12월 1~15일</li>
+</ul>
+
+<h3>국세 총칙규정 (국세기본법)</h3>
+<ul>
+<li><strong>실질과세 원칙 (제14조)</strong>: 과세대상의 귀속이 명의자가 아니라 실질 귀속자에게</li>
+<li><strong>신의성실 원칙 (제15조)</strong>: 납세자·세무공무원 모두 적용</li>
+<li><strong>근거과세 원칙 (제16조)</strong>: 장부·증빙에 근거한 과세</li>
+<li><strong>조세법률주의</strong>: 헌법 제59조 — 모든 조세는 법률로</li>
+<li><strong>소급과세 금지 (제18조)</strong>: 새 법령은 시행일 이후 분에만 적용</li>
+</ul>
+
+<h3>관련 빈출 키워드 인덱스</h3>
+<p>
+<strong>법인세법령</strong>: 본 노트 1단원 (법인세) 참조 — 영리내국법인·각사업연도소득·청산소득·세무조정·익금·손금·결산조정·신고조정.
+<strong>부가가치세법령</strong>: 본 노트 3단원 (부가가치세) 참조 — 과세거래·과세표준·세율(10%)·매입세액공제·세금계산서·영세율제도·면세·간이과세.
+<strong>소득세법령</strong>: 본 노트 2단원 (소득세) 참조 — 종합·분류·분리과세·이자·배당·사업·근로·연금·기타·퇴직·양도소득.
+<strong>국세기본법령</strong>: 총칙규정·납세의무 성립·확정·소멸·불복절차·국세부과제척기간·국세징수권 소멸시효.
+<strong>국세징수법령</strong>: 본 노트 8단원 (국세징수법) 참조 — 납부고지·독촉·압류·매각·청산 (체납처분·강제징수)·징수절차·징수유예.
+<strong>과세방법</strong>: 신고납부·부과고지·원천징수·예정신고·확정신고 (각 세목별).
+<strong>평가방법</strong>: 재고자산 (선입선출·가중평균·개별법) / 유가증권 / 부동산 (공시지가·기준시가·실거래가).
+<strong>과세거래</strong>: 부가가치세법상 재화·용역의 공급, 재화의 수입.
+<strong>현행법령</strong>: 본 노트 전체가 2026년 시행 현행 법령 기준.
+</p>
+</section>
+
+<hr class="divider"/>
+<footer><div class="eyebrow" style="color:var(--ink-soft);">기출노트 · 9급 세법개론 자동 단권화</div>
+<p style="margin:0 0 4px;">2026-04-27 · 10회 200문제 → 10단원 (보강 후)</p></footer>
+
+</div></body></html>

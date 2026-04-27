@@ -1,0 +1,2799 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>기출노트 — 시험 통합 허브 마케팅 전략 v3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #F5EFE4;
+    --paper: #FFFFFF;
+    --ink: #1F1A14;
+    --ink-soft: #5A4F3F;
+    --ink-mute: #94724D;
+    --amber: #B45309;
+    --amber-soft: #FED7AA;
+    --amber-bg: #FFF7ED;
+    --teal: #0D9488;
+    --teal-soft: #CCFBF1;
+    --teal-bg: #F0FDFA;
+    --rose: #BE123C;
+    --rose-soft: #FECDD3;
+    --rose-bg: #FFF1F2;
+    --slate: #475569;
+    --hairline: rgba(31, 26, 20, 0.12);
+    --hairline-strong: rgba(31, 26, 20, 0.25);
+    --serif: 'Noto Serif KR', ui-serif, Georgia, serif;
+    --sans: 'Pretendard Variable', Pretendard, system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.65;
+    font-size: 16px;
+    word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1120px; margin: 0 auto; padding: 56px 32px 96px; }
+  @media (max-width: 720px) { .container { padding: 36px 18px 64px; } }
+
+  /* HEADER */
+  header.hero {
+    text-align: center;
+    padding: 56px 0 36px;
+    border-bottom: 1px solid var(--hairline);
+    margin-bottom: 40px;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(34px, 5.6vw, 56px);
+    line-height: 1.05;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+  h1 .amber { color: var(--amber); }
+  .subtitle {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .meta {
+    margin-top: 22px;
+    display: inline-flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--slate);
+  }
+  .meta span:not(:first-child)::before {
+    content: '·';
+    margin-right: 14px;
+    color: var(--hairline-strong);
+  }
+
+  /* LABELS — every claim labeled */
+  .lbl {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+  .lbl-real { background: var(--teal-soft); color: var(--teal); }
+  .lbl-est { background: var(--amber-soft); color: var(--amber); }
+  .lbl-bench { background: #DBEAFE; color: #1D4ED8; }
+  .lbl-industry { background: #E9D5FF; color: #6D28D9; }
+
+  /* SNAPSHOT */
+  section.snapshot {
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: 24px;
+    padding: 36px 32px;
+    margin-bottom: 48px;
+    box-shadow: 0 1px 0 rgba(31,26,20,0.04), 0 24px 48px rgba(31,26,20,0.05);
+  }
+  .snap-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--amber);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .snap-title {
+    font-family: var(--serif);
+    font-size: clamp(22px, 3.2vw, 30px);
+    font-weight: 900;
+    margin: 0 0 24px;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+  }
+  .snap-title .amber { color: var(--amber); }
+
+  /* KPI cards */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 720px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
+  .kpi {
+    background: var(--bg);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .kpi-num {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--amber);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .kpi-num small { font-size: 14px; }
+  .kpi-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .kpi-delta { font-family: var(--mono); font-size: 10px; color: var(--ink-soft); }
+
+  /* Snapshot 3-column thesis */
+  .thesis {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 720px) { .thesis { grid-template-columns: 1fr; } }
+  .thesis-card {
+    border-radius: 14px;
+    padding: 20px;
+    background: var(--bg);
+    border: 1px solid var(--hairline);
+  }
+  .thesis-card.amber { background: var(--amber-bg); border-color: var(--amber-soft); }
+  .thesis-card.teal { background: var(--teal-bg); border-color: var(--teal-soft); }
+  .thesis-card.ink { background: var(--ink); color: var(--bg); border: none; }
+  .th-eye { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; opacity: 0.7; margin-bottom: 4px; }
+  .th-title { font-family: var(--serif); font-size: 17px; font-weight: 800; margin: 0 0 8px; line-height: 1.25; }
+  .th-body { font-size: 13px; line-height: 1.6; margin: 0; }
+  .thesis-card.ink .th-eye { color: var(--amber-soft); opacity: 1; }
+
+  /* Snapshot SVG chart */
+  .snap-chart {
+    margin: 0 -12px 24px;
+    overflow-x: auto;
+  }
+  .snap-chart svg { width: 100%; height: auto; min-width: 600px; display: block; }
+
+  .snap-keymsg {
+    background: linear-gradient(135deg, var(--ink) 0%, #2D241A 100%);
+    color: var(--bg);
+    padding: 24px 28px;
+    border-radius: 16px;
+    margin-top: 8px;
+  }
+  .snap-keymsg-eye {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--amber-soft);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .snap-keymsg p { margin: 0; font-size: 15px; line-height: 1.7; }
+
+  /* TOC */
+  nav.toc {
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 48px;
+  }
+  nav.toc h2 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    margin: 0 0 12px;
+  }
+  nav.toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px 24px;
+    font-size: 14px;
+  }
+  @media (max-width: 720px) { nav.toc ol { grid-template-columns: 1fr; } }
+  nav.toc a {
+    color: var(--ink);
+    text-decoration: none;
+    padding: 6px 0;
+    display: flex;
+    gap: 12px;
+    border-bottom: 1px dashed transparent;
+    transition: border-color 0.15s;
+  }
+  nav.toc a:hover { border-color: var(--amber); color: var(--amber); }
+  nav.toc .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--amber);
+    font-weight: 700;
+    min-width: 28px;
+  }
+
+  /* SECTION headers */
+  section { margin-bottom: 64px; }
+  h2.sec {
+    font-family: var(--serif);
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 900;
+    margin: 0 0 4px;
+    letter-spacing: -0.018em;
+    line-height: 1.15;
+    display: flex;
+    flex-direction: column;
+  }
+  h2.sec .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--amber);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .sec-lead {
+    font-size: 16px;
+    color: var(--ink-soft);
+    max-width: 800px;
+    margin: 12px 0 28px;
+    line-height: 1.7;
+  }
+  h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 800;
+    margin: 36px 0 14px;
+    letter-spacing: -0.01em;
+  }
+  h4 {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 800;
+    margin: 24px 0 10px;
+    color: var(--ink);
+  }
+  hr.divider { border: none; border-top: 1px solid var(--hairline); margin: 56px 0; }
+
+  /* Cards & Grids */
+  .grid { display: grid; gap: 14px; }
+  .cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .cols-4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 880px) { .cols-3, .cols-4 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 580px) { .cols-2, .cols-3, .cols-4 { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 20px 22px;
+  }
+  .card.amber { background: var(--amber-bg); border-color: var(--amber-soft); }
+  .card.teal { background: var(--teal-bg); border-color: var(--teal-soft); }
+  .card.rose { background: var(--rose-bg); border-color: var(--rose-soft); }
+  .card.ink { background: var(--ink); color: var(--bg); border: none; }
+  .card.ink h4 { color: var(--amber-soft); }
+  .card h4:first-child, .card h3:first-child { margin-top: 0; }
+  .card p:last-child, .card ul:last-child { margin-bottom: 0; }
+  .card ul { padding-left: 20px; margin: 8px 0; }
+  .card li { margin-bottom: 4px; font-size: 14px; line-height: 1.6; }
+
+  /* Stat */
+  .stat { background: var(--paper); border: 1px solid var(--hairline); border-radius: 14px; padding: 20px; text-align: center; }
+  .stat-num { font-family: var(--serif); font-size: 36px; font-weight: 900; color: var(--ink); line-height: 1; margin-bottom: 4px; letter-spacing: -0.015em; }
+  .stat-num.amber { color: var(--amber); }
+  .stat-num.teal { color: var(--teal); }
+  .stat-num.rose { color: var(--rose); }
+  .stat-label { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+
+  /* Tables */
+  .table-wrap { overflow-x: auto; margin: 14px 0 18px; border: 1px solid var(--hairline); border-radius: 12px; background: var(--paper); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--hairline); vertical-align: top; }
+  th { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); font-weight: 700; background: var(--bg); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.center, th.center { text-align: center; }
+  tbody tr:last-child td { border-bottom: none; }
+  tr.row-hi { background: rgba(180,83,9,0.06); }
+  tr.row-good { background: rgba(13,148,136,0.06); }
+  tr.row-bad { background: rgba(190,18,60,0.05); }
+  code { font-family: var(--mono); font-size: 12px; background: var(--bg); padding: 2px 6px; border-radius: 4px; color: var(--amber); }
+  pre { background: var(--ink); color: var(--bg); padding: 18px; border-radius: 12px; font-family: var(--mono); font-size: 12px; overflow-x: auto; line-height: 1.6; }
+  pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
+
+  /* Badges */
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .badge.live { background: var(--teal-soft); color: var(--teal); }
+  .badge.hot { background: var(--rose-soft); color: var(--rose); }
+  .badge.soon { background: var(--amber-soft); color: var(--amber); }
+  .badge.mute { background: var(--hairline); color: var(--ink-soft); }
+
+  /* Footnote */
+  .footnote { font-size: 12px; color: var(--ink-soft); margin: 8px 0 0; line-height: 1.6; }
+
+  /* Callouts */
+  .callout {
+    background: var(--paper);
+    border-left: 4px solid var(--amber);
+    padding: 18px 22px;
+    margin: 20px 0;
+    border-radius: 0 10px 10px 0;
+  }
+  .callout-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--amber);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .callout p { margin: 0; }
+
+  /* Positioning statement box */
+  .position-stmt {
+    background: linear-gradient(135deg, var(--paper) 0%, var(--amber-bg) 100%);
+    border: 1px solid var(--amber-soft);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin: 24px 0;
+  }
+  .position-stmt-eye { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--amber); text-transform: uppercase; font-weight: 700; margin-bottom: 12px; }
+  .position-stmt p { font-family: var(--serif); font-size: 18px; line-height: 1.7; margin: 0; color: var(--ink); }
+  .position-stmt strong { color: var(--amber); }
+
+  /* ICP cards */
+  .icp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+  @media (max-width: 880px) { .icp-grid { grid-template-columns: 1fr; } }
+  .icp {
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 22px 24px;
+    position: relative;
+  }
+  .icp-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    font-weight: 700;
+    background: var(--bg);
+    padding: 3px 8px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+  }
+  .icp.primary { border-color: var(--amber); border-width: 2px; }
+  .icp.primary .icp-tag { background: var(--amber); color: var(--bg); }
+  .icp h4 { font-family: var(--serif); font-size: 20px; font-weight: 900; margin: 4px 0 4px; }
+  .icp .icp-segment { font-size: 13px; color: var(--ink-soft); margin-bottom: 14px; }
+  .icp .icp-row { display: flex; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--hairline); font-size: 13px; }
+  .icp .icp-row:last-child { border: none; }
+  .icp .icp-key { min-width: 56px; font-family: var(--mono); font-size: 10px; color: var(--ink-mute); text-transform: uppercase; font-weight: 700; padding-top: 2px; }
+
+  /* JTBD */
+  .jtbd-table { background: var(--paper); border-radius: 12px; overflow: hidden; }
+
+  /* 2x2 positioning map */
+  .pos-map { background: var(--paper); border: 1px solid var(--hairline); border-radius: 14px; padding: 18px; margin: 16px 0; overflow-x: auto; }
+  .pos-map svg { width: 100%; height: auto; min-width: 540px; display: block; }
+
+  /* SWOT */
+  .swot-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 12px 0; }
+  @media (max-width: 720px) { .swot-grid { grid-template-columns: 1fr; } }
+  .swot {
+    border-radius: 12px;
+    padding: 18px 20px;
+    border: 1px solid var(--hairline);
+  }
+  .swot-S { background: var(--teal-bg); border-color: var(--teal-soft); }
+  .swot-W { background: var(--rose-bg); border-color: var(--rose-soft); }
+  .swot-O { background: var(--amber-bg); border-color: var(--amber-soft); }
+  .swot-T { background: #F5F3FF; border-color: #DDD6FE; }
+  .swot h4 { margin: 0 0 8px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; }
+  .swot ul { margin: 0; padding-left: 18px; font-size: 13px; }
+  .swot li { margin-bottom: 4px; }
+
+  /* Funnel diagram */
+  .funnel-stage {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+    margin-bottom: 12px;
+    padding: 16px 18px;
+    background: var(--paper);
+    border-radius: 12px;
+    border: 1px solid var(--hairline);
+  }
+  .funnel-stage.tofu { border-left: 4px solid var(--teal); }
+  .funnel-stage.mofu { border-left: 4px solid var(--amber); }
+  .funnel-stage.bofu { border-left: 4px solid var(--rose); }
+  .funnel-stage.ret  { border-left: 4px solid var(--ink); }
+  .fs-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; color: var(--ink-soft); text-transform: uppercase; font-weight: 700; line-height: 1.3; padding-top: 4px; }
+  .fs-name { font-family: var(--serif); font-weight: 800; font-size: 15px; color: var(--ink); margin-top: 2px; }
+  .fs-body { font-size: 13px; line-height: 1.6; }
+  .fs-body strong { display: block; margin-bottom: 4px; }
+  .fs-body .ch-list { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+  .fs-body .ch { font-family: var(--mono); font-size: 10px; padding: 2px 6px; background: var(--bg); border-radius: 4px; }
+
+  /* Metric tree */
+  .mtree { background: var(--paper); border: 1px solid var(--hairline); border-radius: 14px; padding: 18px; margin: 16px 0; overflow-x: auto; }
+  .mtree svg { width: 100%; height: auto; min-width: 720px; display: block; }
+
+  /* OKR cards */
+  .okr-card {
+    background: var(--paper);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 14px;
+  }
+  .okr-O {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 800;
+    margin: 0 0 14px;
+    color: var(--amber);
+    line-height: 1.35;
+  }
+  .okr-O::before { content: 'O — '; font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--ink-soft); margin-right: 6px; vertical-align: middle; font-weight: 700; }
+  .okr-kr { font-size: 13px; padding: 8px 0; border-top: 1px dashed var(--hairline); display: grid; grid-template-columns: 32px 1fr 100px; gap: 12px; align-items: center; }
+  .okr-kr .kr-tag { font-family: var(--mono); font-size: 10px; color: var(--teal); font-weight: 700; }
+  .okr-kr .kr-val { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); text-align: right; }
+
+  /* Sparkline */
+  .spark { display: inline-block; vertical-align: middle; margin: 0 4px; }
+
+  /* Print */
+  @media print {
+    body { background: white; }
+    .no-print { display: none; }
+    section { page-break-inside: avoid; }
+    .container { max-width: none; padding: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow">Marketing Strategy · v3 · 2026-04-26</div>
+    <h1>한국 시험 준비생을 위한<br/><span class="amber">무료 학습 운영체제</span></h1>
+    <p class="subtitle">메가공무원 철수·2027 한능검 인증 도입으로 시장이 재편 중. 547개 시험·100만 문항·자동 매핑 인프라를 보유한 1인 운영 사이트가, 12~24개월 안에 학원 보완재 1순위로 자리잡는 마케팅 전략.</p>
+    <div class="meta">
+      <span>gcnote.co.kr</span>
+      <span>547 ExamType / 624 Subject</span>
+      <span>2026-04-26</span>
+    </div>
+  </header>
+
+  <!-- ============================================== -->
+  <!-- 01. EXECUTIVE SNAPSHOT (1 page)                -->
+  <!-- ============================================== -->
+  <section class="snapshot">
+    <div class="snap-eyebrow">Executive Snapshot · 1분 요약</div>
+    <h2 class="snap-title">시장이 비었다 → <span class="amber">선점 윈도우 12개월</span></h2>
+
+    <!-- 4 KPI -->
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="kpi-num">11.9<small>분</small></div>
+        <div class="kpi-label">평균 세션 <span class="lbl lbl-real">실측</span></div>
+        <div class="kpi-delta">EdTech 평균 1~3분 대비 4×</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">61.4<small>%</small></div>
+        <div class="kpi-label">Direct 비중 <span class="lbl lbl-real">실측</span></div>
+        <div class="kpi-delta">강력한 retention 시그널</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">+58<small>%</small></div>
+        <div class="kpi-label">MoM Sessions <span class="lbl lbl-real">실측</span></div>
+        <div class="kpi-delta">광고 0원 / 30일 기준</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-num">114<small>억</small></div>
+        <div class="kpi-label">메가공무원 매각가 <span class="lbl lbl-real">실측</span></div>
+        <div class="kpi-delta">2024-12 NextStudy 양도</div>
+      </div>
+    </div>
+
+    <!-- 3-column thesis -->
+    <div class="thesis">
+      <div class="thesis-card amber">
+        <div class="th-eye">시장 재편</div>
+        <div class="th-title">대형사 1곳 철수 + 정책 변화</div>
+        <p class="th-body">메가스터디교육이 4년 누적 적자 600억으로 공무원 시장 철수. 2027년 9급 한국사가 한능검 3급↑ 인증으로 대체 — 한능검 자산이 9급 응시자 12만 명 funnel로 직결.</p>
+      </div>
+      <div class="thesis-card teal">
+        <div class="th-eye">자산 보유</div>
+        <div class="th-title">인프라는 이미 완성</div>
+        <p class="th-body">547 ExamType · 624 Subject · 100만 문항이 4주 만에 wired. 강한 행동 시그널 (Direct 61% / 11.9분 / PV/User 19.5) — 콘텐츠 PMF는 검증됨.</p>
+      </div>
+      <div class="thesis-card ink">
+        <div class="th-eye">12개월 액션</div>
+        <div class="th-title">Q2: AdSense + 9급 노트 + 인스타</div>
+        <p class="th-body">검증된 채널 (Direct·Naver·DC) 강화 + 인스타 전용 콘텐츠 발행 파이프라인 가동. 12개월 내 <strong>월 PV 80만 + 광고비 ₩300만/월 (ROAS 6×) + 학원 BD 1건</strong>으로 <strong>월 net 매출 ₩1,800만 (기본)</strong>. 광고비는 ROAS 검증되면 ₩2,000만 (max)까지 확장 (정확한 숫자는 §05 ⑤·⑤-2).</p>
+      </div>
+    </div>
+
+    <!-- Snapshot SVG: 12개월 시나리오 (3-line) -->
+    <div class="snap-chart">
+      <div style="margin: 0 0 8px; padding: 0 4px;">
+        <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--amber); text-transform: uppercase; font-weight: 700;">Chart 1 — 12개월 월 PV 시나리오</div>
+        <div style="font-size: 13px; color: var(--ink-soft); margin-top: 2px; line-height: 1.5;">
+          현재 월 PV 35K(실측) → 12개월 후 도달 가능 범위. 보수·기본·낙관 3-시나리오. 가정은 §05 Unit Economics 표 ⑤ 참조.
+        </div>
+      </div>
+      <svg viewBox="0 0 1080 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="12개월 월 PV 시나리오 — 보수/기본/낙관 라인 차트">
+        <!-- 차트 제목 (그래프 위) -->
+        <text x="540" y="22" text-anchor="middle" font-family="Pretendard Variable" font-size="13" fill="#1F1A14" font-weight="700">월간 페이지뷰 (PV) — 보수 / 기본 / 낙관 3개 라인</text>
+        <text x="540" y="40" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#5A4F3F">Y축: 월 PV (K=천 / M=백만) · X축: 시간 (2026-04 ~ 2027-04)</text>
+
+        <!-- Y축 제목 -->
+        <text x="32" y="180" font-family="JetBrains Mono" font-size="10" fill="#1F1A14" font-weight="700" transform="rotate(-90, 32, 180)" text-anchor="middle">월 PV (PageViews / month)</text>
+
+        <!-- Y축 라인 -->
+        <line x1="90" y1="320" x2="90" y2="80" stroke="#1F1A14" stroke-width="1.5"/>
+
+        <!-- Y 라벨 + 그리드 (PV → y: y=320 - PV/2000K * 240) -->
+        <!-- 0 → y=320, 200K → y=296, 500K → y=260, 1M → y=200, 2M → y=80 -->
+        <line x1="90" y1="296" x2="870" y2="296" stroke="#1F1A14" stroke-width="0.5" stroke-dasharray="3 4" opacity="0.15"/>
+        <line x1="90" y1="260" x2="870" y2="260" stroke="#1F1A14" stroke-width="0.5" stroke-dasharray="3 4" opacity="0.15"/>
+        <line x1="90" y1="200" x2="870" y2="200" stroke="#1F1A14" stroke-width="0.5" stroke-dasharray="3 4" opacity="0.15"/>
+        <line x1="90" y1="140" x2="870" y2="140" stroke="#1F1A14" stroke-width="0.5" stroke-dasharray="3 4" opacity="0.15"/>
+        <line x1="90" y1="80"  x2="870" y2="80"  stroke="#1F1A14" stroke-width="0.5" stroke-dasharray="3 4" opacity="0.15"/>
+
+        <text x="84" y="324" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#5A4F3F">0</text>
+        <text x="84" y="300" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#5A4F3F">200K</text>
+        <text x="84" y="264" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#5A4F3F">500K</text>
+        <text x="84" y="204" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#5A4F3F">1M</text>
+        <text x="84" y="144" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#5A4F3F">1.5M</text>
+        <text x="84" y="84" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#5A4F3F">2M</text>
+
+        <!-- X축 -->
+        <line x1="90" y1="320" x2="870" y2="320" stroke="#1F1A14" stroke-width="1.5"/>
+
+        <!-- NOW 마커 (시작점) -->
+        <line x1="90" y1="80" x2="90" y2="320" stroke="#B45309" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.6"/>
+        <text x="90" y="72" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#B45309" font-weight="700">▼ NOW</text>
+        <text x="90" y="60" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#B45309">35K/월 (실측)</text>
+
+        <!-- 보수 라인 (회색): 35K → 300K, 12개월 -->
+        <!-- y = 320 - PV/8.33 (PV in K). PV 점진 증가 -->
+        <polyline points="90,316 155,313 220,311 285,309 350,307 415,303 480,299 545,294 610,290 675,286 740,283 805,281 870,280"
+          fill="none" stroke="#94724D" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="870" cy="280" r="5" fill="#94724D"/>
+
+        <!-- 기본 라인 (앰버): 35K → 800K -->
+        <polyline points="90,316 155,310 220,303 285,295 350,285 415,274 480,263 545,254 610,244 675,236 740,230 805,226 870,224"
+          fill="none" stroke="#B45309" stroke-width="3" stroke-linejoin="round"/>
+        <circle cx="870" cy="224" r="6" fill="#B45309"/>
+
+        <!-- 낙관 라인 (틸, 점선): 35K → 2M -->
+        <polyline points="90,316 155,310 220,301 285,288 350,269 415,247 480,222 545,193 610,162 675,131 740,103 805,87 870,80"
+          fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="6 3"/>
+        <circle cx="870" cy="80" r="5" fill="#0D9488"/>
+
+        <!-- X 축 라벨 -->
+        <text x="90"  y="338" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#5A4F3F">2026-04</text>
+        <text x="285" y="338" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#5A4F3F">2026-07</text>
+        <text x="480" y="338" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#5A4F3F">2026-10</text>
+        <text x="675" y="338" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#5A4F3F">2027-01</text>
+        <text x="870" y="338" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#5A4F3F">2027-04</text>
+
+        <!-- X 축 제목 -->
+        <text x="480" y="358" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#1F1A14" font-weight="700">시간 (월) — 향후 12개월</text>
+
+        <!-- 우측 라벨 (잘리지 않게 viewBox 안에) -->
+        <!-- 보수 -->
+        <rect x="890" y="270" width="170" height="22" rx="4" fill="#94724D"/>
+        <text x="900" y="285" font-family="JetBrains Mono" font-size="11" fill="white" font-weight="700">보수 · 300K/월</text>
+        <!-- 기본 -->
+        <rect x="890" y="214" width="170" height="22" rx="4" fill="#B45309"/>
+        <text x="900" y="229" font-family="JetBrains Mono" font-size="11" fill="white" font-weight="700">기본 · 800K/월</text>
+        <!-- 낙관 -->
+        <rect x="890" y="70" width="170" height="22" rx="4" fill="#0D9488"/>
+        <text x="900" y="85" font-family="JetBrains Mono" font-size="11" fill="white" font-weight="700">낙관 · 2M+/월</text>
+
+        <!-- 우측 라벨 옆 작은 설명 -->
+        <text x="900" y="306" font-family="Pretendard Variable" font-size="10" fill="#94724D">광고 ₩30만/월</text>
+        <text x="900" y="318" font-family="Pretendard Variable" font-size="10" fill="#94724D">매출 ~₩240만/월</text>
+
+        <text x="900" y="250" font-family="Pretendard Variable" font-size="10" fill="#B45309">광고 ₩300만/월</text>
+        <text x="900" y="262" font-family="Pretendard Variable" font-size="10" fill="#B45309">매출 ~₩1,800만/월</text>
+
+        <text x="900" y="106" font-family="Pretendard Variable" font-size="10" fill="#0D9488">광고 ₩2,000만/월 (max)</text>
+        <text x="900" y="118" font-family="Pretendard Variable" font-size="10" fill="#0D9488">매출 ~₩1억 900만/월</text>
+      </svg>
+    </div>
+
+    <!-- 한 줄 결론 -->
+    <div class="snap-keymsg">
+      <div class="snap-keymsg-eye">한 줄 결론</div>
+      <p>한국 공무원 인강 시장에서 <strong>대형사 1곳이 철수했고</strong>, 2027년부터 한능검이 9급의 통로가 된다. 한능검 PMF가 검증된 우리 사이트가 SEO + 인스타로 9급 응시자 12만 명을 흡수하는 데 필요한 인프라는 이미 완성. <strong>이제 마케팅의 시간 — 광고비는 ROAS &gt; 4×인 한 channel capacity까지 max로 (월 ₩2,000만 한도, ROAS 6× = 매출 ₩1억+/월).</strong></p>
+    </div>
+  </section>
+
+  <!-- TOC -->
+  <nav class="toc no-print">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#positioning"><span class="num">01</span>Positioning &amp; Brand</a></li>
+      <li><a href="#customer"><span class="num">02</span>Customer (ICP × 3 + JTBD)</a></li>
+      <li><a href="#competitive"><span class="num">03</span>Competitive Landscape</a></li>
+      <li><a href="#channels"><span class="num">04</span>Channel &amp; Content Strategy</a></li>
+      <li><a href="#economics"><span class="num">05</span>Unit Economics (CAC · LTV)</a></li>
+      <li><a href="#90day"><span class="num">06</span>90-Day Plan</a></li>
+      <li><a href="#measure"><span class="num">07</span>Measurement Framework</a></li>
+      <li><a href="#risks"><span class="num">08</span>Risks &amp; Mitigation</a></li>
+      <li><a href="#appendix"><span class="num">A~C</span>부록 — 로드맵·캘린더·출처</a></li>
+    </ol>
+  </nav>
+
+  <!-- ============================================== -->
+  <!-- 01. POSITIONING & BRAND                        -->
+  <!-- ============================================== -->
+  <section id="positioning">
+    <h2 class="sec"><span class="num">01 — Positioning</span>Positioning &amp; Brand</h2>
+    <p class="sec-lead">마케팅 전략은 4P 이전에 <strong>STP (Segment → Target → Position)</strong>에서 시작한다. 누구를 위해 / 무엇을 약속하고 / 왜 우리인가 — 1문장으로 답이 안 나오면 채널 선택은 모두 추측이다.</p>
+
+    <h3>Positioning Statement</h3>
+    <p style="font-size:13px; color:var(--ink-soft); margin-bottom:8px;">
+      Geoffrey Moore의 <em>"For X, who Y, our product Z, that A, unlike B, our offering C"</em> 템플릿.
+    </p>
+
+    <div class="position-stmt">
+      <div class="position-stmt-eye">Positioning Statement</div>
+      <p>
+        <strong>한국에서 시험으로 신분이 바뀌는 30만 명</strong>(공무원·자격증·한능검 응시자)을 위해,
+        <strong>인강 ₩50~180만의 대안이나 보완재가 필요한 이들에게</strong>,
+        기출노트는 <strong>547개 시험 · 100만 문항 · 자동 매핑 요약노트</strong>를 제공하는
+        <strong>한국 시험 universe의 무료 학습 운영체제</strong>다.
+        에듀윌·해커스·메가공무원과 달리, 우리는 <strong>학원이 인수하거나 광고하고 싶은 보완재 위치</strong>를 차지한다.
+      </p>
+    </div>
+
+    <h3>Brand Promise (1 문장)</h3>
+    <div class="callout">
+      <div class="callout-title">Brand Promise</div>
+      <p style="font-family: var(--serif); font-size: 19px; line-height: 1.6; font-weight: 700;">"한국에서 보는 어떤 시험이든, 핵심 기출과 요약노트를 무료로 — 인강 결제 없이."</p>
+      <p style="font-size: 12px; color: var(--ink-soft); margin: 10px 0 0; line-height: 1.5;">※ 학습 콘텐츠(기출·노트·오답·기록)는 모두 무료. AdSense 디스플레이 광고와 학원 affiliate 링크는 사이트 운영비를 위해 제한적으로 게재 — 학습을 방해하지 않는 수준에서. "광고 0개"가 아니라 "유료 결제 강요 없음"이 약속.</p>
+    </div>
+
+    <h3>Mission · Vision · Core Values</h3>
+    <div class="grid cols-3">
+      <div class="card">
+        <h4 style="color: var(--amber);">Mission · 지금 하는 일</h4>
+        <p style="font-size:14px;">한국의 모든 자격·공무원 시험 데이터를 정리·매핑·검증해 누구나 무료로 학습 가능하게 한다. 콘텐츠 제작 비용은 AI 자동화로 0에 수렴.</p>
+      </div>
+      <div class="card">
+        <h4 style="color: var(--teal);">Vision · 5년 후</h4>
+        <p style="font-size:14px;">"한국 시험 = 기출노트로 시작" — 운전면허에서 7급, 30대 직무자격까지 한 사람의 시험 인생 전체를 동반하는 학습 OS.</p>
+      </div>
+      <div class="card">
+        <h4 style="color: var(--rose);">Core Values · 의사결정 기준</h4>
+        <p style="font-size:14px;">(1) 학습 콘텐츠 유료화 안 한다 (2) 광고가 학습을 방해하면 안 된다 (3) 1인 운영을 깨지 않는다 (4) AI로 자동화 가능하지 않으면 만들지 않는다.</p>
+      </div>
+    </div>
+
+    <h3>North Star Metric</h3>
+    <p>운영 결정의 단일 나침반. PV·sessions·users 모두 보지만, 우선순위 충돌 시 <strong>이 지표 1개</strong>로 결정한다.</p>
+
+    <div class="card amber" style="margin-bottom: 14px;">
+      <div style="display: flex; gap: 28px; align-items: center; flex-wrap: wrap;">
+        <div>
+          <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; color: var(--amber); text-transform: uppercase; font-weight: 700;">North Star</div>
+          <div style="font-family: var(--serif); font-size: 30px; font-weight: 900; line-height: 1.1; margin: 4px 0;">Weekly Active Learners</div>
+          <div style="font-size: 13px; color: var(--ink-soft);">정의: 7일 내 ≥3 문제 풀이 또는 ≥1 노트 열람한 unique user</div>
+        </div>
+        <div style="border-left: 1px solid var(--amber-soft); padding-left: 24px;">
+          <div style="font-family: var(--mono); font-size: 10px; color: var(--ink-soft);">현재 (4월 마지막 주)</div>
+          <div style="font-family: var(--serif); font-size: 26px; font-weight: 900; color: var(--amber);">~250 <span style="font-size:14px;">[추정]</span></div>
+          <div style="font-family: var(--mono); font-size: 10px; color: var(--ink-soft);">목표 (3개월 후): 1,500</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="footnote">왜 PV가 아닌가: PV는 채널 광고로 일시 부풀릴 수 있고 retention을 측정하지 못함. WAL은 (1) 진짜 학습 행동 (2) 주간 cadence로 단기 변동에 안정 (3) 멤버십 전환의 leading indicator. <span class="lbl lbl-bench">벤치</span> Sequoia Capital의 SaaS NSM 가이드라인 — "engagement-based weekly metric".</p>
+
+    <h3>"우리는 / 우리는 아니다" 박스</h3>
+    <div class="grid cols-2">
+      <div class="card teal">
+        <h4 style="color: var(--teal);">✅ 우리는</h4>
+        <ul style="font-size:14px;">
+          <li>학원 보완재 — 무료 + 모던 UI + 자동 매핑</li>
+          <li>커뮤니티에서 자생하는 트래픽 (DC·카페·인스타)</li>
+          <li>1인 + AI 자동화로 영업이익률 80%+ 가능</li>
+          <li>학원이 광고주 또는 인수자가 되는 위치</li>
+        </ul>
+      </div>
+      <div class="card rose">
+        <h4 style="color: var(--rose);">❌ 우리는 아니다</h4>
+        <ul style="font-size:14px;">
+          <li>1타강사를 영입하는 종합 학원</li>
+          <li>유료 패키지(₩50~180만) 판매하는 인강사</li>
+          <li>인강·자료·1:1 코칭으로 시간을 파는 사업</li>
+          <li>네이버 1순위 광고로 학원과 정면 입찰하는 곳</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 02. CUSTOMER (ICP × 3 + JTBD)                  -->
+  <!-- ============================================== -->
+  <section id="customer">
+    <h2 class="sec"><span class="num">02 — Customer</span>ICP × 3 + JTBD</h2>
+    <p class="sec-lead">"공무원 응시자 28.5세"는 페르소나가 아니라 인구통계다. 마케팅에 쓸 수 있는 ICP는 <strong>JTBD (Jobs-to-be-Done)</strong>로 functional / emotional / social job을 분리해야 메시지가 나온다. 3개 ICP를 우선순위 순서로.</p>
+
+    <!-- ICP cards -->
+    <div class="icp-grid">
+      <!-- Primary -->
+      <div class="icp primary">
+        <div class="icp-tag">Primary · 60% 자원</div>
+        <h4>현직 9급 응시 준비자 "Jiwoo"</h4>
+        <div class="icp-segment">26세, 비전공 4년차 수험생, 메가/에듀윌 패스 ₩100만 결제 후 80% 미수강 — 학원 인강에 회의적</div>
+        <div class="icp-row"><div class="icp-key">규모</div><div>9급 응시자 105K/년 <span class="lbl lbl-real">실측 2025</span> · cross-app 78% (지방직 동시) <span class="lbl lbl-est">추정</span></div></div>
+        <div class="icp-row"><div class="icp-key">동기</div><div>"학원비 없이도 합격 가능한 보완 도구가 있다면 일단 무료로 써본다"</div></div>
+        <div class="icp-row"><div class="icp-key">발견</div><div>네이버 검색 ("9급 한국사 요약") · DC공무원 갤러리 · 인스타 카드뉴스 reels</div></div>
+        <div class="icp-row"><div class="icp-key">전환</div><div>3과목 이상 5문제 시도 → bookmark → 재방문 (Direct 61%의 핵심 source)</div></div>
+        <div class="icp-row"><div class="icp-key">반대</div><div>"공식 자료가 아니라 신뢰가 안 간다" · "출제 경향이 달라 안 통할까"</div></div>
+      </div>
+
+      <!-- Secondary -->
+      <div class="icp">
+        <div class="icp-tag">Secondary · 25% 자원</div>
+        <h4>한능검 시즌 응시자 "Minjun"</h4>
+        <div class="icp-segment">고등학생/대학생/직장인 — 한국사 필요 자격 (경찰·소방·9급 가산) 때문에 5월·8월·10월에만 집중 학습</div>
+        <div class="icp-row"><div class="icp-key">규모</div><div>한능검 응시자 55만+/년 <span class="lbl lbl-real">실측</span> · 5회/년 분산</div></div>
+        <div class="icp-row"><div class="icp-key">동기</div><div>"3개월 안에 2급 따고 끝내야 함, 강의는 부담"</div></div>
+        <div class="icp-row"><div class="icp-key">발견</div><div>네이버/구글 검색 ("한국사능력검정시험 기출") · 유튜브 (최태성)</div></div>
+        <div class="icp-row"><div class="icp-key">전환</div><div>회차별 풀이 1회차 완료 → 노트 1개 열람 → 시험 2주 전 재방문</div></div>
+        <div class="icp-row"><div class="icp-key">반대</div><div>"기출만 풀면 모르는 부분은 어떡하나" → 자동 매핑 노트가 답</div></div>
+      </div>
+
+      <!-- Tertiary -->
+      <div class="icp">
+        <div class="icp-tag">Tertiary · 15% 자원</div>
+        <h4>자격증 응시자 "Sora"</h4>
+        <div class="icp-segment">30대 직장인 — 부동산 (공인중개사), IT (정보처리기사), 안전 (산업안전기사) 등 직무 자격으로 이직/부업 준비</div>
+        <div class="icp-row"><div class="icp-key">규모</div><div>공인중개사 134K <span class="lbl lbl-real">실측 2023</span> + Q-Net 자격증 전체 200만+/년 <span class="lbl lbl-est">추정</span></div></div>
+        <div class="icp-row"><div class="icp-key">동기</div><div>"퇴근 후 1~2시간 짧게 진도 빼야 함, 학원 강의는 시간이 안 맞음"</div></div>
+        <div class="icp-row"><div class="icp-key">발견</div><div>네이버 ("공인중개사 1차 기출") · 직장인 카페 · 유튜브</div></div>
+        <div class="icp-row"><div class="icp-key">전환</div><div>1과목 1회차 시도 → 본인 약점 시각화 → 다음 과목 → 재방문 패턴</div></div>
+        <div class="icp-row"><div class="icp-key">반대</div><div>"문제수가 부족할 수 있다" → 회차 5회분 보유 강조</div></div>
+      </div>
+    </div>
+
+    <h3>JTBD 매트릭스 — 같은 사람도 상황에 따라 3가지 Job</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">Jobs-to-be-Done 프레임워크 (Christensen). Functional = 실제 해결할 일, Emotional = 본인 감정, Social = 타인에게 보이는 모습. 메시지 카피는 3개 모두 건드릴 때 강하다.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ICP</th>
+            <th>Functional Job (실제 일)</th>
+            <th>Emotional Job (느낌)</th>
+            <th>Social Job (보이는 모습)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Jiwoo (9급)</strong></td>
+            <td>"3개월 안에 5과목 핵심 정리"</td>
+            <td>"학원비 안 쓰고도 따라잡는다"</td>
+            <td>"내 합격 후기로 카페에서 인정받기"</td>
+          </tr>
+          <tr>
+            <td><strong>Minjun (한능검)</strong></td>
+            <td>"6주 안에 2급 따기"</td>
+            <td>"비싼 강의 안 사도 합격함을 증명"</td>
+            <td>"인스타에 합격 인증 올리기"</td>
+          </tr>
+          <tr>
+            <td><strong>Sora (자격증)</strong></td>
+            <td>"퇴근 후 30분 × 30일로 1차 통과"</td>
+            <td>"내 시간을 최소 투자로 자격 확보"</td>
+            <td>"이직 면접에서 '독학으로 땄다'고 말하기"</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Customer Journey Map (AARRR × 3 ICP)</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">Pirate Metrics (Dave McClure). 단계마다 측정 지표가 다름 — 모든 단계에서 같은 메시지 X.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Stage</th>
+            <th>Trigger / 채널</th>
+            <th>Action / 측정</th>
+            <th>현재 [실측 / 추정]</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background: rgba(13,148,136,0.06);">
+            <td><strong>Acquisition</strong><br/><small>발견</small></td>
+            <td>Naver "한능검 기출" / DC 공무원 갤러리 / 인스타 카드뉴스 / 친구 추천</td>
+            <td>첫 페이지 방문 (visit)</td>
+            <td>월 ~1.5K 사용자 <span class="lbl lbl-real">실측</span></td>
+          </tr>
+          <tr>
+            <td><strong>Activation</strong><br/><small>첫 가치</small></td>
+            <td>홈 → /exam 또는 /study/session</td>
+            <td><strong>5문제 풀이 + 정답 확인</strong> (activation event)</td>
+            <td>~40% <span class="lbl lbl-est">추정</span> · TOP 페이지로 본 추정치</td>
+          </tr>
+          <tr style="background: rgba(180,83,9,0.06);">
+            <td><strong>Retention</strong><br/><small>재방문</small></td>
+            <td>북마크 / Direct 입력 / 검색 재방문</td>
+            <td>D7 재방문 + 노트 1개 열람</td>
+            <td>Direct 61% <span class="lbl lbl-real">실측</span> = 강함</td>
+          </tr>
+          <tr>
+            <td><strong>Referral</strong><br/><small>전파</small></td>
+            <td>합격 인증 인스타 / 카페 추천글</td>
+            <td>K-factor (1명이 데려오는 추가 사용자)</td>
+            <td>K ≈ 0.3~0.5 <span class="lbl lbl-est">추정</span> · MoM +58%로 역산</td>
+          </tr>
+          <tr style="background: rgba(190,18,60,0.06);">
+            <td><strong>Revenue</strong><br/><small>수익화</small></td>
+            <td>AdSense (오가닉 PV) / 학원 affiliate / 멤버십 (Phase 4)</td>
+            <td>RPM × PV / Affiliate CPL × conv / MRR</td>
+            <td>Phase 0 (AdSense 심사 중) · 0원</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="footnote"><strong>Activation 정의가 핵심</strong>: 단순 visit이 아니라 "5문제 + 정답 확인"으로 정의해야 retention 예측 가능. 현재는 page_view만 트래킹 중 → Phase 1에서 GA4 custom event 추가 필요.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 03. COMPETITIVE LANDSCAPE                      -->
+  <!-- ============================================== -->
+  <section id="competitive">
+    <h2 class="sec"><span class="num">03 — Competitive</span>Competitive Landscape</h2>
+    <p class="sec-lead">시장은 이미 움직였다. 메가스터디교육이 4년 적자 600억으로 공무원 시장 철수(2024-12) — 자리가 비었다. 우리는 학원과 정면 경쟁이 아니라 <strong>학원 의존도가 낮은 사용자층</strong>을 노리는 보완재 포지션이다.</p>
+
+    <h3>시장 변화 — 지난 12개월의 시그널</h3>
+    <div class="grid cols-3">
+      <div class="card amber">
+        <div style="font-family: var(--mono); font-size: 10px; color: var(--amber); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700;">2024-12 → 2026 윈도우</div>
+        <h4 style="margin-top: 4px;">메가공무원 매각 + Marketing Void</h4>
+        <p style="font-size: 13px;">메가스터디교육이 메가공무원을 NextStudy에 ₩114억 매각. 4년 누적 영업적자 ₩600억+.<br/><span class="lbl lbl-real">실측</span><br/><strong style="color: var(--amber);">→ NextStudy는 매각 후 6~12개월 동안 마케팅 재정비 단계</strong>. 이 사이 Naver 광고 축소 + SNS 활동 거의 없음 = <strong>우리에게 골든 윈도우</strong>.</p>
+      </div>
+      <div class="card amber">
+        <div style="font-family: var(--mono); font-size: 10px; color: var(--amber); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700;">2025-03</div>
+        <h4 style="margin-top: 4px;">2027 한능검 인증제 확정</h4>
+        <p style="font-size: 13px;">인사혁신처 입법예고 — 9급 한국사 폐지, 한능검 3급↑ 인증으로 대체. 만료 없음. 5과목 → 4과목, 문항 20→25개.<br/><span class="lbl lbl-real">실측</span> 한능검 응시자 → 9급 funnel 확정.</p>
+      </div>
+      <div class="card teal">
+        <div style="font-family: var(--mono); font-size: 10px; color: var(--teal); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700;">2025-04</div>
+        <h4 style="margin-top: 4px;">9급 경쟁률 반등</h4>
+        <p style="font-size: 13px;">2024년 21.8:1 → 2025년 24.3:1로 반등. 응시자 105K (전년比 +1.5K). 인기 회복 시그널.<br/><span class="lbl lbl-real">실측</span> 인사혁신처 채용통계.</p>
+      </div>
+    </div>
+
+    <!-- ⭐ 골든 윈도우 강조 박스 -->
+    <div class="callout" style="background: linear-gradient(135deg, var(--amber-bg) 0%, #FFF 100%); border-left-color: var(--amber); margin: 20px 0 28px;">
+      <div class="callout-title">⏰ Golden Window — 6~12개월</div>
+      <p style="font-size: 14px; line-height: 1.7;">
+        <strong>NextStudy 매각 직후 (2024-12) → 마케팅 재정비 (~2026 Q4)</strong>까지가 우리에게 가장 큰 윈도우.
+        이 기간에 <strong>SOV (Share of Voice) 50% 이상</strong> 점유 못 하면, NextStudy 재정비 후 SNS·SEO 채널에서 정면 경쟁 어려움.
+        <br/><br/>
+        <strong>액션 함의</strong>: §06 Q2 OKR 우선순위 — 콘텐츠 깊이 (9급 노트) + 인스타·스레드 일일 발행은 "선택"이 아니라 <strong>기한 있는 행동</strong>.
+        Q3 (한능검 79·80회) 시즌 + Q4 (자격증 시즌 2 + 새해 동기) 까지 SOV 확보가 12개월 후 <strong>학원 BD 협상력</strong>의 근거가 됨.
+      </p>
+    </div>
+
+    <h3>2×2 Positioning Map</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">두 축으로 시장을 그리면 빈 사분면이 보인다 — 우리가 들어갈 자리. X축 = 가격대 / Y축 = UX 세대.</p>
+
+    <div class="pos-map">
+      <div style="margin: 0 0 8px; padding: 0 4px;">
+        <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--amber); text-transform: uppercase; font-weight: 700;">Chart 2 — Positioning Map (한국 시험 학습 시장)</div>
+        <div style="font-size: 13px; color: var(--ink-soft); margin-top: 2px; line-height: 1.5;">
+          가로축: 가격대 (무료 ↔ 유료) · 세로축: UX 세대 (모던 ↔ 레거시) · 점 크기 = 사용자 규모
+        </div>
+      </div>
+      <svg viewBox="0 0 1080 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="2x2 포지셔닝 맵 — 가격(무료/유료) × UX(모던/레거시)">
+        <!-- 좌상단 텍스트 영역 (제목과 안 겹치게) -->
+
+        <!-- 사분면 배경 색 (좌측 패딩 130, 우측 패딩 230 — 라벨 위치 확보) -->
+        <!-- 차트 영역: x=130~840 (가로 710), y=80~520 (세로 440) -->
+        <!-- 사분면 분할: x=485 (가격 중심), y=300 (UX 중심) -->
+        <rect x="130" y="80"  width="355" height="220" fill="#FFF7ED" opacity="0.6"/>
+        <rect x="485" y="80"  width="355" height="220" fill="#F0FDFA" opacity="0.6"/>
+        <rect x="130" y="300" width="355" height="220" fill="#FFF1F2" opacity="0.6"/>
+        <rect x="485" y="300" width="355" height="220" fill="#F5F3FF" opacity="0.5"/>
+
+        <!-- 사분면 외곽 -->
+        <rect x="130" y="80" width="710" height="440" fill="none" stroke="#1F1A14" stroke-width="1" opacity="0.25"/>
+
+        <!-- 축 (분리선) -->
+        <line x1="485" y1="80"  x2="485" y2="520" stroke="#1F1A14" stroke-width="2"/>
+        <line x1="130" y1="300" x2="840" y2="300" stroke="#1F1A14" stroke-width="2"/>
+
+        <!-- 축 화살표 (전체 축 연장 표시) -->
+        <line x1="120" y1="300" x2="850" y2="300" stroke="#1F1A14" stroke-width="1" opacity="0.3"/>
+        <line x1="485" y1="70"  x2="485" y2="530" stroke="#1F1A14" stroke-width="1" opacity="0.3"/>
+
+        <!-- 축 끝 화살표 -->
+        <polygon points="850,300 842,296 842,304" fill="#1F1A14" opacity="0.6"/>
+        <polygon points="120,300 128,296 128,304" fill="#1F1A14" opacity="0.6"/>
+        <polygon points="485,70 481,78 489,78" fill="#1F1A14" opacity="0.6"/>
+        <polygon points="485,530 481,522 489,522" fill="#1F1A14" opacity="0.6"/>
+
+        <!-- 축 라벨 (모두 viewBox 안에 안전하게) -->
+        <!-- Y축 위쪽 (모던) -->
+        <text x="485" y="60" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#1F1A14" font-weight="700">▲ 모던 UX</text>
+        <text x="485" y="46" text-anchor="middle" font-family="Pretendard Variable" font-size="10" fill="#5A4F3F">모바일 first · 자동 매핑 · 2026 디자인</text>
+
+        <!-- Y축 아래쪽 (레거시) -->
+        <text x="485" y="552" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#1F1A14" font-weight="700">▼ 레거시 UX</text>
+        <text x="485" y="568" text-anchor="middle" font-family="Pretendard Variable" font-size="10" fill="#5A4F3F">데스크톱 · 2010년대 디자인</text>
+
+        <!-- X축 좌측 (무료) — viewBox 안 -->
+        <text x="20" y="296" font-family="JetBrains Mono" font-size="12" fill="#1F1A14" font-weight="700">◀ 무료</text>
+        <text x="20" y="312" font-family="Pretendard Variable" font-size="10" fill="#5A4F3F">/ 저가</text>
+
+        <!-- X축 우측 (유료) — viewBox 안 -->
+        <text x="860" y="296" font-family="JetBrains Mono" font-size="12" fill="#1F1A14" font-weight="700">유료 ▶</text>
+        <text x="860" y="312" font-family="Pretendard Variable" font-size="10" fill="#5A4F3F">₩50~180만</text>
+
+        <!-- 사분면 라벨 (각 사분면 좌상단 코너 안에) -->
+        <text x="140" y="100" font-family="Pretendard Variable" font-size="10" fill="#B45309" font-weight="700">무료 + 모던</text>
+        <text x="495" y="100" font-family="Pretendard Variable" font-size="10" fill="#0D9488" font-weight="700">유료 + 모던</text>
+        <text x="140" y="320" font-family="Pretendard Variable" font-size="10" fill="#BE123C" font-weight="700">무료 + 레거시</text>
+        <text x="495" y="320" font-family="Pretendard Variable" font-size="10" fill="#6D28D9" font-weight="700">유료 + 레거시</text>
+
+        <!-- ⭐ 비어있는 사분면 강조 (좌상단) -->
+        <text x="475" y="118" text-anchor="end" font-family="Pretendard Variable" font-size="10" fill="#B45309" font-weight="700">⭐ Empty quadrant</text>
+
+        <!-- ============================================ -->
+        <!-- 점들: 각 사분면 안에 안전하게 배치 -->
+        <!-- ============================================ -->
+
+        <!-- 기출노트 (큰 점, 좌상단 = 우리 자리) -->
+        <circle cx="290" cy="200" r="60" fill="none" stroke="#B45309" stroke-width="1.5" stroke-dasharray="5 3" opacity="0.5"/>
+        <circle cx="290" cy="200" r="26" fill="#B45309"/>
+        <text x="290" y="206" text-anchor="middle" font-family="Noto Serif KR" font-size="11" fill="white" font-weight="900">기출노트</text>
+        <text x="290" y="248" text-anchor="middle" font-family="Pretendard Variable" font-size="11" fill="#B45309" font-weight="700">gcnote.co.kr</text>
+        <text x="290" y="262" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#94724D">547 시험 · 자동 매핑</text>
+
+        <!-- 콴다 (우상단) -->
+        <circle cx="600" cy="170" r="22" fill="#0D9488"/>
+        <text x="600" y="174" text-anchor="middle" font-family="Pretendard Variable" font-size="10" fill="white" font-weight="700">콴다</text>
+        <text x="600" y="208" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#0D9488">₩242억 (2024)</text>
+
+        <!-- 산타 (우상단) -->
+        <circle cx="730" cy="200" r="18" fill="#0D9488" opacity="0.85"/>
+        <text x="730" y="204" text-anchor="middle" font-family="Pretendard Variable" font-size="9" fill="white" font-weight="700">산타</text>
+        <text x="730" y="234" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#0D9488">₩201억 (2024)</text>
+
+        <!-- 우상단 보조 라벨 -->
+        <text x="600" y="260" text-anchor="middle" font-family="Pretendard Variable" font-size="9" fill="#5A4F3F" font-style="italic">학생·토익 중심 — 시험 카테고리 다름</text>
+
+        <!-- 기존 무료 기출 사이트들 (좌하단, 작은 점 묶음) -->
+        <circle cx="200" cy="380" r="9" fill="#BE123C" opacity="0.5"/>
+        <circle cx="260" cy="420" r="8" fill="#BE123C" opacity="0.45"/>
+        <circle cx="180" cy="450" r="10" fill="#BE123C" opacity="0.5"/>
+        <circle cx="320" cy="395" r="7" fill="#BE123C" opacity="0.4"/>
+        <circle cx="370" cy="445" r="8" fill="#BE123C" opacity="0.4"/>
+        <text x="270" y="490" text-anchor="middle" font-family="Pretendard Variable" font-size="10" fill="#BE123C" font-weight="700">기존 무료 기출 사이트들</text>
+        <text x="270" y="504" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#94724D">자격닷컴 · 기출비밀 등 (UI 노후)</text>
+
+        <!-- 학원사들 (우하단) -->
+        <!-- 에듀윌 (큰 점, 매출 ~4000억) -->
+        <circle cx="600" cy="380" r="28" fill="#6D28D9" opacity="0.85"/>
+        <text x="600" y="385" text-anchor="middle" font-family="Pretendard Variable" font-size="10" fill="white" font-weight="700">에듀윌</text>
+
+        <!-- 해커스 (중간) -->
+        <circle cx="700" cy="430" r="22" fill="#6D28D9" opacity="0.7"/>
+        <text x="700" y="434" text-anchor="middle" font-family="Pretendard Variable" font-size="9" fill="white" font-weight="700">해커스</text>
+
+        <!-- 메가공무원 (X 표시 — 철수) -->
+        <circle cx="780" cy="380" r="20" fill="#94724D" opacity="0.4"/>
+        <text x="780" y="384" text-anchor="middle" font-family="Pretendard Variable" font-size="9" fill="white" font-weight="700">메가</text>
+        <line x1="763" y1="363" x2="797" y2="397" stroke="#BE123C" stroke-width="3"/>
+        <line x1="763" y1="397" x2="797" y2="363" stroke="#BE123C" stroke-width="3"/>
+        <text x="780" y="420" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#BE123C" font-weight="700">2024-12 철수</text>
+
+        <!-- 우하단 보조 라벨 -->
+        <text x="660" y="490" text-anchor="middle" font-family="Pretendard Variable" font-size="9" fill="#5A4F3F" font-style="italic">패스 ₩50~180만 · 1조원 시장</text>
+
+        <!-- ============================================ -->
+        <!-- 우측 범례 (viewBox 870~1080 안전 영역) -->
+        <!-- ============================================ -->
+        <rect x="870" y="80" width="200" height="200" rx="8" fill="#1F1A14"/>
+        <text x="880" y="100" font-family="JetBrains Mono" font-size="10" fill="#FED7AA" font-weight="700">RANGE GUIDE</text>
+
+        <circle cx="888" cy="124" r="9" fill="#B45309"/>
+        <text x="906" y="128" font-family="Pretendard Variable" font-size="11" fill="#F5EFE4" font-weight="700">우리 자리 (선점)</text>
+
+        <circle cx="888" cy="156" r="8" fill="#0D9488"/>
+        <text x="906" y="160" font-family="Pretendard Variable" font-size="11" fill="#F5EFE4">유료 EdTech</text>
+
+        <circle cx="888" cy="188" r="8" fill="#6D28D9"/>
+        <text x="906" y="192" font-family="Pretendard Variable" font-size="11" fill="#F5EFE4">학원 인강</text>
+
+        <circle cx="888" cy="220" r="6" fill="#BE123C" opacity="0.5"/>
+        <text x="906" y="224" font-family="Pretendard Variable" font-size="11" fill="#F5EFE4">레거시 무료</text>
+
+        <text x="888" y="252" font-family="JetBrains Mono" font-size="9" fill="#FED7AA">⭕ 점선 = 빈 사분면</text>
+        <text x="888" y="266" font-family="JetBrains Mono" font-size="9" fill="#94724D">점 크기 ≈ 사용자 규모</text>
+
+        <!-- 우측 하단 핵심 메시지 -->
+        <rect x="870" y="300" width="200" height="220" rx="8" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text x="880" y="320" font-family="JetBrains Mono" font-size="10" fill="#B45309" font-weight="700">📌 핵심</text>
+        <text x="880" y="346" font-family="Pretendard Variable" font-size="11" fill="#1F1A14" font-weight="700">"무료 + 모던" 사분면이</text>
+        <text x="880" y="362" font-family="Pretendard Variable" font-size="11" fill="#1F1A14" font-weight="700">사실상 비어있다</text>
+
+        <text x="880" y="388" font-family="Pretendard Variable" font-size="10" fill="#5A4F3F" font-weight="700">학원사 (₩50~180만)</text>
+        <text x="880" y="402" font-family="Pretendard Variable" font-size="10" fill="#5A4F3F">→ 가격 진입 장벽</text>
+
+        <text x="880" y="426" font-family="Pretendard Variable" font-size="10" fill="#5A4F3F" font-weight="700">기존 무료 기출 사이트</text>
+        <text x="880" y="440" font-family="Pretendard Variable" font-size="10" fill="#5A4F3F">→ UI/모바일 미흡</text>
+
+        <text x="880" y="464" font-family="Pretendard Variable" font-size="10" fill="#5A4F3F" font-weight="700">콴다·산타</text>
+        <text x="880" y="478" font-family="Pretendard Variable" font-size="10" fill="#5A4F3F">→ 시험 카테고리 다름</text>
+
+        <text x="880" y="502" font-family="JetBrains Mono" font-size="10" fill="#B45309" font-weight="700">⭐ 우리만 이 자리에</text>
+      </svg>
+    </div>
+
+    <h3>경쟁사 디지털 자산 비교</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">SOV (Share of Voice) = 채널별 노출 점유율. 한국 학원사들은 네이버 검색광고에 집중, SNS는 거의 부재 — <strong>SNS 채널은 사실상 빈 공간</strong>.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>경쟁사</th>
+            <th class="num">매출/년 <span class="lbl lbl-est">추정</span></th>
+            <th class="center">Naver 검색광고</th>
+            <th class="center">Google Ads</th>
+            <th class="center">Instagram</th>
+            <th class="center">Threads</th>
+            <th class="center">YouTube</th>
+            <th>우리 대응</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>에듀윌</strong></td>
+            <td class="num">~₩4,000억</td>
+            <td class="center">🟢 압도</td>
+            <td class="center">🟡 일부</td>
+            <td class="center">🟡 운영 (낮은 engagement)</td>
+            <td class="center">⚪ 없음</td>
+            <td class="center">🟢 강사 채널</td>
+            <td>네이버 정면 X. 인스타·스레드 우회.</td>
+          </tr>
+          <tr>
+            <td><strong>해커스공무원</strong></td>
+            <td class="num">~₩2,500억</td>
+            <td class="center">🟢 압도</td>
+            <td class="center">🟡 일부</td>
+            <td class="center">🟡 일부</td>
+            <td class="center">⚪ 없음</td>
+            <td class="center">🟢 강사 채널</td>
+            <td>한능검 cluster Google Ads + 인스타</td>
+          </tr>
+          <tr>
+            <td><strong>NextStudy<br/>(구 메가공무원)</strong></td>
+            <td class="num">매각 후 재정비 중</td>
+            <td class="center">🟡 축소</td>
+            <td class="center">⚪ 약함</td>
+            <td class="center">⚪ 약함</td>
+            <td class="center">⚪ 없음</td>
+            <td class="center">🟡 일부</td>
+            <td>매각 직후 marketing 공백 — 6~12개월 절호의 윈도우</td>
+          </tr>
+          <tr>
+            <td><strong>공단기</strong></td>
+            <td class="num">~₩1,500억 (하락)</td>
+            <td class="center">🟢 강함</td>
+            <td class="center">⚪ 약함</td>
+            <td class="center">⚪ 약함</td>
+            <td class="center">⚪ 없음</td>
+            <td class="center">🟡 일부</td>
+            <td>네이버 외 모두 빈 공간</td>
+          </tr>
+          <tr style="background: rgba(180,83,9,0.06);">
+            <td><strong>기존 무료 기출 사이트</strong><br/><small>(자격닷컴·기출비밀·etc)</small></td>
+            <td class="num">광고 ~₩수백~수천만</td>
+            <td class="center">⚪ 거의 없음</td>
+            <td class="center">⚪ 거의 없음</td>
+            <td class="center">⚪ 없음</td>
+            <td class="center">⚪ 없음</td>
+            <td class="center">⚪ 없음</td>
+            <td>UI 차별화 + 자동 매핑 + 모바일</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="footnote">매출 [추정]: 업계 보도 종합. 대형사들은 비상장이거나 사업부 별도 공시 안 됨. SOV 등급은 4월 직접 검색·인스타 계정 분석 기반 정성 평가.</p>
+
+    <h3>SWOT</h3>
+    <div class="swot-grid">
+      <div class="swot swot-S">
+        <h4>S — Strengths</h4>
+        <ul>
+          <li>547 시험 · 100만 문항 wired (인프라 4주 완성)</li>
+          <li>자동 매핑 (문제↔노트) — 진짜 moat</li>
+          <li>Direct 61% · 11.9분 세션 = retention 검증</li>
+          <li>1인 + AI 자동화 = 영업이익률 80% 가능</li>
+          <li>CMS·발행·분석 자동화 toolchain 완성</li>
+        </ul>
+      </div>
+      <div class="swot swot-W">
+        <h4>W — Weaknesses</h4>
+        <ul>
+          <li>9급 직렬별 노트 콘텐츠 깊이 부족 (한능검 외)</li>
+          <li>브랜드 인지도 ≈ 0 (검색량 측정 불가)</li>
+          <li>Activation event GA4 미정의 → 측정 불완전</li>
+          <li>SNS 팔로워 0 (인스타 신규 시작 단계)</li>
+          <li>운영 인원 1명 → 콘텐츠 검증 bottleneck</li>
+        </ul>
+      </div>
+      <div class="swot swot-O">
+        <h4>O — Opportunities</h4>
+        <ul>
+          <li>메가공무원 철수 → 시장 marketing 공백 6~12개월</li>
+          <li>2027 한능검 인증제 → 9급 응시자 자동 funnel</li>
+          <li>한국 EdTech SNS 빈 공간 (스레드 0개사)</li>
+          <li>Google CPC 한국 학원 부재 = ₩100~600 cluster 가능</li>
+          <li>9급 경쟁률 반등 (24.3:1) — 시장 재성장</li>
+        </ul>
+      </div>
+      <div class="swot swot-T">
+        <h4>T — Threats</h4>
+        <ul>
+          <li>NextStudy가 6~12개월 후 재정비 + 마케팅 강화</li>
+          <li>에듀윌이 무료 도구 출시로 카운터무브</li>
+          <li>법령 개정 미반영 → 신뢰 손실 (자동생성 리스크)</li>
+          <li>구글/AdSense 정책 변경 (RPM 변동)</li>
+          <li>인스타·스레드 알고리즘 변경 = K-factor 영향</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 04. CHANNEL & CONTENT STRATEGY                 -->
+  <!-- ============================================== -->
+  <section id="channels">
+    <h2 class="sec"><span class="num">04 — Channels</span>Channel &amp; Content Strategy</h2>
+    <p class="sec-lead">채널 우선순위는 "유행"이 아니라 <strong>실측 ROI</strong>로 결정한다. GA4 30일 데이터 + 네이버 입찰 실측 + 산업 벤치마크를 모두 반영. Owned / Earned / Paid를 분리해서 각각 다른 KPI로 운영.</p>
+
+    <h3>현재 채널 분포 (실측 30일)</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">기존 트래픽 source를 보면 우리가 어떤 채널에서 PMF가 검증됐는지 보인다 — 추측 X.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Source / Medium</th>
+            <th class="num">Sessions <span class="lbl lbl-real">실측</span></th>
+            <th class="num">% 비중</th>
+            <th>분류</th>
+            <th>해석</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background: rgba(13,148,136,0.06);">
+            <td><strong>(direct) / (none)</strong></td>
+            <td class="num">1,002</td>
+            <td class="num">63.6%</td>
+            <td>Owned (북마크/직접입력)</td>
+            <td>Retention 강력. 브랜드/사이트 인지 형성 중</td>
+          </tr>
+          <tr>
+            <td>naver / organic</td>
+            <td class="num">133</td>
+            <td class="num">8.4%</td>
+            <td>Earned (SEO)</td>
+            <td>"한능검" cluster 검색 유입 — 핵심 SEO 자산</td>
+          </tr>
+          <tr>
+            <td>m.search.naver.com / referral</td>
+            <td class="num">131</td>
+            <td class="num">8.3%</td>
+            <td>Earned (Naver mobile)</td>
+            <td>모바일 검색 — Naver SERP에서 직접 유입</td>
+          </tr>
+          <tr>
+            <td>bing / organic</td>
+            <td class="num">102</td>
+            <td class="num">6.5%</td>
+            <td>Earned (SEO)</td>
+            <td>의외로 큼. Edge 사용자 비중 (직장인) 가능성</td>
+          </tr>
+          <tr>
+            <td>google / organic</td>
+            <td class="num">89</td>
+            <td class="num">5.7%</td>
+            <td>Earned (SEO)</td>
+            <td>한국 점유율 25%로 작지만 high-intent</td>
+          </tr>
+          <tr style="background: rgba(180,83,9,0.06);">
+            <td><strong>dcinside (gall+m)</strong></td>
+            <td class="num">56</td>
+            <td class="num">3.6%</td>
+            <td>Earned (Community)</td>
+            <td>이미 작동 중인 채널 — 자생 referral</td>
+          </tr>
+          <tr>
+            <td>instagram (ig+l.ig+ig.com)</td>
+            <td class="num">14</td>
+            <td class="num">0.9%</td>
+            <td>Owned/Earned (SNS)</td>
+            <td>4피드 7명 단기 시그널. 본격 운영 전</td>
+          </tr>
+          <tr>
+            <td>facebook (l.fb+fb+m.fb)</td>
+            <td class="num">9</td>
+            <td class="num">0.6%</td>
+            <td>Earned (SNS)</td>
+            <td>의도 운영 X. 자연 공유</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="footnote">총 1,575 sessions / 30일. 실측 GA4 source/medium 기준. <strong>Direct 63.6%는 EdTech 평균(20~30%) 대비 2~3배</strong> — 사용자가 "기억하고 다시 오는" 사이트라는 강한 시그널 <span class="lbl lbl-bench">벤치</span> SimilarWeb EdTech 카테고리 평균.</p>
+
+    <h3>Owned · Earned · Paid 분류와 우선순위</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">PESO (Paid · Earned · Shared · Owned) 모델. 우리는 1인 운영 + 자본 작음 → <strong>Owned + Earned 90% / Paid 10%</strong> 구조가 기본.</p>
+
+    <div class="grid cols-3">
+      <div class="card teal">
+        <h4 style="color: var(--teal);">🟢 Owned · 우리 자산</h4>
+        <p style="font-size:13px; margin-bottom: 8px;"><strong>채널</strong>: 사이트 자체 + 인스타 계정 + 스레드 + 유튜브 채널 + 이메일 리스트</p>
+        <p style="font-size:13px; margin-bottom: 8px;"><strong>KPI</strong>: D7 retention · WAL · 평균 세션 분</p>
+        <p style="font-size:13px;"><strong>액션</strong>: 매주 2 IG 카드뉴스 + 매일 1 스레드 + 월 1 노트 publish. 자동화 우선.</p>
+      </div>
+      <div class="card amber">
+        <h4 style="color: var(--amber);">🟡 Earned · 자생 트래픽</h4>
+        <p style="font-size:13px; margin-bottom: 8px;"><strong>채널</strong>: SEO (Naver/Google/Bing) + DC공무원·카페 referral + 자연 SNS 공유</p>
+        <p style="font-size:13px; margin-bottom: 8px;"><strong>KPI</strong>: SEO 키워드 수 · GSC impressions · 카페 글 댓글 수</p>
+        <p style="font-size:13px;"><strong>액션</strong>: 직렬별 SEO 페이지 + GSC 색인 요청 + 합격 후기 카페 게시.</p>
+      </div>
+      <div class="card rose">
+        <h4 style="color: var(--rose);">🔴 Paid · 광고비 투입</h4>
+        <p style="font-size:13px; margin-bottom: 8px;"><strong>채널</strong>: Google Ads (한능검 cluster) + 인스타 boost (시즌)</p>
+        <p style="font-size:13px; margin-bottom: 8px;"><strong>KPI</strong>: CAC · ROAS · marginal ROAS</p>
+        <p style="font-size:13px;"><strong>액션</strong>: ₩10만 Google Ads 1주 테스트 → 실제 CPC 측정 → 본격 스케일.</p>
+      </div>
+    </div>
+
+    <h3>채널 ROI 매트릭스 (Phase 1 가정 기준)</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">각 채널의 단위경제. CAC·노력·확장성을 한 눈에. 1순위 = ROI × 1인 운영 적합도.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>채널</th>
+            <th class="center">우선순위</th>
+            <th class="num">CAC <span class="lbl lbl-est">추정</span></th>
+            <th class="num">월 노력 (시간)</th>
+            <th class="num">확장성</th>
+            <th>비고</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background: rgba(13,148,136,0.06);">
+            <td><strong>인스타 카드뉴스</strong></td>
+            <td class="center"><span class="badge live">🥇 1순위</span></td>
+            <td class="num">₩0~500</td>
+            <td class="num">8h</td>
+            <td class="num">★★★★★</td>
+            <td>저작도구 자동 발행 이미 구현. 시즌별 직렬 카드.</td>
+          </tr>
+          <tr style="background: rgba(13,148,136,0.06);">
+            <td><strong>스레드 (텍스트)</strong></td>
+            <td class="center"><span class="badge live">🥇 1순위</span></td>
+            <td class="num">₩0</td>
+            <td class="num">3h</td>
+            <td class="num">★★★★★</td>
+            <td>"오늘 한문제" 매일. EdTech 0개 → SOV 독점 가능.</td>
+          </tr>
+          <tr>
+            <td>네이버 블로그 SEO</td>
+            <td class="center"><span class="badge soon">🥈 2순위</span></td>
+            <td class="num">₩0</td>
+            <td class="num">10h</td>
+            <td class="num">★★★★</td>
+            <td>"9급 일반행정 합격 가이드" 직렬별. AI 자동화.</td>
+          </tr>
+          <tr>
+            <td>Google Ads — 한능검 cluster</td>
+            <td class="center"><span class="badge soon">🥈 2순위</span></td>
+            <td class="num">₩100~600</td>
+            <td class="num">2h</td>
+            <td class="num">★★★★</td>
+            <td>한국 학원 사각지대. ₩10만 1주 테스트 후 결정.</td>
+          </tr>
+          <tr>
+            <td>YouTube shorts</td>
+            <td class="center"><span class="badge soon">🥈 2순위</span></td>
+            <td class="num">₩200~1K</td>
+            <td class="num">12h</td>
+            <td class="num">★★★★</td>
+            <td>AI 자동 생성. 시간 부담 — Phase 3 본격.</td>
+          </tr>
+          <tr>
+            <td>DC공무원 갤러리 + 카페</td>
+            <td class="center"><span class="badge soon">🥉 3순위</span></td>
+            <td class="num">₩0</td>
+            <td class="num">2h</td>
+            <td class="num">★★★</td>
+            <td>이미 referral 56/월. 직접 활동은 risk 있음.</td>
+          </tr>
+          <tr>
+            <td>인스타 reels</td>
+            <td class="center"><span class="badge soon">🥉 3순위</span></td>
+            <td class="num">₩100~800</td>
+            <td class="num">15h</td>
+            <td class="num">★★★</td>
+            <td>제작 부담 큼. 카드뉴스 정착 후 검토.</td>
+          </tr>
+          <tr>
+            <td>YouTube 롱폼</td>
+            <td class="center"><span class="badge mute">📅 Phase 4</span></td>
+            <td class="num">₩2K~5K</td>
+            <td class="num">40h+</td>
+            <td class="num">★★</td>
+            <td>1인 운영 부적합. 강사 외주 시 검토.</td>
+          </tr>
+          <tr style="background: rgba(190,18,60,0.06);">
+            <td>Naver 1순위 입찰 (broad)</td>
+            <td class="center"><span class="badge hot">🚫 금지</span></td>
+            <td class="num">₩5K~10K+</td>
+            <td class="num">5h</td>
+            <td class="num">★</td>
+            <td>9급공무원 1순위 ₩10,658 <span class="lbl lbl-real">실측</span>. 학원 입찰 못 이김.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>네이버 vs Google 키워드 입찰 실측 비교</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">Naver 검색광고 API <code>/estimate/performance/keyword</code> 실측 (2026-04-25). <strong>Google CPC는 한국 학원 부재로 Naver의 1/3~1/5</strong> — 사각지대.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>키워드</th>
+            <th class="num">Naver 1위 CPC <span class="lbl lbl-real">실측</span></th>
+            <th class="num">Naver 5위 CPC <span class="lbl lbl-real">실측</span></th>
+            <th class="num">Google 실제 추정 <span class="lbl lbl-est">추정</span></th>
+            <th>해석</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>한국사능력검정시험</td>
+            <td class="num">₩3,020</td>
+            <td class="num">₩1,608</td>
+            <td class="num"><strong style="color: var(--teal);">₩100~300</strong></td>
+            <td>Google에서 ₩10,000으로 33~100 클릭</td>
+          </tr>
+          <tr>
+            <td>한능검</td>
+            <td class="num">₩3,819</td>
+            <td class="num">₩1,649</td>
+            <td class="num"><strong style="color: var(--teal);">₩200~500</strong></td>
+            <td>Google sweet spot</td>
+          </tr>
+          <tr>
+            <td>한국사</td>
+            <td class="num">₩3,812</td>
+            <td class="num">₩3,753</td>
+            <td class="num"><strong style="color: var(--teal);">₩300~600</strong></td>
+            <td>broad지만 한능검 funnel</td>
+          </tr>
+          <tr>
+            <td>군무원</td>
+            <td class="num">₩4,461</td>
+            <td class="num">₩1,509</td>
+            <td class="num">₩500~1,000</td>
+            <td>한능검 의무 시험 — 직결</td>
+          </tr>
+          <tr>
+            <td>7급공무원</td>
+            <td class="num">₩3,956</td>
+            <td class="num">₩2,436</td>
+            <td class="num">₩700~1,500</td>
+            <td>한국사 폐지지만 한능검 인정</td>
+          </tr>
+          <tr style="background: rgba(190,18,60,0.06);">
+            <td>9급공무원</td>
+            <td class="num">₩10,658</td>
+            <td class="num">₩7,109</td>
+            <td class="num">₩900~1,800</td>
+            <td>Naver는 학원 입찰 도배. Google만 가능.</td>
+          </tr>
+          <tr style="background: rgba(190,18,60,0.06);">
+            <td>공무원</td>
+            <td class="num">₩10,596</td>
+            <td class="num">₩4,328</td>
+            <td class="num">₩900~1,800</td>
+            <td>broad 의도 약함 — 비추</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="footnote">Naver 입찰 시뮬레이션은 <code>_naver-bid-res.json</code> 결과 기반. Google 실제 CPC는 DataForSEO 추정의 1/3~1/5으로 가정 (학원 미입찰 시 Google Reserve Price 근접). <strong>실증 필요</strong>: Google Ads ₩10,000 / 1주 테스트로 확인.</p>
+
+    <h3>Content Pillar (5개)</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">콘텐츠를 매일 즉흥으로 만들면 브랜드가 흐려진다. 5개 pillar 안에서만 만들면 일관성 + 검색 권위 누적.</p>
+
+    <div class="grid cols-2">
+      <div class="card amber">
+        <h4>1. 시험 가이드 (Evergreen SEO)</h4>
+        <p style="font-size:13px;">"9급 일반행정 6과목 정리" / "한능검 2급 6주 합격" / "공인중개사 1차 시험일정 + 공부법" — 직렬·시험별 longtail. <strong>월 4편</strong>.</p>
+      </div>
+      <div class="card amber">
+        <h4>2. 오늘 한문제 (Daily)</h4>
+        <p style="font-size:13px;">기출 1문제 + 해설 + 관련 노트 링크. 인스타 카드 1장 + 스레드 1포스트 자동 동시 발행. <strong>매일</strong>.</p>
+      </div>
+      <div class="card amber">
+        <h4>3. 시즌 D-Day (Seasonal)</h4>
+        <p style="font-size:13px;">시험 4주 전 부터 매주 카운트다운 + 핵심 정리. 한능검 5/8/10월, 9급 4/6월, 자격증 시즌. <strong>시즌별 8편</strong>.</p>
+      </div>
+      <div class="card amber">
+        <h4>4. 합격 인터뷰 (Social Proof)</h4>
+        <p style="font-size:13px;">실제 합격자 / 인증샷 / 학습 패턴 — 짧은 글 + 카드뉴스. K-factor 핵심 driver. <strong>월 2편</strong>.</p>
+      </div>
+      <div class="card amber">
+        <h4>5. 시험 정책 뉴스 (Newsjacking)</h4>
+        <p style="font-size:13px;">"2027 한능검 인증제 정리" / "9급 시험 변경 사항" — 정책 변화 뉴스에 즉시 콘텐츠로 대응. <strong>분기 2~3편</strong>.</p>
+      </div>
+      <div class="card mute">
+        <h4>(안 만드는 것)</h4>
+        <p style="font-size:13px;">강사 추천 / 인강 비교 리뷰 / 학원 후기 — 정체성 충돌. SEO 트래픽 유혹 있어도 X.</p>
+      </div>
+    </div>
+
+    <h3>Funnel 단계별 콘텐츠 매핑 (TOFU · MOFU · BOFU · 리텐션)</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">같은 ICP라도 단계마다 필요한 콘텐츠가 다르다. 모두 같은 메시지로 가면 acquisition만 되고 activation은 안 됨.</p>
+
+    <div class="funnel-stage tofu">
+      <div>
+        <div class="fs-label">TOFU<br/>발견</div>
+        <div class="fs-name">Awareness</div>
+      </div>
+      <div class="fs-body">
+        <strong>목표</strong>: "기출노트라는 게 있구나" 인지. 세부 기능 X.
+        <br/>형식: 인스타 카드뉴스 ("9급 6과목 한장") · 스레드 ("오늘 한문제") · YouTube shorts ("9급 vs 7급 차이 30초") · 네이버 블로그 ("공인중개사 시험 일정 2026")
+        <div class="ch-list">
+          <span class="ch">인스타</span><span class="ch">스레드</span><span class="ch">shorts</span><span class="ch">SEO 블로그</span><span class="ch">DC/카페</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="funnel-stage mofu">
+      <div>
+        <div class="fs-label">MOFU<br/>고려</div>
+        <div class="fs-name">Consideration</div>
+      </div>
+      <div class="fs-body">
+        <strong>목표</strong>: "여기서 내 시험 풀어볼 수 있나?" 검증. 깊은 콘텐츠 + 사이트 유입.
+        <br/>형식: 직렬 합격 가이드 페이지 (랜딩) · 합격 인터뷰 시리즈 · "전체 회차 정리" 도구 페이지 · 시험 비교 콘텐츠
+        <div class="ch-list">
+          <span class="ch">랜딩 페이지</span><span class="ch">SEO 가이드</span><span class="ch">합격 후기 카드</span><span class="ch">YouTube 강의 매칭</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="funnel-stage bofu">
+      <div>
+        <div class="fs-label">BOFU<br/>전환</div>
+        <div class="fs-name">Activation</div>
+      </div>
+      <div class="fs-body">
+        <strong>목표</strong>: 5문제 풀이 + 정답 확인 (activation event). 이게 retention의 분기점.
+        <br/>형식: <code>/exam/{회차}</code> 직접 진입 + 첫 문제 빠른 로딩 + 정답 즉시 피드백 + 관련 노트 링크 노출
+        <div class="ch-list">
+          <span class="ch">/exam</span><span class="ch">/study/session</span><span class="ch">자동 매핑 노트</span><span class="ch">공유 버튼</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="funnel-stage ret">
+      <div>
+        <div class="fs-label">RET<br/>리텐션</div>
+        <div class="fs-name">Retention &amp; Referral</div>
+      </div>
+      <div class="fs-body">
+        <strong>목표</strong>: D7 재방문 + K-factor 0.5+. 북마크 / 학습 기록 / 약점 분석 / 합격 인증 공유.
+        <br/>형식: 오답노트 자동 수집 · 내 기록 시각화 · 합격 인증 공유 카드 · 다음 시험 D-Day 알림 · (Phase 3) 이메일 리마인더
+        <div class="ch-list">
+          <span class="ch">/wrong-answers</span><span class="ch">/my-record</span><span class="ch">합격 인증 share</span><span class="ch">D-Day 알림</span>
+        </div>
+      </div>
+    </div>
+
+    <h3>Editorial Calendar 템플릿 (시즌별 분배)</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">월별 콘텐츠 분배 = 시험 시즌과 연동. 비수기 없음 (1년 내내 어떤 시험은 시즌).</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>월</th>
+            <th>주력 시험</th>
+            <th>인스타 (카드뉴스 / 주)</th>
+            <th>스레드 (포스트 / 일)</th>
+            <th>SEO 블로그 (편 / 월)</th>
+            <th>광고 부스트</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background: rgba(180,83,9,0.06);">
+            <td><strong>4월</strong></td>
+            <td>9급 국가직 (4/4)</td>
+            <td>5 (직렬 합격 가이드)</td>
+            <td>2 (오늘 한문제 + 합격 후기)</td>
+            <td>4 (직렬 5개)</td>
+            <td>Google Ads ₩30K</td>
+          </tr>
+          <tr style="background: rgba(13,148,136,0.06);">
+            <td><strong>5월</strong></td>
+            <td>한능검 78회 (5/23)</td>
+            <td>5 (시대별 핵심)</td>
+            <td>2</td>
+            <td>4 (한능검 D-Day)</td>
+            <td>Google Ads ₩30K + 인스타 ₩20K</td>
+          </tr>
+          <tr style="background: rgba(180,83,9,0.06);">
+            <td><strong>6월</strong></td>
+            <td>9급 지방직 + 7급 PSAT (6/20)</td>
+            <td>5 (지역별 직렬)</td>
+            <td>2</td>
+            <td>4 (지방직 24직렬 시리즈)</td>
+            <td>Google Ads ₩50K</td>
+          </tr>
+          <tr>
+            <td>7월</td>
+            <td>군무원 (7월 셋째주) · 비수기</td>
+            <td>3 (장기 evergreen)</td>
+            <td>2</td>
+            <td>4 (SEO 빈틈 메우기)</td>
+            <td>0</td>
+          </tr>
+          <tr style="background: rgba(13,148,136,0.06);">
+            <td><strong>8월</strong></td>
+            <td>한능검 79회 (8/9)</td>
+            <td>4 (5월 콘텐츠 갱신)</td>
+            <td>2</td>
+            <td>4</td>
+            <td>인스타 ₩20K</td>
+          </tr>
+          <tr>
+            <td>9월</td>
+            <td>자격증 (변리사·노무사·감정평가사)</td>
+            <td>4</td>
+            <td>2</td>
+            <td>4 (자격증 카테고리)</td>
+            <td>Naver 5위 ₩20K</td>
+          </tr>
+          <tr style="background: rgba(13,148,136,0.06);">
+            <td><strong>10월</strong></td>
+            <td>한능검 80회 + 공인중개사 (10/17)</td>
+            <td>5 (D-Day 카운트)</td>
+            <td>2</td>
+            <td>4</td>
+            <td>Google Ads ₩50K + 인스타 ₩30K</td>
+          </tr>
+          <tr>
+            <td>11월</td>
+            <td>한능검 81회 + 자격증 시즌 2</td>
+            <td>4</td>
+            <td>2</td>
+            <td>4</td>
+            <td>Google Ads ₩30K</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="footnote">위 시즌 광고비 합계 ≈ ₩290K (8개월). 비수기는 0원. <strong>월 평균 ₩36K</strong> — 자본 부담 작음. ROAS 6× 가정 시 추가 매출 +₩220만/월.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 05. UNIT ECONOMICS                             -->
+  <!-- ============================================== -->
+  <section id="economics">
+    <h2 class="sec"><span class="num">05 — Economics</span>Unit Economics (CAC · LTV · Payback)</h2>
+    <p class="sec-lead">"월 ₩2,000만 매출"은 결과 지표일 뿐. 마케팅 의사결정은 <strong>CAC (Customer Acquisition Cost) ↔ LTV (Lifetime Value)</strong>로 한다. 채널별·세그먼트별로 따로 봐야 한다 — 평균은 거짓말한다.</p>
+
+    <h3>⓪ 트래픽 Milestone 트리거 매트릭스 (수익화 의사결정 1순위)</h3>
+    <p style="font-size:14px; color:var(--ink-soft);"><strong>핵심 원칙</strong>: 학원 BD는 트래픽이 커진 후. 월 PV 35K로 NextStudy 메일 보내면 협상력 0 → 단가 후려쳐짐. 자세한 운영 가이드는 별도 문서 <code>monetization-alternatives.html</code> 참조.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>월 PV</th>
+            <th>예상 도달</th>
+            <th>광고 네트워크</th>
+            <th>학원 Affiliate (BD)</th>
+            <th>자체 수익화</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-bad">
+            <td><strong>35K (NOW)</strong></td>
+            <td>2026-04 [실측]</td>
+            <td>AdSense 심사 (4/25 신청) + <strong>카카오 애드핏</strong></td>
+            <td>❌ 보류 — 협상력 부족</td>
+            <td>쿠팡·네이버 파트너스 + 응원 결제</td>
+          </tr>
+          <tr>
+            <td><strong>50K</strong></td>
+            <td>~6월 [추정]</td>
+            <td>카카오 LIVE + AdSense LIVE (통과 시)</td>
+            <td>🟡 시드 컨택만 (자료집 PDF, 6개월 후 약속)</td>
+            <td>모의고사 PDF spec</td>
+          </tr>
+          <tr class="row-good">
+            <td><strong>100K</strong></td>
+            <td>~8~9월 [추정]</td>
+            <td>+ AdSense 통과 (재신청 시)</td>
+            <td>🟢 <strong>NextStudy + 에듀윌 본격 미팅</strong> (CPL ₩3~8K)</td>
+            <td>모의고사 PDF LIVE (한능검 79회 시즌)</td>
+          </tr>
+          <tr class="row-good">
+            <td><strong>500K</strong></td>
+            <td>~12개월 [추정]</td>
+            <td>+ Mediavine (RPM 2~3×)</td>
+            <td>🟢🟢 multi-deal + banner sponsorship</td>
+            <td>광고 제거 멤버십 LIVE (₩2,900/월)</td>
+          </tr>
+          <tr class="row-good">
+            <td><strong>1M+</strong></td>
+            <td>~24개월 [추정]</td>
+            <td>+ AdThrive (Raptive)</td>
+            <td>🟢🟢🟢 학원이 먼저 컨택 / 인수 검토</td>
+            <td>AI 학습 가이드 멤버십 LIVE (Phase 4)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">광고 네트워크 우선순위 변경 (2026-04-26)</div>
+      <p style="font-size:14px;"><strong>변경 전</strong>: Ezoic 1순위 (즉시 시도) / <strong>변경 후</strong>: 🥇 카카오 애드핏 (즉시) → 🥈 AdSense (4/25 신청 → 대기) → 🥉 Ezoic (선택 / 페이지 속도 테스트 후). 이유: 한국 사용자 100% → 카카오 광고주 base가 자연스러움 (한능검 학원 자동 매칭) + 페이지 속도 영향 작음 + KRW 정산.</p>
+    </div>
+
+    <h3>① CAC 추정 — 채널별</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">"한 명을 사이트에 들이는 비용". Owned/Earned는 0이지만 시간 비용이 있음. Paid는 실측 클릭 단가 × 1/클릭 → 사용자 전환률.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>채널</th>
+            <th class="num">단위 비용 <span class="lbl lbl-real">실측/추정</span></th>
+            <th class="num">click → user 전환</th>
+            <th class="num">CAC (₩/사용자)</th>
+            <th>주석</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background: rgba(13,148,136,0.06);">
+            <td>Owned (Direct/북마크)</td>
+            <td class="num">₩0</td>
+            <td class="num">100%</td>
+            <td class="num"><strong>₩0</strong></td>
+            <td>이미 사이트 있는 사용자. CAC 없음.</td>
+          </tr>
+          <tr style="background: rgba(13,148,136,0.06);">
+            <td>Earned (SEO Naver/Google/Bing)</td>
+            <td class="num">₩0 (시간 ~10h/월)</td>
+            <td class="num">~85%</td>
+            <td class="num"><strong>₩0~200</strong></td>
+            <td>콘텐츠 제작 시간 비용만. 시간 ₩30K/h 가정.</td>
+          </tr>
+          <tr style="background: rgba(13,148,136,0.06);">
+            <td>인스타 카드뉴스 (오가닉)</td>
+            <td class="num">₩0 (시간 ~8h/월)</td>
+            <td class="num">~3% CTR <span class="lbl lbl-bench">벤치</span></td>
+            <td class="num"><strong>₩0~500</strong></td>
+            <td>EdTech IG 평균 4.2~5.4% engagement <span class="lbl lbl-bench">벤치</span></td>
+          </tr>
+          <tr style="background: rgba(13,148,136,0.06);">
+            <td>스레드 (오가닉)</td>
+            <td class="num">₩0 (시간 ~3h/월)</td>
+            <td class="num">~5%</td>
+            <td class="num"><strong>₩0</strong></td>
+            <td>한국 EdTech 0개사 → SOV 독점 가능</td>
+          </tr>
+          <tr>
+            <td>Google Ads — 한능검 cluster</td>
+            <td class="num">CPC ₩100~600</td>
+            <td class="num">~85%</td>
+            <td class="num"><strong>₩120~700</strong></td>
+            <td>한국 학원 미입찰. ₩10K 1주 테스트로 검증 필요.</td>
+          </tr>
+          <tr>
+            <td>인스타 유료 boost</td>
+            <td class="num">CPC ₩500~1.5K</td>
+            <td class="num">~70%</td>
+            <td class="num"><strong>₩700~2K</strong></td>
+            <td>시즌 부스트만. 비수기엔 비효율.</td>
+          </tr>
+          <tr>
+            <td>Naver 5위 입찰 — 한능검</td>
+            <td class="num">CPC ₩1,500~2,500</td>
+            <td class="num">~80%</td>
+            <td class="num"><strong>₩1,900~3,100</strong></td>
+            <td>1순위 X. 5위만.</td>
+          </tr>
+          <tr style="background: rgba(190,18,60,0.06);">
+            <td>Naver 1순위 — 9급공무원 broad</td>
+            <td class="num">CPC ₩10,658</td>
+            <td class="num">~50%</td>
+            <td class="num"><strong>₩21,000+</strong></td>
+            <td>학원만 가능 — 우리는 X</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>② LTV 추정 — 세그먼트별</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">LTV = (사용자 수명 × 평균 PV/월 × RPM/1000) + (affiliate 전환 × 단가) + (멤버십 ARPU × 수명). 무료 사이트도 LTV 계산 가능 — AdSense + affiliate가 수익 source.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>세그먼트</th>
+            <th class="num">평균 수명</th>
+            <th class="num">총 PV (수명)</th>
+            <th class="num">AdSense 수익</th>
+            <th class="num">Affiliate 수익</th>
+            <th class="num">멤버십 (Phase 4)</th>
+            <th class="num"><strong>LTV</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>한능검 (단발성)</td>
+            <td class="num">3개월</td>
+            <td class="num">~150</td>
+            <td class="num">₩375</td>
+            <td class="num">~₩300</td>
+            <td class="num">₩0</td>
+            <td class="num"><strong>₩675</strong></td>
+          </tr>
+          <tr style="background: rgba(180,83,9,0.06);">
+            <td><strong>9급 응시자 (장기)</strong></td>
+            <td class="num">12개월</td>
+            <td class="num">~1,800</td>
+            <td class="num">₩4,500</td>
+            <td class="num">~₩3,000</td>
+            <td class="num">₩0~12K</td>
+            <td class="num"><strong>₩7,500~19K</strong></td>
+          </tr>
+          <tr>
+            <td>자격증 응시자</td>
+            <td class="num">6개월</td>
+            <td class="num">~600</td>
+            <td class="num">₩1,500</td>
+            <td class="num">~₩1,000</td>
+            <td class="num">₩0~6K</td>
+            <td class="num"><strong>₩2,500~8.5K</strong></td>
+          </tr>
+          <tr style="background: rgba(13,148,136,0.06);">
+            <td><strong>Cross-app (한능검→9급→자격)</strong></td>
+            <td class="num">36개월</td>
+            <td class="num">~5,000</td>
+            <td class="num">₩12,500</td>
+            <td class="num">~₩8,000</td>
+            <td class="num">₩0~30K</td>
+            <td class="num"><strong>₩20,500~50K</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="footnote">RPM ₩2,500/1,000PV 가정 <span class="lbl lbl-bench">벤치</span> 한국 교육 카테고리 평균 (시즌 1.5~3× spike). Affiliate CPL ₩3K~8K × 5% conversion. 멤버십은 Phase 4 (월 PV 1M+) 이후만 활성.</p>
+
+    <h3>③ Payback Period (CAC 회수 기간)</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">"광고비를 들여 한 명을 데려왔을 때, 그 한 명이 다시 그만큼 벌어주기까지 몇 개월?" 일반 SaaS 기준 12~18개월이면 건강.</p>
+
+    <div class="grid cols-3">
+      <div class="card teal">
+        <h4>한능검 단발성</h4>
+        <div style="font-family: var(--serif); font-size: 32px; font-weight: 900; color: var(--teal); line-height:1;">3.5개월</div>
+        <p style="font-size:13px; margin: 8px 0 0;">CAC ₩400 (인스타) ÷ 월 ₩125 평균 → 시험 전 까지 회수.</p>
+      </div>
+      <div class="card amber">
+        <h4>9급 응시자</h4>
+        <div style="font-family: var(--serif); font-size: 32px; font-weight: 900; color: var(--amber); line-height:1;">2.5개월</div>
+        <p style="font-size:13px; margin: 8px 0 0;">CAC ₩600 (Google) ÷ 월 ₩625 → <strong>매우 빠른 회수</strong>. CAC 키워도 OK.</p>
+      </div>
+      <div class="card rose">
+        <h4>자격증 응시자</h4>
+        <div style="font-family: var(--serif); font-size: 32px; font-weight: 900; color: var(--rose); line-height:1;">3개월</div>
+        <p style="font-size:13px; margin: 8px 0 0;">CAC ₩500 ÷ 월 ₩420 → 6개월 수명 안에 충분히 회수.</p>
+      </div>
+    </div>
+
+    <p class="footnote">모든 세그먼트 payback &lt; 4개월. <strong>Owned/Earned 채널은 payback 즉시</strong> (CAC ≈ 0). Paid 확장의 안전 신호.</p>
+
+    <h3>④ LTV : CAC 비율</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">SaaS 산업 표준: LTV/CAC ≥ 3 = 건강, ≥ 5 = 매우 건강. 우리는?</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>세그먼트</th>
+            <th class="num">CAC (Paid 평균)</th>
+            <th class="num">LTV (보수)</th>
+            <th class="num">LTV : CAC</th>
+            <th>판단</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>한능검</td>
+            <td class="num">₩400</td>
+            <td class="num">₩675</td>
+            <td class="num">1.7×</td>
+            <td><span style="color: var(--rose);">⚠️ Paid 확장 X</span> — Owned/Earned만</td>
+          </tr>
+          <tr style="background: rgba(180,83,9,0.06);">
+            <td><strong>9급</strong></td>
+            <td class="num">₩600</td>
+            <td class="num">₩7,500</td>
+            <td class="num"><strong>12.5×</strong></td>
+            <td><span style="color: var(--teal);">✅ Paid 적극 확장</span></td>
+          </tr>
+          <tr>
+            <td>자격증</td>
+            <td class="num">₩500</td>
+            <td class="num">₩2,500</td>
+            <td class="num">5×</td>
+            <td><span style="color: var(--teal);">✅ Paid 적정 확장</span></td>
+          </tr>
+          <tr style="background: rgba(13,148,136,0.06);">
+            <td><strong>Cross-app</strong></td>
+            <td class="num">₩600</td>
+            <td class="num">₩20,500</td>
+            <td class="num"><strong>34×</strong></td>
+            <td><span style="color: var(--teal);">✅✅ 가장 비싼 사용자 — 광고 우선</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">의사결정 함의</div>
+      <p style="font-size:14px;"><strong>광고 예산은 9급 + cross-app에 80% 집중</strong>. 한능검 cluster는 SEO·SNS만으로도 충분 (CAC=0이라 LTV/CAC 무한대). 한능검 응시자가 9급/자격증으로 cross-sell되면 LTV가 30× 증가하므로 <strong>한능검은 acquisition이 아니라 retention 자산</strong>으로 본다.</p>
+    </div>
+
+    <h3>⑤ 12개월 시나리오 — 보수 / 기본 / 낙관 (광고비 자유 사용 가정)</h3>
+    <p style="font-size:14px; color:var(--ink-soft);"><strong>광고비 운영 원칙</strong>: ROAS &gt; 1× (정확히는 LTV/CAC &gt; 3×) 인 한 광고비 늘림. 한도는 <strong>채널 capacity</strong> (Google·인스타·카카오 일 노출 한계). v2의 "광고비 ₩50만 max" 가정은 보수적 오류 — 실제로는 채널 한도까지 max로 쓰는 게 합리적.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>지표 (12개월 후)</th>
+            <th class="num">🛡️ 보수</th>
+            <th class="num">⚖️ 기본</th>
+            <th class="num">🚀 낙관 (Max)</th>
+            <th>가정</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>월 PV</td>
+            <td class="num">300K</td>
+            <td class="num"><strong>800K</strong></td>
+            <td class="num">2,000K+</td>
+            <td>SEO + SNS + 광고 합산</td>
+          </tr>
+          <tr>
+            <td>WAL (Weekly Active Learners)</td>
+            <td class="num">3K</td>
+            <td class="num"><strong>10K</strong></td>
+            <td class="num">35K</td>
+            <td>NSM</td>
+          </tr>
+          <tr>
+            <td>K-factor</td>
+            <td class="num">0.3</td>
+            <td class="num"><strong>0.5</strong></td>
+            <td class="num">0.7</td>
+            <td>현재 ~0.3~0.5 추정</td>
+          </tr>
+          <tr>
+            <td>Direct 비중</td>
+            <td class="num">50%</td>
+            <td class="num">55%</td>
+            <td class="num">60%</td>
+            <td>현재 61%</td>
+          </tr>
+          <tr style="background: rgba(180,83,9,0.06);">
+            <td><strong>AdSense + 카카오 수익/월</strong></td>
+            <td class="num"><strong>₩60만</strong></td>
+            <td class="num"><strong>₩200만</strong></td>
+            <td class="num"><strong>₩600만</strong></td>
+            <td>오가닉 PV × RPM ₩2,000~3,000</td>
+          </tr>
+          <tr>
+            <td>Affiliate 수익/월</td>
+            <td class="num">₩30만</td>
+            <td class="num">₩100만</td>
+            <td class="num">₩300만</td>
+            <td>학원 BD 1~3건</td>
+          </tr>
+          <tr style="background: rgba(254,205,211,0.25);">
+            <td><strong>광고비/월 (max — 채널 capacity까지)</strong></td>
+            <td class="num"><strong>₩30만</strong></td>
+            <td class="num"><strong>₩300만</strong></td>
+            <td class="num"><strong>₩2,000만</strong></td>
+            <td>보수=시즌만 / 기본=Google+인스타 상시 / 낙관=Google+인스타+카카오 capacity 한도</td>
+          </tr>
+          <tr style="background: rgba(13,148,136,0.06);">
+            <td><strong>광고로 추가 매출 (ROAS 6×)</strong></td>
+            <td class="num"><strong>+₩180만</strong></td>
+            <td class="num"><strong>+₩1,800만</strong></td>
+            <td class="num"><strong>+₩1억 2,000만</strong></td>
+            <td>광고비 × 6 (한국 학원 부재 = sweet spot)</td>
+          </tr>
+          <tr style="background: rgba(13,148,136,0.12);">
+            <td><strong>월 net 매출 (광고비 차감)</strong></td>
+            <td class="num"><strong>₩240만</strong></td>
+            <td class="num"><strong>₩1,800만</strong></td>
+            <td class="num"><strong>₩1억 900만</strong></td>
+            <td>오가닉 + 광고 추가 - 광고비</td>
+          </tr>
+          <tr>
+            <td>연 net 매출</td>
+            <td class="num">₩2,880만</td>
+            <td class="num">₩2억 1,600만</td>
+            <td class="num"><strong>₩13억 800만</strong></td>
+            <td>월 net × 12</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="footnote">
+      <strong>매출 산식</strong>: net = (AdSense + Affiliate) + (광고비 × 6 ROAS) − 광고비 = 오가닉 + 광고비 × 5.
+      <br/><strong>ROAS 6× 가정 근거</strong>: 한국 학원이 Google·인스타·스레드 광고 거의 안 함 → CPC Naver의 1/3~1/5 (실측 §04). cross-sell 40% (한능검 → 9급/자격증) + K-factor 0.5 누적. v2 광고비 시뮬에서도 동일 가정.
+      <br/><strong>채널 capacity 추정</strong>: Google Ads (한능검·공무원·자격증 cluster) ≈ 월 ₩300~500만 / Meta (인스타·페북) ≈ 월 ₩500~1,000만+ / 카카오 애드핏 + DA ≈ 월 ₩100~500만 → <strong>총 ₩900~2,000만/월 max</strong>.
+    </p>
+
+    <h3>⑤-2 광고비 별 매출 시뮬레이션 (낙관 시나리오 기준 — channel capacity까지)</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">광고비 ₩30만에서 ₩2,000만까지 단계별 매출 변화. <strong>광고비 늘릴수록 매출 비례 증가</strong> — 한도는 채널 capacity. 자본 여유에 따라 단계 선택.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>광고비/월</th>
+            <th class="num">광고로 추가 매출<br/><small>(ROAS 6×)</small></th>
+            <th class="num">광고 차감 후<br/>광고 net</th>
+            <th class="num">오가닉 매출<br/><small>(낙관 baseline)</small></th>
+            <th class="num">총 net 매출/월</th>
+            <th>의미</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>₩30만 (시즌만)</td>
+            <td class="num">₩180만</td>
+            <td class="num">+₩150만</td>
+            <td class="num">₩900만</td>
+            <td class="num">₩1,050만</td>
+            <td>최소 — 시즌 boost만</td>
+          </tr>
+          <tr>
+            <td>₩100만</td>
+            <td class="num">₩600만</td>
+            <td class="num">+₩500만</td>
+            <td class="num">₩900만</td>
+            <td class="num">₩1,400만</td>
+            <td>1단계 상시</td>
+          </tr>
+          <tr>
+            <td>₩300만</td>
+            <td class="num">₩1,800만</td>
+            <td class="num">+₩1,500만</td>
+            <td class="num">₩900만</td>
+            <td class="num">₩2,400만</td>
+            <td>2단계 — Google + 인스타</td>
+          </tr>
+          <tr style="background: rgba(180,83,9,0.06);">
+            <td><strong>₩1,000만</strong></td>
+            <td class="num"><strong>₩6,000만</strong></td>
+            <td class="num">+₩5,000만</td>
+            <td class="num">₩900만</td>
+            <td class="num"><strong>₩5,900만</strong></td>
+            <td>3단계 — 풀 채널 운영</td>
+          </tr>
+          <tr style="background: rgba(13,148,136,0.08);">
+            <td><strong>₩2,000만 (max)</strong></td>
+            <td class="num"><strong>₩1억 2,000만</strong></td>
+            <td class="num">+₩1억</td>
+            <td class="num">₩900만</td>
+            <td class="num"><strong>₩1억 900만</strong></td>
+            <td>4단계 — channel capacity 한도</td>
+          </tr>
+          <tr style="background: rgba(190,18,60,0.05);">
+            <td>₩3,000만+</td>
+            <td class="num">— (ROAS 하락)</td>
+            <td class="num">— (marginal return ↓)</td>
+            <td class="num">₩900만</td>
+            <td class="num">+₩1억 (한도)</td>
+            <td>채널 saturation — 추가 ROAS 1~2×로 하락</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">의사결정 함의</div>
+      <p style="font-size:14px;">
+        <strong>"광고비 많이 쓰는 게 위험" 통념은 한국 학원 시장에서만 사실</strong> (Naver 1순위 ₩10K+ CPC 때문). 우리 케이스 (Google + 인스타 + 카카오 = 학원 부재 채널) 에서는 <strong>광고비 ↑ → 매출 비례 ↑</strong>.
+        <br/><br/>
+        실제 운영 권장: <strong>광고비 ₩100만 시작 → 1주 ROAS 측정 → ROAS &gt; 4× 유지 시 ₩300만 → ₩1,000만 단계 확장</strong>. 채널 별 ROAS 따로 측정 (Google vs 인스타 vs 카카오) → 가장 효율 좋은 채널부터 max로 늘림.
+      </p>
+    </div>
+
+    <p class="footnote">
+      <strong>주의</strong>: ROAS 6× 가정은 channel capacity 도달 전까지만 유효. 일 노출 한도 근처에서는 marginal ROAS가 1~3×로 하락 (auction 입찰가 상승). 채널 별 1주 데이터로 sweet spot 확인.
+      <br/><strong>실증 필요</strong>: 5월 (한능검 시즌) Google Ads ₩10만 1주 테스트 → 실 CPC + 전환률 + ROAS 측정 → 본격 스케일.
+    </p>
+
+    <h3>⑥ 멤버십 — 언제 얹을까</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">멤버십은 트래픽 자산이 충분히 쌓인 후. 한국 EdTech freemium 전환률 0.5~2% 가정 <span class="lbl lbl-bench">벤치</span>.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>전환 조건</th>
+            <th class="num">월 활성 사용자</th>
+            <th class="num">유료 전환률</th>
+            <th class="num">유료 회원</th>
+            <th class="num">ARPU/월</th>
+            <th class="num">멤버십 매출/월</th>
+            <th>판단</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>현재 (Phase 0)</td>
+            <td class="num">~2K</td>
+            <td class="num">—</td>
+            <td class="num">—</td>
+            <td class="num">—</td>
+            <td class="num">—</td>
+            <td>X. 트래픽 부족 + 결제 인프라 비용</td>
+          </tr>
+          <tr>
+            <td>Phase 2 (3~6개월)</td>
+            <td class="num">~10K</td>
+            <td class="num">0.3%</td>
+            <td class="num">30명</td>
+            <td class="num">₩9.9K</td>
+            <td class="num">₩30만</td>
+            <td>X. 운영 비용 더 큼</td>
+          </tr>
+          <tr style="background: rgba(180,83,9,0.06);">
+            <td><strong>Phase 3 (6~12개월)</strong></td>
+            <td class="num">~50K</td>
+            <td class="num">0.5%</td>
+            <td class="num">250명</td>
+            <td class="num">₩12K</td>
+            <td class="num"><strong>₩300만</strong></td>
+            <td>검토 시작 가능</td>
+          </tr>
+          <tr style="background: rgba(13,148,136,0.06);">
+            <td><strong>Phase 4 (12~24개월)</strong></td>
+            <td class="num">~150K</td>
+            <td class="num">1%</td>
+            <td class="num"><strong>1,500명</strong></td>
+            <td class="num">₩14K</td>
+            <td class="num"><strong>₩2,100만</strong></td>
+            <td>본격 LIVE</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="footnote"><strong>벤치마크</strong>: 콴다 매출 ₩242억 (2024) <span class="lbl lbl-real">실측</span> · 뤼이드(산타) ₩201억 (2024, 누적 487만 사용자) <span class="lbl lbl-real">실측</span>. 산타 ARPU 추정: ₩201억 ÷ 487만 ÷ 12 = <strong>₩344/월</strong> (free 비중 큼). 우리 가정 ARPU ₩9.9~14K은 결제 사용자 한정 — 산타와 다른 구조.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 06. 90-DAY PLAN                                -->
+  <!-- ============================================== -->
+  <section id="90day">
+    <h2 class="sec"><span class="num">06 — Plan</span>90-Day Plan (Q2 2026)</h2>
+    <p class="sec-lead">"5단계 로드맵"은 1년짜리 wishlist다. 마케팅 expert는 <strong>다음 90일</strong>만 본다. Q2 OKR 3개 + 30일 sprint 3개 + 이번 주 KPI 1개. 측정 불가능하면 OKR 아니다.</p>
+
+    <h3>Q2 2026 (4월~6월) OKR 3개</h3>
+
+    <div class="okr-card">
+      <p class="okr-O">한국 시험 학습자에게 "기출노트를 안 쓰고 있으면 손해"라는 인지를 만든다 (브랜드)</p>
+      <div class="okr-kr"><span class="kr-tag">KR1</span><span>인스타 팔로워 0 → 2,000명 (시험 카테고리 한국 EdTech 상위 10위 진입)</span><span class="kr-val">측정: IG Insights</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR2</span><span>스레드 일일 발행 (90일 × 1포스트) — "오늘 한문제" 시리즈 정착</span><span class="kr-val">측정: Threads 통계</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR3</span><span>합격 후기 5건 수집 + 공식 콘텐츠로 발행 (인터뷰 또는 카드)</span><span class="kr-val">측정: 발행 수</span></div>
+    </div>
+
+    <div class="okr-card">
+      <p class="okr-O">9급 응시자 funnel을 한능검과 직결시킨다 (acquisition + cross-sell)</p>
+      <div class="okr-kr"><span class="kr-tag">KR1</span><span>9급 24직렬 한국사 요약노트 일괄 입력 + GSC 색인 완료 (3,500 URL → 70% indexed)</span><span class="kr-val">측정: GSC coverage</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR2</span><span>"한능검 → 9급 한국사 인증" 가이드 콘텐츠 5편 발행 + Google Ads ₩30K 1주 테스트로 실 CPC 측정</span><span class="kr-val">측정: 발행 + Ads dashboard</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR3</span><span>WAL (Weekly Active Learners) 250 → 1,500명 (6×)</span><span class="kr-val">측정: GA4 custom event</span></div>
+    </div>
+
+    <div class="okr-card">
+      <p class="okr-O">수익화 인프라를 가동한다 — <strong>광고 우선, 학원 BD는 트래픽 100K 후</strong></p>
+      <div class="okr-kr"><span class="kr-tag">KR1</span><span><strong>카카오 애드핏 신청 + LIVE</strong> (이번주, 1~2일 통과 예상). AdSense 통과 시 위치 분리 병행 운영</span><span class="kr-val">측정: 양 dashboard</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR2</span><span>self-serve affiliate 시작 — 쿠팡 파트너스 + 응원 결제 버튼 (1시간 작업) + 한능검 책 사이드바 자동 노출</span><span class="kr-val">측정: CPS / 후원액</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR3</span><span>광고 첫 달 ₩30만 + 6월 ₩60만 (한능검 5월 시즌 spike)</span><span class="kr-val">측정: earnings</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR4</span><span>학원 BD 자료집 PDF 작성 (트래픽·engagement·ICP demographics 1장) — 6월 말까지. <strong>학원 미팅은 트래픽 100K 후 (Q3)</strong></span><span class="kr-val">측정: PDF 산출물</span></div>
+    </div>
+
+    <p style="font-size: 12px; color: var(--ink-soft); margin: 8px 0 24px; padding: 10px 14px; background: var(--amber-bg); border-radius: 8px;">
+      <strong>변경 (2026-04-26)</strong>: KR3가 v3 초안에서 "학원 BD 미팅 3건 + 1건 계약"이었으나 <strong>협상력 보호</strong>를 위해 트래픽 100K (Q3) 후로 미루고, Q2엔 자료집 준비만. 자세한 트래픽 milestone 트리거는 §05 ⓪ 참조.
+    </p>
+
+    <h3>Sprint 분해 — Q2 (30일 단위)</h3>
+
+    <div class="grid cols-3">
+      <div class="card amber">
+        <h4 style="color: var(--amber);">Sprint 1 — May (5/1~5/31)</h4>
+        <p style="font-size:13px;"><strong>주제</strong>: 한능검 시즌 + 카카오 LIVE</p>
+        <ul style="font-size:13px;">
+          <li>9급 한국사 노트 24직렬 일괄 입력 (Week 1~2)</li>
+          <li>인스타 카드뉴스 매주 5장 (한능검 시대별)</li>
+          <li>스레드 매일 1포스트 시작</li>
+          <li><strong>카카오 애드핏 LIVE</strong> + AdSense 통과 시 병행</li>
+          <li>쿠팡 파트너스 + 응원 결제 버튼 추가</li>
+          <li>GA4 activation event (5문제+정답확인) 정의 + 트래킹</li>
+        </ul>
+      </div>
+      <div class="card amber">
+        <h4 style="color: var(--amber);">Sprint 2 — June (6/1~6/30)</h4>
+        <p style="font-size:13px;"><strong>주제</strong>: 9급 지방직 + 7급 PSAT 시즌</p>
+        <ul style="font-size:13px;">
+          <li>지방직 21직렬 시리즈 콘텐츠 (직렬별 합격 가이드)</li>
+          <li>인스타 reels 첫 시도 (3편 테스트)</li>
+          <li>합격 후기 인터뷰 2건 + 공식 카드 발행</li>
+          <li><strong>학원 BD 자료집 PDF 작성</strong> (트래픽 100K 도달 시 사용)</li>
+          <li>WAL 1,000명 통과 점검 — 미달 시 콘텐츠 진단</li>
+        </ul>
+      </div>
+      <div class="card amber">
+        <h4 style="color: var(--amber);">Sprint 3 — July (7/1~7/31)</h4>
+        <p style="font-size:13px;"><strong>주제</strong>: 비수기 evergreen + Q3 준비</p>
+        <ul style="font-size:13px;">
+          <li>SEO 빈틈 분석 + 키워드 채우기 (월 4편)</li>
+          <li>오답노트·내 기록 UX 개선 (D7 retention 향상)</li>
+          <li>모의고사 PDF spec 작성 (8월 출시 준비)</li>
+          <li>(트래픽 50K+ 시) <strong>NextStudy + 에듀윌 시드 메일</strong></li>
+          <li>인스타 1,500 팔로워 통과 점검</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>이번 주 KPI (4/26 ~ 5/2)</h3>
+    <div class="callout">
+      <div class="callout-title">This Week — 5개 액션</div>
+      <p style="font-size:14px;">
+        ① <strong>9급 24직렬 한국사 노트 일괄 입력</strong> — 4/27 ~ 4/29<br/>
+        ② <strong>인스타 카드뉴스 5장 발행</strong> (한능검 5월 시즌 D-Day 4주차) — 4/29까지<br/>
+        ③ <strong>스레드 계정 개설 + 일일 포스트 시작</strong> — 4/27부터<br/>
+        ④ <strong>카카오 애드핏 신청</strong> — 4/27 (1~2일 통과 예상). AdSense 결과 별도 대기<br/>
+        ⑤ <strong>쿠팡 파트너스 가입 + 응원 결제 버튼 추가</strong> — 4/30
+      </p>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Q3 + Q4 OKR (NEW) -->
+    <h3>Q3 OKR (8월~10월) — 시즌 폭격 + 학원 BD 본격 시작</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">한능검 79·80회 + 9급 지방직 가산점 시즌 + 자격증 시즌 1 (변리사·노무사·감정평가사) + 공인중개사 (10/17). 트래픽 100K 도달 후 학원 BD 본격 미팅.</p>
+
+    <div class="okr-card">
+      <p class="okr-O">트래픽 100K 도달 → 학원 BD 협상력 확보</p>
+      <div class="okr-kr"><span class="kr-tag">KR1</span><span>월 PV 100K 안정 도달 (Q2 50K → Q3 100K)</span><span class="kr-val">측정: GA4</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR2</span><span><strong>NextStudy + 에듀윌 본격 미팅</strong> 각 1건 + 1곳 계약 (CPL ₩3~8K)</span><span class="kr-val">측정: 계약서</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR3</span><span>해커스 시드 컨택 (Q4 후속 미팅 예약)</span><span class="kr-val">측정: 회신 메일</span></div>
+    </div>
+
+    <div class="okr-card">
+      <p class="okr-O">콘텐츠 카테고리 확장 — 한능검 외 시험으로</p>
+      <div class="okr-kr"><span class="kr-tag">KR1</span><span>변리사·노무사·감정평가사 1차 가이드 + 5과목 요약노트 시리즈</span><span class="kr-val">측정: 발행 수</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR2</span><span>공인중개사 (10/17) D-Day 콘텐츠 + 1·2차 가이드</span><span class="kr-val">측정: 발행 + GA4 page</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR3</span><span>WAL 1,500 → 5,000 (3.3×)</span><span class="kr-val">측정: NSM</span></div>
+    </div>
+
+    <div class="okr-card">
+      <p class="okr-O">자체 수익화 1탄 LIVE + <strong>광고비 단계 확장 (ROAS &gt; 4× 유지 시 max로)</strong></p>
+      <div class="okr-kr"><span class="kr-tag">KR1</span><span><strong>모의고사 PDF LIVE</strong> — 한능검 79회 (8/9) 직전 출시 / ₩3,000/회 / 첫 달 50건+ 판매</span><span class="kr-val">측정: 판매 dashboard</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR2</span><span>월 광고 매출 ₩200만+ 돌파 (오가닉 RPM + 광고 ROAS 합산)</span><span class="kr-val">측정: AdSense + 카카오 + Affiliate</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR3</span><span><strong>Google Ads ₩100만/월 단계 진입</strong> — ROAS &gt; 4× 유지 시 ₩300만으로 확장. 한국 학원 부재 sweet spot 활용</span><span class="kr-val">측정: Google Ads dashboard ROAS</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR4</span><span>광고 제거 멤버십 spec 작성 (Q4 LIVE 준비)</span><span class="kr-val">측정: spec doc</span></div>
+    </div>
+
+    <h3 style="margin-top: 40px;">Q4 OKR (11월~1월) — 자격증 시즌 2 + 멤버십 LIVE 준비</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">한능검 81회 (11/28) + 자격증 시즌 2 (관세사·세무사·산업안전기사) + 새해 동기 시즌 (1~3월). NextStudy 재정비 마무리 시점 — SOV 확보 마지노선.</p>
+
+    <div class="okr-card">
+      <p class="okr-O">SOV 확보 + 학원 BD 다각화 + <strong>광고비 max 단계 진입</strong></p>
+      <div class="okr-kr"><span class="kr-tag">KR1</span><span>월 PV 300K 도달 + Direct 비율 50%+ 유지</span><span class="kr-val">측정: GA4</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR2</span><span>학원 affiliate 2~3곳 multi-deal — 시즌 banner sponsorship 1건 (₩50~100만/월)</span><span class="kr-val">측정: 계약서</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR3</span><span><strong>광고비 ₩500~1,000만/월 단계</strong> (ROAS &gt; 4× 유지 + 채널 capacity 미도달 시). Google + 인스타 + 카카오 동시 운영</span><span class="kr-val">측정: 통합 ROAS</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR4</span><span>인스타 5,000 팔로워 + 스레드 1,000 팔로워</span><span class="kr-val">측정: SNS Insights</span></div>
+    </div>
+
+    <div class="okr-card">
+      <p class="okr-O">자체 수익화 LIVE — 멤버십 베타</p>
+      <div class="okr-kr"><span class="kr-tag">KR1</span><span><strong>광고 제거 멤버십 LIVE</strong> ₩2,900/월 — 베타 100명 모집</span><span class="kr-val">측정: 결제 수</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR2</span><span>합격 노트 PDF 시리즈 (직렬별) — 5종 출시</span><span class="kr-val">측정: 판매</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR3</span><span>새해 동기 시즌 (1월) 입문 가이드 콘텐츠 폭격 + WAL 10K 도달</span><span class="kr-val">측정: NSM</span></div>
+    </div>
+
+    <div class="okr-card">
+      <p class="okr-O">2027 한능검 인증제 대비 콘텐츠 자산화</p>
+      <div class="okr-kr"><span class="kr-tag">KR1</span><span>"한능검 → 9급 한국사 인증" 가이드 시리즈 10편 + SEO 1순위 (검색 "한능검 9급 인증")</span><span class="kr-val">측정: GSC 순위</span></div>
+      <div class="okr-kr"><span class="kr-tag">KR2</span><span>9급 응시자 한능검 funnel — 사이트 진입자 중 한능검 페이지 방문율 30%+</span><span class="kr-val">측정: GA4 page flow</span></div>
+    </div>
+
+    <h3 style="margin-top: 40px;">12개월 OKR 매트릭스 (한 눈에)</h3>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>분기</th>
+            <th>핵심 주제</th>
+            <th class="num">월 PV 목표</th>
+            <th class="num">WAL</th>
+            <th class="num">광고비/월<br/><small>(ROAS &gt; 4× 시 max)</small></th>
+            <th>주요 마일스톤</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background: rgba(180,83,9,0.08);">
+            <td><strong>Q2 (4~6월)</strong><br/><small>현재</small></td>
+            <td>브랜드 인지 + 카카오 LIVE</td>
+            <td class="num">35K → 50K</td>
+            <td class="num">250 → 1.5K</td>
+            <td class="num">~₩30만 (테스트)</td>
+            <td>9급 노트 / 카카오 애드핏 / 인스타·스레드 일일 / 학원 BD 자료집</td>
+          </tr>
+          <tr style="background: rgba(13,148,136,0.07);">
+            <td><strong>Q3 (8~10월)</strong></td>
+            <td>학원 BD 본격 + 광고 ₩100만 단계</td>
+            <td class="num">50K → 100K</td>
+            <td class="num">1.5K → 5K</td>
+            <td class="num"><strong>₩100~300만</strong></td>
+            <td>NextStudy 계약 / Google Ads ₩100만 단계 / 모의고사 PDF LIVE</td>
+          </tr>
+          <tr>
+            <td><strong>Q4 (11~1월)</strong></td>
+            <td>SOV + 광고 ₩500~1,000만</td>
+            <td class="num">100K → 300K</td>
+            <td class="num">5K → 10K</td>
+            <td class="num"><strong>₩500~1,000만</strong></td>
+            <td>멤버십 베타 / banner sponsorship / 광고 풀 채널 운영</td>
+          </tr>
+          <tr style="background: rgba(180,83,9,0.05);">
+            <td><strong>Q1 (2~4월)</strong></td>
+            <td>500K + 광고 ₩1,000~2,000만 (max)</td>
+            <td class="num">300K → 500K+</td>
+            <td class="num">10K → 20K</td>
+            <td class="num"><strong>₩1,000~2,000만 (max)</strong></td>
+            <td>Mediavine / 학원 multi-deal / channel capacity 한도 도달</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="footnote">
+      <strong>광고비 단계별 원칙</strong>: 트래픽이 늘면 ROAS 검증된 채널부터 광고비 max로 확장. ROAS &lt; 3× 떨어지면 stop &amp; review. 사용자 결정 (2026-04-26): "돈되면 1000만원이든 2000만원이든 max 효과 날 때까지 쓴다."
+      <br/>위 매트릭스는 <strong>"기본" 시나리오</strong> 가정 (§05 ⑤). 보수 시나리오면 광고비 -50%, 낙관 시나리오면 채널 capacity까지 max. 분기 끝마다 retro → 다음 분기 광고비 조정.
+    </p>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 07. MEASUREMENT FRAMEWORK                      -->
+  <!-- ============================================== -->
+  <section id="measure">
+    <h2 class="sec"><span class="num">07 — Measure</span>Measurement Framework</h2>
+    <p class="sec-lead">측정하지 않으면 마케팅이 아니라 가설일 뿐. NSM (North Star) → Input Metrics → Counter Metrics 트리. 매주 같은 dashboard를 같은 cadence로 본다.</p>
+
+    <h3>Metrics Tree</h3>
+    <div class="mtree">
+      <div style="margin: 0 0 8px; padding: 0 4px;">
+        <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--amber); text-transform: uppercase; font-weight: 700;">Chart 3 — Metrics Tree</div>
+        <div style="font-size: 13px; color: var(--ink-soft); margin-top: 2px; line-height: 1.5;">
+          North Star (1개) → Input metrics (3개) → Sub-inputs (각 3개) → Counter metrics. 매주 같은 dashboard로 같은 순서로 본다.
+        </div>
+      </div>
+      <svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Metrics Tree — North Star → Input → Sub-input → Counter">
+
+        <!-- ===== Layer 1: North Star (top center) ===== -->
+        <rect x="380" y="20" width="200" height="60" rx="12" fill="#1F1A14"/>
+        <text x="480" y="40" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#FED7AA" font-weight="700">★ NORTH STAR</text>
+        <text x="480" y="60" text-anchor="middle" font-family="Noto Serif KR" font-size="14" fill="#F5EFE4" font-weight="900">Weekly Active</text>
+        <text x="480" y="76" text-anchor="middle" font-family="Noto Serif KR" font-size="14" fill="#F5EFE4" font-weight="900">Learners (WAL)</text>
+
+        <!-- ===== Connection: NSM → 3 Input metrics ===== -->
+        <line x1="480" y1="80" x2="180" y2="125" stroke="#94724D" stroke-width="1.5" opacity="0.5"/>
+        <line x1="480" y1="80" x2="480" y2="125" stroke="#94724D" stroke-width="1.5" opacity="0.5"/>
+        <line x1="480" y1="80" x2="780" y2="125" stroke="#94724D" stroke-width="1.5" opacity="0.5"/>
+
+        <!-- ===== Layer 2: 3 Input metrics (3 columns) ===== -->
+        <!-- Column 1: ACQUISITION (x=80~280, center=180) -->
+        <rect x="80" y="125" width="200" height="50" rx="8" fill="#FED7AA" stroke="#B45309" stroke-width="1.5"/>
+        <text x="180" y="144" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#B45309" font-weight="700">▼ ACQUISITION</text>
+        <text x="180" y="162" text-anchor="middle" font-family="Pretendard Variable" font-size="12" fill="#1F1A14" font-weight="700">신규 사용자 / 주</text>
+
+        <!-- Column 2: ACTIVATION (x=380~580, center=480) -->
+        <rect x="380" y="125" width="200" height="50" rx="8" fill="#CCFBF1" stroke="#0D9488" stroke-width="1.5"/>
+        <text x="480" y="144" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#0D9488" font-weight="700">▼ ACTIVATION</text>
+        <text x="480" y="162" text-anchor="middle" font-family="Pretendard Variable" font-size="12" fill="#1F1A14" font-weight="700">5문제+정답확인 비율</text>
+
+        <!-- Column 3: RETENTION (x=680~880, center=780) -->
+        <rect x="680" y="125" width="200" height="50" rx="8" fill="#FECDD3" stroke="#BE123C" stroke-width="1.5"/>
+        <text x="780" y="144" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#BE123C" font-weight="700">▼ RETENTION</text>
+        <text x="780" y="162" text-anchor="middle" font-family="Pretendard Variable" font-size="12" fill="#1F1A14" font-weight="700">D7 재방문율</text>
+
+        <!-- ===== Connection: Layer 2 → Layer 3 (vertical chain in each column) ===== -->
+        <!-- ACQ chain -->
+        <line x1="180" y1="175" x2="180" y2="195" stroke="#B45309" stroke-width="1" opacity="0.5"/>
+        <line x1="180" y1="245" x2="180" y2="255" stroke="#B45309" stroke-width="1" opacity="0.4" stroke-dasharray="2 2"/>
+        <line x1="180" y1="305" x2="180" y2="315" stroke="#B45309" stroke-width="1" opacity="0.4" stroke-dasharray="2 2"/>
+        <!-- ACT chain -->
+        <line x1="480" y1="175" x2="480" y2="195" stroke="#0D9488" stroke-width="1" opacity="0.5"/>
+        <line x1="480" y1="245" x2="480" y2="255" stroke="#0D9488" stroke-width="1" opacity="0.4" stroke-dasharray="2 2"/>
+        <line x1="480" y1="305" x2="480" y2="315" stroke="#0D9488" stroke-width="1" opacity="0.4" stroke-dasharray="2 2"/>
+        <!-- RET chain -->
+        <line x1="780" y1="175" x2="780" y2="195" stroke="#BE123C" stroke-width="1" opacity="0.5"/>
+        <line x1="780" y1="245" x2="780" y2="255" stroke="#BE123C" stroke-width="1" opacity="0.4" stroke-dasharray="2 2"/>
+        <line x1="780" y1="305" x2="780" y2="315" stroke="#BE123C" stroke-width="1" opacity="0.4" stroke-dasharray="2 2"/>
+
+        <!-- ===== Layer 3: Sub-inputs (vertical stack 3 per column) ===== -->
+        <!-- ACQ subs (column 1, x=80~280) -->
+        <rect x="80" y="195" width="200" height="50" rx="6" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text x="180" y="214" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#B45309" font-weight="700">SEO Impressions</text>
+        <text x="180" y="232" text-anchor="middle" font-family="Pretendard Variable" font-size="11" fill="#5A4F3F">GSC + Naver Search Ad</text>
+
+        <rect x="80" y="255" width="200" height="50" rx="6" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text x="180" y="274" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#B45309" font-weight="700">IG Reach + Followers</text>
+        <text x="180" y="292" text-anchor="middle" font-family="Pretendard Variable" font-size="11" fill="#5A4F3F">Instagram Insights</text>
+
+        <rect x="80" y="315" width="200" height="50" rx="6" fill="#FFF7ED" stroke="#FED7AA"/>
+        <text x="180" y="334" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#B45309" font-weight="700">Threads CTR</text>
+        <text x="180" y="352" text-anchor="middle" font-family="Pretendard Variable" font-size="11" fill="#5A4F3F">포스트 → 사이트 클릭</text>
+
+        <!-- ACT subs (column 2, x=380~580) -->
+        <rect x="380" y="195" width="200" height="50" rx="6" fill="#F0FDFA" stroke="#CCFBF1"/>
+        <text x="480" y="214" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#0D9488" font-weight="700">/exam 진입율</text>
+        <text x="480" y="232" text-anchor="middle" font-family="Pretendard Variable" font-size="11" fill="#5A4F3F">홈 → /exam 클릭률</text>
+
+        <rect x="380" y="255" width="200" height="50" rx="6" fill="#F0FDFA" stroke="#CCFBF1"/>
+        <text x="480" y="274" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#0D9488" font-weight="700">5문제 도달률</text>
+        <text x="480" y="292" text-anchor="middle" font-family="Pretendard Variable" font-size="11" fill="#5A4F3F">session ≥5q 비율</text>
+
+        <rect x="380" y="315" width="200" height="50" rx="6" fill="#F0FDFA" stroke="#CCFBF1"/>
+        <text x="480" y="334" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#0D9488" font-weight="700">정답확인 클릭</text>
+        <text x="480" y="352" text-anchor="middle" font-family="Pretendard Variable" font-size="11" fill="#5A4F3F">activation event</text>
+
+        <!-- RET subs (column 3, x=680~880) -->
+        <rect x="680" y="195" width="200" height="50" rx="6" fill="#FFF1F2" stroke="#FECDD3"/>
+        <text x="780" y="214" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#BE123C" font-weight="700">Direct 비율</text>
+        <text x="780" y="232" text-anchor="middle" font-family="Pretendard Variable" font-size="11" fill="#5A4F3F">현재 61% (실측)</text>
+
+        <rect x="680" y="255" width="200" height="50" rx="6" fill="#FFF1F2" stroke="#FECDD3"/>
+        <text x="780" y="274" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#BE123C" font-weight="700">노트 열람율</text>
+        <text x="780" y="292" text-anchor="middle" font-family="Pretendard Variable" font-size="11" fill="#5A4F3F">/notes 진입</text>
+
+        <rect x="680" y="315" width="200" height="50" rx="6" fill="#FFF1F2" stroke="#FECDD3"/>
+        <text x="780" y="334" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#BE123C" font-weight="700">D30 cohort 곡선</text>
+        <text x="780" y="352" text-anchor="middle" font-family="Pretendard Variable" font-size="11" fill="#5A4F3F">월별 retention</text>
+
+        <!-- Layer label (left margin) -->
+        <text x="40" y="50" font-family="JetBrains Mono" font-size="9" fill="#94724D" font-weight="700">L1</text>
+        <text x="40" y="155" font-family="JetBrains Mono" font-size="9" fill="#94724D" font-weight="700">L2</text>
+        <text x="40" y="285" font-family="JetBrains Mono" font-size="9" fill="#94724D" font-weight="700">L3</text>
+        <text x="40" y="455" font-family="JetBrains Mono" font-size="9" fill="#94724D" font-weight="700">⚠</text>
+
+        <!-- Divider before counter -->
+        <line x1="80" y1="400" x2="880" y2="400" stroke="#1F1A14" stroke-width="0.5" opacity="0.2" stroke-dasharray="4 4"/>
+
+        <!-- ===== Counter Metrics (bottom, full width, multi-line) ===== -->
+        <rect x="80" y="420" width="800" height="120" rx="10" fill="#FFF1F2" stroke="#BE123C" stroke-width="1"/>
+        <text x="480" y="446" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#BE123C" font-weight="700">⚠️ COUNTER METRICS — 너무 좋아 보이면 의심할 역지표</text>
+
+        <!-- 4 counter metrics in 2x2 grid inside box -->
+        <text x="180" y="478" text-anchor="middle" font-family="Pretendard Variable" font-size="11" fill="#1F1A14" font-weight="700">광고비 ÷ 매출 비율</text>
+        <text x="180" y="495" text-anchor="middle" font-family="Pretendard Variable" font-size="10" fill="#5A4F3F">상승 시 = 광고 의존</text>
+
+        <text x="380" y="478" text-anchor="middle" font-family="Pretendard Variable" font-size="11" fill="#1F1A14" font-weight="700">세션당 페이지</text>
+        <text x="380" y="495" text-anchor="middle" font-family="Pretendard Variable" font-size="10" fill="#5A4F3F">짧으면 = 콘텐츠 약함</text>
+
+        <text x="580" y="478" text-anchor="middle" font-family="Pretendard Variable" font-size="11" fill="#1F1A14" font-weight="700">CAC 추세</text>
+        <text x="580" y="495" text-anchor="middle" font-family="Pretendard Variable" font-size="10" fill="#5A4F3F">상승 = 채널 포화</text>
+
+        <text x="780" y="478" text-anchor="middle" font-family="Pretendard Variable" font-size="11" fill="#1F1A14" font-weight="700">Direct 비율 변화</text>
+        <text x="780" y="495" text-anchor="middle" font-family="Pretendard Variable" font-size="10" fill="#5A4F3F">하락 = retention 약화</text>
+
+        <text x="480" y="525" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#94724D" font-style="italic">— 위 4개 중 하나라도 악화 추세면, 매출/PV가 좋아 보여도 stop &amp; review</text>
+
+        <!-- Footer label -->
+        <text x="480" y="568" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#94724D" font-style="italic">L1 (NSM) → L2 (Input) → L3 (Sub-input) · 모든 레벨 측정 가능해야 함</text>
+      </svg>
+    </div>
+
+    <h3>Weekly Review Cadence (월요일 30분)</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">매주 월요일 오전 09:00 (자동 발송 weekly_report 직후) — 같은 dashboard를 같은 순서로 본다. 90초씩 5섹션 = 7~8분.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="center">시간</th>
+            <th>섹션</th>
+            <th>봐야 할 것</th>
+            <th>의사결정</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="center">0~2분</td>
+            <td><strong>NSM 추세</strong></td>
+            <td>WAL 7일 / 30일 / 90일 곡선</td>
+            <td>전주 대비 +/- → 원인 가설</td>
+          </tr>
+          <tr>
+            <td class="center">2~4분</td>
+            <td><strong>Acquisition</strong></td>
+            <td>채널별 신규 사용자 (GSC + IG + Threads + Direct)</td>
+            <td>채널 별 시간 분배 조정</td>
+          </tr>
+          <tr>
+            <td class="center">4~6분</td>
+            <td><strong>Activation</strong></td>
+            <td>5문제 도달률 / 정답확인 클릭 / 노트 진입율</td>
+            <td>UX A/B 후보 정의</td>
+          </tr>
+          <tr>
+            <td class="center">6~7분</td>
+            <td><strong>Retention</strong></td>
+            <td>D7/D30 cohort + Direct 비율</td>
+            <td>retention 캠페인 (이메일/푸시)</td>
+          </tr>
+          <tr>
+            <td class="center">7~8분</td>
+            <td><strong>Counter</strong></td>
+            <td>CAC 추세 / 광고비 비율 / 세션 분</td>
+            <td>광고 stop / 콘텐츠 손보기</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>측정 인프라 — 무엇이 빠졌나</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">현재 GA4 + GSC + IG Insights는 작동. 빠진 것은 <strong>activation event</strong>와 <strong>cohort 분석</strong> — Q2에 추가.</p>
+
+    <div class="grid cols-2">
+      <div class="card teal">
+        <h4 style="color: var(--teal);">✅ 이미 작동 중</h4>
+        <ul style="font-size:13px;">
+          <li>GA4 page_view + session + user 트래킹</li>
+          <li>GSC 색인 / impressions / 평균 순위</li>
+          <li>IG Insights (저작도구 ChannelAnalytics 연동)</li>
+          <li>주간 리포트 자동 발송 (월 07:00 KST)</li>
+          <li>Naver SA 키워드 검색량/입찰 시뮬</li>
+        </ul>
+      </div>
+      <div class="card rose">
+        <h4 style="color: var(--rose);">❌ Q2에 추가 필요</h4>
+        <ul style="font-size:13px;">
+          <li>GA4 custom event: <code>question_answered</code>, <code>note_opened</code>, <code>session_completed_5q</code></li>
+          <li>WAL 정의 + dashboard 위젯</li>
+          <li>D7/D30 cohort 분석 view (BigQuery export)</li>
+          <li>Threads CTR 트래킹 (저작도구에 추가)</li>
+          <li>학원 affiliate UTM 표준화</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- 08. RISKS & MITIGATION                         -->
+  <!-- ============================================== -->
+  <section id="risks">
+    <h2 class="sec"><span class="num">08 — Risks</span>Risks &amp; Mitigation</h2>
+    <p class="sec-lead">전략의 약점은 모두 알고 있어야 한다. 발견 시 → 차단 액션. 6개 핵심 리스크.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>리스크</th>
+            <th class="center">발생 확률</th>
+            <th class="center">영향도</th>
+            <th>발견 신호</th>
+            <th>대응 액션</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>NextStudy 재정비 + 마케팅 강화</strong></td>
+            <td class="center">중</td>
+            <td class="center">높음</td>
+            <td>Naver/Google 광고 재개 + SNS 활동 시작</td>
+            <td>월 1회 경쟁사 광고/SNS 추적. 시즌 SOV 50% 이상 점유로 선점</td>
+          </tr>
+          <tr>
+            <td><strong>법령 개정 미반영 (콘텐츠 정확성)</strong></td>
+            <td class="center">중</td>
+            <td class="center">매우 높음</td>
+            <td>사용자 댓글/지적 + 저작도구 강사 검수 누락</td>
+            <td>매주 법령 개정 확인 워크플로 + AI 자동 알림. 신뢰 관련 = 최우선</td>
+          </tr>
+          <tr>
+            <td><strong>AdSense 심사 지연/탈락</strong></td>
+            <td class="center">낮음</td>
+            <td class="center">중</td>
+            <td>30일 내 결과 없음 / 탈락 통지</td>
+            <td>대안: Mediavine/Carbon Ads 검토. 첫 PV 100K 달성 후 재신청</td>
+          </tr>
+          <tr>
+            <td><strong>SEO 마이그레이션으로 한능검 트래픽 일시 손실</strong></td>
+            <td class="center">중</td>
+            <td class="center">중</td>
+            <td>GSC 색인 drop / GA4 organic 하락</td>
+            <td>200 alias 유지 + canonical 정확. 일 단위 모니터링</td>
+          </tr>
+          <tr>
+            <td><strong>인스타·스레드 알고리즘 변경</strong></td>
+            <td class="center">높음</td>
+            <td class="center">중</td>
+            <td>reach 갑자기 하락 (50% 이상)</td>
+            <td>채널 다각화 (4개 SNS 동시 발행). 한 채널 의존 X</td>
+          </tr>
+          <tr>
+            <td><strong>1인 운영 burnout / 콘텐츠 파이프라인 정체</strong></td>
+            <td class="center">중</td>
+            <td class="center">매우 높음</td>
+            <td>주간 발행 수 50% 이하로 연속 2주</td>
+            <td>AI 자동화 비중 ↑. 외주 검토 (콘텐츠 검증만 본인). 시즌 외 휴식 캘린더</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ============================================== -->
+  <!-- APPENDIX                                       -->
+  <!-- ============================================== -->
+  <section id="appendix">
+    <h2 class="sec"><span class="num">Appendix</span>부록 A · B · C</h2>
+
+    <h3 id="appendix-roadmap">A. 12개월 로드맵 (압축)</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">v2의 5단계 로드맵을 3단계 + 마일스톤 형식으로 압축.</p>
+
+    <div class="grid cols-3">
+      <div class="card teal">
+        <h4 style="color: var(--teal);">Phase 0 — 인프라 ✓ 완료</h4>
+        <p style="font-size:13px;"><strong>4월 25~26일</strong></p>
+        <ul style="font-size:13px;">
+          <li>547 ExamType + 624 Subject + 69 직렬</li>
+          <li>R2 727 stem 100% wired (1M+ 문제)</li>
+          <li>3-level 트리 UI + SEO 3,500 URL</li>
+          <li>저작도구 2-layer 마케팅</li>
+          <li>AdSense 심사 신청</li>
+        </ul>
+      </div>
+      <div class="card amber">
+        <h4 style="color: var(--amber);">Phase 1 — 마케팅 가동 (Q2)</h4>
+        <p style="font-size:13px;"><strong>5~7월 (90일)</strong></p>
+        <ul style="font-size:13px;">
+          <li>9급 24직렬 노트 일괄 입력</li>
+          <li>인스타·스레드 일일 발행 정착</li>
+          <li>AdSense LIVE + Google Ads 실측</li>
+          <li>학원 affiliate BD 1건 계약</li>
+          <li>WAL 250 → 1,500</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Phase 2 — 자리잡기 (Q3~Q4)</h4>
+        <p style="font-size:13px;"><strong>8~12월 (5개월)</strong></p>
+        <ul style="font-size:13px;">
+          <li>자격증 (변리사·노무사·감정평가사) 보강</li>
+          <li>유튜브 shorts 본격 시작</li>
+          <li>WAL 10K · 월 PV 800K 도달</li>
+          <li>Phase 3 멤버십 spec 작성</li>
+          <li>2027 한능검 인증제 대비 콘텐츠</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 id="appendix-calendar">B. 2026 시험 캘린더 (요약)</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">시험 시즌이 1년 내내 분산 — 비수기 없음. 월별 마케팅 매트릭스는 본문 §4 참조.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="center">월</th>
+            <th>시험</th>
+            <th class="center">날짜</th>
+            <th>비고</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="center">2월</td><td>한능검 77회</td><td class="center">2/7 토</td><td>심화/기본</td></tr>
+          <tr><td class="center">3월</td><td>소방공무원 필기</td><td class="center">3/7 토</td><td>한능검 3급↑ 자격</td></tr>
+          <tr style="background: rgba(180,83,9,0.06);"><td class="center"><strong>4월</strong></td><td><strong>9급 국가직</strong></td><td class="center"><strong>4/4 토</strong></td><td>105K 응시 [실측 2025]</td></tr>
+          <tr style="background: rgba(13,148,136,0.06);"><td class="center"><strong>5월</strong></td><td>한능검 78회</td><td class="center">5/23 토</td><td>심화만</td></tr>
+          <tr style="background: rgba(180,83,9,0.06);"><td class="center"><strong>6월</strong></td><td><strong>9급 지방직 + 7급 PSAT</strong></td><td class="center"><strong>6/20 토</strong></td><td>같은 날 — 양자택일</td></tr>
+          <tr><td class="center">7월</td><td>군무원</td><td class="center">7월 셋째주 토</td><td>한능검 4급↑</td></tr>
+          <tr style="background: rgba(13,148,136,0.06);"><td class="center"><strong>8월</strong></td><td>한능검 79회</td><td class="center">8/9 일</td><td>심화만</td></tr>
+          <tr><td class="center">9월</td><td>변리사·노무사·감정평가사 1차</td><td class="center">9월 중</td><td>자격증 시즌 1</td></tr>
+          <tr style="background: rgba(13,148,136,0.06);"><td class="center"><strong>10월</strong></td><td>한능검 80회 + <strong>공인중개사</strong></td><td class="center">10/17 토</td><td>공인중개사 134K [실측 2023]</td></tr>
+          <tr><td class="center">11월</td><td>한능검 81회 + 자격증 시즌 2</td><td class="center">11/28 토</td><td>관세사·세무사·산안기사</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="footnote">출처: 인사혁신처(<code>mpm.go.kr</code>) · 사이버국가고시센터(<code>gosi.kr</code>) · 한국사능력검정시험(<code>historyexam.go.kr</code>) · Q-Net(<code>q-net.or.kr</code>).</p>
+
+    <h3 id="appendix-sources">C. 데이터 출처 목록</h3>
+    <p style="font-size:14px; color:var(--ink-soft);">모든 숫자에 출처를 매핑. <span class="lbl lbl-real">실측</span> = 직접 측정 또는 1차 자료 / <span class="lbl lbl-est">추정</span> = 가정 기반 / <span class="lbl lbl-bench">벤치</span> = 산업 벤치마크 / <span class="lbl lbl-industry">업계</span> = 보도/추정 종합.</p>
+
+    <h4>1차 (실측)</h4>
+    <ul style="font-size:13px;">
+      <li><strong>gcnote GA4 (30일)</strong>: 1,575 sessions / 732 users / 20,228 PV / 11.9분 세션 / Direct 61.4% — <code>_ga4-dashboard.json</code></li>
+      <li><strong>Naver 검색광고 입찰 시뮬</strong>: 한능검·공무원·자격증 키워드 1~5위 CPC — <code>_naver-bid-res.json</code> (2026-04-25)</li>
+      <li><strong>9급 공무원 채용통계</strong>: <a href="https://www.gosi.kr">사이버국가고시센터</a> · 인사혁신처 <a href="https://www.data.go.kr/data/15127744/fileData.do">공공데이터포털</a></li>
+      <li><strong>2027 한능검 인증제</strong>: 인사혁신처 입법예고 (<a href="https://www.korea.kr/news/policyNewsView.do?newsId=148940514">대한민국 정책브리핑 2025-03-13</a>)</li>
+      <li><strong>메가공무원 매각</strong>: 메가스터디교육 공시 (<a href="https://news.mt.co.kr/mtview.php?no=2024121316500615276">머니투데이 2024-12-13</a>)</li>
+      <li><strong>공인중개사 응시통계</strong>: <a href="https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=9630">Q-Net</a></li>
+      <li><strong>콴다 매출 ₩242억 (2024)</strong>: <a href="https://wowtale.net/2025/04/11/239695/">와우테일 2025-04</a></li>
+      <li><strong>뤼이드 매출 ₩201억 / 누적 487만 사용자 (2024)</strong>: <a href="https://www.venturesquare.net/967422">벤처스퀘어 2025-04</a></li>
+    </ul>
+
+    <h4>2차 (산업 벤치마크)</h4>
+    <ul style="font-size:13px;">
+      <li><strong>EdTech IG engagement 4.2~5.4%</strong>: <a href="https://www.rivaliq.com/blog/social-media-industry-benchmark-report/">Rival IQ 2025</a> · <a href="https://www.socialinsider.io/social-media-benchmarks/instagram">SocialInsider 2026</a></li>
+      <li><strong>Higher Ed IG engagement 2.43%</strong>: <a href="https://blog.hootsuite.com/social-media-education-benchmarks/">Hootsuite 2025</a></li>
+      <li><strong>한국 EdTech 카테고리 RPM</strong>: 일 1,000PV → 월 ₩10~20만 (RPM ₩300~700) — 한국 블로그 사례 종합</li>
+      <li><strong>Korean EdTech 시장 ~1조원</strong>: 업계 보도 종합</li>
+    </ul>
+
+    <h4>3차 (추정 — 가정 명시)</h4>
+    <ul style="font-size:13px;">
+      <li>K-factor 0.3~0.7: gcnote MoM +58% 역산 + 인스타 4피드 7명 단기 시그널</li>
+      <li>Cross-application 78%: 9급 국가직 ↔ 지방직 동시 응시 추정 (2024 응시통계 + 일정 분리)</li>
+      <li>채널별 CAC: CPC 실측 + click→user 전환률 (벤치 70~85%) 곱</li>
+      <li>LTV: 평균 수명 × PV/월 × RPM (보수 ₩2,000) + affiliate 가정</li>
+      <li>멤버십 ARPU ₩9.9~14K: 베이직 가격 대비 다운그레이드 가능성 보수 적용</li>
+    </ul>
+
+    <h4>방법론 노트</h4>
+    <ul style="font-size:13px;">
+      <li><strong>WAL 추정 (~250)</strong>: GA4 7일 unique users 중 PV ≥3 추정. activation event 정의 후 정확 측정 가능 (Q2 추가).</li>
+      <li><strong>Google CPC 1/3~1/5 가정</strong>: DataForSEO 표시 = Keyword Planner 평균. 실 CPC는 Reserve Price + 입찰 경쟁도 함수. 한국 학원 미입찰 시 RP 근접 — <strong>실증 필요</strong>.</li>
+      <li><strong>Direct 61.4%의 의미</strong>: SimilarWeb EdTech 평균 20~30% 대비 2~3×. 신규 유입 시 일시 하락 예상 (50% 수렴 가정).</li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer style="border-top: 1px solid var(--hairline); padding-top: 28px; margin-top: 40px; text-align: center; color: var(--ink-soft); font-size: 13px;">
+    <div class="eyebrow" style="color: var(--ink-soft);">기출노트 · Marketing Strategy v3</div>
+    <p style="margin: 0 0 4px;">2026-04-26 · realproto1 · gcnote.co.kr</p>
+    <p style="margin: 0; font-family: var(--mono); font-size: 11px;">v2 (multi-exam-hub-strategy.html) → v3 — STP · JTBD · CAC/LTV · OKR · NSM 프레임워크 적용 · 모든 숫자 출처 라벨링</p>
+  </footer>
+
+</div>
+</body>
+</html>

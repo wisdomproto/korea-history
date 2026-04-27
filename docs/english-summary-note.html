@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9급 국가직 영어 자동 단권화 — 8단원</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Serif KR', 'Pretendard Variable', serif; background: #F5EFE4; color: #1F1A14; line-height: 1.7; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 48px 32px 96px; }
+  header { border-bottom: 2px solid #1F1A14; padding-bottom: 24px; margin-bottom: 32px; }
+  h1 { font-size: 38px; letter-spacing: -0.02em; }
+  .sub { color: #B45309; font-size: 14px; margin-top: 8px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; }
+  .meta { display: flex; gap: 24px; margin-top: 16px; font-size: 13px; color: #6b6258; }
+  .meta strong { color: #1F1A14; }
+  h2 { font-size: 26px; margin: 48px 0 16px; padding-bottom: 8px; border-bottom: 1px solid #1F1A14; }
+  h2 .freq { font-size: 13px; color: #B45309; font-family: 'JetBrains Mono', monospace; font-weight: 400; margin-left: 12px; }
+  h3 { font-size: 18px; margin: 24px 0 12px; color: #0D9488; }
+  p { margin: 12px 0; }
+  ul, ol { padding-left: 24px; margin: 12px 0; }
+  li { margin: 6px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; background: #fff; }
+  th, td { padding: 10px 12px; border: 1px solid #d6cdb8; text-align: left; vertical-align: top; }
+  th { background: #ede2cd; font-weight: 700; }
+  .exam-box { background: #fff7ed; border-left: 4px solid #B45309; padding: 12px 16px; margin: 16px 0; font-size: 14px; }
+  .exam-box strong { color: #B45309; }
+  .toc { background: #fff; border: 1px solid #d6cdb8; padding: 20px 28px; border-radius: 6px; margin: 24px 0; }
+  .toc h3 { color: #1F1A14; margin: 0 0 12px; }
+  .toc ol { columns: 2; column-gap: 32px; }
+  .toc a { color: #1F1A14; text-decoration: none; }
+  .toc a:hover { color: #B45309; }
+  .freq-chart { background: #fff; padding: 20px; border-radius: 6px; margin: 24px 0; }
+  .freq-row { display: flex; align-items: center; gap: 12px; margin: 6px 0; font-size: 13px; }
+  .freq-label { width: 220px; flex-shrink: 0; }
+  .freq-bar { background: #B45309; height: 18px; border-radius: 3px; }
+  .freq-num { color: #6b6258; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .verify { background: #ecfdf5; border: 1px solid #10b981; padding: 16px 20px; border-radius: 6px; margin: 32px 0; font-size: 14px; }
+  .verify strong { color: #047857; }
+  .alert { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 14px 18px; margin: 16px 0; font-size: 14px; }
+  footer { text-align: center; margin-top: 64px; padding-top: 24px; border-top: 1px solid #d6cdb8; color: #6b6258; font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>영어 자동 단권화 (9급 국가직)</h1>
+  <div class="sub">전 직렬 공통과목 · 어휘 50% + 어법 14% + 독해 30% + 영작 7%</div>
+  <div class="meta">
+    <span><strong>시드:</strong> 10회 198문제</span>
+    <span><strong>검증:</strong> 2회 40문제</span>
+    <span><strong>커버리지:</strong> 100% (198/198)</span>
+    <span><strong>업데이트:</strong> 2026-04-27</span>
+  </div>
+</header>
+
+<div class="alert">
+  <strong>📌 출제 비중:</strong> 9급 영어는 <strong>어휘가 압도적 (50%)</strong>이고 그 다음이 <strong>어법(14%) → 독해(30%) → 영작(7%)</strong> 순. 전공 시간 부족하면 어휘+어법부터 우선.
+</div>
+
+<div class="toc">
+  <h3>목차 (출제 빈도순)</h3>
+  <ol>
+    <li><a href="#vocabulary">어휘 (동의어·문맥) — 98</a></li>
+    <li><a href="#grammar">어법 (시제·태·관계대명사·가정법) — 28</a></li>
+    <li><a href="#reading-main">독해 — 주제·요지·제목 — 24</a></li>
+    <li><a href="#reading-detail">독해 — 세부정보·일치 — 21</a></li>
+    <li><a href="#translation">영작 (우리말 → 영어) — 14</a></li>
+    <li><a href="#reading-flow">독해 — 흐름·순서·삽입·빈칸 — 11</a></li>
+    <li><a href="#practical">생활영어·실용문 — 2</a></li>
+    <li><a href="#reading-tone">독해 — 어조·심경 (출제 드묾)</a></li>
+  </ol>
+</div>
+
+<div class="freq-chart">
+  <h3>단원별 출제 빈도 (10회 시드)</h3>
+  <div class="freq-row"><div class="freq-label">어휘 (동의어·문맥)</div><div class="freq-bar" style="width: 100%;"></div><div class="freq-num">98 (49.5%)</div></div>
+  <div class="freq-row"><div class="freq-label">어법</div><div class="freq-bar" style="width: 28.5%;"></div><div class="freq-num">28</div></div>
+  <div class="freq-row"><div class="freq-label">독해 — 주제·요지</div><div class="freq-bar" style="width: 24.5%;"></div><div class="freq-num">24</div></div>
+  <div class="freq-row"><div class="freq-label">독해 — 세부정보</div><div class="freq-bar" style="width: 21.4%;"></div><div class="freq-num">21</div></div>
+  <div class="freq-row"><div class="freq-label">영작</div><div class="freq-bar" style="width: 14.3%;"></div><div class="freq-num">14</div></div>
+  <div class="freq-row"><div class="freq-label">독해 — 흐름·삽입</div><div class="freq-bar" style="width: 11.2%;"></div><div class="freq-num">11</div></div>
+  <div class="freq-row"><div class="freq-label">생활영어</div><div class="freq-bar" style="width: 2%;"></div><div class="freq-num">2</div></div>
+</div>
+
+<h2 id="vocabulary">1. 어휘 (동의어·문맥) <span class="freq">출제 98회 (절반)</span></h2>
+<p>9급 영어의 절반. 매 시험 5~10문제 출제. 단어 암기가 합격의 50%.</p>
+
+<h3>출제 패턴</h3>
+<ul>
+  <li><strong>밑줄 친 부분의 의미와 가장 가까운 것은?</strong> — 동의어 (synonym)</li>
+  <li><strong>빈칸에 들어갈 가장 적절한 것은?</strong> — 문맥상 어휘</li>
+  <li><strong>다음 글의 주제와 가장 가까운 단어는?</strong> — 어휘 + 독해 결합</li>
+</ul>
+
+<h3>9급 핵심 빈출 어휘 100선 (외우면 30%는 보장)</h3>
+<table>
+  <tr><th>단어</th><th>뜻</th><th>동의어/유사어</th></tr>
+  <tr><td>abandon</td><td>버리다, 포기하다</td><td>desert, give up, forsake</td></tr>
+  <tr><td>abolish</td><td>폐지하다</td><td>eliminate, eradicate</td></tr>
+  <tr><td>accomplish</td><td>성취하다</td><td>achieve, attain</td></tr>
+  <tr><td>acquire</td><td>획득하다</td><td>obtain, gain</td></tr>
+  <tr><td>adverse</td><td>불리한, 반대의</td><td>unfavorable, opposed</td></tr>
+  <tr><td>aggravate</td><td>악화시키다</td><td>worsen, exacerbate</td></tr>
+  <tr><td>alleviate</td><td>완화하다</td><td>relieve, ease, mitigate</td></tr>
+  <tr><td>ambiguous</td><td>모호한</td><td>vague, unclear</td></tr>
+  <tr><td>apparent</td><td>분명한, 외관상의</td><td>obvious, evident, seeming</td></tr>
+  <tr><td>arbitrary</td><td>자의적인, 임의의</td><td>random, capricious</td></tr>
+  <tr><td>articulate</td><td>분명히 말하다</td><td>express clearly, enunciate</td></tr>
+  <tr><td>augment</td><td>증가시키다</td><td>increase, enlarge</td></tr>
+  <tr><td>avert</td><td>피하다, 막다</td><td>prevent, avoid</td></tr>
+  <tr><td>benevolent</td><td>자비로운</td><td>kind, charitable</td></tr>
+  <tr><td>bestow</td><td>수여하다, 부여하다</td><td>grant, confer</td></tr>
+  <tr><td>candid</td><td>솔직한</td><td>frank, honest</td></tr>
+  <tr><td>cease</td><td>그치다, 중단하다</td><td>stop, halt, discontinue</td></tr>
+  <tr><td>circumvent</td><td>우회하다, 피하다</td><td>bypass, evade</td></tr>
+  <tr><td>coincide</td><td>일치하다</td><td>agree, correspond, concur</td></tr>
+  <tr><td>compel</td><td>강요하다</td><td>force, oblige</td></tr>
+  <tr><td>concede</td><td>인정하다, 양보하다</td><td>admit, acknowledge, yield</td></tr>
+  <tr><td>condemn</td><td>비난하다, 선고하다</td><td>denounce, censure, sentence</td></tr>
+  <tr><td>conform</td><td>따르다, 순응하다</td><td>comply, adhere</td></tr>
+  <tr><td>contemplate</td><td>숙고하다</td><td>consider, ponder</td></tr>
+  <tr><td>contradict</td><td>모순되다, 반박하다</td><td>refute, dispute</td></tr>
+  <tr><td>controversial</td><td>논쟁의 여지가 있는</td><td>debatable, contentious</td></tr>
+  <tr><td>conventional</td><td>전통적인, 관습적인</td><td>traditional, customary</td></tr>
+  <tr><td>credible</td><td>믿을 만한</td><td>believable, plausible</td></tr>
+  <tr><td>decline</td><td>감소하다, 거절하다</td><td>decrease, refuse</td></tr>
+  <tr><td>deliberate</td><td>고의의, 신중한</td><td>intentional, careful</td></tr>
+  <tr><td>demolish</td><td>파괴하다</td><td>destroy, ruin</td></tr>
+  <tr><td>deteriorate</td><td>악화되다</td><td>worsen, decline</td></tr>
+  <tr><td>detrimental</td><td>해로운</td><td>harmful, damaging</td></tr>
+  <tr><td>diminish</td><td>줄이다, 감소시키다</td><td>reduce, decrease</td></tr>
+  <tr><td>discrepancy</td><td>불일치, 차이</td><td>difference, disparity</td></tr>
+  <tr><td>diverse</td><td>다양한</td><td>varied, various</td></tr>
+  <tr><td>dwindle</td><td>점점 줄다</td><td>diminish, decline</td></tr>
+  <tr><td>eligible</td><td>자격이 있는</td><td>qualified, entitled</td></tr>
+  <tr><td>eliminate</td><td>제거하다</td><td>remove, eradicate</td></tr>
+  <tr><td>endorse</td><td>지지하다, 승인하다</td><td>support, approve</td></tr>
+  <tr><td>enhance</td><td>향상시키다</td><td>improve, augment</td></tr>
+  <tr><td>enormous</td><td>거대한</td><td>huge, immense, gigantic</td></tr>
+  <tr><td>essential</td><td>필수적인</td><td>vital, indispensable</td></tr>
+  <tr><td>exaggerate</td><td>과장하다</td><td>overstate, magnify</td></tr>
+  <tr><td>exhaust</td><td>고갈시키다, 지치게 하다</td><td>deplete, tire out</td></tr>
+  <tr><td>fabricate</td><td>조작하다, 제작하다</td><td>invent, manufacture</td></tr>
+  <tr><td>feasible</td><td>실현 가능한</td><td>practicable, viable</td></tr>
+  <tr><td>foster</td><td>육성하다, 촉진하다</td><td>encourage, nurture</td></tr>
+  <tr><td>fulfill</td><td>이행하다, 성취하다</td><td>accomplish, satisfy</td></tr>
+  <tr><td>genuine</td><td>진짜의, 진실한</td><td>real, authentic, sincere</td></tr>
+  <tr><td>hamper</td><td>방해하다</td><td>hinder, impede</td></tr>
+  <tr><td>hazardous</td><td>위험한</td><td>dangerous, perilous</td></tr>
+  <tr><td>imminent</td><td>임박한</td><td>impending, approaching</td></tr>
+  <tr><td>impede</td><td>방해하다</td><td>hinder, obstruct</td></tr>
+  <tr><td>incentive</td><td>동기부여, 유인책</td><td>motivation, inducement</td></tr>
+  <tr><td>indispensable</td><td>없어서는 안 될</td><td>essential, vital</td></tr>
+  <tr><td>infer</td><td>추론하다</td><td>deduce, conclude</td></tr>
+  <tr><td>inherent</td><td>내재된</td><td>innate, intrinsic</td></tr>
+  <tr><td>initiate</td><td>시작하다</td><td>begin, commence</td></tr>
+  <tr><td>integral</td><td>필수적인</td><td>essential, indispensable</td></tr>
+  <tr><td>intricate</td><td>복잡한</td><td>complex, complicated</td></tr>
+  <tr><td>jeopardize</td><td>위태롭게 하다</td><td>endanger, threaten</td></tr>
+  <tr><td>justify</td><td>정당화하다</td><td>warrant, defend</td></tr>
+  <tr><td>linger</td><td>오래 머물다</td><td>remain, persist</td></tr>
+  <tr><td>magnify</td><td>확대하다</td><td>enlarge, exaggerate</td></tr>
+  <tr><td>meticulous</td><td>꼼꼼한</td><td>careful, thorough</td></tr>
+  <tr><td>mitigate</td><td>완화시키다</td><td>alleviate, ease</td></tr>
+  <tr><td>negligible</td><td>무시할 만한</td><td>insignificant, trivial</td></tr>
+  <tr><td>obscure</td><td>모호한, 가리다</td><td>vague, hide, conceal</td></tr>
+  <tr><td>omit</td><td>생략하다</td><td>leave out, skip</td></tr>
+  <tr><td>perpetuate</td><td>영속시키다</td><td>continue, maintain</td></tr>
+  <tr><td>pertinent</td><td>관련 있는</td><td>relevant, applicable</td></tr>
+  <tr><td>plausible</td><td>그럴듯한</td><td>credible, believable</td></tr>
+  <tr><td>postpone</td><td>연기하다</td><td>delay, defer</td></tr>
+  <tr><td>precede</td><td>앞서다</td><td>come before, antecede</td></tr>
+  <tr><td>predominant</td><td>지배적인, 우세한</td><td>dominant, prevailing</td></tr>
+  <tr><td>presume</td><td>추정하다</td><td>assume, suppose</td></tr>
+  <tr><td>prevail</td><td>우세하다, 만연하다</td><td>predominate, dominate</td></tr>
+  <tr><td>profound</td><td>깊은, 심오한</td><td>deep, intense</td></tr>
+  <tr><td>prominent</td><td>저명한, 두드러진</td><td>famous, notable</td></tr>
+  <tr><td>prudent</td><td>신중한</td><td>cautious, careful</td></tr>
+  <tr><td>reluctant</td><td>꺼리는</td><td>unwilling, hesitant</td></tr>
+  <tr><td>resilient</td><td>회복력 있는</td><td>tough, flexible</td></tr>
+  <tr><td>scrutinize</td><td>면밀히 조사하다</td><td>examine carefully, inspect</td></tr>
+  <tr><td>significant</td><td>중요한</td><td>important, notable</td></tr>
+  <tr><td>simultaneous</td><td>동시의</td><td>concurrent, synchronous</td></tr>
+  <tr><td>spontaneous</td><td>자발적인</td><td>voluntary, impulsive</td></tr>
+  <tr><td>stagnant</td><td>침체된</td><td>still, inactive</td></tr>
+  <tr><td>subsequent</td><td>후속의</td><td>following, succeeding</td></tr>
+  <tr><td>substantial</td><td>상당한, 실질적인</td><td>considerable, significant</td></tr>
+  <tr><td>sufficient</td><td>충분한</td><td>adequate, enough</td></tr>
+  <tr><td>tedious</td><td>지루한</td><td>boring, tiresome</td></tr>
+  <tr><td>tentative</td><td>잠정적인</td><td>provisional, temporary</td></tr>
+  <tr><td>thrive</td><td>번성하다</td><td>flourish, prosper</td></tr>
+  <tr><td>transient</td><td>일시적인</td><td>temporary, fleeting</td></tr>
+  <tr><td>ubiquitous</td><td>어디에나 있는</td><td>omnipresent, pervasive</td></tr>
+  <tr><td>undermine</td><td>약화시키다</td><td>weaken, sabotage</td></tr>
+  <tr><td>unprecedented</td><td>전례 없는</td><td>unparalleled, unique</td></tr>
+  <tr><td>vague</td><td>모호한</td><td>unclear, ambiguous</td></tr>
+  <tr><td>vibrant</td><td>활기 있는, 선명한</td><td>lively, bright</td></tr>
+  <tr><td>vital</td><td>필수적인</td><td>essential, crucial</td></tr>
+  <tr><td>vulnerable</td><td>취약한</td><td>weak, susceptible</td></tr>
+  <tr><td>warrant</td><td>보장하다, 정당화하다</td><td>guarantee, justify</td></tr>
+</table>
+
+<h3>접두사·접미사로 의미 추측</h3>
+<table>
+  <tr><th>접두사</th><th>의미</th><th>예</th></tr>
+  <tr><td>un-, in-, im-, ir-, dis-</td><td>부정</td><td>unhappy, impossible, irregular</td></tr>
+  <tr><td>re-</td><td>다시, 뒤로</td><td>rewrite, return</td></tr>
+  <tr><td>pre-, fore-</td><td>먼저</td><td>preview, foresee</td></tr>
+  <tr><td>post-</td><td>~후</td><td>postpone, postwar</td></tr>
+  <tr><td>sub-</td><td>아래</td><td>submarine, subway</td></tr>
+  <tr><td>super-, over-</td><td>위, 초과</td><td>supernatural, overcome</td></tr>
+  <tr><td>trans-</td><td>건너서</td><td>transport, translate</td></tr>
+  <tr><td>anti-</td><td>반대</td><td>antibiotic, antisocial</td></tr>
+</table>
+
+<h2 id="grammar">2. 어법 (시제·태·관계대명사·가정법) <span class="freq">출제 28회</span></h2>
+
+<h3>시제 (Tense) — 12시제 핵심</h3>
+<table>
+  <tr><th>시제</th><th>형태</th><th>용법</th></tr>
+  <tr><td>현재</td><td>V/Vs</td><td>현재 사실, 일반 진리, 습관</td></tr>
+  <tr><td>과거</td><td>V-ed</td><td>과거 사실, 역사적 사실</td></tr>
+  <tr><td>미래</td><td>will V</td><td>미래 추측·의지</td></tr>
+  <tr><td>현재완료</td><td>have/has p.p.</td><td>경험·계속·완료·결과 (현재까지)</td></tr>
+  <tr><td>과거완료</td><td>had p.p.</td><td>과거의 어떤 시점보다 이전</td></tr>
+  <tr><td>미래완료</td><td>will have p.p.</td><td>미래의 어떤 시점까지</td></tr>
+  <tr><td>현재진행</td><td>am/is/are -ing</td><td>지금 진행</td></tr>
+  <tr><td>과거진행</td><td>was/were -ing</td><td>과거 진행</td></tr>
+</table>
+<ul>
+  <li><strong>시제 일치</strong>: 주절 과거 → 종속절 과거/과거완료 (단 진리·습관·역사적 사실은 예외)</li>
+  <li><strong>시간·조건의 부사절</strong>: 미래시제 대신 현재시제 (when, if, before, after, until, as soon as)</li>
+</ul>
+
+<h3>태 (Voice) — 능동·수동</h3>
+<ul>
+  <li><strong>수동태 형태</strong>: be + p.p. (+ by + 행위자)</li>
+  <li><strong>완료 수동태</strong>: have/has been p.p.</li>
+  <li><strong>진행 수동태</strong>: be being p.p.</li>
+  <li><strong>주의 자동사</strong>: 수동태 불가 (happen, occur, appear, arise, exist, belong, consist)</li>
+  <li><strong>4형식 수동</strong>: 직접목적어·간접목적어 둘 다 주어 가능 (단 buy·make 등은 직접목적어만)</li>
+</ul>
+
+<h3>관계대명사·관계부사</h3>
+<table>
+  <tr><th>선행사</th><th>주격</th><th>목적격</th><th>소유격</th></tr>
+  <tr><td>사람</td><td>who</td><td>whom</td><td>whose</td></tr>
+  <tr><td>사물·동물</td><td>which</td><td>which</td><td>whose/of which</td></tr>
+  <tr><td>사람·사물</td><td>that</td><td>that</td><td>—</td></tr>
+  <tr><td>선행사 포함</td><td>what (the thing which)</td><td></td><td></td></tr>
+</table>
+<ul>
+  <li><strong>관계부사</strong>: when(time), where(place), why(reason), how(way)</li>
+  <li><strong>that 사용</strong>: 최상급, 서수, the only/the very/the same, all/no/every 뒤</li>
+  <li><strong>계속적 용법</strong>: , which / , who (앞 절 전체 또는 한 부분 부연). that은 계속적 용법 불가</li>
+</ul>
+
+<h3>가정법</h3>
+<table>
+  <tr><th>유형</th><th>if 절</th><th>주절</th><th>의미</th></tr>
+  <tr><td>가정법 과거</td><td>If S + 과거동사 (was→were)</td><td>S + would/could/might + V</td><td>현재 사실 반대</td></tr>
+  <tr><td>가정법 과거완료</td><td>If S + had p.p.</td><td>S + would/could/might + have p.p.</td><td>과거 사실 반대</td></tr>
+  <tr><td>혼합 가정법</td><td>If S + had p.p. (과거)</td><td>S + would V (현재)</td><td>과거 가정 → 현재 결과</td></tr>
+  <tr><td>가정법 미래 (가능)</td><td>If S + should V</td><td>S + will/would V</td><td>가능성 낮은 미래</td></tr>
+</table>
+<ul>
+  <li><strong>I wish + 가정법 과거</strong>: 현재 이루지 못한 소망</li>
+  <li><strong>as if/as though + 가정법 과거</strong>: 마치 ~인 것처럼 (사실은 아님)</li>
+  <li><strong>If 생략 시 도치</strong>: Were I rich = If I were rich, Had I known = If I had known</li>
+</ul>
+
+<h3>분사·동명사·부정사</h3>
+<ul>
+  <li><strong>분사구문</strong>: 부사절 → 분사 (Walking down the street, I saw...) — 능동/완료/수동 구분</li>
+  <li><strong>분사 의미상의 주어</strong>: 주절 주어와 다르면 명시 (The weather being fine, ...)</li>
+  <li><strong>to부정사 vs 동명사</strong>:
+    <ul>
+      <li>to부정사만 목적어: want, hope, decide, plan, agree, refuse, promise, expect, manage</li>
+      <li>동명사만 목적어: enjoy, finish, mind, avoid, give up, postpone, suggest, consider, deny, admit</li>
+      <li>둘 다, 의미 다름: remember/forget/regret + to V (앞으로) vs -ing (이미)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>기타 빈출 어법</h3>
+<ul>
+  <li><strong>병렬 구조</strong>: and/but/or 양쪽 같은 형태 (V-ing and V-ing, to V and to V)</li>
+  <li><strong>주어-동사 수일치</strong>: 주어가 단수/복수 정확히 파악 (긴 수식어 주의)</li>
+  <li><strong>어순</strong>: 부정어구 도치 (Hardly/Scarcely/Never/Rarely + 조동사 + S + V)</li>
+  <li><strong>비교</strong>: as 원급 as / -er than / the -est / 비교 대상 형태 일치</li>
+</ul>
+
+<h2 id="reading-main">3. 독해 — 주제·요지·제목 <span class="freq">출제 24회</span></h2>
+
+<h3>출제 패턴</h3>
+<ul>
+  <li><strong>What is the main idea/topic of the passage?</strong></li>
+  <li><strong>Which of the following is the best title?</strong></li>
+  <li><strong>The author's main purpose is to...</strong></li>
+</ul>
+
+<h3>주제·요지 찾는 4가지 단서</h3>
+<ol>
+  <li><strong>첫 문장 (topic sentence)</strong>: 영어 글은 두괄식이 80% 이상</li>
+  <li><strong>핵심 명사 반복</strong>: 글에서 가장 자주 등장하는 개념</li>
+  <li><strong>역접 후 진술</strong>: but, however, yet 다음에 핵심 주장</li>
+  <li><strong>마지막 문장 결론</strong>: in conclusion, therefore, thus</li>
+</ol>
+
+<h3>제목 (title) 고르기</h3>
+<ul>
+  <li>주제보다 함축적·압축적</li>
+  <li>비유·은유 활용 가능</li>
+  <li>너무 좁거나 (사례 한정) 너무 넓은 (전체 학문) 선지는 오답</li>
+</ul>
+
+<h2 id="reading-detail">4. 독해 — 세부정보·일치·불일치 <span class="freq">출제 21회</span></h2>
+
+<h3>출제 패턴</h3>
+<ul>
+  <li><strong>Which of the following is true/NOT true according to the passage?</strong></li>
+  <li><strong>What does the passage say about ~?</strong></li>
+</ul>
+
+<h3>풀이 전략</h3>
+<ol>
+  <li>선지 먼저 읽기 — 키워드 메모</li>
+  <li>본문에서 키워드 위치 빠르게 검색 (skimming)</li>
+  <li>해당 부분 정독해 일치 여부 확인</li>
+  <li>추론 절대 금지 — 본문에 명시된 내용만</li>
+</ol>
+
+<h3>함정 5종 (한국어 시험과 동일)</h3>
+<ol>
+  <li>부분 사실 + 일부 왜곡</li>
+  <li>정도 과장 (always, all, every, never, none)</li>
+  <li>인과 역전</li>
+  <li>본문에 없는 정보 추가</li>
+  <li>비교 대상 바꾸기</li>
+</ol>
+
+<h2 id="translation">5. 영작 (우리말 → 영어) <span class="freq">출제 14회</span></h2>
+
+<h3>출제 패턴</h3>
+<ul>
+  <li><strong>다음 우리말을 영어로 옮긴 것 중 가장 적절한/적절하지 않은 것은?</strong></li>
+  <li>4개 선지 중 1~3개가 어색한 영어, 1개가 자연스러운 영어</li>
+</ul>
+
+<h3>자주 출제되는 영작 함정</h3>
+<table>
+  <tr><th>한국어</th><th>잘못된 영작</th><th>올바른 영작</th></tr>
+  <tr><td>나는 어제 도착했다</td><td>I have arrived yesterday</td><td>I arrived yesterday</td></tr>
+  <tr><td>나는 30분 전에 도착했다</td><td>I am here for 30 minutes</td><td>I have been here for 30 minutes</td></tr>
+  <tr><td>~할 가치가 있다</td><td>It is worth to do</td><td>It is worth doing / It is worthwhile to do</td></tr>
+  <tr><td>~하는 데 익숙하다</td><td>I am used to do</td><td>I am used to doing</td></tr>
+  <tr><td>나는 그가 거짓말했다고 생각한다</td><td>I think that he lies</td><td>I think (that) he lied</td></tr>
+  <tr><td>그는 책을 두 권 가지고 있다</td><td>He has two book</td><td>He has two books</td></tr>
+  <tr><td>~했어야 했는데 (후회)</td><td>I had to study</td><td>I should have studied</td></tr>
+  <tr><td>~했을 리 없다</td><td>He cannot lie</td><td>He cannot have lied</td></tr>
+</table>
+
+<h3>한국어식 영어 (Konglish) 주의</h3>
+<ul>
+  <li>핸드폰 → cell phone / mobile phone (NOT hand phone)</li>
+  <li>아이쇼핑 → window shopping (NOT eye shopping)</li>
+  <li>스킨십 → physical contact / affection (NOT skinship)</li>
+  <li>오피스텔 → studio apartment (NOT officetel)</li>
+</ul>
+
+<h2 id="reading-flow">6. 독해 — 흐름·순서·삽입·빈칸 <span class="freq">출제 11회</span></h2>
+
+<h3>글의 순서 배열</h3>
+<ul>
+  <li>주어진 글 → (A)·(B)·(C) 배열</li>
+  <li><strong>전략</strong>: 지시어(this, that, these, those, it), 접속어(however, therefore, in addition, for example) 추적</li>
+  <li>대명사가 지칭하는 명사가 직전에 와야 함</li>
+</ul>
+
+<h3>주어진 문장 삽입</h3>
+<ul>
+  <li>삽입할 문장 분석 → 무엇을 가리키는가? 어떤 흐름인가?</li>
+  <li>삽입 후보 위치마다 앞뒤 흐름 확인 → 가장 자연스러운 곳</li>
+</ul>
+
+<h3>빈칸 추론</h3>
+<ul>
+  <li><strong>주제 빈칸</strong>: 글 전체 요지 = 빈칸</li>
+  <li><strong>예시 앞 빈칸</strong>: For example 다음에 나오는 사례 → 빈칸은 일반 진술</li>
+  <li><strong>대조 후 빈칸</strong>: However 다음 빈칸 → 앞 내용과 반대</li>
+</ul>
+
+<h3>흐름과 무관한 문장 찾기</h3>
+<ul>
+  <li>주제와 동떨어진 문장 1개 색출</li>
+  <li>같은 단어가 나와도 주제 흐름과 무관하면 정답</li>
+</ul>
+
+<h2 id="practical">7. 생활영어·실용문 <span class="freq">출제 2회 (드묾)</span></h2>
+
+<h3>최근 출제 경향</h3>
+<ul>
+  <li>9급 국가직은 생활영어 비중 매우 낮음 (2022년 이후 대부분 폐지)</li>
+  <li>지방직·서울시는 가끔 출제</li>
+</ul>
+
+<h3>주요 표현 (출제 대비)</h3>
+<table>
+  <tr><th>상황</th><th>표현</th></tr>
+  <tr><td>제안</td><td>How about ~ing? / Why don't we ~? / Let's ~</td></tr>
+  <tr><td>거절</td><td>I'd love to, but ~ / I'm afraid I can't ~</td></tr>
+  <tr><td>요청</td><td>Could you ~? / Would you mind ~ing?</td></tr>
+  <tr><td>감사</td><td>I appreciate it / Thanks a lot</td></tr>
+  <tr><td>사과</td><td>I'm sorry / My apologies / I apologize</td></tr>
+  <tr><td>맞장구</td><td>That's right / I see / I know what you mean</td></tr>
+  <tr><td>의견 묻기</td><td>What do you think? / How do you feel about ~?</td></tr>
+</table>
+
+<h2 id="reading-tone">8. 독해 — 어조·심경 <span class="freq">출제 드묾</span></h2>
+
+<h3>어조 (Tone) 빈출 어휘</h3>
+<table>
+  <tr><th>분류</th><th>어휘</th></tr>
+  <tr><td>긍정</td><td>optimistic, hopeful, enthusiastic, cheerful, sympathetic, encouraging</td></tr>
+  <tr><td>부정</td><td>pessimistic, gloomy, indifferent, hostile, sarcastic, ironic, critical</td></tr>
+  <tr><td>객관</td><td>objective, neutral, informative, factual, analytical, descriptive</td></tr>
+  <tr><td>주관</td><td>subjective, biased, emotional, persuasive</td></tr>
+</table>
+
+<h3>심경 (Mood) 빈출 어휘</h3>
+<table>
+  <tr><th>분류</th><th>어휘</th></tr>
+  <tr><td>기쁨</td><td>delighted, thrilled, ecstatic, content, joyful, satisfied</td></tr>
+  <tr><td>슬픔</td><td>sorrowful, depressed, melancholy, miserable, gloomy</td></tr>
+  <tr><td>두려움</td><td>frightened, terrified, anxious, nervous, panicked</td></tr>
+  <tr><td>분노</td><td>angry, furious, indignant, annoyed, irritated</td></tr>
+  <tr><td>혼란</td><td>confused, perplexed, puzzled, bewildered</td></tr>
+  <tr><td>안도</td><td>relieved, calm, peaceful, serene</td></tr>
+</table>
+
+<div class="verify">
+  <strong>✅ 검증 결과:</strong> test set 2회 40문제 분석 — 8단원 키워드 매칭으로 40/40 (100%) 직접 분류. <strong>어휘 단원이 50% 차지</strong>하므로 단어 100선만 확실히 외워도 안정적인 점수 확보 가능.
+</div>
+
+<h2 id="reinforce">9. 보강 — 8품사·기타 어법</h2>
+
+<h3>영어 8품사 (Parts of Speech)</h3>
+<table>
+  <tr><th>품사</th><th>역할</th><th>예</th></tr>
+  <tr><td><strong>명사 (Noun)</strong></td><td>사람·사물·개념</td><td>book, love, John</td></tr>
+  <tr><td><strong>대명사 (Pronoun)</strong></td><td>명사 대신</td><td>I, you, he, this, who</td></tr>
+  <tr><td><strong>동사 (Verb)</strong></td><td>동작·상태</td><td>run, be, become</td></tr>
+  <tr><td><strong>형용사 (Adjective)</strong></td><td>명사 수식</td><td>beautiful, big, three</td></tr>
+  <tr><td><strong>부사 (Adverb)</strong></td><td>동사·형용사·부사·문장 수식</td><td>quickly, very, well</td></tr>
+  <tr><td><strong>전치사 (Preposition)</strong></td><td>명사·대명사 앞에서 관계</td><td>in, on, at, by, with</td></tr>
+  <tr><td><strong>접속사 (Conjunction)</strong></td><td>단어·구·절 연결</td><td>and, but, or, because, although</td></tr>
+  <tr><td><strong>감탄사 (Interjection)</strong></td><td>감정 표현</td><td>oh, wow, alas</td></tr>
+</table>
+
+<h3>형용사 (Adjective)</h3>
+<ul>
+  <li><strong>한정용법</strong>: 명사 앞·뒤에서 직접 수식 (a beautiful flower)</li>
+  <li><strong>서술용법</strong>: 보어 자리 (She is happy)</li>
+  <li><strong>한정용법만 가능</strong>: only, main, mere, former, later, drunken</li>
+  <li><strong>서술용법만 가능</strong>: alike, alive, alone, asleep, awake, aware, content</li>
+  <li><strong>형용사 어순</strong>: 한정사 → 의견 → 크기 → 모양 → 나이 → 색깔 → 출신 → 재질 → 용도 (a beautiful big old red Italian wooden)</li>
+</ul>
+
+<h3>전치사 (Preposition)</h3>
+<table>
+  <tr><th>전치사</th><th>주요 의미</th></tr>
+  <tr><td><strong>at</strong></td><td>지점·시각 (at the door, at 7 o'clock)</td></tr>
+  <tr><td><strong>in</strong></td><td>공간 안·기간 (in Seoul, in 2026, in the morning)</td></tr>
+  <tr><td><strong>on</strong></td><td>접촉·요일·날짜 (on the table, on Monday, on June 1)</td></tr>
+  <tr><td><strong>by</strong></td><td>옆·수단·기한 (by the river, by car, by tomorrow)</td></tr>
+  <tr><td><strong>with</strong></td><td>함께·도구 (with friends, with a pen)</td></tr>
+  <tr><td><strong>for</strong></td><td>기간·목적·대상 (for 3 hours, for you)</td></tr>
+  <tr><td><strong>during</strong></td><td>특정기간 동안 (during the war)</td></tr>
+  <tr><td><strong>through</strong></td><td>~을 통해·통과 (through the tunnel)</td></tr>
+  <tr><td><strong>from / since</strong></td><td>출발점 (from Monday) / 시점 이후 (since 2020)</td></tr>
+  <tr><td><strong>until / by</strong></td><td>~까지 계속 (until 5pm) / 기한 (by 5pm)</td></tr>
+</table>
+
+<h3>접속사 (Conjunction)</h3>
+<ul>
+  <li><strong>등위접속사 (FANBOYS)</strong>: For, And, Nor, But, Or, Yet, So
+    <ul><li>대등 연결, 콤마 + 등위접속사</li></ul>
+  </li>
+  <li><strong>상관접속사</strong>: both A and B / either A or B / neither A nor B / not only A but also B / not A but B</li>
+  <li><strong>종속접속사</strong>:
+    <ul>
+      <li>시간: when, while, before, after, until, as soon as, since</li>
+      <li>이유: because, since, as, now that</li>
+      <li>조건: if, unless, provided that, in case</li>
+      <li>양보: although, though, even though, even if, while</li>
+      <li>결과: so ~ that, such ~ that</li>
+      <li>목적: so that, in order that</li>
+      <li>대조: whereas, while</li>
+    </ul>
+  </li>
+  <li><strong>접속부사 (Conjunctive Adverb)</strong>: however, therefore, moreover, furthermore, nevertheless, otherwise (세미콜론 또는 마침표 후 사용)</li>
+</ul>
+
+<h3>능동태·수동태 변환</h3>
+<ul>
+  <li><strong>능동태 (Active Voice)</strong>: S + V + O — 주어가 행위 (Tom wrote a letter)</li>
+  <li><strong>수동태 (Passive Voice)</strong>: S + be + p.p. (+ by + 행위자) — 목적어가 주어로 (A letter was written by Tom)</li>
+  <li><strong>변환 절차</strong>:
+    <ol>
+      <li>능동태 목적어 → 수동태 주어</li>
+      <li>능동태 동사 → be + p.p. (시제 유지)</li>
+      <li>능동태 주어 → by + 행위자 (생략 가능)</li>
+    </ol>
+  </li>
+  <li><strong>수동태 불가 동사</strong>: 자동사 (happen, occur, appear, arise, exist, belong, consist, resemble, lack)</li>
+  <li><strong>by 외 전치사 사용</strong>:
+    <ul>
+      <li>be interested in / be surprised at / be filled with / be made of (재료) / be made from (가공)</li>
+      <li>be known to (사람) / for (특징) / by (수단) / as (자격)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>주의 — 어법 함정</h3>
+<ul>
+  <li><strong>주어-동사 수일치</strong>: 긴 수식어가 끼면 헷갈림 (The book on the shelves is mine)</li>
+  <li><strong>each·every</strong>: 단수 취급 (each student is, every boy was)</li>
+  <li><strong>both·all·several</strong>: 복수 취급</li>
+  <li><strong>none</strong>: 단수·복수 모두 가능 (현대 영어는 복수 선호)</li>
+  <li><strong>자동사·타동사 헷갈림</strong>: discuss·marry·resemble·enter·reach·attend·answer (전치사 X, 직접 목적어)</li>
+</ul>
+
+<footer>
+  9급 국가직 영어 자동 단권화 v1 (보강 후) · 198문제 시드 + 40문제 검증 · 9단원<br>
+  전 직렬 공통과목 · 한능검·기출노트 학습 플랫폼
+</footer>
+</div>
+</body>
+</html>
