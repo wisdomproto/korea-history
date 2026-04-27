@@ -46,8 +46,13 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css"
           rel="stylesheet"
         />
+        {/* AdSense — SDK 항상 로드 (심사 위해 필수). 광고 표시는 NEXT_PUBLIC_ADSENSE_ENABLED + slot 기반 */}
         <meta name="google-adsense-account" content="ca-pub-6002059361162458" />
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6002059361162458" crossOrigin="anonymous" />
+        {/* AdFit (카카오 애드핏) — ENV 활성화 시에만 로드 */}
+        {process.env.NEXT_PUBLIC_ADFIT_ENABLED === "true" && (
+          <script async src="https://t1.kakaocdn.net/kas/static/ba.min.js" />
+        )}
         <meta name="naver-site-verification" content="e79f5c36354d88f45d3cd7b622df34f3d570a336" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-CJ7V236NQV" />
         <script
