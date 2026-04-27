@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { getAllExams, getAllKeywords } from "@/lib/data";
 import type { ExamFile } from "@/lib/types";
+import AdSlot from "@/components/AdSlot";
 
 // ── Design tokens (match globals.css :root vars) ────────────────────────
 const T = {
@@ -1868,6 +1869,12 @@ export default function KoreanHistoryLanding() {
       <ExamPreview />
       <NotesPreview />
       <LinkedPreview />
+
+      {/* Ad: 콘텐츠 둘러본 후 자연스러운 자리 (TOFU + 자체 콘텐츠 제시 후). auto = 모바일 AdFit / 데스크톱 AdSense */}
+      <div className="px-5 sm:px-6 md:px-8 py-6 md:py-8">
+        <AdSlot size="rectangle" slot={process.env.NEXT_PUBLIC_AD_SLOT_LANDING} />
+      </div>
+
       <LatestExamsBand latestExams={latestExams} topKeywords={topKeywords} />
       <PricingBand />
       <SeoProse

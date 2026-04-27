@@ -224,6 +224,9 @@ export default async function NotePage({ params }: Props) {
         noteTitle={note.title}
       />
 
+      {/* Ad: NoteActions 직후 — 노트 학습 + 관련 문제 둘러본 후 두번째 광고 */}
+      <AdSlot size="rectangle" slot={process.env.NEXT_PUBLIC_AD_SLOT_NOTE_BOTTOM} className="my-6" />
+
       <PrevNextNav
         prev={
           prev ? { href: `/notes/${prev.id}`, label: prev.title } : undefined
