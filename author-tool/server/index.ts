@@ -15,6 +15,7 @@ import notesRoutes from './routes/notes.routes.js';
 import contentRoutes from './routes/content.routes.js';
 import projectRoutes from './routes/project.routes.js';
 import blogToolsRoutes from './routes/blog-tools.routes.js';
+import googleToolsRoutes from './routes/google-tools.routes.js';
 import analyticsRoutes from './routes/analytics.routes.js';
 import cbtRoutes from './routes/cbt.routes.js';
 import summaryNoteRoutes from './routes/summary-note.routes.js';
@@ -29,6 +30,7 @@ import adCampaignsRoutes from './routes/ad-campaigns.routes.js';
 import channelAnalyticsRoutes from './routes/channel-analytics.routes.js';
 import competitorsRoutes from './routes/competitors.routes.js';
 import strategyRoutes from './routes/strategy.routes.js';
+import civilNotesRoutes from './routes/civil-notes.routes.js';
 import { startCron } from './services/cron.service.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -77,6 +79,7 @@ async function startServer() {
   app.use('/api/contents', contentRoutes);
   app.use('/api/projects', projectRoutes);
   app.use('/api/blog-tools', blogToolsRoutes);
+  app.use('/api/google-tools', googleToolsRoutes);
   app.use('/api/analytics', analyticsRoutes);
   app.use('/api/cbt', cbtRoutes);
   app.use('/api/summary-notes', summaryNoteRoutes);
@@ -91,8 +94,14 @@ async function startServer() {
   app.use('/api/channel-analytics', channelAnalyticsRoutes);
   app.use('/api/competitors', competitorsRoutes);
   app.use('/api/strategy', strategyRoutes);
+  app.use('/api/civil-notes', civilNotesRoutes);
 
   app.use(errorMiddleware as express.ErrorRequestHandler);
+
+  // --- Strategy docs (HTML files in /docs) ---
+  // 사이드바 footer 버튼에서 열림. 새 문서 추가 시 docs/ 에 HTML 파일만 두면 됨.
+  const docsPath = path.resolve(__dirname, '../../docs');
+  app.use('/docs', express.static(docsPath));
 
   // --- Static file serving ---
   if (isDev) {

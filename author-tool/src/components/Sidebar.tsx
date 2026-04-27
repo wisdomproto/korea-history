@@ -89,6 +89,11 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
             className={`p-1.5 rounded-lg text-sm transition-colors ${sidebarSection === 'marketing' ? 'bg-emerald-100' : 'hover:bg-gray-100'}`}
             title="마케팅"
           >📣</button>
+          <button
+            onClick={() => setActiveView('civil-notes')}
+            className={`p-1.5 rounded-lg text-sm transition-colors ${activeView === 'civil-notes' ? 'bg-amber-100 text-amber-700' : 'hover:bg-gray-100'}`}
+            title="9급 공무원 단권화 편집"
+          >📚</button>
         </div>
 
         {/* 하단 문서 버튼 */}
@@ -134,8 +139,17 @@ export function Sidebar({ onCreateExam, onDeleteExam }: SidebarProps) {
         >
           📊
         </button>
+        <button
+          onClick={() => setActiveView('civil-notes')}
+          className={`p-1.5 rounded-lg text-sm transition-colors ${
+            activeView === 'civil-notes' ? 'bg-amber-100 text-amber-700' : 'hover:bg-gray-100 text-gray-500'
+          }`}
+          title="9급 공무원 단권화 노트 편집"
+        >
+          📚
+        </button>
         <a
-          href={window.location.hostname === 'localhost' ? 'http://localhost:8081' : 'https://gcnote.co.kr'}
+          href={window.location.hostname === 'localhost' ? 'http://localhost:3003' : 'https://gcnote.co.kr'}
           target="_blank"
           rel="noopener noreferrer"
           className="ml-auto rounded-lg bg-gray-100 px-2 py-1 text-[11px] font-medium text-gray-600 transition-colors hover:bg-primary-100 hover:text-primary-700"

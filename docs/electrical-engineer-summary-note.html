@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>전기기사 자동 단권화</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>:root{--bg:#F5EFE4;--paper:#FFF;--ink:#1F1A14;--ink-soft:#5A4F3F;--amber:#B45309;--amber-soft:#FED7AA;--amber-bg:#FFF7ED;--rose:#BE123C;--hairline:rgba(31,26,20,.12);--serif:'Noto Serif KR',serif;--sans:'Pretendard Variable',sans-serif;--mono:'JetBrains Mono',monospace}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;font-size:15px;word-break:keep-all}.container{max-width:980px;margin:0 auto;padding:48px 28px 80px}header.hero{text-align:center;padding:36px 0 24px;border-bottom:1px solid var(--hairline);margin-bottom:32px}.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--amber);text-transform:uppercase;font-weight:700}h1{font-family:var(--serif);font-weight:900;font-size:clamp(26px,4vw,38px);margin:12px 0;letter-spacing:-.02em}h1 .amber{color:var(--amber)}.meta{margin-top:16px;display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center;font-family:var(--mono);font-size:11px;color:var(--ink-soft)}section.topic{background:var(--paper);border:1px solid var(--hairline);border-radius:14px;padding:24px 28px;margin-bottom:18px;border-left:5px solid var(--amber)}section.topic.tier1{border-left:5px solid var(--rose)}.topic-name{font-family:var(--serif);font-size:22px;font-weight:900;margin:0 0 12px}h3{font-family:var(--serif);font-size:16px;font-weight:800;margin:14px 0 6px;border-left:3px solid var(--amber);padding-left:10px}.topic p{margin:6px 0;line-height:1.7;font-size:14px}.topic ul,.topic ol{padding-left:22px;margin:6px 0}.topic li{margin-bottom:4px;font-size:14px;line-height:1.7}.topic strong{font-weight:700}table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}th,td{padding:8px 10px;border:1px solid var(--hairline);text-align:left;vertical-align:top}th{background:var(--amber-soft);color:var(--amber);font-weight:700}.exam-box{background:var(--amber-bg);border-left:4px solid var(--amber);padding:8px 12px;margin:10px 0;font-size:13px;border-radius:0 6px 6px 0}hr.divider{border:0;border-top:1px solid var(--hairline);margin:24px 0}footer{text-align:center;font-size:12px;color:var(--ink-soft);padding-top:20px}.formula{background:#F5EFE4;border-left:3px solid var(--amber);padding:8px 14px;margin:8px 0;font-family:var(--mono);font-size:13px;border-radius:0 6px 6px 0}</style></head>
+<body>
+<div class="container">
+<header class="hero">
+<div class="eyebrow">Auto Summary Note · 전기기사</div>
+<h1>전기기사 <span class="amber">자동 단권화</span></h1>
+<div class="meta"><span>국가기술자격</span><span>·</span><span>59회 5900문제</span><span>·</span><span>10단원 (5과목)</span></div>
+</header>
+
+<section class="topic tier1" id="t1"><h2 class="topic-name">1. 전기자기학 — 정전기·자기</h2>
+<h3>쿨롱의 법칙</h3>
+<div class="formula">F = (1/4πε₀) × (Q₁Q₂/r²) [N], k = 9×10⁹ N·m²/C²</div>
+<h3>전기장·전위</h3>
+<ul>
+<li>전기장 E = F/Q [V/m]</li>
+<li>전위 V = W/Q [V] (전기장 내 단위전하 일)</li>
+<li>전기장과 전위 관계: <strong>E = -dV/dx</strong></li>
+<li>가우스 법칙: ∮E·dS = Q/ε₀ (폐곡면 내 전하)</li>
+</ul>
+<h3>커패시턴스</h3>
+<ul>
+<li>C = Q/V [F]</li>
+<li>평행판: C = ε₀ε_r·A/d</li>
+<li>구형: C = 4πε₀·R</li>
+<li><strong>직렬</strong>: 1/C = 1/C₁ + 1/C₂ + ... (저항 병렬과 같음)</li>
+<li><strong>병렬</strong>: C = C₁ + C₂ + ...</li>
+<li>축적 에너지: W = (1/2)CV² = (1/2)QV = Q²/(2C)</li>
+</ul>
+<h3>자계·자기 인덕턴스</h3>
+<ul>
+<li>비오·사바르: dB = (μ₀I/4π) × (dl×r̂/r²)</li>
+<li>앙페르: ∮H·dl = I (폐곡선 둘레 자계)</li>
+<li>패러데이: e = -N·dΦ/dt (전자유도 기전력)</li>
+<li>인덕턴스 L: V = L·di/dt</li>
+<li>축적 에너지: W = (1/2)LI²</li>
+</ul>
+<h3>전자력·로런츠</h3>
+<ul>
+<li>전선 전자력: F = BIl·sinθ [N]</li>
+<li>로런츠 힘: F = qE + qv×B</li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: 커패시터 직병렬 + 가우스 법칙 매년.</div>
+</section>
+
+<section class="topic tier1" id="t2"><h2 class="topic-name">2. 전력공학 — 송전·배전·발전</h2>
+<h3>발전 방식</h3>
+<table>
+<tr><th>방식</th><th>특징</th></tr>
+<tr><td>화력</td><td>석탄·LNG·석유. 효율 35~50%</td></tr>
+<tr><td>원자력</td><td>핵분열. 효율 30~35%. 가동률 ↑</td></tr>
+<tr><td>수력</td><td>유수·양수·조력</td></tr>
+<tr><td>신재생</td><td>태양광·풍력·바이오·연료전지·지열</td></tr>
+</table>
+<h3>송전 (장거리 + 고압)</h3>
+<ul>
+<li><strong>전압</strong>: 154kV·345kV·765kV (한국)</li>
+<li><strong>장점 (직류 송전 HVDC)</strong>: 손실 ↓·역률 영향 X·제어 용이·계통 분리</li>
+<li><strong>장점 (교류 송전)</strong>: 변압 쉬움·기존 인프라</li>
+<li><strong>3상 평형</strong>: 위상차 120°. P = √3·V·I·cosθ</li>
+</ul>
+<h3>송전 손실·코로나</h3>
+<ul>
+<li><strong>손실</strong> = I²R (전류 제곱에 비례). 고압화로 전류 ↓ → 손실 ↓</li>
+<li><strong>코로나 방전</strong>: 표면 전계가 임계값 초과 → 전리</li>
+<li><strong>방지</strong>: 굵은 전선·복도체·연선·전선 표면 평활</li>
+</ul>
+<h3>전력 계통 보호</h3>
+<ul>
+<li><strong>차단기 (CB)</strong>: 사고 시 회로 차단. OCB·VCB·SF6·GIS·ACB</li>
+<li><strong>단로기 (DS)</strong>: 무전류 시 회로 분리 (점검용)</li>
+<li><strong>피뢰기 (LA)</strong>: 이상전압 보호</li>
+<li><strong>변성기</strong>: 변압기·CT(전류)·PT(전압)·ZCT(영상전류)</li>
+<li><strong>계전기</strong>: 과전류·차동·거리·방향·접지</li>
+</ul>
+<h3>접지·뇌해</h3>
+<ul>
+<li><strong>계통접지</strong>: TN·TT·IT</li>
+<li><strong>피뢰침</strong>: 보호각·보호반경</li>
+<li><strong>SPD</strong>: 서지보호기</li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: 차단기 종류 + 코로나 방지 매년.</div>
+</section>
+
+<section class="topic tier1" id="t3"><h2 class="topic-name">3. 전기기기 — 변압기·전동기·발전기</h2>
+<h3>변압기 (Transformer)</h3>
+<ul>
+<li><strong>권수비</strong>: a = N₁/N₂ = V₁/V₂ = I₂/I₁</li>
+<li><strong>등가회로</strong>: 1차·2차 환산. 누설 리액턴스·여자전류</li>
+<li><strong>손실</strong>: 무부하손 (철손, 히스테리시스 + 와류) + 부하손 (동손)</li>
+<li><strong>효율</strong>: η = 출력/(출력+손실). 최대효율 = 철손 = 동손 시</li>
+<li><strong>결선</strong>: Y-Y, Δ-Δ, Y-Δ, Δ-Y, V-V (3상 4종 + V결선)</li>
+<li><strong>병렬운전 조건</strong>: 극성·권수비·임피던스·내부저항·% 임피던스 같아야</li>
+</ul>
+<h3>유도전동기</h3>
+<ul>
+<li><strong>슬립</strong> s = (Ns - N)/Ns (동기속도 vs 회전속도)</li>
+<li>Ns = 120f/P (동기속도, p=극수)</li>
+<li><strong>토크</strong>: T = (P/4πf)·(s·R₂'/(R₂'² + (s·X₂')²))·... 비례추이</li>
+<li><strong>기동법</strong>: 직입·Y-Δ·리액터·기동보상기·인버터</li>
+<li><strong>속도제어</strong>: 슬립·극수·주파수 제어 (인버터 VVVF)</li>
+</ul>
+<h3>동기기 (발전기·전동기)</h3>
+<ul>
+<li><strong>동기속도 Ns = 120f/P</strong></li>
+<li><strong>동기 임피던스</strong>: 전기자 반작용 + 누설 리액턴스</li>
+<li><strong>위상</strong>: 부하 시 진상·지상 (V곡선)</li>
+<li><strong>난조</strong>: 부하 변동에 의한 진동. 제동권선으로 방지</li>
+</ul>
+<h3>직류기</h3>
+<ul>
+<li><strong>발전기 분류</strong>: 타려·자려 (분권·직권·복권)</li>
+<li><strong>전동기 분류</strong>: 분권 (정속도)·직권 (가변)·복권</li>
+<li><strong>전기자 반작용</strong>: 자속 감소·중성축 이동. 보상권선·보극으로 보정</li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: 변압기 효율·유도전동기 슬립 매년.</div>
+</section>
+
+<section class="topic tier1" id="t4"><h2 class="topic-name">4. 회로이론 — 직류·교류·과도</h2>
+<h3>직류 회로</h3>
+<ul>
+<li><strong>옴 법칙</strong>: V = IR</li>
+<li><strong>키르히호프 법칙</strong>: KCL (전류 합 0)·KVL (전압 합 0)</li>
+<li><strong>저항 직병렬</strong>: 직렬 R = R₁+R₂..., 병렬 1/R = 1/R₁+1/R₂...</li>
+<li><strong>전력</strong>: P = VI = I²R = V²/R [W]</li>
+</ul>
+<h3>교류 회로</h3>
+<ul>
+<li><strong>주기 T = 1/f</strong>, 각주파수 ω = 2πf</li>
+<li><strong>실효값</strong>: 정현파 V_rms = Vm/√2</li>
+<li><strong>임피던스</strong>: Z = R + jX. |Z| = √(R²+X²)</li>
+<li><strong>유도성</strong> X_L = ωL / <strong>용량성</strong> X_C = 1/(ωC)</li>
+<li><strong>역률</strong>: cosθ = R/|Z|</li>
+<li><strong>유효·무효·피상전력</strong>: P=VI·cosθ, Q=VI·sinθ, S=VI</li>
+</ul>
+<h3>공진</h3>
+<ul>
+<li><strong>RLC 직렬 공진</strong>: ω₀L = 1/(ω₀C) → f₀ = 1/(2π√(LC))</li>
+<li>공진 시 |Z| = R (최소), I 최대</li>
+<li><strong>Q 인자</strong>: Q = ω₀L/R = 1/(ω₀CR). 선택도 (좁을수록 Q ↑)</li>
+</ul>
+<h3>과도현상</h3>
+<ul>
+<li><strong>RC 회로 충전</strong>: V_C(t) = V(1 - e^(-t/RC))</li>
+<li><strong>RL 회로 전류</strong>: I(t) = (V/R)(1 - e^(-Rt/L))</li>
+<li><strong>시정수</strong>: τ_RC = RC, τ_RL = L/R</li>
+</ul>
+<h3>3상 회로</h3>
+<ul>
+<li><strong>Y결선</strong>: V_L = √3·V_P (선간/상). I_L = I_P</li>
+<li><strong>Δ결선</strong>: V_L = V_P. I_L = √3·I_P</li>
+<li><strong>3상 전력</strong>: P = √3·V_L·I_L·cosθ = 3·V_P·I_P·cosθ</li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: 임피던스·공진 주파수 매년.</div>
+</section>
+
+<section class="topic tier1" id="t5"><h2 class="topic-name">5. 제어공학 — 라플라스·블록선도·시스템</h2>
+<h3>라플라스 변환</h3>
+<table>
+<tr><th>f(t)</th><th>F(s)</th></tr>
+<tr><td>1 (단위계단)</td><td>1/s</td></tr>
+<tr><td>t</td><td>1/s²</td></tr>
+<tr><td>e^(-at)</td><td>1/(s+a)</td></tr>
+<tr><td>sin(ωt)</td><td>ω/(s²+ω²)</td></tr>
+<tr><td>cos(ωt)</td><td>s/(s²+ω²)</td></tr>
+<tr><td>δ(t) (임펄스)</td><td>1</td></tr>
+</table>
+<h3>전달함수 G(s)</h3>
+<ul>
+<li>G(s) = Y(s)/X(s) (출력/입력 비)</li>
+<li><strong>1차 시스템</strong>: G(s) = K/(τs+1). 시정수 τ</li>
+<li><strong>2차 시스템</strong>: G(s) = ωn²/(s² + 2ζωn·s + ωn²). 감쇠비 ζ</li>
+</ul>
+<h3>블록선도·신호흐름</h3>
+<ul>
+<li><strong>직렬</strong>: G₁G₂</li>
+<li><strong>병렬</strong>: G₁+G₂</li>
+<li><strong>피드백</strong>: G/(1±GH)</li>
+<li><strong>메이슨 공식</strong>: 신호흐름선도</li>
+</ul>
+<h3>안정성·근궤적</h3>
+<ul>
+<li><strong>특성방정식 근</strong>: 좌반평면 → 안정 / 우반평면 → 불안정 / 허수축 → 임계</li>
+<li><strong>루스-허위츠</strong>: 표 작성, 첫 열 부호 변화 = 우반평면 근 수</li>
+<li><strong>나이퀴스트</strong>: 개루프 → 폐루프 안정성</li>
+<li><strong>보드선도</strong>: 이득여유·위상여유</li>
+</ul>
+<h3>제어 종류</h3>
+<ul>
+<li><strong>PID 제어</strong>: 비례+적분+미분</li>
+<li><strong>P</strong>: 빠른 응답, 정상편차 X 제거 / <strong>I</strong>: 정상편차 0 / <strong>D</strong>: 오버슈트 ↓·진동 ↓</li>
+<li><strong>샘플 데이터 제어</strong>: 이산 시스템·z-변환</li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: 라플라스 + 전달함수 + 안정성.</div>
+</section>
+
+<section class="topic tier1" id="t6"><h2 class="topic-name">6. 전기설비 — 한국전기설비규정 (KEC)</h2>
+<h3>저압·고압·특고압 (KEC)</h3>
+<ul>
+<li><strong>저압</strong>: 교류 1,000V 이하 / 직류 1,500V 이하</li>
+<li><strong>고압</strong>: 1,000V 초과 ~ 7,000V (교류) / 1,500V 초과 ~ 7,000V (직류)</li>
+<li><strong>특고압</strong>: 7,000V 초과</li>
+</ul>
+<h3>접지 (KEC 140)</h3>
+<ul>
+<li><strong>접지목적</strong>: 인체 보호·기기 보호·계통 운용</li>
+<li><strong>저압 계통접지방식</strong>: TN(TN-S·TN-C·TN-C-S)·TT·IT</li>
+<li><strong>접지저항 측정</strong>: 콜라우슈 브리지·어스 테스터</li>
+</ul>
+<h3>전선·케이블</h3>
+<ul>
+<li><strong>전선 굵기</strong>: 단면적 [mm²] 또는 AWG. 허용전류·전압강하 고려</li>
+<li><strong>전선 식별</strong>: 상도체 (R/S/T 또는 L1/L2/L3)·중성선 (N, 청색)·보호도체 (PE, 녹색-노란색)</li>
+<li><strong>절연저항</strong>: 메가옴미터 (메거)로 측정. 1MΩ 이상 (저압)</li>
+</ul>
+<h3>전압강하·허용전류</h3>
+<ul>
+<li><strong>전압강하</strong>: e = (2·I·L·R)/(1000·V) × 100 [%]</li>
+<li><strong>표준 허용범위</strong>: 인입선 1%·간선 1%·분기 2%·총 5% 이내</li>
+<li><strong>허용전류</strong>: 전선 굵기·온도·포설 방법별 표</li>
+</ul>
+<h3>배전·수변전 설비</h3>
+<ul>
+<li><strong>수전 방식</strong>: CB·LBS·ASS</li>
+<li><strong>변압기 설치 방법</strong>: 옥내·옥외 (오일·몰드·건식·아몰파스)</li>
+<li><strong>역률 개선</strong>: 콘덴서 (진상). 무효전력 보상</li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: 저압·고압·특고압 구분 + 접지방식 매년.</div>
+</section>
+
+<section class="topic tier1" id="t7"><h2 class="topic-name">7. 조명·전열·전동력 응용</h2>
+<h3>조명</h3>
+<ul>
+<li><strong>광속 [lm]</strong>: 광원이 방출하는 빛의 양</li>
+<li><strong>광도 [cd]</strong>: 단위 입체각당 광속</li>
+<li><strong>조도 [lx]</strong>: 단위 면적당 광속 = lm/m²</li>
+<li><strong>휘도 [cd/m²]</strong>: 광원 표면 밝기</li>
+<li><strong>조명 계산</strong>: F = (E·A·D)/(N·U·M) [lm], D=감광보상률, U=조명률, M=보수율</li>
+<li><strong>광원 종류</strong>: 백열·형광·HID(수은·메탈할라이드·고압나트륨)·LED</li>
+</ul>
+<h3>전열</h3>
+<ul>
+<li>발열량 Q = I²R·t [J] (줄 법칙)</li>
+<li>1 cal = 4.186 J</li>
+<li>비열 c, 열용량 = m·c, 온도 변화 Q = mcΔT</li>
+</ul>
+<h3>전동력 응용</h3>
+<ul>
+<li><strong>펌프·송풍기</strong>: 동력 P = (Q·H·ρ·g)/η [W]</li>
+<li><strong>승강기·엘리베이터</strong>: 균형추·로프·기어·인버터 제어</li>
+<li><strong>전기철도</strong>: DC·AC·25kV·교류급전</li>
+</ul>
+<h3>축전지·UPS</h3>
+<ul>
+<li><strong>1차전지</strong>: 망간·알칼리·리튬 (1회용)</li>
+<li><strong>2차전지</strong>: 납축·니카드·니켈수소·리튬이온·리튬폴리머</li>
+<li><strong>UPS</strong>: 무정전 전원 공급. 정류·인버터·축전지·바이패스</li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: 조도·광속 + 전열 줄법칙.</div>
+</section>
+
+<section class="topic tier1" id="t8"><h2 class="topic-name">8. 전력전자·디지털 회로</h2>
+<h3>반도체 소자</h3>
+<table>
+<tr><th>소자</th><th>특징</th></tr>
+<tr><td>다이오드</td><td>한 방향 전류. 정류·정전압(제너)</td></tr>
+<tr><td>트랜지스터 (BJT)</td><td>증폭·스위칭. NPN·PNP</td></tr>
+<tr><td>FET</td><td>전압 제어. JFET·MOSFET</td></tr>
+<tr><td>SCR (Thyristor)</td><td>3단자 단방향. 정류·제어</td></tr>
+<tr><td>TRIAC</td><td>양방향. 교류 제어</td></tr>
+<tr><td>IGBT</td><td>고전압·고전류 스위칭. 인버터</td></tr>
+</table>
+<h3>정류 회로</h3>
+<ul>
+<li><strong>반파 정류</strong>: V_dc = Vm/π = 0.318·Vm</li>
+<li><strong>전파 정류 (브릿지)</strong>: V_dc = 2Vm/π = 0.637·Vm</li>
+<li><strong>리플</strong>: 평활 콘덴서로 감소</li>
+</ul>
+<h3>인버터·컨버터</h3>
+<ul>
+<li><strong>DC→AC (인버터)</strong>: PWM. VVVF (가변전압가변주파)</li>
+<li><strong>AC→DC (컨버터)</strong>: 정류 + 평활</li>
+<li><strong>DC→DC (초퍼)</strong>: 강압·승압·강승압</li>
+<li><strong>주파수 변환</strong>: 사이클로컨버터·매트릭스 컨버터</li>
+</ul>
+<h3>디지털 논리</h3>
+<ul>
+<li><strong>기본 게이트</strong>: AND·OR·NOT·NAND·NOR·XOR·XNOR</li>
+<li><strong>플립플롭</strong>: SR·D·JK·T</li>
+<li><strong>카운터</strong>: 동기·비동기. 2진·BCD·링·존슨</li>
+<li><strong>레지스터·시프트레지스터·디코더·인코더·멀티플렉서·디멀티플렉서</strong></li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: 정류회로 출력값 + 게이트 진리표.</div>
+</section>
+
+<section class="topic tier1" id="t9"><h2 class="topic-name">9. 신재생·스마트그리드</h2>
+<h3>태양광 (PV)</h3>
+<ul>
+<li><strong>구성</strong>: 태양전지 모듈 + 인버터 + 접속함 + 차단기 + ESS</li>
+<li><strong>최대전력점추종 (MPPT)</strong>: 출력 최대화 제어</li>
+<li><strong>효율</strong>: 단결정 18~22% / 다결정 15~18% / 박막 10~15%</li>
+</ul>
+<h3>풍력</h3>
+<ul>
+<li><strong>출력</strong>: P = (1/2)·ρ·A·v³·Cp (베츠 한계 Cp ≤ 0.593)</li>
+<li><strong>유형</strong>: 수평축 (HAWT)·수직축 (VAWT)</li>
+<li><strong>육상풍력 vs 해상풍력</strong></li>
+</ul>
+<h3>연료전지·수소</h3>
+<ul>
+<li><strong>종류</strong>: PEMFC (고분자전해질)·SOFC (고체산화물)·MCFC (용융탄산염)·PAFC (인산형)·AFC (알카라인)</li>
+<li><strong>수소 생산</strong>: 그레이 (천연가스)·블루 (CCUS)·그린 (재생에너지 전기분해)</li>
+</ul>
+<h3>스마트그리드·ESS·V2G</h3>
+<ul>
+<li><strong>스마트그리드</strong>: 양방향 전력·정보 흐름. AMI (스마트미터)·SCADA·DR (수요반응)</li>
+<li><strong>ESS</strong>: 에너지저장시스템 (BESS·PHS·CAES·플라이휠·열저장)</li>
+<li><strong>V2G</strong>: Vehicle to Grid. 전기차 배터리 → 전력망</li>
+<li><strong>마이크로그리드</strong>: 자급자족형 소규모 전력망</li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: 태양광·풍력 출력 공식.</div>
+</section>
+
+<section class="topic tier1" id="t10"><h2 class="topic-name">10. 전기설비 안전·법규</h2>
+<h3>전기사업법</h3>
+<ul>
+<li><strong>전기사업자</strong>: 발전·송전·배전·전기판매·구역전기</li>
+<li><strong>한국전력공사</strong>: 송배전 + 판매</li>
+<li><strong>한전계열사</strong>: 한수원·발전6사 등</li>
+</ul>
+<h3>전기공사업법</h3>
+<ul>
+<li><strong>전기공사업 등록</strong>: 시·도지사</li>
+<li><strong>업종</strong>: 종합·전문</li>
+<li><strong>전기공사기술자</strong>: 자격·등급·경력</li>
+</ul>
+<h3>안전관리</h3>
+<ul>
+<li><strong>전기안전관리자 선임</strong>: 75kW 이상 수전설비·발전설비</li>
+<li><strong>주기 점검</strong>: 격월·매월·격주 (용량별)</li>
+<li><strong>비상발전기 시험</strong>: 매월 1회 무부하·연 1회 부하</li>
+</ul>
+<h3>전기 사고 응급조치</h3>
+<ul>
+<li><strong>감전 시</strong>: 전원 차단 → 인공호흡 → 119</li>
+<li><strong>전기화재</strong>: C급 (전기). CO₂·분말·할론. 물 X</li>
+<li><strong>접지·누전 점검</strong>: 정기 점검</li>
+</ul>
+<h3>국제 표준·인증</h3>
+<ul>
+<li><strong>IEC·IEEE·ANSI·JIS·KS·KC·전기용품안전</strong></li>
+<li><strong>형식승인·안전인증</strong></li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: 전기안전관리자 선임 기준.</div>
+</section>
+
+<hr class="divider"/>
+<footer>기출노트 · 전기기사 자동 단권화 · 59회 5900문제 시드 → 10단원 · 국가기술자격</footer>
+</div></body></html>

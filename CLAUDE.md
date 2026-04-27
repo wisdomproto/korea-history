@@ -485,6 +485,37 @@ YOUTUBE_API_KEY=                         # 선택 — 채널 분석/경쟁사 Yo
 - 카테고리 비율: 빌더 일지 26% / 한국사 한 입 35% / 수험생 공감 18% / 데이터·발견 9% / 공무원 확장 12%
 - Meta API 자동발행은 보류 — 수동 복붙 운영
 
+## 자동 단권화 노트 시스템 (23개 본문 + 656 자동 가이드, 2026-04-27)
+
+전체 730 stem 중 **656 stem 자동 가이드** + **23개 본문 노트**. 사이드바·SSG 페이지·문제↔단원 매칭·저작도구 편집 모두 통합.
+
+### 본문 직접 작성 (23개)
+- **9급 국가직 13개**: 행정법·행정학·형법·형사소송법·회계학·세법·교정학·사회복지·교육학·국제법·관세법·국어·영어
+- **7급/PSAT 1개**: 헌법 (PSAT_헌법.json 8회 200문제 → 15단원)
+- **자격증 9개**: 정보처리기사·산업안전기사·공인중개사1차·공인중개사2차·컴퓨터활용능력1급·전산회계1급·전기기사·사회조사분석사2급·직업상담사2급
+
+### 자동 가이드 (656 stem, 본문 X)
+- 단원 자동 분류 + 단원별 키워드 + 문제↔단원 매칭 (질문 패턴 휴리스틱)
+- 본문 없는 stem도 시험 페이지에 "📚 자동 학습 가이드" 섹션 노출
+- 트래픽 보고 인기 시험은 본문 추가 (점진 확장)
+
+### 데이터·코드
+- 본문 노트: `docs/{slug}-summary-note.html`
+- 본문 추출: `web/data/civil-notes/{slug}/` (sync-civil-notes.mjs + sync-civil-topics.mjs)
+- 자동 가이드: `web/data/civil-notes-auto/{stem}/` (build-auto-civil-guides.mjs, 457MB)
+- 매칭 인덱스: `web/data/civil-notes/question-topic-map.json` + `topic-questions-map.json`
+- 매핑: `web/lib/civil-notes.ts` SUBJECT_TO_NOTE + `web/lib/civil-notes-client.ts` (client-safe)
+- 자동 가이드 lib: `web/lib/civil-notes-auto.ts`
+- SSG 페이지: `web/app/civil-notes/[slug]/[topicId]/page.tsx` (274 단원 long-tail SEO)
+- 저작도구 편집: `author-tool/server/routes/civil-notes.routes.ts` + `src/features/civil-notes/CivilNotesPanel.tsx`
+- prebuild·build에 자동 sync 포함
+
+### Phase 진행 상태
+- ✅ Phase A: 자동 인프라 (656 stem · 7,893 토픽 · 989,357 문제 매칭)
+- ✅ Phase B: 7급 헌법 (나머지는 자동 가이드 사용)
+- ✅ Phase C: 인기 자격증 Top 9
+- 🚧 Phase D~E: Tier 2~3 자격증 (트래픽 보고 우선순위 결정)
+
 ## 9급 국가직 자동 단권화 노트 (13개, 2026-04-27)
 
 저작도구 사이드바 "📋 전략 문서"에서 접근. 9급 국가직 13개 과목 (한능검 제외, 헌법은 9급 미출제) 자동 단권화 HTML 노트.

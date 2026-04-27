@@ -10,6 +10,7 @@ import { CbtExamPanel } from '@/features/cbt-import/components/CbtExamPanel';
 import { SummaryNoteViewer } from '@/features/summary-notes/components/SummaryNoteViewer';
 import AnalyticsView from '@/features/analytics/components/AnalyticsView';
 import { MarketingView } from '@/features/marketing/components/MarketingView';
+import { CivilNotesPanel } from '@/features/civil-notes/CivilNotesPanel';
 import { QuestionList } from '@/features/question/components/QuestionList';
 import { QuestionEditor } from '@/features/question/components/QuestionEditor';
 import { Button } from './Button';
@@ -134,6 +135,11 @@ export function ViewRouter({
       {/* Notes Editor */}
       {activeView === 'notes-editor' && (
         <NoteEditorPanel />
+      )}
+
+      {/* 9급 공무원 단권화 노트 편집 */}
+      {activeView === 'civil-notes' && (
+        <CivilNotesPanel />
       )}
 
       {/* CBT Exam View */}

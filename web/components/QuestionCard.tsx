@@ -12,6 +12,8 @@ export interface RelatedNoteLink {
   title: string;
   eraLabel: string;
   sectionId: string;
+  /** Optional override URL. 한능검은 /notes/{id} 기본, CBT 단권화 단원은 /civil-notes/{slug}/{topicId} 명시 */
+  href?: string;
 }
 
 interface YouTubeData {
@@ -280,7 +282,7 @@ export default function QuestionCard({
               {relatedNotes.map((note) => (
                 <Link
                   key={note.id}
-                  href={`/notes/${note.id}`}
+                  href={note.href ?? `/notes/${note.id}`}
                   className="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl border border-emerald-200/60 bg-gradient-to-r from-emerald-50/80 to-teal-50/80 hover:from-emerald-100 hover:to-teal-100 transition-all group"
                 >
                   <div className="flex-1 min-w-0">

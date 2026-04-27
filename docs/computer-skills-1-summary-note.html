@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>컴퓨터활용능력 1급 자동 단권화</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<style>:root{--bg:#F5EFE4;--paper:#FFF;--ink:#1F1A14;--ink-soft:#5A4F3F;--amber:#B45309;--amber-soft:#FED7AA;--amber-bg:#FFF7ED;--rose:#BE123C;--hairline:rgba(31,26,20,.12);--serif:'Noto Serif KR',serif;--sans:'Pretendard Variable',sans-serif;--mono:'JetBrains Mono',monospace}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;font-size:15px;word-break:keep-all}.container{max-width:980px;margin:0 auto;padding:48px 28px 80px}header.hero{text-align:center;padding:36px 0 24px;border-bottom:1px solid var(--hairline);margin-bottom:32px}.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--amber);text-transform:uppercase;font-weight:700}h1{font-family:var(--serif);font-weight:900;font-size:clamp(26px,4vw,38px);margin:12px 0;letter-spacing:-.02em}h1 .amber{color:var(--amber)}.meta{margin-top:16px;display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center;font-family:var(--mono);font-size:11px;color:var(--ink-soft)}section.topic{background:var(--paper);border:1px solid var(--hairline);border-radius:14px;padding:24px 28px;margin-bottom:18px;border-left:5px solid var(--amber)}section.topic.tier1{border-left:5px solid var(--rose)}.topic-name{font-family:var(--serif);font-size:22px;font-weight:900;margin:0 0 12px}h3{font-family:var(--serif);font-size:16px;font-weight:800;margin:14px 0 6px;border-left:3px solid var(--amber);padding-left:10px}.topic p{margin:6px 0;line-height:1.7;font-size:14px}.topic ul,.topic ol{padding-left:22px;margin:6px 0}.topic li{margin-bottom:4px;font-size:14px;line-height:1.7}.topic strong{font-weight:700}table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}th,td{padding:8px 10px;border:1px solid var(--hairline);text-align:left;vertical-align:top}th{background:var(--amber-soft);color:var(--amber);font-weight:700}.exam-box{background:var(--amber-bg);border-left:4px solid var(--amber);padding:8px 12px;margin:10px 0;font-size:13px;border-radius:0 6px 6px 0}hr.divider{border:0;border-top:1px solid var(--hairline);margin:24px 0}footer{text-align:center;font-size:12px;color:var(--ink-soft);padding-top:20px}code{background:#F5EFE4;padding:1px 5px;border-radius:3px;font-family:var(--mono);font-size:12px}</style></head>
+<body>
+<div class="container">
+<header class="hero">
+<div class="eyebrow">Auto Summary Note · 컴활 1급</div>
+<h1>컴퓨터활용능력 1급 <span class="amber">자동 단권화</span></h1>
+<div class="meta"><span>국가전문자격</span><span>·</span><span>58회 3480문제</span><span>·</span><span>10단원</span></div>
+</header>
+
+<section class="topic tier1" id="t1"><h2 class="topic-name">1. 컴퓨터 일반 — 하드웨어·소프트웨어</h2>
+<h3>컴퓨터 5대 장치</h3>
+<ul>
+<li><strong>입력</strong>: 키보드·마우스·스캐너·터치스크린·OMR/OCR/MICR/바코드</li>
+<li><strong>출력</strong>: 모니터(CRT·LCD·LED·OLED)·프린터(잉크젯·레이저·도트)·플로터·스피커</li>
+<li><strong>기억</strong>: 주기억(RAM·ROM)·보조기억(HDD·SSD·USB·CD/DVD/Blu-ray)·캐시·레지스터</li>
+<li><strong>제어</strong>: CPU 내부, 명령 해석·실행 제어</li>
+<li><strong>연산</strong>: ALU, 사칙·논리</li>
+</ul>
+<h3>중앙처리장치 (CPU)</h3>
+<ul>
+<li><strong>구성</strong>: 제어장치 + 연산장치 + 레지스터</li>
+<li><strong>주요 레지스터</strong>: PC(프로그램카운터)·IR(명령)·MAR(주소)·MBR/MDR(데이터)·AC(누산기)</li>
+<li><strong>성능</strong>: 클럭 (Hz·GHz)·MIPS·FLOPS</li>
+<li><strong>병렬처리</strong>: 파이프라인·슈퍼스칼라·멀티코어</li>
+</ul>
+<h3>기억장치 계층</h3>
+<ul>
+<li>레지스터 → 캐시(L1·L2·L3) → 주기억 → 보조기억 → 백업</li>
+<li><strong>RAM</strong>: SRAM(빠름·캐시) vs DRAM(주기억)</li>
+<li><strong>ROM</strong>: Mask·PROM·EPROM·EEPROM·플래시</li>
+<li><strong>SSD</strong>: 플래시 메모리 기반·HDD보다 빠름·기계적 부품 X</li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: CPU 레지스터 + 기억장치 계층.</div>
+</section>
+
+<section class="topic tier1" id="t2"><h2 class="topic-name">2. 운영체제·Windows</h2>
+<h3>운영체제 기능</h3>
+<ul>
+<li>프로세스 관리·메모리 관리·파일 시스템·입출력 관리·사용자 인터페이스</li>
+<li><strong>처리 방식</strong>: 일괄·실시간·시분할·멀티프로세싱·멀티스레딩·분산</li>
+</ul>
+<h3>Windows 핵심 기능</h3>
+<ul>
+<li><strong>바탕화면·작업표시줄·시작메뉴</strong></li>
+<li><strong>제어판/설정</strong>: 시스템·디스플레이·네트워크·계정·앱·업데이트</li>
+<li><strong>파일 탐색기</strong>: 파일·폴더 관리, 압축, 라이브러리</li>
+<li><strong>장치관리자</strong>: 하드웨어 드라이버 관리</li>
+<li><strong>레지스트리 (regedit)</strong>: 시스템 설정 DB. HKEY_LOCAL_MACHINE 등</li>
+</ul>
+<h3>Windows 단축키</h3>
+<table>
+<tr><th>키</th><th>기능</th></tr>
+<tr><td><code>Win+E</code></td><td>탐색기</td></tr>
+<tr><td><code>Win+L</code></td><td>잠금</td></tr>
+<tr><td><code>Win+D</code></td><td>바탕화면</td></tr>
+<tr><td><code>Win+R</code></td><td>실행</td></tr>
+<tr><td><code>Win+Tab</code></td><td>작업 보기</td></tr>
+<tr><td><code>Alt+Tab</code></td><td>창 전환</td></tr>
+<tr><td><code>Alt+F4</code></td><td>창 종료</td></tr>
+<tr><td><code>F2</code></td><td>이름 바꾸기</td></tr>
+<tr><td><code>F5</code></td><td>새로고침</td></tr>
+<tr><td><code>Ctrl+Shift+Esc</code></td><td>작업 관리자</td></tr>
+</table>
+<h3>파일 시스템</h3>
+<ul>
+<li><strong>FAT32</strong>: 호환성 ↑, 4GB 단일 파일 한계</li>
+<li><strong>NTFS</strong>: 보안·압축·암호화·대용량·저널링</li>
+<li><strong>exFAT</strong>: USB·SD카드. FAT32 + NTFS 장점</li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: Windows 단축키 + NTFS·FAT 비교.</div>
+</section>
+
+<section class="topic tier1" id="t3"><h2 class="topic-name">3. 인터넷·통신·보안</h2>
+<h3>네트워크 기초</h3>
+<ul>
+<li><strong>LAN·MAN·WAN</strong>: 지역 규모</li>
+<li><strong>토폴로지</strong>: 스타·버스·링·트리·메시</li>
+<li><strong>OSI 7계층 / TCP/IP 4계층</strong></li>
+<li><strong>장비</strong>: 허브·스위치·라우터·게이트웨이·브릿지·리피터</li>
+</ul>
+<h3>인터넷 프로토콜</h3>
+<table>
+<tr><th>프로토콜</th><th>용도</th></tr>
+<tr><td>HTTP/HTTPS</td><td>웹 (80·443)</td></tr>
+<tr><td>FTP</td><td>파일 전송 (20·21)</td></tr>
+<tr><td>SMTP·POP3·IMAP</td><td>이메일 (25·110·143)</td></tr>
+<tr><td>DNS</td><td>도메인 → IP (53)</td></tr>
+<tr><td>DHCP</td><td>IP 자동 할당</td></tr>
+<tr><td>TELNET·SSH</td><td>원격 (23·22)</td></tr>
+<tr><td>SNMP</td><td>네트워크 관리</td></tr>
+</table>
+<h3>웹 기술</h3>
+<ul>
+<li><strong>HTML·CSS·JavaScript</strong></li>
+<li><strong>웹 브라우저</strong>: Chrome·Edge·Firefox·Safari·Opera</li>
+<li><strong>쿠키·캐시·히스토리·즐겨찾기</strong></li>
+<li><strong>RSS·SNS·블로그·위키·포털</strong></li>
+</ul>
+<h3>정보 보안</h3>
+<ul>
+<li><strong>해킹·크래킹·바이러스·웜·트로이목마·랜섬웨어·스파이웨어·애드웨어</strong></li>
+<li><strong>피싱·파밍·스미싱·보이스피싱·큐싱</strong></li>
+<li><strong>방어</strong>: 백신·방화벽(FW)·침입탐지/방지(IDS·IPS)·VPN·DLP</li>
+<li><strong>암호화</strong>: 대칭(DES·AES) vs 공개키(RSA) vs 해시(SHA·MD5)</li>
+<li><strong>SSL/TLS·HTTPS·디지털 서명·인증서</strong></li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: 프로토콜 포트 + 보안 위협 매년.</div>
+</section>
+
+<section class="topic tier1" id="t4"><h2 class="topic-name">4. Excel — 함수 (수학·통계·논리·텍스트)</h2>
+<h3>수학·통계 함수</h3>
+<table>
+<tr><th>함수</th><th>설명</th></tr>
+<tr><td><code>SUM</code></td><td>합계</td></tr>
+<tr><td><code>SUMIF/SUMIFS</code></td><td>조건 합계</td></tr>
+<tr><td><code>AVERAGE/AVERAGEIF</code></td><td>평균/조건 평균</td></tr>
+<tr><td><code>COUNT/COUNTA/COUNTIF</code></td><td>개수 (숫자/전체/조건)</td></tr>
+<tr><td><code>MAX/MIN/LARGE/SMALL</code></td><td>최대/최소/N번째</td></tr>
+<tr><td><code>RANK/RANK.EQ/RANK.AVG</code></td><td>순위</td></tr>
+<tr><td><code>ROUND/ROUNDUP/ROUNDDOWN</code></td><td>반올림/올림/내림</td></tr>
+<tr><td><code>TRUNC/INT</code></td><td>버림/정수</td></tr>
+<tr><td><code>MOD</code></td><td>나머지</td></tr>
+<tr><td><code>ABS</code></td><td>절댓값</td></tr>
+<tr><td><code>POWER</code></td><td>거듭제곱</td></tr>
+<tr><td><code>SUMPRODUCT</code></td><td>배열 곱·합</td></tr>
+<tr><td><code>STDEV/VAR</code></td><td>표준편차/분산</td></tr>
+<tr><td><code>MEDIAN/MODE</code></td><td>중앙값/최빈값</td></tr>
+<tr><td><code>FREQUENCY</code></td><td>도수분포 (배열)</td></tr>
+</table>
+<h3>논리·정보</h3>
+<table>
+<tr><th>함수</th><th>설명</th></tr>
+<tr><td><code>IF/IFS/SWITCH</code></td><td>조건</td></tr>
+<tr><td><code>AND/OR/NOT/XOR</code></td><td>논리연산</td></tr>
+<tr><td><code>IFERROR/IFNA</code></td><td>에러 처리</td></tr>
+<tr><td><code>ISBLANK/ISERROR/ISTEXT/ISNUMBER</code></td><td>형식 확인</td></tr>
+<tr><td><code>TRUE/FALSE</code></td><td>논리값</td></tr>
+</table>
+<h3>텍스트 함수</h3>
+<ul>
+<li><code>LEFT·RIGHT·MID</code>: 좌·우·중간 추출</li>
+<li><code>LEN</code>: 글자 수</li>
+<li><code>UPPER·LOWER·PROPER</code>: 대문자·소문자·첫글자 대문자</li>
+<li><code>TRIM·CLEAN</code>: 공백·인쇄불가 제거</li>
+<li><code>FIND·SEARCH</code>: 위치 (대소문자 구분 vs X)</li>
+<li><code>REPLACE·SUBSTITUTE</code>: 위치 기반·문자열 기반 교체</li>
+<li><code>CONCATENATE / & / TEXTJOIN</code>: 연결</li>
+<li><code>TEXT</code>: 숫자 → 서식 텍스트</li>
+<li><code>VALUE</code>: 텍스트 → 숫자</li>
+<li><code>REPT</code>: 반복</li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: 함수 1~2개 사용 + 결과값 매년.</div>
+</section>
+
+<section class="topic tier1" id="t5"><h2 class="topic-name">5. Excel — 함수 (찾기·날짜·재무·DB)</h2>
+<h3>찾기·참조 함수</h3>
+<table>
+<tr><th>함수</th><th>설명</th></tr>
+<tr><td><code>VLOOKUP/HLOOKUP</code></td><td>수직/수평 조회. 4번째 인수 FALSE = 정확히 일치</td></tr>
+<tr><td><code>XLOOKUP</code></td><td>최신·강력 (좌측 검색·기본값·완전 일치 기본)</td></tr>
+<tr><td><code>INDEX/MATCH</code></td><td>인덱스+위치. VLOOKUP 한계 극복 (좌측 가능)</td></tr>
+<tr><td><code>CHOOSE</code></td><td>인덱스로 선택</td></tr>
+<tr><td><code>OFFSET</code></td><td>기준에서 이동</td></tr>
+<tr><td><code>INDIRECT</code></td><td>문자열을 참조로</td></tr>
+<tr><td><code>ROW/COLUMN</code></td><td>행/열 번호</td></tr>
+<tr><td><code>ROWS/COLUMNS</code></td><td>범위의 행/열 개수</td></tr>
+<tr><td><code>HYPERLINK</code></td><td>하이퍼링크</td></tr>
+</table>
+<h3>날짜·시간 함수</h3>
+<table>
+<tr><th>함수</th><th>설명</th></tr>
+<tr><td><code>TODAY/NOW</code></td><td>오늘/현재</td></tr>
+<tr><td><code>YEAR/MONTH/DAY</code></td><td>연/월/일 추출</td></tr>
+<tr><td><code>HOUR/MINUTE/SECOND</code></td><td>시/분/초</td></tr>
+<tr><td><code>WEEKDAY</code></td><td>요일 번호</td></tr>
+<tr><td><code>DATE/TIME</code></td><td>날짜/시간 만들기</td></tr>
+<tr><td><code>EDATE/EOMONTH</code></td><td>N개월 후 날짜/월말</td></tr>
+<tr><td><code>WORKDAY/NETWORKDAYS</code></td><td>근무일·근무일수</td></tr>
+<tr><td><code>DATEDIF</code></td><td>두 날짜 차이</td></tr>
+</table>
+<h3>재무 함수</h3>
+<ul>
+<li><code>FV</code>: 미래가치 / <code>PV</code>: 현재가치 / <code>PMT</code>: 정기 지급액</li>
+<li><code>RATE</code>: 이자율 / <code>NPER</code>: 기간</li>
+<li><code>NPV</code>: 순현재가치 / <code>IRR</code>: 내부수익률</li>
+<li><code>SLN/DB/DDB/SYD</code>: 감가상각 (정액·정률·이중정률·연수합계)</li>
+</ul>
+<h3>데이터베이스 함수 (D로 시작)</h3>
+<ul>
+<li><code>DSUM·DAVERAGE·DCOUNT·DCOUNTA·DMAX·DMIN·DGET·DPRODUCT·DSTDEV·DVAR</code></li>
+<li>형식: <code>=DSUM(전체범위, 계산필드, 조건범위)</code></li>
+</ul>
+<h3>배열 수식·동적 배열 (Excel 365)</h3>
+<ul>
+<li><code>{=}</code> 중괄호로 배열. <code>Ctrl+Shift+Enter</code></li>
+<li><code>UNIQUE·SORT·FILTER·SEQUENCE</code> (동적 배열)</li>
+<li><code>SUMPRODUCT</code>로 다중 조건 집계</li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: VLOOKUP·INDEX/MATCH 매년.</div>
+</section>
+
+<section class="topic tier1" id="t6"><h2 class="topic-name">6. Excel — 데이터 관리·분석</h2>
+<h3>정렬·필터</h3>
+<ul>
+<li><strong>정렬</strong>: 64개 기준까지·오름차/내림차·사용자 지정 순서·셀 색·글꼴 색·아이콘</li>
+<li><strong>자동 필터</strong>: 단순 조건</li>
+<li><strong>고급 필터</strong>: AND/OR·다른 위치 복사·중복 제외</li>
+</ul>
+<h3>피벗 테이블</h3>
+<ul>
+<li>행·열·값·필터 영역</li>
+<li>데이터 요약·집계·교차 분석</li>
+<li>그룹화·계산 필드·계산 항목</li>
+<li>피벗 차트·슬라이서·시간 표시 막대</li>
+</ul>
+<h3>부분합·통합</h3>
+<ul>
+<li><strong>부분합</strong>: 그룹별 집계 (정렬 후 사용)</li>
+<li><strong>통합</strong>: 여러 시트·통합문서 데이터 합산</li>
+</ul>
+<h3>가상 분석 (What-if)</h3>
+<ul>
+<li><strong>시나리오 관리자</strong>: 변수 조합 비교</li>
+<li><strong>목표값 찾기</strong>: 결과값 → 입력값</li>
+<li><strong>해 찾기 (Solver)</strong>: 다변수 최적화</li>
+<li><strong>데이터 표</strong>: 1·2 변수 표</li>
+</ul>
+<h3>차트</h3>
+<ul>
+<li><strong>종류</strong>: 세로/가로 막대·꺾은선·원형·도넛·분산·영역·주식·표면·방사형·트리맵·선버스트·히스토그램·상자수염·폭포·깔때기·콤보·지도</li>
+<li><strong>축 옵션</strong>: 보조축·로그 눈금·역순·교차</li>
+<li><strong>추세선</strong>: 선형·지수·로그·다항·이동평균·거듭제곱</li>
+</ul>
+<h3>조건부 서식</h3>
+<ul>
+<li>셀 강조 규칙·상위/하위·데이터 막대·색조·아이콘 집합</li>
+<li>수식 사용·새 규칙·규칙 관리</li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: 피벗 테이블 매년 1~2.</div>
+</section>
+
+<section class="topic tier1" id="t7"><h2 class="topic-name">7. Excel — 매크로·VBA</h2>
+<h3>매크로</h3>
+<ul>
+<li><strong>기록</strong>: 매크로 기록 → 작업 → 기록 중지</li>
+<li><strong>저장</strong>: 매크로 사용 통합 문서 (.xlsm) 또는 (.xltm·.xlam)</li>
+<li><strong>보안</strong>: 매크로 설정 (모두 사용·서명된 매크로만·디지털 서명·모두 차단)</li>
+<li><strong>실행</strong>: Alt+F8 (대화상자) 또는 단축키·버튼·도형</li>
+<li><strong>편집</strong>: Alt+F11 (VBA 편집기)</li>
+</ul>
+<h3>VBA 기초</h3>
+<ul>
+<li><strong>구조</strong>: Sub ... End Sub / Function ... End Function</li>
+<li><strong>변수 선언</strong>: <code>Dim 변수 As 데이터형</code></li>
+<li><strong>데이터형</strong>: Integer·Long·Single·Double·String·Boolean·Date·Variant·Object</li>
+<li><strong>제어문</strong>: If-Then-Else·Select Case·For-Next·Do-Loop·While-Wend</li>
+<li><strong>주요 객체</strong>: Application·Workbook·Worksheet·Range·Cells</li>
+<li><strong>예</strong>: <code>Range("A1").Value = 100</code> / <code>Cells(1,1).Value</code> / <code>ActiveSheet.Range("A1:B10").Select</code></li>
+</ul>
+<h3>이벤트</h3>
+<ul>
+<li><strong>Workbook</strong>: Open·BeforeClose·BeforeSave·SheetChange</li>
+<li><strong>Worksheet</strong>: Change·SelectionChange·Activate·BeforeDoubleClick</li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: 매크로 보안 + VBA 기본 구조.</div>
+</section>
+
+<section class="topic tier1" id="t8"><h2 class="topic-name">8. Access — 데이터베이스</h2>
+<h3>DB 기본</h3>
+<ul>
+<li><strong>구성</strong>: 테이블·쿼리·폼·보고서·매크로·모듈</li>
+<li><strong>관계형 DB</strong>: 일대일·일대다·다대다 (연결 테이블)</li>
+<li><strong>키</strong>: 기본키(PK)·외래키(FK)·후보키·복합키</li>
+</ul>
+<h3>SQL</h3>
+<ul>
+<li><strong>DDL</strong>: CREATE·ALTER·DROP·TRUNCATE</li>
+<li><strong>DML</strong>: SELECT·INSERT·UPDATE·DELETE</li>
+<li><strong>DCL</strong>: GRANT·REVOKE</li>
+<li><strong>SELECT</strong>: <code>SELECT 필드 FROM 테이블 WHERE 조건 GROUP BY 필드 HAVING 조건 ORDER BY 필드</code></li>
+<li><strong>JOIN</strong>: INNER·LEFT·RIGHT·FULL OUTER</li>
+<li><strong>집계</strong>: COUNT·SUM·AVG·MAX·MIN + GROUP BY</li>
+</ul>
+<h3>쿼리</h3>
+<ul>
+<li><strong>선택 쿼리</strong>: 데이터 조회</li>
+<li><strong>크로스탭 쿼리</strong>: 행·열·집계 (피벗처럼)</li>
+<li><strong>매개변수 쿼리</strong>: 실행 시 입력 받음</li>
+<li><strong>실행 쿼리</strong>: 추가·업데이트·삭제·테이블 만들기</li>
+</ul>
+<h3>폼·보고서</h3>
+<ul>
+<li><strong>폼</strong>: 데이터 입력·편집·표시 UI. 폼/하위폼·연속 폼·단일 폼</li>
+<li><strong>보고서</strong>: 인쇄용. 머리글·본문·바닥글·페이지·그룹</li>
+<li><strong>컨트롤</strong>: 텍스트 상자·콤보·옵션·체크박스·계산 컨트롤</li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: SQL SELECT 결과 + 쿼리 종류 매년.</div>
+</section>
+
+<section class="topic tier1" id="t9"><h2 class="topic-name">9. Excel — 셀·시트·서식</h2>
+<h3>셀 참조</h3>
+<ul>
+<li><strong>상대참조</strong>: <code>A1</code> → 복사 시 변경</li>
+<li><strong>절대참조</strong>: <code>$A$1</code> → 고정</li>
+<li><strong>혼합참조</strong>: <code>$A1·A$1</code></li>
+<li><strong>3차원 참조</strong>: <code>Sheet1:Sheet3!A1</code></li>
+<li><strong>외부 참조</strong>: <code>[Book.xlsx]Sheet1!A1</code></li>
+<li><strong>이름 정의</strong>: 수식 → 이름 정의 → 수식에서 사용</li>
+</ul>
+<h3>셀 서식</h3>
+<table>
+<tr><th>분류</th><th>예</th></tr>
+<tr><td>표시 형식</td><td>일반·숫자·통화·회계·날짜·시간·백분율·분수·지수·텍스트·특수·사용자지정</td></tr>
+<tr><td>사용자 지정</td><td><code>#,##0</code> (천단위) / <code>0.00%</code> (소수점 백분율) / <code>yyyy-mm-dd</code></td></tr>
+<tr><td>맞춤</td><td>가로·세로·들여쓰기·방향·자동 줄바꿈·셀 병합</td></tr>
+<tr><td>글꼴·테두리·채우기·보호</td><td>각각</td></tr>
+</table>
+<h3>유효성 검사</h3>
+<ul>
+<li>제한 대상: 정수·소수·목록·날짜·시간·텍스트 길이·사용자 지정 (수식)</li>
+<li>오류 메시지·설명 메시지</li>
+</ul>
+<h3>인쇄·페이지 설정</h3>
+<ul>
+<li>여백·머리글/바닥글·페이지 방향·크기 조정·인쇄 영역</li>
+<li>반복할 행·열 (페이지마다 머리행 인쇄)</li>
+<li>페이지 나누기 미리 보기</li>
+</ul>
+<h3>시트 보호·통합문서 보호</h3>
+<ul>
+<li>시트 보호: 잠근 셀만 보호 (잠금 해제 셀은 편집 가능)</li>
+<li>통합문서 보호: 시트 추가·삭제·이동·이름 변경 차단</li>
+<li>비밀번호 설정</li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: 절대·상대 참조 매년.</div>
+</section>
+
+<section class="topic tier1" id="t10"><h2 class="topic-name">10. 멀티미디어·신기술</h2>
+<h3>그래픽·영상</h3>
+<table>
+<tr><th>형식</th><th>특징</th></tr>
+<tr><td>BMP</td><td>비압축·용량 큼</td></tr>
+<tr><td>JPG/JPEG</td><td>손실 압축·사진</td></tr>
+<tr><td>PNG</td><td>비손실 압축·투명도</td></tr>
+<tr><td>GIF</td><td>256색·애니메이션·투명도</td></tr>
+<tr><td>WEBP</td><td>구글·차세대 (JPG·PNG 대체)</td></tr>
+<tr><td>SVG</td><td>벡터·확대 무한</td></tr>
+<tr><td>TIFF</td><td>인쇄용·고품질</td></tr>
+</table>
+<h3>비디오·오디오</h3>
+<ul>
+<li><strong>비디오</strong>: AVI·MP4·MKV·MOV·WMV·FLV·WebM·MPEG-4·H.264/H.265(HEVC)</li>
+<li><strong>오디오</strong>: WAV·MP3·AAC·OGG·FLAC·WMA</li>
+<li><strong>스트리밍</strong>: 실시간 다운로드 + 재생</li>
+</ul>
+<h3>신기술 동향</h3>
+<ul>
+<li><strong>클라우드</strong>: IaaS·PaaS·SaaS·FaaS</li>
+<li><strong>빅데이터·AI·머신러닝·딥러닝</strong></li>
+<li><strong>IoT·5G·블록체인·메타버스</strong></li>
+<li><strong>사물인터넷</strong>: M2M (Machine to Machine)</li>
+<li><strong>가상화</strong>: VM·컨테이너 (Docker·Kubernetes)</li>
+<li><strong>증강현실 (AR)·가상현실 (VR)·혼합현실 (MR)·확장현실 (XR)</strong></li>
+</ul>
+<h3>모바일·앱</h3>
+<ul>
+<li>iOS (Apple)·Android (Google)</li>
+<li>네이티브 앱·웹앱·하이브리드 앱·PWA</li>
+<li>QR·NFC·블루투스·BLE</li>
+</ul>
+<div class="exam-box"><strong>📌 출제</strong>: 그래픽 형식 + 신기술 용어 매년.</div>
+</section>
+
+<hr class="divider"/>
+<footer>기출노트 · 컴퓨터활용능력 1급 자동 단권화 · 58회 3480문제 시드 → 10단원 · Excel·Access·일반</footer>
+</div></body></html>

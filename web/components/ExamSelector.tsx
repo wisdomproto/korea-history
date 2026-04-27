@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import type { ExamType, Subject } from "@/lib/exam-types";
+import { hasCivilNoteFor } from "@/lib/civil-notes-client";
 
 interface Props {
   /** 현재 활성 시험 (드롭다운 라벨) */
@@ -212,6 +213,9 @@ export default function ExamSelector({ current, currentSubjectSlug, examTypes, s
                                     .filter((r) => r.status === "live")
                                     .map((r) => subjectsById.get(r.subjectId))
                                     .filter((s): s is Subject => !!s);
+                                  const childNoteCount = childLiveSubjects.filter((s) =>
+                                    hasCivilNoteFor(s.label),
+                                  ).length;
                                   return (
                                     <div key={c.id}>
                                       <div className="flex items-center">
@@ -238,6 +242,14 @@ export default function ExamSelector({ current, currentSubjectSlug, examTypes, s
                                         >
                                           <span>{c.icon}</span>
                                           <span className="flex-1 truncate">{c.shortLabel}</span>
+                                          {childNoteCount > 0 && (
+                                            <span
+                                              className="text-[8px] font-mono font-bold text-white bg-[#B45309] px-1 py-px rounded"
+                                              title={`단권화 ${childNoteCount}개 완료`}
+                                            >
+                                              📝{childNoteCount}
+                                            </span>
+                                          )}
                                           <span className="text-[10px] text-[var(--gc-ink2)]">
                                             {childLiveSubjects.length}
                                           </span>
@@ -252,6 +264,7 @@ export default function ExamSelector({ current, currentSubjectSlug, examTypes, s
                                           {childLiveSubjects.map((s) => {
                                             const isCurrentSubj =
                                               isCurrentChild && currentSubjId === s.id;
+                                            const hasNote = hasCivilNoteFor(s.label);
                                             return (
                                               <Link
                                                 key={s.id}
@@ -260,10 +273,20 @@ export default function ExamSelector({ current, currentSubjectSlug, examTypes, s
                                                 className={`flex items-center gap-1 rounded px-2 py-0.5 text-[11px] ${
                                                   isCurrentSubj
                                                     ? "bg-[#FED7AA]/40 text-[var(--gc-ink)] font-bold"
-                                                    : "text-[var(--gc-ink2)] hover:text-[var(--gc-ink)] hover:bg-[var(--gc-bg)]"
+                                                    : hasNote
+                                                      ? "text-[#B45309] font-semibold hover:bg-[#FFF7ED]"
+                                                      : "text-[var(--gc-ink2)] hover:text-[var(--gc-ink)] hover:bg-[var(--gc-bg)]"
                                                 }`}
                                               >
                                                 <span className="flex-1 truncate">{s.label}</span>
+                                                {hasNote && !isCurrentSubj && (
+                                                  <span
+                                                    className="text-[8px] font-mono font-bold text-white bg-[#B45309] px-1 py-px rounded"
+                                                    title="단권화 노트 완료"
+                                                  >
+                                                    📝
+                                                  </span>
+                                                )}
                                                 {isCurrentSubj && (
                                                   <span className="text-[var(--gc-amber)]">●</span>
                                                 )}
@@ -283,6 +306,7 @@ export default function ExamSelector({ current, currentSubjectSlug, examTypes, s
                               <div className="ml-7 mt-0.5 space-y-0.5 border-l border-[var(--gc-hairline)] pl-2 pb-1">
                                 {liveSubjects.map((s) => {
                                   const isCurrentSubj = isCurrent && currentSubjId === s.id;
+                                  const hasNote = hasCivilNoteFor(s.label);
                                   return (
                                     <Link
                                       key={s.id}
@@ -291,10 +315,20 @@ export default function ExamSelector({ current, currentSubjectSlug, examTypes, s
                                       className={`flex items-center gap-1 rounded px-2 py-1 text-xs ${
                                         isCurrentSubj
                                           ? "bg-[#FED7AA]/40 text-[var(--gc-ink)] font-bold"
-                                          : "text-[var(--gc-ink2)] hover:text-[var(--gc-ink)] hover:bg-[var(--gc-bg)]"
+                                          : hasNote
+                                            ? "text-[#B45309] font-semibold hover:bg-[#FFF7ED]"
+                                            : "text-[var(--gc-ink2)] hover:text-[var(--gc-ink)] hover:bg-[var(--gc-bg)]"
                                       }`}
                                     >
                                       <span className="flex-1 truncate">{s.label}</span>
+                                      {hasNote && !isCurrentSubj && (
+                                        <span
+                                          className="text-[8px] font-mono font-bold text-white bg-[#B45309] px-1 py-px rounded"
+                                          title="단권화 노트 완료"
+                                        >
+                                          📝
+                                        </span>
+                                      )}
                                       {isCurrentSubj && (
                                         <span className="text-[var(--gc-amber)]">●</span>
                                       )}

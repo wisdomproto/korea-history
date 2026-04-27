@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { getAllExams, getAllQuestionParams } from "@/lib/data";
 import { getAllNoteIds } from "@/lib/notes";
 import { getAllExamTypes, getCategories, getSubjectById } from "@/lib/exam-types";
+import { getAllCivilNoteSlugs, getAllTopicParams } from "@/lib/civil-notes";
 
 export const dynamic = "force-static";
 
@@ -123,5 +124,38 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  return [...staticPages, ...questionPages, ...notePages, ...examTypePages, ...subjectPages];
+  // 9급 공무원 자동 단권화 — index + 13 detail
+  const civilNoteSlugs = getAllCivilNoteSlugs();
+  const civilNotePages: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}/civil-notes`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    ...civilNoteSlugs.map((slug) => ({
+      url: `${BASE_URL}/civil-notes/${slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.75,
+    })),
+  ];
+
+  // 단원별 페이지 (long-tail SEO, ~169개)
+  const civilTopicPages: MetadataRoute.Sitemap = getAllTopicParams().map(({ slug, topicId }) => ({
+    url: `${BASE_URL}/civil-notes/${slug}/${topicId}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.65,
+  }));
+
+  return [
+    ...staticPages,
+    ...questionPages,
+    ...notePages,
+    ...examTypePages,
+    ...subjectPages,
+    ...civilNotePages,
+    ...civilTopicPages,
+  ];
 }

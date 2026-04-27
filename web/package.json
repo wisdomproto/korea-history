@@ -4,9 +4,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
-    "prebuild": "npx tsx scripts/fetch-data.ts",
-    "build": "node scripts/fetch-data.mjs && next build",
-    "start": "next start"
+    "prebuild": "npx tsx scripts/fetch-data.ts && node scripts/sync-civil-notes.mjs && node scripts/sync-civil-topics.mjs && node scripts/build-question-topic-index.mjs",
+    "build": "node scripts/fetch-data.mjs && node scripts/sync-civil-notes.mjs && node scripts/sync-civil-topics.mjs && node scripts/build-question-topic-index.mjs && next build",
+    "start": "next start",
+    "sync:civil-notes": "node scripts/sync-civil-notes.mjs && node scripts/sync-civil-topics.mjs && node scripts/build-question-topic-index.mjs"
   },
   "keywords": [],
   "author": "",

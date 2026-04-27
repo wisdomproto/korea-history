@@ -16,6 +16,7 @@ import {
 import BreadCrumb from "@/components/BreadCrumb";
 import KoreanHistoryLanding from "@/components/KoreanHistoryLanding";
 import OtherExamsSection from "@/components/OtherExamsSection";
+import { getNoteForSubjectLabel } from "@/lib/civil-notes";
 
 interface PageProps {
   params: Promise<{ examSlug: string }>;
@@ -472,34 +473,48 @@ function SubjectCard({
   const isLive = data.status === "live";
   const isHistory = data.subject.id === "korean-history";
 
+  // 9급 공무원 자동 단권화 매칭 (Subject label로)
+  const civilNote = getNoteForSubjectLabel(data.subject.label);
+
   // 한국사 (한능검 콘텐츠 호환) → 한능검 legacy로
   // 다른 LIVE 과목 → /[examSlug]/[subjectSlug] subject landing으로
+  // 단권화 있으면 → notes 직접 링크
   const href =
     isLive && isHistory
       ? historyRoutes.exam
       : isLive
         ? `/${encodeURIComponent(examSlug)}/${encodeURIComponent(data.subject.slug)}`
-        : null;
+        : civilNote
+          ? `/${encodeURIComponent(examSlug)}/${encodeURIComponent(data.subject.slug)}/notes`
+          : null;
 
+  const clickable = isLive || Boolean(civilNote);
   const cardClass =
     "block rounded-2xl border p-5 transition-all " +
-    (isLive
+    (clickable
       ? "border-[var(--gc-hairline)] bg-white hover:border-[var(--gc-amber)] hover:shadow-sm"
       : "border-dashed border-[var(--gc-hairline)] bg-white/60 text-[var(--gc-ink2)] cursor-default");
 
   const inner = (
     <>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-2 flex-wrap">
         <h3 className="font-serif-kr text-lg font-bold text-[var(--gc-ink)]">
           {data.subject.label}
         </h3>
-        <span
-          className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
-            isLive ? "bg-[#CCFBF1] text-[#115E59]" : "bg-[#FED7AA] text-[var(--gc-amber)]"
-          }`}
-        >
-          {isLive ? "LIVE" : "준비중"}
-        </span>
+        <div className="flex gap-1.5">
+          {civilNote && (
+            <span className="rounded-full px-2 py-0.5 text-[10px] font-bold bg-[#FED7AA] text-[#B45309]">
+              📝 단권화
+            </span>
+          )}
+          <span
+            className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
+              isLive ? "bg-[#CCFBF1] text-[#115E59]" : "bg-[#F3F4F6] text-[#6B7280]"
+            }`}
+          >
+            {isLive ? "기출 LIVE" : "기출 준비중"}
+          </span>
+        </div>
       </div>
 
       {optional && (
@@ -510,7 +525,13 @@ function SubjectCard({
 
       <p className="mt-2 text-sm text-[var(--gc-ink2)]">{data.subject.description}</p>
 
-      {!isLive && data.subject.etaQuarter && (
+      {civilNote && (
+        <p className="mt-2 text-xs text-[#B45309] font-mono">
+          {civilNote.topics}단원 · {civilNote.keywords}키워드 · 빈출 100% 커버
+        </p>
+      )}
+
+      {!isLive && !civilNote && data.subject.etaQuarter && (
         <p className="mt-3 text-xs font-mono text-[var(--gc-amber)]">
           출시: {data.subject.etaQuarter}
         </p>

@@ -6,6 +6,11 @@ import { getCbtExam, getCbtManifest } from "@/lib/cbt-data";
 import { adaptCbtQuestion, adaptCbtExamMeta } from "@/lib/cbt-adapter";
 import QuestionWithTracking from "@/components/QuestionWithTracking";
 import BreadCrumb from "@/components/BreadCrumb";
+import {
+  getRelatedTopicsForQuestion,
+  getRelatedTopicsForQuestionFromIndex,
+} from "@/lib/civil-notes";
+import { getAutoRelatedTopicsForQuestion, getAutoMeta } from "@/lib/civil-notes-auto";
 
 // 잠재 prerender 폭발 (수만개) 방지 — 첫 요청 SSR + ISR cache
 export const dynamic = "force-dynamic";
@@ -65,6 +70,37 @@ export default async function CbtQuestionPage({ params }: PageProps) {
   });
   const question = adaptCbtQuestion(cbtQ, adaptedExam.id);
 
+  // 9급 단권화 단원 자동 매칭 — 사전 인덱스 우선, 없으면 동적 매칭 fallback
+  let relatedNotes = getRelatedTopicsForQuestionFromIndex(
+    subject.label,
+    examId,
+    qNum,
+  );
+  if (relatedNotes.length === 0) {
+    relatedNotes = getRelatedTopicsForQuestion(
+      subject.label,
+      cbtQ.text || "",
+      (cbtQ.choices || []).map((c) => c.text || "").join(" "),
+      3,
+    );
+  }
+
+  // 자동 가이드 매칭 (수동 노트 없을 때, 730 stem 자동 분류)
+  if (relatedNotes.length === 0 && stem) {
+    const autoMatched = getAutoRelatedTopicsForQuestion(stem, examId, qNum);
+    if (autoMatched.length > 0) {
+      const autoMeta = getAutoMeta(stem);
+      relatedNotes = autoMatched.map((m) => ({
+        id: `auto-${stem}-${m.topicId}`,
+        title: m.title,
+        eraLabel: `${subject.label}${m.freq > 0 ? ` · 출제 ${m.freq}회` : ""}${m.isFallback ? " · 빈출 추천" : ""}`,
+        sectionId: m.topicId,
+        // 자동 가이드는 별도 페이지 X — subject landing의 단원 섹션으로
+        href: `${exam.routes.main}/${subject.slug}#topic-${m.topicId}`,
+      }));
+    }
+  }
+
   const total = examData.question_count;
   const prev = qNum > 1 ? qNum - 1 : null;
   const next = qNum < total ? qNum + 1 : null;
@@ -96,7 +132,11 @@ export default async function CbtQuestionPage({ params }: PageProps) {
           </Link>
         </div>
 
-        <QuestionWithTracking question={question} exam={adaptedExam} />
+        <QuestionWithTracking
+          question={question}
+          exam={adaptedExam}
+          relatedNotes={relatedNotes.length > 0 ? relatedNotes : undefined}
+        />
 
         <nav className="mt-8 flex items-center justify-between gap-2">
           {prev ? (
