@@ -16,6 +16,7 @@ import DailyTrendChart from './DailyTrendChart';
 import VideoEventsCard from './VideoEventsCard';
 import SearchKeywordsTable from './SearchKeywordsTable';
 import SearchConsoleCard from './SearchConsoleCard';
+import AdTriggerAlert from './AdTriggerAlert';
 
 function getDefault7d(): DateRange {
   const today = new Date();
@@ -82,6 +83,7 @@ export default function AnalyticsDashboard() {
       />
 
       <div className="p-4 space-y-3">
+        <AdTriggerAlert />
         {isToday && (
           <div className="text-xs text-amber-600 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
             ⚠️ "오늘" 데이터는 GA4 처리 지연으로 불완전할 수 있습니다 (최대 24~48시간)

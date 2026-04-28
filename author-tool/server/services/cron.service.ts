@@ -4,6 +4,7 @@ import { generateAndStoreWeeklyReport } from './weekly-report.service.js';
 import { isSupabaseConfigured } from './supabase.service.js';
 import { isConfigured as isGa4Configured } from './ga4.service.js';
 import { processDueJobs } from './publisher.service.js';
+import { checkAndUpdateAdTriggers } from './ad-trigger.service.js';
 
 let task: ScheduledTask | null = null;
 let publishTask: ScheduledTask | null = null;
@@ -46,6 +47,17 @@ function startWeeklyReportCron(): void {
         );
       } catch (err) {
         console.error('[cron] weekly report failed:', (err as Error).message);
+      }
+      try {
+        const state = await checkAndUpdateAdTriggers();
+        const fired = [
+          state.daily500.triggered ? 'daily500' : null,
+          state.fourWeeks.triggered ? 'fourWeeks' : null,
+          state.adsenseApproved.triggered ? 'adsense' : null,
+        ].filter(Boolean);
+        console.log(`[cron] ad triggers — fired: [${fired.join(', ') || 'none'}] dau=${state.daily500.latestDau}`);
+      } catch (err) {
+        console.error('[cron] ad trigger check failed:', (err as Error).message);
       }
     },
     { timezone: cronTimezone }

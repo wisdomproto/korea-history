@@ -2,6 +2,11 @@ import { Router } from 'express';
 import * as ga4 from '../services/ga4.service.js';
 import * as gsc from '../services/gsc.service.js';
 import { getSeasonPresets, getDatePresets } from '../services/exam-season.service.js';
+import {
+  getAdTriggerState,
+  checkAndUpdateAdTriggers,
+  markAdsenseApproved,
+} from '../services/ad-trigger.service.js';
 
 const router = Router();
 
@@ -111,6 +116,31 @@ router.get('/presets', (_req, res) => {
       seasons: getSeasonPresets(),
     },
   });
+});
+
+// GET /api/analytics/ad-triggers
+router.get('/ad-triggers', async (_req, res, next) => {
+  try {
+    const state = await getAdTriggerState();
+    res.json({ success: true, data: state });
+  } catch (err) { next(err); }
+});
+
+// POST /api/analytics/ad-triggers/check  (force re-check now)
+router.post('/ad-triggers/check', async (_req, res, next) => {
+  try {
+    const state = await checkAndUpdateAdTriggers();
+    res.json({ success: true, data: state });
+  } catch (err) { next(err); }
+});
+
+// POST /api/analytics/ad-triggers/adsense  { approved: boolean }
+router.post('/ad-triggers/adsense', async (req, res, next) => {
+  try {
+    const approved = Boolean((req.body as { approved?: boolean })?.approved);
+    const state = await markAdsenseApproved(approved);
+    res.json({ success: true, data: state });
+  } catch (err) { next(err); }
 });
 
 export default router;
