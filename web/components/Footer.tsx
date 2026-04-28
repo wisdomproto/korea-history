@@ -6,6 +6,7 @@ const FOOTER_COLS: { t: string; items: { label: string; href: string }[] }[] = [
     items: [
       { label: "기출문제",  href: "/exam" },
       { label: "요약노트",  href: "/notes" },
+      { label: "블로그",    href: "/blog" },
       { label: "오답노트",  href: "/wrong-answers" },
       { label: "내 기록",   href: "/my-record" },
     ],

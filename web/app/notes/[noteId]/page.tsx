@@ -6,9 +6,11 @@ import {
   getAdjacentNotes,
   getSectionNotes,
 } from "@/lib/notes";
+import Link from "next/link";
 import { getNoteLectures } from "@/lib/note-lectures";
 import { breadcrumbJsonLd } from "@/lib/seo";
 import { getNoteSeoBoost } from "@/lib/note-seo-boost";
+import { getBlogPostByRelatedNoteId } from "@/lib/blog";
 import BreadCrumb from "@/components/BreadCrumb";
 import PrevNextNav from "@/components/PrevNextNav";
 import NoteContent from "./NoteContent";
@@ -185,6 +187,46 @@ export default async function NotePage({ params }: Props) {
           </span>
         )}
       </div>
+
+      {/* Cross-link to in-depth blog guide if available */}
+      {(() => {
+        const blogPost = getBlogPostByRelatedNoteId(noteId);
+        if (!blogPost) return null;
+        return (
+          <Link
+            href={`/blog/${blogPost.slug}`}
+            className="block mb-5 rounded-2xl border border-amber-200 bg-amber-50/50 p-4 hover:bg-amber-50 hover:border-amber-300 transition-all"
+          >
+            <div className="flex items-start gap-3">
+              <div className="text-2xl">📖</div>
+              <div className="flex-1">
+                <div className="text-[10px] font-mono font-bold text-amber-700 uppercase tracking-wider mb-1">
+                  더 자세한 가이드 →
+                </div>
+                <div className="text-[14px] font-bold text-slate-900 leading-snug mb-1">
+                  {blogPost.title}
+                </div>
+                <div className="text-[12px] text-slate-600">
+                  {blogPost.readMinutes}분 읽기 · 배경 → 진행 → 결과 → 출제 패턴까지
+                </div>
+              </div>
+              <svg
+                className="h-4 w-4 text-amber-500 mt-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </div>
+          </Link>
+        );
+      })()}
 
       {/* Server-rendered intro (SEO) — describes section context */}
       <NoteIntro sectionId={note.sectionId} noteTitle={note.title} />

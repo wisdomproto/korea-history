@@ -3,6 +3,7 @@ import { getAllExams, getAllQuestionParams } from "@/lib/data";
 import { getAllNoteIds } from "@/lib/notes";
 import { getAllExamTypes, getCategories, getSubjectById } from "@/lib/exam-types";
 import { getAllCivilNoteSlugs, getAllTopicParams } from "@/lib/civil-notes";
+import { getAllBlogSlugs, getAllBlogPosts } from "@/lib/blog";
 
 export const dynamic = "force-static";
 
@@ -149,6 +150,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.65,
   }));
 
+  // Blog — long-form SEO articles (4,000~8,000자)
+  const blogPosts = getAllBlogPosts();
+  const blogPages: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}/blog`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    ...blogPosts.map((p) => ({
+      url: `${BASE_URL}/blog/${p.slug}`,
+      lastModified: p.updatedAt,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    })),
+  ];
+
   return [
     ...staticPages,
     ...questionPages,
@@ -157,5 +175,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...subjectPages,
     ...civilNotePages,
     ...civilTopicPages,
+    ...blogPages,
   ];
 }

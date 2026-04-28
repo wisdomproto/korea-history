@@ -29,6 +29,7 @@ function buildNavItems(
     return [
       { href: "/exam", label: "기출문제", match: ["/exam", "/study", "/한능검"] },
       { href: "/notes", label: "요약노트", match: ["/notes"] },
+      { href: "/blog", label: "블로그", match: ["/blog"] },
       { href: "/wrong-answers", label: "오답노트", match: ["/wrong-answers"] },
       { href: "/my-record", label: "내 기록", match: ["/my-record"] },
     ];
