@@ -43,6 +43,18 @@ router.get('/', (_req, res) => {
       note: '키워드 검색량 · 경쟁률 조회',
     },
     {
+      id: 'dataforseo',
+      label: 'DataForSEO (Google)',
+      icon: '🔵',
+      connected: !!(config.dataforseo.login && config.dataforseo.password),
+      fields: [
+        { key: 'DATAFORSEO_LOGIN', set: !!config.dataforseo.login, preview: config.dataforseo.login },
+        { key: 'DATAFORSEO_PASSWORD', set: !!config.dataforseo.password, preview: mask(config.dataforseo.password) },
+        { key: 'DATAFORSEO_LOCATION_CODE', set: !!config.dataforseo.locationCode, preview: String(config.dataforseo.locationCode) },
+      ],
+      note: 'Google Ads 키워드 검색량 (DataForSEO)',
+    },
+    {
       id: 'ga4',
       label: 'Google Analytics 4',
       icon: '📊',

@@ -2,7 +2,6 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { GoogleGenAI } from '@google/genai';
 import { config } from '../config.js';
 import { AppError } from '../middleware.js';
-import { generate as gemmaGenerate, research as gemmaResearch } from './gemma-client.js';
 
 // Text generation models
 export const TEXT_MODELS = [
@@ -33,44 +32,49 @@ function getGenAI(): GoogleGenerativeAI {
   return _genAI;
 }
 
-// Routed to the local Gemma gateway (C:\projects\gemma). Model parameter is
-// accepted for call-site compatibility but ignored — the gateway always uses
-// gemma4:e4b. Grounding is served by Tavily via /v1/research.
-export async function generateText(
-  prompt: string,
-  model?: string,
-  options?: { grounding?: boolean },
-): Promise<string> {
-  const MAX_RETRIES = 3;
-  const label = options?.grounding ? 'Gemma/research' : 'Gemma/generate';
-
-  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
-    try {
-      if (options?.grounding) {
-        const r = await gemmaResearch(prompt);
-        return r.text ?? '';
+export async function generateText(prompt: string, model?: string, options?: { grounding?: boolean }): Promise<string> {
+  // Use new SDK (GoogleGenAI) when grounding is needed
+  if (options?.grounding) {
+    const ai = getGenAI2();
+    const modelId = model ?? config.gemini.model;
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        const result = await ai.models.generateContent({
+          model: modelId,
+          contents: prompt,
+          config: {
+            tools: [{ googleSearch: {} }],
+          } as any,
+        });
+        return result.text ?? '';
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        const isRetryable = msg.includes('503') || msg.includes('429') || msg.includes('RESOURCE_EXHAUSTED');
+        if (!isRetryable || attempt === 3) throw new AppError(500, `Gemini 호출 실패: ${msg}`);
+        await new Promise((r) => setTimeout(r, 1000 * Math.pow(2, attempt - 1) + Math.random() * 500));
       }
-      return await gemmaGenerate(prompt);
+    }
+    throw new AppError(500, 'Gemini 호출에 실패했습니다.');
+  }
+
+  const modelId = model ?? config.gemini.model;
+  const genModel = getGenAI().getGenerativeModel({ model: modelId });
+
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      const result = await genModel.generateContent(prompt);
+      return result.response.text();
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
-      // Retry transient errors: connection resets, 5xx, rate limits, aborts.
-      const isRetryable =
-        msg.includes('ECONNREFUSED') ||
-        msg.includes('ECONNRESET') ||
-        msg.includes('ETIMEDOUT') ||
-        msg.includes('fetch failed') ||
-        msg.includes('aborted') ||
-        /\b5\d\d\b/.test(msg) ||
-        msg.includes('429');
-      if (!isRetryable || attempt === MAX_RETRIES) {
-        throw new AppError(500, `${label} 호출 실패: ${msg}`);
+      const isRetryable = msg.includes('503') || msg.includes('429') || msg.includes('RESOURCE_EXHAUSTED');
+      if (!isRetryable || attempt === 3) {
+        throw new AppError(500, `Gemini 호출 실패: ${msg}`);
       }
-      const delay = 1500 * Math.pow(2, attempt - 1) + Math.random() * 500;
-      console.log(`[${label}] retry ${attempt}/${MAX_RETRIES} in ${Math.round(delay)}ms... (${model ?? 'default'})`);
+      const delay = 1000 * Math.pow(2, attempt - 1) + Math.random() * 500;
       await new Promise((r) => setTimeout(r, delay));
     }
   }
-  throw new AppError(500, `${label} 호출에 실패했습니다.`);
+  throw new AppError(500, 'Gemini 호출에 실패했습니다.');
 }
 
 export async function generateTextWithPdf(pdfBuffer: Buffer, prompt: string, model?: string): Promise<string> {

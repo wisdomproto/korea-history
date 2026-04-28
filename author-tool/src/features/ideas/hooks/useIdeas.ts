@@ -1,11 +1,30 @@
 import { useMutation } from '@tanstack/react-query';
-import { researchKeywords, fetchGscOpportunities, generateIdeas } from '../api/ideas.api';
+import {
+  researchKeywords,
+  researchGoogleKeywords,
+  analyzeGoldenKeywords,
+  fetchGscOpportunities,
+  generateIdeas,
+} from '../api/ideas.api';
 import type { IdeaChannel } from '../types';
 
 export function useResearchKeywords() {
   return useMutation({
     mutationFn: ({ seed, context, limit }: { seed: string; context?: string; limit?: number }) =>
       researchKeywords(seed, context, limit),
+  });
+}
+
+export function useResearchGoogleKeywords() {
+  return useMutation({
+    mutationFn: ({ seed, context, limit }: { seed: string; context?: string; limit?: number }) =>
+      researchGoogleKeywords(seed, context, limit),
+  });
+}
+
+export function useAnalyzeGolden() {
+  return useMutation({
+    mutationFn: (args: Parameters<typeof analyzeGoldenKeywords>[0]) => analyzeGoldenKeywords(args),
   });
 }
 

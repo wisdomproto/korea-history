@@ -1,6 +1,8 @@
 import axios from 'axios';
 import type {
   ResearchResponse,
+  GoogleResearchResponse,
+  GoldenAnalysisResponse,
   GscOpportunitiesResponse,
   GeneratedIdea,
   IdeaChannel,
@@ -9,6 +11,21 @@ import type {
 export async function researchKeywords(seed: string, context?: string, limit = 15): Promise<ResearchResponse> {
   const res = await axios.post('/api/blog-tools/research', { seed, context, limit });
   return res.data.data as ResearchResponse;
+}
+
+export async function researchGoogleKeywords(seed: string, context?: string, limit = 15): Promise<GoogleResearchResponse> {
+  const res = await axios.post('/api/google-tools/research', { seed, context, limit });
+  return res.data.data as GoogleResearchResponse;
+}
+
+export async function analyzeGoldenKeywords(args: {
+  source: 'naver' | 'google';
+  projectId?: string;
+  keywords: Array<{ keyword: string; totalVolume: number; competition: string }>;
+  instruction?: string;
+}): Promise<GoldenAnalysisResponse> {
+  const res = await axios.post('/api/blog-tools/golden-keywords', args);
+  return res.data.data as GoldenAnalysisResponse;
 }
 
 export async function fetchGscOpportunities(start: string, end: string, minImpressions = 10, maxPosition = 30) {

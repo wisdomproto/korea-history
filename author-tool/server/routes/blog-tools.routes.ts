@@ -1,7 +1,9 @@
 import { Router } from 'express';
-import { suggestKeywords, fetchNaverKeywords } from '../services/naver-keyword.service.js';
+import { suggestKeywords, suggestKeywordsExpanded, fetchNaverKeywords, normalizeCompetition, isGoldenKeyword } from '../services/naver-keyword.service.js';
 import { calculateSeoScore } from '../services/seo-scorer.js';
 import * as gsc from '../services/gsc.service.js';
+import { analyzeGoldenKeywords } from '../services/golden-keyword.service.js';
+import { getBatchBidEstimates } from '../services/naver-bid.service.js';
 
 const router = Router();
 
@@ -13,27 +15,66 @@ router.post('/research', async (req, res, next) => {
     if (!seed?.trim()) {
       return res.status(400).json({ success: false, error: 'seed is required' });
     }
-    const rawSuggestions = await suggestKeywords(seed.trim(), context);
-    const cap = Math.min(limit ?? 15, 20);
-    const suggestions = [seed.trim(), ...rawSuggestions].slice(0, cap);
-    const unique = [...new Set(suggestions.map((k) => k.trim()).filter(Boolean))];
+    const seedTrim = seed.trim();
+    const seedKey = seedTrim.replace(/\s+/g, '');
+
+    // Expand seed into longtails + adjacent broader topics
+    const expanded = await suggestKeywordsExpanded(seedTrim, context);
+    const longtails = expanded.longtails;
+    const adjacent = expanded.adjacent;
+
+    // Cap longtails to keep prompt + Naver batches reasonable
+    const longtailCap = Math.min(limit ?? 30, 50);
+    const cappedLongtails = longtails.slice(0, longtailCap);
+
+    // All hints to send to Naver
+    const allHints = [seedTrim, ...cappedLongtails, ...adjacent];
+    const unique = [...new Set(allHints.map((k) => k.trim()).filter(Boolean))];
+
     const volumes = await fetchNaverKeywords(unique);
-    // Merge: keep AI-suggested terms that got Naver data; plus any related terms returned by Naver.
+
+    // Build relevance filter:
+    //  - Keep if keyword contains the seed
+    //  - Keep if keyword contains any adjacent topic (≥3 chars to avoid noise)
+    //  - Keep if keyword exactly matches one of our AI longtails
+    const adjTokens = adjacent
+      .map((a) => a.replace(/\s+/g, ''))
+      .filter((a) => a.length >= 3);
+
+    const isRelevant = (keyword: string) => {
+      const k = keyword.replace(/\s+/g, '');
+      if (k.includes(seedKey)) return true;
+      if (adjTokens.some((t) => k.includes(t))) return true;
+      return unique.some((u) => k === u.replace(/\s+/g, ''));
+    };
+
+    const filteredVolumes = volumes.filter((v) => isRelevant(v.keyword));
+
+    // Merge: keep AI-suggested terms that got Naver data; fill missing with zero-vol entries.
     const merged = [
-      ...volumes,
+      ...filteredVolumes,
       ...unique
-        .filter((t) => !volumes.some((v) => v.keyword.replace(/\s/g, '') === t.replace(/\s/g, '')))
+        .filter((t) => !filteredVolumes.some((v) => v.keyword.replace(/\s/g, '') === t.replace(/\s/g, '')))
         .map((t) => ({
           keyword: t,
           pcSearchVolume: 0,
           mobileSearchVolume: 0,
           totalSearchVolume: 0,
-          competition: 'LOW',
+          competition: '낮음',
+          competitionLevel: normalizeCompetition('낮음'),
           pcCtr: 0,
           mobileCtr: 0,
+          isGolden: isGoldenKeyword(0, 'low'),
         })),
     ];
-    res.json({ success: true, data: { suggestions: unique, keywords: merged } });
+    res.json({
+      success: true,
+      data: {
+        suggestions: unique,
+        adjacent,
+        keywords: merged,
+      },
+    });
   } catch (err) { next(err); }
 });
 
@@ -87,6 +128,41 @@ router.post('/keyword-data', async (req, res, next) => {
     }
     const data = await fetchNaverKeywords(keywords);
     res.json({ success: true, data });
+  } catch (err) { next(err); }
+});
+
+// POST /api/blog-tools/naver-bid — batch CPC estimates from Naver Search Ad API
+// body: { keywords: string[], device?: 'PC'|'MOBILE'|'BOTH', bids?: number[] }
+router.post('/naver-bid', async (req, res, next) => {
+  try {
+    const { keywords, device, bids } = req.body as {
+      keywords: string[];
+      device?: 'PC' | 'MOBILE' | 'BOTH';
+      bids?: number[];
+    };
+    if (!Array.isArray(keywords) || keywords.length === 0) {
+      return res.status(400).json({ success: false, error: 'keywords array required' });
+    }
+    const data = await getBatchBidEstimates(keywords, { device, bids });
+    res.json({ success: true, data });
+  } catch (err) { next(err); }
+});
+
+// POST /api/blog-tools/golden-keywords — Gemini-powered golden keyword + insights analysis
+// body: { source: 'naver'|'google', projectId?: string, keywords: [{ keyword, totalVolume, competition }], instruction? }
+router.post('/golden-keywords', async (req, res, next) => {
+  try {
+    const { source, projectId, keywords, instruction } = req.body as {
+      source: 'naver' | 'google';
+      projectId?: string;
+      keywords: Array<{ keyword: string; totalVolume: number; competition: string }>;
+      instruction?: string;
+    };
+    if (!Array.isArray(keywords) || keywords.length === 0) {
+      return res.status(400).json({ success: false, error: 'keywords array required' });
+    }
+    const result = await analyzeGoldenKeywords({ source, projectId, keywords, instruction });
+    res.json({ success: true, data: result });
   } catch (err) { next(err); }
 });
 

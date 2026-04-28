@@ -2,6 +2,10 @@ import { useState, useCallback } from 'react';
 import { useDashboard, useRefreshDashboard } from '../hooks/useAnalytics';
 import type { DateRange } from '../types/analytics.types';
 import DatePresetBar from './DatePresetBar';
+import NsmHeroCard from './NsmHeroCard';
+import ChannelGroupCard from './ChannelGroupCard';
+import FunnelCard from './FunnelCard';
+import CounterMetricsCard from './CounterMetricsCard';
 import ChannelChart from './ChannelChart';
 import TopPagesTable from './TopPagesTable';
 import CampaignTable from './CampaignTable';
@@ -107,6 +111,17 @@ export default function AnalyticsDashboard() {
           </>
         ) : data ? (
           <>
+            {/* ⭐ v3 마케팅 전략 인사이트 — NSM + Counter + Funnel + PESO */}
+            <NsmHeroCard data={data.overview} />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <ChannelGroupCard channels={data.channels} campaigns={data.campaigns} />
+              <FunnelCard topPages={data.topPages} />
+            </div>
+
+            <CounterMetricsCard overview={data.overview} channels={data.channels} />
+
+            {/* 기존 차트 ─ 일별 트렌드 + 상세 */}
             <DailyTrendChart />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <ChannelChart data={data.channels} />

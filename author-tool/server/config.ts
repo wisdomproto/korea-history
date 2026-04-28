@@ -52,4 +52,10 @@ export const config = {
     cronTimezone: process.env.WEEKLY_REPORT_TZ ?? 'Asia/Seoul',
     enabled: (process.env.WEEKLY_REPORT_ENABLED ?? 'true') !== 'false',
   },
+  dataforseo: {
+    login: process.env.DATAFORSEO_LOGIN ?? '',
+    password: process.env.DATAFORSEO_PASSWORD ?? '',
+    locationCode: parseInt(process.env.DATAFORSEO_LOCATION_CODE ?? '2410', 10), // South Korea
+    languageCode: process.env.DATAFORSEO_LANGUAGE_CODE ?? 'ko',
+  },
 } as const;
