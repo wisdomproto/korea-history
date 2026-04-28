@@ -60,14 +60,10 @@ const MOBILE_BREAKPOINT = 768;
 
 function pickAutoProvider(adsenseAvailable: boolean, adfitAvailable: boolean): "adsense" | "adfit" | null {
   if (typeof window === "undefined") return null;
+  if (!adsenseAvailable) return adfitAvailable ? "adfit" : null;
+  if (!adfitAvailable) return "adsense";
   const isMobile = window.innerWidth < MOBILE_BREAKPOINT;
-  // device-match preferred
-  if (isMobile && adfitAvailable) return "adfit";
-  if (!isMobile && adsenseAvailable) return "adsense";
-  // fallback: any available
-  if (adfitAvailable) return "adfit";
-  if (adsenseAvailable) return "adsense";
-  return null;
+  return isMobile ? "adfit" : "adsense";
 }
 
 export default function AdSlot({

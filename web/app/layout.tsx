@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import AdSlot from "@/components/AdSlot";
 import { getAllExamTypes, getAllSubjects } from "@/lib/exam-types";
 import "./globals.css";
 
@@ -74,12 +73,6 @@ export default function RootLayout({
           <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-5">
             {children}
           </main>
-          <aside
-            aria-label="광고"
-            className="fixed right-4 top-1/2 z-10 hidden -translate-y-1/2 xl:block"
-          >
-            <AdSlot size="skyscraper" provider="adfit" />
-          </aside>
           <Footer />
         </div>
       </body>
