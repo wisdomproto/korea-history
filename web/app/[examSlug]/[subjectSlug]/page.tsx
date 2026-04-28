@@ -174,137 +174,36 @@ export default async function SubjectLanding({ params }: PageProps) {
         </>
       )}
 
-      {/* 자동 학습 가이드 (수동 노트 없을 때, 자동 분류 단원) */}
-      {!civilNote && autoMeta && autoTopics.length > 0 && (
+      {/* 단권화 미리보기 카드 (본문 X — "요약노트" CTA 클릭하면 전체 보기) */}
+      {(civilNote || autoMeta) && (
         <section className="mt-12">
-          <div className="flex items-baseline justify-between mb-3 flex-wrap gap-2">
-            <h2 className="font-serif-kr text-2xl font-black text-[var(--gc-ink)]">
-              📚 자동 학습 가이드 — {autoTopics.length}단원
-            </h2>
-            <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--gc-amber)] font-bold bg-[#FFF7ED] px-2.5 py-1 rounded-full">
-              AUTO · {autoMeta.totalQ}문제 인덱스
-            </span>
-          </div>
-          <p className="text-sm text-[var(--gc-ink2)] mb-4">
-            이 시험 전 회차 {autoMeta.totalQ}문제를 자동 분석해서 빈출 주제 {autoTopics.length}개로 분류.
-            본문은 단계적 보강 예정 — 우선 단원별 빈출 키워드 + 매칭 기출문제로 학습.
-          </p>
-
-          <div className="bg-white border border-[var(--gc-hairline)] rounded-2xl p-5 mb-4">
-            <ol className="grid gap-2 grid-cols-1 md:grid-cols-2 list-none p-0 m-0">
-              {autoTopics.map((t) => {
-                const matched = getAutoQuestionsForTopic(stem, t.topicId, 1);
-                return (
-                  <li key={t.topicId}>
-                    <details className="group">
-                      <summary className="cursor-pointer px-3 py-2.5 text-sm rounded-md hover:bg-[#FFF7ED] hover:text-[#B45309] transition-colors list-none flex items-start gap-2">
-                        <span className="font-mono text-[10px] text-[var(--gc-ink2)] mt-1">
-                          {String(t.ord).padStart(2, "0")}
-                        </span>
-                        <div className="flex-1 min-w-0">
-                          <div className="font-bold text-[var(--gc-ink)] truncate">{t.title}</div>
-                          <div className="text-[11px] text-[var(--gc-ink2)] mt-0.5">
-                            출제 {t.freq}회 · {t.questionCount}문제 매칭
-                          </div>
-                        </div>
-                        <span className="text-[#B45309] text-xs mt-1">▾</span>
-                      </summary>
-                      {/* 핵심 키워드 */}
-                      {t.keywords.length > 0 && (
-                        <div className="px-3 pt-2 pb-3">
-                          <div className="text-[10px] font-mono uppercase tracking-wider text-[var(--gc-ink2)] mb-1.5">
-                            핵심 키워드
-                          </div>
-                          <div className="flex flex-wrap gap-1">
-                            {t.keywords.slice(0, 12).map((k) => (
-                              <span
-                                key={k}
-                                className="text-[11px] px-2 py-0.5 bg-[#FED7AA] text-[#B45309] rounded font-semibold"
-                              >
-                                {k}
-                              </span>
-                            ))}
-                          </div>
-                          {/* 매칭 기출 미리보기 1개 */}
-                          {matched[0] && (
-                            <div className="mt-3 text-[12px] text-[var(--gc-ink2)] bg-[#F5EFE4] rounded p-2.5">
-                              <span className="font-mono text-[10px] text-[#94724D] block mb-1">
-                                관련 기출: {matched[0].examLabel.replace(/^[^()]+/, "").slice(1, 30)} {matched[0].questionNumber}번
-                              </span>
-                              {matched[0].qPreview}…
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </details>
-                  </li>
-                );
-              })}
-            </ol>
-          </div>
-
-          <p className="text-[11px] font-mono text-[var(--gc-ink2)]">
-            본문 단권화 노트 — 트래픽 인기 시험부터 단계적 작성 (현재: 9급 국가직 13과목 본문 LIVE)
-          </p>
-        </section>
-      )}
-
-      {/* 단권화 노트 — 매칭되면 페이지 안에서 바로 보여줌 */}
-      {civilNote && civilNoteMeta && (
-        <>
-          {/* 단권화 노트 자체 스타일 — 같은 페이지 내 인젝트 */}
-          <style dangerouslySetInnerHTML={{ __html: civilNote.style }} />
-
-          <section className="mt-12">
-            <div className="flex items-baseline justify-between mb-3 flex-wrap gap-2">
-              <h2 className="font-serif-kr text-2xl font-black text-[var(--gc-ink)]">
-                📚 자동 단권화 — {civilTopics.length}단원
-              </h2>
+          <div className="rounded-2xl border border-[var(--gc-hairline)] bg-white p-5">
+            <div className="flex items-start gap-3 flex-wrap">
+              <div className="text-3xl">📚</div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-baseline gap-2 flex-wrap">
+                  <h2 className="font-serif-kr text-lg font-bold text-[var(--gc-ink)]">
+                    {civilNote ? "단권화 요약노트 LIVE" : "자동 학습 가이드"}
+                  </h2>
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--gc-amber)] font-bold">
+                    {civilNote ? `${civilTopics.length}단원 · 본문` : `${autoTopics.length}단원 · 자동 분류`}
+                  </span>
+                </div>
+                <p className="text-xs text-[var(--gc-ink2)] mt-1">
+                  {civilNote
+                    ? `${civilNoteMeta!.subtitle}`
+                    : `이 시험 ${autoMeta!.totalQ}문제 자동 분석한 빈출 주제`}
+                </p>
+              </div>
               <Link
                 href={`${baseUrl}/notes`}
-                className="text-xs font-bold text-[var(--gc-amber)] hover:underline"
+                className="rounded-full bg-[var(--gc-amber)] text-white px-4 py-2 text-xs font-bold hover:opacity-90 whitespace-nowrap"
               >
-                전체 단권화 페이지 →
+                요약노트 열기 →
               </Link>
             </div>
-            <p className="text-sm text-[var(--gc-ink2)] mb-4">
-              {civilNoteMeta.subtitle} · 200문제 시드 + 빈출 100% 커버
-            </p>
-
-            {/* 단원 빠른 이동 */}
-            <div className="bg-white border border-[var(--gc-hairline)] rounded-2xl p-5 mb-4">
-              <div className="text-xs font-mono uppercase tracking-wider text-[var(--gc-amber)] font-bold mb-3">
-                단원별 바로가기
-              </div>
-              <ol className="grid gap-1 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 list-none p-0 m-0">
-                {civilTopics.map((t) => (
-                  <li key={t.topicId}>
-                    <Link
-                      href={`/civil-notes/${civilNoteMeta.slug}/${t.topicId}`}
-                      className="block px-3 py-2 text-sm text-[var(--gc-ink)] rounded-md hover:bg-[#FFF7ED] hover:text-[#B45309] transition-colors"
-                    >
-                      <span className="font-mono text-[10px] text-[var(--gc-ink2)] mr-1.5">
-                        {String(t.ord).padStart(2, "0")}
-                      </span>
-                      {t.title}
-                      {t.freq > 0 && (
-                        <span className="ml-1.5 text-[10px] text-[#B45309] font-bold">
-                          [{t.freq}회]
-                        </span>
-                      )}
-                    </Link>
-                  </li>
-                ))}
-              </ol>
-            </div>
-
-            {/* 본문 풀로 인젝트 — 단권화 노트 자체 */}
-            <article
-              className="civil-note-body"
-              dangerouslySetInnerHTML={{ __html: civilNote.body }}
-            />
-          </section>
-        </>
+          </div>
+        </section>
       )}
     </div>
   );

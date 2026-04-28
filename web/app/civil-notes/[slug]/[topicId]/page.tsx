@@ -135,8 +135,41 @@ export default async function TopicPage({
       {/* 노트 자체 스타일 (cream/amber 디자인 시스템) */}
       <style dangerouslySetInnerHTML={{ __html: topic.style }} />
 
-      <div className="container">
-        <nav style={{ fontSize: 12, color: "#94724D", margin: "20px 0 16px", fontFamily: "var(--mono, monospace)" }}>
+      <div className="mx-auto max-w-[1200px] px-5 py-6 md:py-8 md:flex md:gap-6" style={{ background: "var(--gc-bg, #F5EFE4)" }}>
+        {/* 좌측 사이드바 — 다른 단원 리스트 */}
+        <aside className="hidden md:block md:w-64 md:shrink-0">
+          <div className="sticky top-20 space-y-2">
+            <div className="rounded-2xl bg-white border border-[var(--gc-hairline)] p-3">
+              <div className="text-[10px] font-mono uppercase tracking-wider text-[var(--gc-amber)] font-bold mb-2 px-1">
+                {note.subject} 단원 ({allTopics.length})
+              </div>
+              <ul className="space-y-0.5 max-h-[calc(100vh-180px)] overflow-y-auto">
+                {allTopics.map((t) => (
+                  <li key={t.topicId}>
+                    <Link
+                      href={`/civil-notes/${slug}/${t.topicId}`}
+                      className={`flex items-center gap-2 px-2.5 py-1.5 text-[13px] rounded-md transition-colors ${
+                        t.topicId === topicId
+                          ? "bg-[#FFF7ED] text-[var(--gc-amber)] font-bold"
+                          : "text-[var(--gc-ink)] hover:bg-[var(--gc-bg)] hover:text-[var(--gc-amber)]"
+                      }`}
+                    >
+                      <span className="font-mono text-[10px] text-slate-400 shrink-0">{String(t.ord).padStart(2, "0")}</span>
+                      <span className="flex-1 truncate">{t.title}</span>
+                      {t.freq > 0 && (
+                        <span className="text-[9px] text-[var(--gc-amber)] font-bold shrink-0">{t.freq}</span>
+                      )}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </aside>
+
+        {/* 우측 본문 */}
+        <div className="flex-1 min-w-0">
+        <nav style={{ fontSize: 12, color: "#94724D", marginBottom: 16, fontFamily: "var(--mono, monospace)" }}>
           <Link href="/civil-notes" style={{ color: "inherit", textDecoration: "none" }}>
             9급 공무원 단권화
           </Link>
@@ -372,75 +405,8 @@ export default async function TopicPage({
           )}
         </nav>
 
-        {/* 노트 전체 단원 목록 */}
-        <section
-          style={{
-            margin: "32px 0 64px",
-            padding: "24px 28px",
-            background: "#fff",
-            border: "1px solid rgba(31,26,20,.12)",
-            borderRadius: 14,
-          }}
-        >
-          <h2
-            className="font-serif-kr"
-            style={{ fontSize: 20, fontWeight: 800, margin: "0 0 16px", color: "#1F1A14" }}
-          >
-            {note.subject} 전체 단원 ({allTopics.length})
-          </h2>
-          <ol
-            style={{
-              listStyle: "none",
-              padding: 0,
-              margin: 0,
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
-              gap: 6,
-            }}
-          >
-            {allTopics.map((t) => (
-              <li key={t.topicId}>
-                <Link
-                  href={`/civil-notes/${slug}/${t.topicId}`}
-                  style={{
-                    display: "block",
-                    padding: "8px 12px",
-                    fontSize: 13,
-                    color: t.topicId === topicId ? "#B45309" : "#1F1A14",
-                    background: t.topicId === topicId ? "#FFF7ED" : "transparent",
-                    fontWeight: t.topicId === topicId ? 700 : 500,
-                    borderRadius: 6,
-                    textDecoration: "none",
-                    border: t.topicId === topicId ? "1px solid #FED7AA" : "1px solid transparent",
-                  }}
-                >
-                  <span style={{ color: "#94724D", marginRight: 6, fontFamily: "var(--mono, monospace)", fontSize: 11 }}>
-                    {String(t.ord).padStart(2, "0")}
-                  </span>
-                  {t.title}
-                </Link>
-              </li>
-            ))}
-          </ol>
-          <div style={{ marginTop: 16, textAlign: "center" }}>
-            <Link
-              href={`/civil-notes/${slug}`}
-              style={{
-                display: "inline-block",
-                padding: "10px 18px",
-                background: "#1F1A14",
-                color: "#fff",
-                borderRadius: 8,
-                textDecoration: "none",
-                fontSize: 13,
-                fontWeight: 700,
-              }}
-            >
-              전체 노트 한 페이지 보기 →
-            </Link>
-          </div>
-        </section>
-      </div>
+        </div>{/* 우측 본문 끝 */}
+      </div>{/* flex wrapper 끝 */}
     </>
   );
 }
