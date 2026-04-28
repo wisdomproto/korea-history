@@ -1,4 +1,7 @@
 import { schedule, validate, ScheduledTask } from 'node-cron';
+import { spawn } from 'child_process';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { config } from '../config.js';
 import { generateAndStoreWeeklyReport } from './weekly-report.service.js';
 import { isSupabaseConfigured } from './supabase.service.js';
@@ -6,12 +9,16 @@ import { isConfigured as isGa4Configured } from './ga4.service.js';
 import { processDueJobs } from './publisher.service.js';
 import { checkAndUpdateAdTriggers } from './ad-trigger.service.js';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 let task: ScheduledTask | null = null;
 let publishTask: ScheduledTask | null = null;
+let seoMonthlyTask: ScheduledTask | null = null;
 
 export function startCron(): void {
   startWeeklyReportCron();
   startPublishQueueCron();
+  startSeoMonthlyCron();
 }
 
 function startWeeklyReportCron(): void {
@@ -88,9 +95,44 @@ function startPublishQueueCron(): void {
   console.log('[cron] publish queue scheduled: every minute (R2-backed)');
 }
 
+function startSeoMonthlyCron(): void {
+  // Run on the 1st of each month at 09:00 KST. Output goes to Railway logs + ephemeral _research/.
+  // For persistent file output, run locally: `cd author-tool && npm run seo:monthly`
+  if (!isGa4Configured()) {
+    console.log('[cron] SEO monthly skipped — GA4/GSC not configured');
+    return;
+  }
+  if (seoMonthlyTask) return;
+
+  const cronExpr = '0 9 1 * *';
+  if (!validate(cronExpr)) {
+    console.error(`[cron] invalid SEO monthly expression: ${cronExpr}`);
+    return;
+  }
+
+  seoMonthlyTask = schedule(
+    cronExpr,
+    () => {
+      const started = Date.now();
+      const scriptPath = path.resolve(__dirname, '../../scripts/seo-monthly-update.mjs');
+      console.log(`[cron] SEO monthly start @ ${new Date().toISOString()} → ${scriptPath}`);
+      const proc = spawn('node', [scriptPath], { cwd: path.resolve(__dirname, '../..') });
+      proc.stdout.on('data', (d) => process.stdout.write(`[seo-monthly] ${d}`));
+      proc.stderr.on('data', (d) => process.stderr.write(`[seo-monthly] ${d}`));
+      proc.on('close', (code) => {
+        console.log(`[cron] SEO monthly done — exit=${code} (${Date.now() - started}ms)`);
+      });
+    },
+    { timezone: 'Asia/Seoul' }
+  );
+  console.log(`[cron] SEO monthly scheduled: "${cronExpr}" (Asia/Seoul)`);
+}
+
 export function stopCron(): void {
   task?.stop();
   task = null;
   publishTask?.stop();
   publishTask = null;
+  seoMonthlyTask?.stop();
+  seoMonthlyTask = null;
 }

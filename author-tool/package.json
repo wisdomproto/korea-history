@@ -10,7 +10,10 @@
     "build:client": "vite build",
     "build:server": "node esbuild.server.mjs",
     "start": "NODE_ENV=production node dist-server/index.js",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "seo:monthly": "node scripts/seo-monthly-update.mjs",
+    "seo:gsc": "node scripts/pull-gsc-deep.mjs",
+    "seo:keywords": "node scripts/validate-keywords-naver.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1004.0",

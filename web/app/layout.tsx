@@ -7,12 +7,12 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://gcnote.co.kr"),
   title: {
-    default: "한능검 기출문제 무료 풀기 - 1,900문항 해설·요약노트",
+    default: "기출노트 — 한능검 기출문제와 요약노트 무료",
     template: "%s | 기출노트 한능검",
   },
   description:
-    "한능검 기출문제 1,900+ 문항 무료 풀기. AI 해설, 요약노트, 영상강의까지 한번에.",
-  keywords: ["한국사능력검정시험", "한능검", "기출문제", "한국사", "요약노트", "해설", "1급", "2급", "심화"],
+    "기출노트는 한능검(한국사능력검정시험) 기출문제 1,900+ 문항과 시대별 요약노트 87편을 무료로 제공하는 학습 플랫폼입니다. AI 해설과 강의 영상까지.",
+  keywords: ["기출노트", "기출노트 한능검", "한국사능력검정시험", "한능검", "한능검 요약노트", "한능검 기출문제", "한국사", "요약노트", "해설", "1급", "2급", "심화"],
   openGraph: {
     type: "website",
     locale: "ko_KR",
@@ -25,6 +25,31 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+};
+
+// Site-wide Organization + WebSite structured data (applies to every page)
+const ORGANIZATION_SCHEMA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOrganization",
+      "@id": "https://gcnote.co.kr/#organization",
+      name: "기출노트",
+      alternateName: ["gcnote", "기출노트 한능검"],
+      url: "https://gcnote.co.kr",
+      description:
+        "한국사능력검정시험(한능검) 기출문제와 시대별 요약노트를 무료로 제공하는 학습 플랫폼",
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://gcnote.co.kr/#website",
+      name: "기출노트 한능검",
+      alternateName: "기출노트",
+      url: "https://gcnote.co.kr",
+      inLanguage: "ko-KR",
+      publisher: { "@id": "https://gcnote.co.kr/#organization" },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -54,6 +79,11 @@ export default function RootLayout({
           <script async src="https://t1.kakaocdn.net/kas/static/ba.min.js" />
         )}
         <meta name="naver-site-verification" content="e79f5c36354d88f45d3cd7b622df34f3d570a336" />
+        {/* Schema.org Organization + WebSite — brand entity signal for "기출노트" */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_SCHEMA) }}
+        />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-CJ7V236NQV" />
         <script
           dangerouslySetInnerHTML={{

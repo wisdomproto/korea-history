@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한능검 기출마스터 — 마케팅 전략 보고서</title>
+<style>
+  :root {
+    --primary: #4F46E5;
+    --primary-light: #EEF2FF;
+    --accent: #EC4899;
+    --accent-light: #FDF2F8;
+    --success: #16A34A;
+    --success-light: #F0FDF4;
+    --warning: #F59E0B;
+    --warning-light: #FFFBEB;
+    --danger: #DC2626;
+    --danger-light: #FEF2F2;
+    --text: #1E1B4B;
+    --text-secondary: #6B7280;
+    --border: #E5E7EB;
+    --surface: #FFFFFF;
+    --bg: #F8FAFC;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  /* ── Header ── */
+  .hero {
+    background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #EC4899 100%);
+    color: white;
+    padding: 60px 40px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    backdrop-filter: blur(4px);
+  }
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .hero p {
+    font-size: 16px;
+    opacity: 0.9;
+    max-width: 600px;
+  }
+  .hero-meta {
+    margin-top: 20px;
+    font-size: 13px;
+    opacity: 0.7;
+  }
+
+  /* ── Sections ── */
+  .section {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .section-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text);
+  }
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  th {
+    background: var(--bg);
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    border-bottom: 2px solid var(--border);
+  }
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover { background: var(--bg); }
+
+  /* ── Cards ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .stat-card {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .stat-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--primary);
+  }
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+
+  /* ── Segment Cards ── */
+  .segment-card {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+    background: var(--surface);
+    border-left: 4px solid var(--primary);
+  }
+  .segment-card.seg-a { border-left-color: #4F46E5; }
+  .segment-card.seg-b { border-left-color: #7C3AED; }
+  .segment-card.seg-c { border-left-color: #EC4899; }
+  .segment-card.seg-d { border-left-color: #F59E0B; }
+  .segment-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .segment-name {
+    font-size: 18px;
+    font-weight: 800;
+  }
+  .segment-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .segment-meta {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .segment-meta span { display: flex; align-items: center; gap: 4px; }
+  .segment-jtbd {
+    background: var(--primary-light);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--primary);
+    margin-bottom: 16px;
+    border-left: 3px solid var(--primary);
+  }
+  .pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 600px) { .pros-cons { grid-template-columns: 1fr; } }
+  .pros, .cons {
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 13px;
+  }
+  .pros { background: var(--success-light); }
+  .cons { background: var(--danger-light); }
+  .pros h4 { color: var(--success); margin-bottom: 8px; font-size: 13px; }
+  .cons h4 { color: var(--danger); margin-bottom: 8px; font-size: 13px; }
+  .pros ul, .cons ul { padding-left: 16px; }
+  .pros li, .cons li { margin-bottom: 4px; }
+
+  /* ── Fit meter ── */
+  .fit-meter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .fit-bar {
+    flex: 1;
+    max-width: 200px;
+    height: 8px;
+    background: #E5E7EB;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .fit-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s;
+  }
+
+  /* ── Competition Table ── */
+  .comp-table td:first-child { font-weight: 700; white-space: nowrap; }
+
+  /* ── Phase Cards ── */
+  .phase-card {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .phase-header {
+    padding: 16px 24px;
+    font-weight: 800;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .phase-1 .phase-header { background: var(--primary-light); color: var(--primary); }
+  .phase-2 .phase-header { background: #F5F3FF; color: #7C3AED; }
+  .phase-3 .phase-header { background: var(--accent-light); color: var(--accent); }
+  .phase-body { padding: 20px 24px; }
+  .phase-body h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 16px 0 8px;
+    color: var(--text);
+  }
+  .phase-body h4:first-child { margin-top: 0; }
+  .phase-body ul { padding-left: 20px; font-size: 14px; }
+  .phase-body li { margin-bottom: 6px; }
+
+  /* ── Pricing Table ── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 16px 0;
+  }
+  @media (max-width: 700px) { .pricing-grid { grid-template-columns: 1fr; } }
+  .price-card {
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
+    position: relative;
+  }
+  .price-card.featured {
+    border-color: var(--primary);
+    box-shadow: 0 4px 20px rgba(79,70,229,0.15);
+  }
+  .price-card.featured::before {
+    content: 'BEST';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: white;
+    padding: 2px 16px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 800;
+  }
+  .price-tier { font-size: 14px; font-weight: 700; color: var(--text-secondary); margin-bottom: 8px; }
+  .price-amount { font-size: 28px; font-weight: 800; color: var(--text); }
+  .price-period { font-size: 13px; color: var(--text-secondary); }
+  .price-features { text-align: left; margin-top: 16px; font-size: 13px; }
+  .price-features li { margin-bottom: 6px; list-style: none; padding-left: 20px; position: relative; }
+  .price-features li::before { content: '✓'; position: absolute; left: 0; color: var(--success); font-weight: 700; }
+
+  /* ── Messaging ── */
+  .msg-card {
+    background: var(--bg);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border-left: 3px solid var(--primary);
+  }
+  .msg-target {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .msg-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* ── Quick Wins ── */
+  .qw-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .qw-item:last-child { border-bottom: none; }
+  .qw-effort {
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .qw-impact {
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ── Instagram Section ── */
+  .insta-carousel {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 16px 0;
+    scroll-snap-type: x mandatory;
+  }
+  .insta-slide {
+    min-width: 200px;
+    height: 200px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    color: white;
+    position: relative;
+  }
+  .insta-slide-num {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.3);
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+  }
+  .slide-1 { background: linear-gradient(135deg, #4F46E5, #7C3AED); }
+  .slide-2 { background: linear-gradient(135deg, #7C3AED, #9333EA); }
+  .slide-3 { background: linear-gradient(135deg, #16A34A, #059669); }
+  .slide-4 { background: linear-gradient(135deg, #EC4899, #F43F5E); }
+  .insta-slide .emoji { font-size: 32px; margin-bottom: 8px; }
+
+  /* ── Revenue Table ── */
+  .revenue-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+  }
+  @media (max-width: 600px) { .revenue-grid { grid-template-columns: repeat(2, 1fr); } }
+  .rev-card {
+    background: var(--bg);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .rev-label { font-size: 11px; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; }
+  .rev-value { font-size: 20px; font-weight: 800; color: var(--primary); margin-top: 4px; }
+  .rev-sub { font-size: 11px; color: var(--text-secondary); }
+
+  /* ── Pipeline ── */
+  .pipeline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 16px 0;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .pipe-step {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 8px 14px;
+    border-radius: 8px;
+  }
+  .pipe-arrow { color: var(--text-secondary); }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 32px 0;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 32px;
+    margin-bottom: 24px;
+  }
+  .toc h3 { font-size: 14px; font-weight: 700; color: var(--text-secondary); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin-bottom: 6px; font-size: 14px; }
+  .toc a { color: var(--primary); text-decoration: none; font-weight: 600; }
+  .toc a:hover { text-decoration: underline; }
+
+  /* ── Utility ── */
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .tag-primary { background: var(--primary-light); color: var(--primary); }
+  .tag-accent { background: var(--accent-light); color: var(--accent); }
+  .tag-success { background: var(--success-light); color: var(--success); }
+  .tag-warning { background: var(--warning-light); color: var(--warning); }
+  .tag-danger { background: var(--danger-light); color: var(--danger); }
+  .mb-0 { margin-bottom: 0; }
+  strong { font-weight: 700; }
+  .text-sm { font-size: 13px; }
+  .text-secondary { color: var(--text-secondary); }
+  p { margin-bottom: 12px; font-size: 14px; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ═══ Hero ═══ -->
+  <div class="hero">
+    <div class="hero-badge">Marketing Strategy 2026</div>
+    <h1>한능검 기출마스터</h1>
+    <p>6회~최신 기출 70회분+ | AI 맞춤 학습 | 6가지 학습 모드<br>
+    한국사능력검정시험 학습 앱 마케팅 전략 보고서</p>
+    <div class="hero-meta">2026.03.11 | v1.0</div>
+  </div>
+
+  <!-- ═══ TOC ═══ -->
+  <div class="toc">
+    <h3>목차</h3>
+    <ol>
+      <li><a href="#market">시장 개요</a></li>
+      <li><a href="#segments">타겟 세그먼트 분석</a></li>
+      <li><a href="#competition">경쟁 환경</a></li>
+      <li><a href="#strategy">마케팅 전략 (3단계)</a></li>
+      <li><a href="#instagram">인스타그램 카드뉴스 전략</a></li>
+      <li><a href="#pricing">프리미엄 모델</a></li>
+      <li><a href="#messaging">핵심 메시지</a></li>
+      <li><a href="#quickwins">Quick Wins</a></li>
+      <li><a href="#revenue">수익 예측</a></li>
+    </ol>
+  </div>
+
+  <!-- ═══ 1. 시장 개요 ═══ -->
+  <div class="section" id="market">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--primary-light)">📊</div>
+      <div>
+        <div class="section-title">시장 개요</div>
+        <div class="section-subtitle">한국사능력검정시험 시장 현황</div>
+      </div>
+    </div>
+
+    <div class="card-grid">
+      <div class="stat-card">
+        <div class="stat-value">50만+</div>
+        <div class="stat-label">연간 응시자</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">연 4회</div>
+        <div class="stat-label">시험 시행</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">2006~</div>
+        <div class="stat-label">시험 시작년도</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">6급</div>
+        <div class="stat-label">등급 체계 (1~6급)</div>
+      </div>
+    </div>
+
+    <table>
+      <tr><th>항목</th><th>내용</th></tr>
+      <tr><td><strong>주관</strong></td><td>국사편찬위원회</td></tr>
+      <tr><td><strong>등급</strong></td><td>심화 1~3급 / 기본 4~6급</td></tr>
+      <tr><td><strong>핵심 수요</strong></td><td>공무원·군무원·경찰·소방·교원 임용 필수/가산점</td></tr>
+      <tr><td><strong>2026 추세</strong></td><td>일부 회차 심화만 시행 → 심화 수요 집중</td></tr>
+      <tr><td><strong>유효기간</strong></td><td>폐지 예정 → 1회 합격으로 영구 활용</td></tr>
+    </table>
+  </div>
+
+  <!-- ═══ 2. 세그먼트 ═══ -->
+  <div class="section" id="segments">
+    <div class="section-header">
+      <div class="section-icon" style="background:#F5F3FF">👥</div>
+      <div>
+        <div class="section-title">타겟 세그먼트 분석</div>
+        <div class="section-subtitle">4개 핵심 사용자 그룹</div>
+      </div>
+    </div>
+
+    <!-- Segment A -->
+    <div class="segment-card seg-a">
+      <div class="segment-top">
+        <div>
+          <div class="segment-name">A. 공시생 (공무원/군무원 준비생)</div>
+        </div>
+        <div>
+          <span class="segment-badge" style="background:var(--primary-light);color:var(--primary);">비중 ~55%</span>
+          <span class="segment-badge" style="background:var(--success-light);color:var(--success);">감성 +0.6</span>
+        </div>
+      </div>
+      <div class="segment-meta">
+        <span>👤 20대 후반~30대</span>
+        <span>🎯 심화 1~2급</span>
+        <span>⏱ 단기 집중 (2~4주)</span>
+      </div>
+      <div class="segment-jtbd">
+        "최소 시간 투자로 한능검 1급을 따서 본 시험 준비에 집중하고 싶다"
+      </div>
+      <div class="pros-cons">
+        <div class="pros">
+          <h4>✅ 긍정 요인</h4>
+          <ul>
+            <li>CBT 모의고사 + 타이머 → 실전 감각</li>
+            <li>시대별/키워드별 → 취약 영역 집중</li>
+            <li>오답 자동 수집 + 복습</li>
+            <li>70회분+ 기출 (업계 최다)</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>❌ Pain Points</h4>
+          <ul>
+            <li>해설 콘텐츠 부족</li>
+            <li>오프라인 학습 불가</li>
+            <li>학습 스케줄링 기능 부족</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fit-meter">
+        <span>제품 핏</span>
+        <div class="fit-bar"><div class="fit-fill" style="width:80%;background:var(--primary);"></div></div>
+        <span>★★★★☆</span>
+      </div>
+    </div>
+
+    <!-- Segment B -->
+    <div class="segment-card seg-b">
+      <div class="segment-top">
+        <div>
+          <div class="segment-name">B. 대학생/취준생</div>
+        </div>
+        <div>
+          <span class="segment-badge" style="background:#F5F3FF;color:#7C3AED;">비중 ~25%</span>
+          <span class="segment-badge" style="background:var(--warning-light);color:var(--warning);">감성 +0.4</span>
+        </div>
+      </div>
+      <div class="segment-meta">
+        <span>👤 20대 초중반</span>
+        <span>🎯 심화 2~3급</span>
+        <span>⏱ 짬짬이 학습</span>
+      </div>
+      <div class="segment-jtbd">
+        "이력서에 한능검 합격을 추가하고 싶다. 쉽고 빠르게 합격하고 싶다"
+      </div>
+      <div class="pros-cons">
+        <div class="pros">
+          <h4>✅ 긍정 요인</h4>
+          <ul>
+            <li>모바일 최적화 UI</li>
+            <li>진단 테스트 → 실력 파악</li>
+            <li>시대별 학습 → 짧은 세션</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>❌ Pain Points</h4>
+          <ul>
+            <li>개념 학습 콘텐츠 부재</li>
+            <li>가벼운 퀴즈 모드 없음</li>
+            <li>게이미피케이션 없음</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fit-meter">
+        <span>제품 핏</span>
+        <div class="fit-bar"><div class="fit-fill" style="width:60%;background:#7C3AED;"></div></div>
+        <span>★★★☆☆</span>
+      </div>
+    </div>
+
+    <!-- Segment C -->
+    <div class="segment-card seg-c">
+      <div class="segment-top">
+        <div>
+          <div class="segment-name">C. 역사 애호가/교양 목적</div>
+        </div>
+        <div>
+          <span class="segment-badge" style="background:var(--accent-light);color:var(--accent);">비중 ~10%</span>
+          <span class="segment-badge" style="background:var(--warning-light);color:var(--warning);">감성 +0.3</span>
+        </div>
+      </div>
+      <div class="segment-meta">
+        <span>👤 30~50대</span>
+        <span>🎯 기본 4~5급</span>
+        <span>⏱ 느긋한 학습</span>
+      </div>
+      <div class="segment-jtbd">
+        "한국사를 체계적으로 배우면서 자격증도 취득하고 싶다"
+      </div>
+      <div class="pros-cons">
+        <div class="pros">
+          <h4>✅ 긍정 요인</h4>
+          <ul>
+            <li>방대한 기출 아카이브</li>
+            <li>시대별 분류 체계</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>❌ Pain Points</h4>
+          <ul>
+            <li>시험 위주 UI</li>
+            <li>개념/스토리 콘텐츠 전무</li>
+            <li>난이도 세분화 부족</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fit-meter">
+        <span>제품 핏</span>
+        <div class="fit-bar"><div class="fit-fill" style="width:40%;background:var(--accent);"></div></div>
+        <span>★★☆☆☆</span>
+      </div>
+    </div>
+
+    <!-- Segment D -->
+    <div class="segment-card seg-d">
+      <div class="segment-top">
+        <div>
+          <div class="segment-name">D. 중·고등학생</div>
+        </div>
+        <div>
+          <span class="segment-badge" style="background:var(--warning-light);color:var(--warning);">비중 ~10%</span>
+          <span class="segment-badge" style="background:var(--success-light);color:var(--success);">감성 +0.5</span>
+        </div>
+      </div>
+      <div class="segment-meta">
+        <span>👤 10대</span>
+        <span>🎯 기본 4급 / 심화 3급</span>
+        <span>⏱ 학원 병행</span>
+      </div>
+      <div class="segment-jtbd">
+        "학교 시험이나 대입에 도움 될 자격증을 따고 싶다"
+      </div>
+      <div class="pros-cons">
+        <div class="pros">
+          <h4>✅ 긍정 요인</h4>
+          <ul>
+            <li>즉시 피드백 (게임처럼 O/X)</li>
+            <li>시대별 → 수업 진도 연계</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h4>❌ Pain Points</h4>
+          <ul>
+            <li>기본 등급 구분 불명확</li>
+            <li>학부모 리포트 기능 없음</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fit-meter">
+        <span>제품 핏</span>
+        <div class="fit-bar"><div class="fit-fill" style="width:60%;background:var(--warning);"></div></div>
+        <span>★★★☆☆</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 3. 경쟁 환경 ═══ -->
+  <div class="section" id="competition">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--danger-light)">⚔️</div>
+      <div>
+        <div class="section-title">경쟁 환경</div>
+        <div class="section-subtitle">주요 경쟁 앱 비교</div>
+      </div>
+    </div>
+
+    <table class="comp-table">
+      <tr>
+        <th>앱</th>
+        <th>강점</th>
+        <th>약점</th>
+        <th>우리의 기회</th>
+      </tr>
+      <tr>
+        <td>한국사 능력<br><span class="tag tag-primary">앱</span></td>
+        <td>26회~ 기출, 230개 스토리 강의, 펜슬 지원</td>
+        <td>유료 해설</td>
+        <td>AI 맞춤 학습</td>
+      </tr>
+      <tr>
+        <td>한국사 오답노트<br><span class="tag tag-primary">앱</span></td>
+        <td>38회~ 기출, 빈출유형, 요약노트</td>
+        <td>38회 이전 미지원</td>
+        <td>6회부터 (압도적 기출량)</td>
+      </tr>
+      <tr>
+        <td>공기출<br><span class="tag tag-warning">웹</span></td>
+        <td>무료, 커뮤니티</td>
+        <td>앱 없음, UX 낙후</td>
+        <td>모바일 앱 UX</td>
+      </tr>
+      <tr>
+        <td>맞추다<br><span class="tag tag-accent">범용</span></td>
+        <td>CBT 형식, 깔끔 UI</td>
+        <td>한능검 특화 아님</td>
+        <td>한능검 전문 특화</td>
+      </tr>
+    </table>
+
+    <h4 style="margin-top:24px;font-size:15px;font-weight:800;">우리 앱의 차별점</h4>
+    <table>
+      <tr><th>차별점</th><th>내용</th></tr>
+      <tr><td><span class="tag tag-success">기출 범위</span></td><td>6~77회 (70회분+) — 업계 최다</td></tr>
+      <tr><td><span class="tag tag-primary">AI 저작도구</span></td><td>Gemini 기반 문제 자동 생성 + PDF 임포트</td></tr>
+      <tr><td><span class="tag tag-accent">학습 모드</span></td><td>CBT, 단원별, 키워드별, 맞춤형, 오답복습, 진단 (6종)</td></tr>
+      <tr><td><span class="tag tag-warning">분석</span></td><td>시대별/영역별 취약점, 반복 오답 알림</td></tr>
+      <tr><td><span class="tag tag-primary">크로스플랫폼</span></td><td>웹 + 모바일 (Expo)</td></tr>
+    </table>
+  </div>
+
+  <!-- ═══ 4. 마케팅 전략 ═══ -->
+  <div class="section" id="strategy">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--success-light)">🚀</div>
+      <div>
+        <div class="section-title">마케팅 전략</div>
+        <div class="section-subtitle">3단계 Go-to-Market</div>
+      </div>
+    </div>
+
+    <!-- Phase 1 -->
+    <div class="phase-card phase-1">
+      <div class="phase-header">📢 Phase 1: 출시 & 인지도 확보 (Month 1~3)</div>
+      <div class="phase-body">
+        <h4>ASO (App Store Optimization)</h4>
+        <ul>
+          <li><strong>앱 이름:</strong> 한능검 기출마스터</li>
+          <li><strong>키워드:</strong> 한국사능력검정시험, 한능검, 기출문제, 오답노트, CBT</li>
+          <li><strong>스크린샷 스토리:</strong> CBT 모의고사 → 즉시 피드백 → 오답 분석 → 결과</li>
+          <li><strong>첫 줄:</strong> "6회~최신 기출 70회분+ | AI 맞춤 학습 | 6가지 학습 모드"</li>
+        </ul>
+
+        <h4>콘텐츠 마케팅</h4>
+        <table>
+          <tr><th>채널</th><th>전략</th><th>비용</th></tr>
+          <tr><td>네이버 블로그</td><td>"한능검 1급 2주 합격 후기" 시리즈</td><td><span class="tag tag-success">무료</span></td></tr>
+          <tr><td>유튜브 Shorts</td><td>"한능검 기출 풀이 30초" 시리즈</td><td><span class="tag tag-success">무료</span></td></tr>
+          <tr><td>에브리타임</td><td>대학생 스터디 그룹 운영</td><td><span class="tag tag-success">무료</span></td></tr>
+          <tr><td>인스타그램</td><td>AI 카드뉴스 자동 생성 (매일 1문제)</td><td><span class="tag tag-success">무료</span></td></tr>
+          <tr><td>공시생 카페</td><td>합격 후기 + 앱 리뷰</td><td><span class="tag tag-success">무료</span></td></tr>
+        </table>
+
+        <h4>시험 시즌 타겟 (골든 타임 = 시험 4~2주 전)</h4>
+        <table>
+          <tr><th>시험일</th><th>광고 집중 기간</th><th>메시지</th></tr>
+          <tr><td>2월</td><td>1월 중순~</td><td>"D-14, 지금 시작해도 1급"</td></tr>
+          <tr><td>5월</td><td>4월 중순~</td><td>"남은 2주, 기출만 반복하면 합격"</td></tr>
+          <tr><td>8월</td><td>7월 중순~</td><td>"여름방학 2주 완성 한능검"</td></tr>
+          <tr><td>10월</td><td>9월 중순~</td><td>"연내 합격! 마지막 기회"</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase-card phase-2">
+      <div class="phase-header">📈 Phase 2: 사용자 확보 & 리텐션 (Month 3~6)</div>
+      <div class="phase-body">
+        <h4>리텐션 전략</h4>
+        <ul>
+          <li><strong>매일 학습 알림:</strong> "오늘의 5문제" 푸시 (아침 8시)</li>
+          <li><strong>연속 스트릭:</strong> 3일/7일/30일 연속 학습 배지</li>
+          <li><strong>주간 리포트:</strong> "이번 주 32문항, 정답률 78% (+5%↑)"</li>
+          <li><strong>D-day 카운트다운:</strong> 시험 등록 후 자동 학습 플랜</li>
+        </ul>
+
+        <h4>바이럴 루프</h4>
+        <ul>
+          <li><strong>합격 공유:</strong> 결과 → 카카오톡/인스타 공유 버튼</li>
+          <li><strong>친구 초대:</strong> 초대하면 Premium 7일 무료</li>
+          <li><strong>합격 후기:</strong> 후기 남기면 커피 쿠폰</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase-card phase-3">
+      <div class="phase-header">💰 Phase 3: 확장 & 수익화 (Month 6~12)</div>
+      <div class="phase-body">
+        <h4>콘텐츠 확장 로드맵</h4>
+        <table>
+          <tr><th>우선순위</th><th>기능</th><th>타겟</th><th>난이도</th></tr>
+          <tr><td><span class="tag tag-danger">P0</span></td><td>시대별 요약 노트</td><td>B, C</td><td>중</td></tr>
+          <tr><td><span class="tag tag-warning">P1</span></td><td>AI 해설 자동 생성</td><td>A, B</td><td>중</td></tr>
+          <tr><td><span class="tag tag-warning">P1</span></td><td>오늘의 5문제 (라이트 모드)</td><td>B, D</td><td>하</td></tr>
+          <tr><td><span class="tag tag-primary">P2</span></td><td>빈출 키워드 TOP 300</td><td>A</td><td>중</td></tr>
+          <tr><td><span class="tag tag-primary">P3</span></td><td>스토리 학습 (개념 강의)</td><td>C, D</td><td>상</td></tr>
+        </table>
+
+        <h4>B2B 채널</h4>
+        <ul>
+          <li><strong>강사 제휴:</strong> 최태성·전한길 등 한국사 인강 채널 협업</li>
+          <li><strong>대학교:</strong> 취업센터 단체 라이선스</li>
+          <li><strong>군 교육:</strong> 군무원 준비 장병 대상 병영앱 연계</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 5. 인스타그램 카드뉴스 ═══ -->
+  <div class="section" id="instagram">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--accent-light)">📸</div>
+      <div>
+        <div class="section-title">인스타그램 카드뉴스 전략</div>
+        <div class="section-subtitle">AI 자동 생성 → 매일 1문제 발행</div>
+      </div>
+    </div>
+
+    <p>기출 70회분 × 50문항 = <strong>3,500개 콘텐츠 소스</strong>가 이미 DB에 존재합니다.<br>
+    AI 자동 생성 파이프라인으로 매일 1장씩 발행하면 <strong>10년치 콘텐츠</strong>를 확보할 수 있습니다.</p>
+
+    <h4 style="font-size:15px;font-weight:800;margin:20px 0 12px;">4장 캐러셀 포맷</h4>
+    <div class="insta-carousel">
+      <div class="insta-slide slide-1">
+        <div class="insta-slide-num">1</div>
+        <div class="emoji">🔥</div>
+        <div>후킹<br>"이 문제 맞히면 1급"<br><span style="font-size:11px;opacity:0.8;">#한능검 #기출 #시대태그</span></div>
+      </div>
+      <div class="insta-slide slide-2">
+        <div class="insta-slide-num">2</div>
+        <div class="emoji">📝</div>
+        <div>문제 지문<br>+ 5지선다<br><span style="font-size:11px;opacity:0.8;">"댓글에 정답!"</span></div>
+      </div>
+      <div class="insta-slide slide-3">
+        <div class="insta-slide-num">3</div>
+        <div class="emoji">✅</div>
+        <div>정답 공개<br>+ 한줄 해설<br><span style="font-size:11px;opacity:0.8;">가치 전달</span></div>
+      </div>
+      <div class="insta-slide slide-4">
+        <div class="insta-slide-num">4</div>
+        <div class="emoji">📲</div>
+        <div>CTA<br>"더 많은 기출 →"<br><span style="font-size:11px;opacity:0.8;">앱 다운로드 QR</span></div>
+      </div>
+    </div>
+
+    <h4 style="font-size:15px;font-weight:800;margin:20px 0 12px;">자동화 파이프라인</h4>
+    <div class="pipeline">
+      <div class="pipe-step">DB 문제 선택</div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">AI 해설 생성</div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">HTML 템플릿</div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">PNG 변환</div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">예약 게시</div>
+    </div>
+
+    <h4 style="font-size:15px;font-weight:800;margin:20px 0 12px;">콘텐츠 전략</h4>
+    <table>
+      <tr><th>시리즈</th><th>빈도</th><th>목적</th></tr>
+      <tr><td>오늘의 한능검 한 문제</td><td>매일 오전 9시</td><td>일상 유입 + 참여</td></tr>
+      <tr><td>시대별 빈출 TOP 5</td><td>주 1회 (월)</td><td>저장/공유 유도</td></tr>
+      <tr><td>합격 꿀팁</td><td>주 1회 (금)</td><td>브랜드 신뢰</td></tr>
+      <tr><td>시험 D-day 카운트</td><td>시험 2주 전~</td><td>긴급성 + 앱 전환</td></tr>
+    </table>
+
+    <h4 style="font-size:15px;font-weight:800;margin:20px 0 12px;">해시태그 전략</h4>
+    <p class="text-sm text-secondary">
+      <span class="tag tag-primary">#한능검</span>
+      <span class="tag tag-primary">#한국사능력검정시험</span>
+      <span class="tag tag-accent">#한능검1급</span>
+      <span class="tag tag-accent">#한능검기출</span>
+      <span class="tag tag-warning">#공시생</span>
+      <span class="tag tag-warning">#공무원한국사</span>
+      <span class="tag tag-success">#한능검합격</span>
+      <span class="tag tag-success">#한국사공부</span>
+    </p>
+  </div>
+
+  <!-- ═══ 6. 프리미엄 모델 ═══ -->
+  <div class="section" id="pricing">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--warning-light)">💎</div>
+      <div>
+        <div class="section-title">프리미엄 모델</div>
+        <div class="section-subtitle">Freemium 수익화 구조</div>
+      </div>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">FREE</div>
+        <div class="price-amount">무료</div>
+        <div class="price-period">영구</div>
+        <ul class="price-features">
+          <li>최근 10회 기출</li>
+          <li>CBT 모의고사 1일 2회</li>
+          <li>오답 복습</li>
+          <li>기본 분석</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tier">PREMIUM</div>
+        <div class="price-amount">₩4,900</div>
+        <div class="price-period">/월 or ₩9,900/년</div>
+        <ul class="price-features">
+          <li>전체 기출 (6~77회)</li>
+          <li>무제한 모의고사</li>
+          <li>AI 맞춤 학습</li>
+          <li>키워드별 학습</li>
+          <li>진단 테스트</li>
+          <li>상세 분석 대시보드</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">합격패키지</div>
+        <div class="price-amount">₩14,900</div>
+        <div class="price-period">1회 결제</div>
+        <ul class="price-features">
+          <li>Premium 전체 기능</li>
+          <li>시대별 요약 노트 PDF</li>
+          <li>빈출 키워드 300</li>
+          <li>AI 약점 분석 리포트</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 7. 핵심 메시지 ═══ -->
+  <div class="section" id="messaging">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--primary-light)">💬</div>
+      <div>
+        <div class="section-title">핵심 메시지</div>
+        <div class="section-subtitle">세그먼트별 포지셔닝</div>
+      </div>
+    </div>
+
+    <div style="background:var(--primary-light);padding:16px 20px;border-radius:10px;margin-bottom:20px;text-align:center;">
+      <div style="font-size:11px;font-weight:700;color:var(--primary);margin-bottom:4px;">POSITIONING STATEMENT</div>
+      <div style="font-size:18px;font-weight:800;color:var(--primary);">"6회부터 최신 기출까지 — AI가 분석하는 나만의 한능검 학습"</div>
+    </div>
+
+    <div class="msg-card" style="border-left-color:#4F46E5;">
+      <div class="msg-target">공시생 (Segment A)</div>
+      <div class="msg-text">"기출 70회분을 AI가 분석해서 내 취약점만 골라줍니다"</div>
+    </div>
+    <div class="msg-card" style="border-left-color:#7C3AED;">
+      <div class="msg-target">취준생 (Segment B)</div>
+      <div class="msg-text">"출퇴근 10분이면 충분. 매일 5문제로 한능검 합격"</div>
+    </div>
+    <div class="msg-card" style="border-left-color:#EC4899;">
+      <div class="msg-target">시험 임박 수험생</div>
+      <div class="msg-text">"D-14일, 지금 시작해도 1급 가능합니다"</div>
+    </div>
+    <div class="msg-card" style="border-left-color:#F59E0B;">
+      <div class="msg-target">학부모 (Segment D 대리)</div>
+      <div class="msg-text">"우리 아이 첫 자격증, 게임처럼 재미있게"</div>
+    </div>
+  </div>
+
+  <!-- ═══ 8. Quick Wins ═══ -->
+  <div class="section" id="quickwins">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--success-light)">⚡</div>
+      <div>
+        <div class="section-title">Quick Wins</div>
+        <div class="section-subtitle">즉시 실행 가능한 개발 과제</div>
+      </div>
+    </div>
+
+    <div class="qw-item">
+      <span style="flex:1;font-weight:600;">카카오톡 공유 버튼 (합격 결과)</span>
+      <span class="qw-effort" style="background:var(--success-light);color:var(--success);">1일</span>
+      <span class="qw-impact" style="background:var(--accent-light);color:var(--accent);">바이럴</span>
+    </div>
+    <div class="qw-item">
+      <span style="flex:1;font-weight:600;">인스타 카드뉴스 생성 (저작도구)</span>
+      <span class="qw-effort" style="background:var(--warning-light);color:var(--warning);">3일</span>
+      <span class="qw-impact" style="background:var(--accent-light);color:var(--accent);">마케팅</span>
+    </div>
+    <div class="qw-item">
+      <span style="flex:1;font-weight:600;">"오늘의 5문제" 미니 모드</span>
+      <span class="qw-effort" style="background:var(--success-light);color:var(--success);">2일</span>
+      <span class="qw-impact" style="background:var(--primary-light);color:var(--primary);">리텐션</span>
+    </div>
+    <div class="qw-item">
+      <span style="flex:1;font-weight:600;">푸시 알림 (expo-notifications)</span>
+      <span class="qw-effort" style="background:var(--success-light);color:var(--success);">1일</span>
+      <span class="qw-impact" style="background:var(--primary-light);color:var(--primary);">리텐션</span>
+    </div>
+    <div class="qw-item">
+      <span style="flex:1;font-weight:600;">연속 학습 스트릭 UI</span>
+      <span class="qw-effort" style="background:var(--success-light);color:var(--success);">1일</span>
+      <span class="qw-impact" style="background:var(--primary-light);color:var(--primary);">리텐션</span>
+    </div>
+    <div class="qw-item">
+      <span style="flex:1;font-weight:600;">프리미엄 Paywall 구현</span>
+      <span class="qw-effort" style="background:var(--warning-light);color:var(--warning);">3일</span>
+      <span class="qw-impact" style="background:var(--danger-light);color:var(--danger);">수익화</span>
+    </div>
+  </div>
+
+  <!-- ═══ 9. 수익 예측 ═══ -->
+  <div class="section" id="revenue">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--warning-light)">📈</div>
+      <div>
+        <div class="section-title">수익 예측</div>
+        <div class="section-subtitle">보수적 시나리오 (12개월)</div>
+      </div>
+    </div>
+
+    <div class="revenue-grid">
+      <div class="rev-card">
+        <div class="rev-label">지표</div>
+        <div class="rev-value" style="font-size:14px;color:var(--text);">—</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-label">Month 3</div>
+        <div class="rev-value" style="font-size:14px;">—</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-label">Month 6</div>
+        <div class="rev-value" style="font-size:14px;">—</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-label">Month 12</div>
+        <div class="rev-value" style="font-size:14px;">—</div>
+      </div>
+    </div>
+
+    <table>
+      <tr><th>지표</th><th>Month 3</th><th>Month 6</th><th>Month 12</th></tr>
+      <tr><td><strong>MAU</strong></td><td>3,000</td><td>10,000</td><td>30,000</td></tr>
+      <tr><td><strong>Premium 전환율</strong></td><td>3%</td><td>5%</td><td>7%</td></tr>
+      <tr><td><strong>유료 사용자</strong></td><td>90</td><td>500</td><td>2,100</td></tr>
+      <tr><td><strong>MRR</strong></td><td>₩441K</td><td>₩2.45M</td><td>₩10.3M</td></tr>
+      <tr><td><strong>ARR (추정)</strong></td><td>₩5.3M</td><td>₩29.4M</td><td><strong style="color:var(--primary);">₩123.6M</strong></td></tr>
+    </table>
+  </div>
+
+  <!-- ═══ Footer ═══ -->
+  <div class="footer">
+    한능검 기출마스터 마케팅 전략 보고서 v1.0 | 2026.03.11<br>
+    Generated with AI assistance
+  </div>
+
+</div>
+
+</body>
+</html>

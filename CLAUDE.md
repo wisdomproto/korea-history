@@ -482,9 +482,19 @@ YOUTUBE_API_KEY=                         # 선택 — 채널 분석/경쟁사 Yo
 - sitemap.xml 자동 생성 (2,100+ URL)
 - robots.txt (/admin, /api, /study/session 차단)
 - 모든 페이지 "한능검" 키워드 포함 타이틀
-- Google Search Console + 네이버 서치어드바이저 등록
-- JSON-LD: Quiz (문제), BreadcrumbList (문제+노트), Article + VideoObject (노트)
+- Google Search Console (gcnote-491301 프로젝트) + 네이버 서치어드바이저 등록
+- JSON-LD: Quiz (문제), BreadcrumbList (문제+노트), Article + VideoObject (노트), **EducationalOrganization + WebSite (site-wide, brand entity signal)**
 - OG 이미지 (4,100+ 정적 생성)
+
+### SEO 전략 v1.4 (Living Doc, 2026-04-28)
+- **위치**: `docs/seo-strategy.html` — GSC 실데이터 기반 SEO 전략, 매월 갱신
+- **저작도구 사이드바 전략 문서 리스트** (StrategyDocsButton): 11개 마케팅 문서로 재구성 (단권화 23개 제거, SEO 전략을 최상단)
+- **브랜드 SEO 코드 적용 완료**: layout.tsx default title "기출노트 — 한능검 기출문제와 요약노트 무료" + Schema.org `EducationalOrganization` + `WebSite` JSON-LD + Hero H1 "한능검 기출문제와 요약노트..." + Footer "기출노트는..." 정의문
+- **황금키워드 26개 실측 검증**: 네이버 API로 58개 후보 → 26 황금 (병자호란 18,710 / 훈민정음 10,750 / 대동법 9,200 / 대한제국 5,650 / 5.18 4,540 / 노비안검법 3,990 / 세종대왕 업적 2,800 등). 거대 헤드텀 "한능검" 153,400 / "한국사능력검정시험" 139,500 — 정면 도전 비추, "한능검 + 수식어" 조합 진입 전략.
+- **자동 갱신**: `cd author-tool && npm run seo:monthly` (또는 매월 1일 09:00 KST Railway cron) → `_research/seo-monthly/{YYYY-MM}/snapshot.json + digest.md`. GSC 30d/prev30d 비교 + 26 황금키워드 네이버 재검증 + MoM delta 자동. 수동 검토 후 § 01 KPI + § 10 update log 갱신 (15분).
+- **스크립트** (`author-tool/scripts/`): `pull-gsc-deep.mjs` (90일 GSC), `validate-keywords-naver.mjs` (대량 후보 검증), `validate-keywords-naver-retry.mjs` (특수문자 키워드 재시도), `seo-monthly-update.mjs` (월간 통합)
+- **데이터 폴더**: `_research/gsc-deep-{date}.json`, `_research/keyword-validation-{date}.json`, `_research/seo-monthly/{YYYY-MM}/`
+- **GSC API 연동**: `author-tool/server/services/gsc.service.ts` — `gcnote-491301` 프로젝트의 서비스 계정 (`gcnote-ga4@symbolic-rope-491301-k9.iam.gserviceaccount.com`) 사용 (GA4 키 재활용). `sc-domain:gcnote.co.kr` 도메인 속성. 3일 지연 자동 처리.
 
 ## 스레드 운영 (수동, 2026-04-27 시작)
 - 저작도구의 "1 노트 → N 채널" 모델이 스레드처럼 소스 무관 짧은 글에 안 맞아 **파일 기반 수동 운영** 채택.

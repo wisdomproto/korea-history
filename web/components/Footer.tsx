@@ -78,8 +78,9 @@ export default function Footer() {
               </span>
             </div>
             <div style={{ lineHeight: 1.7 }}>
-              한국사능력검정시험 심화 과정 · 제40회부터 제77회까지 1,900+ 문항과
-              87개 시대별 요약노트. 평생 무료.
+              <b style={{ color: "var(--gc-ink)" }}>기출노트</b>는 한국사능력검정시험(한능검)
+              무료 학습 플랫폼입니다. 제40회부터 제77회까지 1,900+ 기출문제와
+              시대별 요약노트 87편을 평생 무료로 제공합니다.
             </div>
           </div>
           <div className="flex gap-10 md:gap-16 flex-1 md:justify-end flex-wrap">

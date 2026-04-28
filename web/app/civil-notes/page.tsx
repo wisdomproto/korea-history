@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { getCivilNoteIndex } from "@/lib/civil-notes";
 
 export const metadata: Metadata = {
-  title: "9급 공무원 자동 단권화 — 13개 과목 무료 요약노트 | 기출노트",
+  title: { absolute: "9급 공무원 자동 단권화 — 13개 과목 무료 요약노트 | 기출노트" },
   description:
     "9급 국가직 공무원 13개 전공·공통과목 자동 단권화 요약노트. 행정법·행정학·형법·형사소송법·회계학·세법·교정학·사회복지·교육·국제법·관세법·국어·영어. 200문제 시드 + 빈출 주제 100% 커버리지.",
   keywords: [

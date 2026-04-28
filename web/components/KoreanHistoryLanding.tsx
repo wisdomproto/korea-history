@@ -130,7 +130,7 @@ function Hero() {
                 background: T.amber,
               }}
             />
-            한국사능력검정시험 · 심화
+            기출노트 · 한능검 · 심화
           </div>
 
           <h1
@@ -144,7 +144,7 @@ function Hero() {
               margin: "0 0 20px",
             }}
           >
-            기출문제와<br />
+            한능검 기출문제와<br />
             요약노트,<br />
             <span style={{ color: T.amber }}>한 번에.</span>
           </h1>
@@ -160,7 +160,7 @@ function Hero() {
               fontWeight: 500,
             }}
           >
-            제40회부터 제77회까지 1,900+ 문항과 7개 시대 87개 요약노트.<br />
+            <b style={{ color: T.ink }}>기출노트</b>는 한국사능력검정시험 기출문제 1,900+ 문항과 시대별 요약노트 87편을 무료로 제공합니다.<br />
             틀린 문제는 관련 단원으로 바로 연결. {" "}
             <b style={{ color: T.ink }}>평생 무료.</b>
           </p>

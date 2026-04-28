@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>기출노트 성장 전략 플레이북 · 2026-04-22</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --gc-bg:#F5EFE4;
+    --gc-paper:#FBF7EE;
+    --gc-ink:#1F1A14;
+    --gc-ink-2:#3B2F22;
+    --gc-amber:#B45309;
+    --gc-amber-2:#D97706;
+    --gc-teal:#0D9488;
+    --gc-teal-2:#0F766E;
+    --gc-hairline:rgba(31,26,20,.14);
+    --gc-muted:#6F6350;
+    --gc-danger:#B91C1C;
+    --gc-good:#047857;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;scroll-behavior:smooth}
+  body{
+    background:var(--gc-bg);
+    color:var(--gc-ink);
+    font-family:'Pretendard Variable',Pretendard,system-ui,sans-serif;
+    letter-spacing:-.01em;
+    line-height:1.6;
+  }
+  .serif{font-family:'Noto Serif KR',serif;font-weight:900;letter-spacing:-.02em;line-height:1.18}
+  .mono{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--gc-muted)}
+  .wrap{max-width:1180px;margin:0 auto;padding:48px 28px 80px}
+  header.hero{margin-bottom:48px;border-bottom:1px solid var(--gc-hairline);padding-bottom:40px}
+  header.hero .mono{color:var(--gc-amber);margin-bottom:10px}
+  header.hero h1{font-size:clamp(40px,6.5vw,80px);margin:0 0 16px}
+  header.hero p.lede{font-size:18px;color:var(--gc-ink-2);max-width:760px;margin:0}
+  nav.toc{margin:32px 0 0;padding:20px;background:var(--gc-paper);border:1px solid var(--gc-hairline);border-radius:14px}
+  nav.toc .mono{margin-bottom:10px}
+  nav.toc ul{list-style:none;padding:0;margin:0;columns:2;gap:12px}
+  nav.toc li{break-inside:avoid;padding:4px 0;font-size:13px}
+  nav.toc a{color:var(--gc-ink-2);text-decoration:none;border-bottom:1px dotted transparent;transition:all .2s}
+  nav.toc a:hover{color:var(--gc-amber);border-bottom-color:var(--gc-amber)}
+  section{margin-top:64px;scroll-margin-top:20px}
+  section h2{font-family:'Noto Serif KR',serif;font-weight:900;font-size:clamp(28px,3.6vw,44px);margin:0 0 10px;letter-spacing:-.02em}
+  section h3{font-family:'Noto Serif KR',serif;font-weight:700;font-size:22px;margin:28px 0 10px}
+  section .kicker{color:var(--gc-amber);margin-bottom:14px}
+  section>p.lede{max-width:780px;color:var(--gc-ink-2);font-size:15px}
+  .card{background:var(--gc-paper);border:1px solid var(--gc-hairline);border-radius:18px;padding:24px}
+  .card.dark{background:var(--gc-ink);color:#F7EBD7;border-color:transparent}
+  .card.dark .mono{color:#D6B981}
+  .card.dark h3{color:#F7EBD7}
+  .card.amber{background:linear-gradient(135deg,#FFF4E3,#FBF7EE);border-color:rgba(180,83,9,.3)}
+  .card.teal{background:linear-gradient(135deg,#E6F5F3,#FBF7EE);border-color:rgba(13,148,136,.3)}
+  .grid{display:grid;gap:16px}
+  .two-col{grid-template-columns:1fr}
+  @media(min-width:900px){.two-col{grid-template-columns:1fr 1fr}}
+  .three-col{grid-template-columns:1fr}
+  @media(min-width:900px){.three-col{grid-template-columns:repeat(3,1fr)}}
+  .four-col{grid-template-columns:repeat(2,1fr)}
+  @media(min-width:900px){.four-col{grid-template-columns:repeat(4,1fr)}}
+  .kpi{background:var(--gc-paper);border:1px solid var(--gc-hairline);border-radius:14px;padding:18px}
+  .kpi .label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gc-muted)}
+  .kpi .value{font-family:'Noto Serif KR',serif;font-weight:900;font-size:32px;margin-top:6px;line-height:1;color:var(--gc-ink)}
+  .kpi .sub{font-size:12px;color:var(--gc-muted);margin-top:6px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--gc-hairline)}
+  th{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gc-muted);font-weight:600}
+  td.num{font-variant-numeric:tabular-nums;font-family:'JetBrains Mono',monospace}
+  tr:last-child td{border-bottom:none}
+  tr.highlight td{background:rgba(180,83,9,.08)}
+  tr.good td{background:rgba(4,120,87,.08)}
+  tr.warn td{background:rgba(185,28,28,.06)}
+  .tag{display:inline-block;padding:3px 10px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+  .tag.good{background:rgba(4,120,87,.15);color:var(--gc-good)}
+  .tag.warn{background:rgba(185,28,28,.15);color:var(--gc-danger)}
+  .tag.info{background:rgba(13,148,136,.15);color:var(--gc-teal-2)}
+  .tag.amber{background:rgba(180,83,9,.15);color:var(--gc-amber)}
+  .tag.dark{background:var(--gc-ink);color:#F7EBD7}
+  .chart-wrap{position:relative;height:300px}
+  .chart-wrap.tall{height:380px}
+  code{background:rgba(31,26,20,.06);padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px}
+  pre{background:var(--gc-ink);color:#F7EBD7;border-radius:12px;padding:20px;overflow:auto;font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.7}
+  pre .c{color:#D6B981}
+  pre .k{color:#B45309}
+  .formula{background:rgba(31,26,20,.04);border-left:3px solid var(--gc-amber);padding:14px 18px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:13px;margin:12px 0}
+  ul.clean{list-style:none;padding:0;margin:0}
+  ul.clean li{padding:10px 0;border-bottom:1px dashed var(--gc-hairline);display:flex;gap:12px;align-items:flex-start}
+  ul.clean li:last-child{border-bottom:none}
+  ul.clean li .dot{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--gc-amber);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;margin-top:1px;font-family:'JetBrains Mono',monospace}
+  ul.clean li .dot.teal{background:var(--gc-teal)}
+  ul.clean li .dot.good{background:var(--gc-good)}
+  ul.clean li .dot.muted{background:var(--gc-muted)}
+  .definition{background:var(--gc-paper);border:1px solid var(--gc-hairline);border-radius:14px;padding:20px 22px;margin:16px 0}
+  .definition .term{font-family:'Noto Serif KR',serif;font-weight:900;font-size:20px;color:var(--gc-ink);margin-bottom:4px}
+  .definition .abbr{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gc-amber);margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em}
+  .definition .body{color:var(--gc-ink-2);font-size:14px;line-height:1.75}
+  .insight{border-left:3px solid var(--gc-amber);padding:10px 0 10px 18px;margin:14px 0;color:var(--gc-ink-2)}
+  .insight b{color:var(--gc-ink)}
+  .gauge{position:relative;padding:14px 0}
+  .gauge-bar{height:10px;border-radius:999px;background:rgba(31,26,20,.08);position:relative;overflow:hidden}
+  .gauge-fill{position:absolute;top:0;bottom:0;left:0;border-radius:999px}
+  .gauge-labels{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gc-muted);margin-top:6px}
+  .funnel-bar{display:flex;align-items:center;gap:12px;padding:6px 0}
+  .funnel-lbl{flex:0 0 120px;font-size:13px;color:var(--gc-ink-2)}
+  .funnel-track{flex:1;height:22px;background:rgba(31,26,20,.06);border-radius:999px;overflow:hidden;position:relative}
+  .funnel-fill{height:100%;background:linear-gradient(90deg,var(--gc-amber),var(--gc-amber-2));border-radius:999px;display:flex;align-items:center;padding:0 10px;color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600}
+  .callout{background:linear-gradient(135deg,rgba(180,83,9,.08),rgba(217,119,6,.04));border:1px solid rgba(180,83,9,.25);border-radius:14px;padding:18px 22px;margin:16px 0}
+  .callout.teal{background:linear-gradient(135deg,rgba(13,148,136,.08),rgba(15,118,110,.04));border-color:rgba(13,148,136,.25)}
+  .callout .mono{color:var(--gc-amber)}
+  .callout.teal .mono{color:var(--gc-teal-2)}
+  .stat-line{display:flex;align-items:baseline;gap:10px;padding:6px 0;font-size:14px}
+  .stat-line .big{font-family:'Noto Serif KR',serif;font-weight:900;font-size:24px;color:var(--gc-ink)}
+  .stat-line .unit{color:var(--gc-muted);font-size:12px}
+  footer{margin-top:96px;padding:24px 0;border-top:1px solid var(--gc-hairline);font-size:12px;color:var(--gc-muted);font-family:'JetBrains Mono',monospace;text-align:center}
+  .section-num{display:inline-block;padding:4px 10px;background:var(--gc-ink);color:var(--gc-paper);border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;margin-right:8px}
+  .roadmap{display:flex;gap:14px;overflow-x:auto;padding-bottom:8px;margin-top:16px}
+  .roadmap-step{flex:0 0 240px;background:var(--gc-paper);border:1px solid var(--gc-hairline);border-radius:14px;padding:18px;position:relative}
+  .roadmap-step .phase{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gc-amber);text-transform:uppercase;letter-spacing:.08em}
+  .roadmap-step h4{font-family:'Noto Serif KR',serif;font-weight:900;font-size:18px;margin:6px 0 10px}
+  .roadmap-step .goal{font-size:12px;color:var(--gc-muted);padding-top:10px;border-top:1px dashed var(--gc-hairline);margin-top:10px}
+  @media(min-width:900px){.roadmap{overflow:visible;display:grid;grid-template-columns:repeat(5,1fr)}.roadmap-step{flex:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="mono">Growth Playbook · 2026-04-22 · v1.0</div>
+  <h1 class="serif">데이터가 이미 사업을 증명했다.<br>남은 건 레버리지.</h1>
+  <p class="lede">광고 안 해도 체류 16분·PV/user 25가 나오는 사이트. 1,004,324개 문제 데이터가 R2에 준비 완료. 이 플레이북은 현재 GA4 데이터·광고 경제학·확장 매트릭스·실행 로드맵을 하나로 엮어 "연 1억~2억 사업" 루트를 수치로 증명한다.</p>
+
+  <nav class="toc">
+    <div class="mono">목차</div>
+    <ul>
+      <li><a href="#s1">01 · 오늘의 숫자</a></li>
+      <li><a href="#s2">02 · 광고 & 마케팅 교양</a></li>
+      <li><a href="#s3">03 · 퍼널과 Unit Economics</a></li>
+      <li><a href="#s4">04 · 우리의 LTV · CAC</a></li>
+      <li><a href="#s5">05 · 크로스오버와 확장 경제학</a></li>
+      <li><a href="#s6">06 · Top 20 · 40 · 60 매트릭스</a></li>
+      <li><a href="#s7">07 · SEO Priming: 광고의 진짜 역할</a></li>
+      <li><a href="#s8">08 · 1인 AI 운영 모델</a></li>
+      <li><a href="#s9">09 · 실행 로드맵</a></li>
+      <li><a href="#s10">10 · 용어 사전</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ─────────────── 01 ─────────────── -->
+<section id="s1">
+  <div class="kicker mono">01 · Current State</div>
+  <h2 class="serif">오늘의 숫자 <span class="section-num">TL;DR</span></h2>
+  <p class="lede">최근 30일 gcnote.co.kr GA4 데이터. 마케팅 거의 제로(디시 소량)에서 나온 숫자라는 걸 먼저 기억.</p>
+
+  <div class="four-col grid" style="margin-top:22px">
+    <div class="kpi"><div class="label">Total Users · 30d</div><div class="value">640</div><div class="sub">일 평균 21.3명</div></div>
+    <div class="kpi"><div class="label">Page Views</div><div class="value">16,139</div><div class="sub">일 538 PV</div></div>
+    <div class="kpi"><div class="label">PV per User</div><div class="value">25.22</div><div class="sub">교육 평균의 5~8배 🔥</div></div>
+    <div class="kpi"><div class="label">Avg Session</div><div class="value">11.0<span style="font-size:18px">분</span></div><div class="sub">최근 7일 16.4분</div></div>
+    <div class="kpi"><div class="label">참여율</div><div class="value">67%</div><div class="sub">업계 평균 40%</div></div>
+    <div class="kpi"><div class="label">이탈률</div><div class="value">38.9%</div><div class="sub">건강한 수준</div></div>
+    <div class="kpi"><div class="label">/notes 참여</div><div class="value">92%</div><div class="sub">SEO 랜딩 최상급</div></div>
+    <div class="kpi"><div class="label">Organic Search</div><div class="value">22%</div><div class="sub">SEO 초기인데도</div></div>
+  </div>
+
+  <div class="callout" style="margin-top:22px">
+    <div class="mono">핵심 시그널</div>
+    <p style="margin:8px 0 0">교육 사이트에서 PV/user 25와 체류 16분은 <b>이례적으로 높음</b>. 이는 "사용자가 진짜로 공부하러 온다"는 뜻. 즉 <b>상품은 이미 완성, 유입 수도꼭지만 틀면 됨</b>.</p>
+  </div>
+
+  <h3 style="margin-top:28px">페이지 그룹별 사용 패턴 (30일)</h3>
+  <div class="card" style="overflow:auto;margin-top:12px">
+    <table>
+      <thead><tr><th>그룹</th><th>PV</th><th>PV당 참여시간</th><th>해석</th></tr></thead>
+      <tbody>
+        <tr class="highlight"><td><b>문제풀이</b></td><td class="num">8,418</td><td class="num">41.4초</td><td><span class="tag amber">전체 PV 52%</span></td></tr>
+        <tr class="good"><td><b>요약노트 상세</b></td><td class="num">648</td><td class="num">66.4초</td><td><span class="tag good">정독</span></td></tr>
+        <tr><td>오답노트</td><td class="num">479</td><td class="num">63.3초</td><td><span class="tag good">복습 정착</span></td></tr>
+        <tr><td>맞춤학습 설정</td><td class="num">326</td><td class="num">32.4초</td><td>-</td></tr>
+        <tr><td>학습세션</td><td class="num">792</td><td class="num">25.5초</td><td>세션당 2.6문제</td></tr>
+        <tr><td>메인</td><td class="num">1,364</td><td class="num">6.8초</td><td>빠른 분기</td></tr>
+        <tr class="warn"><td>/study 랜딩</td><td class="num">139세션</td><td class="num">이탈 56%</td><td><span class="tag warn">UX 개선 필요</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ─────────────── 02 ─────────────── -->
+<section id="s2">
+  <div class="kicker mono">02 · Fundamentals</div>
+  <h2 class="serif">광고 & 마케팅 교양</h2>
+  <p class="lede">사업 결정을 할 때 필요한 개념들을 우리 사이트 숫자에 대입해 정리. 외울 필요 없이 <b>왜 이런 수학이 성립하는지</b>만 이해하면 됨.</p>
+
+  <h3 id="ltv" style="margin-top:32px">💎 LTV — Lifetime Value (고객 생애 가치)</h3>
+  <div class="definition">
+    <div class="abbr">LIFETIME VALUE · LTV</div>
+    <div class="term">1명의 사용자가 떠날 때까지 우리에게 주는 <b>총 수익</b></div>
+    <div class="body" style="margin-top:10px">사용자가 머무는 기간 동안 벌어들이는 수익의 총합. 한 번 결제하고 가는 쇼핑몰과 달리, 교육 앱은 "몇 달 동안 반복 이용"하므로 LTV가 높음.</div>
+  </div>
+
+  <div class="formula">
+    LTV = ARPU (월 평균 사용자당 수익) × 평균 이용 개월수
+  </div>
+
+  <div class="callout teal">
+    <div class="mono">우리 사이트 대입</div>
+    <div class="stat-line">ARPU = 광고 + 프리미엄 + 제휴 ≈ <span class="big">₩700</span> <span class="unit">/사용자/월</span></div>
+    <div class="stat-line">평균 이용 기간 = 시험 준비 기간 ≈ <span class="big">7개월</span></div>
+    <div class="stat-line">LTV = 700 × 7 = <span class="big" style="color:var(--gc-good)">₩4,900</span></div>
+  </div>
+
+  <h3 id="cac" style="margin-top:32px">🎯 CAC — Customer Acquisition Cost (고객 획득 비용)</h3>
+  <div class="definition">
+    <div class="abbr">CUSTOMER ACQUISITION COST · CAC</div>
+    <div class="term">1명의 사용자를 데려오는 데 드는 <b>비용</b></div>
+    <div class="body" style="margin-top:10px">광고·마케팅에 쓴 돈을 신규 획득한 사용자 수로 나눈 값. "사용자 1명 = 얼마에 살 수 있나"의 시장 가격.</div>
+  </div>
+
+  <div class="formula">
+    CAC = (광고비 + 마케팅 비용) ÷ 신규 사용자 수
+  </div>
+
+  <div class="callout teal">
+    <div class="mono">CAC 세분화</div>
+    <table style="margin-top:10px">
+      <thead><tr><th>채널</th><th>CAC</th><th>특성</th></tr></thead>
+      <tbody>
+        <tr><td>네이버 검색광고 (롱테일)</td><td class="num">₩500~800</td><td>타겟 명확, 효율 높음</td></tr>
+        <tr><td>인스타 광고 (수험생)</td><td class="num">₩800~1,200</td><td>브랜드 인지 효과</td></tr>
+        <tr><td>유튜브 쇼츠 광고</td><td class="num">₩600~1,500</td><td>도달 많음, 전환 중간</td></tr>
+        <tr class="good"><td><b>콘텐츠 마케팅</b></td><td class="num"><b>₩0</b></td><td>시간 투입만</td></tr>
+        <tr class="good"><td><b>오가닉 SEO</b></td><td class="num"><b>₩0</b></td><td>6~12개월 뒤 발현</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="ltv-cac" style="margin-top:32px">⚖️ LTV / CAC — 사업 건강 지표</h3>
+  <p>LTV ÷ CAC 비율로 사업이 지속 가능한지 판단. 이게 SaaS·앱 회사가 보는 <b>제1 지표</b>.</p>
+
+  <div class="card" style="margin-top:14px">
+    <table>
+      <thead><tr><th>LTV / CAC</th><th>판정</th><th>의미</th></tr></thead>
+      <tbody>
+        <tr class="warn"><td class="num">&lt; 1배</td><td><span class="tag warn">폐업</span></td><td>사용자 데려올 때마다 손해</td></tr>
+        <tr><td class="num">1~3배</td><td><span class="tag">간신히 유지</span></td><td>성장 투자 불가</td></tr>
+        <tr class="good"><td class="num">3~5배</td><td><span class="tag good">건강</span></td><td>SaaS 업계 표준</td></tr>
+        <tr class="good"><td class="num">5~10배</td><td><span class="tag good">매우 좋음</span></td><td>광고 공격 투자 가능</td></tr>
+        <tr class="highlight"><td class="num"><b>10배 이상</b></td><td><span class="tag amber">💎 희귀</span></td><td><b>"광고 안 쓰면 아까운 구간"</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout" style="margin-top:16px">
+    <div class="mono">우리 사이트 — 현재 비율</div>
+    <div class="stat-line">LTV ≈ <span class="big">₩4,900</span></div>
+    <div class="stat-line">CAC ≈ <span class="big">₩1,000</span></div>
+    <div class="stat-line"><b>LTV / CAC = <span class="big" style="color:var(--gc-good)">4.9배</span></b> (한능검 단독 기준)</div>
+    <div class="stat-line">Top 40 확장 후 = <span class="big" style="color:var(--gc-good)">~10배</span>, Top 60 = <span class="big" style="color:var(--gc-amber)">~16배</span></div>
+  </div>
+
+  <h3 style="margin-top:32px">📊 CPM · CPC · CPV · CPA — 광고 과금 방식</h3>
+  <div class="card" style="margin-top:14px">
+    <table>
+      <thead><tr><th>용어</th><th>뜻</th><th>1단위 기준</th><th>언제 쓰는가</th></tr></thead>
+      <tbody>
+        <tr><td><b>CPM</b></td><td>Cost Per Mille (천 노출당 비용)</td><td>1,000 노출</td><td>브랜드 인지 캠페인</td></tr>
+        <tr><td><b>CPC</b></td><td>Cost Per Click</td><td>1 클릭</td><td>검색·퍼포먼스 광고</td></tr>
+        <tr><td><b>CPV</b></td><td>Cost Per Visit (방문당)</td><td>1 방문</td><td>유입 중심 지표</td></tr>
+        <tr><td><b>CPA</b></td><td>Cost Per Action (전환당)</td><td>가입·결제 1건</td><td>전환 집행</td></tr>
+        <tr class="highlight"><td><b>RPM</b></td><td>Revenue Per Mille (천 PV당 수익)</td><td>1,000 PV</td><td><b>광고 수익자 관점</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="insight">
+    <b>RPM vs CPM 헷갈림 방지:</b> 광고주 입장이 CPM(비용), 사이트 운영자 입장이 RPM(수익). 같은 노출이지만 돈이 어디로 흐르는지에 따라 이름이 다름.
+  </div>
+
+  <h3 style="margin-top:32px">🦠 K-factor — 바이럴 계수</h3>
+  <div class="definition">
+    <div class="abbr">VIRAL COEFFICIENT · K</div>
+    <div class="term">사용자 1명이 불러오는 추가 사용자 수</div>
+    <div class="body" style="margin-top:10px">K=1이면 자연 증식. K&gt;1이면 바이럴 폭발(광고 0원). K=0.3이면 광고 유입 1명당 0.3명 추가 유입.</div>
+  </div>
+  <div class="formula">
+    K = (사용자당 공유 횟수) × (공유당 신규 유입률)
+  </div>
+  <p style="color:var(--gc-muted);font-size:13px">우리 사이트 현재 K ≈ 0.2~0.3 (카페 공유·친구 추천 등). 수험생 커뮤니티 특성 때문에 교육 평균보다 높음.</p>
+
+  <h3 style="margin-top:32px">🔍 SEO — Search Engine Optimization</h3>
+  <div class="definition">
+    <div class="abbr">검색 엔진 최적화</div>
+    <div class="term">구글·네이버 검색 결과 상위에 올라가는 기술</div>
+    <div class="body" style="margin-top:10px">광고 없이 영구 무료 트래픽을 얻는 유일한 방법. 6~18개월 장기 투자지만, 한 번 상위권 진입하면 자산화됨.</div>
+  </div>
+
+  <div class="three-col grid" style="margin-top:14px">
+    <div class="card">
+      <div class="mono" style="color:var(--gc-amber)">On-page SEO</div>
+      <p style="font-size:13px;margin:6px 0">타이틀·메타·H1·내부링크·콘텐츠 품질. 직접 제어 가능.</p>
+    </div>
+    <div class="card">
+      <div class="mono" style="color:var(--gc-amber)">Off-page SEO</div>
+      <p style="font-size:13px;margin:6px 0">백링크·언급·공유. 외부 생태계에 의존.</p>
+    </div>
+    <div class="card">
+      <div class="mono" style="color:var(--gc-amber)">Technical SEO</div>
+      <p style="font-size:13px;margin:6px 0">속도·구조화 데이터(JSON-LD)·모바일·크롤링 효율.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── 03 ─────────────── -->
+<section id="s3">
+  <div class="kicker mono">03 · Unit Economics</div>
+  <h2 class="serif">퍼널과 단위 경제학</h2>
+  <p class="lede">마케팅은 기본적으로 깔때기. 위에서 들어온 사람이 단계별로 빠지면서 결국 <b>전환</b>에 도달. 각 단계의 효율이 사업 성패를 결정.</p>
+
+  <h3 style="margin-top:32px">🪜 AARRR 퍼널</h3>
+  <div class="card" style="margin-top:14px">
+    <div class="funnel-bar">
+      <div class="funnel-lbl">Acquisition</div>
+      <div class="funnel-track"><div class="funnel-fill" style="width:100%">노출 → 사이트 방문</div></div>
+    </div>
+    <div class="funnel-bar">
+      <div class="funnel-lbl">Activation</div>
+      <div class="funnel-track"><div class="funnel-fill" style="width:67%">첫 경험 (문제 풀이 등)</div></div>
+    </div>
+    <div class="funnel-bar">
+      <div class="funnel-lbl">Retention</div>
+      <div class="funnel-track"><div class="funnel-fill" style="width:40%">재방문</div></div>
+    </div>
+    <div class="funnel-bar">
+      <div class="funnel-lbl">Referral</div>
+      <div class="funnel-track"><div class="funnel-fill" style="width:25%">공유·추천</div></div>
+    </div>
+    <div class="funnel-bar">
+      <div class="funnel-lbl">Revenue</div>
+      <div class="funnel-track"><div class="funnel-fill" style="width:12%">프리미엄·광고 클릭</div></div>
+    </div>
+  </div>
+
+  <div class="insight" style="margin-top:18px">
+    <b>우리 사이트의 퍼널 강점:</b> Activation 67% (참여율), Retention 40% (교육 특성), Referral 은 아직 약함. 하지만 Activation·Retention이 높으면 Acquisition을 늘리기만 해도 Revenue가 선형 증가.
+  </div>
+
+  <h3 style="margin-top:32px">💰 현금흐름 vs Unit Economics</h3>
+  <p>같은 숫자를 두 관점으로 봄. 이 둘을 헷갈리면 광고비를 무서워해서 투자를 못 함.</p>
+
+  <div class="two-col grid" style="margin-top:14px">
+    <div class="card">
+      <div class="mono" style="color:var(--gc-danger)">현금흐름 (Cash Flow) 관점</div>
+      <pre style="margin-top:10px"><span class="c">// 이번 달 단기 현금 손익</span>
+이번 달 수익 - 이번 달 광고비
+= ₩200만 - ₩300만
+= <span class="k">-₩100만 "적자"</span> ⚠️</pre>
+    </div>
+    <div class="card amber">
+      <div class="mono" style="color:var(--gc-amber)">Unit Economics 관점</div>
+      <pre style="margin-top:10px;background:var(--gc-ink-2)"><span class="c">// 실제 경제 가치</span>
+이번 달 수익
++ (신규 획득 × LTV)
+- 광고비
+= ₩200만 + 3,000명 × ₩4,900 - ₩300만
+= <span style="color:#86EFAC">+₩1,370만 "흑자"</span> ✅</pre>
+    </div>
+  </div>
+
+  <div class="callout teal" style="margin-top:16px">
+    <b>결론</b>: 광고비는 "비용"이 아니라 <b>"자산 구매"</b>. 당장 현금이 나가지만, 사용자 풀(inventory)이 쌓여 6~9개월에 걸쳐 LTV로 회수. <br>월별 P&L만 보면 오해하기 쉬운 부분 — 실제론 자본 회전 중.
+  </div>
+
+  <h3 style="margin-top:32px">📈 Marginal ROI — 한계 수익률</h3>
+  <p>광고비를 1원 더 쓸 때 추가로 들어오는 수익. 이게 1원 이상이면 계속 써야 함.</p>
+  <div class="card" style="margin-top:14px">
+    <div class="chart-wrap tall"><canvas id="marginalChart"></canvas></div>
+  </div>
+</section>
+
+<!-- ─────────────── 04 ─────────────── -->
+<section id="s4">
+  <div class="kicker mono">04 · Applied Math</div>
+  <h2 class="serif">우리의 LTV · CAC · 게이지</h2>
+  <p class="lede">앞에서 배운 개념으로 기출노트 실제 숫자 꽂아 본 결과. SaaS 업계 "황금비"(LTV/CAC 3배)를 한참 뛰어넘음.</p>
+
+  <div class="three-col grid" style="margin-top:22px">
+    <div class="card">
+      <div class="mono">한능검 단독</div>
+      <div class="gauge" style="margin-top:14px">
+        <div class="gauge-bar"><div class="gauge-fill" style="width:30%;background:var(--gc-teal)"></div></div>
+        <div class="gauge-labels"><span>0</span><span>3배(건강)</span><span>10배(희귀)</span><span>20배</span></div>
+      </div>
+      <div class="stat-line" style="margin-top:12px">LTV/CAC = <span class="big" style="color:var(--gc-teal)">4.9배</span></div>
+      <div style="font-size:12px;color:var(--gc-muted)">이미 SaaS 기준 충족. 광고 OK.</div>
+    </div>
+    <div class="card amber">
+      <div class="mono" style="color:var(--gc-amber)">+ Top 40 확장 후</div>
+      <div class="gauge" style="margin-top:14px">
+        <div class="gauge-bar"><div class="gauge-fill" style="width:50%;background:var(--gc-amber)"></div></div>
+        <div class="gauge-labels"><span>0</span><span>3배</span><span>10배</span><span>20배</span></div>
+      </div>
+      <div class="stat-line" style="margin-top:12px">LTV/CAC ≈ <span class="big" style="color:var(--gc-amber)">10배</span></div>
+      <div style="font-size:12px;color:var(--gc-muted)">공격적 광고 집행 구간.</div>
+    </div>
+    <div class="card dark">
+      <div class="mono">Top 60 + 광고 + 24개월</div>
+      <div class="gauge" style="margin-top:14px">
+        <div class="gauge-bar" style="background:rgba(247,235,215,.15)"><div class="gauge-fill" style="width:80%;background:linear-gradient(90deg,#D6B981,#F7EBD7)"></div></div>
+        <div class="gauge-labels" style="color:#D6B981"><span>0</span><span>3배</span><span>10배</span><span>20배</span></div>
+      </div>
+      <div class="stat-line" style="margin-top:12px;color:#F7EBD7">LTV/CAC = <span class="big" style="color:#F7EBD7">16배</span></div>
+      <div style="font-size:12px;color:#D6B981">"광고 안 쓰면 아까운" 구간</div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px">ARPU 구성 — 사용자 1명당 수익의 출처</h3>
+  <div class="card" style="margin-top:14px">
+    <table>
+      <thead><tr><th>수익원</th><th>1명당 월 기여</th><th>이유</th></tr></thead>
+      <tbody>
+        <tr><td>광고 (AdSense)</td><td class="num">₩300~400</td><td>PV/user 25 × RPM ₩5~8k</td></tr>
+        <tr><td>프리미엄 구독 (3~4% 전환 × ₩5,000)</td><td class="num">₩150~200</td><td>PDF 다운·오답 클라우드·모의고사</td></tr>
+        <tr><td>제휴 (교재·인강 링크)</td><td class="num">₩100~200</td><td>쿠팡 파트너스 등</td></tr>
+        <tr><td>B2B 라이선스 (학원 API)</td><td class="num">+α</td><td>규모 커지면 가능</td></tr>
+        <tr class="highlight"><td><b>블렌디드 ARPU</b></td><td class="num"><b>₩700~900</b></td><td>7개월 × 평균 = LTV ₩5,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ─────────────── 05 ─────────────── -->
+<section id="s5">
+  <div class="kicker mono">05 · Leverage</div>
+  <h2 class="serif">크로스오버와 확장 경제학</h2>
+  <p class="lede">기출노트의 진짜 지렛대. 한능검 사용자 ≈ 공무원·공기업 준비생. 시험 확장은 <b>사실상 무료 마케팅</b>.</p>
+
+  <h3 style="margin-top:32px">📚 응시자 시장 규모 (연간)</h3>
+  <div class="card" style="overflow:auto;margin-top:14px">
+    <table>
+      <thead><tr><th>시험</th><th>연 응시자</th><th>한능검 타겟 중복</th></tr></thead>
+      <tbody>
+        <tr><td>한국사능력검정시험</td><td class="num">30만</td><td>-</td></tr>
+        <tr><td>9급 공무원 (국가+지방)</td><td class="num">40만+</td><td class="num">90%</td></tr>
+        <tr><td>경찰·소방</td><td class="num">20만</td><td class="num">80%</td></tr>
+        <tr><td>정보처리기사</td><td class="num">30만</td><td class="num">50%</td></tr>
+        <tr><td>간호조무·조리·미용 자격</td><td class="num">각 10~20만</td><td class="num">20%</td></tr>
+        <tr><td>임용·공기업</td><td class="num">20만+</td><td class="num">70%</td></tr>
+        <tr class="highlight"><td><b>국가시험 전체 합계</b></td><td class="num"><b>500만+</b></td><td class="num"><b>-</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:32px">🎯 크로스오버 효과 — PV/user 변화</h3>
+  <div class="two-col grid" style="margin-top:14px">
+    <div class="card">
+      <div class="chart-wrap"><canvas id="crossoverChart"></canvas></div>
+    </div>
+    <div class="card">
+      <table>
+        <thead><tr><th>확장 단계</th><th>PV/user</th><th>증가율</th></tr></thead>
+        <tbody>
+          <tr><td>한능검 단독</td><td class="num">25</td><td>기준</td></tr>
+          <tr><td>+ Top 5</td><td class="num">47</td><td class="num" style="color:var(--gc-good)">+88%</td></tr>
+          <tr><td>+ Top 20</td><td class="num">55</td><td class="num" style="color:var(--gc-good)">+120%</td></tr>
+          <tr><td>+ Top 40</td><td class="num">60</td><td class="num" style="color:var(--gc-good)">+140%</td></tr>
+          <tr class="highlight"><td><b>+ Top 60</b></td><td class="num"><b>65</b></td><td class="num" style="color:var(--gc-good)"><b>+160%</b></td></tr>
+        </tbody>
+      </table>
+      <div class="insight" style="margin-top:16px">
+        <b>결정적 포인트</b>: 같은 사용자 1명이 시험 하나 더 볼 때마다 PV가 쌓임. <b>신규 획득 비용 없이</b> LTV가 올라감.
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px">🔄 무료 확장의 원리</h3>
+  <div class="card amber" style="margin-top:14px">
+    <pre style="background:var(--gc-ink-2);margin:0"><span class="c">// 시험 1개 추가 시 경제학</span>
+기존 MAU 640명 보유
+  ↓
+시험 오픈 (개발비 ₩0, 데이터 이미 있음)
+  ↓
+MAU의 80%가 "원래 공무원 준비생이었음"
+  ↓
+<span style="color:#86EFAC">+512명 × LTV ₩4,900 = ₩2,508,800 자산 증가</span>
+  ↓
+획득 비용: <span style="color:#86EFAC">₩0</span></pre>
+  </div>
+</section>
+
+<!-- ─────────────── 06 ─────────────── -->
+<section id="s6">
+  <div class="kicker mono">06 · Simulation</div>
+  <h2 class="serif">Top 20 · 40 · 60 매트릭스</h2>
+  <p class="lede">1인 AI 운영 조건 (외주 0 · 개발비 0 · Gemini 초기 1회) 반영. 순수 인프라 비용만 계산.</p>
+
+  <h3 style="margin-top:32px">💸 순수 운영비 구성</h3>
+  <div class="card" style="overflow:auto;margin-top:14px">
+    <table>
+      <thead><tr><th>항목</th><th>Top 20</th><th>Top 40</th><th>Top 60</th></tr></thead>
+      <tbody>
+        <tr><td>Railway (author-tool)</td><td class="num">₩5만</td><td class="num">₩10~15만</td><td class="num">₩20~30만</td></tr>
+        <tr><td>Vercel (web)</td><td class="num">₩0</td><td class="num">₩0</td><td class="num">₩5만</td></tr>
+        <tr><td>Cloudflare R2</td><td class="num">₩10만</td><td class="num">₩15만</td><td class="num">₩25~30만</td></tr>
+        <tr><td>Supabase</td><td class="num">₩0</td><td class="num">₩3만</td><td class="num">₩3만</td></tr>
+        <tr><td>도메인·기타</td><td class="num">₩1만</td><td class="num">₩1만</td><td class="num">₩1만</td></tr>
+        <tr class="highlight"><td><b>월 합계</b></td><td class="num"><b>₩15~20만</b></td><td class="num"><b>₩30~40만</b></td><td class="num"><b>₩55~70만</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:32px">📊 12개월 차 매트릭스</h3>
+
+  <h4 style="margin-top:22px;font-family:'Noto Serif KR',serif">Top 20</h4>
+  <div class="card" style="overflow:auto">
+    <table>
+      <thead><tr><th>월 광고비</th><th>총수익</th><th>광고+운영</th><th>월 순이익</th><th>마진율</th></tr></thead>
+      <tbody>
+        <tr class="good"><td class="num">₩0</td><td class="num">₩1,400k</td><td class="num">₩20만</td><td class="num"><b>+₩1,380k</b></td><td><span class="tag good">99%</span></td></tr>
+        <tr><td class="num">₩30만</td><td class="num">₩2,351k</td><td class="num">₩50만</td><td class="num"><b>+₩1,851k</b></td><td class="num">79%</td></tr>
+        <tr><td class="num">₩100만</td><td class="num">₩3,040k</td><td class="num">₩120만</td><td class="num"><b>+₩1,840k</b></td><td class="num">61%</td></tr>
+        <tr><td class="num">₩300만</td><td class="num">₩4,995k</td><td class="num">₩320만</td><td class="num"><b>+₩1,795k</b></td><td class="num">36%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4 style="margin-top:22px;font-family:'Noto Serif KR',serif">Top 40</h4>
+  <div class="card" style="overflow:auto">
+    <table>
+      <thead><tr><th>월 광고비</th><th>총수익</th><th>광고+운영</th><th>월 순이익</th><th>마진율</th></tr></thead>
+      <tbody>
+        <tr class="good"><td class="num">₩0</td><td class="num">₩2,800k</td><td class="num">₩40만</td><td class="num"><b>+₩2,760k</b></td><td><span class="tag good">99%</span></td></tr>
+        <tr><td class="num">₩30만</td><td class="num">₩4,280k</td><td class="num">₩70만</td><td class="num"><b>+₩3,580k</b></td><td class="num">84%</td></tr>
+        <tr class="highlight"><td class="num">₩100만</td><td class="num">₩5,033k</td><td class="num">₩140만</td><td class="num"><b>+₩3,633k</b></td><td class="num">72%</td></tr>
+        <tr><td class="num">₩300만</td><td class="num">₩7,172k</td><td class="num">₩340만</td><td class="num"><b>+₩3,772k</b></td><td class="num">53%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4 style="margin-top:22px;font-family:'Noto Serif KR',serif">Top 60</h4>
+  <div class="card" style="overflow:auto">
+    <table>
+      <thead><tr><th>월 광고비</th><th>총수익</th><th>광고+운영</th><th>월 순이익</th><th>마진율</th></tr></thead>
+      <tbody>
+        <tr class="good"><td class="num">₩0</td><td class="num">₩4,500k</td><td class="num">₩70만</td><td class="num"><b>+₩4,430k</b></td><td><span class="tag good">98%</span></td></tr>
+        <tr><td class="num">₩30만</td><td class="num">₩6,500k</td><td class="num">₩100만</td><td class="num"><b>+₩5,400k</b></td><td class="num">83%</td></tr>
+        <tr class="highlight"><td class="num">₩100만</td><td class="num">₩7,311k</td><td class="num">₩170만</td><td class="num"><b>+₩5,541k</b></td><td class="num">76%</td></tr>
+        <tr><td class="num">₩300만</td><td class="num">₩9,126k</td><td class="num">₩370만</td><td class="num"><b>+₩5,526k</b></td><td class="num">61%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:32px">🚀 24개월 차 (SEO 성숙 + 바이럴 발현)</h3>
+  <div class="card" style="overflow:auto;margin-top:14px">
+    <table>
+      <thead><tr><th>조합</th><th>MAU</th><th>월 순이익</th><th>연 순이익</th></tr></thead>
+      <tbody>
+        <tr><td>Top 60 · 광고 ₩0</td><td class="num">13,200</td><td class="num">+₩8,930k</td><td class="num"><b>₩1.07억</b></td></tr>
+        <tr><td>Top 60 · 광고 ₩30만</td><td class="num">15,780</td><td class="num">+₩12,000k</td><td class="num"><b>₩1.44억</b></td></tr>
+        <tr class="highlight"><td><b>Top 60 · 광고 ₩100만</b></td><td class="num">16,948</td><td class="num"><b>+₩13,638k</b></td><td class="num"><b>₩1.64억</b></td></tr>
+        <tr><td>Top 60 · 광고 ₩300만</td><td class="num">22,400</td><td class="num">+₩16,572k</td><td class="num"><b>₩1.99억</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <div class="chart-wrap tall"><canvas id="annualChart"></canvas></div>
+  </div>
+</section>
+
+<!-- ─────────────── 07 ─────────────── -->
+<section id="s7">
+  <div class="kicker mono">07 · Advertising Strategy</div>
+  <h2 class="serif">SEO Priming — 광고의 진짜 역할</h2>
+  <p class="lede">광고비는 "사용자 구매"가 아니라 "성장 엔진 점화". 6~12개월 뒤 구글·네이버 1페이지 자리를 사는 돈.</p>
+
+  <h3 style="margin-top:32px">🎯 광고의 3가지 진짜 역할</h3>
+  <ul class="clean" style="margin-top:14px">
+    <li><span class="dot">1</span><div><b>SEO 초기 신호 주입</b> · 3~6개월 뒤 효과 — 구글·네이버가 "실제 사람이 오고 머무름"을 신호로 인식 → 키워드 순위 상승 → 영구 무료 트래픽</div></li>
+    <li><span class="dot">2</span><div><b>바이럴 씨앗 뿌리기</b> · 1~3개월 — 사용자 층이 얇으면 공유 안 됨. MAU 1,000 넘으면 바이럴 시작</div></li>
+    <li><span class="dot teal">3</span><div><b>LTV 회수 (즉시 ROI)</b> · 6~12개월 — 이건 부가 효과. 단위 경제학상 광고비는 자산 구매.</div></li>
+  </ul>
+
+  <h3 style="margin-top:32px">🔑 관련 키워드 잠재 트래픽</h3>
+  <div class="card" style="overflow:auto;margin-top:14px">
+    <table>
+      <thead><tr><th>키워드군</th><th>월 검색량</th><th>현재 순위</th><th>1P 진입 시 유입</th></tr></thead>
+      <tbody>
+        <tr><td>"한능검 기출문제"</td><td class="num">22,000</td><td>2~3P</td><td class="num" style="color:var(--gc-good)">+2,200/월</td></tr>
+        <tr><td>"한국사능력검정시험"</td><td class="num">40,000</td><td>3P+</td><td class="num" style="color:var(--gc-good)">+4,000</td></tr>
+        <tr><td>"한능검 요약"</td><td class="num">8,000</td><td>1~2P</td><td class="num" style="color:var(--gc-good)">+800</td></tr>
+        <tr><td>회차별 롱테일 (77회 등)</td><td class="num">5,000 × 시즌</td><td>1P (진입)</td><td class="num" style="color:var(--gc-good)">+500~1,500</td></tr>
+        <tr><td>"9급 공무원 한국사 기출"</td><td class="num">15,000</td><td>미진입</td><td class="num" style="color:var(--gc-good)">+1,500</td></tr>
+        <tr><td>시대별 롱테일 (조선후기 요약 등)</td><td class="num">50,000+</td><td>진입 중</td><td class="num" style="color:var(--gc-good)">+5,000+</td></tr>
+        <tr class="highlight"><td><b>1P 전면 진입 시 합계</b></td><td class="num"><b>-</b></td><td class="num"><b>-</b></td><td class="num" style="color:var(--gc-good)"><b>+10,000~15,000/월</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:32px">⏱ 광고 집행 타이밍</h3>
+  <div class="card" style="margin-top:14px">
+    <table>
+      <thead><tr><th>시점</th><th>광고</th><th>콘텐츠</th><th>오가닉 SEO</th><th>바이럴</th></tr></thead>
+      <tbody>
+        <tr><td>월 0~3</td><td>🔥🔥🔥</td><td>🔥🔥</td><td>💧</td><td>💧</td></tr>
+        <tr><td>월 3~9</td><td>🔥🔥</td><td>🔥🔥🔥</td><td>🔥</td><td>🔥</td></tr>
+        <tr><td>월 9~18</td><td>🔥</td><td>🔥🔥🔥</td><td>🔥🔥</td><td>🔥🔥</td></tr>
+        <tr class="good"><td><b>월 18+</b></td><td>💧 (시즌만)</td><td>🔥🔥</td><td>🔥🔥🔥</td><td>🔥🔥🔥</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ─────────────── 08 ─────────────── -->
+<section id="s8">
+  <div class="kicker mono">08 · Operation Model</div>
+  <h2 class="serif">1인 AI 운영 모델</h2>
+  <p class="lede">전통 창업과의 구조적 차이. AI로 혼자 운영하면 자본 효율이 극단적으로 높아짐.</p>
+
+  <div class="card" style="margin-top:22px;overflow:auto">
+    <table>
+      <thead><tr><th>항목</th><th>전통 스타트업</th><th>이 모델</th></tr></thead>
+      <tbody>
+        <tr><td>초기 개발비</td><td class="num">₩5,000만~1억</td><td class="num" style="color:var(--gc-good)"><b>₩0</b> (직접)</td></tr>
+        <tr><td>월 인건비</td><td class="num">₩500~1,500만</td><td class="num" style="color:var(--gc-good)"><b>₩0</b> (1인)</td></tr>
+        <tr><td>월 콘텐츠 제작비</td><td class="num">₩100~300만</td><td class="num" style="color:var(--gc-good)"><b>₩0</b> (AI 일괄)</td></tr>
+        <tr><td>손익분기 기간</td><td class="num">18~36개월</td><td class="num" style="color:var(--gc-good)"><b>1개월</b></td></tr>
+        <tr><td>LTV/CAC 목표</td><td class="num">3배</td><td class="num" style="color:var(--gc-good)"><b>6~16배</b></td></tr>
+        <tr class="highlight"><td><b>마진율</b></td><td class="num">15~30%</td><td class="num" style="color:var(--gc-amber)"><b>80~95%</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:32px">⏳ 오너의 시간 배분</h3>
+  <div class="card" style="overflow:auto;margin-top:14px">
+    <table>
+      <thead><tr><th>규모</th><th>주간 업무</th><th>AI 자동화 가능</th><th>오너 전담</th></tr></thead>
+      <tbody>
+        <tr><td>Top 5~20</td><td class="num">5~15h</td><td>콘텐츠 스케줄링</td><td>광고 최적화, CS</td></tr>
+        <tr><td>Top 40</td><td class="num">15~25h</td><td>주간 리포트·CS·발행</td><td>전략·A/B 테스트</td></tr>
+        <tr class="highlight"><td><b>Top 60</b></td><td class="num"><b>25~40h</b></td><td>대부분</td><td>기획·검토·방향성</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout teal" style="margin-top:22px">
+    <div class="mono">핵심 통찰</div>
+    <p style="margin:8px 0 0">전통 창업으로 연 ₩1억 만들려면 <b>억 단위 투자 + 팀 + 외주</b>가 필요. 이 모델은 <b>오너 1명이 AI로 6~12개월 올인</b>해서 같은 금액. 자본 효율 비교가 의미 없을 정도로 극단적.</p>
+  </div>
+</section>
+
+<!-- ─────────────── 09 ─────────────── -->
+<section id="s9">
+  <div class="kicker mono">09 · Execution</div>
+  <h2 class="serif">실행 로드맵</h2>
+  <p class="lede">단계별로 어떻게 쌓을지. 각 단계의 목표 · 비용 · 기대 수익을 한눈에.</p>
+
+  <div class="roadmap" style="margin-top:22px">
+    <div class="roadmap-step">
+      <div class="phase">Phase 1 · 0~3M</div>
+      <h4>한능검 검증</h4>
+      <p style="font-size:13px;color:var(--gc-ink-2)">인스타 자동발행 + 콘텐츠 주 5회 + 광고 ₩10만 테스트</p>
+      <div class="goal">연 ₩1,000만</div>
+    </div>
+    <div class="roadmap-step" style="border-color:var(--gc-amber)">
+      <div class="phase">Phase 2 · 3~6M</div>
+      <h4>Top 5 확장</h4>
+      <p style="font-size:13px;color:var(--gc-ink-2)">9급/경찰/정처기/간호/조리 오픈 + 프리미엄 론칭</p>
+      <div class="goal">연 ₩2,500만</div>
+    </div>
+    <div class="roadmap-step" style="border-color:var(--gc-amber);background:linear-gradient(135deg,#FFF4E3,#FBF7EE)">
+      <div class="phase">Phase 3 · 6~12M</div>
+      <h4>Top 20</h4>
+      <p style="font-size:13px;color:var(--gc-ink-2)">광고 ₩30만 정기 + SEO 씨앗 전면 + 제휴 시작</p>
+      <div class="goal">연 ₩4,000만</div>
+    </div>
+    <div class="roadmap-step" style="border-color:var(--gc-teal);background:linear-gradient(135deg,#E6F5F3,#FBF7EE)">
+      <div class="phase">Phase 4 · 12~24M</div>
+      <h4>Top 40</h4>
+      <p style="font-size:13px;color:var(--gc-ink-2)">광고 ₩50~100만 + SEO 부스트 발현 + B2B 테스트</p>
+      <div class="goal">연 ₩8,000만~1억</div>
+    </div>
+    <div class="roadmap-step" style="background:var(--gc-ink);color:#F7EBD7">
+      <div class="phase" style="color:#D6B981">Phase 5 · 24M+</div>
+      <h4 style="color:#F7EBD7">Top 60+</h4>
+      <p style="font-size:13px;color:#D6B981">광고 ₩100~300만 + 본격 B2B 영업 + 프리미엄 티어</p>
+      <div class="goal" style="color:#D6B981;border-color:rgba(247,235,215,.2)">연 ₩1.6억~2억</div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:40px">📋 즉시 실행 체크리스트 (1개월)</h3>
+  <ul class="clean" style="margin-top:14px">
+    <li><span class="dot">1</span><div><b>Gemini API로 Top 60 요약노트 일괄 생성</b> — 1회 ₩50~100만 예산, 이후 운영비 0</div></li>
+    <li><span class="dot">2</span><div><b>Instagram 자동발행 토큰 연결</b> — 이미 구축됨, 카드뉴스 일 1회 자동</div></li>
+    <li><span class="dot">3</span><div><b>네이버 블로그 개설 + 주 5회 포스팅</b> — 회차별·키워드별 롱테일</div></li>
+    <li><span class="dot">4</span><div><b>프리미엄 결제 모듈</b> — 토스페이먼츠, PDF 다운·오답 클라우드 제공</div></li>
+    <li><span class="dot">5</span><div><b>Top 5 시험 랜딩 페이지</b> — 기존 코드 재사용, SEO 메타 생성</div></li>
+    <li><span class="dot muted">6</span><div><b>주간 리포트 Supabase 연결</b> — 이미 구축됨, 키만 넣으면 동작</div></li>
+    <li><span class="dot muted">7</span><div><b>광고 월 ₩10만 테스트</b> — 네이버 검색광고 롱테일 키워드 위주</div></li>
+  </ul>
+</section>
+
+<!-- ─────────────── 10 ─────────────── -->
+<section id="s10">
+  <div class="kicker mono">10 · Glossary</div>
+  <h2 class="serif">용어 사전</h2>
+
+  <div class="two-col grid" style="margin-top:22px">
+    <div class="definition">
+      <div class="abbr">ARPU · Average Revenue Per User</div>
+      <div class="term">사용자 1명당 평균 수익</div>
+      <div class="body">월 단위가 일반적. 광고+구독+제휴 합산.</div>
+    </div>
+    <div class="definition">
+      <div class="abbr">BEP · Break-Even Point</div>
+      <div class="term">손익분기점</div>
+      <div class="body">누적 수익 = 누적 비용 되는 시점.</div>
+    </div>
+    <div class="definition">
+      <div class="abbr">CAC · Customer Acquisition Cost</div>
+      <div class="term">고객 획득 비용</div>
+      <div class="body">사용자 1명 데려오는 데 드는 돈.</div>
+    </div>
+    <div class="definition">
+      <div class="abbr">CPA · Cost Per Action</div>
+      <div class="term">전환당 비용</div>
+      <div class="body">가입·결제 등 특정 액션 1건당 광고비.</div>
+    </div>
+    <div class="definition">
+      <div class="abbr">CPC · Cost Per Click</div>
+      <div class="term">클릭당 비용</div>
+      <div class="body">검색광고 표준 과금.</div>
+    </div>
+    <div class="definition">
+      <div class="abbr">CPM · Cost Per Mille</div>
+      <div class="term">천 노출당 비용</div>
+      <div class="body">Mille=라틴어 1,000. 브랜드 광고 표준.</div>
+    </div>
+    <div class="definition">
+      <div class="abbr">CPV · Cost Per Visit</div>
+      <div class="term">방문당 비용</div>
+      <div class="body">사이트 방문 1건 단가. CPC보다 상위 지표.</div>
+    </div>
+    <div class="definition">
+      <div class="abbr">CTR · Click-Through Rate</div>
+      <div class="term">클릭률</div>
+      <div class="body">노출 대비 클릭 비율. (클릭 ÷ 노출)</div>
+    </div>
+    <div class="definition">
+      <div class="abbr">DAU / MAU</div>
+      <div class="term">일/월 활성 사용자</div>
+      <div class="body">하루/한달 기준 접속한 유일 사용자 수.</div>
+    </div>
+    <div class="definition">
+      <div class="abbr">K-factor · Viral Coefficient</div>
+      <div class="term">바이럴 계수</div>
+      <div class="body">사용자 1명이 불러오는 추가 사용자 수. K&gt;1이면 폭발 성장.</div>
+    </div>
+    <div class="definition">
+      <div class="abbr">LTV · Lifetime Value</div>
+      <div class="term">생애 가치</div>
+      <div class="body">사용자가 떠날 때까지 주는 총 수익.</div>
+    </div>
+    <div class="definition">
+      <div class="abbr">PV · Page View</div>
+      <div class="term">페이지뷰</div>
+      <div class="body">페이지가 한 번 로드된 횟수.</div>
+    </div>
+    <div class="definition">
+      <div class="abbr">ROAS · Return On Ad Spend</div>
+      <div class="term">광고비 대비 수익률</div>
+      <div class="body">= 광고 매출 ÷ 광고비. 1 이상이면 이익.</div>
+    </div>
+    <div class="definition">
+      <div class="abbr">ROI · Return On Investment</div>
+      <div class="term">투자 수익률</div>
+      <div class="body">= (수익 - 투자) ÷ 투자. ROAS보다 넓은 개념.</div>
+    </div>
+    <div class="definition">
+      <div class="abbr">RPM · Revenue Per Mille</div>
+      <div class="term">천 PV당 수익</div>
+      <div class="body">사이트 광고 수익 효율. (수익 ÷ PV × 1,000)</div>
+    </div>
+    <div class="definition">
+      <div class="abbr">SEO · Search Engine Optimization</div>
+      <div class="term">검색 엔진 최적화</div>
+      <div class="body">무료 검색 트래픽 확보 기술.</div>
+    </div>
+    <div class="definition">
+      <div class="abbr">Unit Economics</div>
+      <div class="term">단위 경제학</div>
+      <div class="body">사용자 1명 단위로 본 수익성. LTV vs CAC.</div>
+    </div>
+    <div class="definition">
+      <div class="abbr">AARRR</div>
+      <div class="term">해적 지표</div>
+      <div class="body">Acquisition · Activation · Retention · Referral · Revenue — 그로스 퍼널 5단계.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  generated 2026-04-22 · gcnote.co.kr · growth playbook v1.0
+</footer>
+
+</div>
+
+<script>
+// ─ Marginal ROI chart (광고비별 순이익)
+new Chart(document.getElementById('marginalChart'), {
+  type: 'bar',
+  data: {
+    labels: ['광고 ₩0', '₩30만', '₩100만', '₩300만', '₩500만', '₩1,000만'],
+    datasets: [
+      {
+        label: 'Top 20 월 순이익 (천원)',
+        data: [1380, 1851, 1840, 1795, 1600, 1200],
+        backgroundColor: 'rgba(13,148,136,.55)',
+        borderRadius: 4,
+      },
+      {
+        label: 'Top 40 월 순이익 (천원)',
+        data: [2760, 3580, 3633, 3772, 3850, 3700],
+        backgroundColor: 'rgba(180,83,9,.65)',
+        borderRadius: 4,
+      },
+      {
+        label: 'Top 60 월 순이익 (천원)',
+        data: [4430, 5400, 5541, 5526, 5800, 5500],
+        backgroundColor: 'rgba(31,26,20,.7)',
+        borderRadius: 4,
+      },
+    ],
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { labels: { font: { family: 'JetBrains Mono', size: 11 }, color: '#6F6350' } },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => `${ctx.dataset.label}: ₩${(ctx.raw / 1000).toFixed(2)}M`,
+        },
+      },
+    },
+    scales: {
+      y: { grid: { color: 'rgba(31,26,20,.06)' }, ticks: { color: '#6F6350', callback: (v) => `₩${(v / 1000).toFixed(1)}M` } },
+      x: { grid: { display: false }, ticks: { color: '#6F6350' } },
+    },
+  },
+});
+
+// ─ Crossover PV/user chart
+new Chart(document.getElementById('crossoverChart'), {
+  type: 'bar',
+  data: {
+    labels: ['한능검 단독', '+ Top 5', '+ Top 20', '+ Top 40', '+ Top 60'],
+    datasets: [{
+      label: 'PV per User',
+      data: [25, 47, 55, 60, 65],
+      backgroundColor: ['#6F6350', '#0D9488', '#D97706', '#B45309', '#1F1A14'],
+      borderRadius: 6,
+    }],
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { grid: { color: 'rgba(31,26,20,.06)' }, ticks: { color: '#6F6350' } },
+      x: { grid: { display: false }, ticks: { color: '#6F6350' } },
+    },
+  },
+});
+
+// ─ Annual profit chart
+new Chart(document.getElementById('annualChart'), {
+  type: 'line',
+  data: {
+    labels: ['M1', 'M3', 'M6', 'M9', 'M12', 'M18', 'M24', 'M36'],
+    datasets: [
+      {
+        label: 'Top 20 · 광고 ₩30만',
+        data: [0, 200, 900, 1500, 1851, 2200, 2700, 3500],
+        borderColor: '#0D9488',
+        backgroundColor: 'rgba(13,148,136,.1)',
+        tension: 0.3,
+        pointRadius: 3,
+      },
+      {
+        label: 'Top 40 · 광고 ₩100만',
+        data: [-400, 200, 1800, 2900, 3633, 5200, 7000, 9500],
+        borderColor: '#B45309',
+        backgroundColor: 'rgba(180,83,9,.1)',
+        tension: 0.3,
+        pointRadius: 3,
+      },
+      {
+        label: 'Top 60 · 광고 ₩100만',
+        data: [-800, 500, 2500, 4500, 5541, 8500, 13638, 18000],
+        borderColor: '#1F1A14',
+        backgroundColor: 'rgba(31,26,20,.1)',
+        tension: 0.3,
+        pointRadius: 3,
+      },
+    ],
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { labels: { font: { family: 'JetBrains Mono', size: 11 }, color: '#6F6350' } },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => `${ctx.dataset.label}: 월 ₩${(ctx.raw / 1000).toFixed(2)}M`,
+        },
+      },
+    },
+    scales: {
+      y: {
+        grid: { color: 'rgba(31,26,20,.06)' },
+        ticks: { color: '#6F6350', callback: (v) => `₩${(v / 1000).toFixed(0)}M/월` },
+      },
+      x: { grid: { display: false }, ticks: { color: '#6F6350' } },
+    },
+  },
+});
+</script>
+</body>
+</html>
