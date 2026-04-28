@@ -44,10 +44,14 @@ export async function uploadBuffersToR2(
 ): Promise<string[]> {
   const stamp = Date.now();
   const urls: string[] = [];
+  // Meta(IG) blocks pub-*.r2.dev fetches. When CDN_BASE_URL is set, route through
+  // the author-tool /r2 proxy (e.g. https://korea-history-production.up.railway.app/r2/...)
+  // so Meta sees a public host it accepts.
+  const cdnBase = process.env.CDN_BASE_URL?.trim().replace(/\/$/, '') || '';
   for (let i = 0; i < buffers.length; i++) {
     const key = `published/instagram/${contentId}/${stamp}/${String(i + 1).padStart(2, '0')}.png`;
     await putObject(key, buffers[i], 'image/png');
-    urls.push(getPublicUrl(key));
+    urls.push(cdnBase ? `${cdnBase}/r2/${key}` : getPublicUrl(key));
   }
   return urls;
 }
