@@ -8,6 +8,7 @@ import {
 } from "@/lib/notes";
 import { getNoteLectures } from "@/lib/note-lectures";
 import { breadcrumbJsonLd } from "@/lib/seo";
+import { getNoteSeoBoost } from "@/lib/note-seo-boost";
 import BreadCrumb from "@/components/BreadCrumb";
 import PrevNextNav from "@/components/PrevNextNav";
 import NoteContent from "./NoteContent";
@@ -30,14 +31,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const note = getNoteById(noteId);
   if (!note) return {};
 
-  const title = `${note.title} 요약정리 - 한능검 필수 암기`;
-  const description = `한능검 ${note.eraLabel} - ${note.title} 핵심 요약. 관련 기출 ${note.relatedQuestionIds.length}문제, 영상강의 포함.`;
+  const boost = getNoteSeoBoost(noteId);
+
+  // SEO boost: surface golden keyword (e.g. 병자호란, 훈민정음) in title for high-volume notes
+  const title = boost
+    ? `${boost.primary} 정리 — ${note.title} 한능검 요약노트`
+    : `${note.title} 요약정리 - 한능검 필수 암기`;
+
+  const description = boost
+    ? `${boost.primary}을(를) 포함한 ${note.title} 핵심 요약. ${boost.extra.slice(0, 3).join(' · ')} 정리. 관련 기출 ${note.relatedQuestionIds.length}문제 + 영상강의.`
+    : `한능검 ${note.eraLabel} - ${note.title} 핵심 요약. 관련 기출 ${note.relatedQuestionIds.length}문제, 영상강의 포함.`;
 
   const path = `/notes/${noteId}`;
-  const keywords = [
+  const baseKeywords = [
     "한능검",
     "한국사능력검정시험",
-    "요약노트",
+    "한능검 요약노트",
     "한국사 요약",
     note.eraLabel,
     note.title,
@@ -45,6 +54,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     `${note.title} 정리`,
     `한능검 ${note.eraLabel}`,
   ];
+  const keywords = boost
+    ? [boost.primary, ...boost.extra, ...baseKeywords]
+    : baseKeywords;
   return {
     title,
     description,
@@ -55,7 +67,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       url: path,
       type: "article",
-      siteName: "한국사기출",
+      siteName: "기출노트 한능검",
     },
   };
 }
@@ -77,11 +89,16 @@ export default async function NotePage({ params }: Props) {
 
   const SITE_URL =
     process.env.NEXT_PUBLIC_SITE_URL || "https://gcnote.co.kr";
+  const boost = getNoteSeoBoost(noteId);
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: `${note.title} 요약정리 - 한능검 필수 암기`,
-    description: `한능검 ${note.eraLabel} - ${note.title} 핵심 요약. 관련 기출 ${note.relatedQuestionIds.length}문제, 영상강의 포함.`,
+    headline: boost
+      ? `${boost.primary} 정리 — ${note.title} 한능검 요약노트`
+      : `${note.title} 요약정리 - 한능검 필수 암기`,
+    description: boost
+      ? `${boost.primary}을(를) 포함한 ${note.title} 핵심 요약. ${boost.extra.slice(0, 3).join(' · ')} 정리. 관련 기출 ${note.relatedQuestionIds.length}문제 + 영상강의.`
+      : `한능검 ${note.eraLabel} - ${note.title} 핵심 요약. 관련 기출 ${note.relatedQuestionIds.length}문제, 영상강의 포함.`,
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `${SITE_URL}/notes/${noteId}`,
@@ -90,6 +107,10 @@ export default async function NotePage({ params }: Props) {
       { "@type": "Thing", name: "한국사능력검정시험" },
       { "@type": "Thing", name: note.eraLabel },
       { "@type": "Thing", name: note.title },
+      ...(boost ? [
+        { "@type": "Thing", name: boost.primary },
+        ...boost.extra.map(k => ({ "@type": "Thing", name: k })),
+      ] : []),
     ],
     inLanguage: "ko",
     isAccessibleForFree: true,

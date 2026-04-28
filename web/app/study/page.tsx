@@ -3,10 +3,61 @@ import { Metadata } from "next";
 import { getAllExams, getAllKeywords } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "한능검 기출문제 학습 - 회차별·시대별·키워드별",
+  title: "한능검 무료 기출문제 풀이 — 1,900문항 회차별·시대별·키워드별",
   description:
-    "한능검 기출문제를 회차별, 시대별, 키워드별로 학습하세요. 맞춤형 학습과 오답 복습으로 1급 합격!",
+    "기출노트의 한능검 무료 학습. 제40~77회 1,900+ 문항을 회차별·시대별·키워드별로 풀이. AI 해설 + 영상강의 + 오답노트 자동 수집. 한능검 1급·2급·3급 모두 평생 무료.",
+  keywords: [
+    "한능검 기출문제", "한능검 무료", "한국사능력검정시험 기출",
+    "한능검 학습", "한능검 회차별", "한능검 시대별",
+    "기출노트", "기출노트 한능검", "한국사 기출",
+  ],
   alternates: { canonical: "/study" },
+  openGraph: {
+    title: "한능검 무료 기출문제 풀이 — 1,900문항",
+    description: "기출노트가 제공하는 한능검 무료 학습. 회차별·시대별·키워드별 풀이 + AI 해설 + 영상강의.",
+    url: "/study",
+    type: "website",
+    siteName: "기출노트 한능검",
+  },
+};
+
+const STUDY_FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "한능검 기출문제는 무료인가요?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "네, 기출노트의 한능검 기출문제 1,900+ 문항은 평생 무료입니다. 별도 가입 없이 바로 풀 수 있습니다.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "한능검 회차는 몇 회까지 있나요?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "제40회부터 제77회까지 38개 회차의 한능검 심화 기출문제가 모두 등록되어 있습니다.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "한능검 1급 합격 점수는?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "한국사능력검정시험 심화 기준 80점 이상이 1급, 70~79점이 2급, 60~69점이 3급입니다.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "맞춤형 학습은 어떻게 작동하나요?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "선사시대부터 현대까지 8개 시대 × 4개 유형(정치·경제·사회·문화) 매트릭스에서 원하는 칸만 체크해 나만의 학습 세트를 만들 수 있습니다. 오답이 많은 구간만 집중 훈련할 때 효과적입니다.",
+      },
+    },
+  ],
 };
 
 export default function StudyPage() {
@@ -19,9 +70,13 @@ export default function StudyPage() {
 
   return (
     <div>
-      <h1 className="text-xl font-extrabold text-slate-900 mb-0.5">학습하기</h1>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(STUDY_FAQ_SCHEMA) }}
+      />
+      <h1 className="text-xl font-extrabold text-slate-900 mb-0.5">한능검 기출문제 학습</h1>
       <p className="text-slate-500 text-[13px] mb-5">
-        {exams.length}개 회차 &middot; {totalQuestions.toLocaleString()}문항
+        {exams.length}개 회차 &middot; {totalQuestions.toLocaleString()}문항 무료
       </p>
 
       {/* Intro (SEO / unique content) */}
