@@ -24,10 +24,13 @@ const GROUP_COLORS = [
   "border-l-teal-500",
 ];
 
-export const dynamic = "force-static";
+// ISR — 274 단원 모두 첫 요청 시 SSR + 1일 캐시. 빌드 0개 prerender.
+// 사용자 첫 접속 1~2초 지연, 이후 캐시 즉시.
+export const revalidate = 86400;
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  return getAllTopicParams().map(({ slug, topicId }) => ({ slug, topicId }));
+  return [];
 }
 
 // 노트 slug → 그 과목의 대표 9급 직렬 (기출문제 링크용)

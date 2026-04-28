@@ -8,7 +8,8 @@ import {
   getNoteTopicsIndex,
 } from "@/lib/civil-notes";
 
-export const dynamic = "force-static";
+// ISR — 23개 노트 모두 prerender (수가 적어 부담 X)
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   return getAllCivilNoteSlugs().map((slug) => ({ slug }));
