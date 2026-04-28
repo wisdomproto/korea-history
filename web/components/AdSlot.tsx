@@ -107,6 +107,19 @@ export default function AdSlot({
     } catch {}
   }, [resolvedProvider]);
 
+  // AdFit SDK 재초기화: SDK 는 페이지 첫 로드 시 DOM 한 번 스캔이라
+  // 동적 mount 되는 슬롯은 script 를 다시 주입해 재스캔 트리거.
+  useEffect(() => {
+    if (resolvedProvider !== "adfit") return;
+    const script = document.createElement("script");
+    script.src = "https://t1.kakaocdn.net/kas/static/ba.min.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      if (script.parentNode) script.parentNode.removeChild(script);
+    };
+  }, [resolvedProvider]);
+
   if (!resolvedProvider) return null;
 
   return (
