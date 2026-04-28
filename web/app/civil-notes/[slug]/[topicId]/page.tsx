@@ -8,6 +8,21 @@ import {
   getAllTopicParams,
   getQuestionsForTopic,
 } from "@/lib/civil-notes";
+import NotesShell from "@/components/notes/NotesShell";
+import type { NoteGroup, NoteListItem, NotesShellMeta, BreadcrumbItem } from "@/components/notes/types";
+
+const GROUP_COLORS = [
+  "border-l-violet-500",
+  "border-l-blue-500",
+  "border-l-cyan-500",
+  "border-l-emerald-500",
+  "border-l-amber-500",
+  "border-l-orange-500",
+  "border-l-red-500",
+  "border-l-pink-500",
+  "border-l-purple-500",
+  "border-l-teal-500",
+];
 
 export const dynamic = "force-static";
 
@@ -135,51 +150,18 @@ export default async function TopicPage({
       {/* 노트 자체 스타일 (cream/amber 디자인 시스템) */}
       <style dangerouslySetInnerHTML={{ __html: topic.style }} />
 
-      <div className="mx-auto max-w-[1200px] px-5 py-6 md:py-8 md:flex md:gap-6" style={{ background: "var(--gc-bg, #F5EFE4)" }}>
-        {/* 좌측 사이드바 — 다른 단원 리스트 */}
-        <aside className="hidden md:block md:w-64 md:shrink-0">
-          <div className="sticky top-20 space-y-2">
-            <div className="rounded-2xl bg-white border border-[var(--gc-hairline)] p-3">
-              <div className="text-[10px] font-mono uppercase tracking-wider text-[var(--gc-amber)] font-bold mb-2 px-1">
-                {note.subject} 단원 ({allTopics.length})
-              </div>
-              <ul className="space-y-0.5 max-h-[calc(100vh-180px)] overflow-y-auto">
-                {allTopics.map((t) => (
-                  <li key={t.topicId}>
-                    <Link
-                      href={`/civil-notes/${slug}/${t.topicId}`}
-                      className={`flex items-center gap-2 px-2.5 py-1.5 text-[13px] rounded-md transition-colors ${
-                        t.topicId === topicId
-                          ? "bg-[#FFF7ED] text-[var(--gc-amber)] font-bold"
-                          : "text-[var(--gc-ink)] hover:bg-[var(--gc-bg)] hover:text-[var(--gc-amber)]"
-                      }`}
-                    >
-                      <span className="font-mono text-[10px] text-slate-400 shrink-0">{String(t.ord).padStart(2, "0")}</span>
-                      <span className="flex-1 truncate">{t.title}</span>
-                      {t.freq > 0 && (
-                        <span className="text-[9px] text-[var(--gc-amber)] font-bold shrink-0">{t.freq}</span>
-                      )}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </aside>
-
-        {/* 우측 본문 */}
-        <div className="flex-1 min-w-0">
-        <nav style={{ fontSize: 12, color: "#94724D", marginBottom: 16, fontFamily: "var(--mono, monospace)" }}>
-          <Link href="/civil-notes" style={{ color: "inherit", textDecoration: "none" }}>
-            9급 공무원 단권화
-          </Link>
-          <span style={{ margin: "0 8px" }}>›</span>
-          <Link href={`/civil-notes/${slug}`} style={{ color: "inherit", textDecoration: "none" }}>
-            {note.subject}
-          </Link>
-          <span style={{ margin: "0 8px" }}>›</span>
-          <span style={{ color: "#B45309", fontWeight: 700 }}>{topic.title}</span>
-        </nav>
+      {/* Generic NotesShell — 좌측 사이드바 + 우측 본문 (한능검과 동일 패턴) */}
+      <NotesShell
+        meta={buildShellMeta(note, allTopics.length)}
+        groups={buildGroups(slug, allTopics)}
+        breadcrumb={[
+          { label: "홈", href: "/" },
+          { label: "9급 공무원 단권화", href: "/civil-notes" },
+          { label: note.subject, href: `/civil-notes/${slug}` },
+          { label: topic.title },
+        ]}
+        activeId={topicId}
+      >
 
         <header
           style={{
@@ -405,8 +387,44 @@ export default async function TopicPage({
           )}
         </nav>
 
-        </div>{/* 우측 본문 끝 */}
-      </div>{/* flex wrapper 끝 */}
+      </NotesShell>
     </>
   );
+}
+
+// ─── Helpers (단권화 단원 → NotesShell 데이터) ───
+
+function buildShellMeta(note: { subject: string }, totalTopics: number): NotesShellMeta {
+  return {
+    eyebrow: `Auto Summary Note · ${note.subject}`,
+    titleAccent: note.subject,
+    subtitle: `${totalTopics}단원 · 자동 단권화`,
+    searchPlaceholder: `${totalTopics}단원 검색...`,
+    quickActions: [],
+  };
+}
+
+function buildGroups(slug: string, topics: ReturnType<typeof getNoteTopicsIndex>): NoteGroup[] {
+  const items: NoteListItem[] = topics.map((t) => ({
+    id: t.topicId,
+    ord: t.ord,
+    title: t.title,
+    href: `/civil-notes/${slug}/${t.topicId}`,
+    keywords: t.keywords,
+    freqCount: t.freq,
+  }));
+  const groups: NoteGroup[] = [];
+  const groupSize = 5;
+  for (let i = 0; i < items.length; i += groupSize) {
+    const groupNum = Math.floor(i / groupSize) + 1;
+    const startOrd = i + 1;
+    const endOrd = Math.min(i + groupSize, items.length);
+    groups.push({
+      key: `g${groupNum}`,
+      label: `단원 ${startOrd}~${endOrd}`,
+      items: items.slice(i, i + groupSize),
+      colorClass: GROUP_COLORS[(groupNum - 1) % GROUP_COLORS.length],
+    });
+  }
+  return groups;
 }
