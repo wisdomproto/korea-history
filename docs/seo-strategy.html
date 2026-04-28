@@ -150,7 +150,7 @@
   <!-- Header -->
   <div class="doc-meta">
     <span class="badge live">LIVING DOC</span>
-    <span>SEO STRATEGY v1.4</span>
+    <span>SEO STRATEGY v1.5</span>
     <span>Last updated: 2026-04-28</span>
   </div>
   <h1 class="doc-title">구글 SEO <span class="accent">황금키워드</span> 전략</h1>
@@ -726,6 +726,16 @@
   <section id="updates">
     <h2><span class="num">10</span> 업데이트 로그</h2>
     <div class="updates">
+      <div class="update-row">
+        <span class="update-date">2026-04-28 v1.5</span>
+        <span><strong>✅ Phase 1 + Phase 2 Quick Win 실행 완료 (커밋 fdc00e4).</strong> 6개 파일 변경 (+225 -24):
+        <strong>① /notes 인덱스</strong> — H1 "한능검 요약노트", title "한능검 요약노트 — 시대별 87편 무료 | 한국사 요약", ItemList JSON-LD (50 노트) + CollectionPage JSON-LD, 본문에 황금키워드 검색 예시 (병자호란/훈민정음/대동법/경국대전/6월민주항쟁) 노출.
+        <strong>② /study</strong> — H1 "한능검 기출문제 학습", title "한능검 무료 기출문제 풀이 — 1,900문항", FAQ schema 4 Q&A (무료/회차/1급 합격선/맞춤형).
+        <strong>③ /study/custom</strong> — title "한능검 시대별 맞춤 학습 — 약점 시대만", description "시대별 정리" 키워드 강조.
+        <strong>④ web/lib/note-seo-boost.ts</strong> 신규 — 17개 노트에 황금키워드 매핑 (s3-09 병자호란 18,710 / s3-02 세종대왕 업적+훈민정음+경국대전 클러스터 19,440 / s3-11 대동법 13,280 / s2-03 광종 업적+노비안검법 4,600 / s5-04 대한제국+광무개혁 7,400 / s7-12 6월민주항쟁 8,510 / s7-11 5.18 4,540 등).
+        <strong>⑤ [noteId]/page.tsx</strong> — generateMetadata + Article JSON-LD에서 boost 읽어서 boosted 노트는 "{황금키워드} 정리 — {note.title} 한능검 요약노트" 타이틀 + golden keywords 배열 + about[] 스키마 항목 추가.
+        <strong>총 잠재 검색량</strong>: Top 10 합 70K + P1 14 합 15K = 85K/월. 4~8주 후 GSC 측정 가능. QW-01~05, QW-07, Phase 2 황금키워드 anchoring 모두 완료.</span>
+      </div>
       <div class="update-row">
         <span class="update-date">2026-04-28 v1.4</span>
         <span><strong>✅ 자동 갱신 시스템 구축 완료 (단계 3).</strong> ① <code>author-tool/scripts/seo-monthly-update.mjs</code> — GSC 30d/prev30d 비교 + 26 황금키워드 네이버 재검증 + MoM delta digest 자동 생성. ② <code>npm run seo:monthly / seo:gsc / seo:keywords</code> 3개 스크립트 등록. ③ <code>cron.service.ts</code>에 매월 1일 09:00 KST cron 추가 (Railway). ④ § 09에 자동 갱신 워크플로우 6단계 + cron 작동 위치 (Railway / 로컬 / Windows Task Scheduler) 가이드 추가. <strong>첫 베이스라인 (2026-04 30d):</strong> 28 클릭 (+21.7% MoM) · 90 노출 · 7 unique queries · 26/26 키워드 매칭 · 브랜드 "기출노트" 미등장 (1단계 배포 후 2~4주 대기). 다음 갱신 자동: 2026-05-01 09:00 KST.</span>

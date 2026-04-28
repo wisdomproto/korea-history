@@ -486,8 +486,9 @@ YOUTUBE_API_KEY=                         # 선택 — 채널 분석/경쟁사 Yo
 - JSON-LD: Quiz (문제), BreadcrumbList (문제+노트), Article + VideoObject (노트), **EducationalOrganization + WebSite (site-wide, brand entity signal)**
 - OG 이미지 (4,100+ 정적 생성)
 
-### SEO 전략 v1.4 (Living Doc, 2026-04-28)
+### SEO 전략 v1.5 (Living Doc, 2026-04-28)
 - **위치**: `docs/seo-strategy.html` — GSC 실데이터 기반 SEO 전략, 매월 갱신
+- **Phase 1 + 2 실행 완료 (커밋 fdc00e4)**: /notes (H1 + ItemList/CollectionPage JSON-LD + 헤드텀 본문), /study (H1 + FAQ schema 4 Q&A), /study/custom (title 시대별 정리 강조). `web/lib/note-seo-boost.ts` 신규 — 17 노트 × 황금키워드 매핑 (병자호란 / 훈민정음 / 대동법 / 경국대전 / 6월민주항쟁 / 5.18 / 노비안검법 / 광무개혁 등). `[noteId]/page.tsx` generateMetadata + Article JSON-LD가 boost 읽어서 "{황금키워드} 정리 — {note.title} 한능검 요약노트" 타이틀 + about[] 스키마 항목 자동 생성. 잠재 검색량 85K/월.
 - **저작도구 사이드바 전략 문서 리스트** (StrategyDocsButton): 11개 마케팅 문서로 재구성 (단권화 23개 제거, SEO 전략을 최상단)
 - **브랜드 SEO 코드 적용 완료**: layout.tsx default title "기출노트 — 한능검 기출문제와 요약노트 무료" + Schema.org `EducationalOrganization` + `WebSite` JSON-LD + Hero H1 "한능검 기출문제와 요약노트..." + Footer "기출노트는..." 정의문
 - **황금키워드 26개 실측 검증**: 네이버 API로 58개 후보 → 26 황금 (병자호란 18,710 / 훈민정음 10,750 / 대동법 9,200 / 대한제국 5,650 / 5.18 4,540 / 노비안검법 3,990 / 세종대왕 업적 2,800 등). 거대 헤드텀 "한능검" 153,400 / "한국사능력검정시험" 139,500 — 정면 도전 비추, "한능검 + 수식어" 조합 진입 전략.
