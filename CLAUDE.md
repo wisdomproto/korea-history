@@ -410,6 +410,14 @@ korea_history/
   - `supabase/migrations/weekly_reports.sql` — 테이블 + RLS + updated_at 트리거
 - **프론트엔드**: `src/features/analytics/components/AnalyticsView.tsx` (탭 래퍼), `WeeklyReportList.tsx`, `WeeklyReportDetail.tsx`, `hooks/useWeeklyReports.ts`, `api/weekly-report.api.ts`, `types/weekly-report.types.ts`
 
+#### 🚨 광고 확장 트리거 (2026-04-28)
+분석 대시보드 상단 알림 카드. 셋 중 먼저 도달 시 큰 앰버 카드로 "광고 확장 검토 시점" 알람.
+- **트리거 3개**: ① DAU 500 (GA4 어제 활성 사용자) ② 2026-05-26 도달 (첫 광고 LIVE 후 4주) ③ AdSense 통과 (수동 토글)
+- **상태 저장**: R2 `ad-triggers/state.json`. 자동 체크는 weekly-report cron 직후 (매주 월 07:00 KST), 수동 체크는 카드의 "재확인" 버튼.
+- **API**: `GET /api/analytics/ad-triggers` · `POST /ad-triggers/check` · `POST /ad-triggers/adsense { approved }`
+- **파일**: `server/services/ad-trigger.service.ts`, `server/routes/analytics.routes.ts` 추가, `src/features/analytics/components/AdTriggerAlert.tsx`
+- **다음 단계 옵션**: 카드 안에 leaderboard 추가 / 학습 종료 인터스티셜 / PC AdSense 활성화 3가지 노출
+
 ## 기술 스택
 
 ### 웹사이트 (web/) — Vercel 배포
