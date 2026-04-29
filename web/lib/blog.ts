@@ -34,6 +34,19 @@ export interface BlogPostMeta {
   relatedEra: string | null;
   /** Estimated read time in minutes */
   readMinutes: number;
+  /** Hero image path (e.g. "/blog-images/byeongja-horan.png") for OG image + page hero */
+  heroImage?: string;
+  /** Body images injected after specific h2 sections */
+  bodyImages?: Array<{
+    /** Path under /blog-images/ */
+    src: string;
+    /** Alt text (SEO + accessibility) */
+    alt: string;
+    /** Caption shown under image */
+    caption: string;
+    /** ID of h2 section after which to insert (e.g. "process", "result", "figures") */
+    afterSection: string;
+  }>;
 }
 
 export interface BlogPost extends BlogPostMeta {

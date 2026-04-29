@@ -26,9 +26,17 @@ const STRATEGY_DOCS: StrategyDoc[] = [
   {
     id: 'seo-strategy',
     icon: '🔍',
-    title: 'SEO 전략 v1.1 ⭐ 최신',
-    subtitle: 'GSC 실데이터 + Quick Win 7 + 황금키워드 + 브랜드 SEO',
+    title: 'SEO 전략 v1.7 ⭐ 최신',
+    subtitle: 'GSC + 황금키워드 + 브랜드 SEO + /blog 22편 + 자동 발행',
     file: 'seo-strategy.html',
+    badge: 'UPDATED',
+  },
+  {
+    id: 'blog-strategy',
+    icon: '📝',
+    title: '블로그 전략 v1.0',
+    subtitle: '22편 batch · 12주 drip 캘린더 · 자동 발행 인프라',
+    file: 'blog-strategy.html',
     badge: 'NEW',
   },
   // ─── 통합 마케팅 전략 ───

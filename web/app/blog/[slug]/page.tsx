@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getBlogPost(slug);
   if (!post) return {};
   const path = `/blog/${slug}`;
+  const ogImages = post.heroImage ? [{ url: post.heroImage, width: 1216, height: 640 }] : undefined;
   return {
     title: post.title,
     description: post.excerpt,
@@ -37,11 +38,39 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: "기출노트 한능검",
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt,
+      images: ogImages,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: post.heroImage ? [post.heroImage] : undefined,
     },
   };
 }
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://gcnote.co.kr";
+
+/**
+ * Inject body images right after their target h2 sections.
+ * Each image is rendered as <figure> with caption, placed after the
+ * matching `<h2 id="X">...</h2>` heading.
+ */
+function injectBodyImages(
+  html: string,
+  bodyImages?: Array<{ src: string; alt: string; caption: string; afterSection: string }>
+): string {
+  if (!bodyImages?.length) return html;
+  let result = html;
+  for (const img of bodyImages) {
+    const figureHtml = `<figure class="blog-body-figure"><img src="${img.src}" alt="${img.alt}" loading="lazy" /><figcaption>${img.caption}</figcaption></figure>`;
+    const re = new RegExp(`(<h2 id="${img.afterSection}"[^>]*>[\\s\\S]*?</h2>)`, "");
+    if (re.test(result)) {
+      result = result.replace(re, `$1${figureHtml}`);
+    }
+  }
+  return result;
+}
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
@@ -126,6 +155,20 @@ export default async function BlogPostPage({ params }: Props) {
         ]}
       />
 
+      {/* Hero image */}
+      {post.heroImage && (
+        <div className="mb-6 -mx-4 sm:mx-0 sm:rounded-2xl overflow-hidden border-y sm:border border-slate-200">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={post.heroImage}
+            alt={`${post.primaryKeyword} - ${post.title}`}
+            width={1216}
+            height={640}
+            className="w-full h-auto block"
+          />
+        </div>
+      )}
+
       {/* Header */}
       <header className="mb-6 pb-5 border-b border-slate-200">
         <div className="flex items-center gap-2 mb-3 flex-wrap">
@@ -151,7 +194,9 @@ export default async function BlogPostPage({ params }: Props) {
       {/* Body */}
       <div
         className="blog-prose"
-        dangerouslySetInnerHTML={{ __html: post.html }}
+        dangerouslySetInnerHTML={{
+          __html: injectBodyImages(post.html, post.bodyImages),
+        }}
       />
 
       {/* FAQ section (rendered visibly + JSON-LD above) */}

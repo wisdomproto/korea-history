@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>블로그 전략 v1.0 — 한능검 22편 + 발행 인프라 | 기출노트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+  :root {
+    --bg: #F5EFE4;
+    --paper: #FBF8F1;
+    --ink: #1F1A14;
+    --ink-soft: #4A4338;
+    --hairline: #1F1A14;
+    --hairline-soft: #D6CDB9;
+    --amber: #B45309;
+    --amber-light: #F5C97A;
+    --teal: #0D9488;
+    --teal-light: #99D9D2;
+    --rose: #BE3144;
+    --green-light: #D6E9C5;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    font-size: 16px; line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 980px; margin: 0 auto; padding: 48px 32px 96px; }
+  .doc-meta { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-soft); letter-spacing: 0.12em; text-transform: uppercase; }
+  .doc-meta .badge { padding: 2px 8px; border: 1px solid var(--ink); border-radius: 999px; font-weight: 700; }
+  .doc-meta .badge.live { background: var(--green-light); border-color: #6E8B49; color: #3F5821; }
+  h1.doc-title { font-family: 'Noto Serif KR', serif; font-weight: 900; font-size: 56px; line-height: 1.1; margin: 0 0 16px; letter-spacing: -0.02em; }
+  h1 .accent { color: var(--amber); }
+  .doc-sub { font-size: 18px; color: var(--ink-soft); margin: 0 0 24px; max-width: 720px; }
+  .doc-divider { border: 0; border-top: 1px solid var(--hairline); margin: 32px 0 48px; }
+  .toc { background: var(--paper); border: 1px solid var(--hairline); border-radius: 12px; padding: 20px 24px; margin-bottom: 56px; }
+  .toc-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: var(--amber); font-weight: 700; text-transform: uppercase; margin-bottom: 12px; }
+  .toc ol { margin: 0; padding-left: 24px; columns: 2; column-gap: 32px; }
+  .toc li { font-size: 14px; padding: 4px 0; break-inside: avoid; }
+  .toc a { color: var(--ink); text-decoration: none; border-bottom: 1px dashed transparent; }
+  .toc a:hover { border-bottom-color: var(--amber); color: var(--amber); }
+  section { margin-bottom: 64px; }
+  h2 { font-family: 'Noto Serif KR', serif; font-weight: 700; font-size: 32px; margin: 0 0 24px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); display: flex; align-items: baseline; gap: 12px; }
+  h2 .num { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--amber); font-weight: 700; }
+  h3 { font-family: 'Noto Serif KR', serif; font-weight: 700; font-size: 22px; margin: 32px 0 12px; }
+  h4 { font-size: 16px; font-weight: 700; margin: 20px 0 8px; color: var(--ink); }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; background: var(--paper); border-radius: 8px; overflow: hidden; border: 1px solid var(--hairline-soft); }
+  .data-table thead { background: var(--bg); }
+  .data-table th { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--ink); padding: 10px 12px; text-align: left; text-transform: uppercase; border-bottom: 2px solid var(--ink); }
+  .data-table td { padding: 10px 12px; border-bottom: 1px solid var(--hairline-soft); }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table .num { font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
+  .data-table .pos-good { color: #2D6A4F; font-weight: 700; }
+  .data-table .pos-mid { color: var(--amber); font-weight: 700; }
+  .callout { padding: 20px 24px; border-radius: 12px; margin: 24px 0; border: 1px solid var(--hairline-soft); }
+  .callout.amber { background: #FBF1DD; border-color: var(--amber-light); }
+  .callout.teal { background: #E5F4F2; border-color: var(--teal-light); }
+  .callout-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+  .callout.amber .callout-title { color: var(--amber); }
+  .callout.teal .callout-title { color: var(--teal); }
+  .callout p { margin: 0; font-size: 15px; }
+  .callout p + p { margin-top: 8px; }
+  .pattern-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  .pattern { background: var(--paper); border: 1px solid var(--hairline-soft); border-radius: 8px; padding: 16px 20px; }
+  .pattern h4 { margin-top: 0; color: var(--amber); font-size: 14px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.06em; text-transform: uppercase; }
+  code { font-family: 'JetBrains Mono', monospace; font-size: 13px; background: var(--bg); padding: 1px 6px; border-radius: 4px; }
+  .small-note { font-size: 12px; color: var(--ink-soft); font-style: italic; margin-top: 4px; }
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--hairline-soft); border: 1px solid var(--hairline-soft); border-radius: 10px; overflow: hidden; }
+  .stat { background: var(--paper); padding: 20px 16px; text-align: center; }
+  .stat .label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink-soft); text-transform: uppercase; }
+  .stat .value { font-family: 'Noto Serif KR', serif; font-size: 32px; font-weight: 700; color: var(--ink); margin: 6px 0 2px; line-height: 1; }
+  .stat .unit { font-size: 12px; color: var(--ink-soft); }
+  @media (max-width: 768px) {
+    .page { padding: 32px 20px 64px; }
+    h1.doc-title { font-size: 40px; }
+    .toc ol { columns: 1; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .pattern-grid { grid-template-columns: 1fr; }
+    h2 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="doc-meta">
+    <span class="badge live">LIVING DOC</span>
+    <span>BLOG STRATEGY v1.0</span>
+    <span>Last updated: 2026-04-29</span>
+  </div>
+  <h1 class="doc-title">한능검 <span class="accent">블로그 전략</span> v1.0</h1>
+  <p class="doc-sub">long-form SEO 자산 — 22편 batch 작성 + 발행 인프라 + 12주 drip 캘린더 + 자동 라이브 시스템.</p>
+  <hr class="doc-divider" />
+
+  <nav class="toc">
+    <div class="toc-title">목차</div>
+    <ol>
+      <li><a href="#concept">1. 컨셉 — 노트 vs 블로그 2-track</a></li>
+      <li><a href="#snapshot">2. 현황 스냅샷</a></li>
+      <li><a href="#calendar">3. 12주 발행 캘린더 (22편)</a></li>
+      <li><a href="#structure">4. 글 1편 구조 (8요소)</a></li>
+      <li><a href="#scheduling">5. 예약 발행 인프라</a></li>
+      <li><a href="#cross-link">6. 노트↔블로그 cross-link</a></li>
+      <li><a href="#seo">7. SEO 효과 — 황금키워드 매핑</a></li>
+      <li><a href="#future">8. Phase 3 계획</a></li>
+      <li><a href="#updates">9. 업데이트 로그</a></li>
+    </ol>
+  </nav>
+
+  <!-- Section 1 -->
+  <section id="concept">
+    <h2><span class="num">01</span> 컨셉 — 노트와 블로그의 2-track 전략</h2>
+    <p style="color:var(--ink-soft);">사용자 의도를 기준으로 두 종류의 콘텐츠를 명확히 분리. 같은 주제라도 검색 의도가 다른 두 청중에 모두 도달.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>구분</th><th>요약노트 (/notes)</th><th>블로그 (/blog)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>사용자 의도</td><td>"빠른 복습", "시험 직전"</td><td>"이해하고 싶다", "처음 공부"</td></tr>
+        <tr><td>검색 의도 매치</td><td>"한능검 [시대] 정리"</td><td>"병자호란 원인", "훈민정음 창제 과정"</td></tr>
+        <tr><td>분량</td><td>약 2,300자</td><td>5,000~8,000자</td></tr>
+        <tr><td>구조</td><td>표·요약 중심</td><td>인트로 → 섹션 → 비교표 → FAQ → CTA</td></tr>
+        <tr><td>SEO 강도</td><td>중간 (얕음)</td><td>강함 (의미적 깊이)</td></tr>
+        <tr><td>JSON-LD</td><td>Article + VideoObject</td><td>BlogPosting + Breadcrumb + FAQPage</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout amber">
+      <div class="callout-title">왜 분리하는가</div>
+      <p>같은 주제를 한 페이지에 다 넣으면 너무 길고, 빠른 복습용으로는 부적합. 두 청중을 분리하면 cannibalization도 막고 각자의 검색 의도에 정확히 매치.</p>
+      <p>또한 글에 끝부분에서 노트로 cross-link, 노트 상단에서 블로그로 cross-link → 사이트 내부 링크가 풍부해져 SEO 시그널 ↑.</p>
+    </div>
+  </section>
+
+  <!-- Section 2 -->
+  <section id="snapshot">
+    <h2><span class="num">02</span> 현황 스냅샷</h2>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="label">총 글 수</div>
+        <div class="value">22</div>
+        <div class="unit">편 (1차 batch)</div>
+      </div>
+      <div class="stat">
+        <div class="label">평균 분량</div>
+        <div class="value">~6,000</div>
+        <div class="unit">자 / 편</div>
+      </div>
+      <div class="stat">
+        <div class="label">잠재 검색량</div>
+        <div class="value">85K</div>
+        <div class="unit">월간 (네이버 실측)</div>
+      </div>
+      <div class="stat">
+        <div class="label">발행 기간</div>
+        <div class="value">12</div>
+        <div class="unit">주 (4/29~6/17)</div>
+      </div>
+    </div>
+    <p class="small-note">잠재 검색량 = Top 10 합 70K + P1 11 합 15K. 4~16주 후 GSC 진입 측정 시작.</p>
+  </section>
+
+  <!-- Section 3 -->
+  <section id="calendar">
+    <h2><span class="num">03</span> 12주 발행 캘린더</h2>
+    <p style="color:var(--ink-soft);">주 3편 drip (월·수·금 09:00 KST). 시대 클러스터링으로 내부 링크 강화.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>주차</th><th>날짜</th><th>요일</th><th>글</th><th class="num">검색량</th><th>매핑 노트</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>—</td><td>2026-04-29</td><td>수</td><td><strong>병자호란</strong> ✓ (라이브)</td><td class="num pos-good">18,710</td><td>s3-09</td></tr>
+        <tr><td rowspan="3">W1</td><td>2026-05-04</td><td>월</td><td>대동법</td><td class="num pos-good">9,200</td><td>s3-11</td></tr>
+        <tr><td>2026-05-06</td><td>수</td><td>환국</td><td class="num">2,640</td><td>s3-18</td></tr>
+        <tr><td>2026-05-08</td><td>금</td><td>균역법</td><td class="num pos-good">4,080</td><td>s3-11</td></tr>
+        <tr><td rowspan="3">W2</td><td>2026-05-11</td><td>월</td><td>광무개혁</td><td class="num">1,750</td><td>s5-04</td></tr>
+        <tr><td>2026-05-13</td><td>수</td><td>흥선대원군 정책</td><td class="num">270</td><td>s5-01</td></tr>
+        <tr><td>2026-05-15</td><td>금</td><td>훈민정음</td><td class="num pos-good">10,750</td><td>s3-02</td></tr>
+        <tr><td rowspan="3">W3</td><td>2026-05-18</td><td>월</td><td>경국대전</td><td class="num pos-good">5,890</td><td>s3-04</td></tr>
+        <tr><td>2026-05-20</td><td>수</td><td>세종대왕 업적</td><td class="num">2,800</td><td>s3-02</td></tr>
+        <tr><td>2026-05-22</td><td>금</td><td>광종 업적</td><td class="num pos-good">4,600</td><td>s2-03</td></tr>
+        <tr><td rowspan="3">W4</td><td>2026-05-25</td><td>월</td><td>노비안검법</td><td class="num pos-good">3,990</td><td>s2-03</td></tr>
+        <tr><td>2026-05-27</td><td>수</td><td>음서제</td><td class="num">900</td><td>s2-09</td></tr>
+        <tr><td>2026-05-29</td><td>금</td><td>6월민주항쟁</td><td class="num pos-good">8,510</td><td>s7-12</td></tr>
+        <tr><td rowspan="3">W5</td><td>2026-06-01</td><td>월</td><td>5.18</td><td class="num pos-good">4,540</td><td>s7-11</td></tr>
+        <tr><td>2026-06-03</td><td>수</td><td>대한제국</td><td class="num pos-good">5,650</td><td>s5-04</td></tr>
+        <tr><td>2026-06-05</td><td>금</td><td>후삼국통일</td><td class="num">640</td><td>s2-02</td></tr>
+        <tr><td rowspan="3">W6</td><td>2026-06-08</td><td>월</td><td>발해 멸망</td><td class="num">1,560</td><td>s1-09</td></tr>
+        <tr><td>2026-06-10</td><td>수</td><td>정조 업적</td><td class="num">2,600</td><td>s3-19</td></tr>
+        <tr><td>2026-06-12</td><td>금</td><td>광해군 업적</td><td class="num">1,900</td><td>s3-09</td></tr>
+        <tr><td rowspan="2">W7</td><td>2026-06-15</td><td>월</td><td>성종 업적</td><td class="num">940</td><td>s3-02</td></tr>
+        <tr><td>2026-06-17</td><td>수</td><td>임진왜란 결과</td><td class="num">120</td><td>s3-08</td></tr>
+      </tbody>
+    </table>
+    <p class="small-note">검색량 = 네이버 실측 월간 (2026-04-28). 구글은 약 30~40% 수준으로 추정.</p>
+  </section>
+
+  <!-- Section 4 -->
+  <section id="structure">
+    <h2><span class="num">04</span> 글 1편 구조 — 8요소</h2>
+    <p style="color:var(--ink-soft);">22편 모두 동일 템플릿. 사용자 학습 효율 + SEO 친화 둘 다 최적화.</p>
+
+    <div class="pattern-grid">
+      <div class="pattern">
+        <h4>1. 인트로 후크</h4>
+        <p>약 300자. 사용자가 검색해서 들어왔을 때 즉시 흥미를 끄는 문장. 핵심 인물·사건·날짜 강조.</p>
+      </div>
+      <div class="pattern">
+        <h4>2. TL;DR aside</h4>
+        <p>5~6개 핵심 항목 bullet. 빠른 정리용 (글 다 안 읽고 핵심만 보려는 사용자용).</p>
+      </div>
+      <div class="pattern">
+        <h4>3. 배경 H2</h4>
+        <p>1,200~1,500자. 왜 이 사건/제도가 등장했는지 큰 흐름.</p>
+      </div>
+      <div class="pattern">
+        <h4>4. 전개 / 진행 H2</h4>
+        <p>1,200~1,500자. 시간 순으로 어떻게 진행됐는지.</p>
+      </div>
+      <div class="pattern">
+        <h4>5. 결과·영향 H2</h4>
+        <p>1,000~1,200자. 정치·경제·사회·문화 등 영역별 결과.</p>
+      </div>
+      <div class="pattern">
+        <h4>6. 비교표 또는 인물표</h4>
+        <p>비교 (ex. 대동법 vs 균역법) 또는 인물 정리 표. SEO 친화 + 사용자 가독성.</p>
+      </div>
+      <div class="pattern">
+        <h4>7. 한능검 출제 패턴 H2</h4>
+        <p>5가지 빈출 유형 정리. 시험 대비 실용 가치 + "한능검" 키워드 자연 노출.</p>
+      </div>
+      <div class="pattern">
+        <h4>8. 마무리 + FAQ</h4>
+        <p>5개 FAQ Q&A (FAQPage 스키마 = Google rich result 노림). 다음 학습 가이드.</p>
+      </div>
+    </div>
+
+    <h3>SEO 시그널 자동 주입</h3>
+    <ul>
+      <li>JSON-LD: BlogPosting + BreadcrumbList + FAQPage 3종 자동 주입</li>
+      <li>Title: primary keyword 앞에 surfacing (예: "병자호란 원인부터 결과까지")</li>
+      <li>Description: excerpt에 primary + 핵심 키워드 자연 포함</li>
+      <li>Keywords: 12~14개 매핑 (primary + 변형 + 인물 + 시대)</li>
+      <li>about 스키마: primary keyword + 시대 + "한국사능력검정시험"</li>
+    </ul>
+  </section>
+
+  <!-- Section 5 -->
+  <section id="scheduling">
+    <h2><span class="num">05</span> 예약 발행 인프라 — 자동 라이브</h2>
+    <p style="color:var(--ink-soft);">DB 없이 JSON 파일 + 날짜 필터 + 매일 cron 재빌드로 구성. 운영 비용 0, 단순함 최대화.</p>
+
+    <h3>3-step 흐름</h3>
+    <table class="data-table">
+      <thead>
+        <tr><th>단계</th><th>위치</th><th>역할</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1. 콘텐츠 저장</td><td><code>data/blog/{slug}.json</code></td><td>publishedAt 필드로 발행 날짜 지정</td></tr>
+        <tr><td>2. 가시성 필터</td><td><code>web/lib/blog.ts isLive()</code></td><td>PROD에서 publishedAt &gt; KST today 자동 숨김. DEV는 모두 노출.</td></tr>
+        <tr><td>3. 자동 재빌드</td><td><code>cron.service.ts startBlogRebuildCron()</code></td><td>매일 09:00 KST <code>VERCEL_DEPLOY_HOOK_URL</code> 호출 → Vercel 재빌드 → 그날자 글 자동 라이브</td></tr>
+      </tbody>
+    </table>
+
+    <h3>장점</h3>
+    <ul>
+      <li><strong>DB 0</strong>: JSON 파일이 git에 있어 version 관리 자동</li>
+      <li><strong>SSG 빠름</strong>: 빌드 시점에 결정되어 런타임 쿼리 0</li>
+      <li><strong>인프라 0</strong>: 우리가 이미 가진 <code>VERCEL_DEPLOY_HOOK_URL</code> + <code>node-cron</code> 재활용</li>
+      <li><strong>DEV 미리보기</strong>: 작성·검수 시 모든 글 보임 (NODE_ENV=development)</li>
+      <li><strong>스테이징</strong>: <code>NEXT_PUBLIC_BLOG_SHOW_DRAFTS=true</code>로 PROD에서도 미리보기</li>
+    </ul>
+
+    <div class="callout teal">
+      <div class="callout-title">스케줄러 동작 시간</div>
+      <p>매일 09:00 KST에 Railway cron이 Vercel Deploy Hook을 호출 → 약 5~10분 빌드 → 09:10 KST 경 그날자 글 라이브.</p>
+      <p>예: 5/4 발행 예정 \"대동법\" 글은 5/4 09:00 KST cron 발동 → 09:10 경 라이브.</p>
+    </div>
+  </section>
+
+  <!-- Section 6 -->
+  <section id="cross-link">
+    <h2><span class="num">06</span> 노트 ↔ 블로그 cross-link</h2>
+    <p style="color:var(--ink-soft);">사이트 내부 링크가 풍부할수록 SEO 강함. 양방향 자동 cross-link 시스템.</p>
+
+    <h3>노트 → 블로그</h3>
+    <p>노트 페이지 (예: <code>/notes/s3-09</code>) 상단에 "📖 더 자세한 가이드 →" 카드 자동 노출. <code>getBlogPostByRelatedNoteId(noteId)</code>가 매칭되는 블로그 포스트를 찾아 표시.</p>
+
+    <h3>블로그 → 노트 + 학습</h3>
+    <p>블로그 글 끝에 두 카드:</p>
+    <ul>
+      <li><strong>"빠른 복습 →" 카드</strong> (왼쪽): 매핑 노트로 이동</li>
+      <li><strong>"관련 기출 풀기 →" 카드</strong> (오른쪽): /study/custom으로 이동 + era 필터</li>
+    </ul>
+
+    <h3>블로그 → 다른 블로그</h3>
+    <p>각 글 하단 "관련 글" 섹션. <code>getRelatedPosts(slug)</code>가 같은 시대 + 키워드 겹치는 글을 자동 추천.</p>
+
+    <div class="callout amber">
+      <div class="callout-title">예시 — 병자호란 글에서 자동 cross-link</div>
+      <p>병자호란 (s3-09 매핑) → \"빠른 복습\" → /notes/s3-09 (광해군 중립외교와 호란)</p>
+      <p>병자호란 → \"관련 글\" → 광해군 업적, 임진왜란 결과 (같은 s3 + 키워드 겹침)</p>
+      <p>/notes/s3-09 → \"📖 더 자세한 가이드\" → /blog/byeongja-horan</p>
+    </div>
+  </section>
+
+  <!-- Section 7 -->
+  <section id="seo">
+    <h2><span class="num">07</span> SEO 효과 — 황금키워드 매핑</h2>
+    <p style="color:var(--ink-soft);">22편이 정조준하는 황금키워드 (네이버 API 실측, 2026-04-28).</p>
+
+    <h3>Top 10 P0 (월 합 ~70K)</h3>
+    <table class="data-table">
+      <thead>
+        <tr><th>#</th><th>글</th><th class="num">검색량</th><th>경쟁</th><th>예상 12주 효과</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>병자호란</td><td class="num pos-good">18,710</td><td>중간</td><td>20~50위 (도메인 신뢰도 의존)</td></tr>
+        <tr><td>2</td><td>훈민정음</td><td class="num pos-good">10,750</td><td>중간</td><td>20~50위</td></tr>
+        <tr><td>3</td><td>대동법</td><td class="num pos-good">9,200</td><td>중간</td><td>20~50위</td></tr>
+        <tr><td>4</td><td>6월민주항쟁</td><td class="num pos-good">8,510</td><td>중간</td><td>20~40위 (GSC 81위 노출 시작)</td></tr>
+        <tr><td>5</td><td>경국대전</td><td class="num pos-good">5,890</td><td>중간</td><td>15~35위</td></tr>
+        <tr><td>6</td><td>대한제국</td><td class="num pos-good">5,650</td><td class="pos-good">낮음 ⭐</td><td>8~15위 (1페이지 진입 가능)</td></tr>
+        <tr><td>7</td><td>광종 업적</td><td class="num pos-good">4,600</td><td class="pos-good">낮음 ⭐</td><td>8~15위</td></tr>
+        <tr><td>8</td><td>5.18</td><td class="num pos-good">4,540</td><td class="pos-good">낮음 ⭐</td><td>15~30위 (큰 사이트 점유)</td></tr>
+        <tr><td>9</td><td>균역법</td><td class="num pos-good">4,080</td><td class="pos-good">낮음 ⭐</td><td>8~15위</td></tr>
+        <tr><td>10</td><td>노비안검법</td><td class="num pos-good">3,990</td><td class="pos-good">낮음 ⭐</td><td>5~10위 (1페이지 가장 가능성 ↑)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>P1 (월 합 ~15K)</h3>
+    <p>세종대왕 업적, 환국, 정조 업적, 광해군 업적, 광무개혁, 발해 멸망, 성종 업적, 음서제, 후삼국통일, 흥선대원군 정책, 임진왜란 결과 = 11편.</p>
+
+    <h3>회피 키워드</h3>
+    <p>한능검 기출문제 (5,640 / 높음), 한국사 기출문제 (4,230 / 높음), 동학농민운동 (12,050 / 높음). 큰 도메인이 점유 중이라 정면 도전 비추.</p>
+  </section>
+
+  <!-- Section 8 -->
+  <section id="future">
+    <h2><span class="num">08</span> Phase 3 계획 — 공무원·자격증 확장</h2>
+    <p style="color:var(--ink-soft);">한능검 1차 batch 마무리 (6/17) 후 같은 패턴으로 확장.</p>
+
+    <h3>9급 공무원 (13개 과목)</h3>
+    <ul>
+      <li><strong>대상</strong>: 행정법·행정학·형법·형사소송법·회계학·세법·교정학·사회복지학·교육학·국제법·관세법·국어·영어</li>
+      <li><strong>패턴</strong>: 각 과목별 빈출 주제 7~10개 → 블로그 글 작성 (5,000~7,000자)</li>
+      <li><strong>예시</strong>: "9급 행정법 빈출 주제 정리", "행정심판 vs 행정소송 차이", "형법 미수범 정리"</li>
+      <li><strong>매핑 노트</strong>: 이미 13편 단권화 노트 존재 → cross-link 자동</li>
+    </ul>
+
+    <h3>인기 자격증 Top 9</h3>
+    <ul>
+      <li><strong>대상</strong>: 정보처리기사, 산업안전기사, 공인중개사 1차/2차, 컴퓨터활용능력 1급, 전산회계 1급, 전기기사, 사회조사분석사 2급, 직업상담사 2급</li>
+      <li><strong>패턴</strong>: 각 자격증별 핵심 단원 5~7개 → 블로그 작성</li>
+      <li><strong>매핑 노트</strong>: 단권화 9편 존재 → cross-link</li>
+    </ul>
+
+    <h3>일정 (예상)</h3>
+    <ul>
+      <li>6/17: 한능검 1차 batch 발행 완료</li>
+      <li>7월: Phase 3 작성 시작 (공무원 13과목 × 7편 = 약 90편)</li>
+      <li>8~10월: 공무원 batch 발행 (drip 주 3편)</li>
+      <li>11~12월: 자격증 Top 9 batch 작성·발행</li>
+      <li>2027: GSC 데이터 누적 + 추가 키워드 발굴 → 2차 확장</li>
+    </ul>
+
+    <div class="callout amber">
+      <div class="callout-title">총 잠재 SEO 자산</div>
+      <p>한능검 22편 (85K/월) + 공무원 90편 (~150K/월 추정) + 자격증 50편 (~80K/월 추정) = <strong>총 ~315K/월 잠재 검색량</strong>.</p>
+      <p>2년 안에 합리적으로 도달 가능한 목표 — 그러나 실제 달성은 도메인 신뢰도 누적 + 본문 깊이 + 내부 링크 밀도에 좌우됨.</p>
+    </div>
+  </section>
+
+  <!-- Section 9 -->
+  <section id="updates">
+    <h2><span class="num">09</span> 업데이트 로그</h2>
+    <div class="data-table" style="border:none; background:none;">
+      <table style="width:100%; border-collapse:collapse;">
+        <tr style="border-bottom: 1px dashed var(--hairline-soft);">
+          <td style="padding: 12px 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-soft); white-space: nowrap; vertical-align: top;">2026-04-29 v1.0</td>
+          <td style="padding: 12px 0;"><strong>초기 작성.</strong> 한능검 22편 batch 작성 완료. 12주 발행 캘린더 + 예약 발행 인프라 + cross-link 시스템 + Phase 3 계획.</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

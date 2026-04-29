@@ -82,34 +82,47 @@ export default function BlogIndexPage() {
           <li key={post.slug}>
             <Link
               href={`/blog/${post.slug}`}
-              className="block rounded-2xl border border-slate-200 bg-white p-5 card-shadow hover:card-shadow-md hover:border-emerald-200 transition-all"
+              className="block rounded-2xl border border-slate-200 bg-white card-shadow hover:card-shadow-md hover:border-emerald-200 transition-all overflow-hidden"
             >
-              <div className="flex items-start gap-2 mb-2">
-                <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-bold text-emerald-600">
-                  {post.era}
-                </span>
-                <span className="text-[10px] font-mono text-slate-400">
-                  {post.readMinutes}분 읽기
-                </span>
-                <span className="text-[10px] font-mono text-slate-400 ml-auto">
-                  {post.publishedAt}
-                </span>
-              </div>
-              <h2 className="text-base font-bold text-slate-900 mb-1.5 leading-snug">
-                {post.title}
-              </h2>
-              <p className="text-[13px] text-slate-600 leading-relaxed line-clamp-2">
-                {post.excerpt}
-              </p>
-              <div className="mt-3 flex items-center flex-wrap gap-1.5">
-                {post.keywords.slice(0, 5).map((k) => (
-                  <span
-                    key={k}
-                    className="rounded-md bg-slate-50 px-2 py-0.5 text-[10px] text-slate-500"
-                  >
-                    {k}
+              {post.heroImage && (
+                <div className="aspect-[1216/640] w-full overflow-hidden border-b border-slate-100">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={post.heroImage}
+                    alt={`${post.primaryKeyword} thumbnail`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              <div className="p-5">
+                <div className="flex items-start gap-2 mb-2">
+                  <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-bold text-emerald-600">
+                    {post.era}
                   </span>
-                ))}
+                  <span className="text-[10px] font-mono text-slate-400">
+                    {post.readMinutes}분 읽기
+                  </span>
+                  <span className="text-[10px] font-mono text-slate-400 ml-auto">
+                    {post.publishedAt}
+                  </span>
+                </div>
+                <h2 className="text-base font-bold text-slate-900 mb-1.5 leading-snug">
+                  {post.title}
+                </h2>
+                <p className="text-[13px] text-slate-600 leading-relaxed line-clamp-2">
+                  {post.excerpt}
+                </p>
+                <div className="mt-3 flex items-center flex-wrap gap-1.5">
+                  {post.keywords.slice(0, 5).map((k) => (
+                    <span
+                      key={k}
+                      className="rounded-md bg-slate-50 px-2 py-0.5 text-[10px] text-slate-500"
+                    >
+                      {k}
+                    </span>
+                  ))}
+                </div>
               </div>
             </Link>
           </li>

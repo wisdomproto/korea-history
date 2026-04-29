@@ -1038,3 +1038,26 @@
   .blog-prose table { font-size: 13px; }
   .blog-prose th, .blog-prose td { padding: 8px; }
 }
+
+/* Body images injected between H2 sections */
+.blog-prose figure.blog-body-figure {
+  margin: 24px -8px;
+  display: block;
+}
+.blog-prose figure.blog-body-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+}
+.blog-prose figure.blog-body-figure figcaption {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #64748B;
+  text-align: center;
+  font-style: italic;
+}
+@media (min-width: 640px) {
+  .blog-prose figure.blog-body-figure { margin: 28px 0; }
+}
