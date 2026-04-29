@@ -150,7 +150,7 @@
   <!-- Header -->
   <div class="doc-meta">
     <span class="badge live">LIVING DOC</span>
-    <span>SEO STRATEGY v1.6</span>
+    <span>SEO STRATEGY v1.7</span>
     <span>Last updated: 2026-04-29</span>
   </div>
   <h1 class="doc-title">구글 SEO <span class="accent">황금키워드</span> 전략</h1>
@@ -726,6 +726,14 @@
   <section id="updates">
     <h2><span class="num">10</span> 업데이트 로그</h2>
     <div class="updates">
+      <div class="update-row">
+        <span class="update-date">2026-04-29 v1.7</span>
+        <span><strong>✅ 한능검 블로그 22편 batch 작성 + 예약 발행 인프라 완성 (커밋 2cd82d2).</strong>
+        <strong>① 20개 신규 글</strong>: Top 10(대동법/균역법/훈민정음/경국대전/노비안검법/6월민주항쟁/5.18/대한제국/광종 업적) + P1 11개(환국/광무개혁/흥선대원군/세종대왕/음서제/후삼국통일/발해 멸망/정조 업적/광해군 업적/성종 업적/임진왜란 결과). 각 5,000~7,500자, 5 FAQ, 비교표, 인물표 포함.
+        <strong>② 발행 캘린더</strong>: 2026-04-29 병자호란 ✓ → 5/4 대동법 → 5/6 환국 → ... → 6/17 임진왜란 결과까지 주 3편(월·수·금) 점진 발행 (총 21 게시물, 12주 분량).
+        <strong>③ 예약 발행 인프라</strong>: <code>blog.ts isLive()</code> — PROD에서 publishedAt > today 자동 숨김(KST 기준), DEV는 모두 노출. <code>cron.service.ts</code>에 매일 09:00 KST Vercel Deploy Hook 자동 호출 (VERCEL_DEPLOY_HOOK_URL) → 그날자 글 자동 라이브.
+        <strong>잠재 검색량</strong>: Top 10 합 70K + P1 11 합 15K = <strong>85K/월</strong> 정조준. 8~16주 후 GSC 진입 측정 가능. 다음: 공무원/자격증 동일 패턴 batch 작성.</span>
+      </div>
       <div class="update-row">
         <span class="update-date">2026-04-29 v1.6</span>
         <span><strong>✅ /blog 시스템 구축 + 첫 글 "병자호란" 발행 (커밋 9fe537f).</strong> 9 파일 변경:

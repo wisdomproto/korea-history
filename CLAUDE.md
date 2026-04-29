@@ -486,8 +486,9 @@ YOUTUBE_API_KEY=                         # 선택 — 채널 분석/경쟁사 Yo
 - JSON-LD: Quiz (문제), BreadcrumbList (문제+노트), Article + VideoObject (노트), **EducationalOrganization + WebSite (site-wide, brand entity signal)**
 - OG 이미지 (4,100+ 정적 생성)
 
-### SEO 전략 v1.6 (Living Doc, 2026-04-29)
+### SEO 전략 v1.7 (Living Doc, 2026-04-29)
 - **위치**: `docs/seo-strategy.html` — GSC 실데이터 기반 SEO 전략, 매월 갱신
+- **/blog 22편 batch 작성 + 예약 발행 (커밋 2cd82d2, 2026-04-29)**: 한능검 long-form 블로그 22편 (Top 10 + P1 11). 각 5,000~7,500자 + 5 FAQ + 비교표/인물표. 발행 캘린더: 4/29 병자호란 → 5/4~6/17 주 3편(월·수·금) 점진 발행. 잠재 검색량 85K/월. 인프라: `web/lib/blog.ts isLive()` (PROD에서 publishedAt > KST today 자동 숨김), `cron.service.ts` 매일 09:00 KST Vercel Deploy Hook 자동 트리거 → 그날자 글 자동 라이브. <code>data/blog/{slug}.json</code> 형식.
 - **Phase 1 + 2 실행 완료 (커밋 fdc00e4)**: /notes (H1 + ItemList/CollectionPage JSON-LD + 헤드텀 본문), /study (H1 + FAQ schema 4 Q&A), /study/custom (title 시대별 정리 강조). `web/lib/note-seo-boost.ts` 신규 — 17 노트 × 황금키워드 매핑 (병자호란 / 훈민정음 / 대동법 / 경국대전 / 6월민주항쟁 / 5.18 / 노비안검법 / 광무개혁 등). `[noteId]/page.tsx` generateMetadata + Article JSON-LD가 boost 읽어서 "{황금키워드} 정리 — {note.title} 한능검 요약노트" 타이틀 + about[] 스키마 항목 자동 생성. 잠재 검색량 85K/월.
 - **/blog 시스템 + 첫 글 발행 (커밋 9fe537f, 2026-04-29)**: long-form SEO 콘텐츠. `web/lib/blog.ts` (포스트 타입 + 페처 + noteId↔post 양방향 lookup) + `/blog` 인덱스 + `/blog/[slug]` 페이지 (Blog/BlogPosting/Breadcrumb/FAQPage JSON-LD 4종). 첫 글 `data/blog/byeongja-horan.json` (8,000자, 14분 / 황금키워드 "병자호란" 18,710 / 7섹션 + 5 FAQ). Cross-linking: 노트 s3-09 → 블로그 자동 cross-link, Header 네비 + Footer + Sitemap 통합. `globals.css .blog-prose` 타이포그래피 (h2/h3, .tldr aside, table, 모바일). 발행 전략: 주 3편 (월·수·금 09:00 KST), 시대 클러스터링, Top 10 황금키워드 12주 캘린더.
 - **저작도구 사이드바 전략 문서 리스트** (StrategyDocsButton): 11개 마케팅 문서로 재구성 (단권화 23개 제거, SEO 전략을 최상단)
