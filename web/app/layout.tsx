@@ -38,7 +38,27 @@ const ORGANIZATION_SCHEMA = {
       alternateName: ["gcnote", "기출노트 한능검"],
       url: "https://gcnote.co.kr",
       description:
-        "한국사능력검정시험(한능검) 기출문제와 시대별 요약노트를 무료로 제공하는 학습 플랫폼",
+        "한국사능력검정시험(한능검) 기출문제와 시대별 요약노트를 무료로 제공하는 학습 플랫폼. 1인 개발자가 직접 기획·개발·운영합니다.",
+      foundingDate: "2025-09-01",
+      founder: {
+        "@type": "Person",
+        name: "기출노트 운영자",
+        email: "kil210@tangobook.co.kr",
+        jobTitle: "Founder & Web Developer",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: "kil210@tangobook.co.kr",
+        contactType: "customer support",
+        availableLanguage: ["Korean"],
+      },
+      knowsAbout: [
+        "한국사",
+        "한국사능력검정시험",
+        "한능검",
+        "한국사 학습",
+        "역사 교육",
+      ],
     },
     {
       "@type": "WebSite",

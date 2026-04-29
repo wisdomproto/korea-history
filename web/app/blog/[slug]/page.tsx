@@ -107,9 +107,18 @@ export default async function BlogPostPage({ params }: Props) {
       { "@type": "Thing", name: "한국사능력검정시험" },
       ...post.keywords.slice(0, 5).map((k) => ({ "@type": "Thing", name: k })),
     ],
+    author: {
+      "@type": "Person",
+      name: "기출노트 운영자",
+      url: `${SITE_URL}/about`,
+      jobTitle: "Founder & Web Developer",
+    },
     publisher: {
       "@id": `${SITE_URL}/#organization`,
     },
+    image: post.heroImage
+      ? [`${SITE_URL}${post.heroImage}`]
+      : undefined,
     timeRequired: `PT${post.readMinutes}M`,
   };
 
@@ -251,8 +260,43 @@ export default async function BlogPostPage({ params }: Props) {
         </Link>
       </section>
 
+      {/* Author block — E-E-A-T signal */}
+      <section className="mt-8 pt-6 border-t border-slate-200">
+        <div className="rounded-2xl bg-slate-50 border border-slate-200 p-4 sm:p-5">
+          <div className="flex items-start gap-3">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 font-bold text-sm">
+              📚
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-baseline gap-2 flex-wrap">
+                <span className="font-bold text-slate-900 text-[14px]">기출노트 운영자</span>
+                <span className="text-[11px] text-slate-500">1인 개발자가 직접 운영</span>
+              </div>
+              <p className="text-[13px] text-slate-600 mt-1 leading-relaxed">
+                한국사 시험 경험을 바탕으로 기출노트를 만들고 운영합니다.
+                이 글은 국사편찬위원회·두산백과 등 공식 자료를 참고해 작성·검수했습니다.
+              </p>
+              <div className="mt-2 flex items-center gap-3 text-[12px]">
+                <Link
+                  href="/about"
+                  className="text-emerald-600 font-semibold hover:underline"
+                >
+                  운영자 소개 →
+                </Link>
+                <a
+                  href="mailto:kil210@tangobook.co.kr"
+                  className="text-slate-500 hover:text-slate-700"
+                >
+                  의견 보내기
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Share */}
-      <section className="mt-8 flex items-center justify-between flex-wrap gap-3 pt-6 border-t border-slate-200">
+      <section className="mt-6 flex items-center justify-between flex-wrap gap-3">
         <div className="text-[13px] text-slate-500">
           이 글이 도움이 되었다면 공유해 주세요
         </div>

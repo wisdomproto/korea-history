@@ -23,6 +23,7 @@ const FOOTER_COLS: { t: string; items: { label: string; href: string }[] }[] = [
   {
     t: "정보",
     items: [
+      { label: "사이트 소개",      href: "/about" },
       { label: "게시판",           href: "/board" },
       { label: "개인정보처리방침", href: "/privacy" },
       { label: "이용약관",         href: "/terms" },
@@ -81,7 +82,14 @@ export default function Footer() {
             <div style={{ lineHeight: 1.7 }}>
               <b style={{ color: "var(--gc-ink)" }}>기출노트</b>는 한국사능력검정시험(한능검)
               무료 학습 플랫폼입니다. 제40회부터 제77회까지 1,900+ 기출문제와
-              시대별 요약노트 87편을 평생 무료로 제공합니다.
+              시대별 요약노트 87편, 깊이 있는 학습 가이드 22편을 평생 무료로 제공합니다.
+              1인 개발자가 직접 운영합니다 ·{" "}
+              <a
+                href="/about"
+                style={{ color: "var(--gc-amber)", textDecoration: "underline" }}
+              >
+                사이트 소개
+              </a>
             </div>
           </div>
           <div className="flex gap-10 md:gap-16 flex-1 md:justify-end flex-wrap">
