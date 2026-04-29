@@ -12,7 +12,7 @@
 import fs from "fs";
 import path from "path";
 
-const BLOG_DIR = path.join(process.cwd(), "data", "blog");
+const BLOG_DIR = path.join(process.cwd(), "..", "data", "blog");
 
 export interface BlogPostMeta {
   slug: string;
@@ -45,7 +45,29 @@ export interface BlogPost extends BlogPostMeta {
 
 let cachedPosts: BlogPost[] | null = null;
 
-function loadAllPosts(): BlogPost[] {
+/**
+ * Returns today's date in KST as YYYY-MM-DD string (for string-comparison
+ * with publishedAt). KST = UTC+9.
+ */
+function todayKst(): string {
+  const now = new Date();
+  const kstMs = now.getTime() + 9 * 60 * 60 * 1000;
+  return new Date(kstMs).toISOString().slice(0, 10);
+}
+
+/**
+ * Scheduled publishing — posts with future publishedAt are hidden in PROD.
+ * In DEV (NODE_ENV=development), all posts show for authoring/preview.
+ * Toggle with NEXT_PUBLIC_BLOG_SHOW_DRAFTS=true to show drafts in prod too
+ * (e.g. for staging or content review).
+ */
+function isLive(post: BlogPost | BlogPostMeta): boolean {
+  if (process.env.NODE_ENV === "development") return true;
+  if (process.env.NEXT_PUBLIC_BLOG_SHOW_DRAFTS === "true") return true;
+  return post.publishedAt <= todayKst();
+}
+
+function loadAllPostsRaw(): BlogPost[] {
   if (cachedPosts) return cachedPosts;
   if (!fs.existsSync(BLOG_DIR)) {
     cachedPosts = [];
@@ -59,6 +81,10 @@ function loadAllPosts(): BlogPost[] {
     })
     .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1));
   return cachedPosts;
+}
+
+function loadAllPosts(): BlogPost[] {
+  return loadAllPostsRaw().filter(isLive);
 }
 
 export function getAllBlogPosts(): BlogPostMeta[] {

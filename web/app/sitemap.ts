@@ -150,7 +150,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.65,
   }));
 
-  // Blog — long-form SEO articles (4,000~8,000자)
+  // Blog — long-form SEO articles. getAllBlogPosts() already filters
+  // scheduled (future-dated) posts in production via blog.ts isLive check.
   const blogPosts = getAllBlogPosts();
   const blogPages: MetadataRoute.Sitemap = [
     {

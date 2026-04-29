@@ -14,11 +14,13 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 let task: ScheduledTask | null = null;
 let publishTask: ScheduledTask | null = null;
 let seoMonthlyTask: ScheduledTask | null = null;
+let blogRebuildTask: ScheduledTask | null = null;
 
 export function startCron(): void {
   startWeeklyReportCron();
   startPublishQueueCron();
   startSeoMonthlyCron();
+  startBlogRebuildCron();
 }
 
 function startWeeklyReportCron(): void {
@@ -128,6 +130,45 @@ function startSeoMonthlyCron(): void {
   console.log(`[cron] SEO monthly scheduled: "${cronExpr}" (Asia/Seoul)`);
 }
 
+function startBlogRebuildCron(): void {
+  // Daily blog rebuild — triggers Vercel deploy hook so any blog post whose
+  // publishedAt has arrived auto-goes-live. Runs at 09:00 KST every day.
+  // Skips if VERCEL_DEPLOY_HOOK_URL not configured.
+  const hookUrl = process.env.VERCEL_DEPLOY_HOOK_URL;
+  if (!hookUrl) {
+    console.log('[cron] daily blog rebuild skipped — VERCEL_DEPLOY_HOOK_URL not set');
+    return;
+  }
+  if (blogRebuildTask) return;
+
+  const cronExpr = '0 9 * * *';
+  if (!validate(cronExpr)) {
+    console.error(`[cron] invalid blog rebuild expression: ${cronExpr}`);
+    return;
+  }
+
+  blogRebuildTask = schedule(
+    cronExpr,
+    async () => {
+      const started = Date.now();
+      console.log(`[cron] daily blog rebuild start @ ${new Date().toISOString()}`);
+      try {
+        const res = await fetch(hookUrl, { method: 'POST' });
+        const body = await res.text();
+        if (res.ok) {
+          console.log(`[cron] daily blog rebuild ok — ${res.status} (${Date.now() - started}ms) ${body.slice(0, 100)}`);
+        } else {
+          console.error(`[cron] daily blog rebuild failed — ${res.status} ${body.slice(0, 200)}`);
+        }
+      } catch (err) {
+        console.error('[cron] daily blog rebuild error:', (err as Error).message);
+      }
+    },
+    { timezone: 'Asia/Seoul' }
+  );
+  console.log(`[cron] daily blog rebuild scheduled: "${cronExpr}" (Asia/Seoul, Vercel deploy hook)`);
+}
+
 export function stopCron(): void {
   task?.stop();
   task = null;
@@ -135,4 +176,6 @@ export function stopCron(): void {
   publishTask = null;
   seoMonthlyTask?.stop();
   seoMonthlyTask = null;
+  blogRebuildTask?.stop();
+  blogRebuildTask = null;
 }
