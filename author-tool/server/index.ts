@@ -31,6 +31,7 @@ import channelAnalyticsRoutes from './routes/channel-analytics.routes.js';
 import competitorsRoutes from './routes/competitors.routes.js';
 import strategyRoutes from './routes/strategy.routes.js';
 import civilNotesRoutes from './routes/civil-notes.routes.js';
+import reminderRoutes from './routes/reminder.routes.js';
 import { startCron } from './services/cron.service.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -95,6 +96,7 @@ async function startServer() {
   app.use('/api/competitors', competitorsRoutes);
   app.use('/api/strategy', strategyRoutes);
   app.use('/api/civil-notes', civilNotesRoutes);
+  app.use('/api/reminders', reminderRoutes);
 
   app.use(errorMiddleware as express.ErrorRequestHandler);
 

@@ -5,6 +5,7 @@ import { BulkAnswerModal } from '@/features/question/components/BulkAnswerModal'
 import { BulkExplanationModal } from '@/features/question/components/BulkExplanationModal';
 import { Sidebar } from './Sidebar';
 import { ViewRouter } from './ViewRouter';
+import { ReminderBanner } from './ReminderBanner';
 import { useExamActions } from '@/hooks/useExamActions';
 import { useQuery } from '@tanstack/react-query';
 import { apiGet } from '@/lib/axios';
@@ -49,7 +50,11 @@ export function Layout() {
         }}
       />
 
-      <main className="flex-1 flex overflow-hidden">
+      <main className="flex-1 flex flex-col overflow-hidden">
+        <div className="px-4 pt-3 shrink-0">
+          <ReminderBanner />
+        </div>
+        <div className="flex-1 flex overflow-hidden">
         <ViewRouter
           activeView={activeView}
           currentProject={currentProject}
@@ -69,6 +74,7 @@ export function Layout() {
           setShowBulkAnswers={setShowBulkAnswers}
           setShowBulkExplanations={setShowBulkExplanations}
         />
+        </div>
       </main>
 
       {showExamForm && (
