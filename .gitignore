@@ -54,3 +54,6 @@ ga4-key.json
 
 # logs
 *.log
+
+# scripts/output (capture results — re-generated on demand)
+scripts/output/

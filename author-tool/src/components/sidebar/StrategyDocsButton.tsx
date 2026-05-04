@@ -22,6 +22,15 @@ interface StrategyDoc {
 }
 
 const STRATEGY_DOCS: StrategyDoc[] = [
+  // ─── 투자자 보고 ───
+  {
+    id: 'investor-deck-v1',
+    icon: '💼',
+    title: '투자자 보고서 v1 ⭐',
+    subtitle: '15장 PPT · 실측 KPI · 12개월 시나리오 · The Ask',
+    file: 'investor-deck-v1.html',
+    badge: 'NEW',
+  },
   // ─── SEO ───
   {
     id: 'seo-strategy',

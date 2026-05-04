@@ -31,7 +31,9 @@ korea_history/
 ├── scripts/               # 유틸리티 스크립트
 ├── design/                # 디자인 참고 파일
 ├── docs/                  # 프로젝트 문서
-│   ├── multi-exam-hub-strategy.html   # ⭐ 통합 허브 전략 v2 (대표 보고용 — 한눈에 + 정밀 모델)
+│   ├── investor-deck-v1.html          # ⭐ 투자자 보고서 데크 v1 (20장, 인라인 SVG 차트, 실제 사이트 캡처)
+│   ├── img/investor/                  # 투자자 데크용 사이트 스크린샷 8장 (Hero/Question/Note/Record 등)
+│   ├── multi-exam-hub-strategy.html   # 통합 허브 전략 v2 (대표 보고용 — 한눈에 + 정밀 모델)
 │   ├── marketing-strategy.html        # 마케팅 전략 보고서 v1
 │   ├── marketing-plan-community.html  # 커뮤니티 마케팅 종합 플랜
 │   └── card-news-feature-plan.html    # 카드뉴스 생성 기능 기획서
@@ -498,6 +500,40 @@ YOUTUBE_API_KEY=                         # 선택 — 채널 분석/경쟁사 Yo
 - **스크립트** (`author-tool/scripts/`): `pull-gsc-deep.mjs` (90일 GSC), `validate-keywords-naver.mjs` (대량 후보 검증), `validate-keywords-naver-retry.mjs` (특수문자 키워드 재시도), `seo-monthly-update.mjs` (월간 통합)
 - **데이터 폴더**: `_research/gsc-deep-{date}.json`, `_research/keyword-validation-{date}.json`, `_research/seo-monthly/{YYYY-MM}/`
 - **GSC API 연동**: `author-tool/server/services/gsc.service.ts` — `gcnote-491301` 프로젝트의 서비스 계정 (`gcnote-ga4@symbolic-rope-491301-k9.iam.gserviceaccount.com`) 사용 (GA4 키 재활용). `sc-domain:gcnote.co.kr` 도메인 속성. 3일 지연 자동 처리.
+
+## 투자자 데크 v1 (2026-05-04)
+
+`docs/investor-deck-v1.html` — 20장 단일 HTML, 16:9, Noto Serif KR + Pretendard + JetBrains Mono. 저작도구 사이드바 "📋 전략 문서" 최상단에 등록 (`StrategyDocsButton.tsx`).
+
+### 슬라이드 구조 (20장)
+1. Title — "한국 시험 학습 시장의 통합 학습 인프라"
+2. Executive Summary — 4 KPI + 3 narrative 카드
+3. Market Overview — 응시자 분포 SVG bar (220만/년, 1조+ 시장)
+4. Problem — 4 row (자료 분산 / 인강 비싸다 / UI 구식 / 노트↔문제 단절)
+5. Solution — 실제 화면 시퀀스 3컷 (기출→노트→오답)
+6. Why Now · AI Pipeline — 5단계 + 비용 비교 (₩수십억/1년 → ₩수만/1,300시험)
+7-8. Product Tour A/B — 6 화면 + 브라우저 chrome (URL bar + traffic lights)
+9. Strategy / Cohort Funnel — 4-layer 깔때기 (한능검 진입 → 9급 핵심 → 7급 확장 → 자격증 SEO)
+10-11. Traction KPI + J-Curve (인라인 SVG line chart, 28일 데이터 + 7일 MA)
+12. Competitive Landscape — 9 사이트 비교 표 + 4 우위 카드
+13. Why Us — 4-quadrant (학원/출판/무료/우리)
+14-15. Business Model + Unit Economics
+16. GTM — Naver(학원 가득) vs SNS·Google(우리 진입) 인포그래픽 + 시즌 매트릭스
+17. Roadmap — Phase 0~3 timeline
+18. Financials — 보수 vs 진보 표 + SVG bar chart (Stage 0~3)
+19. Ops + Founder — 1인 AI 자동화 다이어그램 + Founder 카드
+20. The Ask — ₩100M/50M/30M 3 사용처
+
+### 핵심 설계 결정
+- **Chart.js → 인라인 SVG**: 슬라이드가 hidden 상태에서 canvas 0x0 init되는 timing 이슈 영구 해결. 좌표 hardcode (J-Curve 28+22 points, Financials 8 bars).
+- **`.slide` display:none / .active flex**: opacity/visibility 대신 display 토글로 캡처/렌더링 안정.
+- **용어 통일**: 단원/단권/단권화 → "요약노트" 일괄 변경 (일반 투자자 이해성).
+- **플랫폼 이름 일반화**: Vercel/Railway/R2/Supabase/Gemini/Claude/Qwen → "웹·서버 호스팅 + 클라우드 저장 + DB + AI API" / "최신 AI 모델". 광고 채널(Naver/Google Ads/AdSense)은 메시지 핵심이라 유지.
+- **"광고 도배" 비판 제거**: 우리도 광고 모델이라 → "UI 구식 + 요약노트 X + 자동 매칭 X"로 톤 변경.
+
+### 데이터 시드 + 캡처
+- **사이트 스크린샷** (`scripts/capture-investor-screens.ts`): Puppeteer 1600x900 데스크톱 캡처. localStorage 시드 데이터 주입(7회 시험 기록 + 17개 오답)으로 `/my-record`/`/wrong-answers` 풍성한 화면 만듦. 출력 → `docs/img/investor/*.png` 8장.
+- **시각 검증** (`scripts/check-investor-deck.ts`): 20장 모두 캡처해 짤림/넘침 자체 확인. CSS · SVG 변경 시 `npx tsx scripts/check-investor-deck.ts` 한 번 돌려 검증.
 
 ## 스레드 운영 (수동, 2026-04-27 시작)
 - 저작도구의 "1 노트 → N 채널" 모델이 스레드처럼 소스 무관 짧은 글에 안 맞아 **파일 기반 수동 운영** 채택.
