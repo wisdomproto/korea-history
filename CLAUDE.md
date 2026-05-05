@@ -30,6 +30,15 @@ korea_history/
 ├── data/images/           # 문제 이미지 (R2 업로드 + 로컬 백업)
 ├── scripts/               # 유틸리티 스크립트
 ├── design/                # 디자인 참고 파일
+├── promo/                 # Remotion 광고 영상 workspace (별도 npm)
+│   ├── src/
+│   │   ├── Root.tsx                # 4 composition 등록 (9:16 + 16:9)
+│   │   ├── GcnotePromo.tsx         # 30s 사용자 가치 영상
+│   │   ├── GcnoteHowItsMade.tsx    # 30s "How It's Made" 영상
+│   │   ├── theme.ts                # 사이트 토큰 재사용 (cream/ink/amber/teal)
+│   │   ├── fonts.ts                # @remotion/google-fonts/NotoSerifKR
+│   │   └── scenes/                 # Hook/Problem/Solution/CTA + Process*
+│   └── out/                        # MP4 출력 (gitignored)
 ├── docs/                  # 프로젝트 문서
 │   ├── investor-deck-v1.html          # ⭐ 투자자 보고서 데크 v1 (20장, 인라인 SVG 차트, 실제 사이트 캡처)
 │   ├── img/investor/                  # 투자자 데크용 사이트 스크린샷 8장 (Hero/Question/Note/Record 등)
@@ -201,6 +210,7 @@ korea_history/
 - **Footer 워드마크**: "기출노트" 단독 (앰버 "한능검" 부제 제거) — 메인 브랜딩만 일반화, SEO 메타/about/Schema.org는 한능검 유지
 - **적응형 타이포그래피**: hero h1 5단계 (`38/sm:48/md:56/lg:68/xl:84`) + `wordBreak: keep-all` + 각 line `inline-block; whiteSpace: nowrap`. Stats/H2/Pricing 모두 sm/lg breakpoint 추가 (태블릿 영역 부드럽게)
 - **Header 모바일 폭**: `gap-8 → gap-2 sm:gap-6 md:gap-8` + `px-6 → px-4 sm:px-6 md:px-8` + 햄버거 `ml-1.5` 제거 (헤더 install pill 들어갈 공간 확보)
+- **PWA install funnel analytics (2026-05-06)**: 6종 GA4 이벤트 (`pwa_install_clicked`/`_modal_opened`/`_accepted`/`_dismissed`/`_already_installed_dismissed`/`pwa_app_installed`) — `trackPWA(event, params)` 헬퍼가 window.gtag 호출. params: `env` (android/ios/inapp/desktop) + `variant` (desktop/mobile). 저작도구 분석에 PWAEventsCard로 4-step 퍼널 + Android·전체 전환율 + 환경별 분포 노출. 상세 [memory/pwa_install_funnel_analytics.md]
 
 ### 빌드 최적화 — Phase 2 ISR (2026-05-05)
 다중 시험 플랫폼으로 547 ExamType + 1,900 한능검 OG 이미지가 모두 SSG였던 부담을 ISR/dynamic으로 분산. ~2,447 prerender 페이지 절감 → Vercel 빌드 시간 12~40분 추정 절감.
