@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getAllExamTypes, getAllSubjects } from "@/lib/exam-types";
@@ -13,6 +13,22 @@ export const metadata: Metadata = {
   description:
     "기출노트는 한능검(한국사능력검정시험) 기출문제 1,900+ 문항과 시대별 요약노트 87편을 무료로 제공하는 학습 플랫폼입니다. AI 해설과 강의 영상까지.",
   keywords: ["기출노트", "기출노트 한능검", "한국사능력검정시험", "한능검", "한능검 요약노트", "한능검 기출문제", "한국사", "요약노트", "해설", "1급", "2급", "심화"],
+  manifest: "/manifest.json",
+  icons: {
+    icon: [
+      { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon-32.png",
+  },
+  appleWebApp: {
+    capable: true,
+    title: "기출노트",
+    statusBarStyle: "default",
+  },
   openGraph: {
     type: "website",
     locale: "ko_KR",
@@ -25,6 +41,10 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#F5EFE4",
 };
 
 // Site-wide Organization + WebSite structured data (applies to every page)

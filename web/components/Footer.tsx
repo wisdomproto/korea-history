@@ -52,10 +52,7 @@ export default function Footer() {
       >
         <div className="flex flex-col md:flex-row gap-10 md:gap-20 mb-8">
           <div className="max-w-[320px]">
-            <div
-              className="flex items-baseline gap-1.5"
-              style={{ marginBottom: 8 }}
-            >
+            <div style={{ marginBottom: 8 }}>
               <span
                 className="font-serif-kr"
                 style={{
@@ -66,17 +63,6 @@ export default function Footer() {
                 }}
               >
                 기출노트
-              </span>
-              <span
-                className="font-sans-kr"
-                style={{
-                  fontSize: 13,
-                  fontWeight: 800,
-                  color: "var(--gc-amber)",
-                  letterSpacing: "-0.01em",
-                }}
-              >
-                한능검
               </span>
             </div>
             <div style={{ lineHeight: 1.7 }}>

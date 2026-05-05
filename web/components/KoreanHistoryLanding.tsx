@@ -134,19 +134,33 @@ function Hero() {
           </div>
 
           <h1
-            className="text-[40px] sm:text-[60px] md:text-[84px]"
+            className="text-[38px] sm:text-[48px] md:text-[56px] lg:text-[68px] xl:text-[84px]"
             style={{
               fontFamily: FONT_SERIF,
               fontWeight: 900,
               color: T.ink,
               letterSpacing: "-0.045em",
-              lineHeight: 1.02,
+              lineHeight: 1.05,
               margin: "0 0 20px",
+              wordBreak: "keep-all",
             }}
           >
-            한능검 기출문제와<br />
-            요약노트,<br />
-            <span style={{ color: T.amber }}>한 번에.</span>
+            <span style={{ display: "inline-block", whiteSpace: "nowrap" }}>
+              한능검 기출문제와
+            </span>
+            <br />
+            <span style={{ display: "inline-block", whiteSpace: "nowrap" }}>
+              요약노트,
+            </span>{" "}
+            <span
+              style={{
+                display: "inline-block",
+                whiteSpace: "nowrap",
+                color: T.amber,
+              }}
+            >
+              한 번에.
+            </span>
           </h1>
 
           <p
@@ -549,7 +563,7 @@ function StatsBand({
           return (
           <div key={s.l}>
             <div
-              className="text-[40px] md:text-[72px]"
+              className="text-[36px] sm:text-[44px] md:text-[56px] lg:text-[72px]"
               style={{
                 fontFamily: FONT_SERIF,
                 fontWeight: 900,
@@ -642,7 +656,7 @@ function FeatureGrid() {
             W H Y &nbsp; G C N O T E
           </div>
           <h2
-            className="text-[36px] md:text-[56px]"
+            className="text-[34px] sm:text-[40px] md:text-[48px] lg:text-[56px]"
             style={{
               fontFamily: FONT_SERIF,
               fontWeight: 900,
@@ -759,7 +773,7 @@ function ExamPreview() {
             0 1 &nbsp; 기 출 문 제
           </div>
           <h3
-            className="text-[32px] md:text-[48px]"
+            className="text-[30px] sm:text-[36px] md:text-[42px] lg:text-[48px]"
             style={{
               fontFamily: FONT_SERIF,
               fontWeight: 900,
@@ -1191,7 +1205,7 @@ function NotesPreview() {
             0 2 &nbsp; 요 약 노 트
           </div>
           <h3
-            className="text-[32px] md:text-[48px]"
+            className="text-[30px] sm:text-[36px] md:text-[42px] lg:text-[48px]"
             style={{
               fontFamily: FONT_SERIF,
               fontWeight: 900,
@@ -1262,7 +1276,7 @@ function LinkedPreview() {
           0 3 &nbsp; 연 결
         </div>
         <h3
-          className="text-[36px] md:text-[56px]"
+          className="text-[34px] sm:text-[40px] md:text-[48px] lg:text-[56px]"
           style={{
             fontFamily: FONT_SERIF,
             fontWeight: 900,
@@ -1693,7 +1707,7 @@ function PricingBand() {
           평 &nbsp; 생 &nbsp; 무 &nbsp; 료
         </div>
         <h3
-          className="text-[44px] md:text-[72px]"
+          className="text-[40px] sm:text-[52px] md:text-[60px] lg:text-[72px]"
           style={{
             fontFamily: FONT_SERIF,
             fontWeight: 900,

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import ExamSelector from "@/components/ExamSelector";
+import PWAInstallButton from "@/components/PWAInstallButton";
 import { getExamSlugFromPath, getSubjectSlugFromPath } from "@/lib/exam-context";
 import type { ExamType, Subject } from "@/lib/exam-types";
 
@@ -109,7 +110,7 @@ export default function Header({ examTypes, subjects }: HeaderProps) {
           borderBottom: `1px solid ${hair}`,
         }}
       >
-        <div className="mx-auto flex h-[68px] max-w-[1280px] items-center gap-8 px-6 md:px-8">
+        <div className="mx-auto flex h-[68px] max-w-[1280px] items-center gap-2 sm:gap-6 md:gap-8 px-4 sm:px-6 md:px-8">
           {/* Logo */}
           <Link
             href="/"
@@ -184,6 +185,12 @@ export default function Header({ examTypes, subjects }: HeaderProps) {
           >
             게시판
           </Link>
+
+          {/* PWA 설치 버튼 — 게시판 옆 amber fill, 환경별 분기 */}
+          <PWAInstallButton variant="desktop" />
+
+          {/* PWA 모바일 헤더 아이콘 — 햄버거 좌측 */}
+          <PWAInstallButton variant="mobile" />
 
           {/* Mobile menu button */}
           <button

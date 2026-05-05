@@ -1,0 +1,28 @@
+{
+  "name": "기출노트",
+  "short_name": "기출노트",
+  "description": "한국사능력검정시험·공무원시험·자격시험 기출문제와 요약노트 무료 학습 플랫폼",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "ko-KR",
+  "dir": "ltr",
+  "background_color": "#F5EFE4",
+  "theme_color": "#F5EFE4",
+  "categories": ["education", "books"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
