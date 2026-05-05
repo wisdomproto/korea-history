@@ -22,8 +22,14 @@ interface PageProps {
   params: Promise<{ examSlug: string }>;
 }
 
+// ISR — 한능검만 prerender (메인 트래픽). 나머지 546 ExamType은 첫 요청 시 SSR + 1일 cache.
+// Phase 2 (2026-05-05): 547개 prerender → 1개로 줄여 빌드 시간 단축.
+// 자식 라우트 [subjectSlug]/* 는 이미 force-dynamic + revalidate 라 일관됨.
+export const revalidate = 86400;
+export const dynamicParams = true;
+
 export function generateStaticParams() {
-  return getAllExamTypes().map((e) => ({ examSlug: e.slug }));
+  return [{ examSlug: "한능검" }];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

@@ -1,9 +1,13 @@
 import { ImageResponse } from "next/og";
-import { getAllQuestionParams } from "@/lib/data";
 
 export const runtime = "nodejs";
+
+// Dynamic OG — 1,900개 prerender 제거. SNS 첫 공유 시 generate → Vercel CDN cache.
+// Phase 2 (2026-05-05): 빌드 시간 대폭 단축. 첫 공유자 0.5~1초 지연, 이후 즉시.
+export const revalidate = 86400;
+export const dynamicParams = true;
 export function generateStaticParams() {
-  return getAllQuestionParams().map((p) => ({ examNumber: String(p.examNumber), questionNumber: String(p.questionNumber) }));
+  return [];
 }
 export const alt = "한능검 기출문제";
 export const size = { width: 1200, height: 630 };
