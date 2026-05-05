@@ -188,6 +188,19 @@ korea_history/
 - satori (Next.js ImageResponse) 사용
 - 주의: JSX에서 `제{n}회` → `` {`제${n}회`} `` 템플릿 리터럴 필수 (satori multi-children 에러 방지)
 
+### PWA Lite (2026-05-05)
+모바일 "홈 화면에 추가" 흐름. Phase 1 — manifest + 아이콘 + 헤더 install 버튼 + 환경별 가이드 모달 + localStorage 영구 hidden.
+- **manifest**: `web/public/manifest.json` — name=`기출노트`, theme/background=`#F5EFE4` (cream), 아이콘 192/512
+- **아이콘**: `web/public/{icon-192,icon-512,apple-touch-icon,favicon-32,favicon-16}.png` — `logo.png` 1024 원본을 ImageMagick으로 리사이즈 (정식 아이콘 받으면 ImageMagick 한 줄로 5사이즈 일괄 생성)
+- **install button** (`web/components/PWAInstallButton.tsx`): 데스크톱 헤더 게시판 옆 amber 그라데이션 pill (좌 흰원 ✚ + "홈 화면에 추가" + 우 디바이더 + ⬇️) + 모바일 햄버거 좌측 컴팩트 pill (다운로드 아이콘 생략)
+- **install modal** (`web/components/PWAInstallModal.tsx`): 환경별 4종 가이드 (Android native / iOS 3-step + SVG 아이콘 / 인스타·카톡 인앱 → 외부 브라우저 열기 / 데스크톱 주소창 install). 모바일 bottom sheet, 데스크톱 center card
+- **환경 감지**: UA 정규식 (`Instagram|FB_IAB|FBAN|FBAV|KAKAOTALK|NAVER\(inapp|Line\/`) + `display-mode: standalone` 체크 + `navigator.standalone` (iOS)
+- **영구 hidden**: `localStorage.gcnote_pwa_installed = "1"` — 3종 트리거 (Android prompt 수락 / `appinstalled` 이벤트 / 모달 "이미 설치했어요" 클릭, iOS 자동 감지 불가 보완 경로)
+- **layout.tsx**: `metadata.manifest`, `metadata.icons` (16/32/192/512/apple), `metadata.appleWebApp` (capable + title), `viewport.themeColor` 추가. 기존 SEO 메타는 무손상 (한능검 키워드 그대로)
+- **Footer 워드마크**: "기출노트" 단독 (앰버 "한능검" 부제 제거) — 메인 브랜딩만 일반화, SEO 메타/about/Schema.org는 한능검 유지
+- **적응형 타이포그래피**: hero h1 5단계 (`38/sm:48/md:56/lg:68/xl:84`) + `wordBreak: keep-all` + 각 line `inline-block; whiteSpace: nowrap`. Stats/H2/Pricing 모두 sm/lg breakpoint 추가 (태블릿 영역 부드럽게)
+- **Header 모바일 폭**: `gap-8 → gap-2 sm:gap-6 md:gap-8` + `px-6 → px-4 sm:px-6 md:px-8` + 햄버거 `ml-1.5` 제거 (헤더 install pill 들어갈 공간 확보)
+
 ## 핵심 기능 (저작도구)
 
 ### 사이드바 구조
