@@ -2,10 +2,11 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllQuestionParams, getQuestion, getRelatedQuestionsInEra } from "@/lib/data";
 import { getYouTubeTimestamp } from "@/lib/youtube";
-import { getRelatedNotes } from "@/lib/notes";
+import { getRelatedNotes, getNoteById } from "@/lib/notes";
 import { questionMeta, questionJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import BreadCrumb from "@/components/BreadCrumb";
-import QuestionWithTracking from "@/components/QuestionWithTracking";
+import QuestionWithRelatedPanel from "@/components/QuestionWithRelatedPanel";
+import type { NoteContent } from "@/components/RelatedNotePanel";
 import QuestionNav from "@/components/QuestionNav";
 import PrevNextNav from "@/components/PrevNextNav";
 import ShareButtons from "@/components/ShareButtons";
@@ -97,12 +98,28 @@ export default async function QuestionPage({ params }: Props) {
         />
       </div>
 
-      {/* Question card */}
-      <QuestionWithTracking
+      {/* Question card + related note side panel (lg+) */}
+      <QuestionWithRelatedPanel
         question={question}
         exam={exam}
         youtube={getYouTubeTimestamp(examNumber, questionNumber)}
         relatedNotes={getRelatedNotes(question.id)}
+        noteContents={(() => {
+          const related = getRelatedNotes(question.id);
+          return related
+            .map((rn): NoteContent | null => {
+              const note = getNoteById(rn.id);
+              if (!note) return null;
+              return {
+                id: rn.id,
+                title: rn.title,
+                eraLabel: rn.eraLabel,
+                sectionId: rn.sectionId,
+                content: note.content,
+              };
+            })
+            .filter((n): n is NoteContent => n !== null);
+        })()}
       />
 
       {/* Server-rendered study material (SEO) — indexed by crawlers, collapsed for users */}

@@ -17,13 +17,15 @@ interface Props {
   exam: Exam;
   youtube?: YouTubeData | null;
   relatedNotes?: RelatedNoteLink[];
+  /** Called once the user reveals the answer (any choice). Used by side panels to show post-answer content. */
+  onAnswered?: () => void;
 }
 
 /**
  * Wraps QuestionCard and auto-saves wrong answers to localStorage.
  * Also marks the question as answered for the nav dot coloring.
  */
-export default function QuestionWithTracking({ question, exam, youtube, relatedNotes }: Props) {
+export default function QuestionWithTracking({ question, exam, youtube, relatedNotes, onAnswered }: Props) {
   const examSlug = useCurrentExamSlug();
   const subjectSlug = useCurrentSubjectSlug();
   const handleSubmit = (selectedAnswer: number, isCorrect: boolean) => {
@@ -49,6 +51,9 @@ export default function QuestionWithTracking({ question, exam, youtube, relatedN
 
     // Notify QuestionNav to re-render
     window.dispatchEvent(new Event("answer-revealed"));
+
+    // Notify parent (e.g. side panel)
+    onAnswered?.();
   };
 
   return <QuestionCard question={question} onAnswerSubmit={handleSubmit} youtube={youtube} relatedNotes={relatedNotes} />;
