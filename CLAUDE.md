@@ -597,6 +597,7 @@ YOUTUBE_API_KEY=                         # 선택 — 채널 분석/경쟁사 Yo
 - 본문 노트: `docs/{slug}-summary-note.html`
 - 본문 추출: `web/data/civil-notes/{slug}/` (sync-civil-notes.mjs + sync-civil-topics.mjs)
 - 자동 가이드 (656 stem, ~450MB): **R2 `civil-notes-auto/{stem}/{meta,topics-index,q-map,tq-map}.json`** (2026-05-05 이관, gitignored). 로컬 빌드는 `web/scripts/build-auto-civil-guides.mjs` → `npx tsx author-tool/scripts/upload-civil-notes-auto-to-r2.ts` 로 R2 sync (51.5s)
+- CBT 시험 이미지 (239k 파일, 1.29GB): **R2 `cbt-images/{exam-code}/{filename}`** (2026-05-05 미러). cbtbank.kr 외부 hot-link 403 전면 차단 우회. `web/lib/cbt-data.ts`의 `rewriteImageUrls()`가 fetch 시점에 `local_path`(Windows backslash) → R2 URL로 server-side 동적 변환 — 원본 JSON 무손상. 새 이미지 추가 시 `npx tsx author-tool/scripts/upload-cbt-images-to-r2.ts` 재실행 (idempotent upsert)
 - 매칭 인덱스: `web/data/civil-notes/question-topic-map.json` + `topic-questions-map.json`
 - 매핑: `web/lib/civil-notes.ts` SUBJECT_TO_NOTE + `web/lib/civil-notes-client.ts` (client-safe)
 - 자동 가이드 lib: `web/lib/civil-notes-auto.ts` — **async R2 fetch (Next.js fetch cache, revalidate 86400) + fs fallback** (dev / R2 미설정 시). 모든 함수 async — server component 전용 (`import "server-only"`)
