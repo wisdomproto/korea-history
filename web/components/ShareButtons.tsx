@@ -21,9 +21,13 @@ export default function ShareButtons({
 }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
   const [shareUrl, setShareUrl] = useState("");
+  // Client-only — `navigator.share` is browser API, evaluating during SSR/first render
+  // would mismatch hydration. Defer to useEffect so server/first-client render agree on `false`.
+  const [hasNativeShare, setHasNativeShare] = useState(false);
 
   useEffect(() => {
     setShareUrl(url || window.location.href);
+    setHasNativeShare(typeof navigator !== "undefined" && !!navigator.share);
   }, [url]);
 
   const handleCopyLink = async () => {
@@ -79,8 +83,6 @@ export default function ShareButtons({
       }
     }
   };
-
-  const hasNativeShare = typeof navigator !== "undefined" && !!navigator.share;
 
   return (
     <div className="flex items-center gap-2">
