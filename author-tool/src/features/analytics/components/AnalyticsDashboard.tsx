@@ -14,6 +14,7 @@ import HourlyChart from './HourlyChart';
 import DayOfWeekChart from './DayOfWeekChart';
 import DailyTrendChart from './DailyTrendChart';
 import VideoEventsCard from './VideoEventsCard';
+import PWAEventsCard from './PWAEventsCard';
 import SearchKeywordsTable from './SearchKeywordsTable';
 import SearchConsoleCard from './SearchConsoleCard';
 import AdTriggerAlert from './AdTriggerAlert';
@@ -141,6 +142,7 @@ export default function AnalyticsDashboard() {
               <VideoEventsCard data={data.videoEvents} />
               <SearchKeywordsTable data={data.searchKeywords} />
             </div>
+            <PWAEventsCard start={range.startDate} end={range.endDate} />
             <SearchConsoleCard range={range} />
           </>
         ) : null}

@@ -46,6 +46,21 @@ export interface VideoEventsData {
   topVideos: Array<{ videoId: string; title: string; play: number; complete: number }>;
 }
 
+export interface PWAFunnelData {
+  totals: {
+    clicked: number;
+    modalOpened: number;
+    accepted: number;
+    dismissed: number;
+    appInstalled: number;
+    alreadyInstalledDismissed: number;
+  };
+  byEnv: Array<{ env: string; clicks: number; accepted: number; appInstalled: number }>;
+  daily: Array<{ date: string; clicked: number; appInstalled: number }>;
+  androidConversionRate: number;
+  installConversionRate: number;
+}
+
 export interface SearchKeywordData {
   term: string;
   source: string;

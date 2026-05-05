@@ -1,5 +1,11 @@
 import { apiGet, apiPost } from '../../../lib/axios';
-import type { DashboardData, DailyData, PresetsData, SearchConsoleData } from '../types/analytics.types';
+import type {
+  DashboardData,
+  DailyData,
+  PresetsData,
+  SearchConsoleData,
+  PWAFunnelData,
+} from '../types/analytics.types';
 
 const BASE = '/analytics';
 
@@ -21,6 +27,10 @@ export async function fetchPresets(): Promise<PresetsData> {
 
 export async function fetchDailyTrend(start: string, end: string): Promise<DailyData[] | null> {
   return apiGet<DailyData[] | null>(`${BASE}/daily?start=${start}&end=${end}`);
+}
+
+export async function fetchPWAEvents(start: string, end: string): Promise<PWAFunnelData | null> {
+  return apiGet<PWAFunnelData | null>(`${BASE}/pwa-events?start=${start}&end=${end}`);
 }
 
 export async function refreshCache(): Promise<void> {

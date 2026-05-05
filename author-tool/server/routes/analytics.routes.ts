@@ -40,6 +40,21 @@ router.get('/overview', async (req, res, next) => {
   } catch (err) { next(err); }
 });
 
+// GET /api/analytics/pwa-events?start=...&end=...
+router.get('/pwa-events', async (req, res, next) => {
+  try {
+    if (!ga4.isConfigured()) {
+      return res.json({ success: true, data: null, message: 'GA4 not configured' });
+    }
+    const { start, end } = req.query as { start: string; end: string };
+    if (!start || !end) {
+      return res.status(400).json({ success: false, error: 'start and end query params required' });
+    }
+    const data = await ga4.getPWAEvents(start, end);
+    res.json({ success: true, data });
+  } catch (err) { next(err); }
+});
+
 // GET /api/analytics/daily?start=...&end=...
 router.get('/daily', async (req, res, next) => {
   try {

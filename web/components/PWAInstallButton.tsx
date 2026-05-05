@@ -30,6 +30,29 @@ function markInstalled() {
   }
 }
 
+/**
+ * Send a PWA install funnel event to GA4. Read in author-tool 분석 dashboard.
+ * Names are kebab → snake to match GA4 conventions.
+ */
+function trackPWA(
+  event:
+    | "pwa_install_clicked"
+    | "pwa_install_accepted"
+    | "pwa_install_dismissed"
+    | "pwa_install_modal_opened"
+    | "pwa_install_already_installed_dismissed"
+    | "pwa_app_installed",
+  params: Record<string, string | number | undefined> = {},
+) {
+  if (typeof window === "undefined") return;
+  const w = window as Window & { gtag?: (...args: unknown[]) => void };
+  try {
+    w.gtag?.("event", event, params);
+  } catch {
+    // ignore
+  }
+}
+
 function detectEnv(): { env: Env; isInstalled: boolean } {
   if (typeof window === "undefined") return { env: "unknown", isInstalled: false };
 
@@ -81,6 +104,7 @@ export default function PWAInstallButton({ variant = "desktop" }: Props) {
     const installedHandler = () => {
       setIsInstalled(true);
       markInstalled();
+      trackPWA("pwa_app_installed", { source: "browser_event" });
     };
     window.addEventListener("appinstalled", installedHandler);
 
@@ -94,6 +118,7 @@ export default function PWAInstallButton({ variant = "desktop" }: Props) {
   if (isInstalled || env === "unknown") return null;
 
   const onClick = async () => {
+    trackPWA("pwa_install_clicked", { env, variant });
     if (env === "android" && deferredPrompt) {
       try {
         await deferredPrompt.prompt();
@@ -101,21 +126,27 @@ export default function PWAInstallButton({ variant = "desktop" }: Props) {
         if (outcome === "accepted") {
           setIsInstalled(true);
           markInstalled();
+          trackPWA("pwa_install_accepted", { env });
+        } else {
+          trackPWA("pwa_install_dismissed", { env });
         }
         setDeferredPrompt(null);
       } catch {
         setModalOpen(true);
+        trackPWA("pwa_install_modal_opened", { env, reason: "prompt_error" });
       }
       return;
     }
     // iOS / 인앱 / 데스크톱(prompt 없음) → 가이드 모달
     setModalOpen(true);
+    trackPWA("pwa_install_modal_opened", { env, reason: "no_prompt" });
   };
 
   const onAlreadyInstalled = () => {
     setIsInstalled(true);
     markInstalled();
     setModalOpen(false);
+    trackPWA("pwa_install_already_installed_dismissed", { env });
   };
 
   if (variant === "mobile") {

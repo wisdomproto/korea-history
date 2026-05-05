@@ -71,6 +71,26 @@ export interface SearchKeywordData {
   users: number;
 }
 
+export interface PWAFunnelData {
+  /** 합계 — funnel step 별 */
+  totals: {
+    clicked: number;        // amber 버튼 클릭
+    modalOpened: number;    // iOS/inapp/desktop 가이드 모달 노출
+    accepted: number;       // Android native prompt 수락
+    dismissed: number;      // Android native prompt 거부
+    appInstalled: number;   // 브라우저 appinstalled 이벤트 (실제 설치 완료)
+    alreadyInstalledDismissed: number; // 모달 "이미 설치했어요" 클릭 (iOS 보완)
+  };
+  /** env (android/ios/inapp/desktop) 별 클릭 수 */
+  byEnv: Array<{ env: string; clicks: number; accepted: number; appInstalled: number }>;
+  /** 일자별 추이 */
+  daily: Array<{ date: string; clicked: number; appInstalled: number }>;
+  /** Android 전환율 (accepted / clicked) % */
+  androidConversionRate: number;
+  /** 전체 install 전환율 (appInstalled / clicked) % */
+  installConversionRate: number;
+}
+
 export interface DashboardData {
   overview: KpiData;
   channels: ChannelData[];
@@ -697,6 +717,171 @@ export async function getSearchKeywords(
     }))
     .filter((k) => k.term && k.term !== '(not set)' && k.term !== '(none)')
     .slice(0, 30);
+
+  const ttl = getCacheTtl(startDate, endDate);
+  if (ttl > 0) setCache(cacheKey, result, ttl);
+  return result;
+}
+
+// ─── PWA Install Funnel ───
+
+const PWA_EVENT_NAMES = [
+  'pwa_install_clicked',
+  'pwa_install_modal_opened',
+  'pwa_install_accepted',
+  'pwa_install_dismissed',
+  'pwa_app_installed',
+  'pwa_install_already_installed_dismissed',
+] as const;
+
+export async function getPWAEvents(
+  startDate: string,
+  endDate: string,
+): Promise<PWAFunnelData> {
+  const cacheKey = `pwa:${startDate}:${endDate}`;
+  const cached = getCached<PWAFunnelData>(cacheKey);
+  if (cached) return cached;
+
+  const analyticsClient = getClient();
+  const property = getPropertyId();
+
+  const tryReport = async (
+    opts: Parameters<typeof analyticsClient.runReport>[0],
+  ) => {
+    try {
+      const [r] = await analyticsClient.runReport(opts);
+      return r;
+    } catch (err) {
+      const msg = (err as Error).message || '';
+      // Custom dimension not registered in GA4 Admin yet → soft-fail.
+      if (msg.includes('INVALID_ARGUMENT') || msg.includes('customEvent')) return null;
+      throw err;
+    }
+  };
+
+  const [totalsRes, dailyRes, byEnvRes] = await Promise.all([
+    // ① Totals per event name
+    tryReport({
+      property,
+      dateRanges: [{ startDate, endDate }],
+      dimensions: [{ name: 'eventName' }],
+      metrics: [{ name: 'eventCount' }],
+      dimensionFilter: {
+        filter: {
+          fieldName: 'eventName',
+          inListFilter: { values: [...PWA_EVENT_NAMES] },
+        },
+      },
+    }),
+    // ② Daily trend (date × eventName)
+    tryReport({
+      property,
+      dateRanges: [{ startDate, endDate }],
+      dimensions: [{ name: 'date' }, { name: 'eventName' }],
+      metrics: [{ name: 'eventCount' }],
+      dimensionFilter: {
+        filter: {
+          fieldName: 'eventName',
+          inListFilter: {
+            values: ['pwa_install_clicked', 'pwa_app_installed'],
+          },
+        },
+      },
+      orderBys: [{ dimension: { dimensionName: 'date' } }],
+    }),
+    // ③ env breakdown (custom param `env`) — 안 등록되면 graceful null
+    tryReport({
+      property,
+      dateRanges: [{ startDate, endDate }],
+      dimensions: [{ name: 'eventName' }, { name: 'customEvent:env' }],
+      metrics: [{ name: 'eventCount' }],
+      dimensionFilter: {
+        filter: {
+          fieldName: 'eventName',
+          inListFilter: {
+            values: ['pwa_install_clicked', 'pwa_install_accepted', 'pwa_app_installed'],
+          },
+        },
+      },
+    }),
+  ]);
+
+  // Totals
+  const totals = {
+    clicked: 0,
+    modalOpened: 0,
+    accepted: 0,
+    dismissed: 0,
+    appInstalled: 0,
+    alreadyInstalledDismissed: 0,
+  };
+  for (const r of totalsRes?.rows || []) {
+    const name = r.dimensionValues?.[0]?.value || '';
+    const c = Number(r.metricValues?.[0]?.value || 0);
+    if (name === 'pwa_install_clicked') totals.clicked = c;
+    else if (name === 'pwa_install_modal_opened') totals.modalOpened = c;
+    else if (name === 'pwa_install_accepted') totals.accepted = c;
+    else if (name === 'pwa_install_dismissed') totals.dismissed = c;
+    else if (name === 'pwa_app_installed') totals.appInstalled = c;
+    else if (name === 'pwa_install_already_installed_dismissed')
+      totals.alreadyInstalledDismissed = c;
+  }
+
+  // Daily
+  const dailyMap = new Map<string, { clicked: number; appInstalled: number }>();
+  for (const r of dailyRes?.rows || []) {
+    const date = r.dimensionValues?.[0]?.value || '';
+    const name = r.dimensionValues?.[1]?.value || '';
+    const c = Number(r.metricValues?.[0]?.value || 0);
+    if (!dailyMap.has(date)) dailyMap.set(date, { clicked: 0, appInstalled: 0 });
+    const entry = dailyMap.get(date)!;
+    if (name === 'pwa_install_clicked') entry.clicked = c;
+    else if (name === 'pwa_app_installed') entry.appInstalled = c;
+  }
+  const daily = Array.from(dailyMap.entries())
+    .map(([date, v]) => ({
+      date: `${date.slice(0, 4)}-${date.slice(4, 6)}-${date.slice(6, 8)}`,
+      clicked: v.clicked,
+      appInstalled: v.appInstalled,
+    }))
+    .sort((a, b) => a.date.localeCompare(b.date));
+
+  // byEnv
+  const envMap = new Map<
+    string,
+    { clicks: number; accepted: number; appInstalled: number }
+  >();
+  for (const r of byEnvRes?.rows || []) {
+    const name = r.dimensionValues?.[0]?.value || '';
+    const envRaw = r.dimensionValues?.[1]?.value || '';
+    const env = envRaw === '(not set)' || !envRaw ? '기타' : envRaw;
+    const c = Number(r.metricValues?.[0]?.value || 0);
+    const entry = envMap.get(env) || { clicks: 0, accepted: 0, appInstalled: 0 };
+    if (name === 'pwa_install_clicked') entry.clicks += c;
+    else if (name === 'pwa_install_accepted') entry.accepted += c;
+    else if (name === 'pwa_app_installed') entry.appInstalled += c;
+    envMap.set(env, entry);
+  }
+  const byEnv = Array.from(envMap.entries())
+    .map(([env, v]) => ({ env, ...v }))
+    .sort((a, b) => b.clicks - a.clicks);
+
+  const androidConversionRate =
+    totals.clicked > 0
+      ? Math.round((totals.accepted / totals.clicked) * 1000) / 10
+      : 0;
+  const installConversionRate =
+    totals.clicked > 0
+      ? Math.round((totals.appInstalled / totals.clicked) * 1000) / 10
+      : 0;
+
+  const result: PWAFunnelData = {
+    totals,
+    byEnv,
+    daily,
+    androidConversionRate,
+    installConversionRate,
+  };
 
   const ttl = getCacheTtl(startDate, endDate);
   if (ttl > 0) setCache(cacheKey, result, ttl);
