@@ -29,6 +29,8 @@ interface QuestionCardProps {
   relatedNotes?: RelatedNoteLink[];
   /** Hide the in-card related notes link list (parent uses a drawer/panel instead) */
   hideRelatedNotes?: boolean;
+  /** Hide the in-card YouTube embed (parent renders it elsewhere, e.g. page bottom) */
+  hideYouTubeInCard?: boolean;
 }
 
 export default function QuestionCard({
@@ -37,6 +39,7 @@ export default function QuestionCard({
   youtube,
   relatedNotes,
   hideRelatedNotes,
+  hideYouTubeInCard,
 }: QuestionCardProps) {
   const [selected, setSelected] = useState<number | null>(null);
   const [revealed, setRevealed] = useState(false);
@@ -303,7 +306,7 @@ export default function QuestionCard({
           {/* Ad: after explanation, before youtube */}
           <AdSlot size="rectangle" slot={process.env.NEXT_PUBLIC_AD_SLOT_QUESTION} className="my-2" />
 
-          {youtube && (
+          {!hideYouTubeInCard && youtube && (
             <div className="rounded-2xl overflow-hidden border border-slate-200/60 bg-white shadow-md">
               <div className="flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-red-50 to-orange-50 border-b border-red-100/50">
                 <svg className="w-5 h-5 text-red-500" viewBox="0 0 24 24" fill="currentColor">

@@ -21,13 +21,15 @@ interface Props {
   onAnswered?: () => void;
   /** Hide the in-card related notes link list (parent uses a drawer/panel instead) */
   hideRelatedNotes?: boolean;
+  /** Hide the in-card YouTube embed (parent renders it elsewhere, e.g. page bottom) */
+  hideYouTubeInCard?: boolean;
 }
 
 /**
  * Wraps QuestionCard and auto-saves wrong answers to localStorage.
  * Also marks the question as answered for the nav dot coloring.
  */
-export default function QuestionWithTracking({ question, exam, youtube, relatedNotes, onAnswered, hideRelatedNotes }: Props) {
+export default function QuestionWithTracking({ question, exam, youtube, relatedNotes, onAnswered, hideRelatedNotes, hideYouTubeInCard }: Props) {
   const examSlug = useCurrentExamSlug();
   const subjectSlug = useCurrentSubjectSlug();
   const handleSubmit = (selectedAnswer: number, isCorrect: boolean) => {
@@ -58,5 +60,5 @@ export default function QuestionWithTracking({ question, exam, youtube, relatedN
     onAnswered?.();
   };
 
-  return <QuestionCard question={question} onAnswerSubmit={handleSubmit} youtube={youtube} relatedNotes={relatedNotes} hideRelatedNotes={hideRelatedNotes} />;
+  return <QuestionCard question={question} onAnswerSubmit={handleSubmit} youtube={youtube} relatedNotes={relatedNotes} hideRelatedNotes={hideRelatedNotes} hideYouTubeInCard={hideYouTubeInCard} />;
 }

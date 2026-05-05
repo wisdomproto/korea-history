@@ -10,7 +10,6 @@ import type { NoteContent } from "@/components/NoteDrawer";
 import QuestionNav from "@/components/QuestionNav";
 import PrevNextNav from "@/components/PrevNextNav";
 import ShareButtons from "@/components/ShareButtons";
-import QuestionSEOContent from "@/components/QuestionSEOContent";
 
 interface Props {
   params: Promise<{ examNumber: string; questionNumber: string }>;
@@ -98,7 +97,7 @@ export default async function QuestionPage({ params }: Props) {
         />
       </div>
 
-      {/* Question card + related note side panel (lg+) */}
+      {/* Question card + post-answer 통합 학습 박스 (노트 drawer + SEO 자료 inline) + 영상 (하단) */}
       <QuestionWithRelatedPanel
         question={question}
         exam={exam}
@@ -120,17 +119,11 @@ export default async function QuestionPage({ params }: Props) {
             })
             .filter((n): n is NoteContent => n !== null);
         })()}
-      />
-
-      {/* Server-rendered study material (SEO) — indexed by crawlers, collapsed for users */}
-      <QuestionSEOContent
-        exam={exam}
-        question={question}
-        related={getRelatedQuestionsInEra(
+        seoRelated={getRelatedQuestionsInEra(
           question.era,
           examNumber,
           questionNumber,
-          6
+          6,
         )}
       />
 
