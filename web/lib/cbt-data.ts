@@ -90,7 +90,35 @@ export async function getCbtManifest(stem: string): Promise<CbtCategoryManifest 
 }
 
 /**
+ * 원본 cbtbank.kr 이미지가 외부 hot-link을 모두 403으로 차단하므로,
+ * local_path를 기반으로 R2 미러 URL로 교체.
+ *
+ * local_path 형식 (Windows에서 다운로드): "images\\cz\\cz20250405\\cz20250405m1.gif"
+ * R2 key:                                  "cbt-images/cz/cz20250405/cz20250405m1.gif"
+ */
+function rewriteImg(img: CbtImage): CbtImage {
+  if (!img.local_path) return img;
+  const rel = img.local_path.replace(/\\/g, "/").replace(/^images\//, "");
+  return { ...img, url: `${R2_PUBLIC_URL}/cbt-images/${rel}` };
+}
+
+function rewriteImageUrls(data: CbtExamData): CbtExamData {
+  return {
+    ...data,
+    questions: data.questions.map((q) => ({
+      ...q,
+      images: q.images?.map(rewriteImg) ?? null,
+      choices: q.choices.map((c) => ({
+        ...c,
+        images: c.images?.map(rewriteImg) ?? null,
+      })),
+    })),
+  };
+}
+
+/**
  * CBT 시험 한 회차의 전체 문제.
+ * 이미지 URL은 R2 미러로 자동 교체 (cbtbank.kr 403 차단 우회).
  */
 export async function getCbtExam(stem: string, examId: string): Promise<CbtExamData | null> {
   const url = buildUrl(stem, `exams/${examId}.json`);
@@ -100,7 +128,8 @@ export async function getCbtExam(stem: string, examId: string): Promise<CbtExamD
       console.warn(`[CBT] exam ${stem}/${examId} → ${res.status}`);
       return null;
     }
-    return (await res.json()) as CbtExamData;
+    const data = (await res.json()) as CbtExamData;
+    return rewriteImageUrls(data);
   } catch (err) {
     console.error(`[CBT] exam ${stem}/${examId} fetch error:`, err);
     return null;
