@@ -149,8 +149,9 @@ korea_history/
 ### 문제 풀이 UX
 - MZ 감성 디자인: 선지 3D 프레스 효과, 정답 confetti + 스파클 버스트 + 점수 팝업, 오답 shake + 화면 플래시
 - **사운드 효과**: Web Audio API (외부 파일 없음) — 선택 클릭음, 정답 아르페지오, 오답 버저 (`web/lib/sounds.ts`)
-- 정답 확인 시 AI 해설 + YouTube 영상 해설 (최태성 1TV, 37개 회차)
-- **관련 요약노트 링크**: 정답 확인 후 문제 시대(era) → 노트 섹션 매핑으로 해당 시대 요약노트 바로가기
+- 정답 확인 시 AI 해설 (카드 안) + YouTube 영상 해설 (페이지 하단 inline, 최태성 1TV, 37개 회차)
+- **정답 후 학습 UX (Drawer + 통합 액션 박스, 2026-05-05)**: 정답 확인 후 카드 외부에 단일 amber 박스. 두 액션 칩 — `📝 관련 요약노트 (N편)` → **NoteDrawer** (우측 80vw 슬라이드, 모바일 100%) / `📚 학습 자료 펼쳐보기` → inline expand (QuestionSEOContent `bare` 모드). drawer는 모든 노트 일렬 펼침 + `note-content` 클래스로 globals.css 노트 스타일 재사용 + `expandAllDetails()` 정규식으로 모든 `<details>` 강제 open (표/타임라인 즉시 보임). ESC + backdrop close, body scroll lock. 핵심 파일: `web/components/{NoteDrawer, QuestionWithRelatedPanel, QuestionSEOContent}.tsx` + QuestionCard에 `hideRelatedNotes`/`hideYouTubeInCard` props. 한능검만 적용 (CBT는 v2 별도). 상세 [memory/note_drawer_action_box_v1.md]
+- **관련 요약노트 매핑** (서버): `web/lib/notes.ts` `getRelatedNotes(questionId)` — 문제 era → 노트 sectionId 자동 매칭 (max 3, 사전 인덱스). drawer는 매칭된 노트의 `note.content` HTML을 props로 받음
 - 문제 → 지문 이미지 → 선지 순서 (실제 시험지 형식)
 - **공유 버튼**: 카카오톡 공유, 링크 복사, 네이티브 공유 (모바일)
 
