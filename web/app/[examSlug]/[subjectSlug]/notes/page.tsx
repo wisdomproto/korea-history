@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     exam.subjects.required.find((r) => r.subjectId === subject.id) ??
     exam.subjects.selectable?.find((r) => r.subjectId === subject.id);
   const stem = ref?.stem ?? subject.questionPool?.stem;
-  const autoMeta = !civilNote && stem ? getAutoMeta(stem) : null;
+  const autoMeta = !civilNote && stem ? await getAutoMeta(stem) : null;
   const hasContent = subject.id === "korean-history" || Boolean(civilNote) || Boolean(autoMeta);
 
   return {
@@ -90,18 +90,20 @@ export default async function PerSubjectNotes({ params }: PageProps) {
     exam.subjects.required.find((r) => r.subjectId === subject.id) ??
     exam.subjects.selectable?.find((r) => r.subjectId === subject.id);
   const stem = ref?.stem ?? subject.questionPool?.stem;
-  const autoMeta = stem ? getAutoMeta(stem) : null;
+  const autoMeta = stem ? await getAutoMeta(stem) : null;
   if (autoMeta && stem) {
-    const autoTopics = getAutoTopics(stem);
-    const topicsWithQuestions = autoTopics.map((t) => ({
-      topicId: t.topicId,
-      ord: t.ord,
-      title: t.title,
-      keywords: t.keywords,
-      freq: t.freq,
-      chars: 0,
-      questionCount: getAutoQuestionsForTopic(stem, t.topicId, 100).length,
-    }));
+    const autoTopics = await getAutoTopics(stem);
+    const topicsWithQuestions = await Promise.all(
+      autoTopics.map(async (t) => ({
+        topicId: t.topicId,
+        ord: t.ord,
+        title: t.title,
+        keywords: t.keywords,
+        freq: t.freq,
+        chars: 0,
+        questionCount: (await getAutoQuestionsForTopic(stem, t.topicId, 100)).length,
+      })),
+    );
     return (
       <CivilNotesHome
         examLabel={exam.shortLabel}

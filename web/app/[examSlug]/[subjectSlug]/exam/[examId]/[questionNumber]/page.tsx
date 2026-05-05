@@ -87,9 +87,9 @@ export default async function CbtQuestionPage({ params }: PageProps) {
 
   // 자동 가이드 매칭 (수동 노트 없을 때, 730 stem 자동 분류)
   if (relatedNotes.length === 0 && stem) {
-    const autoMatched = getAutoRelatedTopicsForQuestion(stem, examId, qNum);
+    const autoMatched = await getAutoRelatedTopicsForQuestion(stem, examId, qNum);
     if (autoMatched.length > 0) {
-      const autoMeta = getAutoMeta(stem);
+      const autoMeta = await getAutoMeta(stem);
       relatedNotes = autoMatched.map((m) => ({
         id: `auto-${stem}-${m.topicId}`,
         title: m.title,

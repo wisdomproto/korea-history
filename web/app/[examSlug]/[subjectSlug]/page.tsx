@@ -88,8 +88,8 @@ export default async function SubjectLanding({ params }: PageProps) {
   const civilTopics = civilNoteMeta ? getNoteTopicsIndex(civilNoteMeta.slug) : [];
 
   // 자동 가이드 (730 stem 자동 분류, 수동 노트 없을 때 fallback)
-  const autoMeta = !civilNote ? getAutoMeta(stem) : null;
-  const autoTopics = autoMeta ? getAutoTopics(stem) : [];
+  const autoMeta = !civilNote ? await getAutoMeta(stem) : null;
+  const autoTopics = autoMeta ? await getAutoTopics(stem) : [];
 
   const hasNotes =
     (subject.id === "korean-history" && subject.notePool) ||
