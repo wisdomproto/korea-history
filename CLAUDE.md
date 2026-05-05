@@ -201,6 +201,29 @@ korea_history/
 - **적응형 타이포그래피**: hero h1 5단계 (`38/sm:48/md:56/lg:68/xl:84`) + `wordBreak: keep-all` + 각 line `inline-block; whiteSpace: nowrap`. Stats/H2/Pricing 모두 sm/lg breakpoint 추가 (태블릿 영역 부드럽게)
 - **Header 모바일 폭**: `gap-8 → gap-2 sm:gap-6 md:gap-8` + `px-6 → px-4 sm:px-6 md:px-8` + 햄버거 `ml-1.5` 제거 (헤더 install pill 들어갈 공간 확보)
 
+### 빌드 최적화 — Phase 2 ISR (2026-05-05)
+다중 시험 플랫폼으로 547 ExamType + 1,900 한능검 OG 이미지가 모두 SSG였던 부담을 ISR/dynamic으로 분산. ~2,447 prerender 페이지 절감 → Vercel 빌드 시간 12~40분 추정 절감.
+
+| 라우트 | 변경 |
+|---|---|
+| `web/app/[examSlug]/page.tsx` | 547 prerender → **1** (한능검만). `revalidate=86400 + dynamicParams=true + generateStaticParams=[{ examSlug: "한능검" }]`. 나머지 546 ExamType은 첫 요청 시 SSR + 1일 cache |
+| `web/app/exam/[examNumber]/[questionNumber]/opengraph-image.tsx` | 1,900 prerender → **0**. `runtime="nodejs" + revalidate=86400 + dynamicParams=true + generateStaticParams=[]`. SNS 첫 공유 시 generate → Vercel CDN cache |
+
+**유지된 SSG (작거나 SEO 핵심)**: 한능검 `exam/[examNumber]/[questionNumber]/page.tsx` (1,900 메인 트래픽), `notes/[noteId]` (87), `blog/[slug]` (22), `civil-notes/[slug]` (23), 회차/노트/exam OG (각 38/87/38).
+
+**이미 ISR/dynamic** (참고): `civil-notes/[slug]/[topicId]` (revalidate 86400 + dynamicParams), `[examSlug]/[subjectSlug]/*` (force-dynamic + revalidate 3600).
+
+**ISR 표준 패턴**:
+```tsx
+export const revalidate = 86400;
+export const dynamicParams = true;
+export function generateStaticParams() {
+  return [{ examSlug: "한능검" }];  // 인기 페이지만, 또는 [] for all-dynamic
+}
+```
+
+**다음 (Phase 3, 선택)**: GA4 트래픽 TOP N prerender (빌드 시 GA4 fetch + 인기 ExamType N개 generateStaticParams), 한능검 1,900 문제 ISR 검토 (메인 SEO라 신중).
+
 ## 핵심 기능 (저작도구)
 
 ### 사이드바 구조
