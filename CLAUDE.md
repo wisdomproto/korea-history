@@ -572,10 +572,10 @@ YOUTUBE_API_KEY=                         # 선택 — 채널 분석/경쟁사 Yo
 ### 데이터·코드
 - 본문 노트: `docs/{slug}-summary-note.html`
 - 본문 추출: `web/data/civil-notes/{slug}/` (sync-civil-notes.mjs + sync-civil-topics.mjs)
-- 자동 가이드: `web/data/civil-notes-auto/{stem}/` (build-auto-civil-guides.mjs, 457MB)
+- 자동 가이드 (656 stem, ~450MB): **R2 `civil-notes-auto/{stem}/{meta,topics-index,q-map,tq-map}.json`** (2026-05-05 이관, gitignored). 로컬 빌드는 `web/scripts/build-auto-civil-guides.mjs` → `npx tsx author-tool/scripts/upload-civil-notes-auto-to-r2.ts` 로 R2 sync (51.5s)
 - 매칭 인덱스: `web/data/civil-notes/question-topic-map.json` + `topic-questions-map.json`
 - 매핑: `web/lib/civil-notes.ts` SUBJECT_TO_NOTE + `web/lib/civil-notes-client.ts` (client-safe)
-- 자동 가이드 lib: `web/lib/civil-notes-auto.ts`
+- 자동 가이드 lib: `web/lib/civil-notes-auto.ts` — **async R2 fetch (Next.js fetch cache, revalidate 86400) + fs fallback** (dev / R2 미설정 시). 모든 함수 async — server component 전용 (`import "server-only"`)
 - SSG 페이지: `web/app/civil-notes/[slug]/[topicId]/page.tsx` (274 단원 long-tail SEO)
 - 저작도구 편집: `author-tool/server/routes/civil-notes.routes.ts` + `src/features/civil-notes/CivilNotesPanel.tsx`
 - prebuild·build에 자동 sync 포함
