@@ -6,7 +6,7 @@ import { getRelatedNotes, getNoteById } from "@/lib/notes";
 import { questionMeta, questionJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import BreadCrumb from "@/components/BreadCrumb";
 import QuestionWithRelatedPanel from "@/components/QuestionWithRelatedPanel";
-import type { NoteContent } from "@/components/RelatedNotePanel";
+import type { NoteContent } from "@/components/NoteDrawer";
 import QuestionNav from "@/components/QuestionNav";
 import PrevNextNav from "@/components/PrevNextNav";
 import ShareButtons from "@/components/ShareButtons";

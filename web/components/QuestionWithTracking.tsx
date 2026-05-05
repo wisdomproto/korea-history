@@ -19,13 +19,15 @@ interface Props {
   relatedNotes?: RelatedNoteLink[];
   /** Called once the user reveals the answer (any choice). Used by side panels to show post-answer content. */
   onAnswered?: () => void;
+  /** Hide the in-card related notes link list (parent uses a drawer/panel instead) */
+  hideRelatedNotes?: boolean;
 }
 
 /**
  * Wraps QuestionCard and auto-saves wrong answers to localStorage.
  * Also marks the question as answered for the nav dot coloring.
  */
-export default function QuestionWithTracking({ question, exam, youtube, relatedNotes, onAnswered }: Props) {
+export default function QuestionWithTracking({ question, exam, youtube, relatedNotes, onAnswered, hideRelatedNotes }: Props) {
   const examSlug = useCurrentExamSlug();
   const subjectSlug = useCurrentSubjectSlug();
   const handleSubmit = (selectedAnswer: number, isCorrect: boolean) => {
@@ -56,5 +58,5 @@ export default function QuestionWithTracking({ question, exam, youtube, relatedN
     onAnswered?.();
   };
 
-  return <QuestionCard question={question} onAnswerSubmit={handleSubmit} youtube={youtube} relatedNotes={relatedNotes} />;
+  return <QuestionCard question={question} onAnswerSubmit={handleSubmit} youtube={youtube} relatedNotes={relatedNotes} hideRelatedNotes={hideRelatedNotes} />;
 }

@@ -27,6 +27,8 @@ interface QuestionCardProps {
   onAnswerSubmit?: (selectedAnswer: number, isCorrect: boolean) => void;
   youtube?: YouTubeData | null;
   relatedNotes?: RelatedNoteLink[];
+  /** Hide the in-card related notes link list (parent uses a drawer/panel instead) */
+  hideRelatedNotes?: boolean;
 }
 
 export default function QuestionCard({
@@ -34,6 +36,7 @@ export default function QuestionCard({
   onAnswerSubmit,
   youtube,
   relatedNotes,
+  hideRelatedNotes,
 }: QuestionCardProps) {
   const [selected, setSelected] = useState<number | null>(null);
   const [revealed, setRevealed] = useState(false);
@@ -270,8 +273,8 @@ export default function QuestionCard({
             </div>
           )}
 
-          {/* Related notes */}
-          {relatedNotes && relatedNotes.length > 0 && (
+          {/* Related notes — hidden when parent provides a drawer/panel for the same data */}
+          {!hideRelatedNotes && relatedNotes && relatedNotes.length > 0 && (
             <div className="space-y-1.5">
               <div className="flex items-center gap-2 px-1">
                 <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center shrink-0">
