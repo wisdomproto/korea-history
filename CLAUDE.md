@@ -202,8 +202,8 @@ korea_history/
 모바일 "홈 화면에 추가" 흐름. Phase 1 — manifest + 아이콘 + 헤더 install 버튼 + 환경별 가이드 모달 + localStorage 영구 hidden.
 - **manifest**: `web/public/manifest.json` — name=`기출노트`, theme/background=`#F5EFE4` (cream), 아이콘 192/512
 - **아이콘**: `web/public/{icon-192,icon-512,apple-touch-icon,favicon-32,favicon-16}.png` — `logo.png` 1024 원본을 ImageMagick으로 리사이즈 (정식 아이콘 받으면 ImageMagick 한 줄로 5사이즈 일괄 생성)
-- **install button** (`web/components/PWAInstallButton.tsx`): 데스크톱 헤더 게시판 옆 amber 그라데이션 pill (좌 흰원 ✚ + "홈 화면에 추가" + 우 디바이더 + ⬇️) + 모바일 햄버거 좌측 컴팩트 pill (다운로드 아이콘 생략)
-- **install modal** (`web/components/PWAInstallModal.tsx`): 환경별 4종 가이드 (Android native / iOS 3-step + SVG 아이콘 / 인스타·카톡 인앱 → 외부 브라우저 열기 / 데스크톱 주소창 install). 모바일 bottom sheet, 데스크톱 center card
+- **install button** (`web/components/PWAInstallButton.tsx`): 데스크톱 헤더 게시판 옆 amber 그라데이션 pill (좌 흰원 ✚ + "홈 화면에 추가" + 우 디바이더 + ⬇️) + 모바일 햄버거 좌측 컴팩트 pill (다운로드 아이콘 생략). **클릭 동작**: Android + Desktop(크롬/엣지)은 `beforeinstallprompt` 캡처돼있으면 `prompt()` 직접 호출 → 브라우저 네이티브 설치 다이얼로그. iOS / 인앱 / prompt 미캡처 케이스만 가이드 모달로 폴백 (2026-05-07 데스크톱도 native 경로 추가, 모달은 fallback로만)
+- **install modal** (`web/components/PWAInstallModal.tsx`): 환경별 가이드 (iOS 3-step + SVG / 인스타·카톡 인앱 → 외부 브라우저 / Android·Desktop fallback). 핵심: **`createPortal`로 `document.body`에 직접 렌더** — Header가 `sticky z-50 + backdrop-blur-xl`로 stacking context를 만들기 때문에 그 안에 자식으로 두면 모달 z-index가 헤더 밖으로 못 올라옴. 모달 위치는 `position: absolute; top: 40px; left: 50%; transform: translateX(-50%); maxHeight: calc(100vh - 80px); overflowY: auto` (자연 스크롤). 데스크톱 가이드의 "모바일이 더 효과적" 문구 제거 (PC 50% 사용자)
 - **환경 감지**: UA 정규식 (`Instagram|FB_IAB|FBAN|FBAV|KAKAOTALK|NAVER\(inapp|Line\/`) + `display-mode: standalone` 체크 + `navigator.standalone` (iOS)
 - **영구 hidden**: `localStorage.gcnote_pwa_installed = "1"` — 3종 트리거 (Android prompt 수락 / `appinstalled` 이벤트 / 모달 "이미 설치했어요" 클릭, iOS 자동 감지 불가 보완 경로)
 - **layout.tsx**: `metadata.manifest`, `metadata.icons` (16/32/192/512/apple), `metadata.appleWebApp` (capable + title), `viewport.themeColor` 추가. 기존 SEO 메타는 무손상 (한능검 키워드 그대로)

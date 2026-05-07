@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 type Env = "android" | "ios" | "inapp" | "desktop" | "unknown";
 
@@ -12,6 +13,9 @@ interface Props {
 }
 
 export default function PWAInstallModal({ env, open, onClose, onAlreadyInstalled }: Props) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -25,25 +29,33 @@ export default function PWAInstallModal({ env, open, onClose, onAlreadyInstalled
     };
   }, [open, onClose]);
 
-  if (!open) return null;
+  if (!open || !mounted) return null;
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-end md:items-center justify-center"
-      style={{ background: "rgba(20, 15, 10, 0.55)", backdropFilter: "blur(6px)" }}
+      className="fixed inset-0 z-[100]"
+      style={{
+        background: "rgba(20, 15, 10, 0.55)",
+        backdropFilter: "blur(6px)",
+      }}
       onClick={onClose}
     >
       <div
-        className="w-full md:max-w-[440px] md:mx-4 animate-fade-in"
+        className="animate-fade-in"
         style={{
-          background: "var(--gc-paper)",
-          borderRadius: "20px 20px 0 0",
-          boxShadow: "0 -10px 40px rgba(20,15,10,0.25)",
+          position: "absolute",
+          top: 40,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "min(440px, calc(100% - 32px))",
+          maxHeight: "calc(100vh - 80px)",
+          overflowY: "auto",
+          background: "#FAF6EE",
+          borderRadius: 20,
+          boxShadow: "0 10px 40px rgba(20,15,10,0.25)",
           padding: "24px 24px 32px",
           fontFamily: "var(--gc-font-sans)",
           color: "var(--gc-ink)",
-          maxHeight: "85vh",
-          overflowY: "auto",
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -170,7 +182,8 @@ export default function PWAInstallModal({ env, open, onClose, onAlreadyInstalled
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 
@@ -299,9 +312,6 @@ function DesktopGuide() {
           icon={<span style={{ fontSize: 24 }}>💻</span>}
         />
       </ol>
-      <p style={{ fontSize: 12, color: "var(--gc-subtle)", lineHeight: 1.6 }}>
-        ⚠️ 모바일이 더 효과적이에요 — 폰으로 <b>gcnote.co.kr</b> 접속 후 다시 시도해 보세요.
-      </p>
     </div>
   );
 }

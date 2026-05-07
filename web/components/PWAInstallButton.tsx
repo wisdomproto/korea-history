@@ -119,7 +119,8 @@ export default function PWAInstallButton({ variant = "desktop" }: Props) {
 
   const onClick = async () => {
     trackPWA("pwa_install_clicked", { env, variant });
-    if (env === "android" && deferredPrompt) {
+    // Android + Desktop(크롬/엣지): beforeinstallprompt 캡처돼있으면 네이티브 다이얼로그 직접 호출
+    if ((env === "android" || env === "desktop") && deferredPrompt) {
       try {
         await deferredPrompt.prompt();
         const { outcome } = await deferredPrompt.userChoice;
@@ -137,7 +138,7 @@ export default function PWAInstallButton({ variant = "desktop" }: Props) {
       }
       return;
     }
-    // iOS / 인앱 / 데스크톱(prompt 없음) → 가이드 모달
+    // iOS(직접 prompt 불가) / 인앱(브라우저 자체가 PWA 미지원) / 데스크톱이지만 prompt 미캡처 → 가이드 모달
     setModalOpen(true);
     trackPWA("pwa_install_modal_opened", { env, reason: "no_prompt" });
   };
