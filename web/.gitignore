@@ -7,3 +7,7 @@ out/
 # 자동 단권화 가이드 (656 stem, 449.7MB) — R2가 source of truth, 2026-05-05 이관
 # 로컬 빌드는 build-auto-civil-guides.mjs로 재생성, 업로드는 author-tool/scripts/upload-civil-notes-auto-to-r2.ts
 data/civil-notes-auto/
+
+# 9급 manual 단권화 노트 — `docs/{slug}-summary-note.html`이 source.
+# prebuild의 sync-civil-notes.mjs + sync-civil-topics.mjs로 매 빌드 시 재생성.
+data/civil-notes/

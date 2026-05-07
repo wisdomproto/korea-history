@@ -8,6 +8,7 @@ import {
   getNoteForSubjectLabel,
   getNoteTopicsIndex,
   getQuestionsForTopic,
+  getCivilTopic,
 } from "@/lib/civil-notes";
 import {
   getAutoMeta,
@@ -15,6 +16,7 @@ import {
   getAutoQuestionsForTopic,
 } from "@/lib/civil-notes-auto";
 import CivilNotesHome from "./CivilNotesHome";
+import CivilNoteCombined from "./CivilNoteCombined";
 
 export const dynamic = "force-dynamic";
 
@@ -59,25 +61,34 @@ export default async function PerSubjectNotes({ params }: PageProps) {
     return <NotesHome notes={notes} grouped={grouped} />;
   }
 
-  // 9급/자격증 본문 단권화 매칭
+  // 9급/자격증 본문 단권화 매칭 — 모든 단원 통합 accordion (한능검 NoteContent 패턴)
   const civilNoteMeta = getNoteForSubjectLabel(subject.label);
   if (civilNoteMeta) {
-    const topics = getNoteTopicsIndex(civilNoteMeta.slug);
-    const topicsWithQuestions = topics.map((t) => ({
-      ...t,
-      questionCount: getQuestionsForTopic(civilNoteMeta.slug, t.topicId, 100).length,
-    }));
+    const topicsIndex = getNoteTopicsIndex(civilNoteMeta.slug);
+    // 각 단원 본문 HTML 로드 (sync, fs.readFileSync — 단원 13개 내외라 비용 무시 가능)
+    const topicsFull = topicsIndex
+      .map((t) => getCivilTopic(civilNoteMeta.slug, t.topicId))
+      .filter((t): t is NonNullable<typeof t> => t != null);
+    const noteStyle = topicsFull[0]?.style ?? "";
     return (
-      <CivilNotesHome
+      <CivilNoteCombined
         examLabel={exam.shortLabel}
         examMain={exam.routes.main}
         subjectLabel={subject.label}
         subjectSlug={subject.slug}
         noteSlug={civilNoteMeta.slug}
-        topics={topicsWithQuestions}
-        mode="manual"
+        noteStyle={noteStyle}
+        topics={topicsFull.map((t) => ({
+          topicId: t.topicId,
+          ord: t.ord,
+          title: t.title,
+          keywords: t.keywords,
+          freq: t.freq,
+          chars: t.chars,
+          html: t.html,
+        }))}
         meta={{
-          totalTopics: topics.length,
+          totalTopics: topicsIndex.length,
           chars: civilNoteMeta.chars,
           subtitle: civilNoteMeta.subtitle,
         }}

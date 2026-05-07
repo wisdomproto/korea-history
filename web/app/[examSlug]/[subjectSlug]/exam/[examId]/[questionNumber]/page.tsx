@@ -5,10 +5,14 @@ import { getExamTypeBySlug, getSubjectBySlug } from "@/lib/exam-types";
 import { getCbtExam, getCbtManifest } from "@/lib/cbt-data";
 import { adaptCbtQuestion, adaptCbtExamMeta } from "@/lib/cbt-adapter";
 import QuestionWithTracking from "@/components/QuestionWithTracking";
+import CivilLearnPanel from "@/components/CivilLearnPanel";
+import type { NoteContent } from "@/components/NoteDrawer";
 import BreadCrumb from "@/components/BreadCrumb";
 import {
   getRelatedTopicsForQuestion,
   getRelatedTopicsForQuestionFromIndex,
+  getNoteForSubjectLabel,
+  getCivilTopic,
 } from "@/lib/civil-notes";
 import { getAutoRelatedTopicsForQuestion, getAutoMeta } from "@/lib/civil-notes-auto";
 
@@ -132,11 +136,47 @@ export default async function CbtQuestionPage({ params }: PageProps) {
           </Link>
         </div>
 
-        <QuestionWithTracking
-          question={question}
-          exam={adaptedExam}
-          relatedNotes={relatedNotes.length > 0 ? relatedNotes : undefined}
-        />
+        {(() => {
+          // Manual 단권화 노트 매칭이 있을 때만 drawer 활성화 (full HTML 필요).
+          // auto guide 매칭이거나 매칭 0이면 기존 링크형 카드 fallback.
+          const civilNote = getNoteForSubjectLabel(subject.label);
+          if (civilNote && relatedNotes.length > 0 && !relatedNotes[0].id.startsWith("auto-")) {
+            const topicsFull = relatedNotes
+              .map((rn) => getCivilTopic(civilNote.slug, rn.sectionId))
+              .filter((t): t is NonNullable<typeof t> => t != null);
+            const noteContents: NoteContent[] = topicsFull.map((t) => ({
+              id: `${civilNote.slug}-${t.topicId}`,
+              title: t.title,
+              eraLabel: `${civilNote.subject}${t.freq > 0 ? ` · 출제 ${t.freq}회` : ""}`,
+              sectionId: t.topicId,
+              content: t.html,
+            }));
+            // topic.style은 노트 단위 동일 — 첫 번째에서 추출, <style> 래퍼 제거 + \r\n → \n
+            const rawStyle = topicsFull[0]?.style ?? "";
+            const cleanStyle = rawStyle
+              .replace(/^[\s\S]*?<style[^>]*>/, "")
+              .replace(/<\/style>[\s\S]*$/, "")
+              .replace(/\r\n/g, "\n");
+            return (
+              <CivilLearnPanel
+                question={question}
+                exam={adaptedExam}
+                relatedNotes={relatedNotes}
+                noteContents={noteContents}
+                noteStyleCSS={cleanStyle}
+                notesIndexHref={`${exam.routes.main}/${subject.slug}/notes`}
+              />
+            );
+          }
+          // fallback: 기존 링크형 (auto guide / 매칭 없음)
+          return (
+            <QuestionWithTracking
+              question={question}
+              exam={adaptedExam}
+              relatedNotes={relatedNotes.length > 0 ? relatedNotes : undefined}
+            />
+          );
+        })()}
 
         <nav className="mt-8 flex items-center justify-between gap-2">
           {prev ? (

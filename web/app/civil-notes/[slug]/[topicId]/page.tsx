@@ -150,8 +150,8 @@ export default async function TopicPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
-      {/* 노트 자체 스타일 (cream/amber 디자인 시스템) */}
-      <style dangerouslySetInnerHTML={{ __html: topic.style }} />
+      {/* 노트 자체 스타일 (cream/amber 디자인 시스템) — Windows에서 읽힌 \r\n을 \n로 정규화해서 hydration mismatch 방지 */}
+      <style dangerouslySetInnerHTML={{ __html: topic.style.replace(/\r\n/g, "\n") }} />
 
       {/* Generic NotesShell — 좌측 사이드바 + 우측 본문 (한능검과 동일 패턴) */}
       <NotesShell

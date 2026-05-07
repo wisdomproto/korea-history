@@ -15,6 +15,11 @@ interface Props {
   noteContents: NoteContent[];
   open: boolean;
   onClose: () => void;
+  /** Extra CSS to inject (e.g. civil topic embedded styles).
+   *  When set, `.note-content` class is suppressed to avoid override conflicts. */
+  extraCSS?: string;
+  /** href resolver for "전체 노트 페이지로" link. Default `/notes/${id}` (한능검). */
+  fullPageHref?: (note: NoteContent) => string;
 }
 
 /**
@@ -27,7 +32,13 @@ interface Props {
  * - Inner <details> elements are forced open so users see all content.
  * - Closes on ESC, backdrop click, or ✕ button. Body scroll locked.
  */
-export default function NoteDrawer({ noteContents, open, onClose }: Props) {
+export default function NoteDrawer({
+  noteContents,
+  open,
+  onClose,
+  extraCSS,
+  fullPageHref,
+}: Props) {
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -58,6 +69,8 @@ export default function NoteDrawer({ noteContents, open, onClose }: Props) {
         }}
         onClick={(e) => e.stopPropagation()}
       >
+        {/* civil topic embedded CSS (cream/amber design system) */}
+        {extraCSS && <style dangerouslySetInnerHTML={{ __html: extraCSS }} />}
         {/* Header */}
         <div className="px-6 py-4 border-b border-amber-100 bg-gradient-to-br from-amber-50 to-orange-50 shrink-0 flex items-center gap-3">
           <span className="text-xl">📝</span>
@@ -111,11 +124,11 @@ export default function NoteDrawer({ noteContents, open, onClose }: Props) {
               </header>
               <div className="px-6 pb-6">
                 <div
-                  className="note-content"
+                  className={extraCSS ? undefined : "note-content"}
                   dangerouslySetInnerHTML={{ __html: expandAllDetails(note.content) }}
                 />
                 <Link
-                  href={`/notes/${note.id}`}
+                  href={fullPageHref ? fullPageHref(note) : `/notes/${note.id}`}
                   className="inline-flex items-center gap-1.5 mt-6 text-sm font-bold text-amber-700 hover:text-amber-900 transition-colors"
                 >
                   전체 노트 페이지로

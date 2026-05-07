@@ -615,6 +615,28 @@ YOUTUBE_API_KEY=                         # 선택 — 채널 분석/경쟁사 Yo
 - 저작도구 편집: `author-tool/server/routes/civil-notes.routes.ts` + `src/features/civil-notes/CivilNotesPanel.tsx`
 - prebuild·build에 자동 sync 포함
 
+### 통합 accordion 노트 페이지 (2026-05-07)
+**과목 단위 노트 인덱스** `/{examSlug}/{subjectSlug}/notes` — 기존 13개 단원 별도 URL 분산 → 한 페이지 통합 accordion. 한능검 한 노트 ≈ 공무원 한 과목 (분량 비슷, 단원이 sub-section 역할).
+- 컴포넌트: `web/app/[examSlug]/[subjectSlug]/notes/CivilNoteCombined.tsx`
+- 우측 본문에 모든 단원 `<details data-civil-topic>`로 wrap, 마운트 시 자동 펼침 + "전체 펼치기/닫기" 툴바 (한능검 NoteContent 패턴)
+- IntersectionObserver 스크롤 스파이 — viewport 상단 25~30% 영역의 단원이 사이드바에 active (amber 하이라이트)
+- 단원 카드: 좌측 색상 accent (10색 cycling), 펼친 상태일 때 cream→amber 그라데이션 + 진한 amber 제목 + 🔥 출제빈도 pill
+- topic.style은 `<style>` 래퍼 + `\r\n` 정규화 후 inject (중첩 태그 + Windows hydration mismatch 방지)
+- 개별 단원 URL `/civil-notes/{slug}/{topicId}` 그대로 유지 (SEO 보존, sidebar는 `#topic-{id}` anchor jump)
+- manual 노트만 통합 accordion, auto 가이드(656 stem)는 기존 `CivilNotesHome` 카드 그대로
+
+### 시험 페이지 NoteDrawer (2026-05-07)
+공무원/자격증 시험 문제 풀이 후 "관련 단원" 칩 → 우측 drawer 슬라이드 (한능검 패턴 동일).
+- 컴포넌트: `web/components/CivilLearnPanel.tsx` (한능검 `QuestionWithRelatedPanel` 패턴)
+- `NoteDrawer.tsx`에 `extraCSS?` + `fullPageHref?` 옵션 prop 추가 — 한능검은 globals.css `.note-content`로, 공무원은 `topic.style` inject + `.note-content` class 미적용 (충돌 회피)
+- manual 노트 매칭(getNoteForSubjectLabel + getCivilTopic)이 있을 때만 drawer, auto guide / 매칭 0이면 기존 링크형 카드 fallback
+- "전체 노트 페이지로" 링크는 통합 accordion `/{examSlug}/{subjectSlug}/notes#topic-{id}`로 이동
+- 한능검 SEO 학습자료 패널(`QuestionSEOContent`)은 era/category context 데이터가 한능검 전용이라 미포팅 (Phase 2 별도)
+
+### 데이터 격차 (2026-05-07 측정)
+- 한능검: 87 노트, 1,731,241자, 노트당 평균 19,899자, 노트당 평균 130 문제 매칭 (manual)
+- 공무원/자격증: 23 과목, 287 단원, 466,575자 (한능검의 27%), 단원당 평균 1,626자 (한능검 노트의 8%), 매칭은 키워드 자동 (build-question-topic-index.mjs)
+
 ### Phase 진행 상태
 - ✅ Phase A: 자동 인프라 (656 stem · 7,893 토픽 · 989,357 문제 매칭)
 - ✅ Phase B: 7급 헌법 (나머지는 자동 가이드 사용)
