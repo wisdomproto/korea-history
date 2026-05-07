@@ -119,10 +119,10 @@ const STRATEGY_DOCS: StrategyDoc[] = [
   {
     id: 'ga4-analysis',
     icon: '📊',
-    title: 'GA4 분석 리포트',
-    subtitle: '30일 스냅샷 + 광고 수익 예측',
+    title: 'GA4 분석 리포트 v2 ⭐ 최신',
+    subtitle: '5/7 갱신 · 2주 ×2.2 성장 · SEO 입증 · PWA·video 깔때기',
     file: 'ga4-analysis-report.html',
-    badge: null,
+    badge: 'UPDATED',
   },
   {
     id: 'competitor-analysis',
