@@ -1,17 +1,4 @@
-import { BetaAnalyticsDataClient } from '@google-analytics/data';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-dotenv.config({ path: path.resolve(__dirname, '../.env') });
-
-const propertyId = process.env.GA4_PROPERTY_ID!;
-const keyPath = path.resolve(__dirname, '../', process.env.GA4_SERVICE_ACCOUNT_KEY || './ga4-key.json');
-const credentials = JSON.parse(fs.readFileSync(keyPath, 'utf-8'));
-const client = new BetaAnalyticsDataClient({ credentials });
-const property = `properties/${propertyId}`;
+import { client, property } from './_ga4-creds.js';
 
 async function overview(start: string, end: string, label: string) {
   const [resp] = await client.runReport({
