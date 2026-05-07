@@ -1,0 +1,143 @@
+당신은 9급 공무원 시험 준비생을 위한 한국 최고의 행정법 단권화 노트 작성자입니다.
+
+# 작업
+주어진 [SEED 단원]을 [REFERENCE 한능검 노트 구조]를 따라 약 18,000~22,000자 분량의 풍부한 단권화 노트로 확장하세요.
+
+# 출력 형식 — HTML 본문만
+- 출력은 `<details>...</details>` 들의 연속으로 시작하는 순수 HTML 문자열. 전체를 ```html ... ``` 펜스로 감싸지 말고 raw HTML만.
+- 최상위 5~7개 `<details><summary><strong>아이콘 + 큰 섹션명</strong></summary><div class="content">...</div></details>`
+- 각 최상위 details 안에 2~5개 `<details class="sub-details"><summary>세부 주제</summary><div class="content">...</div></details>` 중첩
+- 핵심 용어는 `<span class="keyword">용어명</span>` 으로 감싸기 (시각적 강조 + 검색)
+- 결정적 사실은 `<span class="highlight">사실</span>` 으로 감싸기 (노란 배경 처리됨)
+- 비교·구분이 필요한 곳은 `<table>` (`<thead><tr><th>` 헤더 + `<tbody><tr><td>` 행) 사용
+- 절차/순서는 `<ol>` 또는 `<table>` 시기 컬럼으로 표현
+- `<h4>` 는 sub-details 내부에서만 사용 (계층 혼란 방지)
+- `<ul>` 은 짧은 리스트, 표가 더 적절하면 표로
+
+# 콘텐츠 깊이
+- 단순 정의 나열 X. 핵심 개념 → 분류 → 효력 → 판례 요지 → 빈출 함정 → 비교표 흐름.
+- 9급 시험 빈출 포인트 강조 (수험서/공직 합격노트 수준).
+- 판례는 핵심 판시사항만 1~2줄로 요약 (사건번호 X, 판시 요지 ○).
+- 시험에 자주 나오는 함정/지문/오답유형도 별도 details로 정리.
+
+# SEED (현재 보유 본문 — 부족함, 이걸 골격으로 8~10배 확장)
+TITLE: 1. 행정행위의 종류·효력·인허가의제
+KEYWORDS: 행정행위, 법률행위적, 준법률행위적, 기속행위, 재량행위, 재량의 일탈·남용 여부, 인허가의제 기준, 관련 인허가 요건, 관련 인허가의 사후관리
+HTML:
+
+    <div class="topic-head">
+      <h2 class="topic-name">1. 행정행위의 종류·효력·인허가의제</h2>
+      <div>
+        <span class="topic-num">TOPIC 01</span>
+        <span class="topic-freq"><span class="badge badge-freq hot">87회 / 10년</span></span>
+      </div>
+    </div>
+
+    <h3>핵심 개념</h3>
+    <p><strong>행정행위</strong>란 행정청이 법 아래에서 구체적 사실에 관한 법집행으로서 행하는 권력적·단독적인 공법행위를 말한다. 강학상 개념이며 실정법상 "처분"과 대체로 일치한다.</p>
+
+    <h3>분류</h3>
+    <h4>① 법률행위적 행정행위 / 준법률행위적 행정행위</h4>
+    <ul>
+      <li><strong>법률행위적</strong>: 효과의사 표시 — 명령적 행위(하명·허가·면제), 형성적 행위(특허·인가·대리)</li>
+      <li><strong>준법률행위적</strong>: 의사 외 정신작용 표시 — 확인·공증·통지·수리</li>
+    </ul>
+
+    <h4>② 기속행위 vs 재량행위</h4>
+    <ul>
+      <li><strong>기속행위</strong>: 법이 일의적으로 정한 효과만 발생. 사법심사 시 법원이 결론을 직접 도출.</li>
+      <li><strong>재량행위</strong>: 행정청에게 효과 결정의 자유 부여. 사법심사 시 <strong>재량의 일탈·남용 여부</strong>만 심사.</li>
+      <li>구분 기준: ① 법문언, ② 행위의 성질(수익적·침익적), ③ 기본권 관련성, ④ 공익 관련성을 종합 고려 [판례].</li>
+    </ul>
+
+    <h4>③ 수익적·침익적·복효적 행정행위</h4>
+    <ul>
+      <li>수익적: 허가·특허·인가·면제. 직권취소·철회 시 신뢰보호 강함.</li>
+      <li>침익적: 하명·금지. 사전통지 + 의견제출 절차 필수 (행정절차법 §21·§22).</li>
+      <li>복효적(제3자효): 한 행위가 누군가에게 수익, 누군가에게 침익. 인근주민 원고적격 인정.</li>
+    </ul>
+
+    <h3>인허가의제</h3>
+    <p>주된 인허가를 받으면 다른 법률에서 정한 관련 인허가를 함께 받은 것으로 보는 제도. 행정기본법 §24~§26에 일반조항 신설(2023.3.24. 시행).</p>
+
+    <div class="law-box">
+      <div class="law-box-title">📖 행정기본법 인허가의제</div>
+      <p style="margin:0;">
+        <code>제24조</code> <strong>인허가의제 기준</strong>: 주된 인허가를 받으면 그 인허가에 관한 법률에서 정한 다른 인허가(관련 인허가)를 받은 것으로 본다.<br/>
+        <code>제25조</code> <strong>관련 인허가 요건</strong>: 신청 시 관련 인허가에 필요한 서류 첨부, 관계 행정청 협의(20일 이내) 절차.<br/>
+        <code>제26조</code> <strong>관련 인허가의 사후관리</strong>: 의제된 인허가의 직권취소·철회는 그 인허가 행정청이 직접 수행.
+      </p>
+    </div>
+
+    <div class="case-box">
+      <div class="case-box-title">⚖️ 핵심 판례</div>
+      <ul style="margin:0; padding-left: 20px;">
+        <li><strong>대판 2018.11.29. 2016두38792</strong>: 의제된 관련 인허가에 하자가 있어도 주된 인허가의 효력에는 영향 X (의제효 제한설).</li>
+        <li><strong>대판 2017.9.12. 2017두45131</strong>: 주된 인허가 거부 시 관련 인허가에 대해서도 별도 거부처분 없이 한 번에 다툼 가능.</li>
+      </ul>
+    </div>
+
+    <div class="trap-box">
+      <div class="trap-box-title">⚠️ 자주 틀리는 함정</div>
+      <ul style="margin:0; padding-left: 20px;">
+        <li>"기속행위는 법원이 행정청의 판단을 존중한다" → ❌ 기속행위는 법원이 결론을 직접 판단.</li>
+        <li>"인허가의제 시 관련 인허가에 대한 별도 사전통지 필요" → ❌ 주된 인허가 절차로 갈음.</li>
+        <li>"의제된 관련 인허가의 하자가 주된 인허가 효력에도 영향" → ❌ (대판 2016두38792).</li>
+      </ul>
+    </div>
+
+    <div class="exam-box">
+      <div class="exam-box-title">📌 대표 출제 (10회 중)</div>
+      2025-6 (행정행위) · 2025-8 (기속·재량) · 2025-20 (인허가의제) · 2024-18 (행정행위) · 2023-7 (하자) · 2022-2 (효력) · 2022-3 (다단계) · 2021-6 (인허가의제) · 2019-2 (효력) · 2018-9 (확약) · 2018-10 (효력발생요건) · 2017-1 (개인적 공권)
+    </div>
+
+    <div class="footnote">
+      <strong>출처</strong>:
+      <ul>
+        <li>행정기본법 [<a href="https://www.law.go.kr/법령/행정기본법" target="_blank">law.go.kr/법령/행정기본법</a>] §24~§26</li>
+        <li>대법원 종합법률정보 [<a href="https://glaw.scourt.go.kr" target="_blank">glaw.scourt.go.kr</a>] 2016두38792, 2017두45131</li>
+      </ul>
+    </div>
+  
+
+# REFERENCE — 한능검 노트 구조 (s5-04 대한제국 노트 일부, 풍부한 details/table/keyword/highlight 사용 패턴)
+<details><summary><strong>🏛️ 대한제국과 국권 피탈</strong></summary><div class="content">
+
+    <details class="sub-details"><summary>대한제국 수립과 광무개혁</summary><div class="content">
+        <ul>
+            <li><span class="keyword">아관파천</span> (고종 러시아 공사관 피신) 이후 <span class="keyword">고종</span> 환궁</li>
+            <li>1897년 <span class="keyword">대한제국</span> 선포</li>
+            <li><span class="keyword">광무개혁</span> 시행: 러시아와 일본의 팽팽한 균형 속에서 개혁 여지 확보</li>
+        </ul>
+    </div></details>
+
+    <details class="sub-details"><summary>러일전쟁과 국권 침탈의 시작</summary><div class="content">
+        <h4>러일전쟁 (1904~1905)</h4>
+        <ul>
+            <li>배경: 러시아와 일본의 팽팽한 균형 붕괴, 러시아의 <span class="keyword">용암포 조차 사건</span> (1903), 일본의 삼국간섭 복수심</li>
+            <li>결과: <span class="highlight">일본 승리</span> → 국권 피탈 가속화</li>
+        </ul>
+        <h4>국권 피탈 과정</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>시기</th>
+                    <th>조약/사건</th>
+                    <th>주요 내용</th>
+                    <th>특징</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1904년</td>
+                    <td><span class="keyword">한일 의정서</span></td>
+                    <td><span class="highlight">군사용지</span> 자유 사용 허용</td>
+                    <td>러일전쟁 중 군사
+
+
+<details>
+  <summary><strong>🖼️ 참고 이미지</strong></summary>
+  <div class="content">
+    <div style="margin:8px 0"><img src="data:image/jpeg;base64,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
+
+# 시작 — 반드시 raw HTML만 출력 (마크다운 펜스 금지, 설명 금지)

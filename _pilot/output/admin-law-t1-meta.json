@@ -1,0 +1,33 @@
+{
+  "seed": {
+    "chars": 1978,
+    "title": "1. 행정행위의 종류·효력·인허가의제"
+  },
+  "output": {
+    "chars": 42398,
+    "detailsTop": 6,
+    "detailsSub": 24,
+    "tables": 6,
+    "keywords": 90,
+    "highlights": 207,
+    "h4s": 53
+  },
+  "gemini": {
+    "model": "gemini-2.5-flash",
+    "durationSec": 107.4,
+    "promptTokenCount": 5842,
+    "candidatesTokenCount": 15351,
+    "totalTokenCount": 26358,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 5842
+      }
+    ],
+    "thoughtsTokenCount": 5165,
+    "serviceTier": "standard"
+  },
+  "ratio": {
+    "sizeMultiple": "21.4x"
+  }
+}
