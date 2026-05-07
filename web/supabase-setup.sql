@@ -53,6 +53,9 @@ ALTER TABLE comments ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "read_all_comments" ON comments FOR SELECT USING (true);
 CREATE POLICY "insert_all_comments" ON comments FOR INSERT WITH CHECK (true);
 
+-- 명시 GRANT (RLS 정책만으로는 anon role 권한 부족)
+GRANT SELECT, INSERT ON comments TO anon, authenticated;
+
 -- 댓글 삭제 함수
 CREATE OR REPLACE FUNCTION delete_comment_with_password(p_id UUID, p_password TEXT)
 RETURNS BOOLEAN
@@ -62,3 +65,5 @@ BEGIN
   RETURN FOUND;
 END;
 $$;
+
+GRANT EXECUTE ON FUNCTION delete_comment_with_password(UUID, TEXT) TO anon, authenticated;
