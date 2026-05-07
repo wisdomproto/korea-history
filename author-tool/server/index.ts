@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { config } from './config.js';
 import { errorMiddleware } from './middleware.js';
@@ -125,11 +126,19 @@ async function startServer() {
       res.sendFile(path.join(adminDistPath, 'index.html'));
     });
 
-    // Main app (Expo web) — catch-all
-    app.use(express.static(mainDistPath));
-    app.get('{*path}', (_req, res) => {
-      res.sendFile(path.join(mainDistPath, 'index.html'));
-    });
+    // Main app (Expo web) — only if built. Railway slim build skips Expo export
+    // since gcnote.co.kr (Vercel/Next.js) is the live site; Railway is for /admin.
+    const hasMainApp = fs.existsSync(path.join(mainDistPath, 'index.html'));
+    if (hasMainApp) {
+      app.use(express.static(mainDistPath));
+      app.get('{*path}', (_req, res) => {
+        res.sendFile(path.join(mainDistPath, 'index.html'));
+      });
+    } else {
+      app.get('{*path}', (_req, res) => {
+        res.redirect('/admin');
+      });
+    }
   }
 
   app.listen(config.port, () => {
