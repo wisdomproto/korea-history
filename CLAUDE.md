@@ -211,6 +211,8 @@ korea_history/
 - **적응형 타이포그래피**: hero h1 5단계 (`38/sm:48/md:56/lg:68/xl:84`) + `wordBreak: keep-all` + 각 line `inline-block; whiteSpace: nowrap`. Stats/H2/Pricing 모두 sm/lg breakpoint 추가 (태블릿 영역 부드럽게)
 - **Header 모바일 폭**: `gap-8 → gap-2 sm:gap-6 md:gap-8` + `px-6 → px-4 sm:px-6 md:px-8` + 햄버거 `ml-1.5` 제거 (헤더 install pill 들어갈 공간 확보)
 - **PWA install funnel analytics (2026-05-06)**: 6종 GA4 이벤트 (`pwa_install_clicked`/`_modal_opened`/`_accepted`/`_dismissed`/`_already_installed_dismissed`/`pwa_app_installed`) — `trackPWA(event, params)` 헬퍼가 window.gtag 호출. params: `env` (android/ios/inapp/desktop) + `variant` (desktop/mobile). 저작도구 분석에 PWAEventsCard로 4-step 퍼널 + Android·전체 전환율 + 환경별 분포 노출. 상세 [memory/pwa_install_funnel_analytics.md]
+- **Service Worker + 설치 가능 PWA (2026-05-08)**: 기존엔 SW 부재로 Chrome이 PWA로 인식 못 해 `beforeinstallprompt` 미발생 → "홈 화면에 추가"가 일반 북마크 단축아이콘으로 만들어져 회색 G fallback 아이콘 표시되던 이슈. `web/public/sw.js` 추가 (skipWaiting + clients.claim + 정적 자원 stale-while-revalidate 캐싱) + layout.tsx inline 스크립트로 register. 이제 Android Chrome에서 진짜 PWA install 다이얼로그 + 진짜 매니페스트 아이콘 표시.
+- **아이콘 재생성 (2026-05-08)**: 기존 icon-192/512 모서리 alpha=255 (square)였던 문제 → PIL `rounded_rectangle` 마스크로 radius 22.5% (iOS 스타일) 적용 + corner alpha=0. PC 데스크탑/Windows 시작메뉴/태스크바에서 깔끔한 둥근 아이콘. apple-touch-icon은 풀블리드 유지 (iOS Safari가 자체 라운드). Android adaptive 런처용 `icon-maskable-512.png` 별도 추가 — manifest icons에 `purpose: "maskable"` 등록.
 
 ### 빌드 최적화 — Phase 2 ISR (2026-05-05)
 다중 시험 플랫폼으로 547 ExamType + 1,900 한능검 OG 이미지가 모두 SSG였던 부담을 ISR/dynamic으로 분산. ~2,447 prerender 페이지 절감 → Vercel 빌드 시간 12~40분 추정 절감.

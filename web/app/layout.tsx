@@ -136,6 +136,12 @@ export default function RootLayout({
             __html: `window.addEventListener('load',function(){if(window.Kakao&&!window.Kakao.isInitialized()){window.Kakao.init('${process.env.NEXT_PUBLIC_KAKAO_JS_KEY || ""}');}});`,
           }}
         />
+        {/* PWA Service Worker — Chrome installability 충족 + 정적 자원 캐싱 */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}`,
+          }}
+        />
       </head>
       <body className="antialiased">
         <div className="flex min-h-screen flex-col">
