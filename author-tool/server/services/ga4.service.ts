@@ -464,6 +464,8 @@ export interface DailyData {
   date: string; // YYYY-MM-DD
   sessions: number;
   users: number;
+  newUsers: number;
+  returningUsers: number;
   pageViews: number;
   avgSessionDuration: number; // seconds
 }
@@ -483,6 +485,7 @@ export async function getDailyTrend(
     metrics: [
       { name: 'sessions' },
       { name: 'totalUsers' },
+      { name: 'newUsers' },
       { name: 'screenPageViews' },
       { name: 'averageSessionDuration' },
     ],
@@ -495,12 +498,16 @@ export async function getDailyTrend(
     const date = raw.length === 8
       ? `${raw.slice(0, 4)}-${raw.slice(4, 6)}-${raw.slice(6, 8)}`
       : raw;
+    const users = Number(r.metricValues?.[1]?.value ?? 0);
+    const newUsers = Number(r.metricValues?.[2]?.value ?? 0);
     return {
       date,
       sessions: Number(r.metricValues?.[0]?.value ?? 0),
-      users: Number(r.metricValues?.[1]?.value ?? 0),
-      pageViews: Number(r.metricValues?.[2]?.value ?? 0),
-      avgSessionDuration: Math.round(Number(r.metricValues?.[3]?.value ?? 0)),
+      users,
+      newUsers,
+      returningUsers: Math.max(users - newUsers, 0),
+      pageViews: Number(r.metricValues?.[3]?.value ?? 0),
+      avgSessionDuration: Math.round(Number(r.metricValues?.[4]?.value ?? 0)),
     };
   });
 

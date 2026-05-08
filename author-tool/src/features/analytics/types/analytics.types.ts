@@ -36,7 +36,7 @@ export interface CampaignData { source: string; medium: string; campaign: string
 export interface DeviceData { device: string; sessions: number; percentage: number; }
 export interface HourlyData { hour: number; sessions: number; }
 export interface DayOfWeekData { dayOfWeek: number; name: string; sessions: number; }
-export interface DailyData { date: string; sessions: number; users: number; pageViews: number; avgSessionDuration: number; }
+export interface DailyData { date: string; sessions: number; users: number; newUsers: number; returningUsers: number; pageViews: number; avgSessionDuration: number; }
 
 export interface VideoEventsData {
   play: number;

@@ -3,11 +3,13 @@ import { useDailyTrend } from '../hooks/useAnalytics';
 import type { DailyData } from '../types/analytics.types';
 
 type Period = '7d' | '30d';
-type Metric = 'pageViews' | 'users' | 'pvPerUser' | 'avgSessionDuration' | 'durationPerPV';
+type Metric = 'pageViews' | 'users' | 'newUsers' | 'returningUsers' | 'pvPerUser' | 'avgSessionDuration' | 'durationPerPV';
 
 const METRIC_CONFIG: Record<Metric, { label: string; unit: string; color: string; weekendColor: string }> = {
   pageViews: { label: 'PV', unit: '', color: '#059669', weekendColor: '#BFDBFE' },
   users: { label: '사용자', unit: '명', color: '#7C3AED', weekendColor: '#DDD6FE' },
+  newUsers: { label: '신규', unit: '명', color: '#DB2777', weekendColor: '#FBCFE8' },
+  returningUsers: { label: '재방문', unit: '명', color: '#4F46E5', weekendColor: '#C7D2FE' },
   pvPerUser: { label: 'PV/사용자', unit: '', color: '#0891B2', weekendColor: '#A5F3FC' },
   avgSessionDuration: { label: '체류시간', unit: '', color: '#D97706', weekendColor: '#FDE68A' },
   durationPerPV: { label: 'PV당 체류', unit: '', color: '#DC2626', weekendColor: '#FECACA' },
@@ -248,7 +250,7 @@ export default function DailyTrendChart() {
                     <div className="bg-gray-900 text-white text-[10px] px-2 py-1 rounded-md whitespace-nowrap shadow-lg">
                       <div className="font-bold">{formatDate(d.date)} ({getDayName(d.date)})</div>
                       <div>PV: {d.pageViews.toLocaleString()}</div>
-                      <div>사용자: {d.users.toLocaleString()}</div>
+                      <div>사용자: {d.users.toLocaleString()} (신규 {d.newUsers.toLocaleString()} · 재방문 {d.returningUsers.toLocaleString()})</div>
                       <div>체류시간: {formatDuration(d.avgSessionDuration)}</div>
                       <div>PV/사용자: {d.users > 0 ? (d.pageViews / d.users).toFixed(1) : '0'}</div>
                       <div>PV당: {formatDuration(d.pageViews > 0 ? Math.round((d.avgSessionDuration * d.sessions) / d.pageViews) : 0)}</div>
