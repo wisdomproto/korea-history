@@ -12,12 +12,26 @@ const FOOTER_COLS: { t: string; items: { label: string; href: string }[] }[] = [
     ],
   },
   {
-    t: "회차별",
+    t: "회차별 (1번부터)",
     items: [
-      { label: "제77회",     href: "/exam/77" },
-      { label: "제76회",     href: "/exam/76" },
-      { label: "제75회",     href: "/exam/75" },
-      { label: "전체 보기",  href: "/exam" },
+      { label: "제77회 1번",  href: "/exam/77/1" },
+      { label: "제76회 1번",  href: "/exam/76/1" },
+      { label: "제75회 1번",  href: "/exam/75/1" },
+      { label: "제74회 1번",  href: "/exam/74/1" },
+      { label: "제73회 1번",  href: "/exam/73/1" },
+      { label: "전체 회차",   href: "/exam" },
+    ],
+  },
+  {
+    t: "인기 요약노트",
+    items: [
+      { label: "병자호란",       href: "/notes/s3-09" },
+      { label: "세종대왕 업적",  href: "/notes/s3-02" },
+      { label: "대동법",         href: "/notes/s3-11" },
+      { label: "6월민주항쟁",    href: "/notes/s7-12" },
+      { label: "대한제국",       href: "/notes/s5-04" },
+      { label: "경국대전",       href: "/notes/s3-04" },
+      { label: "전체 노트",      href: "/notes" },
     ],
   },
   {

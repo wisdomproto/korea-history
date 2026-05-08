@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { getAllExams } from "@/lib/data";
 import BreadCrumb from "@/components/BreadCrumb";
-import RoundList, { type RoundListItem } from "@/components/RoundList";
 
 export const metadata: Metadata = {
   title: "한능검 기출문제 전체 회차 (40~77회)",
@@ -46,14 +45,66 @@ export default function ExamListPage() {
         </p>
       </section>
 
-      <RoundList
-        items={exams.map<RoundListItem>(({ exam }) => ({
-          id: exam.id,
-          label: `제${exam.examNumber}회`,
-          href: `/exam/${exam.examNumber}`,
-          badge: exam.examType === "advanced" ? "심화" : "기본",
-        }))}
-      />
+      <div className="space-y-2">
+        {exams.map(({ exam }) => {
+          const isAdvanced = exam.examType === "advanced";
+          return (
+            <div
+              key={exam.id}
+              className="rounded-2xl border border-slate-200 bg-white p-4 card-shadow hover:card-shadow-md transition-all"
+            >
+              <div className="flex items-center justify-between">
+                <Link
+                  href={`/exam/${exam.examNumber}/1`}
+                  className="flex items-center gap-3 min-w-0 flex-1"
+                >
+                  <span className="text-2xl shrink-0">📝</span>
+                  <span className="font-bold text-[15px] text-slate-900 truncate">
+                    제{exam.examNumber}회
+                  </span>
+                  <span
+                    className={`rounded-full px-1.5 py-0.5 text-[10px] font-medium shrink-0 ${
+                      isAdvanced
+                        ? "bg-teal-50 text-teal-700"
+                        : "bg-amber-50 text-amber-700"
+                    }`}
+                  >
+                    {isAdvanced ? "심화" : "기본"}
+                  </span>
+                </Link>
+                <svg
+                  className="h-4 w-4 text-slate-300 shrink-0"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+              {/* Q1~Q10 quick chips — 직접 점프 + 크롤러 deep link 발견 */}
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+                  <Link
+                    key={n}
+                    href={`/exam/${exam.examNumber}/${n}`}
+                    className="rounded-md bg-slate-50 hover:bg-indigo-50 hover:text-indigo-700 text-slate-600 text-[11px] font-mono-kr font-medium px-2 py-0.5 transition-colors"
+                    aria-label={`제${exam.examNumber}회 ${n}번 문제`}
+                  >
+                    {n}
+                  </Link>
+                ))}
+                <Link
+                  href={`/exam/${exam.examNumber}/1`}
+                  className="rounded-md text-amber-700 hover:text-amber-900 text-[11px] font-medium px-2 py-0.5 transition-colors"
+                >
+                  전체 보기 →
+                </Link>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

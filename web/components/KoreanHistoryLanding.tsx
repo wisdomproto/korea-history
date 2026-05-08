@@ -1247,6 +1247,55 @@ function NotesPreview() {
             요약노트 보기
             <Icon name="arrow" size={14} color={T.bg} />
           </Link>
+
+          {/* 인기 노트 deep links — 검색량 실측 기준 (네이버 키워드 API 2026-04-28) */}
+          <div style={{ marginTop: 28 }}>
+            <div
+              style={{
+                fontFamily: FONT_MONO,
+                fontSize: 10,
+                color: T.subtle,
+                letterSpacing: "0.2em",
+                fontWeight: 700,
+                marginBottom: 10,
+              }}
+            >
+              인 기 노 트
+            </div>
+            <div className="flex flex-wrap" style={{ gap: 6 }}>
+              {[
+                { id: "s3-09",  label: "병자호란" },
+                { id: "s3-02",  label: "세종대왕 업적" },
+                { id: "s3-11",  label: "대동법" },
+                { id: "s7-12",  label: "6월민주항쟁" },
+                { id: "s5-04",  label: "대한제국" },
+                { id: "s3-04",  label: "경국대전" },
+                { id: "s7-11",  label: "5.18" },
+                { id: "s2-03",  label: "광종 업적" },
+                { id: "s3-18",  label: "환국" },
+                { id: "s2-09",  label: "음서제" },
+              ].map((n) => (
+                <Link
+                  key={n.id}
+                  href={`/notes/${n.id}`}
+                  className="no-underline"
+                  style={{
+                    fontFamily: FONT_SANS,
+                    fontSize: 12,
+                    fontWeight: 600,
+                    color: T.ink,
+                    background: T.paper,
+                    border: `1px solid ${T.hairline}`,
+                    padding: "5px 11px",
+                    borderRadius: 999,
+                    transition: "all 0.15s ease",
+                  }}
+                >
+                  {n.label}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1528,7 +1577,7 @@ function LatestExamsBand({
             return (
               <Link
                 key={exam.id}
-                href={`/exam/${exam.examNumber}`}
+                href={`/exam/${exam.examNumber}/1`}
                 className="no-underline"
                 style={{
                   background: T.paper,
