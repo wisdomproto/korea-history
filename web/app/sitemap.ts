@@ -50,22 +50,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/wrong-answers`,
-      lastModified: now,
-      changeFrequency: "daily",
-      priority: 0.5,
-    },
-    {
       url: `${BASE_URL}/board`,
       lastModified: now,
       changeFrequency: "daily",
       priority: 0.6,
-    },
-    {
-      url: `${BASE_URL}/my-record`,
-      lastModified: now,
-      changeFrequency: "daily",
-      priority: 0.5,
     },
     {
       url: `${BASE_URL}/about`,
