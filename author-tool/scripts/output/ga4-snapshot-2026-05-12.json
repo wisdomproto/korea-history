@@ -1,0 +1,855 @@
+{
+  "generatedAt": "2026-05-12T12:32:14.638Z",
+  "today": "2026-05-12",
+  "ranges": {
+    "last30": {
+      "start": "2026-04-12",
+      "end": "2026-05-12"
+    },
+    "prev30": {
+      "start": "2026-03-13",
+      "end": "2026-04-11"
+    },
+    "sinceLastReport": {
+      "start": "2026-05-08",
+      "end": "2026-05-12"
+    }
+  },
+  "overview": {
+    "last30": {
+      "sessions": 5064,
+      "users": 2108,
+      "newUsers": 2047,
+      "pageViews": 64108,
+      "avgSessionDuration": 965,
+      "engagementRate": 68.2,
+      "bounceRate": 31.8
+    },
+    "prev30": {
+      "sessions": 970,
+      "users": 508,
+      "newUsers": 508,
+      "pageViews": 9808,
+      "avgSessionDuration": 464,
+      "engagementRate": 56.9,
+      "bounceRate": 43.1
+    },
+    "sinceReport": {
+      "sessions": 1711,
+      "users": 826,
+      "newUsers": 644,
+      "pageViews": 22508,
+      "avgSessionDuration": 1301,
+      "engagementRate": 63.9,
+      "bounceRate": 36.1
+    },
+    "last7": {
+      "sessions": 2577,
+      "users": 1169,
+      "newUsers": 1004,
+      "pageViews": 33026,
+      "avgSessionDuration": 1145,
+      "engagementRate": 66.7,
+      "bounceRate": 33.3
+    }
+  },
+  "daily14": [
+    {
+      "date": "2026-04-28",
+      "sessions": 203,
+      "users": 134,
+      "newUsers": 94,
+      "pageViews": 1985,
+      "avgSessionDuration": 623
+    },
+    {
+      "date": "2026-04-29",
+      "sessions": 188,
+      "users": 118,
+      "newUsers": 68,
+      "pageViews": 1733,
+      "avgSessionDuration": 571
+    },
+    {
+      "date": "2026-04-30",
+      "sessions": 217,
+      "users": 137,
+      "newUsers": 97,
+      "pageViews": 1829,
+      "avgSessionDuration": 566
+    },
+    {
+      "date": "2026-05-01",
+      "sessions": 169,
+      "users": 97,
+      "newUsers": 49,
+      "pageViews": 2083,
+      "avgSessionDuration": 975
+    },
+    {
+      "date": "2026-05-02",
+      "sessions": 156,
+      "users": 95,
+      "newUsers": 53,
+      "pageViews": 1943,
+      "avgSessionDuration": 866
+    },
+    {
+      "date": "2026-05-03",
+      "sessions": 154,
+      "users": 84,
+      "newUsers": 42,
+      "pageViews": 2532,
+      "avgSessionDuration": 831
+    },
+    {
+      "date": "2026-05-04",
+      "sessions": 194,
+      "users": 113,
+      "newUsers": 64,
+      "pageViews": 2544,
+      "avgSessionDuration": 877
+    },
+    {
+      "date": "2026-05-05",
+      "sessions": 232,
+      "users": 150,
+      "newUsers": 98,
+      "pageViews": 2302,
+      "avgSessionDuration": 666
+    },
+    {
+      "date": "2026-05-06",
+      "sessions": 302,
+      "users": 196,
+      "newUsers": 121,
+      "pageViews": 3937,
+      "avgSessionDuration": 815
+    },
+    {
+      "date": "2026-05-07",
+      "sessions": 338,
+      "users": 198,
+      "newUsers": 141,
+      "pageViews": 4279,
+      "avgSessionDuration": 961
+    },
+    {
+      "date": "2026-05-08",
+      "sessions": 317,
+      "users": 191,
+      "newUsers": 117,
+      "pageViews": 3714,
+      "avgSessionDuration": 789
+    },
+    {
+      "date": "2026-05-09",
+      "sessions": 289,
+      "users": 185,
+      "newUsers": 111,
+      "pageViews": 4255,
+      "avgSessionDuration": 1139
+    },
+    {
+      "date": "2026-05-10",
+      "sessions": 314,
+      "users": 198,
+      "newUsers": 126,
+      "pageViews": 4387,
+      "avgSessionDuration": 934
+    },
+    {
+      "date": "2026-05-11",
+      "sessions": 415,
+      "users": 276,
+      "newUsers": 171,
+      "pageViews": 5272,
+      "avgSessionDuration": 823
+    },
+    {
+      "date": "2026-05-12",
+      "sessions": 380,
+      "users": 245,
+      "newUsers": 119,
+      "pageViews": 4880,
+      "avgSessionDuration": 2663
+    }
+  ],
+  "channels30": [
+    {
+      "channel": "Organic Search",
+      "sessions": 2388,
+      "users": 1102,
+      "percentage": 45.1
+    },
+    {
+      "channel": "Direct",
+      "sessions": 2341,
+      "users": 905,
+      "percentage": 44.2
+    },
+    {
+      "channel": "Unassigned",
+      "sessions": 333,
+      "users": 202,
+      "percentage": 6.3
+    },
+    {
+      "channel": "Referral",
+      "sessions": 128,
+      "users": 68,
+      "percentage": 2.4
+    },
+    {
+      "channel": "Organic Social",
+      "sessions": 103,
+      "users": 46,
+      "percentage": 1.9
+    }
+  ],
+  "channelsPrev30": [
+    {
+      "channel": "Direct",
+      "sessions": 712,
+      "users": 362,
+      "percentage": 73.3
+    },
+    {
+      "channel": "Organic Search",
+      "sessions": 124,
+      "users": 69,
+      "percentage": 12.8
+    },
+    {
+      "channel": "Referral",
+      "sessions": 104,
+      "users": 71,
+      "percentage": 10.7
+    },
+    {
+      "channel": "Organic Social",
+      "sessions": 16,
+      "users": 9,
+      "percentage": 1.6
+    },
+    {
+      "channel": "Unassigned",
+      "sessions": 12,
+      "users": 4,
+      "percentage": 1.2
+    },
+    {
+      "channel": "Paid Search",
+      "sessions": 3,
+      "users": 3,
+      "percentage": 0.3
+    }
+  ],
+  "channelsSinceReport": [
+    {
+      "channel": "Organic Search",
+      "sessions": 831,
+      "users": 471,
+      "percentage": 44
+    },
+    {
+      "channel": "Direct",
+      "sessions": 652,
+      "users": 287,
+      "percentage": 34.5
+    },
+    {
+      "channel": "Unassigned",
+      "sessions": 311,
+      "users": 185,
+      "percentage": 16.5
+    },
+    {
+      "channel": "Referral",
+      "sessions": 48,
+      "users": 33,
+      "percentage": 2.5
+    },
+    {
+      "channel": "Organic Social",
+      "sessions": 47,
+      "users": 20,
+      "percentage": 2.5
+    }
+  ],
+  "topPages30": [
+    {
+      "path": "/",
+      "pageViews": 3805,
+      "sessions": 2447,
+      "engagementRate": 79.1,
+      "bounceRate": 20.9
+    },
+    {
+      "path": "/exam",
+      "pageViews": 3370,
+      "sessions": 1873,
+      "engagementRate": 92.2,
+      "bounceRate": 7.8
+    },
+    {
+      "path": "/notes",
+      "pageViews": 3316,
+      "sessions": 1539,
+      "engagementRate": 87.7,
+      "bounceRate": 12.3
+    },
+    {
+      "path": "/study/session",
+      "pageViews": 2700,
+      "sessions": 1147,
+      "engagementRate": 86.9,
+      "bounceRate": 13.1
+    },
+    {
+      "path": "/wrong-answers",
+      "pageViews": 1452,
+      "sessions": 528,
+      "engagementRate": 94.3,
+      "bounceRate": 5.7
+    },
+    {
+      "path": "/study",
+      "pageViews": 1173,
+      "sessions": 797,
+      "engagementRate": 74.2,
+      "bounceRate": 25.8
+    },
+    {
+      "path": "/exam/77/1",
+      "pageViews": 1057,
+      "sessions": 774,
+      "engagementRate": 91.3,
+      "bounceRate": 8.7
+    },
+    {
+      "path": "/notes/s1-01",
+      "pageViews": 1019,
+      "sessions": 659,
+      "engagementRate": 89.4,
+      "bounceRate": 10.6
+    },
+    {
+      "path": "/study/custom",
+      "pageViews": 796,
+      "sessions": 487,
+      "engagementRate": 89.5,
+      "bounceRate": 10.5
+    },
+    {
+      "path": "/my-record",
+      "pageViews": 675,
+      "sessions": 404,
+      "engagementRate": 93.3,
+      "bounceRate": 6.7
+    },
+    {
+      "path": "/notes/s1-02",
+      "pageViews": 611,
+      "sessions": 412,
+      "engagementRate": 82.3,
+      "bounceRate": 17.7
+    },
+    {
+      "path": "/notes/s1-04",
+      "pageViews": 501,
+      "sessions": 336,
+      "engagementRate": 82.4,
+      "bounceRate": 17.6
+    },
+    {
+      "path": "/exam/77/2",
+      "pageViews": 454,
+      "sessions": 361,
+      "engagementRate": 92.2,
+      "bounceRate": 7.8
+    },
+    {
+      "path": "/board",
+      "pageViews": 453,
+      "sessions": 163,
+      "engagementRate": 94.5,
+      "bounceRate": 5.5
+    },
+    {
+      "path": "/exam/77/3",
+      "pageViews": 362,
+      "sessions": 296,
+      "engagementRate": 94.6,
+      "bounceRate": 5.4
+    },
+    {
+      "path": "/exam/77/4",
+      "pageViews": 346,
+      "sessions": 278,
+      "engagementRate": 95,
+      "bounceRate": 5
+    },
+    {
+      "path": "/exam/77/5",
+      "pageViews": 315,
+      "sessions": 266,
+      "engagementRate": 92.5,
+      "bounceRate": 7.5
+    },
+    {
+      "path": "/notes/s1-03",
+      "pageViews": 294,
+      "sessions": 210,
+      "engagementRate": 90.5,
+      "bounceRate": 9.5
+    },
+    {
+      "path": "/exam/77/6",
+      "pageViews": 287,
+      "sessions": 242,
+      "engagementRate": 92.1,
+      "bounceRate": 7.9
+    },
+    {
+      "path": "/exam/77/7",
+      "pageViews": 247,
+      "sessions": 214,
+      "engagementRate": 93.9,
+      "bounceRate": 6.1
+    }
+  ],
+  "devices30": [
+    {
+      "device": "desktop",
+      "sessions": 2951,
+      "percentage": 57.4
+    },
+    {
+      "device": "mobile",
+      "sessions": 1721,
+      "percentage": 33.5
+    },
+    {
+      "device": "tablet",
+      "sessions": 472,
+      "percentage": 9.2
+    }
+  ],
+  "landingPages30": [
+    {
+      "path": "/",
+      "sessions": 2039,
+      "engagementRate": 81.1,
+      "bounceRate": 18.9
+    },
+    {
+      "path": "/notes",
+      "sessions": 434,
+      "engagementRate": 72.1,
+      "bounceRate": 27.9
+    },
+    {
+      "path": "/exam",
+      "sessions": 296,
+      "engagementRate": 72,
+      "bounceRate": 28
+    },
+    {
+      "path": "/study",
+      "sessions": 287,
+      "engagementRate": 47.4,
+      "bounceRate": 52.6
+    },
+    {
+      "path": "(not set)",
+      "sessions": 276,
+      "engagementRate": 1.4,
+      "bounceRate": 98.6
+    },
+    {
+      "path": "/study/session",
+      "sessions": 210,
+      "engagementRate": 78.6,
+      "bounceRate": 21.4
+    },
+    {
+      "path": "/study/custom",
+      "sessions": 126,
+      "engagementRate": 72.2,
+      "bounceRate": 27.8
+    },
+    {
+      "path": "/notes/s1-01",
+      "sessions": 71,
+      "engagementRate": 45.1,
+      "bounceRate": 54.9
+    },
+    {
+      "path": "/notes/s1-02",
+      "sessions": 68,
+      "engagementRate": 42.6,
+      "bounceRate": 57.4
+    },
+    {
+      "path": "",
+      "sessions": 66,
+      "engagementRate": 0,
+      "bounceRate": 100
+    },
+    {
+      "path": "/exam/77/1",
+      "sessions": 64,
+      "engagementRate": 50,
+      "bounceRate": 50
+    },
+    {
+      "path": "/notes/s1-04",
+      "sessions": 58,
+      "engagementRate": 50,
+      "bounceRate": 50
+    },
+    {
+      "path": "/my-record",
+      "sessions": 46,
+      "engagementRate": 84.8,
+      "bounceRate": 15.2
+    },
+    {
+      "path": "/wrong-answers",
+      "sessions": 37,
+      "engagementRate": 73,
+      "bounceRate": 27
+    },
+    {
+      "path": "/notes/s3-01",
+      "sessions": 24,
+      "engagementRate": 58.3,
+      "bounceRate": 41.7
+    }
+  ],
+  "sources30": [
+    {
+      "source": "(direct)",
+      "medium": "(none)",
+      "sessions": 2341,
+      "users": 905
+    },
+    {
+      "source": "naver",
+      "medium": "organic",
+      "sessions": 785,
+      "users": 323
+    },
+    {
+      "source": "m.search.naver.com",
+      "medium": "referral",
+      "sessions": 757,
+      "users": 388
+    },
+    {
+      "source": "bing",
+      "medium": "organic",
+      "sessions": 461,
+      "users": 260
+    },
+    {
+      "source": "google",
+      "medium": "organic",
+      "sessions": 295,
+      "users": 109
+    },
+    {
+      "source": "(not set)",
+      "medium": "(not set)",
+      "sessions": 259,
+      "users": 183
+    },
+    {
+      "source": "browser_event",
+      "medium": "(not set)",
+      "sessions": 68,
+      "users": 21
+    },
+    {
+      "source": "m.dcinside.com",
+      "medium": "referral",
+      "sessions": 59,
+      "users": 34
+    },
+    {
+      "source": "yahoo",
+      "medium": "organic",
+      "sessions": 57,
+      "users": 12
+    },
+    {
+      "source": "m.kin.naver.com",
+      "medium": "referral",
+      "sessions": 50,
+      "users": 18
+    },
+    {
+      "source": "naver.com",
+      "medium": "referral",
+      "sessions": 24,
+      "users": 14
+    },
+    {
+      "source": "link.naver.com",
+      "medium": "referral",
+      "sessions": 20,
+      "users": 10
+    },
+    {
+      "source": "m.keep.naver.com",
+      "medium": "referral",
+      "sessions": 19,
+      "users": 7
+    },
+    {
+      "source": "chatgpt.com",
+      "medium": "(not set)",
+      "sessions": 18,
+      "users": 9
+    },
+    {
+      "source": "browser_event",
+      "medium": "(none)",
+      "sessions": 12,
+      "users": 8
+    },
+    {
+      "source": "kin.naver.com",
+      "medium": "referral",
+      "sessions": 11,
+      "users": 4
+    },
+    {
+      "source": "m.naver.com",
+      "medium": "referral",
+      "sessions": 10,
+      "users": 5
+    },
+    {
+      "source": "l.threads.com",
+      "medium": "referral",
+      "sessions": 9,
+      "users": 5
+    },
+    {
+      "source": "adfit.kakao.com",
+      "medium": "referral",
+      "sessions": 8,
+      "users": 1
+    },
+    {
+      "source": "facebook.com",
+      "medium": "referral",
+      "sessions": 8,
+      "users": 8
+    }
+  ],
+  "gsc": {
+    "last30": {
+      "totals": {
+        "clicks": 113,
+        "impressions": 256,
+        "ctr": 0.44140625,
+        "position": 4.921875
+      },
+      "queries": [
+        {
+          "keys": [
+            "gcnote"
+          ],
+          "clicks": 70,
+          "impressions": 86,
+          "ctr": 0.813953488372093,
+          "position": 1
+        },
+        {
+          "keys": [
+            "고려의 후삼국 통일 과정 요약"
+          ],
+          "clicks": 1,
+          "impressions": 1,
+          "ctr": 1,
+          "position": 52
+        },
+        {
+          "keys": [
+            "한능검 심화 요약 pdf"
+          ],
+          "clicks": 1,
+          "impressions": 1,
+          "ctr": 1,
+          "position": 80
+        },
+        {
+          "keys": [
+            "1987년 6월 민주항쟁"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 81
+        },
+        {
+          "keys": [
+            "공납 뜻"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 55
+        },
+        {
+          "keys": [
+            "대동 단결"
+          ],
+          "clicks": 0,
+          "impressions": 3,
+          "ctr": 0,
+          "position": 60.666666666666664
+        },
+        {
+          "keys": [
+            "병자호란 년도"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 53
+        },
+        {
+          "keys": [
+            "수취체제"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 72
+        },
+        {
+          "keys": [
+            "한능검 74회 해설"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 52
+        }
+      ]
+    },
+    "prev30": {
+      "totals": {
+        "clicks": 26,
+        "impressions": 209,
+        "ctr": 0.12440191387559808,
+        "position": 7.411483253588517
+      },
+      "queries": [
+        {
+          "keys": [
+            "한능검 요약"
+          ],
+          "clicks": 1,
+          "impressions": 1,
+          "ctr": 1,
+          "position": 4
+        },
+        {
+          "keys": [
+            "혜공왕 업적"
+          ],
+          "clicks": 1,
+          "impressions": 5,
+          "ctr": 0.2,
+          "position": 11
+        },
+        {
+          "keys": [
+            "개화반대론자"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 7
+        },
+        {
+          "keys": [
+            "검교태보의 직"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 9
+        },
+        {
+          "keys": [
+            "고려의 후삼국 통일 과정 요약"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 12
+        },
+        {
+          "keys": [
+            "좨주 직강"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 10
+        },
+        {
+          "keys": [
+            "한능검"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 8
+        },
+        {
+          "keys": [
+            "한능검 77회 답지"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 50
+        },
+        {
+          "keys": [
+            "환국 순서"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 41
+        },
+        {
+          "keys": [
+            "환국 정리"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 34
+        },
+        {
+          "keys": [
+            "후삼국 통일 과정 정리"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 47
+        }
+      ]
+    }
+  }
+}

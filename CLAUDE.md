@@ -437,6 +437,7 @@ export function generateStaticParams() {
 - **캐싱**: 하이브리드 (오늘=실시간, 과거=1시간 캐시), 수동 새로고침 지원
 - **서버 파일**: `server/services/ga4.service.ts`, `server/services/exam-season.service.ts`, `server/routes/analytics.routes.ts`
 - **프론트엔드**: `src/features/analytics/` (types, api, hooks, components 8개)
+- **ad-hoc 스냅샷** (`author-tool/scripts/pull-ga4-snapshot.mjs`): 대표 보고용 1회성 풀러 — 30d / prev30d / 7d / since-last-report 비교 + 채널 + Top 페이지 + 소스 + 디바이스 + GSC top queries 일괄 저장. 결과 `scripts/output/ga4-snapshot-{date}.json`. `docs/ga4-analysis-report.html` 갱신 시 사용.
 
 #### 📅 주간 리포트 (NEW)
 **매주 월요일 07:00 KST** 자동 생성되어 Supabase에 저장되는 주간 GA4 스냅샷 + Gemini AI 인사이트.
