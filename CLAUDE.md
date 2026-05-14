@@ -535,8 +535,16 @@ YOUTUBE_API_KEY=                         # 선택 — 채널 분석/경쟁사 Yo
 - robots.txt (/admin, /api, /study/session 차단)
 - 모든 페이지 "한능검" 키워드 포함 타이틀
 - Google Search Console (gcnote-491301 프로젝트) + 네이버 서치어드바이저 등록
-- JSON-LD: Quiz (문제), BreadcrumbList (문제+노트), Article + VideoObject (노트), **EducationalOrganization + WebSite (site-wide, brand entity signal)**
-- OG 이미지 (4,100+ 정적 생성)
+- JSON-LD: Quiz (문제), BreadcrumbList (문제+노트), Article + VideoObject (노트), **EducationalOrganization + WebSite (site-wide, brand entity signal)**, **Course + Quiz (공무원·자격증 — 2026-05-14)**
+- OG 이미지 (4,100+ 정적 생성) — 한능검만. 공무원/자격증 OG는 미적용 (보류)
+
+### 공무원·자격증 페이지 SEO 메타 레이어 (2026-05-14)
+`[examSlug]/[subjectSlug]` 서브트리는 페이지가 다 있었으나 메타가 기본 템플릿(`"{과목} — 기출노트"`)이고 keywords 필드·페이지별 JSON-LD가 없었음 (소비자 위주로 빌드된 결과). 한능검에 적용된 SEO 디테일을 동일 적용:
+- **`web/lib/civil-seo.ts`** — subject-aware 패턴 D 키워드 생성(`civilSubjectKeywords`) + 4종 메타 빌더(`civilSubjectMeta`/`civilExamListMeta`/`civilQuestionMeta`/`civilNotesMeta`) + JSON-LD 빌더(`civilCourseJsonLd`/`civilQuizJsonLd`). 패턴 D = 한능검 검증 "{과목} + 단원별 정리/요약/정리본" 조합
+- 과목 랜딩/회차목록/문제/노트 4개 `generateMetadata`를 헬퍼로 교체 — **keywords 필드가 생겨 루트 layout.tsx의 한능검 키워드 상속 버그 해결**
+- 과목 랜딩에 `Course` JSON-LD, 개별 문제 페이지에 `Quiz` + `BreadcrumbList` JSON-LD 주입 (`breadcrumbJsonLd`는 `web/lib/seo.ts`에서 직접 import 재사용)
+- **`scripts/boost-civil-9-exam-seo.mjs`** — 9급 ExamType 77개의 `data/exam-types/index.json` seo.title/description/keywords를 패턴 D로 보강 (idempotent, 재실행 시 keywords dedupe)
+- OG 이미지는 미적용 (별도 작업으로 보류)
 
 ### SEO 전략 v1.8 (Living Doc, 2026-05-13)
 - **위치**: `docs/seo-strategy.html` — § 01 GSC + 네이버 듀얼 트랙으로 재편. 매월 1일 자동 갱신.

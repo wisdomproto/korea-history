@@ -17,6 +17,7 @@ import {
 } from "@/lib/civil-notes-auto";
 import CivilNotesHome from "./CivilNotesHome";
 import CivilNoteCombined from "./CivilNoteCombined";
+import { civilNotesMeta } from "@/lib/civil-seo";
 
 export const dynamic = "force-dynamic";
 
@@ -38,14 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const autoMeta = !civilNote && stem ? await getAutoMeta(stem) : null;
   const hasContent = subject.id === "korean-history" || Boolean(civilNote) || Boolean(autoMeta);
 
-  return {
-    title: `${exam.shortLabel} ${subject.label} 요약노트 — 기출노트`,
-    description: civilNote
-      ? `${exam.label} ${subject.label} 자동 단권화. 빈출 주제 100% 커버.`
-      : `${exam.label} ${subject.label} 단원별 요약노트.`,
-    alternates: { canonical: `${exam.routes.main}/${subject.slug}/notes` },
-    ...(hasContent ? {} : { robots: { index: false, follow: true } }),
-  };
+  return civilNotesMeta(exam, subject, hasContent);
 }
 
 export default async function PerSubjectNotes({ params }: PageProps) {

@@ -8,6 +8,7 @@ import {
 import { getCbtManifest } from "@/lib/cbt-data";
 import BreadCrumb from "@/components/BreadCrumb";
 import RoundList, { type RoundListItem } from "@/components/RoundList";
+import { civilExamListMeta } from "@/lib/civil-seo";
 
 interface PageProps {
   params: Promise<{ examSlug: string; subjectSlug: string }>;
@@ -27,11 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const exam = getExamTypeBySlug(decodeURIComponent(examSlug));
   const subject = getSubjectBySlug(decodeURIComponent(subjectSlug));
   if (!exam || !subject) return { title: "시험 없음" };
-  return {
-    title: `${exam.shortLabel} ${subject.label} 회차별 기출 — 기출노트`,
-    description: `${exam.label} ${subject.label} 기출 회차 목록. 무료 풀이.`,
-    alternates: { canonical: `${exam.routes.main}/${subject.slug}/exam` },
-  };
+  return civilExamListMeta(exam, subject);
 }
 
 export default async function CbtRoundListPage({ params }: PageProps) {

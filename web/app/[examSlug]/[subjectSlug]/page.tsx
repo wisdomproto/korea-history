@@ -20,6 +20,7 @@ import {
   getAutoTopics,
   getAutoQuestionsForTopic,
 } from "@/lib/civil-notes-auto";
+import { civilSubjectMeta, civilCourseJsonLd } from "@/lib/civil-seo";
 
 interface PageProps {
   params: Promise<{ examSlug: string; subjectSlug: string }>;
@@ -49,11 +50,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const exam = getExamTypeBySlug(decodeURIComponent(examSlug));
   const subject = getSubjectBySlug(decodeURIComponent(subjectSlug));
   if (!exam || !subject) return { title: "시험" };
-  return {
-    title: `${exam.shortLabel} ${subject.label} — 기출노트`,
-    description: `${exam.label} ${subject.label} 기출문제 / 오답노트 / 내 기록.`,
-    alternates: { canonical: `${exam.routes.main}/${subject.slug}` },
-  };
+  return civilSubjectMeta(exam, subject);
 }
 
 /**
@@ -110,6 +107,12 @@ export default async function SubjectLanding({ params }: PageProps) {
 
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(civilCourseJsonLd(exam, subject)),
+        }}
+      />
       <BreadCrumb
         items={[
           { label: "기출노트", href: "/" },

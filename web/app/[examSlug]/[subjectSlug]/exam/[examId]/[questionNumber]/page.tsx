@@ -15,6 +15,8 @@ import {
   getCivilTopic,
 } from "@/lib/civil-notes";
 import { getAutoRelatedTopicsForQuestion, getAutoMeta } from "@/lib/civil-notes-auto";
+import { civilQuestionMeta, civilQuizJsonLd } from "@/lib/civil-seo";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 // 잠재 prerender 폭발 (수만개) 방지 — 첫 요청 SSR + ISR cache
 export const dynamic = "force-dynamic";
@@ -34,13 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const exam = getExamTypeBySlug(decodeURIComponent(examSlug));
   const subject = getSubjectBySlug(decodeURIComponent(subjectSlug));
   if (!exam || !subject) return { title: "문제 없음" };
-  return {
-    title: `${exam.shortLabel} ${subject.label} ${examId} ${questionNumber}번 — 기출노트`,
-    description: `${exam.label} ${subject.label} 기출 ${examId} ${questionNumber}번 문제 풀이.`,
-    alternates: {
-      canonical: `${exam.routes.main}/${subject.slug}/exam/${examId}/${questionNumber}`,
-    },
-  };
+  return civilQuestionMeta(exam, subject, examId, Number(questionNumber));
 }
 
 export default async function CbtQuestionPage({ params }: PageProps) {
@@ -114,6 +110,28 @@ export default async function CbtQuestionPage({ params }: PageProps) {
   return (
     <main className="bg-[var(--gc-bg)] min-h-screen">
       <div className="mx-auto max-w-3xl px-5 sm:px-6 md:px-8 py-6 md:py-10">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              civilQuizJsonLd(exam, subject, meta?.label ?? examId, question),
+            ),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              breadcrumbJsonLd([
+                { name: "기출노트", href: "/" },
+                { name: exam.label, href: exam.routes.main },
+                { name: subject.label, href: `${exam.routes.main}/${subject.slug}/exam` },
+                { name: meta?.label ?? examId, href: baseUrl },
+                { name: `${qNum}번`, href: `${baseUrl}/${qNum}` },
+              ]),
+            ),
+          }}
+        />
         <BreadCrumb
           items={[
             { label: "기출노트", href: "/" },
