@@ -545,6 +545,7 @@ YOUTUBE_API_KEY=                         # 선택 — 채널 분석/경쟁사 Yo
 - 과목 랜딩에 `Course` JSON-LD, 개별 문제 페이지에 `Quiz` + `BreadcrumbList` JSON-LD 주입 (`breadcrumbJsonLd`는 `web/lib/seo.ts`에서 직접 import 재사용)
 - **`scripts/boost-civil-9-exam-seo.mjs`** — 9급 ExamType 77개의 `data/exam-types/index.json` seo.title/description/keywords를 패턴 D로 보강 (idempotent, 재실행 시 keywords dedupe)
 - OG 이미지는 미적용 (별도 작업으로 보류)
+- **2026-05-15 ext 보강 (Phase 2)**: `civilSubjectKeywords()` generic에 한능검 SE 30일 황금 패턴 3개(`{과목} 요약본` / `{과목} 빈출 정리` / `{과목} 핵심 정리`) + civil 카테고리에 `공무원 {과목}` / `공무원 {과목} 기출` / `공무원 {과목} 정리` 시그널 3종 추가. `SUBJECT_KEYWORD_EXT` 14개 과목 → **25개** (신규 7개 그룹: 회계학·세법·교정학·사회복지·교육학·국제법·관세법, 기존 강화: 행정법·형법·형사소송법·헌법에 `판례`/`조문` 단독, 행정학에 `행정이론`, 국어/영어에 `문법`/`독해`/`문학`). 한국사 ext는 generic 중복 제거 + 한국사 특화 추가(`통사` / `사료`). 결과: 과목 페이지당 **15~18개** 풍부 키워드 자동 생성. `layout.tsx` keywords 12 → **23개** (Tier A·B 시그널 11개: `공무원 기출노트` / `공무원 한국사` 1,160 / `9급 공무원 한국사` 390 / `행정학 기출` 340 / `행정법 기출` 300 / `7급 공무원` 등), title template `"%s | 기출노트 한능검"` → `"%s | 기출노트"` (공무원 페이지 page-level title 충돌 회피, 한능검 페이지는 자체 title에 한능검 포함되어 dilution 없음).
 
 ### 공무원 황금키워드 — Naver API 실측 검증 (2026-05-15)
 사용자가 새 Naver API 키 제공 → `author-tool/scripts/validate-keywords-civil-naver.mjs` (74 후보 / 12 카테고리) 실행. 결과 + 사용자 empirical 인사이트로 황금 정의 재고:
