@@ -546,7 +546,16 @@ YOUTUBE_API_KEY=                         # 선택 — 채널 분석/경쟁사 Yo
 - **`scripts/boost-civil-9-exam-seo.mjs`** — 9급 ExamType 77개의 `data/exam-types/index.json` seo.title/description/keywords를 패턴 D로 보강 (idempotent, 재실행 시 keywords dedupe)
 - OG 이미지는 미적용 (별도 작업으로 보류)
 
-### SEO 전략 v1.8 (Living Doc, 2026-05-13)
+### 공무원 황금키워드 — Naver API 실측 검증 (2026-05-15)
+사용자가 새 Naver API 키 제공 → `author-tool/scripts/validate-keywords-civil-naver.mjs` (74 후보 / 12 카테고리) 실행. 결과 + 사용자 empirical 인사이트로 황금 정의 재고:
+- **74개 중 "낮음/중간" 16개, vol≥100 황금 0개** — 공무원 시장은 학원·인강 dominated, 측정 가능 키워드 거의 모두 "높음"
+- **사용자 empirical (정책 변경)**: "한능검 기출문제"(높음, vol 5,640) 네이버 첫페이지 진입 확인 → **"높음 = 회피"가 아니라 "우리 모달 fit + 19분 moat이면 도전 가능"**. 향후 Naver compIdx "높음" 자동 회피 X
+- **재정의된 황금 (4 Tier)**: Tier S (vol 0~50 + 낮음, 자리잡힘 기회 — 12개 / **공무원 기출노트** vol 0+낮음 = 한능검 "기출노트 한능검" 39.7% 패턴 30일 복제 가능) / Tier A (vol 80~340 + 본문 fit, 11개 — 행정학 기출 340 / 9급 세무직 310 / 행정법 기출 300) / Tier B (vol 350~1,300 도전, 8개 — 7급 PSAT 1,280 / **공무원 한국사 1,160** ⭐ 한능검 cross / 9급 공무원 한국사 390) / Tier C (vol 1.5K~34K 장기, 6개)
+- **즉시 가능한 P0** (zero cost): `web/lib/civil-seo.ts` 한국사 ext에 "단원별 정리"·"시대별 정리"·"정리본" 보강 + `web/app/layout.tsx` default title에 "공무원 기출노트" 시그널 추가 검토 (한능검 dilution risk 측정 필요)
+- 산출물: `_research/keyword-validation-civil-2026-05-15.json` (74 검증 raw) + `_research/civil-keywords-qualitative-2026-05-15.md` (분석 + 정량 결과)
+- **반영**: `docs/seo-strategy.html` § 6-F 전면 정량화 + § 6-D 재평가 callout + § 10 v1.10
+
+### SEO 전략 v1.10 (Living Doc, 2026-05-15)
 - **위치**: `docs/seo-strategy.html` — § 01 GSC + 네이버 듀얼 트랙으로 재편. 매월 1일 자동 갱신.
 - **🚀 네이버 SE 30일 폭증 발견 (2026-05-13)**: 4/13 ~ 5/13 클릭 900 (+3,641.7%) / 노출 16K (+8,424.5%, 약 40배). 일별 노출 50 → 2,000+. **⭐ 가장 큰 변수 = 체류 시간 15분+ (D.I.A.+ 사용자 만족 신호)**: 학습 사이클 (문제→정답→drawer→영상→노트→오답) + NoteDrawer (5/5 배포) + localStorage 재방문 동기. 업계 평균 2~5분 대비 3~7배. 봇이 페이지를 잡는 건 기술 요인이지만 랭킹 상승은 사용자 행동이 결정. **황금 7개 키워드 (CTR 30%+)**: 한능검 시대별 정리 55.8% / 단원별 기출 51.4% / 문제풀기 45.8% / 기출노트 39.7% / gcnote.co.kr 39.1% / 정리본 24.8% / 요약 16.2%. "우리만 보유한 차별 키워드"가 최고 CTR. **브랜드 SEO 코드 효과 입증**: "한능검 기출노트" 39.7% (v1.2 GSC "기출노트 0건"이 30일 만에 네이버 자리잡음). 인과 추정: 4/28~29 v1.5/1.6/1.7 배포 직후 봇 본격 색인 + 체류 신호 동시 누적. § 6-A2 신규 표 "네이버 SE 30일 실측" + § 6-A 표에 "30일 SE 클릭" 컬럼 추가. **확장 패턴**: CBT/공무원 시 "{시험명} 시대별 정리" / "{과목} 단원별 기출" / "{시험명} 기출노트" 동일 패턴 + **학습 사이클 동일 패턴 (체류 10분+ 목표)** 그대로 가져갈 것. 상세 [memory/seo_naver_vs_google.md] + 피드백 [memory/feedback_check_user_signals.md].
 - **/study 메타 v1.8 개선 (2026-05-13)**: "한능검 기출문제" 노출 5,099 / CTR 1.3% 개선 위해 title `한능검 기출문제 무료 — 1,900문항 회차별·시대별 정리 | 기출노트` (시대별 정리 키워드 + 브랜드 suffix) + description 강한 hook ("한능검 기출문제 1,900+ 문항을 무료로 풀어보세요...AI 해설 + 최태성 영상강의 + 오답노트 자동 수집...") + keywords 12개 (한능검 시대별 정리/단원별 기출/문제풀기/기출노트 추가). 목표 CTR 1.3% → 3~5%.

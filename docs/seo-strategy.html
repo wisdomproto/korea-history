@@ -150,8 +150,8 @@
   <!-- Header -->
   <div class="doc-meta">
     <span class="badge live">LIVING DOC</span>
-    <span>SEO STRATEGY v1.7</span>
-    <span>Last updated: 2026-04-29</span>
+    <span>SEO STRATEGY v1.10</span>
+    <span>Last updated: 2026-05-15</span>
   </div>
   <h1 class="doc-title">구글 SEO <span class="accent">황금키워드</span> 전략</h1>
   <p class="doc-sub">GSC 실데이터 기반 — 현재 자산 점검 + Quick Win 5개 + 황금키워드 발굴 패턴 + 90일 액션 로드맵.</p>
@@ -606,13 +606,20 @@
       </tbody>
     </table>
 
-    <h3>6-D. 경쟁 높음 — 회피 또는 매우 차별화된 콘텐츠 필요</h3>
+    <h3>6-D. 경쟁 높음 — 재평가 필요 (사용자 empirical 발견)</h3>
+
+    <div class="callout teal">
+      <div class="callout-title">🎯 2026-05-15 update — "회피" → "도전 가능"으로 재평가</div>
+      <p>사용자가 SERP 직접 확인 — <strong>"한능검 기출문제"(경쟁 높음, vol 5,640)이 네이버 첫 페이지 진입 확인</strong>. 아래 표의 "회피" 권장이 무조건적이지 않음을 입증. <strong>"경쟁 높음 = 자동 회피"가 아니라 "우리 모달 fit + 19분 moat이면 도전 가능"</strong>. § 6-F 공무원 황금 정의 재고도 같은 인사이트 적용.</p>
+      <p style="margin-top:8px;font-size:14px;"><strong>도전 신호</strong>: ① 우리 모달(체류 19분 D.I.A.+) ② 콘텐츠 fit (한능검 1,900 자산 / 13 단권화 본문) ③ 메타 정확 매칭 (패턴 D 키워드). 셋 다 갖추면 "높음"도 진입.</p>
+    </div>
+
     <table class="data-table">
       <thead>
-        <tr><th>키워드</th><th class="num">검색량</th><th>경쟁</th><th>판단</th></tr>
+        <tr><th>키워드</th><th class="num">검색량</th><th>경쟁</th><th>판단 (재평가)</th></tr>
       </thead>
       <tbody>
-        <tr><td>한능검 기출문제 <span class="label-tag real">실측</span></td><td class="num">5,640</td><td class="pos-bad" style="color:var(--rose);">높음</td><td>기존 강자(EBS·시대인재) 다수 — 회피</td></tr>
+        <tr><td>한능검 기출문제 <span class="label-tag real">실측</span></td><td class="num">5,640</td><td class="pos-bad" style="color:var(--rose);">높음</td><td><strong style="color:var(--teal);">⭐ 첫페이지 진입 확인 (5/15)</strong> — /study 메타 v1.8 boost 효과</td></tr>
         <tr><td>한국사 기출문제 <span class="label-tag real">실측</span></td><td class="num">4,230</td><td class="pos-bad" style="color:var(--rose);">높음</td><td>회피</td></tr>
         <tr><td>동학농민운동 <span class="label-tag real">실측</span></td><td class="num">12,050</td><td class="pos-bad" style="color:var(--rose);">높음</td><td>회피 — 백과사전·교과서 사이트 강세</td></tr>
         <tr><td>한능검 vs 그 외 11개 헤드텀</td><td class="num small">측정안됨</td><td class="small">—</td><td>"한능검 무료/요약/시대별/정리/일정" 등 — 네이버 미추적 = 검색량 미미. 구글 가능성</td></tr>
@@ -623,17 +630,96 @@
     <p>네이버에서 측정 안 되는 키워드들. 구글에서는 다를 수 있으니 향후 DataForSEO로 재검증 후보:</p>
     <p class="small-note">정묘호란 · 임시정부 · 광주민주화운동 · 삼일운동 · 가신정변 결과 · 을사조약 내용 · 사림과 훈구 · 한국사 요약노트 · 한능검 무료 · 한능검 시대별 정리 · gcnote · 기출노트 (브랜드) · 기출노트 한능검 등</p>
 
-    <h3>6-F. 9급 공무원·자격증 (다중 시험 플랫폼) — 별도 검증 필요</h3>
+    <h3>6-F. 공무원·자격증 황금키워드 — 네이버 API 실측 검증 결과 <span class="label-tag real">실측 (2026-05-15)</span></h3>
+
+    <div class="callout teal">
+      <div class="callout-title">📊 검증 완료 — 74 후보 / 정량 데이터 확보</div>
+      <p>2026-05-15 Naver 검색광고 API 키 갱신 후 74 공무원 후보 검증 (<code>_research/keyword-validation-civil-2026-05-15.json</code>). <strong>74개 중 "낮음/중간" 16개, vol≥100 = 0개</strong>. 공무원 시장은 학원·인강 dominated라 측정 가능한 키워드 거의 모두 "높음". 한능검 시장(낮음/중간 우호)과 다른 게임.</p>
+    </div>
+
+    <div class="callout amber">
+      <div class="callout-title">⚠️ 황금 정의 재고 — 공무원 시장 특화 (사용자 empirical 발견)</div>
+      <p>기존 정의(vol≥100 + 낮음/중간)로는 황금 0개. 그러나 사용자가 SERP 직접 확인 — <strong>"한능검 기출문제"(경쟁 높음, vol 5,640) 네이버 첫 페이지 진입</strong>. § 6-D 회피 권장이었던 키워드가 실제로 잡힘. 공무원도 동일 — <strong>"높음 = 회피"가 아니라 "우리 모달 fit이면 도전"</strong>. 우리 무기: 19분 체류 D.I.A.+ moat (사이트 와이드) + 한능검 1,900 자산 cross + 13 단권화 본문.</p>
+      <p style="margin-top:8px;"><strong>재정의된 황금</strong>: ① <strong>vol 0~50 + 낮음</strong> (long-tail 자리잡힘 기회) ② <strong>vol 100~600 + 본문 fit</strong> (도전 가능) ③ <strong>vol 350~1,300 + 우리 강점 영역</strong> (중간 헤드 도전) ④ <strong>vol 1만+</strong> (장기 권위 누적 후 도전)</p>
+    </div>
+
+    <h4 style="margin-top:24px;">Tier S — 즉시 자리잡힘 기회 (vol 0~50, 낮음 경쟁)</h4>
+    <p style="color:var(--ink-soft);font-size:14px;">패턴 D 키워드 거의 모두 검색량 측정 안 되지만 "낮음" 경쟁 — <strong>첫 진입자 자리</strong>. 한능검 동일 패턴이 30일 +3,641% 폭증한 empirical (§ 6-A2).</p>
     <table class="data-table">
-      <thead>
-        <tr><th>분야</th><th>키워드 패턴</th><th>다음 단계</th></tr>
-      </thead>
+      <thead><tr><th>키워드</th><th class="num">vol</th><th>경쟁</th><th>매핑/본문</th><th>우선순위</th></tr></thead>
       <tbody>
-        <tr><td>9급 공무원</td><td><code>9급 {과목} 빈출/요약</code></td><td>13개 과목 × 패턴 = 26 키워드 별도 batch</td></tr>
-        <tr><td>9급 직렬</td><td><code>9급 {직렬} 시험과목</code></td><td>주요 직렬 5개부터</td></tr>
-        <tr><td>자격증</td><td><code>{자격증} 기출/요약</code></td><td>인기 9개 자격증부터</td></tr>
+        <tr><td><strong>9급 한국사 시대별 정리</strong> <span class="label-tag real">실측</span></td><td class="num">0</td><td class="pos-good">낮음</td><td>한능검 cross</td><td>⭐⭐⭐ P0</td></tr>
+        <tr><td><strong>9급 한국사 단원별 정리</strong> <span class="label-tag real">실측</span></td><td class="num">0</td><td class="pos-good">낮음</td><td>한능검 cross</td><td>⭐⭐⭐ P0</td></tr>
+        <tr><td><strong>9급 한국사 정리본</strong> <span class="label-tag real">실측</span></td><td class="num">0</td><td class="pos-good">낮음</td><td>한능검 cross</td><td>⭐⭐⭐ P0</td></tr>
+        <tr><td><strong>공무원 기출노트</strong> <span class="label-tag real">실측</span></td><td class="num">0</td><td class="pos-good">낮음</td><td>브랜드 자리잡힘</td><td>⭐⭐⭐ P0 (한능검 39.7% 패턴 복제)</td></tr>
+        <tr><td>9급 행정법 단원별 정리 / 행정법 단원별 정리 <span class="label-tag real">실측</span></td><td class="num">0</td><td class="pos-good">낮음</td><td>admin-law 28단원</td><td>⭐⭐ P1</td></tr>
+        <tr><td>행정학 단원별 정리 <span class="label-tag real">실측</span></td><td class="num">0</td><td class="pos-good">낮음</td><td>admin-pa 13단원</td><td>⭐⭐ P1</td></tr>
+        <tr><td>9급 국어 단원별 정리 / 9급 국어 요약 <span class="label-tag real">실측</span></td><td class="num">0</td><td class="pos-good">낮음</td><td>국어 9단원 본문</td><td>⭐⭐ P1</td></tr>
+        <tr><td>9급 영어 단원별 정리 <span class="label-tag real">실측</span></td><td class="num">0</td><td class="pos-good">낮음</td><td>영어 9단원 본문</td><td>⭐⭐ P1</td></tr>
+        <tr><td>9급 일반행정 기출 <span class="label-tag real">실측</span></td><td class="num">0</td><td class="pos-good">낮음</td><td>직렬 라우트</td><td>⭐ P2</td></tr>
+        <tr><td>9급 형사소송법 / 9급 교정학 <span class="label-tag real">실측</span></td><td class="num">0</td><td class="pos-good">낮음</td><td>본문 보유</td><td>⭐ P2</td></tr>
+        <tr><td>공무원 무료 기출 / 공무원 무료 학습 <span class="label-tag real">실측</span></td><td class="num">0</td><td class="pos-good">낮음</td><td>차별화</td><td>⭐ P2</td></tr>
+        <tr><td>헌법 정리 <span class="label-tag real">실측</span></td><td class="num">10</td><td class="pos-good">낮음</td><td>constitution 15단원</td><td>⭐ P2</td></tr>
       </tbody>
     </table>
+
+    <h4 style="margin-top:24px;">Tier A — 측정된 long-tail (vol 80~340, 높음이지만 본문 fit)</h4>
+    <p style="color:var(--ink-soft);font-size:14px;">vol 작아 학원 SERP 점유율 비교적 약함 + 우리 본문 보유 → 사용자 empirical("경쟁 높음도 우리 모달이면 진입") 적용.</p>
+    <table class="data-table">
+      <thead><tr><th>키워드</th><th class="num">vol</th><th>경쟁</th><th>본문/매핑</th></tr></thead>
+      <tbody>
+        <tr><td>행정학 기출 <span class="label-tag real">실측</span></td><td class="num">340</td><td class="pos-bad">높음</td><td>admin-pa 13단원</td></tr>
+        <tr><td>9급 세무직 <span class="label-tag real">실측</span></td><td class="num">310</td><td class="pos-bad">높음</td><td>직렬 라우트</td></tr>
+        <tr><td>행정법 기출 <span class="label-tag real">실측</span></td><td class="num">300</td><td class="pos-bad">높음</td><td>admin-law 28단원</td></tr>
+        <tr><td>행정학 요약 <span class="label-tag real">실측</span></td><td class="num">190</td><td class="pos-bad">높음</td><td>admin-pa 13단원</td></tr>
+        <tr><td>공무원 영어 문법 <span class="label-tag real">실측</span></td><td class="num">150</td><td class="pos-bad">높음</td><td>english 9단원</td></tr>
+        <tr><td>9급 영어 <span class="label-tag real">실측</span></td><td class="num">140</td><td class="pos-bad">높음</td><td>영어 본문</td></tr>
+        <tr><td>9급 교정직 <span class="label-tag real">실측</span></td><td class="num">120</td><td class="pos-bad">높음</td><td>직렬 + corrections 본문</td></tr>
+        <tr><td>9급 국어 <span class="label-tag real">실측</span></td><td class="num">100</td><td class="pos-bad">높음</td><td>국어 본문</td></tr>
+        <tr><td>행정법 요약 <span class="label-tag real">실측</span></td><td class="num">90</td><td class="pos-bad">높음</td><td>admin-law 28단원</td></tr>
+        <tr><td>헌법 판례 <span class="label-tag real">실측</span></td><td class="num">90</td><td class="pos-bad">높음</td><td>constitution 15단원</td></tr>
+        <tr><td>공무원 영어 독해 <span class="label-tag real">실측</span></td><td class="num">80</td><td class="pos-bad">높음</td><td>영어 본문</td></tr>
+      </tbody>
+    </table>
+
+    <h4 style="margin-top:24px;">Tier B — 중간 헤드 (vol 350~1,300, 도전 가능)</h4>
+    <p style="color:var(--ink-soft);font-size:14px;">우리 한능검 자산 cross 또는 본문 fit 강함 → 19분 moat로 도전. 한국사 cross 키워드 ⭐ 강조.</p>
+    <table class="data-table">
+      <thead><tr><th>키워드</th><th class="num">vol</th><th>경쟁</th><th>전략</th></tr></thead>
+      <tbody>
+        <tr><td><strong>7급 PSAT</strong> <span class="label-tag real">실측</span></td><td class="num">1,280</td><td class="pos-bad">높음</td><td>헌법 본문 활용 — PSAT 헌법 페이지 강화</td></tr>
+        <tr><td><strong>공무원 한국사</strong> <span class="label-tag real">실측</span></td><td class="num">1,160</td><td class="pos-bad">높음</td><td>⭐ 한능검 1,900 cross 100% fit</td></tr>
+        <tr><td>공무원 국어 <span class="label-tag real">실측</span></td><td class="num">850</td><td class="pos-bad">높음</td><td>국어 본문</td></tr>
+        <tr><td>9급 국가직 <span class="label-tag real">실측</span></td><td class="num">760</td><td class="pos-bad">높음</td><td>직렬 컨테이너 페이지</td></tr>
+        <tr><td>9급 공무원 영어 <span class="label-tag real">실측</span></td><td class="num">640</td><td class="pos-bad">높음</td><td>영어 본문</td></tr>
+        <tr><td>9급 지방직 <span class="label-tag real">실측</span></td><td class="num">570</td><td class="pos-bad">높음</td><td>직렬 컨테이너</td></tr>
+        <tr><td><strong>9급 공무원 한국사</strong> <span class="label-tag real">실측</span></td><td class="num">390</td><td class="pos-bad">높음</td><td>⭐ 한능검 cross</td></tr>
+        <tr><td>9급 공무원 국어 <span class="label-tag real">실측</span></td><td class="num">350</td><td class="pos-bad">높음</td><td>국어 본문</td></tr>
+      </tbody>
+    </table>
+
+    <h4 style="margin-top:24px;">Tier C — 거대 헤드텀 (vol 8K~34K, 장기 도전)</h4>
+    <p style="color:var(--ink-soft);font-size:14px;">학원·인강(메가스터디공무원·박문각·해커스·공단기) 광고비 압도적. 6~12개월 권위 누적 + 외부 인용(블로그·카페) 작업 후 도전. 한능검 헤드텀 결정 7월 검토 패턴 복제 (<code>memory/project_seo_head_term_july.md</code>).</p>
+    <table class="data-table">
+      <thead><tr><th>키워드</th><th class="num">월 검색량</th><th>경쟁</th></tr></thead>
+      <tbody>
+        <tr><td>공무원 <span class="label-tag real">실측</span></td><td class="num pos-good">34,000</td><td class="pos-bad">높음</td></tr>
+        <tr><td>공무원 시험 <span class="label-tag real">실측</span></td><td class="num pos-good">20,650</td><td class="pos-bad">높음</td></tr>
+        <tr><td>9급 공무원 <span class="label-tag real">실측</span></td><td class="num pos-good">11,500</td><td class="pos-bad">높음</td></tr>
+        <tr><td>7급 공무원 <span class="label-tag real">실측</span></td><td class="num pos-good">8,850</td><td class="pos-bad">높음</td></tr>
+        <tr><td>공무원 영어 <span class="label-tag real">실측</span></td><td class="num pos-good">2,700</td><td class="pos-bad">높음</td></tr>
+        <tr><td>공무원 면접 <span class="label-tag real">실측</span></td><td class="num pos-good">1,580</td><td class="pos-bad">높음</td></tr>
+      </tbody>
+    </table>
+
+    <h4 style="margin-top:24px;">콘텐츠 작업 우선순위 — 즉시 적용</h4>
+    <ol style="margin-left:18px;line-height:1.9;">
+      <li><strong>P0 — Tier S 4개 핵심 (한국사 cross 3 + 공무원 기출노트)</strong>: zero cost. <code>civil-seo.ts</code> 한국사 ext에 "단원별 정리"·"시대별 정리"·"정리본" 보강 (어제 머지된 메타 위). 공무원 기출노트 = layout.tsx default title이나 footer에 시그널 추가 (vol 0 + 낮음 = 자리잡힘 기회 큼)</li>
+      <li><strong>P1 — Tier S 전공 + Tier A long-tail</strong>: <code>boost-civil-9-exam-seo.mjs</code> 패턴 D 키워드에 이미 포함. 행정학·행정법 페이지 메타 적용 확인</li>
+      <li><strong>P2 — Tier B 중간 헤드 (한국사 cross 우선)</strong>: 공무원 한국사 1,160 + 9급 공무원 한국사 390 = 우리 강점 영역 + 19분 moat → 도전. 6~12주 후 측정</li>
+      <li><strong>장기 — Tier C 거대 헤드</strong>: 외부 인용(블로그·카페 manual) 작업 누적 후 8~12월 재평가</li>
+      <li><strong>블로그 batch 검토</strong>: 한능검 22편 패턴 복제 — Tier A·B 키워드로 long-form 12편 정도, 6~12주 색인 예상</li>
+    </ol>
   </section>
 
   <!-- Section 7: Weak pages -->
@@ -813,6 +899,26 @@
   <section id="updates">
     <h2><span class="num">10</span> 업데이트 로그</h2>
     <div class="updates">
+      <div class="update-row">
+        <span class="update-date">2026-05-15 v1.10</span>
+        <span><strong>📊 공무원 키워드 정량 검증 완료 + "경쟁 높음 → 도전 가능" 재평가 (§ 6-F 정량화 + § 6-D callout).</strong>
+        <strong>① Naver API 키 갱신</strong>: 사용자가 새 키 제공 → <code>author-tool/.env</code> 갱신, sanity test 통과 (한능검 vol 199K 측정).
+        <strong>② 74 공무원 후보 검증</strong>: <code>validate-keywords-civil-naver.mjs</code> 실행 — 충격적 결과: <strong>74개 중 "낮음/중간" 16개, vol≥100 = 0개</strong>. 공무원 시장은 학원·인강 dominated라 측정 가능 키워드 거의 모두 "높음". 한능검 시장과 다른 게임.
+        <strong>③ 사용자 empirical 인사이트</strong>: SERP 직접 확인 — <strong>"한능검 기출문제"(경쟁 높음, vol 5,640) 네이버 첫 페이지 진입</strong>. § 6-D "회피" 권장이 무조건적이지 않음 입증. <strong>"높음 = 회피"가 아니라 "우리 모달 fit + 19분 moat이면 도전"</strong>으로 정책 변경.
+        <strong>④ § 6-F 전면 갱신</strong> (정성 → 정량): Tier S 즉시 자리잡힘 (vol 0 + 낮음, 12개 — 한국사 cross 3 + <strong>공무원 기출노트</strong> + 전공 패턴 D + 차별화) / Tier A long-tail (vol 80~340, 11개 — 행정학 기출 340 / 9급 세무직 310 / 행정법 기출 300 등) / Tier B 중간 헤드 도전 (vol 350~1,300, 8개 — 7급 PSAT 1,280 / <strong>공무원 한국사 1,160</strong> / 9급 공무원 한국사 390) / Tier C 거대 헤드 장기 (vol 1,580~34K, 6개).
+        <strong>⑤ § 6-D 재평가 callout</strong>: 한능검 기출문제 첫페이지 진입 명시 + "도전 신호 3가지" (모달·콘텐츠 fit·메타 매칭).
+        <strong>⑥ 핵심 발견</strong>: 패턴 D 키워드 ("X 단원별 정리"·"X 정리본") 거의 모두 vol 0 + 낮음 — <strong>첫 진입자 자리</strong>. 한능검 동일 패턴이 30일 +3,641% 폭증한 empirical (§ 6-A2). <strong>공무원 기출노트도 vol 0 + 낮음 → 한능검 39.7% 패턴 30일 복제 가능</strong>.
+        <strong>다음</strong>: P0 — civil-seo.ts 한국사 ext에 "단원별 정리"·"시대별 정리"·"정리본" 보강 + layout.tsx default title에 "공무원 기출노트" 시그널 추가 검토. 6~12주 후 GSC + 네이버 SE 측정. 산출물: <code>_research/keyword-validation-civil-2026-05-15.json</code> + <code>civil-keywords-qualitative-2026-05-15.md</code>.</span>
+      </div>
+      <div class="update-row">
+        <span class="update-date">2026-05-15 v1.9</span>
+        <span><strong>🎯 공무원 시험 황금키워드 후보 — 정성 분석 추가 (§ 6-F 전면 갱신).</strong>
+        <strong>① 시도 → 차단</strong>: <code>validate-keywords-civil-naver.mjs</code> 신규 작성 (74 후보 / 12 카테고리: 브랜드·헤드텀·한국사·국어·영어·행정법·행정학·기타전공·직렬·7급PSAT·차별화·정보성). 실행 시 <strong>403 Invalid API-KEY</strong> — Naver 검색광고 API 키가 4/28 마지막 성공 후 만료. 한능검 검증 스크립트도 동일 에러 → 키 자체 죽음. WebFetch search.naver.com도 차단. <strong>정량 검증 경로 전부 막힘</strong>.
+        <strong>② Pivot — 정성 매핑</strong>: 한능검 § 6-A2 검증 패턴 D ("{시험명} + 시대별 정리·단원별 기출·정리본·요약·기출노트·문제풀기")를 공무원에 매핑. § 6-F를 placeholder → <strong>Tier S/A/B/C/D 5단계 분류 + 신뢰도 등급</strong>으로 전면 확장.
+        <strong>③ 핵심 후보</strong>: Tier S 7개 (한국사 cross — "9급 한국사 시대별 정리" ⭐⭐⭐ 등), Tier A 8개 (전공 — "9급 행정법 단원별 정리" ⭐⭐⭐ + 13 manual 노트 본문 매핑), Tier B 3개 (브랜드 확장 — "기출노트 공무원" 한능검 39.7% 패턴 복제), Tier C 4개 (차별화 — "공무원 단원별 기출" ⭐⭐⭐ 학원 빈자리), Tier D 헤드텀 회피.
+        <strong>④ 산출물</strong>: <code>_research/civil-keywords-qualitative-2026-05-15.md</code> (전체 분석), <code>author-tool/scripts/validate-keywords-civil-naver.mjs</code> (74 후보 사전, 키 갱신 후 즉시 실행 가능), <code>_research/keyword-validation-civil-2026-05-15.json</code> (빈 결과 — 키 만료 시점 기록).
+        <strong>다음</strong>: ⚠️ <strong>Naver API 키 갱신 (사용자 작업)</strong> → 스크립트 재실행 → § 6-F 정량 컬럼(검색량·경쟁) 채우기. 그동안 Tier S 한국사 cross 메타 보강은 zero cost로 진행 가능 (어제 main 머지된 <code>civil-seo.ts</code> ext 키워드 추가).</span>
+      </div>
       <div class="update-row">
         <span class="update-date">2026-05-13 v1.8</span>
         <span><strong>🚀 네이버 서치어드바이저 30일 폭증 발견 (4/13~5/13) — GSC와 별개 트랙으로 본격 진입.</strong>
