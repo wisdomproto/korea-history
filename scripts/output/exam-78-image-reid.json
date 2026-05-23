@@ -1,0 +1,150 @@
+{
+  "Q9": {
+    "q": 9,
+    "era": "남북국",
+    "correctAnswer": 3,
+    "passageFile": "C:/project/korea-history/data/images/exam-78/exam-78_q09_passage.png",
+    "choicesFile": "C:/project/korea-history/data/images/exam-78/exam-78_q09_choices_image.png",
+    "parsed": {
+      "passage_subject": "발해",
+      "passage_evidence": [
+        "중국 지린성 룽터우산 고분군에서 출토된 묘지라는 점",
+        "문왕 대의 '보력(寶曆)', 선왕 대의 '건흥(建興)' 등 독자적인 연호를 사용한 점",
+        "황후(皇后) 칭호를 사용하여 황제국 체제를 운용했음을 보여주는 점"
+      ],
+      "choices": [
+        {
+          "number": 1,
+          "name": "연가 7년명 금동 여래 입상",
+          "era": "고구려",
+          "note": "광배 뒷면에 '연가 7년'이라는 명문이 새겨져 있어 제작 연대를 알 수 있는 고구려의 대표적 불상이다."
+        },
+        {
+          "number": 2,
+          "name": "석굴암 본존불",
+          "era": "통일신라",
+          "note": "경주 토함산 석굴암의 주존불로, 통일신라 전성기의 이상적인 불교 조각 양식을 보여준다."
+        },
+        {
+          "number": 3,
+          "name": "이불병좌상",
+          "era": "발해",
+          "note": "두 부처가 나란히 앉아 있는 모습으로, 고구려 불상 양식을 계승한 발해의 대표적인 문화유산이다."
+        },
+        {
+          "number": 4,
+          "name": "철원 도선사지 철조 아미타불 좌상",
+          "era": "고려 초기 (또는 통일신라 말)",
+          "note": "철로 제작된 불상으로, 나말여초 시기 지방 호족의 지원을 받아 제작된 것으로 추정된다."
+        },
+        {
+          "number": 5,
+          "name": "금동보살입상",
+          "era": "통일신라",
+          "note": "몸을 살짝 튼 삼곡 자세와 화려하고 정교한 장신구가 특징인 통일신라 시대의 보살상이다."
+        }
+      ],
+      "correct_choice_explanation": "사료의 (가)는 발해이며, 3번 이불병좌상은 발해의 대표적인 불상이다.",
+      "confidence": "high",
+      "concerns": []
+    }
+  },
+  "Q14": {
+    "q": 14,
+    "era": "고려",
+    "correctAnswer": 3,
+    "passageFile": "C:/project/korea-history/data/images/exam-78/exam-78_q14_screenshot.png",
+    "choicesFile": "C:/project/korea-history/data/images/exam-78/exam-78_q14_choices_image.png",
+    "parsed": {
+      "passage_subject": "(가)는 고려 시대를 가리킵니다.",
+      "passage_evidence": [
+        "사료에 언급된 '청주 흥덕사에서 간행된 직지심체요절'은 1377년(고려 우왕 3)에 제작되었습니다.",
+        "'현존하는 금속 활자 인쇄본 중 가장 오래된 것'이라는 설명은 고려의 금속 활자 인쇄술을 대표하는 유물인 직지심체요절의 특징입니다."
+      ],
+      "choices": [
+        {
+          "number": 1,
+          "name": "부여 정림사지 5층 석탑",
+          "era": "백제",
+          "note": "목탑의 구조를 석재로 충실하게 재현한 백제의 대표적인 석탑입니다."
+        },
+        {
+          "number": 2,
+          "name": "경주 분황사 모전석탑",
+          "era": "신라",
+          "note": "돌을 벽돌 모양으로 다듬어 쌓은 모전석탑(模塼石塔)으로, 선덕여왕 때 건립되었습니다."
+        },
+        {
+          "number": 3,
+          "name": "경천사지 10층 석탑",
+          "era": "고려",
+          "note": "고려 후기 원나라의 영향을 받아 대리석으로 만들어진 화려한 석탑입니다."
+        },
+        {
+          "number": 4,
+          "name": "양양 진전사지 3층 석탑",
+          "era": "통일신라",
+          "note": "기단부에 불법을 수호하는 팔부중상과 비천상 등이 정교하게 조각되어 있습니다."
+        },
+        {
+          "number": 5,
+          "name": "구례 화엄사 4사자 3층 석탑",
+          "era": "통일신라",
+          "note": "기단부의 네 모퉁이에 암수 사자들이 탑신을 받치고 있는 독특한 구조의 석탑입니다."
+        }
+      ],
+      "correct_choice_explanation": "제시문 (가)는 직지심체요절을 통해 고려 시대를 가리키며, 3번 경천사지 10층 석탑은 고려 후기의 대표적인 문화유산입니다.",
+      "confidence": "high",
+      "concerns": []
+    }
+  },
+  "Q26": {
+    "q": 26,
+    "era": "조선 후기",
+    "correctAnswer": 5,
+    "passageFile": null,
+    "choicesFile": "C:/project/korea-history/data/images/exam-78/exam-78_q26_choices_image.png",
+    "parsed": {
+      "passage_subject": "김정희 (추사) - 조선 후기 문인화가",
+      "passage_evidence": [
+        "제주도 유배 시절을 견뎌냄",
+        "추사체라는 독창적 서체를 남김"
+      ],
+      "choices": [
+        {
+          "number": 1,
+          "name": "월하정인 (月下情人)",
+          "era": "조선 후기",
+          "note": "신윤복(혜원)이 그린 남녀의 만남을 묘사한 풍속화이다."
+        },
+        {
+          "number": 2,
+          "name": "인왕제색도 (仁王霽色圖)",
+          "era": "조선 후기",
+          "note": "정선이 비 온 뒤 갠 인왕산의 모습을 그린 진경산수화이다."
+        },
+        {
+          "number": 3,
+          "name": "영통동구도 (靈通洞口圖)",
+          "era": "조선 후기",
+          "note": "강세황이 개성 영통동 입구의 실경을 그린 문인화이다."
+        },
+        {
+          "number": 4,
+          "name": "묘작도 (猫雀圖)",
+          "era": "조선 후기",
+          "note": "김홍도(단원)가 그린 고양이와 참새를 소재로 한 풍속화이다."
+        },
+        {
+          "number": 5,
+          "name": "세한도 (歲寒圖)",
+          "era": "조선 후기",
+          "note": "김정희(추사)가 제주 유배 시절 제자 이상적에게 그려준 대표적인 문인화이다."
+        }
+      ],
+      "correct_choice_explanation": "제시문의 (가)는 추사 김정희이며, ⑤ 세한도는 김정희의 대표작이다.",
+      "confidence": "high",
+      "concerns": []
+    }
+  }
+}
