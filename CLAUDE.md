@@ -17,7 +17,7 @@ korea_history/
 ├── hooks/                 # Expo 커스텀 훅
 ├── lib/                   # Expo 유틸리티
 ├── data/questions/        # 시험 데이터 JSON (로컬 + R2 동기화)
-│   ├── exam-{N}.json      # { exam: Exam, questions: Question[] } (40~77회)
+│   ├── exam-{N}.json      # { exam: Exam, questions: Question[] } (40~78회)
 │   ├── exam-order.json    # 시험 순서 (ID 배열) — 비어있을 수 있음
 │   └── keywords.json      # 키워드 → 문제 ID 매핑 (3,800+)
 ├── data/notes/            # 요약노트 JSON (87개)
@@ -59,7 +59,7 @@ korea_history/
 │   │   ├── layout.tsx     # 루트 레이아웃 (GA4, 카카오 SDK, 네이버 인증)
 │   │   ├── page.tsx       # 메인 (배너 + 퀵액션 + 최신기출 + 키워드)
 │   │   ├── opengraph-image.tsx  # 메인 OG 이미지 (정적)
-│   │   ├── exam/          # 기출문제 (SSG, 1,900+ 페이지 + OG 이미지)
+│   │   ├── exam/          # 기출문제 (SSG, 1,950+ 페이지 + OG 이미지)
 │   │   ├── notes/         # 요약노트 (SSG, 87 페이지 + OG 이미지)
 │   │   ├── study/         # 학습하기 (맞춤형, 키워드별, 학습세션)
 │   │   ├── wrong-answers/ # 오답노트 (CSR, localStorage)
@@ -150,7 +150,7 @@ korea_history/
 - **모바일 반응형**: 모든 섹션 `px-5 sm:px-6 md:px-8` + `py-14 md:py-20`, Hero/Exam/Notes preview는 1-col → `md:`/`lg:` 2-col, Stats는 `grid-cols-2 md:grid-cols-4`, Linked Preview 연결선은 모바일에서 90° 회전
 
 ### 학습 시스템
-- **회차별 풀기**: 40~77회 시험 (1,900+ 문항)
+- **회차별 풀기**: 40~78회 시험 (1,950+ 문항)
 - **맞춤형 학습**: 시대 × 유형 체크박스 선택 → 학습 세션
 - **키워드 학습**: 3,800개 키워드 체크박스 → 학습 세션
 - **학습 세션** (`/study/session`): 선택한 문제 랜덤 셔플, 진행률, 네비게이터

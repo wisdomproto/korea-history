@@ -1,0 +1,1731 @@
+[
+  {
+    "questionNumber": 1,
+    "era": "선사·고조선",
+    "category": "사회",
+    "correctAnswer": 5,
+    "matched": [
+      {
+        "id": "s1-01",
+        "title": "시대별 유물/유적지",
+        "score": 24
+      },
+      {
+        "id": "s7-01",
+        "title": "️ 광복과 국내정세 변화",
+        "score": 5
+      },
+      {
+        "id": "s1-03",
+        "title": "고조선 및 위만조선",
+        "score": 4
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1은 신석기·구석기 시대 유물을, 노트 3은 청동기·철기 시대 유물을 다루어 문제와 해설의 모든 핵심 개념을 포괄합니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 2,
+    "era": "선사·고조선",
+    "category": "정치",
+    "correctAnswer": 2,
+    "matched": [
+      {
+        "id": "s1-03",
+        "title": "고조선 및 위만조선",
+        "score": 11
+      },
+      {
+        "id": "s3-01",
+        "title": "️ 조선의 건국과정",
+        "score": 7
+      },
+      {
+        "id": "s1-06",
+        "title": "️ 삼국의 통치체제",
+        "score": 6
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1(s1-03)이 문제의 핵심 토픽인 고조선의 발전 과정을 청동기 시대, 8조법, 위만조선 시기로 나누어 상세히 다루고 있어 검증에 충분합니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 3,
+    "era": "삼국",
+    "category": "사회",
+    "correctAnswer": 1,
+    "matched": [
+      {
+        "id": "s1-02",
+        "title": "연맹국가 (부여, 고구려, 옥저, 동예, 삼한)",
+        "score": 29
+      },
+      {
+        "id": "s1-06",
+        "title": "️ 삼국의 통치체제",
+        "score": 10
+      },
+      {
+        "id": "s1-09",
+        "title": "️ 발해 (698~)",
+        "score": 7
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1이 문제의 핵심인 초기 여러 나라(삼한, 옥저, 동예, 부여, 고구려)의 사회·정치 특징을 매우 상세히 다루고 있어, 정답과 오답 선지를 검증하는 데 충분합니다. 노트 3(발해)도 관련 선지 검증에 사용됩니다.",
+    "hallucination_risk": "medium",
+    "flagged_claims": [
+      {
+        "claim": "③ 위화부·영객부는 발해의 중앙 관제",
+        "issue": "노트와 모순/사실 오류. 위화부와 영객부는 신라의 중앙 관청입니다. 노트 3에 따르면 발해의 6부 명칭은 유교 덕목인 충·인·의·지·예·신으로, AI 해설의 내용과 명백히 다릅니다.",
+        "severity": "medium"
+      }
+    ],
+    "verdict": "해설 일부 재확인 필요"
+  },
+  {
+    "questionNumber": 4,
+    "era": "삼국",
+    "category": "정치",
+    "correctAnswer": 5,
+    "matched": [
+      {
+        "id": "s1-04",
+        "title": "️ 삼국시대 왕업적",
+        "score": 10
+      },
+      {
+        "id": "s1-07",
+        "title": "통일신라 왕업적표",
+        "score": 6
+      },
+      {
+        "id": "s1-08",
+        "title": "통일신라 말기 및 후삼국",
+        "score": 6
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1(s1-04)이 문제의 핵심인 백제 왕들의 업적을 상세히 다루고 있어, 해설의 대부분 내용을 검증할 수 있습니다.",
+    "hallucination_risk": "medium",
+    "flagged_claims": [
+      {
+        "claim": "성왕은 고구려와의 패권 다툼에서 우위를 점하기 위해 548년에 장군 달기(達己)를 보내 고구려의 도살성을 점령하는 등 적극적인 대외 정책을 펼쳤습니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      },
+      {
+        "claim": "백가의 난을 평정했던 왕은 동성왕",
+        "issue": "노트에 없음/사실관계 오류 가능성",
+        "severity": "medium"
+      }
+    ],
+    "verdict": "해설 일부 재확인 필요"
+  },
+  {
+    "questionNumber": 5,
+    "era": "삼국",
+    "category": "정치",
+    "correctAnswer": 2,
+    "matched": [
+      {
+        "id": "s1-06",
+        "title": "️ 삼국의 통치체제",
+        "score": 14
+      },
+      {
+        "id": "s1-02",
+        "title": "연맹국가 (부여, 고구려, 옥저, 동예, 삼한)",
+        "score": 10
+      },
+      {
+        "id": "s1-08",
+        "title": "통일신라 말기 및 후삼국",
+        "score": 10
+      }
+    ],
+    "coverage": "partial",
+    "coverage_notes": "노트 1, 2에서 오답 선지인 백제의 22담로, 동예의 무천에 대한 내용은 확인되나, 정답의 핵심인 고구려의 태학·경당 및 다른 오답 선지에 대한 내용은 포함되어 있지 않습니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 6,
+    "era": "삼국",
+    "category": "사회",
+    "correctAnswer": 4,
+    "matched": [
+      {
+        "id": "s1-06",
+        "title": "️ 삼국의 통치체제",
+        "score": 22
+      },
+      {
+        "id": "s1-08",
+        "title": "통일신라 말기 및 후삼국",
+        "score": 14
+      },
+      {
+        "id": "s1-02",
+        "title": "연맹국가 (부여, 고구려, 옥저, 동예, 삼한)",
+        "score": 13
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1은 문제의 핵심인 삼국의 통치체제를 직접적으로 비교하고 있어 coverage가 매우 좋으며, 노트 3은 오답 선지인 고구려의 풍습을 다루고 있습니다.",
+    "hallucination_risk": "low",
+    "flagged_claims": [
+      {
+        "claim": "② 서시와 남시 설치는 신라의 시장 제도에 해당합니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      },
+      {
+        "claim": "⑤ 을파소와 진대법 시행은 고구려의 민생 안정 정책입니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      }
+    ],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 7,
+    "era": "삼국",
+    "category": "정치",
+    "correctAnswer": 4,
+    "matched": [
+      {
+        "id": "s1-04",
+        "title": "️ 삼국시대 왕업적",
+        "score": 22
+      },
+      {
+        "id": "s1-11",
+        "title": "고대 국가의 고분",
+        "score": 12
+      },
+      {
+        "id": "s1-05",
+        "title": "️ 가야",
+        "score": 9
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1(삼국시대 왕업적)이 문제의 정답과 모든 오답 선지에 해당하는 핵심 사건, 인물, 연도를 직접적으로 다루고 있어 검증에 매우 충분합니다. 노트 3(가야)도 선지 1번 내용을 보충합니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 8,
+    "era": "남북국",
+    "category": "정치",
+    "correctAnswer": 3,
+    "matched": [
+      {
+        "id": "s1-07",
+        "title": "통일신라 왕업적표",
+        "score": 16
+      },
+      {
+        "id": "s1-04",
+        "title": "️ 삼국시대 왕업적",
+        "score": 11
+      },
+      {
+        "id": "s1-06",
+        "title": "️ 삼국의 통치체제",
+        "score": 10
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1(통일신라)과 노트 2(삼국시대)가 정답 선지(김헌창의 난)와 오답 선지(비담의 난, 김흠돌의 난, 이차돈의 순교)의 핵심 사건과 시기를 명확히 다루고 있어 검증에 충분합니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 9,
+    "era": "남북국",
+    "category": "문화",
+    "correctAnswer": 3,
+    "matched": [
+      {
+        "id": "s1-12",
+        "title": "석탑 (백제~조선)",
+        "score": 15
+      },
+      {
+        "id": "s1-11",
+        "title": "고대 국가의 고분",
+        "score": 11
+      },
+      {
+        "id": "s1-06",
+        "title": "️ 삼국의 통치체제",
+        "score": 10
+      }
+    ],
+    "coverage": "partial",
+    "coverage_notes": "노트 1, 2가 선지 1(다보탑), 4(광개토대왕비 맥락), 5(정혜공주묘)의 시대 정보를 다루고 있으나, 정답인 3(석굴암)과 선지 2(반가사유상)에 대한 정보는 없어 부분적인 검증만 가능합니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 10,
+    "era": "고려",
+    "category": "정치",
+    "correctAnswer": 4,
+    "matched": [
+      {
+        "id": "s2-02",
+        "title": "️ 고려의 후삼국 통일 과정",
+        "score": 22
+      },
+      {
+        "id": "s2-01",
+        "title": "️ 삼국시대 주요 전투",
+        "score": 12
+      },
+      {
+        "id": "s2-03",
+        "title": "고려 왕업적",
+        "score": 5
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1이 문제의 핵심 토픽인 '고려의 후삼국 통일 과정'을 연표와 함께 상세히 다루고 있어, 문제 풀이에 필요한 핵심 정보(공산 전투, 고창 전투, 궁예의 국호 변경 등)를 모두 포함하고 있습니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 11,
+    "era": "고려",
+    "category": "정치",
+    "correctAnswer": 4,
+    "matched": [
+      {
+        "id": "s2-03",
+        "title": "고려 왕업적",
+        "score": 9
+      },
+      {
+        "id": "s2-09",
+        "title": "고려 사회·신분 구조",
+        "score": 7
+      },
+      {
+        "id": "s2-08",
+        "title": "고려 경제",
+        "score": 6
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1 '고려 왕업적'이 문제의 핵심인 광종의 업적(노비안검법)과 오답 선지 대부분(성종, 예종, 태조)을 상세히 다루고 있어 커버리지가 우수합니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 12,
+    "era": "고려",
+    "category": "경제",
+    "correctAnswer": 3,
+    "matched": [
+      {
+        "id": "s2-08",
+        "title": "고려 경제",
+        "score": 20
+      },
+      {
+        "id": "s2-02",
+        "title": "️ 고려의 후삼국 통일 과정",
+        "score": 10
+      },
+      {
+        "id": "s2-01",
+        "title": "️ 삼국시대 주요 전투",
+        "score": 7
+      }
+    ],
+    "coverage": "weak",
+    "coverage_notes": "제공된 노트 중 [노트 1]이 고려 경제를 다루지만, 태조 시기 국내 정책에 한정되어 문제의 핵심인 '벽란도'나 '국제 무역'에 대한 내용은 전혀 없습니다. 나머지 노트는 관련 없는 시대/주제입니다.",
+    "hallucination_risk": "high",
+    "flagged_claims": [
+      {
+        "claim": "고려는 예성강 하구에 위치한 벽란도를 통해 송, 거란, 일본 등 주변국과 활발하게 교역했으며, 이는 고려 경제의 중요한 부분 중 하나였습니다. 벽란도는 고려의 대표적인 대외 무역항으로, 송나라 상인뿐만 아니라 아라비아 상인까지 드나들며 고려청자, 인삼 등을 수출하고 비단, 서적 등을 수입했습니다.",
+        "issue": "노트에 없음",
+        "severity": "high"
+      },
+      {
+        "claim": "오답 선지 중 ① 덕대의 전문적인 광산 경영과 ② 고추, 담배 등 상품 작물 재배는 조선 후기의 특징이며, ④ 덩이쇠 수출을 통한 낙랑과의 교역은 그 이전 시기(가야 및 삼국시대 초기), ⑤ 청해진을 거점으로 한 해상 무역은 통일 신라 시대 장보고와 관련된 내용입니다.",
+        "issue": "노트에 없음",
+        "severity": "high"
+      }
+    ],
+    "verdict": "해설 중대한 오류 의심"
+  },
+  {
+    "questionNumber": 13,
+    "era": "고려",
+    "category": "정치",
+    "correctAnswer": 5,
+    "matched": [
+      {
+        "id": "s2-04",
+        "title": "별무반과 여진 정벌",
+        "score": 12
+      },
+      {
+        "id": "s2-03",
+        "title": "고려 왕업적",
+        "score": 11
+      },
+      {
+        "id": "s2-08",
+        "title": "고려 경제",
+        "score": 7
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1은 문제의 핵심 토픽인 '별무반과 여진 정벌'을 직접적으로 다루고, 노트 2는 '예종'의 업적으로 관련 내용을 뒷받침하여 매우 높은 연관성을 보입니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 14,
+    "era": "고려",
+    "category": "문화",
+    "correctAnswer": 3,
+    "matched": [
+      {
+        "id": "s2-02",
+        "title": "️ 고려의 후삼국 통일 과정",
+        "score": 7
+      },
+      {
+        "id": "s2-05",
+        "title": "️ 고려 중앙 정치 조직",
+        "score": 7
+      },
+      {
+        "id": "s2-01",
+        "title": "️ 삼국시대 주요 전투",
+        "score": 6
+      }
+    ],
+    "coverage": "none",
+    "coverage_notes": "제공된 노트 3개는 모두 고려의 건국 과정, 정치 제도, 삼국시대 전투 등 정치·군사사에 관한 내용이며, 문제의 핵심 주제인 '고려 시대 문화유산(석탑)'에 대한 정보는 전혀 포함하고 있지 않습니다.",
+    "hallucination_risk": "high",
+    "flagged_claims": [
+      {
+        "claim": "경천사지 십층석탑은 고려 후기에 원나라 라마탑의 영향을 받아 제작된 대리석 석탑으로, 화려한 장식과 섬세한 조각이 특징인 고려 시대의 대표적인 문화유산입니다.",
+        "issue": "노트에 없음. 해설의 핵심 근거가 되는 내용이지만, 제공된 노트에서는 관련 정보를 전혀 찾을 수 없습니다.",
+        "severity": "high"
+      },
+      {
+        "claim": "나머지 선지들은 시대가 맞지 않습니다. ① 감은사지 삼층석탑과 ④ 불국사 삼층석탑은 통일 신라 시대, ② 정림사지 오층석탑은 백제 시대의 유산이며, ⑤ 원각사지 십층석탑은 조선 세조 때 경천사지 석탑의 양식을 계승하여 만들어진 것입니다.",
+        "issue": "노트에 없음. 모든 오답 선지에 대한 설명 역시 제공된 노트에서는 전혀 근거를 찾을 수 없습니다.",
+        "severity": "high"
+      }
+    ],
+    "verdict": "해설 중대한 오류 의심"
+  },
+  {
+    "questionNumber": 15,
+    "era": "고려",
+    "category": "사회",
+    "correctAnswer": 4,
+    "matched": [
+      {
+        "id": "s2-05",
+        "title": "️ 고려 중앙 정치 조직",
+        "score": 11
+      },
+      {
+        "id": "s2-09",
+        "title": "고려 사회·신분 구조",
+        "score": 8
+      },
+      {
+        "id": "s2-03",
+        "title": "고려 왕업적",
+        "score": 7
+      }
+    ],
+    "coverage": "weak",
+    "coverage_notes": "제공된 노트는 고려의 중앙 정치, 신분 구조, 주요 왕의 업적을 다루지만, 문제의 핵심인 '제위보'를 포함한 사회 구휼 제도에 대한 내용은 전혀 포함하고 있지 않습니다.",
+    "hallucination_risk": "medium",
+    "flagged_claims": [
+      {
+        "claim": "제위보는 고려 성종 때 설치되어 빈민과 환자를 구제하기 위해 곡식 등을 대여해 주던 기관으로",
+        "issue": "인물 불일치. 제위보는 광종 때 설치된 기관입니다. 성종은 의창, 상평창 등을 설치했습니다. 제공된 노트에는 관련 내용이 전혀 없어 검증이 불가능합니다.",
+        "severity": "medium"
+      }
+    ],
+    "verdict": "해설 일부 재확인 필요"
+  },
+  {
+    "questionNumber": 16,
+    "era": "고려",
+    "category": "정치",
+    "correctAnswer": 3,
+    "matched": [
+      {
+        "id": "s2-06",
+        "title": "️ 무신정변과 원간섭기",
+        "score": 18
+      },
+      {
+        "id": "s2-03",
+        "title": "고려 왕업적",
+        "score": 4
+      },
+      {
+        "id": "s2-08",
+        "title": "고려 경제",
+        "score": 4
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1과 2가 문제의 핵심 토픽인 공민왕의 업적과 원 간섭기 주요 사건들을 매우 잘 다루고 있습니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 17,
+    "era": "고려",
+    "category": "문화",
+    "correctAnswer": 5,
+    "matched": [
+      {
+        "id": "s2-11",
+        "title": "문화 (역사서, 유학, 불교)",
+        "score": 16
+      },
+      {
+        "id": "s2-02",
+        "title": "️ 고려의 후삼국 통일 과정",
+        "score": 4
+      },
+      {
+        "id": "s2-03",
+        "title": "고려 왕업적",
+        "score": 3
+      }
+    ],
+    "coverage": "partial",
+    "coverage_notes": "노트 3에서 정답의 근거인 의천의 활동(교관겸수, 천태종)을, 노트 1에서 오답 선지 중 하나인 일연(삼국유사)을 다루고 있으나, 나머지 오답 선지의 인물(요세, 혜심, 균여)에 대한 정보는 없습니다.",
+    "hallucination_risk": "low",
+    "flagged_claims": [
+      {
+        "claim": "② 법화 신앙을 바탕으로 백련 결사를 이끈 인물은 요세",
+        "issue": "노트에 없음",
+        "severity": "low"
+      },
+      {
+        "claim": "③ 선문염송집을 편찬한 인물은 혜심",
+        "issue": "노트에 없음",
+        "severity": "low"
+      },
+      {
+        "claim": "④ 보현십원가를 지어 불교 교리를 대중에게 전파한 인물은 균여입니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      }
+    ],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 18,
+    "era": "고려",
+    "category": "정치",
+    "correctAnswer": 4,
+    "matched": [
+      {
+        "id": "s2-06",
+        "title": "️ 무신정변과 원간섭기",
+        "score": 16
+      },
+      {
+        "id": "s2-03",
+        "title": "고려 왕업적",
+        "score": 9
+      },
+      {
+        "id": "s2-08",
+        "title": "고려 경제",
+        "score": 9
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1과 2가 문제의 정답(묘청)과 오답 선지(최승로, 강조, 최충헌)에 등장하는 핵심 인물과 사건을 대부분 다루고 있습니다.",
+    "hallucination_risk": "low",
+    "flagged_claims": [
+      {
+        "claim": "화통도감의 설치를 건의한 인물은 고려 말 화약 무기를 개발한 최무선입니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      }
+    ],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 19,
+    "era": "조선 전기",
+    "category": "정치",
+    "correctAnswer": 1,
+    "matched": [
+      {
+        "id": "s3-07",
+        "title": "사림 등장과 붕당 정치 성립",
+        "score": 18
+      },
+      {
+        "id": "s3-16",
+        "title": "붕당 분화 계보도",
+        "score": 18
+      },
+      {
+        "id": "s3-03",
+        "title": "사화 (무오/갑자/기묘/을사)",
+        "score": 17
+      }
+    ],
+    "coverage": "partial",
+    "coverage_notes": "제공된 노트는 오답 선지인 사화(기묘사화), 붕당(기축옥사, 경신환국)에 대한 내용은 잘 다루고 있으나, 문제의 핵심인 세조와 정답 선지인 이징옥의 난에 대한 정보는 전혀 포함하고 있지 않습니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 20,
+    "era": "조선 전기",
+    "category": "정치",
+    "correctAnswer": 5,
+    "matched": [
+      {
+        "id": "s3-04",
+        "title": "️ 중앙 행정 조직",
+        "score": 9
+      },
+      {
+        "id": "s3-02",
+        "title": "조선 왕업적 (태조~성종)",
+        "score": 7
+      },
+      {
+        "id": "s3-07",
+        "title": "사림 등장과 붕당 정치 성립",
+        "score": 4
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1 '중앙 행정 조직' 파트에서 문제의 정답인 의금부와 오답 선지인 한성부, 홍문관의 기능을 명확히 설명하고 있어 문제 풀이에 핵심적인 정보를 제공합니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 21,
+    "era": "조선 전기",
+    "category": "정치",
+    "correctAnswer": 1,
+    "matched": [
+      {
+        "id": "s3-14",
+        "title": "서원과 향약",
+        "score": 15
+      },
+      {
+        "id": "s3-09",
+        "title": "광해군 중립외교와 호란",
+        "score": 11
+      },
+      {
+        "id": "s3-15",
+        "title": "문화, 성리학, 예술",
+        "score": 10
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1, 2, 3이 문제의 정답(훈민정음)과 오답 선지(백운동 서원, 해주 향약, 효종/송시열 등)의 핵심 인물과 시대를 대부분 다루고 있어 검증에 충분합니다.",
+    "hallucination_risk": "low",
+    "flagged_claims": [
+      {
+        "claim": "③ 기축봉사는 효종 때 송시열이 올렸으며",
+        "issue": "노트에 없음",
+        "severity": "low"
+      },
+      {
+        "claim": "⑤ 가례집람 저술은 광해군 때 김장생의 업적입니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      }
+    ],
+    "verdict": "해설 일부 재확인 필요"
+  },
+  {
+    "questionNumber": 22,
+    "era": "조선 후기",
+    "category": "정치",
+    "correctAnswer": 4,
+    "matched": [
+      {
+        "id": "s4-02",
+        "title": "경제와 사회",
+        "score": 6
+      },
+      {
+        "id": "s4-04",
+        "title": "종교와 학문",
+        "score": 6
+      },
+      {
+        "id": "s4-01",
+        "title": "왕정과 정치체제",
+        "score": 2
+      }
+    ],
+    "coverage": "weak",
+    "coverage_notes": "제공된 3개의 노트는 모두 조선 후기의 정치, 경제, 사상사를 다루고 있으나, 문제의 핵심 주제인 임진왜란(16세기 말) 및 오답 선지의 배경인 정묘·병자호란(17세기 초), 세종 대(15세기)의 사건은 전혀 포함하고 있지 않습니다.",
+    "hallucination_risk": "high",
+    "flagged_claims": [
+      {
+        "claim": "권율 장군이 행주산성에서 적군을 크게 물리친 행주대첩은 1593년 임진왜란 중에 일어난 3대 대첩 중 하나로...",
+        "issue": "노트에 없음",
+        "severity": "high"
+      },
+      {
+        "claim": "정봉수의 용골산성 항쟁은 정묘호란(1627년)...",
+        "issue": "노트에 없음",
+        "severity": "high"
+      },
+      {
+        "claim": "김준룡의 광교산 전투는 병자호란(1636년) 때의 사실입니다.",
+        "issue": "노트에 없음",
+        "severity": "high"
+      },
+      {
+        "claim": "김종서의 두만강 일대 6진 개척과 ⑤ 이종무의 대마도 정벌은 각각 세종대왕 시기(15세기 초중반)에 있었던 사건...",
+        "issue": "노트에 없음",
+        "severity": "high"
+      }
+    ],
+    "verdict": "해설 일부 재확인 필요"
+  },
+  {
+    "questionNumber": 23,
+    "era": "조선 후기",
+    "category": "정치",
+    "correctAnswer": 1,
+    "matched": [
+      {
+        "id": "s4-02",
+        "title": "경제와 사회",
+        "score": 13
+      },
+      {
+        "id": "s4-01",
+        "title": "왕정과 정치체제",
+        "score": 8
+      },
+      {
+        "id": "s4-04",
+        "title": "종교와 학문",
+        "score": 6
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 2(s4-01)에서 문제의 핵심 토픽인 '세도 정치'의 시기, 특징(외척 가문 권력 독점, 매관매직, 삼정의 문란)을 정확하게 다루고 있습니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 24,
+    "era": "조선 후기",
+    "category": "정치",
+    "correctAnswer": 5,
+    "matched": [
+      {
+        "id": "s4-01",
+        "title": "왕정과 정치체제",
+        "score": 14
+      },
+      {
+        "id": "s4-03",
+        "title": "️ 정치체제와 군사",
+        "score": 4
+      },
+      {
+        "id": "s4-04",
+        "title": "종교와 학문",
+        "score": 4
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1은 문제의 핵심인 정조와 영조의 업적(초계문신제, 탕평비 등)을 명확히 다루고 있으며, 노트 2는 오답 선지인 훈련도감 창설(선조)의 시대적 배경을 뒷받침합니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 25,
+    "era": "조선 후기",
+    "category": "경제",
+    "correctAnswer": 1,
+    "matched": [
+      {
+        "id": "s4-02",
+        "title": "경제와 사회",
+        "score": 22
+      },
+      {
+        "id": "s4-04",
+        "title": "종교와 학문",
+        "score": 8
+      },
+      {
+        "id": "s4-05",
+        "title": "문화와 예술",
+        "score": 8
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1은 문제의 핵심 토픽인 조선 후기 경제 상황, 특히 공인, 송상, 만상 등 상업 발달에 대해 충실히 다루고 있습니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 26,
+    "era": "조선 후기",
+    "category": "문화",
+    "correctAnswer": 5,
+    "matched": [
+      {
+        "id": "s4-05",
+        "title": "문화와 예술",
+        "score": 25
+      },
+      {
+        "id": "s4-02",
+        "title": "경제와 사회",
+        "score": 4
+      },
+      {
+        "id": "s4-04",
+        "title": "종교와 학문",
+        "score": 4
+      }
+    ],
+    "coverage": "partial",
+    "coverage_notes": "노트 1(s4-05)이 오답 선지(정선, 김홍도, 신윤복, 김정희)의 화가와 작품은 잘 다루고 있으나, 정답의 핵심 인물인 이하응(흥선대원군)과 그의 묵란도에 대한 정보는 전혀 포함하고 있지 않습니다.",
+    "hallucination_risk": "medium",
+    "flagged_claims": [
+      {
+        "claim": "이하응은 흥선대원군으로 널리 알려진 인물로, 뛰어난 서예와 그림 실력을 겸비했으며 특히 먹으로 난초를 그리는 묵란(墨蘭)에 능하여 자신만의 독자적인 화풍을 확립했습니다.",
+        "issue": "노트에 없음",
+        "severity": "medium"
+      },
+      {
+        "claim": "이하응은 강력한 개혁을 추진한 정치인이자 문화적으로는 조선 후기 문인화의 전통을 이어 묵란을 통해 격조 높은 예술 세계를 보여주었습니다.",
+        "issue": "노트에 없음",
+        "severity": "medium"
+      }
+    ],
+    "verdict": "해설 일부 재확인 필요"
+  },
+  {
+    "questionNumber": 27,
+    "era": "조선 후기",
+    "category": "사회",
+    "correctAnswer": 2,
+    "matched": [
+      {
+        "id": "s4-04",
+        "title": "종교와 학문",
+        "score": 8
+      },
+      {
+        "id": "s4-02",
+        "title": "경제와 사회",
+        "score": 7
+      },
+      {
+        "id": "s4-05",
+        "title": "문화와 예술",
+        "score": 4
+      }
+    ],
+    "coverage": "partial",
+    "coverage_notes": "노트 1, 3에서 문제의 핵심 배경인 '신분제 동요'와 '서얼'을 언급하고 있으나, 정답의 핵심 키워드인 '통청 운동'은 직접적으로 다루지 않아 부분적인 커버리지에 해당합니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 28,
+    "era": "근대",
+    "category": "정치",
+    "correctAnswer": 2,
+    "matched": [
+      {
+        "id": "s5-02",
+        "title": "️ 개화정책과 개화 반대 운동",
+        "score": 20
+      },
+      {
+        "id": "s5-01",
+        "title": "흥선대원군과 개항기",
+        "score": 18
+      },
+      {
+        "id": "s5-05",
+        "title": "근대 문화와 시설",
+        "score": 7
+      }
+    ],
+    "coverage": "partial",
+    "coverage_notes": "노트 2는 문제의 핵심 토픽인 강화도 조약의 직접적 원인(운요호 사건)을 다루고, 노트 1은 조약 체결에 대한 반대 운동을 언급하여 배경 지식을 제공합니다. 그러나 조약의 구체적인 조항(해안 측량권 등)에 대한 내용은 없어 해설의 핵심 내용을 직접 검증하기는 어렵습니다.",
+    "hallucination_risk": "low",
+    "flagged_claims": [
+      {
+        "claim": "이 조약의 제7관은 일본이 조선 해안을 자유롭게 측량할 수 있도록 허용하여 일본의 침략 야욕을 드러내는 불평등 조항이었습니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      },
+      {
+        "claim": "최혜국 대우 조항은 조미수호통상조약(1882)에서 처음 규정되었습니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      },
+      {
+        "claim": "일본 공사관 경비병 주둔은 임오군란 이후 제물포 조약(1882)에서 명시되었습니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      }
+    ],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 29,
+    "era": "근대",
+    "category": "정치",
+    "correctAnswer": 1,
+    "matched": [
+      {
+        "id": "s5-02",
+        "title": "️ 개화정책과 개화 반대 운동",
+        "score": 17
+      },
+      {
+        "id": "s5-01",
+        "title": "흥선대원군과 개항기",
+        "score": 16
+      },
+      {
+        "id": "s5-03",
+        "title": "동학농민운동과 갑오개혁/을미개혁",
+        "score": 8
+      }
+    ],
+    "coverage": "partial",
+    "coverage_notes": "노트 3에서 핵심 사건인 갑신정변을 언급하고, 노트 2와 3에서 오답 선지의 사건들(병인양요, 신미양요, 갑오개혁)을 다루고 있습니다. 하지만 정답의 핵심 근거인 '한성 조약'과 오답 선지 중 '흥선 대원군 납치'에 대한 내용은 노트에 없습니다.",
+    "hallucination_risk": "low",
+    "flagged_claims": [
+      {
+        "claim": "조선과 일본 사이에 배상 및 공사관 신축 비용 부담 등을 내용으로 하는 한성 조약이 체결되는 계기가 되었습니다.",
+        "issue": "노트에 없음",
+        "severity": "medium"
+      },
+      {
+        "claim": "흥선 대원군 납치는 임오군란(1882) 이후 청에 의해 이루어졌으며",
+        "issue": "노트에 없음",
+        "severity": "low"
+      }
+    ],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 30,
+    "era": "근대",
+    "category": "문화",
+    "correctAnswer": 2,
+    "matched": [
+      {
+        "id": "s6-02",
+        "title": "3·1운동 이전 민족운동 (1910년대)",
+        "score": 12
+      },
+      {
+        "id": "s5-05",
+        "title": "근대 문화와 시설",
+        "score": 11
+      },
+      {
+        "id": "s5-04",
+        "title": "️ 대한제국과 국권 피탈",
+        "score": 10
+      }
+    ],
+    "coverage": "weak",
+    "coverage_notes": "제공된 노트들은 문제의 정답과 직접적으로 관련된 핵심 개념인 '독립협회'에 대한 내용을 전혀 포함하고 있지 않습니다. 다른 선지와 관련된 '신민회'나 근대 시설 등이 일부 언급되나, 정답 해설의 핵심 주장을 검증하기에는 부적합합니다.",
+    "hallucination_risk": "low",
+    "flagged_claims": [
+      {
+        "claim": "(나)에 제시된 \"관민이 합심하여 세우다\"는 독립협회(獨立協會)의 설립 및 활동의 특징을 가장 잘 나타냅니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      },
+      {
+        "claim": "독립협회는 서재필 등 개화파 인사들과 정부 관료들이 함께 설립되었으며, 독립문 건립과 같은 주요 사업을 진행할 때 정부의 지원과 민중의 모금 활동이 활발하게 이루어졌습니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      }
+    ],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 31,
+    "era": "근대",
+    "category": "경제",
+    "correctAnswer": 4,
+    "matched": [
+      {
+        "id": "s5-02",
+        "title": "️ 개화정책과 개화 반대 운동",
+        "score": 14
+      },
+      {
+        "id": "s5-01",
+        "title": "흥선대원군과 개항기",
+        "score": 12
+      },
+      {
+        "id": "s5-04",
+        "title": "️ 대한제국과 국권 피탈",
+        "score": 12
+      }
+    ],
+    "coverage": "weak",
+    "coverage_notes": "노트 3(s5-04)이 문제의 시대적 배경인 국권 피탈 과정을 다루지만, 문제의 핵심 키워드인 '메가타', '재정 고문', '화폐정리사업' 등은 전혀 언급하지 않아 커버리지가 매우 약합니다.",
+    "hallucination_risk": "medium",
+    "flagged_claims": [
+      {
+        "claim": "메가타는 제1차 한일협정(1904)에 따라 파견되어 화폐정리사업을 강행하는 등 대한제국의 재정을 일본에 종속시키는 정책을 주도했습니다.",
+        "issue": "노트에 없음",
+        "severity": "high"
+      },
+      {
+        "claim": "① 삼국 간섭은 청일전쟁 이후 러시아, 독일, 프랑스가 일본에 개입한 사건이고, ② 삼정이정청은 조선 후기 삼정의 문란을 개혁하기 위한 기구이며, ③ 황국 중앙 총상회는 1898년 상권 수호를 위해 설립된 단체이고",
+        "issue": "노트에 없음",
+        "severity": "medium"
+      }
+    ],
+    "verdict": "해설 일부 재확인 필요"
+  },
+  {
+    "questionNumber": 32,
+    "era": "근대",
+    "category": "정치",
+    "correctAnswer": 3,
+    "matched": [
+      {
+        "id": "s5-03",
+        "title": "동학농민운동과 갑오개혁/을미개혁",
+        "score": 28
+      },
+      {
+        "id": "s5-02",
+        "title": "️ 개화정책과 개화 반대 운동",
+        "score": 15
+      },
+      {
+        "id": "s6-01",
+        "title": "일제의 통치방식",
+        "score": 12
+      }
+    ],
+    "coverage": "weak",
+    "coverage_notes": "노트 1에서 '남접', '북접', '전봉준' 등 동학농민운동 관련 키워드를 나열하고 있으나, 운동의 구체적인 전개 과정이나 사건의 선후 관계에 대한 설명이 전혀 없어 문제 풀이에 필요한 핵심 정보를 제공하지 못합니다.",
+    "hallucination_risk": "high",
+    "flagged_claims": [
+      {
+        "claim": "남접과 북접 농민군이 논산에 집결한 것은 일본군의 경복궁 점령 이후 동학농민운동의 2차 봉기가 시작된 1894년 10월의 일",
+        "issue": "노트에 없음",
+        "severity": "high"
+      },
+      {
+        "claim": "황토현 전투 승리(1894년 4월)와 ⑤ 조병갑의 폭정에 항거한 고부 봉기(1894년 1월)는 1차 봉기 당시의 일",
+        "issue": "노트에 없음",
+        "severity": "high"
+      },
+      {
+        "claim": "교조 신원을 요구하는 삼례 집회는 동학농민운동 발발 이전(1892년)의 일입니다.",
+        "issue": "노트에 없음",
+        "severity": "high"
+      },
+      {
+        "claim": "개혁을 추진하기 위해 교정청이 설치된 것(1894년 6월)은 1차 봉기 이후 조선 정부가 개혁을 추진하던 시점의 사건",
+        "issue": "노트에 없음",
+        "severity": "high"
+      }
+    ],
+    "verdict": "해설 중대한 오류 의심"
+  },
+  {
+    "questionNumber": 33,
+    "era": "근대",
+    "category": "정치",
+    "correctAnswer": 2,
+    "matched": [
+      {
+        "id": "s5-04",
+        "title": "️ 대한제국과 국권 피탈",
+        "score": 14
+      },
+      {
+        "id": "s6-17",
+        "title": "주요 사건 및 참고",
+        "score": 11
+      },
+      {
+        "id": "s5-02",
+        "title": "️ 개화정책과 개화 반대 운동",
+        "score": 9
+      }
+    ],
+    "coverage": "weak",
+    "coverage_notes": "제공된 노트들은 문제의 핵심 사건인 1907년 대한제국 군대 해산과 그 배경(헤이그 특사, 정미7조약)에 대한 내용을 전혀 포함하고 있지 않습니다.",
+    "hallucination_risk": "high",
+    "flagged_claims": [
+      {
+        "claim": "1907년 일본은 헤이그 특사 사건을 구실로 고종 황제를 강제 퇴위시키고 정미 7조약을 체결한 후, 곧이어 대한 제국의 군대를 해산하였습니다.",
+        "issue": "노트에 없음",
+        "severity": "high"
+      },
+      {
+        "claim": "미쓰야 협정은 1925년 만주 지역에서 일본과 중국 군벌 사이에 체결된 것으로 시기가 맞지 않습니다.",
+        "issue": "노트에 없음",
+        "severity": "medium"
+      },
+      {
+        "claim": "영국이 거문도를 불법 점령한 것은 1885~1887년의 사건으로, 군대 해산보다 훨씬 이전 시기입니다.",
+        "issue": "노트에 없음",
+        "severity": "medium"
+      },
+      {
+        "claim": "데라우치 초대 총독 부임(1910)과 기유각서 체결(1909)은 모두 대한 제국 군대 해산(1907) 이후의 사건들입니다.",
+        "issue": "노트에 없음",
+        "severity": "high"
+      }
+    ],
+    "verdict": "해설 중대한 오류 의심"
+  },
+  {
+    "questionNumber": 34,
+    "era": "근대",
+    "category": "문화",
+    "correctAnswer": 4,
+    "matched": [
+      {
+        "id": "s5-05",
+        "title": "근대 문화와 시설",
+        "score": 12
+      },
+      {
+        "id": "s6-16",
+        "title": "️ 종교활동",
+        "score": 12
+      },
+      {
+        "id": "s6-02",
+        "title": "3·1운동 이전 민족운동 (1910년대)",
+        "score": 6
+      }
+    ],
+    "coverage": "weak",
+    "coverage_notes": "제공된 노트는 문제의 핵심인 대한매일신보, 국채보상운동 및 대부분의 오답 선지(브나로드 운동, 한성주보, 독립신문)에 대한 정보를 포함하지 않습니다. 오직 '만세보'가 천도교 기관지였다는 내용만 부분적으로 다룹니다.",
+    "hallucination_risk": "medium",
+    "flagged_claims": [
+      {
+        "claim": "밑줄 그은 '신문'이 *대한매일신보*와 같은 민족지임을 유추할 수 있습니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      },
+      {
+        "claim": "*대한매일신보*는 1907년 시작된 국채 보상 운동의 확산에 크게 기여했습니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      },
+      {
+        "claim": "브나로드 운동은 1930년대 동아일보가 주도한 농촌 계몽 운동입니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      },
+      {
+        "claim": "상업 광고를 처음으로 게재한 신문은 *한성주보*입니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      },
+      {
+        "claim": "순한글판으로 발행된 최초의 신문은 *독립신문*입니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      }
+    ],
+    "verdict": "해설 일부 재확인 필요"
+  },
+  {
+    "questionNumber": 35,
+    "era": "근대",
+    "category": "정치",
+    "correctAnswer": 3,
+    "matched": [
+      {
+        "id": "s6-04",
+        "title": "대동단결선언서",
+        "score": 26
+      },
+      {
+        "id": "s6-02",
+        "title": "3·1운동 이전 민족운동 (1910년대)",
+        "score": 22
+      },
+      {
+        "id": "s6-10",
+        "title": "무장 독립 투쟁",
+        "score": 17
+      }
+    ],
+    "coverage": "partial",
+    "coverage_notes": "노트 1은 오답 선지 ②(박은식, 한국통사)를, 노트 2는 오답 선지 ⑤의 인물 중 한 명(이상설)을 다루고 있습니다. 하지만 문제의 핵심 인물인 김구와 그의 활동(정답 ③), 그리고 나머지 오답 선지(①, ④)에 대한 내용은 전혀 포함하지 않습니다.",
+    "hallucination_risk": "low",
+    "flagged_claims": [
+      {
+        "claim": "정답인 ③은 김구의 활동입니다. 김구는 대한민국 임시 정부의 주요 인물로, 초기부터 경무국장, 내무총장 등을 역임하며 임시 정부 유지와 발전에 핵심적인 역할을 수행했습니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      },
+      {
+        "claim": "오답인 ① 대한 광복회는 박상진이...",
+        "issue": "노트에 없음",
+        "severity": "low"
+      },
+      {
+        "claim": "...④ 조선 혁명 선언은 신채호가 각각 관련되며...",
+        "issue": "노트에 없음",
+        "severity": "low"
+      },
+      {
+        "claim": "...⑤ 헤이그 특사로는 이준, 이상설, 이위종이 파견되었습니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      }
+    ],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 36,
+    "era": "근대",
+    "category": "정치",
+    "correctAnswer": 1,
+    "matched": [
+      {
+        "id": "s6-01",
+        "title": "일제의 통치방식",
+        "score": 15
+      },
+      {
+        "id": "s5-05",
+        "title": "근대 문화와 시설",
+        "score": 7
+      },
+      {
+        "id": "s6-13",
+        "title": "일제의 식민지교육정책",
+        "score": 7
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1이 문제의 핵심 토픽인 일제강점기 시기별 통치 방식을 매우 상세하게 다루고 있으며, 정답과 주요 오답의 근거를 대부분 포함하고 있습니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 37,
+    "era": "근대",
+    "category": "사회",
+    "correctAnswer": 3,
+    "matched": [
+      {
+        "id": "s6-01",
+        "title": "일제의 통치방식",
+        "score": 25
+      },
+      {
+        "id": "s5-04",
+        "title": "️ 대한제국과 국권 피탈",
+        "score": 12
+      },
+      {
+        "id": "s5-02",
+        "title": "️ 개화정책과 개화 반대 운동",
+        "score": 11
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1이 문제의 핵심인 1910년대 무단통치와 1920년대 문화통치의 구분을 명확히 설명하고 있어, 문제 풀이의 핵심 논리를 뒷받침합니다. 다만, 각 선지의 구체적인 사건(조선 농민 총동맹, 농광 회사 등)이 모두 언급되지는 않았습니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 38,
+    "era": "근대",
+    "category": "정치",
+    "correctAnswer": 4,
+    "matched": [
+      {
+        "id": "s6-09",
+        "title": "신간회 (1927~1931)",
+        "score": 15
+      },
+      {
+        "id": "s6-03",
+        "title": "3·1운동 (1919)",
+        "score": 12
+      },
+      {
+        "id": "s6-07",
+        "title": "광주 학생 항일 운동 (1929)",
+        "score": 12
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1(신간회)이 정답의 핵심 근거인 '6.10 만세 운동이 신간회 결성에 영향을 주었다'는 사실을 명시적으로 다루고 있으며, 노트 3(광주학생항일운동)은 오답 선지 5번을 검증하는 데 직접적으로 사용됩니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 39,
+    "era": "근대",
+    "category": "사회",
+    "correctAnswer": 2,
+    "matched": [
+      {
+        "id": "s6-08",
+        "title": "사회적 민족운동",
+        "score": 17
+      },
+      {
+        "id": "s5-03",
+        "title": "동학농민운동과 갑오개혁/을미개혁",
+        "score": 16
+      },
+      {
+        "id": "s5-05",
+        "title": "근대 문화와 시설",
+        "score": 11
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1이 문제의 핵심 토픽인 형평사 운동(조선 형평사 창립 연도, 목적, 주체 등)을 상세히 다루고 있습니다. 노트 2는 오답 선지인 군국기무처, 동학농민운동 관련 내용을 일부 포함합니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 40,
+    "era": "근대",
+    "category": "사회",
+    "correctAnswer": 4,
+    "matched": [
+      {
+        "id": "s6-01",
+        "title": "일제의 통치방식",
+        "score": 14
+      },
+      {
+        "id": "s6-04",
+        "title": "대동단결선언서",
+        "score": 12
+      },
+      {
+        "id": "s6-03",
+        "title": "3·1운동 (1919)",
+        "score": 10
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1이 문제의 핵심인 일제강점기 시기별 통치 방식(무단통치, 문화통치, 민족말살통치)을 명확히 구분하고, 정답의 핵심 키워드인 '황국신민서사 암송'과 오답 선택지의 시대적 배경을 모두 포괄적으로 다루고 있습니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 41,
+    "era": "근대",
+    "category": "문화",
+    "correctAnswer": 2,
+    "matched": [
+      {
+        "id": "s6-14",
+        "title": "국어 연구",
+        "score": 21
+      },
+      {
+        "id": "s5-04",
+        "title": "️ 대한제국과 국권 피탈",
+        "score": 12
+      },
+      {
+        "id": "s5-05",
+        "title": "근대 문화와 시설",
+        "score": 12
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1이 문제의 핵심 토픽인 '일제 강점기 국어 연구'와 '조선어연구회'의 활동(가갸날 제정)을 매우 상세하게 다루고 있습니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 42,
+    "era": "근대",
+    "category": "정치",
+    "correctAnswer": 1,
+    "matched": [
+      {
+        "id": "s6-10",
+        "title": "무장 독립 투쟁",
+        "score": 20
+      },
+      {
+        "id": "s6-12",
+        "title": "한국광복군 (1940)",
+        "score": 17
+      },
+      {
+        "id": "s6-04",
+        "title": "대동단결선언서",
+        "score": 14
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 2가 정답의 핵심 근거인 '조선의용대의 한국광복군 합류'를 명시하고 있으며, 노트 1은 오답 선지(청산리 전투, 조선혁명군)의 시대적 배경을 다루고 있어 전반적인 검증이 가능함.",
+    "hallucination_risk": "low",
+    "flagged_claims": [
+      {
+        "claim": "이후 화북 지역으로 이동한 대원 중 일부는 1942년 한국광복군에 편입되어 활동을 이어나갔습니다.",
+        "issue": "노트2에 따르면 한국광복군에 합류한 것은 김원봉 등 '충칭 잔류 세력'임. 화북으로 이동한 주력 부대는 이후 조선의용군으로 개편되었으므로, 해설의 설명이 역사적 사실과 미세하게 다름.",
+        "severity": "low"
+      },
+      {
+        "claim": "(가) 부대는 1938년 중국 관내 한커우에서 창설된 조선의용대입니다.",
+        "issue": "조선의용대의 창설 연도(1938)와 장소(한커우)는 노트에 없는 내용이지만, 이는 널리 알려진 일반적인 한국사 상식에 해당함.",
+        "severity": "low"
+      }
+    ],
+    "verdict": "해설 일부 재확인 필요"
+  },
+  {
+    "questionNumber": 43,
+    "era": "근대",
+    "category": "사회",
+    "correctAnswer": 1,
+    "matched": [
+      {
+        "id": "s6-04",
+        "title": "대동단결선언서",
+        "score": 6
+      },
+      {
+        "id": "s5-05",
+        "title": "근대 문화와 시설",
+        "score": 5
+      },
+      {
+        "id": "s5-04",
+        "title": "️ 대한제국과 국권 피탈",
+        "score": 4
+      }
+    ],
+    "coverage": "weak",
+    "coverage_notes": "제공된 노트는 근대 시기 정치사(대동단결선언서, 국권피탈)와 1910년 이전의 초기 근대 시설을 다루고 있어, 문제의 핵심 토픽인 1920-30년대 사회·문화상(영화, 문화주택, 모던걸 등)을 직접적으로 다루지 않습니다.",
+    "hallucination_risk": "low",
+    "flagged_claims": [
+      {
+        "claim": "텔레비전 방송은 대한민국에서 1960년대에 본격적으로 시작된 것으로, 근대 시기(주로 19세기 말부터 1945년 광복 이전)가 아닌 현대 사회의 특징에 해당합니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      },
+      {
+        "claim": "화학조미료를 활용한 요리법의 확산, 서구식 주택 양식인 문화 주택의 등장, 단성사에서의 영화 상영(임자 없는 나룻배는 1932년 작품), 근대적 생활 양식을 받아들인 모던 걸, 모던 보이의 증가는 모두 근대 시기, 특히 일제강점기에 나타난 주요 사회·문화적 변화입니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      }
+    ],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 44,
+    "era": "현대",
+    "category": "정치",
+    "correctAnswer": 5,
+    "matched": [
+      {
+        "id": "s7-04",
+        "title": "️ 5·10 총선거 (1948.5)",
+        "score": 24
+      },
+      {
+        "id": "s7-05",
+        "title": "️ 대한민국 정부 수립 (제1공화국)",
+        "score": 23
+      },
+      {
+        "id": "s7-12",
+        "title": "6월민주항쟁 (1987)",
+        "score": 16
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1과 2가 문제의 핵심 토픽인 5·10 총선거의 배경, 과정, 그리고 김구·김규식의 단독 선거 반대 및 불참 사실을 매우 상세하게 다루고 있습니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 45,
+    "era": "현대",
+    "category": "정치",
+    "correctAnswer": 5,
+    "matched": [
+      {
+        "id": "s7-06",
+        "title": "한국 전쟁 (1950~1953)",
+        "score": 9
+      },
+      {
+        "id": "s7-15",
+        "title": "주요 사건 및 정책",
+        "score": 7
+      },
+      {
+        "id": "s7-02",
+        "title": "모스크바 삼국 외상 회의 (1945.12)",
+        "score": 6
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1은 문제의 핵심 주제인 6.25 전쟁의 전개 과정을 다루고 있으며, 정답인 '흥남 철수 작전'과 오답인 '한미 상호 방위 조약'의 시기를 명시하고 있습니다. 노트 3은 오답인 '모스크바 3국 외상 회의'를 상세히 다룹니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 46,
+    "era": "현대",
+    "category": "정치",
+    "correctAnswer": 2,
+    "matched": [
+      {
+        "id": "s7-07",
+        "title": "이승만 정권 시대 개헌과 정치",
+        "score": 20
+      },
+      {
+        "id": "s7-12",
+        "title": "6월민주항쟁 (1987)",
+        "score": 20
+      },
+      {
+        "id": "s7-09",
+        "title": "제3공화국",
+        "score": 18
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1이 문제의 핵심 토픽인 4.19 혁명의 원인(3.15 부정선거)과 결과(이승만 하야)를 명확히 다루고, 노트 2가 오답 선지 ⑤번(6월 민주 항쟁)을 상세히 다룹니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 47,
+    "era": "현대",
+    "category": "경제",
+    "correctAnswer": 2,
+    "matched": [
+      {
+        "id": "s7-15",
+        "title": "주요 사건 및 정책",
+        "score": 10
+      },
+      {
+        "id": "s7-09",
+        "title": "제3공화국",
+        "score": 8
+      },
+      {
+        "id": "s7-08",
+        "title": "️ 제2공화국 (1960.6~1961.5)",
+        "score": 6
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1과 2는 박정희 정부 시기의 경제 개발 5개년 계획, 베트남 파병, 포항 제철소 건설 등 문제의 핵심 선지(1, 4, 5번)를 충실히 다루고 있습니다. 다만, 정답 선지(2번)의 배경인 김대중 정부나 오답 선지인 마산 수출 자유 지역(3번)에 대한 직접적인 언급은 없습니다.",
+    "hallucination_risk": "low",
+    "flagged_claims": [
+      {
+        "claim": "국민 기초 생활 보장법은 1999년 김대중 정부 시기에 제정된 것으로...",
+        "issue": "노트에 없음",
+        "severity": "medium"
+      },
+      {
+        "claim": "마산 수출 자유 지역 지정...등이 박정희 정부 시기 고도 성장의 대표적인 사례입니다.",
+        "issue": "노트에 없음",
+        "severity": "low"
+      }
+    ],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 48,
+    "era": "현대",
+    "category": "정치",
+    "correctAnswer": 5,
+    "matched": [
+      {
+        "id": "s7-11",
+        "title": "제5공화국",
+        "score": 15
+      },
+      {
+        "id": "s7-10",
+        "title": "제4공화국 (유신체제, 1972~1979)",
+        "score": 14
+      },
+      {
+        "id": "s7-07",
+        "title": "이승만 정권 시대 개헌과 정치",
+        "score": 13
+      }
+    ],
+    "coverage": "good",
+    "coverage_notes": "노트 1이 문제의 핵심인 제5공화국 헌법(8차 개헌)의 내용(대통령 간선제)을 명확히 다루고 있으며, 노트 2와 3이 오답 선지인 3·1 민주 구국 선언과 사사오입 개헌을 설명하여 검증에 충분합니다.",
+    "hallucination_risk": "none",
+    "flagged_claims": [],
+    "verdict": "정답·해설 모두 신뢰 가능"
+  },
+  {
+    "questionNumber": 49,
+    "era": "현대",
+    "category": "정치",
+    "correctAnswer": 2,
+    "matched": [
+      {
+        "id": "s7-08",
+        "title": "️ 제2공화국 (1960.6~1961.5)",
+        "score": 8
+      },
+      {
+        "id": "s7-15",
+        "title": "주요 사건 및 정책",
+        "score": 7
+      },
+      {
+        "id": "s7-11",
+        "title": "제5공화국",
+        "score": 6
+      }
+    ],
+    "coverage": "weak",
+    "coverage_notes": "제공된 노트는 전두환 정부의 이산가족 상봉(선지 ④)만 다룰 뿐, 문제의 정답(김대중/노무현 정부의 남북정상회담) 및 다른 오답 선지(박정희, 노태우, 문재인 정부)의 통일 정책을 전혀 다루지 않습니다.",
+    "hallucination_risk": "medium",
+    "flagged_claims": [
+      {
+        "claim": "제시된 연설문이 김대중 정부 또는 노무현 정부 시기의 통일 노력을 나타낸다고 가정하면, 해당 정부는 북한과의 화해 협력을 위해 평양에서 남북 정상 회담을 개최하였습니다. 김대중 정부는 2000년에, 노무현 정부는 2007년에 각각 평양에서 정상 회담을 개최하여 남북 관계의 새로운 장을 열었습니다.",
+        "issue": "노트에 없음",
+        "severity": "high"
+      },
+      {
+        "claim": "①번 7·4 남북 공동 성명은 박정희 정부 (1972년)",
+        "issue": "노트에 없음",
+        "severity": "medium"
+      },
+      {
+        "claim": "③번 남북한 유엔 동시 가입은 노태우 정부 (1991년)",
+        "issue": "노트에 없음",
+        "severity": "medium"
+      },
+      {
+        "claim": "⑤번 평창 동계 올림픽 남북 단일팀은 문재인 정부 (2018년) 시기의 통일 노력입니다.",
+        "issue": "노트에 없음",
+        "severity": "medium"
+      }
+    ],
+    "verdict": "해설 일부 재확인 필요"
+  },
+  {
+    "questionNumber": 50,
+    "era": "현대",
+    "category": "정치",
+    "correctAnswer": 5,
+    "matched": [
+      {
+        "id": "s7-15",
+        "title": "주요 사건 및 정책",
+        "score": 7
+      },
+      {
+        "id": "s7-04",
+        "title": "️ 5·10 총선거 (1948.5)",
+        "score": 4
+      },
+      {
+        "id": "s7-09",
+        "title": "제3공화국",
+        "score": 4
+      }
+    ],
+    "coverage": "none",
+    "coverage_notes": "제공된 노트는 1948년 이후 현대사를 다루고 있어, 문제의 핵심 토픽인 일제강점기 박재혁 의거(1920년)와는 전혀 관련이 없습니다.",
+    "hallucination_risk": "high",
+    "flagged_claims": [
+      {
+        "claim": "(가) 지역은 박재혁 의사가 1920년 부산경찰서에 폭탄을 투척하는 의거를 일으킨 곳인 **부산**입니다.",
+        "issue": "노트에 없음",
+        "severity": "high"
+      },
+      {
+        "claim": "박재혁은 의열단원이었습니다.",
+        "issue": "노트에 없음",
+        "severity": "medium"
+      },
+      {
+        "claim": "① 신립의 탄금대 전투는 충주, ② 2·28 민주 운동은 대구, ③ 김사미의 난은 울산/경주 일대, ④ YH 무역 노동자 농성은 서울에서 일어난 사건입니다.",
+        "issue": "노트에 없음",
+        "severity": "high"
+      }
+    ],
+    "verdict": "해설 중대한 오류 의심"
+  }
+]
