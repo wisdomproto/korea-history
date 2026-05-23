@@ -139,6 +139,30 @@ export default function Header({ examTypes, subjects }: HeaderProps) {
             />
           </div>
 
+          {/* Cross-sell CTA — 9급 공무원 시험 컨테이너 직진 (학습 nav 앞) */}
+          <Link
+            href="/9급-국가직"
+            className="hidden md:inline-flex items-center gap-1.5 rounded-full font-sans-kr no-underline transition-all shrink-0 hover:scale-[1.03]"
+            style={{
+              border: `1.5px solid ${amber}`,
+              color: amber,
+              padding: "7px 14px",
+              fontSize: 14,
+              fontWeight: 600,
+              letterSpacing: "-0.01em",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = amber;
+              e.currentTarget.style.color = paper;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.color = amber;
+            }}
+          >
+            ← 9급 공무원 시험
+          </Link>
+
           {/* Desktop Nav (학습 메뉴) — 다과목 시험 페이지에선 숨김 */}
           {navItems && (
             <nav className="hidden md:flex items-center gap-7 shrink-0">
@@ -256,6 +280,19 @@ export default function Header({ examTypes, subjects }: HeaderProps) {
                   </Link>
                 );
               })}
+              <Link
+                href="/9급-국가직"
+                className="flex items-center no-underline transition-colors"
+                style={{
+                  padding: "14px 4px",
+                  fontSize: 16,
+                  fontWeight: 700,
+                  color: amber,
+                  borderBottom: `1px solid ${hair}`,
+                }}
+              >
+                <span>9급 공무원 시험 →</span>
+              </Link>
               <Link
                 href="/board"
                 className="flex items-center no-underline transition-colors"

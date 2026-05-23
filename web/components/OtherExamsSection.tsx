@@ -45,7 +45,7 @@ export default function OtherExamsSection({
   if (populated.length === 0) return null;
 
   return (
-    <section className="gc-fullbleed bg-[var(--gc-paper,#FFFFFF)] border-t border-[var(--gc-hairline)]">
+    <section id="other-exams" className="gc-fullbleed bg-[var(--gc-paper,#FFFFFF)] border-t border-[var(--gc-hairline)]">
       <div className="mx-auto max-w-4xl px-5 sm:px-6 md:px-8 py-16 md:py-20">
         <div className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--gc-amber)]">
           {eyebrow}

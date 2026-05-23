@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getAllExams, getAllKeywords } from "@/lib/data";
 import type { ExamFile } from "@/lib/types";
 import AdSlot from "@/components/AdSlot";
+import MultiExamStrip from "@/components/MultiExamStrip";
 
 // ── Design tokens (match globals.css :root vars) ────────────────────────
 const T = {
@@ -130,7 +131,7 @@ function Hero() {
                 background: T.amber,
               }}
             />
-            기출노트 · 한능검 · 심화
+            한능검 · 공무원 · 자격증
           </div>
 
           <h1
@@ -146,11 +147,11 @@ function Hero() {
             }}
           >
             <span style={{ display: "inline-block", whiteSpace: "nowrap" }}>
-              한능검 기출문제와
+              기출문제와
             </span>
             <br />
             <span style={{ display: "inline-block", whiteSpace: "nowrap" }}>
-              요약노트,
+              단원별 정리,
             </span>{" "}
             <span
               style={{
@@ -174,8 +175,8 @@ function Hero() {
               fontWeight: 500,
             }}
           >
-            <b style={{ color: T.ink }}>기출노트</b>는 한국사능력검정시험 기출문제 1,900+ 문항과 시대별 요약노트 87편을 무료로 제공합니다.<br />
-            틀린 문제는 관련 단원으로 바로 연결. {" "}
+            <b style={{ color: T.ink }}>기출노트</b>는 한능검·9급 공무원·자격증을 같은 학습 시스템으로 무료 제공합니다.<br />
+            한국사능력검정시험 1,900문항, 9급 13과목, 인기 자격증 정리노트까지. {" "}
             <b style={{ color: T.ink }}>평생 무료.</b>
           </p>
 
@@ -1923,6 +1924,7 @@ export default function KoreanHistoryLanding() {
   return (
     <div className="gc-fullbleed" style={{ color: T.ink, background: T.bg }}>
       <Hero />
+      <MultiExamStrip />
       <StatsBand
         totalQuestions={totalQuestions}
         examCount={examCount}

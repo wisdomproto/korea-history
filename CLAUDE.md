@@ -149,6 +149,20 @@ korea_history/
 - **Footer**: cream deep 배경 + 3컬럼(학습/회차별/정보) + 모노 카피라이트
 - **모바일 반응형**: 모든 섹션 `px-5 sm:px-6 md:px-8` + `py-14 md:py-20`, Hero/Exam/Notes preview는 1-col → `md:`/`lg:` 2-col, Stats는 `grid-cols-2 md:grid-cols-4`, Linked Preview 연결선은 모바일에서 90° 회전
 
+### 메인 페이지 다중 시험 확장 (2026-05-23)
+한능검 단일 톤 → 한능검 + 9급 공무원 + 자격증 통합 톤으로 메인 페이지 개편. 한능검 SEO 자산(layout.tsx 메타·JSON-LD)은 무손상 유지하고 본문/Hero 톤만 일반화 + 신규 진입 동선 3개 추가.
+
+- **Hero copy 일반화** (`web/components/KoreanHistoryLanding.tsx` Hero):
+  - Pill: `기출노트 · 한능검 · 심화` → `한능검 · 공무원 · 자격증`
+  - H1: `한능검 기출문제와 / 요약노트, 한 번에.` → `기출문제와 / 단원별 정리, 한 번에.` (한능검 키워드 H1에서 빠짐 — SEO 모니터링 필요)
+  - 본문: 한능검·9급 13과목·자격증 정리노트 통합 카피. "한국사능력검정시험" 정식 명칭은 본문에 보존 (메타·JSON-LD 시그널과 함께 한능검 brand entity 유지)
+- **MultiExamStrip** (`web/components/MultiExamStrip.tsx`): Hero 직후, paper 배경 + amber hairline + 칩 8개 (9급 5직렬·자격증 2·전체 547→). 단권화 노트 풀세트 보유 시험 우선 노출. "전체 547과목 →" 칩은 `#other-exams` 앵커로 페이지 내 점프
+- **AnnouncementBar** (`web/components/AnnouncementBar.tsx` + `web/lib/announcements.ts`): layout.tsx Header 직후 전 페이지 공통 mount. amber `#B45309` 배경 + paper(흰색) serif bold 텍스트 + 도트 인디케이터. 5초 자동 회전 + hover 일시정지 + ✕ 24시간 dismiss(localStorage) + `expiresAt` 자동 만료. 시드 메시지 3종 — 🎉 78회 격려(→/exam/78/1), 🆕 78회 업로드(→/exam), 📚 9급 cross-sell(→/9급-국가직-일반행정)
+- **Header 9급 cross-sell pill** (`web/components/Header.tsx`): ExamSelector 직후 + 학습 nav 앞에 `← 9급 공무원 시험` amber outline pill. 도착지 `/9급-국가직` (24직렬 카드 부모 컨테이너). hover 시 amber 솔리드. 모바일 메뉴에도 별도 항목
+- **OtherExamsSection anchor** (`web/components/OtherExamsSection.tsx`): 최상단 wrapper에 `id="other-exams"` 추가 — MultiExamStrip의 "전체 547과목 →" 점프 대상
+- **SEO 모니터링 필요** (한 달 뒤 GSC + 네이버 SE 재확인): H1 "한능검" 키워드 제거로 black diamond 황금키워드 7개("한능검 시대별 정리" 등) 순위/CTR 변동 추적. 본문/메타에 한능검 키워드 보존했으나 H1 시그널 약화 영향 측정 필요
+- **Spec/plan**: `docs/superpowers/specs/2026-05-22-multi-exam-strip-design.md` + `2026-05-22-announcement-bar-design.md` + 각 plan
+
 ### 학습 시스템
 - **회차별 풀기**: 40~78회 시험 (1,950+ 문항)
 - **맞춤형 학습**: 시대 × 유형 체크박스 선택 → 학습 세션
