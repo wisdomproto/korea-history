@@ -1,4 +1,5 @@
 import { Exam, Question } from '../lib/types';
+import exam78Data from './questions/exam-78.json';
 import exam77Data from './questions/exam-77.json';
 import exam76Data from './questions/exam-76.json';
 import exam75Data from './questions/exam-75.json';
@@ -41,6 +42,7 @@ import exam40Data from './questions/exam-40.json';
 // Auto-generated — do not edit manually
 // 회차 목록 (최신순)
 export const EXAMS: Exam[] = [
+  exam78Data.exam as Exam,
   exam77Data.exam as Exam,
   exam76Data.exam as Exam,
   exam75Data.exam as Exam,
@@ -82,6 +84,7 @@ export const EXAMS: Exam[] = [
 ];
 
 const questionsMap: Record<number, Question[]> = {
+  [exam78Data.exam.id]: exam78Data.questions as Question[],
   [exam77Data.exam.id]: exam77Data.questions as Question[],
   [exam76Data.exam.id]: exam76Data.questions as Question[],
   [exam75Data.exam.id]: exam75Data.questions as Question[],
