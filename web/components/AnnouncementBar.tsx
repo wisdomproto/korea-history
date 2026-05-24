@@ -56,8 +56,10 @@ export default function AnnouncementBar() {
       role="status"
       aria-live="polite"
       aria-label="사이트 공지"
-      className="w-full"
+      className="w-full sticky z-30"
       style={{
+        // Header 높이(68px) 직하 — 스크롤해도 항상 viewport 상단 노출
+        top: 68,
         background: "var(--gc-amber)",
         color: "var(--gc-ink)",
         borderBottom: "1px solid var(--gc-ink)",
