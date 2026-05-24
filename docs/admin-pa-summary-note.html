@@ -89,6 +89,29 @@
   .trap-box { background: var(--rose-bg); border: 1px solid var(--rose-soft); border-radius: 8px; padding: 12px 16px; margin: 10px 0; font-size: 13px; line-height: 1.6; }
   .trap-box-title { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--rose); text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
 
+  /* TL;DR — 단원 헤드 직후 30초 핵심 요약 */
+  .tldr-box { background: linear-gradient(135deg, var(--amber-bg) 0%, white 100%); border: 1px solid var(--amber-soft); border-left: 4px solid var(--amber); border-radius: 10px; padding: 16px 20px; margin: 14px 0 18px; }
+  .tldr-title { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; color: var(--amber); text-transform: uppercase; font-weight: 800; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .tldr-box ul { padding-left: 20px; margin: 6px 0 0; }
+  .tldr-box li { margin-bottom: 5px; font-size: 13.5px; line-height: 1.6; color: var(--ink); }
+  .tldr-box li strong { color: var(--amber); font-weight: 800; }
+
+  /* OX 빈출 퀴즈 — 단원 끝 자가 검증 (details 접이식) */
+  .ox-quiz { background: var(--teal-bg); border: 1px solid var(--teal-soft); border-radius: 10px; padding: 16px 20px; margin: 14px 0; }
+  .ox-quiz-title { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; color: var(--teal); text-transform: uppercase; font-weight: 800; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .ox-quiz-sub { font-size: 12px; color: var(--ink-soft); margin-bottom: 12px; }
+  .ox-item { background: white; border: 1px solid var(--hairline); border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; }
+  .ox-item summary { list-style: none; cursor: pointer; display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink); font-weight: 500; }
+  .ox-item summary::-webkit-details-marker { display: none; }
+  .ox-item summary::before { content: '?'; flex: 0 0 22px; height: 22px; background: var(--teal); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 12px; font-weight: 800; }
+  .ox-item[open] summary::before { content: '→'; background: var(--amber); }
+  .ox-item summary::after { content: '▼'; margin-left: auto; color: var(--ink-mute); font-size: 9px; transition: transform 0.2s; }
+  .ox-item[open] summary::after { transform: rotate(180deg); }
+  .ox-answer { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--hairline); font-size: 13px; line-height: 1.65; color: var(--ink-soft); }
+  .ox-answer .ox-result { font-weight: 800; margin-right: 6px; }
+  .ox-answer .ox-o { color: var(--teal); }
+  .ox-answer .ox-x { color: var(--rose); }
+
   code { font-family: var(--mono); font-size: 12px; background: var(--bg); padding: 2px 5px; border-radius: 3px; color: var(--amber); }
   .footnote { font-size: 11px; color: var(--ink-soft); margin: 10px 0 0; padding-top: 10px; border-top: 1px dashed var(--hairline); }
 
@@ -156,6 +179,18 @@
     <div class="topic-head">
       <h2 class="topic-name">1. 정책학 (의제·결정·분석·평가·변동·유형)</h2>
       <div><span class="topic-num">TOPIC 01</span><span class="topic-freq"><span class="badge badge-freq hot">52회 / 10년</span></span></div>
+    </div>
+
+    <div class="tldr-box">
+      <div class="tldr-title">⚡ 30초 요약 — 가장 빈출 단원 (10년 52회)</div>
+      <ul>
+        <li><strong>의제설정</strong> Cobb·Elder 3유형(외부주도·동원·내부접근) + Bachrach·Baratz 무의사결정 + 정책 네트워크 3종(철의 삼각·이슈 네트워크·정책공동체)</li>
+        <li><strong>정책유형</strong> Lowi 4분류(분배·규제·재분배·구성) + Ripley·Franklin(경쟁적·보호적 규제) + Salisbury</li>
+        <li><strong>정책결정 8모형</strong> 합리·만족·점증·혼합주사·최적·회사·쓰레기통·Allison — 제창자·핵심 매칭이 핵심 출제 패턴</li>
+        <li><strong>정책분석</strong> 비용편익(CBA) / 비용효과(CEA) — 차이 + 적용 상황</li>
+        <li><strong>정책평가</strong> 형성·총괄 평가 + 타당성 4종(내적·외적·구성적·통계적) + 실험 설계 3종</li>
+        <li><strong>정책변동</strong> Hogwood·Peters 4유형(혁신·승계·유지·종결) — 정의 명확히</li>
+      </ul>
     </div>
 
     <h3>1.1. 정책학의 의의</h3>
@@ -293,6 +328,39 @@
       <li><strong>간접 수단</strong>: 사회적 규제, 바우처(이용권), 세금감면, 보조금, 공기업, 계약(아웃소싱), 정보 제공·캠페인.</li>
       <li>현대 행정 — <strong>간접 수단 비중 ↑</strong>(작은 정부·민관 협력).</li>
     </ul>
+
+    <div class="ox-quiz">
+      <div class="ox-quiz-title">🎯 빈출 OX 퀴즈 — 스스로 점검</div>
+      <div class="ox-quiz-sub">10년 출제 패턴 기반 핵심 7문항. 정답 클릭 전 먼저 O/X 정해보세요.</div>
+      <details class="ox-item">
+        <summary>Q1. Cobb·Elder 의제설정 모형 중 외부주도형은 권위주의 국가에서 가장 흔하게 나타난다.</summary>
+        <div class="ox-answer"><span class="ox-result ox-x">✗ 정답: X</span> — 외부주도형은 시민사회·언론이 정부에 압력을 가하는 형태로, <strong>다원화된 선진국</strong>에서 흔합니다. 권위주의 국가는 비공개 의제화인 <strong>내부접근형</strong>이 흔합니다.</div>
+      </details>
+      <details class="ox-item">
+        <summary>Q2. Bachrach·Baratz의 무의사결정론은 다원주의 이론의 한 갈래이다.</summary>
+        <div class="ox-answer"><span class="ox-result ox-x">✗ 정답: X</span> — 무의사결정론은 다원주의의 자유경쟁 가정에 대한 <strong>비판</strong>으로 제시되었습니다. 권력의 편향성과 의제 자체를 봉쇄하는 메커니즘을 강조합니다.</div>
+      </details>
+      <details class="ox-item">
+        <summary>Q3. Lowi의 정책 4분류 중 재분배정책은 계급 간 부 이전을 통해 이념·계급 갈등이 큰 양상을 보인다.</summary>
+        <div class="ox-answer"><span class="ox-result ox-o">✓ 정답: O</span> — 재분배정책(누진세·사회보장·의료보험)은 부의 이전이라 본질적으로 이념·계급 갈등이 크며, 분배정책(pork barrel)과 대조됩니다.</div>
+      </details>
+      <details class="ox-item">
+        <summary>Q4. Lindblom의 점증모형은 합리모형의 비현실성을 보완하기 위해 기존 정책에서 약간씩 수정해 나가는 현실적·민주적 결정 방식을 제시한다.</summary>
+        <div class="ox-answer"><span class="ox-result ox-o">✓ 정답: O</span> — 점증모형은 가지치기(branching)와 partisan mutual adjustment를 통해 단계적 결정을 강조합니다. 합리모형의 "전 대안 검토" 가정을 완화한 현실적 모형입니다.</div>
+      </details>
+      <details class="ox-item">
+        <summary>Q5. Allison 모형 III(관료정치)은 국가를 단일 합리적 행위자로 가정한다.</summary>
+        <div class="ox-answer"><span class="ox-result ox-x">✗ 정답: X</span> — 단일 합리적 행위자 가정은 <strong>모형 I</strong>입니다. 모형 III(관료정치)은 정책결정을 <strong>참여자들의 선호·권력 흥정</strong> 결과로 봅니다. 모형 II는 조직과정(SOP).</div>
+      </details>
+      <details class="ox-item">
+        <summary>Q6. 정책평가의 타당성 중 내적 타당성과 외적 타당성은 동시에 극대화할 수 있다.</summary>
+        <div class="ox-answer"><span class="ox-result ox-x">✗ 정답: X</span> — 둘은 <strong>상충(trade-off)</strong> 관계입니다. 진실험은 무작위 배정으로 내적 타당성은 높지만 통제 환경 탓에 외적 타당성(일반화)은 낮아집니다. 반대로 비실험은 외적 ↑·내적 ↓.</div>
+      </details>
+      <details class="ox-item">
+        <summary>Q7. Hogwood·Peters의 정책변동 4유형 중 정책승계는 정책의 목표를 완전히 폐지하고 새 분야로 전환하는 것이다.</summary>
+        <div class="ox-answer"><span class="ox-result ox-x">✗ 정답: X</span> — 정책승계는 <strong>목표는 유지하면서 수단·구조를 변경</strong>하는 것입니다(예: 건강보험 구조 개편). 폐지는 <strong>정책종결</strong>, 새 분야 신설은 <strong>정책혁신</strong>입니다.</div>
+      </details>
+    </div>
 
     <div class="trap-box">
       <div class="trap-box-title">⚠️ 자주 틀리는 함정</div>
