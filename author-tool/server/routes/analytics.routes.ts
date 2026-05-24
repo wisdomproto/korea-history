@@ -61,11 +61,17 @@ router.get('/daily', async (req, res, next) => {
     if (!ga4.isConfigured()) {
       return res.json({ success: true, data: null, message: 'GA4 not configured' });
     }
-    const { start, end } = req.query as { start: string; end: string };
+    const { start, end, scope } = req.query as {
+      start: string;
+      end: string;
+      scope?: string;
+    };
     if (!start || !end) {
       return res.status(400).json({ success: false, error: 'start and end query params required' });
     }
-    const data = await ga4.getDailyTrend(start, end);
+    const validScope: ga4.DailyScope =
+      scope === 'korean-history' || scope === 'civil-9' ? scope : 'all';
+    const data = await ga4.getDailyTrend(start, end, validScope);
     res.json({ success: true, data });
   } catch (err) { next(err); }
 });

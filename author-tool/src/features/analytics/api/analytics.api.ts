@@ -25,8 +25,15 @@ export async function fetchPresets(): Promise<PresetsData> {
   return apiGet<PresetsData>(`${BASE}/presets`);
 }
 
-export async function fetchDailyTrend(start: string, end: string): Promise<DailyData[] | null> {
-  return apiGet<DailyData[] | null>(`${BASE}/daily?start=${start}&end=${end}`);
+export type DailyScope = 'all' | 'korean-history' | 'civil-9';
+
+export async function fetchDailyTrend(
+  start: string,
+  end: string,
+  scope: DailyScope = 'all'
+): Promise<DailyData[] | null> {
+  const scopeParam = scope === 'all' ? '' : `&scope=${scope}`;
+  return apiGet<DailyData[] | null>(`${BASE}/daily?start=${start}&end=${end}${scopeParam}`);
 }
 
 export async function fetchPWAEvents(start: string, end: string): Promise<PWAFunnelData | null> {

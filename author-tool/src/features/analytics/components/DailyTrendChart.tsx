@@ -1,9 +1,16 @@
 import { useState } from 'react';
 import { useDailyTrend } from '../hooks/useAnalytics';
 import type { DailyData } from '../types/analytics.types';
+import type { DailyScope } from '../api/analytics.api';
 
 type Period = '7d' | '30d';
 type Metric = 'pageViews' | 'users' | 'newUsers' | 'returningUsers' | 'pvPerUser' | 'avgSessionDuration' | 'durationPerPV';
+
+const SCOPE_LABEL: Record<DailyScope, string> = {
+  'all': '전체',
+  'korean-history': '한능검',
+  'civil-9': '9급 공무원',
+};
 
 const METRIC_CONFIG: Record<Metric, { label: string; unit: string; color: string; weekendColor: string }> = {
   pageViews: { label: 'PV', unit: '', color: '#059669', weekendColor: '#BFDBFE' },
@@ -68,6 +75,7 @@ export default function DailyTrendChart() {
   const [period, setPeriod] = useState<Period>('7d');
   const [metric, setMetric] = useState<Metric>('pageViews');
   const [offset, setOffset] = useState(0); // 0 = current, -1 = prev week/month, etc.
+  const [scope, setScope] = useState<DailyScope>('all');
 
   const today = new Date();
   const days = period === '7d' ? 7 : 30;
@@ -77,7 +85,7 @@ export default function DailyTrendChart() {
   // Don't allow navigating into the future
   const isLatest = offset === 0;
 
-  const { data, isLoading } = useDailyTrend(startDate, endDate);
+  const { data, isLoading } = useDailyTrend(startDate, endDate, scope);
   const config = METRIC_CONFIG[metric];
 
   // Reset offset when period changes
@@ -133,8 +141,26 @@ export default function DailyTrendChart() {
 
   return (
     <div className="bg-white rounded-xl p-4 border border-gray-200">
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-sm font-extrabold">📈 날짜별 트래픽</span>
+      <div className="flex items-center justify-between mb-2 flex-wrap gap-2">
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-extrabold">📈 날짜별 트래픽</span>
+          {/* Scope 탭 — 전체 / 한능검 / 9급 공무원 */}
+          <div className="flex bg-gray-100 rounded-md p-0.5">
+            {(['all', 'korean-history', 'civil-9'] as DailyScope[]).map((s) => (
+              <button
+                key={s}
+                onClick={() => setScope(s)}
+                className={`px-2.5 py-0.5 rounded text-[11px] font-semibold transition-colors ${
+                  scope === s
+                    ? 'bg-white text-gray-900 shadow-sm'
+                    : 'text-gray-500 hover:text-gray-700'
+                }`}
+              >
+                {SCOPE_LABEL[s]}
+              </button>
+            ))}
+          </div>
+        </div>
         <div className="flex gap-1">
           <button
             onClick={() => handlePeriodChange('7d')}

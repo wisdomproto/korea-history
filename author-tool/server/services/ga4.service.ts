@@ -470,13 +470,40 @@ export interface DailyData {
   avgSessionDuration: number; // seconds
 }
 
+export type DailyScope = 'all' | 'korean-history' | 'civil-9';
+
+/**
+ * GA4 dimensionFilter regex 패턴 — 한글 URL은 percent-encoded와 raw 둘 다 매칭.
+ * 한능검: 한능검 메인 + 글로벌 학습 라우트 (/exam, /notes, /study, /wrong-answers, /my-record)
+ * 9급 공무원: 모든 /9급- prefix (국가직/지방직/서울시 + 자식 직렬 + 자식 과목/exam/notes)
+ */
+const SCOPE_REGEX: Record<Exclude<DailyScope, 'all'>, string> = {
+  'korean-history':
+    '^(/한능검|/%ED%95%9C%EB%8A%A5%EA%B2%80|/exam|/notes|/study|/wrong-answers|/my-record)(/|$|\\?)',
+  'civil-9': '^(/9급-|/9%EA%B8%89-)',
+};
+
 export async function getDailyTrend(
   startDate: string,
-  endDate: string
+  endDate: string,
+  scope: DailyScope = 'all'
 ): Promise<DailyData[]> {
-  const cacheKey = `daily:${startDate}:${endDate}`;
+  const cacheKey = `daily:${scope}:${startDate}:${endDate}`;
   const cached = getCached<DailyData[]>(cacheKey);
   if (cached) return cached;
+
+  const dimensionFilter =
+    scope === 'all'
+      ? undefined
+      : {
+          filter: {
+            fieldName: 'pagePath',
+            stringFilter: {
+              matchType: 'PARTIAL_REGEXP' as const,
+              value: SCOPE_REGEX[scope],
+            },
+          },
+        };
 
   const [res] = await getClient().runReport({
     property: getPropertyId(),
@@ -490,6 +517,7 @@ export async function getDailyTrend(
       { name: 'averageSessionDuration' },
     ],
     orderBys: [{ dimension: { dimensionName: 'date' } }],
+    ...(dimensionFilter ? { dimensionFilter } : {}),
   });
 
   const result: DailyData[] = (res.rows ?? []).map((r) => {

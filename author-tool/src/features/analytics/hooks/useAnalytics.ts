@@ -6,6 +6,7 @@ import {
   fetchSearchConsole,
   fetchGscSetup,
   refreshCache,
+  type DailyScope,
 } from '../api/analytics.api';
 
 export function useDashboard(startDate: string, endDate: string) {
@@ -18,10 +19,14 @@ export function useDashboard(startDate: string, endDate: string) {
   });
 }
 
-export function useDailyTrend(startDate: string, endDate: string) {
+export function useDailyTrend(
+  startDate: string,
+  endDate: string,
+  scope: DailyScope = 'all'
+) {
   return useQuery({
-    queryKey: ['analytics', 'daily', startDate, endDate],
-    queryFn: () => fetchDailyTrend(startDate, endDate),
+    queryKey: ['analytics', 'daily', startDate, endDate, scope],
+    queryFn: () => fetchDailyTrend(startDate, endDate, scope),
     staleTime: 5 * 60 * 1000,
     refetchOnWindowFocus: false,
     enabled: !!(startDate && endDate),
