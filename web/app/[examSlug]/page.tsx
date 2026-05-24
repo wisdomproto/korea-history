@@ -111,12 +111,15 @@ export default async function ExamSlugPage({ params }: PageProps) {
             <CommonSubjectsStrategy exam={exam} />
           </>
         ) : (
-          <SubjectsSection
-            required={exam.subjects.required}
-            selectable={exam.subjects.selectable}
-            historyRoutes={HISTORY_ROUTES}
-            examSlug={exam.slug}
-          />
+          <>
+            <SubjectsSection
+              required={exam.subjects.required}
+              selectable={exam.subjects.selectable}
+              historyRoutes={HISTORY_ROUTES}
+              examSlug={exam.slug}
+            />
+            <SubjectStrategyByJobSeries exam={exam} />
+          </>
         )}
 
         <MarketSection exam={exam} />
@@ -690,6 +693,181 @@ function CommonSubjectsStrategy({ exam }: { exam: ExamTypeWithSubjects }) {
 }
 
 // ============================================================
+// SubjectStrategyByJobSeries — 직렬 자식 페이지 학습 전략. 공통 3과목 + 직렬 전공 그룹.
+// ============================================================
+
+function SubjectStrategyByJobSeries({ exam }: { exam: ExamTypeWithSubjects }) {
+  // 한능검 본인은 표시 안 함 (자체 풍부 랜딩)
+  if (exam.id === "korean-history") return null;
+
+  const requiredHistory = exam.subjects.required.find(
+    (r) => r.subject.id === "korean-history",
+  );
+  const requiredCommonNon = exam.subjects.required.filter(
+    (r) => r.subject.id !== "korean-history",
+  );
+  const electives = exam.subjects.selectable ?? [];
+
+  // 직렬 전공 = selectable (한국사·국어·영어 제외). 없으면 표시 안 함.
+  if (electives.length === 0 && requiredCommonNon.length === 0) return null;
+
+  const grade = requiredHistory?.certAccepted?.[0] ?? "한능검 3급";
+  const parentLabel = exam.parentExamId ? "직렬" : "";
+
+  return (
+    <section className="mt-14 rounded-3xl border border-[var(--gc-hairline)] bg-white p-6 md:p-10">
+      <h2 className="font-serif-kr text-2xl md:text-3xl font-bold text-[var(--gc-ink)] mb-2">
+        {exam.shortLabel} 학습 전략 — 공통 + 전공 균형
+      </h2>
+      <p className="text-sm text-[var(--gc-ink2)] mb-6">
+        공통 3과목(국어·영어·한국사)은 모든 직렬과 동일, 전공은 {exam.shortLabel}{parentLabel} 특화.
+        공통은 미리 끝내고 전공에 집중하는 6:4 시간 배분이 합격선 안정 확보에 유리.
+      </p>
+
+      <div className="grid gap-5 lg:grid-cols-2">
+        {/* 공통 3과목 — 한국사 우선 강조 */}
+        <div>
+          <div className="flex items-baseline gap-2 mb-3">
+            <h3 className="font-serif-kr text-lg font-bold text-[var(--gc-ink)]">
+              📚 공통 3과목 (모든 직렬 동일)
+            </h3>
+            <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--gc-amber)]">
+              60% 시간
+            </span>
+          </div>
+
+          {requiredHistory && (
+            <div className="rounded-2xl border-2 border-[var(--gc-amber)] bg-gradient-to-br from-[#FFF7ED] to-white p-4 mb-3">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-xl">🏛️</span>
+                <span className="font-serif-kr text-sm font-bold text-[var(--gc-ink)]">한국사</span>
+                <span className="rounded-full bg-[#B45309] text-white px-2 py-0.5 text-[9px] font-bold">
+                  한능검 무료
+                </span>
+              </div>
+              <p className="text-xs text-[var(--gc-ink2)] leading-relaxed mb-2">
+                <strong>{grade}</strong> 인증으로 대체. 한능검 1,900+ 기출 + 87 시대별 요약노트
+                무료 학습. 평균 1~2개월 준비로 합격 등급 도달.
+              </p>
+              <Link
+                href="/exam"
+                className="inline-flex items-center gap-1 text-xs font-bold text-[var(--gc-amber)] hover:underline"
+              >
+                한능검 학습 시작 →
+              </Link>
+            </div>
+          )}
+
+          {requiredCommonNon.map((r) => (
+            <div
+              key={r.subject.id}
+              className="rounded-2xl border border-[var(--gc-hairline)] bg-[var(--gc-bg)]/40 p-4 mb-3"
+            >
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-xl">{r.subject.id === "english" ? "🔤" : "📖"}</span>
+                <span className="font-serif-kr text-sm font-bold text-[var(--gc-ink)]">
+                  {r.subject.label}
+                </span>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--gc-ink2)]">
+                  준비중
+                </span>
+              </div>
+              <p className="text-xs text-[var(--gc-ink2)] leading-relaxed">
+                {r.subject.description ||
+                  "기출 5년치 반복 + 빈출 영역 정리. 2026 하반기 콘텐츠 추가 예정."}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* 직렬 전공 — selectable */}
+        <div>
+          <div className="flex items-baseline gap-2 mb-3">
+            <h3 className="font-serif-kr text-lg font-bold text-[var(--gc-ink)]">
+              🎯 {exam.shortLabel} 전공 ({electives.length}과목)
+            </h3>
+            <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--gc-amber)]">
+              40% 시간
+            </span>
+          </div>
+
+          {electives.length === 0 ? (
+            <div className="rounded-2xl border border-dashed border-[var(--gc-hairline)] bg-white/60 p-4 text-xs text-[var(--gc-ink2)]">
+              전공 과목 정보 없음.
+            </div>
+          ) : (
+            electives.map((r) => {
+              const note = getNoteForSubjectLabel(r.subject.label);
+              const href = note
+                ? `/${encodeURIComponent(exam.slug)}/${encodeURIComponent(r.subject.slug)}/notes`
+                : r.status === "live"
+                  ? `/${encodeURIComponent(exam.slug)}/${encodeURIComponent(r.subject.slug)}`
+                  : null;
+              const inner = (
+                <>
+                  <div className="flex items-center justify-between gap-2 mb-1">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xl">📐</span>
+                      <span className="font-serif-kr text-sm font-bold text-[var(--gc-ink)]">
+                        {r.subject.label}
+                      </span>
+                    </div>
+                    {note && (
+                      <span className="rounded-full bg-[#FED7AA] text-[#B45309] px-2 py-0.5 text-[9px] font-bold">
+                        📝 단권화
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-[var(--gc-ink2)] leading-relaxed">
+                    {note
+                      ? `${note.topics}단원 · ${note.keywords}키워드 · 빈출 100% 커버. 본문 단권화 노트 완비.`
+                      : r.subject.description ||
+                        "기출문제 + 단권화 자동 가이드 제공. 본문 노트는 트래픽 보고 단계적 확장."}
+                  </p>
+                </>
+              );
+              return (
+                <div key={r.subject.id} className="mb-3">
+                  {href ? (
+                    <Link
+                      href={href}
+                      className="block rounded-2xl border border-[var(--gc-hairline)] bg-white p-4 hover:border-[var(--gc-amber)] hover:shadow-sm transition-all"
+                    >
+                      {inner}
+                    </Link>
+                  ) : (
+                    <div className="rounded-2xl border border-[var(--gc-hairline)] bg-white/60 p-4">
+                      {inner}
+                    </div>
+                  )}
+                </div>
+              );
+            })
+          )}
+        </div>
+      </div>
+
+      <div className="mt-6 rounded-xl bg-[var(--gc-bg)] p-4">
+        <h4 className="font-serif-kr text-sm font-bold text-[var(--gc-ink)] mb-2">
+          ⏰ {exam.shortLabel} 추천 학습 흐름
+        </h4>
+        <ul className="space-y-1.5 text-xs text-[var(--gc-ink2)]">
+          <li>
+            <strong className="text-[var(--gc-ink)]">1~2개월차</strong>: 한국사 한능검 합격 등급 확보 → 1과목 영구 해결
+          </li>
+          <li>
+            <strong className="text-[var(--gc-ink)]">3~5개월차</strong>: 전공 {electives.length}과목 개념 잡기 + 국어/영어 기출 루틴화
+          </li>
+          <li>
+            <strong className="text-[var(--gc-ink)]">6~9개월차</strong>: 전체 회차별 기출 반복 + 오답 집중 + 약점 직렬 전공 보강
+          </li>
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================
 // Job-series cards (직렬 분리된 부모 ExamType용)
 // ============================================================
 
@@ -995,6 +1173,12 @@ function FaqSection({
   const isLocal = exam.id === "civil-9-local";
   const isSeoul = exam.slug === "9급-지방직-서울시";
   const isNational = exam.id === "civil-9-national";
+  const isChildSeries = Boolean(exam.parentExamId);
+  const electives = exam.subjects.selectable ?? [];
+  const electiveLabels = electives
+    .map((r) => r.subject.label)
+    .filter(Boolean)
+    .join("·");
 
   const faqs = [
     {
@@ -1003,6 +1187,18 @@ function FaqSection({
         ? `${exam.shortLabel} 한국사는 ${grade} 인증서로 대체됩니다. 기출노트의 한능검 1,900+ 기출과 87개 시대별 요약노트로 무료 학습 가능합니다. 한능검은 연 5회(2·5·8·10·11월) 시행되니 시험 시즌 전에 미리 합격 등급을 확보해두는 게 유리합니다.`
         : `${exam.shortLabel}의 한국사 학습은 한능검 콘텐츠로 진행 가능합니다.`,
     },
+    ...(isChildSeries && electives.length > 0
+      ? [
+          {
+            q: `${exam.shortLabel} 전공 과목은 무엇이고 부담은 어느 정도인가요?`,
+            a: `${exam.shortLabel}의 전공 과목은 ${electiveLabels}입니다. 공통 3과목(국어·영어·한국사)에 더해 전공 ${electives.length}과목까지 총 5과목 학습. 한국사를 한능검으로 미리 빼면 실질 학습 부담은 국어·영어 + 전공 ${electives.length}과목. 전공 과목 중 단권화 노트가 완비된 과목은 빈출 100% 커버되므로 이를 중심으로 회독 잡으면 효율적.`,
+          },
+          {
+            q: `${exam.shortLabel}와 다른 직렬의 차이는?`,
+            a: `공통 3과목(국어·영어·한국사)은 모든 직렬 동일. 전공 ${electives.length}과목이 직렬마다 다르며, 합격 후 근무지·업무도 직렬에 따라 달라집니다. 한 번 합격 후 직렬 변경은 일반적으로 어려우며, 별도 인사이동·재시험을 거쳐야 합니다. 전공 적성·관심 분야가 직렬 선택의 핵심.`,
+          },
+        ]
+      : []),
     {
       q: `${exam.shortLabel} 합격선은 어느 정도인가요?`,
       a: `9급 공무원 합격선은 직렬·연도별로 다르지만 일반적으로 평균 80점대 후반 ~ 90점대 초반에서 형성됩니다. 인기 직렬(일반행정·검찰사무·교정 등)은 합격선이 더 높고, 기술직군은 비교적 낮은 편입니다. 모든 과목 40점 미만은 과락(불합격) 처리되므로 약점 과목을 만들지 않는 게 중요합니다.`,
@@ -1092,6 +1288,9 @@ function SeoProse({
   certBadge?: ResolvedSubjectRef;
 }) {
   const isContainer = exam.isContainer;
+  const isChildSeries = Boolean(exam.parentExamId);
+  const electives = exam.subjects.selectable ?? [];
+  const electiveLabels = electives.map((r) => r.subject.label).filter(Boolean).join("·");
   return (
     <section className="mt-16 prose prose-sm max-w-none text-[var(--gc-ink2)]">
       <h2 className="font-serif-kr text-2xl font-bold text-[var(--gc-ink)] not-prose mb-4">
@@ -1147,6 +1346,43 @@ function SeoProse({
             업무 안정성·전문성이 강합니다. <strong>세무·재무 직군</strong>(세무·관세)은 세법·회계학 학습 필수.
             <strong> 기술 직군</strong>(건축·토목·전기·전산 등 12개)은 해당 자격증 가산점이 적용되어 비전공자
             진입이 어렵습니다. 합격 후에는 부처·세관·교정시설·시도 본청 등 직렬에 맞는 기관에서 근무합니다.
+          </p>
+        </>
+      )}
+
+      {isChildSeries && (
+        <>
+          <h3 className="font-serif-kr text-lg font-bold text-[var(--gc-ink)] not-prose mt-8 mb-3">
+            {exam.shortLabel} 전공 과목 구성
+          </h3>
+          <p>
+            {exam.shortLabel} 응시자는 공통 3과목(국어·영어·한국사) + 전공 {electives.length}과목,
+            총 5과목을 풀게 됩니다.
+            {electives.length > 0 && (
+              <> 전공 과목은 <strong>{electiveLabels}</strong>입니다.</>
+            )}{" "}
+            한국사를 한능검 인증으로 미리 빼두면 실질 학습 부담은 국어·영어 + 전공 {electives.length}과목으로 줄어듭니다.
+            전공 과목 중 단권화 노트가 완비된 과목은 빈출 100% 커버되므로 회독 중심 학습이 가능합니다.
+          </p>
+
+          <h3 className="font-serif-kr text-lg font-bold text-[var(--gc-ink)] not-prose mt-8 mb-3">
+            {exam.shortLabel} 합격 전략
+          </h3>
+          <p>
+            모든 과목 40점 미만은 과락. 직렬별 합격선은 평균 80점대 후반~90점대 초반에서 형성됩니다.
+            약점 과목을 만들지 않는 것이 최우선이며, 공통 3과목 + 전공 2~5과목을 균형 있게 회독해야 합니다.
+            추천 시간 배분은 <strong>공통 6 : 전공 4</strong> (전공이 5과목인 직렬은 5:5). 한국사는 한능검 합격
+            등급을 빨리 확보해 전공 시간을 늘리는 게 합격 속도를 가르는 핵심 변수.
+          </p>
+
+          <h3 className="font-serif-kr text-lg font-bold text-[var(--gc-ink)] not-prose mt-8 mb-3">
+            합격 후 업무와 진로
+          </h3>
+          <p>
+            {exam.shortLabel} 합격자는 해당 직렬의 부처·청·기관에서 9급 행정사무관(또는 기술직)으로 근무 시작.
+            정년 60세 + 공무원연금 + 의료비 지원 + 휴직·육아휴직 보장. 호봉 + 직급 승진으로 9급 → 7급까지
+            평균 7~10년 소요. 본인 노력에 따라 6급·5급(사무관)까지 승진 가능하며, 전문성을 살려 특정 분야
+            (감사·정책·예산 등)로 경력 발전도 가능합니다.
           </p>
         </>
       )}
