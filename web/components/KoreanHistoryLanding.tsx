@@ -1721,6 +1721,201 @@ function LatestExamsBand({
 // ────────────────────────────────────────────────────────────────────────
 //  PRICING BAND
 // ────────────────────────────────────────────────────────────────────────
+// ────────────────────────────────────────────────────────────────────────
+// NextExamsCrossPromo — 한능검 합격 후 다음 시험. 자연스러운 cross-sell.
+// 위치: LatestExamsBand 직후 → 한능검 콘텐츠 다 본 사용자의 "다음 학습?" 흐름.
+// 톤: 광고가 아닌 정보. "다른 시험 응시생들이 같은 도구로 학습 중" 사실 노출.
+// ────────────────────────────────────────────────────────────────────────
+function NextExamsCrossPromo() {
+  return (
+    <section
+      className="px-5 sm:px-6 md:px-8 py-14 md:py-[100px]"
+      style={{ background: T.paper, borderTop: `1px solid ${T.hairline}` }}
+    >
+      <div className="mx-auto" style={{ maxWidth: 1280 }}>
+        <div className="flex items-end justify-between flex-wrap gap-4 mb-8 md:mb-[40px]">
+          <div>
+            <div
+              style={{
+                fontFamily: FONT_MONO,
+                fontSize: 11,
+                color: T.amber,
+                letterSpacing: "0.25em",
+                fontWeight: 700,
+                marginBottom: 10,
+              }}
+            >
+              0 5 &nbsp; 다 음 시 험
+            </div>
+            <h3
+              className="text-[28px] md:text-[40px]"
+              style={{
+                fontFamily: FONT_SERIF,
+                fontWeight: 900,
+                color: T.ink,
+                letterSpacing: "-0.035em",
+                lineHeight: 1.08,
+                margin: "0 0 12px",
+                maxWidth: 720,
+              }}
+            >
+              한능검 합격 후, 다음 시험도 같은 도구로.
+            </h3>
+            <p
+              style={{
+                fontFamily: FONT_SANS,
+                fontSize: 15,
+                color: T.ink2,
+                lineHeight: 1.6,
+                maxWidth: 660,
+                margin: 0,
+              }}
+            >
+              공무원·자격증 응시생도 회원가입 없이 바로. 한국사는 본인이 풀어본 한능검 콘텐츠 그대로
+              인증 대체로 사용 가능합니다.
+            </p>
+          </div>
+          <Link
+            href="#other-exams"
+            className="no-underline inline-flex items-center"
+            style={{
+              gap: 8,
+              fontFamily: FONT_SANS,
+              fontSize: 14,
+              fontWeight: 700,
+              color: T.ink,
+            }}
+          >
+            전체 547과목
+            <Icon name="arrow" size={14} color={T.ink} />
+          </Link>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-3">
+          <CrossPromoCard
+            href="/9급-국가직"
+            badge="9급 공무원"
+            title="9급 통합 — 69직렬"
+            desc="국가직·지방직·서울시 합산 69개 직렬. 한국사는 한능검 인증 대체로 미리 끝낼 수 있고, 행정법·행정학·세법·회계학 등 13과목은 빈출 100% 단권화 노트 완비."
+            chips={["일반행정", "세무", "교정", "검찰사무", "사회복지", "9급 국가직 →"]}
+            tone="amber"
+          />
+          <CrossPromoCard
+            href="/7급-공무원"
+            badge="7급·경찰·소방·계리"
+            title="한능검 인증 대체 시험"
+            desc="7급 공무원, 경찰공무원, 소방공무원, 계리직 등은 한능검 2~3급 인증으로 한국사 시험 면제. 본인의 한능검 점수 그대로 활용 가능."
+            chips={["7급 공무원", "경찰공무원", "소방공무원", "계리직", "군무원"]}
+            tone="teal"
+          />
+          <CrossPromoCard
+            href="#other-exams"
+            badge="자격증 416개"
+            title="전공 단권화 + 자동 가이드"
+            desc="공인중개사·정보처리기사·산업안전기사·전기기사 등 인기 시험 13과목 본문 단권화 노트. 나머지 자격증은 빈출 자동 분류 가이드 + 회차별 기출 풀이."
+            chips={["공인중개사", "정보처리기사", "전기기사", "사회조사분석사", "전체 →"]}
+            tone="ink"
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CrossPromoCard({
+  href,
+  badge,
+  title,
+  desc,
+  chips,
+  tone,
+}: {
+  href: string;
+  badge: string;
+  title: string;
+  desc: string;
+  chips: string[];
+  tone: "amber" | "teal" | "ink";
+}) {
+  const accent =
+    tone === "amber" ? T.amber : tone === "teal" ? T.teal : T.ink;
+  const accentBg =
+    tone === "amber"
+      ? "#FFF7ED"
+      : tone === "teal"
+        ? "#F0FDFA"
+        : `${T.ink}08`;
+
+  return (
+    <Link
+      href={href}
+      className="group no-underline block rounded-2xl border bg-white p-6 transition-all hover:shadow-md hover:-translate-y-0.5"
+      style={{ borderColor: T.hairline, color: T.ink }}
+    >
+      <div className="flex items-center gap-2 mb-3">
+        <span
+          className="rounded-full px-2.5 py-1 text-[10px] font-bold"
+          style={{
+            fontFamily: FONT_MONO,
+            background: accentBg,
+            color: accent,
+            letterSpacing: "0.05em",
+          }}
+        >
+          {badge}
+        </span>
+      </div>
+      <h4
+        className="text-[19px]"
+        style={{
+          fontFamily: FONT_SERIF,
+          fontWeight: 800,
+          color: T.ink,
+          letterSpacing: "-0.02em",
+          lineHeight: 1.2,
+          margin: "0 0 10px",
+        }}
+      >
+        {title}
+      </h4>
+      <p
+        style={{
+          fontFamily: FONT_SANS,
+          fontSize: 13.5,
+          color: T.ink2,
+          lineHeight: 1.6,
+          margin: "0 0 16px",
+        }}
+      >
+        {desc}
+      </p>
+      <div className="flex flex-wrap gap-1.5 mb-4">
+        {chips.map((c) => (
+          <span
+            key={c}
+            className="rounded-full px-2.5 py-1 text-[11px]"
+            style={{
+              fontFamily: FONT_SANS,
+              border: `1px solid ${T.hairline}`,
+              color: T.ink2,
+              fontWeight: 500,
+            }}
+          >
+            {c}
+          </span>
+        ))}
+      </div>
+      <span
+        className="inline-flex items-center gap-1 text-[13px] font-bold"
+        style={{ color: accent }}
+      >
+        살펴보기
+        <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+      </span>
+    </Link>
+  );
+}
+
 function PricingBand() {
   return (
     <section className="px-5 sm:px-6 md:px-8 py-16 md:py-[100px]">
@@ -1949,6 +2144,7 @@ export default function KoreanHistoryLanding() {
       </div>
 
       <LatestExamsBand latestExams={latestExams} topKeywords={topKeywords} />
+      <NextExamsCrossPromo />
       <PricingBand />
       <SeoProse
         examCount={examCount}
