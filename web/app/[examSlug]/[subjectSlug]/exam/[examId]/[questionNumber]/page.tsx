@@ -1,8 +1,13 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Metadata } from "next";
 import { getExamTypeBySlug, getSubjectBySlug } from "@/lib/exam-types";
 import { getCbtExam, getCbtManifest } from "@/lib/cbt-data";
+import {
+  isHistorySubject,
+  HISTORY_ROUTES,
+  historyUnifiedMeta,
+} from "@/lib/korean-history-redirect";
 import { adaptCbtQuestion, adaptCbtExamMeta } from "@/lib/cbt-adapter";
 import QuestionWithTracking from "@/components/QuestionWithTracking";
 import CivilLearnPanel from "@/components/CivilLearnPanel";
@@ -36,6 +41,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const exam = getExamTypeBySlug(decodeURIComponent(examSlug));
   const subject = getSubjectBySlug(decodeURIComponent(subjectSlug));
   if (!exam || !subject) return { title: "문제 없음" };
+  if (isHistorySubject(subject.id) && exam.id !== "korean-history") {
+    return historyUnifiedMeta(exam.label);
+  }
   return civilQuestionMeta(exam, subject, examId, Number(questionNumber));
 }
 
@@ -44,6 +52,11 @@ export default async function CbtQuestionPage({ params }: PageProps) {
   const exam = getExamTypeBySlug(decodeURIComponent(examSlug));
   const subject = getSubjectBySlug(decodeURIComponent(subjectSlug));
   if (!exam || !subject) notFound();
+
+  // 한국사 통합: 한능검 회차 목록으로 redirect (문제 매핑은 불가)
+  if (isHistorySubject(subject.id) && exam.id !== "korean-history") {
+    redirect(HISTORY_ROUTES.exam);
+  }
 
   const ref =
     exam.subjects.required.find((r) => r.subjectId === subject.id) ??

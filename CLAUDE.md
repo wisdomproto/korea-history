@@ -116,8 +116,29 @@ korea_history/
 ### URL 구조 (평면)
 - 단일 시험 / 직렬: `/[examSlug]` (예: `/한능검`, `/9급-국가직-일반행정`, `/변리사`)
 - 과목 랜딩: `/[examSlug]/[subjectSlug]` (예: `/9급-국가직-일반행정/한국사`)
-- 부모 컨테이너: `/[examSlug]` 으로 가면 **JobSeriesSection** (직렬 카드 24개)
+- 부모 컨테이너: `/[examSlug]` 으로 가면 **KoreanHistoryHub + JobSeriesSection** (한국사=한능검 큰 카드 + 직렬 카드)
 - sub-routes (`/exam`, `/notes`, `/wrong-answers`, `/my-record`)는 직렬 ExamType 단위
+- **한국사 sub-route는 한능검으로 redirect** (아래 § 한국사 통합 참고)
+
+### 한국사 통합 (2026-05-24)
+
+공무원·자격증의 한국사 과목은 모두 한능검 콘텐츠로 통일. 결정 근거:
+1. 2027년부터 9급까지 모든 한국사 시험이 한능검 인증으로 전면 대체
+2. 한능검이 1,900+ 기출 + 87 요약노트 + 19분 체류 moat 보유 (압도적 콘텐츠 우위)
+3. 자체 CBT 한국사 stem 24개 (지방직 서울시 등)도 한능검으로 통합 — 데이터 매핑은 그대로 두고 페이지 redirect만
+
+**구현** (`web/lib/korean-history-redirect.ts`):
+- `isHistorySubject(id)` + `HISTORY_ROUTES` + `historyUnifiedMeta(examLabel)` 단일 source of truth
+- 한국사 페이지 7곳 모두 307 redirect: subject landing / exam list / exam round / question / notes / wrong-answers / my-record
+- 한능검 본인(`exam.id === "korean-history"`)은 예외 — 자체 콘텐츠로 정상 렌더
+- `historyUnifiedMeta`는 `robots: noindex, follow: true` — 검색엔진은 한능검 destination만 색인, 모든 "공무원 한국사" 검색 트래픽이 한능검 페이지에 흡수
+
+**UI 연동**:
+- `ExamSelector.tsx` — 한국사 과목 클릭 시 redirect hop 절약하고 한능검 `/exam`으로 직접
+- `[examSlug]/page.tsx` SubjectCard — 한국사면 amber 그라데이션 카드 + "🏛️ 한능검 무료" 뱃지 + "1,900+ 기출 · 87 시대별 요약노트 · 자동 오답노트" desc
+- `[examSlug]/page.tsx` KoreanHistoryHub — 부모 컨테이너 페이지(9급 국가직/지방직/서울시) JobSeriesSection 위에 큰 amber hub 섹션 (H2 + 학습기능 4개 ✓ + CTA 4개 기출/노트/오답/기록)
+- `KoreanHistoryLanding.tsx` SeoProse — "공무원 한국사·9급 한국사도 한능검으로 무료 학습" 단락 추가 (Tier S/B 키워드 흡수)
+- `layout.tsx` keywords — "공무원 한국사 한능검" + "한국사 한능검 대체" 2개 추가
 
 ### 3-level 트리 UI
 - **헤더 ExamSelector** (`web/components/ExamSelector.tsx`): 카테고리 → 부모 시험 → 직렬 → 과목 (4-level expand).

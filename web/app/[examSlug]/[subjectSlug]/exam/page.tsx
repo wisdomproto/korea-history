@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Metadata } from "next";
 import {
   getExamTypeBySlug,
@@ -9,6 +9,11 @@ import { getCbtManifest } from "@/lib/cbt-data";
 import BreadCrumb from "@/components/BreadCrumb";
 import RoundList, { type RoundListItem } from "@/components/RoundList";
 import { civilExamListMeta } from "@/lib/civil-seo";
+import {
+  isHistorySubject,
+  HISTORY_ROUTES,
+  historyUnifiedMeta,
+} from "@/lib/korean-history-redirect";
 
 interface PageProps {
   params: Promise<{ examSlug: string; subjectSlug: string }>;
@@ -28,6 +33,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const exam = getExamTypeBySlug(decodeURIComponent(examSlug));
   const subject = getSubjectBySlug(decodeURIComponent(subjectSlug));
   if (!exam || !subject) return { title: "시험 없음" };
+  if (isHistorySubject(subject.id) && exam.id !== "korean-history") {
+    return historyUnifiedMeta(exam.label);
+  }
   return civilExamListMeta(exam, subject);
 }
 
@@ -38,6 +46,11 @@ export default async function CbtRoundListPage({ params }: PageProps) {
   const exam = getExamTypeBySlug(examS);
   const subject = getSubjectBySlug(subS);
   if (!exam || !subject) notFound();
+
+  // 한국사 통합: 한능검 회차 목록으로 redirect
+  if (isHistorySubject(subject.id) && exam.id !== "korean-history") {
+    redirect(HISTORY_ROUTES.exam);
+  }
 
   // Find the SubjectRef inside this exam to read per-exam stem override
   const ref =

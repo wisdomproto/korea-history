@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { getExamTypeBySlug, getSubjectBySlug } from "@/lib/exam-types";
+import {
+  isHistorySubject,
+  HISTORY_ROUTES,
+  historyUnifiedMeta,
+} from "@/lib/korean-history-redirect";
 import { getNotesIndex, getNotesGroupedBySection } from "@/lib/notes";
 import NotesHome from "@/app/notes/NotesHome";
 import {
@@ -31,6 +36,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const subject = getSubjectBySlug(decodeURIComponent(subjectSlug));
   if (!exam || !subject) return { title: "요약노트" };
 
+  if (isHistorySubject(subject.id) && exam.id !== "korean-history") {
+    return historyUnifiedMeta(exam.label);
+  }
+
   const civilNote = getNoteForSubjectLabel(subject.label);
   const ref =
     exam.subjects.required.find((r) => r.subjectId === subject.id) ??
@@ -47,6 +56,11 @@ export default async function PerSubjectNotes({ params }: PageProps) {
   const exam = getExamTypeBySlug(decodeURIComponent(examSlug));
   const subject = getSubjectBySlug(decodeURIComponent(subjectSlug));
   if (!exam || !subject) notFound();
+
+  // 한국사 통합: 한능검 87개 시대별 요약노트 인덱스로 redirect
+  if (isHistorySubject(subject.id) && exam.id !== "korean-history") {
+    redirect(HISTORY_ROUTES.notes);
+  }
 
   // 한능검 한국사만 노트 LIVE — legacy NotesHome 재사용
   if (subject.id === "korean-history" && subject.notePool) {

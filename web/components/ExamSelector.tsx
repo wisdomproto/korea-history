@@ -265,10 +265,15 @@ export default function ExamSelector({ current, currentSubjectSlug, examTypes, s
                                             const isCurrentSubj =
                                               isCurrentChild && currentSubjId === s.id;
                                             const hasNote = hasCivilNoteFor(s.label);
+                                            // 한국사 통합: 한능검 콘텐츠로 직접 (redirect hop 절약)
+                                            const isHistory = s.id === "korean-history";
+                                            const href = isHistory
+                                              ? "/exam"
+                                              : `${c.routes.main}/${encodeURIComponent(s.slug)}`;
                                             return (
                                               <Link
                                                 key={s.id}
-                                                href={`${c.routes.main}/${encodeURIComponent(s.slug)}`}
+                                                href={href}
                                                 onClick={() => setOpen(false)}
                                                 className={`flex items-center gap-1 rounded px-2 py-0.5 text-[11px] ${
                                                   isCurrentSubj
@@ -307,10 +312,16 @@ export default function ExamSelector({ current, currentSubjectSlug, examTypes, s
                                 {liveSubjects.map((s) => {
                                   const isCurrentSubj = isCurrent && currentSubjId === s.id;
                                   const hasNote = hasCivilNoteFor(s.label);
+                                  // 한국사 통합: 한능검 본인 외엔 한능검 콘텐츠로 직접
+                                  const isHistory =
+                                    s.id === "korean-history" && exam.id !== "korean-history";
+                                  const href = isHistory
+                                    ? "/exam"
+                                    : `${exam.routes.main}/${encodeURIComponent(s.slug)}`;
                                   return (
                                     <Link
                                       key={s.id}
-                                      href={`${exam.routes.main}/${encodeURIComponent(s.slug)}`}
+                                      href={href}
                                       onClick={() => setOpen(false)}
                                       className={`flex items-center gap-1 rounded px-2 py-1 text-xs ${
                                         isCurrentSubj

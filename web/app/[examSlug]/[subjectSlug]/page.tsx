@@ -21,6 +21,11 @@ import {
   getAutoQuestionsForTopic,
 } from "@/lib/civil-notes-auto";
 import { civilSubjectMeta, civilCourseJsonLd } from "@/lib/civil-seo";
+import {
+  isHistorySubject,
+  HISTORY_ROUTES,
+  historyUnifiedMeta,
+} from "@/lib/korean-history-redirect";
 
 interface PageProps {
   params: Promise<{ examSlug: string; subjectSlug: string }>;
@@ -50,6 +55,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const exam = getExamTypeBySlug(decodeURIComponent(examSlug));
   const subject = getSubjectBySlug(decodeURIComponent(subjectSlug));
   if (!exam || !subject) return { title: "시험" };
+  // 한국사 통합 (2026-05-24): 한능검 외 모든 시험의 한국사는 한능검 콘텐츠로 redirect
+  if (isHistorySubject(subject.id) && exam.id !== "korean-history") {
+    return historyUnifiedMeta(exam.label);
+  }
   return civilSubjectMeta(exam, subject);
 }
 
@@ -72,6 +81,12 @@ export default async function SubjectLanding({ params }: PageProps) {
   // 한능검 한국사 — legacy 한능검 풍부한 랜딩으로 redirect (URL encode 필수)
   if (exam.id === "korean-history" && subject.id === "korean-history") {
     redirect("/" + encodeURIComponent("한능검"));
+  }
+
+  // 한국사 통합 (2026-05-24): 다른 모든 시험의 한국사 = 한능검 콘텐츠로 redirect.
+  // 27개+ 자격증/공무원 (한능검 인증 대체 포함) 모두 단일 한능검 학습 동선.
+  if (isHistorySubject(subject.id)) {
+    redirect(HISTORY_ROUTES.main);
   }
 
   // CBT stem — 회차 미리보기 가능

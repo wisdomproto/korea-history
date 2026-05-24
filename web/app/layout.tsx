@@ -40,6 +40,9 @@ export const metadata: Metadata = {
     "행정법 기출",          // Tier A vol 300
     "7급 공무원",
     "자격증 기출",
+    // 한국사 통합 결정 (2026-05-24) — 공무원 한국사 = 한능검 cross 시그널
+    "공무원 한국사 한능검",
+    "한국사 한능검 대체",
   ],
   manifest: "/manifest.json",
   icons: {

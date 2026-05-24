@@ -104,7 +104,10 @@ export default async function ExamSlugPage({ params }: PageProps) {
         <ExamHero exam={exam} certBadge={certBadge} nextEvent={nextEvent} />
 
         {exam.isContainer ? (
-          <JobSeriesSection parentId={exam.id} />
+          <>
+            <KoreanHistoryHub exam={exam} />
+            <JobSeriesSection parentId={exam.id} />
+          </>
         ) : (
           <SubjectsSection
             required={exam.subjects.required}
@@ -374,6 +377,105 @@ function buildExamPageJsonLd(
 }
 
 // ============================================================
+// Korean History Hub — 부모 컨테이너 전용. 모든 직렬 공통 한국사 = 한능검.
+// "공무원 한국사" Tier S (vol 1,160) + "9급 한국사" Tier B 키워드 흡수.
+// ============================================================
+
+function KoreanHistoryHub({ exam }: { exam: ExamTypeWithSubjects }) {
+  // 모든 9급 부모 컨테이너는 한국사 ref 보유 — cert grade 자동 추출
+  const historyRef = exam.subjects.required.find(
+    (r) => r.subject.id === "korean-history",
+  );
+  const grade = historyRef?.certAccepted?.[0] ?? "한능검";
+  const isFuture = grade.includes("2027");
+
+  return (
+    <section className="mt-14 rounded-3xl border-2 border-[var(--gc-amber)] bg-gradient-to-br from-[#FFF7ED] via-white to-white p-6 md:p-10">
+      <div className="flex items-start gap-4 mb-6">
+        <div className="text-5xl shrink-0">🏛️</div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--gc-amber)] font-bold">
+              {exam.shortLabel} 한국사
+            </span>
+            <span className="rounded-full bg-[#B45309] text-white px-2 py-0.5 text-[10px] font-bold">
+              한능검 무료
+            </span>
+          </div>
+          <h2 className="font-serif-kr text-2xl md:text-3xl font-black text-[var(--gc-ink)] leading-tight">
+            {exam.shortLabel} 한국사 = {grade}
+          </h2>
+          <p className="mt-3 text-sm md:text-base text-[var(--gc-ink2)] max-w-2xl">
+            {isFuture ? (
+              <>
+                <strong className="text-[var(--gc-ink)]">2027년부터</strong> {exam.shortLabel} 한국사 시험은
+                한능검으로 통합됩니다. 지금부터 한능검으로 미리 합격 등급을 따두면 1과목을 일찍 끝낼 수 있습니다.
+              </>
+            ) : (
+              <>
+                <strong className="text-[var(--gc-ink)]">현재 시행 중</strong> — {exam.shortLabel} 응시자는
+                한능검 인증서로 한국사 시험을 대체합니다. 기출노트의 한능검 콘텐츠로 무료 학습 가능.
+              </>
+            )}
+          </p>
+          <ul className="mt-4 grid gap-1.5 text-sm text-[var(--gc-ink2)] sm:grid-cols-2">
+            <li>✓ 1,900+ 한능검 기출문제 무료 풀이</li>
+            <li>✓ 87개 시대별 요약노트 (한자 없는 교과서 문체)</li>
+            <li>✓ 자동 오답노트 + 학습 세션</li>
+            <li>✓ 문제↔노트 section 자동 연결</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="grid gap-3 grid-cols-2 md:grid-cols-4">
+        <HistoryHubCta href="/exam" label="기출 풀기" desc="1,900+ 문항" icon="📝" primary />
+        <HistoryHubCta href="/notes" label="요약노트" desc="시대별 87편" icon="📚" />
+        <HistoryHubCta href="/wrong-answers" label="오답노트" desc="자동 수집" icon="✗" />
+        <HistoryHubCta href="/my-record" label="내 기록" desc="점수·약점" icon="📊" />
+      </div>
+    </section>
+  );
+}
+
+function HistoryHubCta({
+  href,
+  label,
+  desc,
+  icon,
+  primary,
+}: {
+  href: string;
+  label: string;
+  desc: string;
+  icon: string;
+  primary?: boolean;
+}) {
+  return (
+    <Link
+      href={href}
+      className={`group rounded-2xl border p-4 transition-all hover:scale-[1.02] ${
+        primary
+          ? "border-[var(--gc-amber)] bg-[var(--gc-ink)] text-white"
+          : "border-[var(--gc-hairline)] bg-white text-[var(--gc-ink)] hover:border-[var(--gc-amber)]"
+      }`}
+    >
+      <div className="text-2xl">{icon}</div>
+      <div className="mt-2 font-serif-kr text-base font-bold">{label}</div>
+      <div className={`mt-0.5 text-xs ${primary ? "text-white/70" : "text-[var(--gc-ink2)]"}`}>
+        {desc}
+      </div>
+      <div
+        className={`mt-3 inline-flex items-center gap-1 text-xs font-bold ${
+          primary ? "text-[#FED7AA]" : "text-[var(--gc-amber)]"
+        }`}
+      >
+        시작 <span className="transition-transform group-hover:translate-x-1">→</span>
+      </div>
+    </Link>
+  );
+}
+
+// ============================================================
 // Job-series cards (직렬 분리된 부모 ExamType용)
 // ============================================================
 
@@ -482,24 +584,25 @@ function SubjectCard({
   // 9급 공무원 자동 단권화 매칭 (Subject label로)
   const civilNote = getNoteForSubjectLabel(data.subject.label);
 
-  // 한국사 (한능검 콘텐츠 호환) → 한능검 legacy로
+  // 한국사 통합 (2026-05-24): 모든 한국사 → 한능검 콘텐츠 (자체 CBT stem 24개도 통합)
   // 다른 LIVE 과목 → /[examSlug]/[subjectSlug] subject landing으로
   // 단권화 있으면 → notes 직접 링크
-  const href =
-    isLive && isHistory
-      ? historyRoutes.exam
-      : isLive
-        ? `/${encodeURIComponent(examSlug)}/${encodeURIComponent(data.subject.slug)}`
-        : civilNote
-          ? `/${encodeURIComponent(examSlug)}/${encodeURIComponent(data.subject.slug)}/notes`
-          : null;
+  const href = isHistory
+    ? historyRoutes.exam
+    : isLive
+      ? `/${encodeURIComponent(examSlug)}/${encodeURIComponent(data.subject.slug)}`
+      : civilNote
+        ? `/${encodeURIComponent(examSlug)}/${encodeURIComponent(data.subject.slug)}/notes`
+        : null;
 
-  const clickable = isLive || Boolean(civilNote);
+  const clickable = isHistory || isLive || Boolean(civilNote);
   const cardClass =
     "block rounded-2xl border p-5 transition-all " +
-    (clickable
-      ? "border-[var(--gc-hairline)] bg-white hover:border-[var(--gc-amber)] hover:shadow-sm"
-      : "border-dashed border-[var(--gc-hairline)] bg-white/60 text-[var(--gc-ink2)] cursor-default");
+    (isHistory
+      ? "border-[var(--gc-amber)] bg-gradient-to-br from-[#FFF7ED] to-white hover:shadow-md hover:scale-[1.01]"
+      : clickable
+        ? "border-[var(--gc-hairline)] bg-white hover:border-[var(--gc-amber)] hover:shadow-sm"
+        : "border-dashed border-[var(--gc-hairline)] bg-white/60 text-[var(--gc-ink2)] cursor-default");
 
   const inner = (
     <>
@@ -508,18 +611,25 @@ function SubjectCard({
           {data.subject.label}
         </h3>
         <div className="flex gap-1.5">
-          {civilNote && (
+          {isHistory && (
+            <span className="rounded-full px-2 py-0.5 text-[10px] font-bold bg-[#B45309] text-white">
+              🏛️ 한능검 무료
+            </span>
+          )}
+          {!isHistory && civilNote && (
             <span className="rounded-full px-2 py-0.5 text-[10px] font-bold bg-[#FED7AA] text-[#B45309]">
               📝 단권화
             </span>
           )}
-          <span
-            className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
-              isLive ? "bg-[#CCFBF1] text-[#115E59]" : "bg-[#F3F4F6] text-[#6B7280]"
-            }`}
-          >
-            {isLive ? "기출 LIVE" : "기출 준비중"}
-          </span>
+          {!isHistory && (
+            <span
+              className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                isLive ? "bg-[#CCFBF1] text-[#115E59]" : "bg-[#F3F4F6] text-[#6B7280]"
+              }`}
+            >
+              {isLive ? "기출 LIVE" : "기출 준비중"}
+            </span>
+          )}
         </div>
       </div>
 
@@ -531,13 +641,19 @@ function SubjectCard({
 
       <p className="mt-2 text-sm text-[var(--gc-ink2)]">{data.subject.description}</p>
 
-      {civilNote && (
+      {isHistory && (
+        <p className="mt-2 text-xs text-[#B45309] font-mono">
+          1,900+ 기출 · 87 시대별 요약노트 · 자동 오답노트
+        </p>
+      )}
+
+      {!isHistory && civilNote && (
         <p className="mt-2 text-xs text-[#B45309] font-mono">
           {civilNote.topics}단원 · {civilNote.keywords}키워드 · 빈출 100% 커버
         </p>
       )}
 
-      {!isLive && !civilNote && data.subject.etaQuarter && (
+      {!isLive && !civilNote && !isHistory && data.subject.etaQuarter && (
         <p className="mt-3 text-xs font-mono text-[var(--gc-amber)]">
           출시: {data.subject.etaQuarter}
         </p>

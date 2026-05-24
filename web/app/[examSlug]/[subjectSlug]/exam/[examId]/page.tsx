@@ -2,6 +2,11 @@ import { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import { getExamTypeBySlug, getSubjectBySlug } from "@/lib/exam-types";
 import { getCbtExam } from "@/lib/cbt-data";
+import {
+  isHistorySubject,
+  HISTORY_ROUTES,
+  historyUnifiedMeta,
+} from "@/lib/korean-history-redirect";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600;
@@ -15,6 +20,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const exam = getExamTypeBySlug(decodeURIComponent(examSlug));
   const subject = getSubjectBySlug(decodeURIComponent(subjectSlug));
   if (!exam || !subject) return { title: "시험 없음" };
+  if (isHistorySubject(subject.id) && exam.id !== "korean-history") {
+    return historyUnifiedMeta(exam.label);
+  }
   return {
     title: `${exam.shortLabel} ${subject.label} ${examId} 회차 — 기출노트`,
     description: `${exam.label} ${subject.label} ${examId} 회차 기출문제.`,
@@ -28,6 +36,11 @@ export default async function CbtExamRoundPage({ params }: PageProps) {
   const exam = getExamTypeBySlug(decodeURIComponent(examSlug));
   const subject = getSubjectBySlug(decodeURIComponent(subjectSlug));
   if (!exam || !subject) notFound();
+
+  // 한국사 통합: 한능검 회차 목록으로 redirect (개별 회차 ID는 매핑 불가, 학습 시작점으로 이동)
+  if (isHistorySubject(subject.id) && exam.id !== "korean-history") {
+    redirect(HISTORY_ROUTES.exam);
+  }
 
   const ref =
     exam.subjects.required.find((r) => r.subjectId === subject.id) ??
