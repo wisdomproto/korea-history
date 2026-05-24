@@ -139,15 +139,14 @@ export default function Header({ examTypes, subjects }: HeaderProps) {
             />
           </div>
 
-          {/* Cross-sell CTA — 9급 공무원 시험 컨테이너 직진 (학습 nav 앞) */}
+          {/* Cross-sell CTA — 9급 공무원 시험 컨테이너 직진. 모든 viewport 노출 (sticky header 안 항상 보임). */}
           <Link
             href="/9급-국가직"
-            className="hidden md:inline-flex items-center gap-1.5 rounded-full font-sans-kr no-underline transition-all shrink-0 hover:scale-[1.03]"
+            className="inline-flex items-center gap-1 sm:gap-1.5 rounded-full font-sans-kr no-underline transition-all shrink-0 hover:scale-[1.03] text-[12px] sm:text-[14px]"
             style={{
               border: `1.5px solid ${amber}`,
               color: amber,
-              padding: "7px 14px",
-              fontSize: 14,
+              padding: "5px 10px",
               fontWeight: 600,
               letterSpacing: "-0.01em",
             }}
@@ -159,8 +158,10 @@ export default function Header({ examTypes, subjects }: HeaderProps) {
               e.currentTarget.style.background = "transparent";
               e.currentTarget.style.color = amber;
             }}
+            aria-label="9급 공무원 시험 페이지로 이동"
           >
-            ← 9급 공무원 시험
+            <span className="hidden sm:inline">←&nbsp;9급 공무원 시험</span>
+            <span className="sm:hidden">9급 공무원</span>
           </Link>
 
           {/* Desktop Nav (학습 메뉴) — 다과목 시험 페이지에선 숨김 */}
