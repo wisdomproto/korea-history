@@ -130,14 +130,12 @@ export default function Header({ examTypes, subjects }: HeaderProps) {
           </Link>
 
           {/* Exam selector — always visible, default = 한능검 */}
-          <div className="hidden sm:block">
-            <ExamSelector
-              current={currentExam}
-              currentSubjectSlug={subjectSlugInUrl}
-              examTypes={examTypes}
-              subjects={subjects}
-            />
-          </div>
+          <ExamSelector
+            current={currentExam}
+            currentSubjectSlug={subjectSlugInUrl}
+            examTypes={examTypes}
+            subjects={subjects}
+          />
 
           {/* Cross-sell CTA — 9급 공무원 시험 컨테이너 직진. 모든 viewport 노출 (sticky header 안 항상 보임). */}
           <Link

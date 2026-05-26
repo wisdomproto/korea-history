@@ -67,13 +67,15 @@ export default function ExamSelector({ current, currentSubjectSlug, examTypes, s
     if (e.parentExamId) (childrenByParentId[e.parentExamId] ??= []).push(e);
   }
 
-  // 버튼 라벨 — 시험 + 과목 조합. /[examSlug]/[subjectSlug]에 있으면 둘 다 표시
+  // 버튼은 "행동 신호"가 우선 — 현재 시험명을 박지 않고 "다른 시험 보기" 액션을 노출.
+  // 현재 시험은 드롭다운 안에서 ● 마커로 강조되고, 페이지 자체에 이미 컨텍스트가 있음.
   const currentSubject = currentSubjectSlug ? subjectsBySlug.get(currentSubjectSlug) : null;
-  const buttonLabel = current
+  // (참고용: 접근성 aria-label에 현재 컨텍스트 포함)
+  const ariaContextLabel = current
     ? currentSubject && currentSubject.id !== current.id
-      ? `${current.icon} ${current.shortLabel} · ${currentSubject.shortLabel}`
-      : `${current.icon} ${current.shortLabel}`
-    : "🔍 시험 선택";
+      ? `현재 ${current.shortLabel} ${currentSubject.shortLabel} — 다른 시험 보기`
+      : `현재 ${current.shortLabel} — 다른 시험 보기`
+    : "시험 선택";
 
   const toggleNode = (id: string) => {
     setExpanded((prev) => {
@@ -90,20 +92,29 @@ export default function ExamSelector({ current, currentSubjectSlug, examTypes, s
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className="flex items-center gap-2 rounded-full border border-[var(--gc-hairline)] bg-white px-4 py-1.5 text-sm font-bold text-[var(--gc-ink)] hover:border-[var(--gc-amber)] transition-colors max-w-[420px]"
+        aria-label={ariaContextLabel}
+        className="flex items-center gap-1.5 rounded-full border-2 bg-white pl-3 pr-2 py-1.5 text-sm font-bold text-[var(--gc-ink)] transition-colors hover:bg-[var(--gc-amber)] hover:text-white"
+        style={{
+          borderColor: "var(--gc-amber)",
+          letterSpacing: "-0.01em",
+        }}
       >
-        <span className="whitespace-nowrap">{buttonLabel}</span>
-        <svg
-          width="10"
-          height="10"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="3"
-          className={`transition-transform shrink-0 ${open ? "rotate-180" : ""}`}
+        <span aria-hidden className="text-[15px] leading-none">📚</span>
+        <span className="whitespace-nowrap">다른 시험</span>
+        <span
+          aria-hidden
+          className={`ml-0.5 flex items-center justify-center rounded-full transition-transform ${open ? "rotate-180" : ""}`}
+          style={{
+            width: 20,
+            height: 20,
+            background: "var(--gc-amber)",
+            color: "#FFFFFF",
+          }}
         >
-          <path d="M6 9l6 6 6-6" />
-        </svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5">
+            <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </span>
       </button>
 
       {open && (
