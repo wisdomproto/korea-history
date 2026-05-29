@@ -9,6 +9,7 @@ import { getCbtManifest } from "@/lib/cbt-data";
 import BreadCrumb from "@/components/BreadCrumb";
 import RoundList, { type RoundListItem } from "@/components/RoundList";
 import { civilExamListMeta } from "@/lib/civil-seo";
+import { getNoteForSubjectLabel } from "@/lib/civil-notes";
 import {
   isHistorySubject,
   HISTORY_ROUTES,
@@ -36,7 +37,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (isHistorySubject(subject.id) && exam.id !== "korean-history") {
     return historyUnifiedMeta(exam.label);
   }
-  return civilExamListMeta(exam, subject);
+  const meta = civilExamListMeta(exam, subject);
+  // 수동 노트 과목만 색인. 자동 과목의 회차 목록은 thin scaffold라 noindex,follow.
+  if (!getNoteForSubjectLabel(subject.label)) {
+    meta.robots = { index: false, follow: true };
+  }
+  return meta;
 }
 
 export default async function CbtRoundListPage({ params }: PageProps) {

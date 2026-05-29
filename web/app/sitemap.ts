@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { getAllExams, getAllQuestionParams } from "@/lib/data";
 import { getAllNoteIds } from "@/lib/notes";
 import { getAllExamTypes, getCategories, getSubjectById } from "@/lib/exam-types";
-import { getAllCivilNoteSlugs, getAllTopicParams } from "@/lib/civil-notes";
+import { getAllCivilNoteSlugs, getAllTopicParams, getNoteForSubjectLabel } from "@/lib/civil-notes";
 import { getAllBlogSlugs, getAllBlogPosts } from "@/lib/blog";
 
 export const dynamic = "force-static";
@@ -101,7 +101,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: e.featured ? 0.9 : e.isContainer ? 0.5 : 0.6,
   }));
 
-  // (examSlug, subjectSlug) 조합 페이지 — 754개
+  // (examSlug, subjectSlug) 조합 페이지 — 수동 단권화 노트(23과목)가 있는 과목만.
+  // 자동 가이드 과목은 thin이라 noindex 처리했으므로 sitemap에서도 제외
+  // (noindex URL을 sitemap에 넣으면 GSC가 "제출됨 but noindex" 오류로 표시).
   const subjectPages: MetadataRoute.Sitemap = [];
   for (const e of allExamTypes) {
     if (e.isContainer) continue; // 컨테이너 부모는 자식 직렬에서 처리
@@ -110,6 +112,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       if (r.status !== "live") continue;
       const subj = getSubjectById(r.subjectId);
       if (!subj) continue;
+      // 한국사는 한능검으로 redirect(별도 sitemap 항목), 자동 과목은 noindex → 제외
+      if (!getNoteForSubjectLabel(subj.label)) continue;
       subjectPages.push({
         url: `${BASE_URL}${e.routes.main}/${encodeURIComponent(subj.slug)}`,
         lastModified: now,

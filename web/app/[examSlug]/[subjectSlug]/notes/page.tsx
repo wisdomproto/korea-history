@@ -40,13 +40,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return historyUnifiedMeta(exam.label);
   }
 
+  // 색인 가능 = 수동 단권화 노트(23과목) 또는 한능검만. 자동 가이드(656 stem)는
+  // 키워드 스텁뿐이라 noindex (civilNotesMeta가 hasContent=false면 noindex,follow).
   const civilNote = getNoteForSubjectLabel(subject.label);
-  const ref =
-    exam.subjects.required.find((r) => r.subjectId === subject.id) ??
-    exam.subjects.selectable?.find((r) => r.subjectId === subject.id);
-  const stem = ref?.stem ?? subject.questionPool?.stem;
-  const autoMeta = !civilNote && stem ? await getAutoMeta(stem) : null;
-  const hasContent = subject.id === "korean-history" || Boolean(civilNote) || Boolean(autoMeta);
+  const hasContent = subject.id === "korean-history" || Boolean(civilNote);
 
   return civilNotesMeta(exam, subject, hasContent);
 }

@@ -44,7 +44,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (isHistorySubject(subject.id) && exam.id !== "korean-history") {
     return historyUnifiedMeta(exam.label);
   }
-  return civilQuestionMeta(exam, subject, examId, Number(questionNumber));
+  const meta = civilQuestionMeta(exam, subject, examId, Number(questionNumber));
+  // 수동 노트 과목만 색인. 자동 과목의 개별 문제는 near-duplicate 프로그래매틱
+  // 페이지(수만 개)라 noindex,follow — Google도 이미 미색인 처리 중.
+  if (!getNoteForSubjectLabel(subject.label)) {
+    meta.robots = { index: false, follow: true };
+  }
+  return meta;
 }
 
 export default async function CbtQuestionPage({ params }: PageProps) {
