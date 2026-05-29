@@ -6,6 +6,7 @@ import { getRelatedNotes, getNoteById } from "@/lib/notes";
 import { questionMeta, questionJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import BreadCrumb from "@/components/BreadCrumb";
 import QuestionWithRelatedPanel from "@/components/QuestionWithRelatedPanel";
+import QuestionSEOContent from "@/components/QuestionSEOContent";
 import type { NoteContent } from "@/components/NoteDrawer";
 import QuestionNav from "@/components/QuestionNav";
 import PrevNextNav from "@/components/PrevNextNav";
@@ -119,7 +120,14 @@ export default async function QuestionPage({ params }: Props) {
             })
             .filter((n): n is NoteContent => n !== null);
         })()}
-        seoRelated={getRelatedQuestionsInEra(
+      />
+
+      {/* Server-rendered study material — 비-스포일러 본문은 기본 노출, 정답은 접힘.
+          크롤러/AdSense 리뷰어가 문제 페이지를 실질 콘텐츠로 인식하게 함. */}
+      <QuestionSEOContent
+        exam={exam}
+        question={question}
+        related={getRelatedQuestionsInEra(
           question.era,
           examNumber,
           questionNumber,

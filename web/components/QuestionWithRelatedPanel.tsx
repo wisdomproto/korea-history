@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Question, Exam } from "@/lib/types";
 import QuestionWithTracking from "./QuestionWithTracking";
 import NoteDrawer, { type NoteContent } from "./NoteDrawer";
-import QuestionSEOContent from "./QuestionSEOContent";
 import YouTubeEmbed from "./YouTubeEmbed";
 import type { RelatedNoteLink } from "./QuestionCard";
 
@@ -14,30 +13,23 @@ interface YouTubeData {
   channelName: string;
 }
 
-interface SeoRelatedItem {
-  examNumber: number;
-  questionNumber: number;
-  content: string;
-}
-
 interface Props {
   question: Question;
   exam: Exam;
   youtube?: YouTubeData | null;
   relatedNotes?: RelatedNoteLink[];
   noteContents?: NoteContent[];
-  seoRelated: SeoRelatedItem[];
 }
 
 /**
  * Post-answer layout (모든 viewport):
  *   1. QuestionCard (해설 + 광고 — 영상은 외부로 분리, 카드 가벼움)
- *   2. 통합 학습 박스 — 한 곳에 두 액션 묶음
- *      • 📝 관련 요약노트 → NoteDrawer (slide-in from right)
- *      • 📚 학습 자료 펼쳐보기 → inline expand (QuestionSEOContent bare 모드)
+ *   2. 관련 요약노트 박스 — 📝 → NoteDrawer (slide-in from right)
  *   3. 영상 해설 — 페이지 하단 inline (정답 후만 mount)
  *
- * 정답 전엔 통합 박스/영상 모두 hidden — 문제에만 집중.
+ * 정답 전엔 노트 박스/영상 모두 hidden — 문제에만 집중.
+ * 학습 자료(시대 배경·해설 등)는 QuestionSEOContent가 page.tsx에서 서버 렌더
+ * (정답 무관 비-스포일러 블록은 기본 노출, 정답은 접힘) — 크롤러/리뷰어가 본문 인식.
  */
 export default function QuestionWithRelatedPanel({
   question,
@@ -45,7 +37,6 @@ export default function QuestionWithRelatedPanel({
   youtube,
   relatedNotes,
   noteContents,
-  seoRelated,
 }: Props) {
   const [answered, setAnswered] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -63,8 +54,8 @@ export default function QuestionWithRelatedPanel({
         hideYouTubeInCard
       />
 
-      {/* 정답 후: 통합 학습 박스 (노트 chip + SEO 자료 inline expand) */}
-      {answered && (
+      {/* 정답 후: 관련 요약노트 박스 (drawer trigger) */}
+      {answered && hasNotes && (
         <section
           className="mt-6 rounded-2xl border border-amber-200/60 bg-white shadow-sm overflow-hidden"
           aria-label="더 학습하기"
@@ -76,75 +67,34 @@ export default function QuestionWithRelatedPanel({
             </div>
           </header>
 
-          <div className="divide-y divide-slate-100">
-            {/* 노트 chip — drawer trigger */}
-            {hasNotes && (
-              <button
-                onClick={() => setDrawerOpen(true)}
-                className="w-full px-5 py-4 flex items-center gap-3 hover:bg-amber-50/40 transition-colors text-left"
-                aria-label="관련 요약노트 펼치기"
-              >
-                <span className="text-xl shrink-0">📝</span>
-                <div className="flex-1 min-w-0">
-                  <div className="font-bold text-slate-900 text-[14px]">
-                    관련 요약노트 ({(noteContents ?? []).length}편)
-                  </div>
-                  <div className="text-[12px] text-slate-500 mt-0.5">
-                    이 문제 시대의 핵심 단원
-                  </div>
-                </div>
-                <svg
-                  className="w-4 h-4 text-amber-600 shrink-0"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2.5}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </button>
-            )}
-
-            {/* 학습 자료 — inline expand */}
-            <details className="group">
-              <summary className="px-5 py-4 flex items-center gap-3 cursor-pointer hover:bg-amber-50/40 transition-colors list-none">
-                <span className="text-xl shrink-0">📚</span>
-                <div className="flex-1 min-w-0">
-                  <div className="font-bold text-slate-900 text-[14px]">
-                    학습 자료 펼쳐보기
-                  </div>
-                  <div className="text-[12px] text-slate-500 mt-0.5">
-                    정답·해설·시대 배경·관련 기출
-                  </div>
-                </div>
-                <svg
-                  className="w-4 h-4 text-amber-600 shrink-0 transition-transform group-open:rotate-180"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2.5}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </summary>
-              <div className="px-5 pb-5 pt-3 border-t border-slate-100">
-                <QuestionSEOContent
-                  exam={exam}
-                  question={question}
-                  related={seoRelated}
-                  bare
-                />
+          <button
+            onClick={() => setDrawerOpen(true)}
+            className="w-full px-5 py-4 flex items-center gap-3 hover:bg-amber-50/40 transition-colors text-left"
+            aria-label="관련 요약노트 펼치기"
+          >
+            <span className="text-xl shrink-0">📝</span>
+            <div className="flex-1 min-w-0">
+              <div className="font-bold text-slate-900 text-[14px]">
+                관련 요약노트 ({(noteContents ?? []).length}편)
               </div>
-            </details>
-          </div>
+              <div className="text-[12px] text-slate-500 mt-0.5">
+                이 문제 시대의 핵심 단원
+              </div>
+            </div>
+            <svg
+              className="w-4 h-4 text-amber-600 shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2.5}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
         </section>
       )}
 
