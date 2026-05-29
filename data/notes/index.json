@@ -6,7 +6,7 @@
     "eraLabel": "고대/중세 (삼국·남북국)",
     "sectionId": "s1",
     "order": 0,
-    "questionCount": 89
+    "questionCount": 91
   },
   {
     "id": "s1-02",
@@ -15,7 +15,7 @@
     "eraLabel": "고대/중세 (삼국·남북국)",
     "sectionId": "s1",
     "order": 1,
-    "questionCount": 141
+    "questionCount": 145
   },
   {
     "id": "s1-03",
@@ -24,7 +24,7 @@
     "eraLabel": "고대/중세 (삼국·남북국)",
     "sectionId": "s1",
     "order": 2,
-    "questionCount": 79
+    "questionCount": 80
   },
   {
     "id": "s1-04",
@@ -33,7 +33,7 @@
     "eraLabel": "고대/중세 (삼국·남북국)",
     "sectionId": "s1",
     "order": 3,
-    "questionCount": 371
+    "questionCount": 378
   },
   {
     "id": "s1-05",
@@ -42,7 +42,7 @@
     "eraLabel": "고대/중세 (삼국·남북국)",
     "sectionId": "s1",
     "order": 4,
-    "questionCount": 61
+    "questionCount": 62
   },
   {
     "id": "s1-06",
@@ -51,7 +51,7 @@
     "eraLabel": "고대/중세 (삼국·남북국)",
     "sectionId": "s1",
     "order": 5,
-    "questionCount": 175
+    "questionCount": 177
   },
   {
     "id": "s1-07",
@@ -60,7 +60,7 @@
     "eraLabel": "고대/중세 (삼국·남북국)",
     "sectionId": "s1",
     "order": 6,
-    "questionCount": 246
+    "questionCount": 250
   },
   {
     "id": "s1-08",
@@ -69,7 +69,7 @@
     "eraLabel": "고대/중세 (삼국·남북국)",
     "sectionId": "s1",
     "order": 7,
-    "questionCount": 201
+    "questionCount": 203
   },
   {
     "id": "s1-09",
@@ -78,7 +78,7 @@
     "eraLabel": "고대/중세 (삼국·남북국)",
     "sectionId": "s1",
     "order": 8,
-    "questionCount": 105
+    "questionCount": 106
   },
   {
     "id": "s1-10",
@@ -96,7 +96,7 @@
     "eraLabel": "고대/중세 (삼국·남북국)",
     "sectionId": "s1",
     "order": 10,
-    "questionCount": 101
+    "questionCount": 103
   },
   {
     "id": "s1-12",
@@ -105,7 +105,7 @@
     "eraLabel": "고대/중세 (삼국·남북국)",
     "sectionId": "s1",
     "order": 11,
-    "questionCount": 163
+    "questionCount": 164
   },
   {
     "id": "s1-13",
@@ -123,7 +123,7 @@
     "eraLabel": "고려",
     "sectionId": "s2",
     "order": 13,
-    "questionCount": 107
+    "questionCount": 108
   },
   {
     "id": "s2-02",
@@ -132,7 +132,7 @@
     "eraLabel": "고려",
     "sectionId": "s2",
     "order": 14,
-    "questionCount": 108
+    "questionCount": 109
   },
   {
     "id": "s2-03",
@@ -141,7 +141,7 @@
     "eraLabel": "고려",
     "sectionId": "s2",
     "order": 15,
-    "questionCount": 228
+    "questionCount": 231
   },
   {
     "id": "s2-04",
@@ -150,7 +150,7 @@
     "eraLabel": "고려",
     "sectionId": "s2",
     "order": 16,
-    "questionCount": 52
+    "questionCount": 53
   },
   {
     "id": "s2-05",
@@ -168,7 +168,7 @@
     "eraLabel": "고려",
     "sectionId": "s2",
     "order": 18,
-    "questionCount": 292
+    "questionCount": 297
   },
   {
     "id": "s2-07",
@@ -177,7 +177,7 @@
     "eraLabel": "고려",
     "sectionId": "s2",
     "order": 19,
-    "questionCount": 61
+    "questionCount": 62
   },
   {
     "id": "s2-08",
@@ -186,7 +186,7 @@
     "eraLabel": "고려",
     "sectionId": "s2",
     "order": 20,
-    "questionCount": 146
+    "questionCount": 148
   },
   {
     "id": "s2-09",
@@ -204,7 +204,7 @@
     "eraLabel": "고려",
     "sectionId": "s2",
     "order": 22,
-    "questionCount": 119
+    "questionCount": 120
   },
   {
     "id": "s2-11",
@@ -213,7 +213,7 @@
     "eraLabel": "고려",
     "sectionId": "s2",
     "order": 23,
-    "questionCount": 183
+    "questionCount": 186
   },
   {
     "id": "s3-01",
@@ -222,7 +222,7 @@
     "eraLabel": "조선 전기",
     "sectionId": "s3",
     "order": 24,
-    "questionCount": 104
+    "questionCount": 105
   },
   {
     "id": "s3-02",
@@ -231,7 +231,7 @@
     "eraLabel": "조선 전기",
     "sectionId": "s3",
     "order": 25,
-    "questionCount": 297
+    "questionCount": 299
   },
   {
     "id": "s3-03",
@@ -240,7 +240,7 @@
     "eraLabel": "조선 전기",
     "sectionId": "s3",
     "order": 26,
-    "questionCount": 150
+    "questionCount": 151
   },
   {
     "id": "s3-04",
@@ -249,7 +249,7 @@
     "eraLabel": "조선 전기",
     "sectionId": "s3",
     "order": 27,
-    "questionCount": 115
+    "questionCount": 116
   },
   {
     "id": "s3-05",
@@ -276,7 +276,7 @@
     "eraLabel": "조선 전기",
     "sectionId": "s3",
     "order": 30,
-    "questionCount": 186
+    "questionCount": 188
   },
   {
     "id": "s3-08",
@@ -285,7 +285,7 @@
     "eraLabel": "조선 전기",
     "sectionId": "s3",
     "order": 31,
-    "questionCount": 175
+    "questionCount": 178
   },
   {
     "id": "s3-09",
@@ -321,7 +321,7 @@
     "eraLabel": "조선 전기",
     "sectionId": "s3",
     "order": 35,
-    "questionCount": 35
+    "questionCount": 36
   },
   {
     "id": "s3-13",
@@ -330,7 +330,7 @@
     "eraLabel": "조선 전기",
     "sectionId": "s3",
     "order": 36,
-    "questionCount": 128
+    "questionCount": 129
   },
   {
     "id": "s3-14",
@@ -339,7 +339,7 @@
     "eraLabel": "조선 전기",
     "sectionId": "s3",
     "order": 37,
-    "questionCount": 60
+    "questionCount": 62
   },
   {
     "id": "s3-15",
@@ -348,7 +348,7 @@
     "eraLabel": "조선 전기",
     "sectionId": "s3",
     "order": 38,
-    "questionCount": 153
+    "questionCount": 155
   },
   {
     "id": "s3-16",
@@ -357,7 +357,7 @@
     "eraLabel": "조선 전기",
     "sectionId": "s3",
     "order": 39,
-    "questionCount": 106
+    "questionCount": 107
   },
   {
     "id": "s3-17",
@@ -366,7 +366,7 @@
     "eraLabel": "조선 전기",
     "sectionId": "s3",
     "order": 40,
-    "questionCount": 41
+    "questionCount": 42
   },
   {
     "id": "s3-18",
@@ -375,7 +375,7 @@
     "eraLabel": "조선 전기",
     "sectionId": "s3",
     "order": 41,
-    "questionCount": 70
+    "questionCount": 71
   },
   {
     "id": "s3-19",
@@ -402,7 +402,7 @@
     "eraLabel": "조선 후기",
     "sectionId": "s4",
     "order": 44,
-    "questionCount": 346
+    "questionCount": 350
   },
   {
     "id": "s4-02",
@@ -411,7 +411,7 @@
     "eraLabel": "조선 후기",
     "sectionId": "s4",
     "order": 45,
-    "questionCount": 344
+    "questionCount": 348
   },
   {
     "id": "s4-03",
@@ -420,7 +420,7 @@
     "eraLabel": "조선 후기",
     "sectionId": "s4",
     "order": 46,
-    "questionCount": 134
+    "questionCount": 136
   },
   {
     "id": "s4-04",
@@ -429,7 +429,7 @@
     "eraLabel": "조선 후기",
     "sectionId": "s4",
     "order": 47,
-    "questionCount": 493
+    "questionCount": 500
   },
   {
     "id": "s4-05",
@@ -438,7 +438,7 @@
     "eraLabel": "조선 후기",
     "sectionId": "s4",
     "order": 48,
-    "questionCount": 157
+    "questionCount": 161
   },
   {
     "id": "s5-01",
@@ -447,7 +447,7 @@
     "eraLabel": "근대",
     "sectionId": "s5",
     "order": 49,
-    "questionCount": 362
+    "questionCount": 365
   },
   {
     "id": "s5-02",
@@ -465,7 +465,7 @@
     "eraLabel": "근대",
     "sectionId": "s5",
     "order": 51,
-    "questionCount": 177
+    "questionCount": 180
   },
   {
     "id": "s5-04",
@@ -474,7 +474,7 @@
     "eraLabel": "근대",
     "sectionId": "s5",
     "order": 52,
-    "questionCount": 423
+    "questionCount": 432
   },
   {
     "id": "s5-05",
@@ -483,7 +483,7 @@
     "eraLabel": "근대",
     "sectionId": "s5",
     "order": 53,
-    "questionCount": 332
+    "questionCount": 337
   },
   {
     "id": "s6-01",
@@ -492,7 +492,7 @@
     "eraLabel": "일제 강점기",
     "sectionId": "s6",
     "order": 54,
-    "questionCount": 205
+    "questionCount": 208
   },
   {
     "id": "s6-02",
@@ -501,7 +501,7 @@
     "eraLabel": "일제 강점기",
     "sectionId": "s6",
     "order": 55,
-    "questionCount": 162
+    "questionCount": 164
   },
   {
     "id": "s6-03",
@@ -510,7 +510,7 @@
     "eraLabel": "일제 강점기",
     "sectionId": "s6",
     "order": 56,
-    "questionCount": 56
+    "questionCount": 57
   },
   {
     "id": "s6-04",
@@ -519,7 +519,7 @@
     "eraLabel": "일제 강점기",
     "sectionId": "s6",
     "order": 57,
-    "questionCount": 145
+    "questionCount": 147
   },
   {
     "id": "s6-05",
@@ -528,7 +528,7 @@
     "eraLabel": "일제 강점기",
     "sectionId": "s6",
     "order": 58,
-    "questionCount": 55
+    "questionCount": 56
   },
   {
     "id": "s6-06",
@@ -537,7 +537,7 @@
     "eraLabel": "일제 강점기",
     "sectionId": "s6",
     "order": 59,
-    "questionCount": 47
+    "questionCount": 48
   },
   {
     "id": "s6-07",
@@ -546,7 +546,7 @@
     "eraLabel": "일제 강점기",
     "sectionId": "s6",
     "order": 60,
-    "questionCount": 54
+    "questionCount": 55
   },
   {
     "id": "s6-08",
@@ -555,7 +555,7 @@
     "eraLabel": "일제 강점기",
     "sectionId": "s6",
     "order": 61,
-    "questionCount": 113
+    "questionCount": 116
   },
   {
     "id": "s6-09",
@@ -564,7 +564,7 @@
     "eraLabel": "일제 강점기",
     "sectionId": "s6",
     "order": 62,
-    "questionCount": 70
+    "questionCount": 71
   },
   {
     "id": "s6-10",
@@ -573,7 +573,7 @@
     "eraLabel": "일제 강점기",
     "sectionId": "s6",
     "order": 63,
-    "questionCount": 222
+    "questionCount": 226
   },
   {
     "id": "s6-11",
@@ -582,7 +582,7 @@
     "eraLabel": "일제 강점기",
     "sectionId": "s6",
     "order": 64,
-    "questionCount": 68
+    "questionCount": 70
   },
   {
     "id": "s6-12",
@@ -591,7 +591,7 @@
     "eraLabel": "일제 강점기",
     "sectionId": "s6",
     "order": 65,
-    "questionCount": 97
+    "questionCount": 100
   },
   {
     "id": "s6-13",
@@ -609,7 +609,7 @@
     "eraLabel": "일제 강점기",
     "sectionId": "s6",
     "order": 67,
-    "questionCount": 69
+    "questionCount": 70
   },
   {
     "id": "s6-15",
@@ -618,7 +618,7 @@
     "eraLabel": "일제 강점기",
     "sectionId": "s6",
     "order": 68,
-    "questionCount": 96
+    "questionCount": 98
   },
   {
     "id": "s6-16",
@@ -627,7 +627,7 @@
     "eraLabel": "일제 강점기",
     "sectionId": "s6",
     "order": 69,
-    "questionCount": 96
+    "questionCount": 97
   },
   {
     "id": "s6-17",
@@ -636,7 +636,7 @@
     "eraLabel": "일제 강점기",
     "sectionId": "s6",
     "order": 70,
-    "questionCount": 58
+    "questionCount": 59
   },
   {
     "id": "s7-01",
@@ -654,7 +654,7 @@
     "eraLabel": "현대",
     "sectionId": "s7",
     "order": 72,
-    "questionCount": 48
+    "questionCount": 49
   },
   {
     "id": "s7-03",
@@ -663,7 +663,7 @@
     "eraLabel": "현대",
     "sectionId": "s7",
     "order": 73,
-    "questionCount": 41
+    "questionCount": 42
   },
   {
     "id": "s7-04",
@@ -672,7 +672,7 @@
     "eraLabel": "현대",
     "sectionId": "s7",
     "order": 74,
-    "questionCount": 80
+    "questionCount": 81
   },
   {
     "id": "s7-05",
@@ -681,7 +681,7 @@
     "eraLabel": "현대",
     "sectionId": "s7",
     "order": 75,
-    "questionCount": 55
+    "questionCount": 56
   },
   {
     "id": "s7-06",
@@ -690,7 +690,7 @@
     "eraLabel": "현대",
     "sectionId": "s7",
     "order": 76,
-    "questionCount": 21
+    "questionCount": 22
   },
   {
     "id": "s7-07",
@@ -699,7 +699,7 @@
     "eraLabel": "현대",
     "sectionId": "s7",
     "order": 77,
-    "questionCount": 90
+    "questionCount": 93
   },
   {
     "id": "s7-08",
@@ -708,7 +708,7 @@
     "eraLabel": "현대",
     "sectionId": "s7",
     "order": 78,
-    "questionCount": 61
+    "questionCount": 62
   },
   {
     "id": "s7-09",
@@ -717,7 +717,7 @@
     "eraLabel": "현대",
     "sectionId": "s7",
     "order": 79,
-    "questionCount": 84
+    "questionCount": 85
   },
   {
     "id": "s7-10",
@@ -726,7 +726,7 @@
     "eraLabel": "현대",
     "sectionId": "s7",
     "order": 80,
-    "questionCount": 60
+    "questionCount": 61
   },
   {
     "id": "s7-11",
@@ -735,7 +735,7 @@
     "eraLabel": "현대",
     "sectionId": "s7",
     "order": 81,
-    "questionCount": 58
+    "questionCount": 60
   },
   {
     "id": "s7-12",
@@ -744,7 +744,7 @@
     "eraLabel": "현대",
     "sectionId": "s7",
     "order": 82,
-    "questionCount": 56
+    "questionCount": 57
   },
   {
     "id": "s7-13",
@@ -753,7 +753,7 @@
     "eraLabel": "현대",
     "sectionId": "s7",
     "order": 83,
-    "questionCount": 119
+    "questionCount": 120
   },
   {
     "id": "s7-14",
@@ -762,7 +762,7 @@
     "eraLabel": "현대",
     "sectionId": "s7",
     "order": 84,
-    "questionCount": 38
+    "questionCount": 39
   },
   {
     "id": "s7-15",
