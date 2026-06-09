@@ -99,8 +99,15 @@ export function civilSubjectKeywords(exam: ExamType, subject: Subject): string[]
   return Array.from(new Set(kws));
 }
 
-/** 과목 랜딩 메타 — /[examSlug]/[subjectSlug] */
-export function civilSubjectMeta(exam: ExamType, subject: Subject): Metadata {
+/**
+ * 과목 랜딩 메타 — /[examSlug]/[subjectSlug]
+ * indexable=false면 noindex (수동 본문 없는 자동 가이드/CBT 과목 — AdSense 저가치 표면 제외).
+ */
+export function civilSubjectMeta(
+  exam: ExamType,
+  subject: Subject,
+  indexable = true,
+): Metadata {
   const title = `${exam.shortLabel} ${subject.label} — 단원별 정리·기출문제 무료`;
   const description = `${exam.label} ${subject.label} 단원별 정리와 기출문제를 무료로. 회차별 풀이, 자동 오답노트, 학습 기록까지 — 기출노트.`;
   const path = `${exam.routes.main}/${subject.slug}`;
@@ -109,11 +116,15 @@ export function civilSubjectMeta(exam: ExamType, subject: Subject): Metadata {
     description,
     keywords: civilSubjectKeywords(exam, subject),
     alternates: { canonical: path },
+    ...(indexable ? {} : { robots: { index: false, follow: true } }),
     openGraph: { title, description, url: path, type: "website", siteName: SITE_NAME },
   };
 }
 
-/** 회차 목록 메타 — /[examSlug]/[subjectSlug]/exam */
+/**
+ * 회차 목록 메타 — /[examSlug]/[subjectSlug]/exam
+ * 회차 목록은 링크 나열(thin)이고 키워드는 과목 랜딩이 커버 → 항상 noindex (follow는 유지).
+ */
 export function civilExamListMeta(exam: ExamType, subject: Subject): Metadata {
   const title = `${exam.shortLabel} ${subject.label} 회차별 기출문제 — 무료 풀이`;
   const description = `${exam.label} ${subject.label} 회차별 기출문제 무료 풀이. 정답·해설 포함, 회원가입 없이 바로 — 기출노트.`;
@@ -123,6 +134,7 @@ export function civilExamListMeta(exam: ExamType, subject: Subject): Metadata {
     description,
     keywords: civilSubjectKeywords(exam, subject),
     alternates: { canonical: path },
+    robots: { index: false, follow: true },
     openGraph: { title, description, url: path, type: "website", siteName: SITE_NAME },
   };
 }
@@ -142,6 +154,9 @@ export function civilQuestionMeta(
     description,
     keywords: civilSubjectKeywords(exam, subject),
     alternates: { canonical: path },
+    // 개별 CBT/자격증 문제 = 비독창(외부 출처) + 수십만개 동일 템플릿 → 항상 noindex.
+    // 특정 문제 번호는 검색 수요 0이라 SEO 손실 없음. follow=true로 링크 자산만 전달.
+    robots: { index: false, follow: true },
     openGraph: { title, description, url: path, type: "article", siteName: SITE_NAME },
   };
 }

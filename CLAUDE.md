@@ -535,6 +535,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 NEXT_PUBLIC_SITE_URL=https://gcnote.co.kr
 NEXT_PUBLIC_KAKAO_JS_KEY=
 ADMIN_PASSWORD=
+NEXT_PUBLIC_AD_REVIEW_MODE=         # 'true'면 전 광고(AdSense+AdFit) OFF — AdSense 심사 중만, 승인 후 삭제
 ```
 
 ### 저작도구 (author-tool/.env)
@@ -584,6 +585,16 @@ YOUTUBE_API_KEY=                         # 선택 — 채널 분석/경쟁사 Yo
 - OG 이미지는 미적용 (별도 작업으로 보류)
 - **2026-05-15 ext 보강 (Phase 2)**: `civilSubjectKeywords()` generic에 한능검 SE 30일 황금 패턴 3개(`{과목} 요약본` / `{과목} 빈출 정리` / `{과목} 핵심 정리`) + civil 카테고리에 `공무원 {과목}` / `공무원 {과목} 기출` / `공무원 {과목} 정리` 시그널 3종 추가. `SUBJECT_KEYWORD_EXT` 14개 과목 → **25개** (신규 7개 그룹: 회계학·세법·교정학·사회복지·교육학·국제법·관세법, 기존 강화: 행정법·형법·형사소송법·헌법에 `판례`/`조문` 단독, 행정학에 `행정이론`, 국어/영어에 `문법`/`독해`/`문학`). 한국사 ext는 generic 중복 제거 + 한국사 특화 추가(`통사` / `사료`). 결과: 과목 페이지당 **15~18개** 풍부 키워드 자동 생성. `layout.tsx` keywords 12 → **23개** (Tier A·B 시그널 11개: `공무원 기출노트` / `공무원 한국사` 1,160 / `9급 공무원 한국사` 390 / `행정학 기출` 340 / `행정법 기출` 300 / `7급 공무원` 등), title template `"%s | 기출노트 한능검"` → `"%s | 기출노트"` (공무원 페이지 page-level title 충돌 회피, 한능검 페이지는 자체 title에 한능검 포함되어 dilution 없음).
 - **2026-05-29 thin 자격증 색인 정리 (AdSense "low value" 대응)**: 656 자동 가이드 stem 과목은 키워드 스텁뿐인 near-duplicate 프로그래매틱 페이지 → 도메인 단위 thin-content 신호 희석 방지를 위해 **noindex,follow**. 색인 가능 조건 = `getNoteForSubjectLabel(subject.label)` truthy (= 수동 본문 노트 23과목) 또는 한국사(한능검 redirect). 적용 4개 라우트: `[subjectSlug]/page.tsx`(과목 랜딩) · `exam/page.tsx`(회차목록) · `exam/[examId]/[questionNumber]/page.tsx`(개별 문제) · `notes/page.tsx`(노트 인덱스, `hasContent`를 manual-only로 축소). `sitemap.ts`의 `subjectPages`도 동일 필터로 자동 과목 제외 (noindex URL을 sitemap에 두면 GSC "제출됨 but noindex" 경고). 547 ExamType 랜딩(`[examSlug]/page.tsx`)은 entity 페이지라 색인 유지 (별도 결정). GSC상 이 thin 페이지들은 대부분 "발견됨-미색인"(미크롤)이라 직접 색인된 적은 없으나, sitemap 정리 + 선제 noindex로 도메인 크롤 프로필 정돈.
+
+### AdSense "low value content" 대응 — 양산 페이지 noindex (2026-06-09)
+AdSense 3차+ 반려("가치가 별로 없는 콘텐츠"). 원인은 thin 페이지가 아니라 **봇이 보는 사이트가 사이트맵(1,011 한능검 URL)이 아니라, 홈 OtherExamsTree → 547 ExamType + 728 CBT(100만 문제) 내부 링크로 닿는 비독창·템플릿 양산 표면** — `civil-seo.ts`가 noindex 없이 전부 색인 허용했던 게 핵심. `site:gcnote.co.kr`로 환경기능사·civil-notes 양산 페이지 색인 확인. (이전 5번 시도는 전부 "신호 더하기"[About/canonical/SSR/블로그/ads.txt]였고 크롤 표면을 줄인 적은 처음.)
+- **수술적 noindex** (실 SEO 타깃 무손실): 색인 게이트 = `subject.id==="korean-history" || getNoteForSubjectLabel(label)` (수동 본문 23과목만 색인). `getNoteForSubjectLabel`이 국어/영어 잡아 **국어·영어·한국사 공통과목 가진 모든 공무원 시험 자동 색인 유지**, 순수 자격증 leaf CBT만 noindex.
+- `web/lib/civil-seo.ts`: `civilQuestionMeta`·`civilExamListMeta` 항상 `robots:{index:false,follow:true}` / `civilSubjectMeta(exam,subject,indexable=true)` 조건부
+- `web/app/[examSlug]/page.tsx`: `indexable = 한능검 || isContainer || hasManualSubject` + `title:{absolute}` (이중 브랜드 "…기출노트 | 기출노트" fix)
+- `web/app/[examSlug]/[subjectSlug]/page.tsx` (hasManualContent 전달) + `notes/page.tsx` (hasContent에서 auto-guide 656 stem 제외)
+- **전역 심사 스위치** `NEXT_PUBLIC_AD_REVIEW_MODE` (`web/components/AdSlot.tsx`): true면 AdSense+AdFit 전부 렌더 중단 — 심사 중 "made for ads" 인상 회피, 승인 후 false/삭제
+- `web/app/about/page.tsx` 원칙#3 재프레이밍 — 87노트+22가이드 원본 강조 + "AI는 보조도구, 사람 검수"
+- ⏭️ 재신청 전 GSC "페이지 색인 생성"의 "크롤링됨/발견됨 - 색인 안 됨" 수치로 진단 검증 권고. 상세 memory `adsense_low_value_diagnosis`
 
 ### 공무원 황금키워드 — Naver API 실측 검증 (2026-05-15)
 사용자가 새 Naver API 키 제공 → `author-tool/scripts/validate-keywords-civil-naver.mjs` (74 후보 / 12 카테고리) 실행. 결과 + 사용자 empirical 인사이트로 황금 정의 재고:

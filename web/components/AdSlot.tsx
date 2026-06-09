@@ -44,6 +44,10 @@ interface AdSlotProps {
   className?: string;
 }
 
+// 심사 모드: true면 모든 광고 렌더 중단 (AdSense 심사 중 "made for ads" 인상 회피).
+// 승인 후 Vercel에서 false 또는 변수 삭제 → 즉시 광고 복원.
+const AD_REVIEW_MODE = process.env.NEXT_PUBLIC_AD_REVIEW_MODE === "true";
+
 const ADSENSE_ENABLED = process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true";
 const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "ca-pub-6002059361162458";
 
@@ -78,8 +82,8 @@ export default function AdSlot({
   const adsenseId = adsenseSlot ?? slot;
   const adfitId = adfitUnit ?? ADFIT_UNITS[size];
 
-  const adsenseAvailable = ADSENSE_ENABLED && Boolean(adsenseId);
-  const adfitAvailable = ADFIT_ENABLED && Boolean(adfitId);
+  const adsenseAvailable = !AD_REVIEW_MODE && ADSENSE_ENABLED && Boolean(adsenseId);
+  const adfitAvailable = !AD_REVIEW_MODE && ADFIT_ENABLED && Boolean(adfitId);
 
   const [resolvedProvider, setResolvedProvider] = useState<"adsense" | "adfit" | null>(null);
   const adsensePushed = useRef(false);

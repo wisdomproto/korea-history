@@ -38,11 +38,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const exam = getExamTypeWithSubjects(slug);
   if (!exam) return { title: "시험 없음" };
 
+  // 색인 정책: 한능검 + 직렬 부모(컨테이너 = 9급 국가직/지방직/서울시) + 수동 본문 과목
+  // 보유 시험(국어·영어 공통과목이 있는 모든 공무원 포함)만 색인. 순수 자격증 leaf
+  // (템플릿 FAQ만, 수동 노트 X)는 양산 표면이라 noindex (AdSense 저가치 콘텐츠 제외).
+  const subjectRefs = [
+    ...exam.subjects.required,
+    ...(exam.subjects.selectable ?? []),
+  ];
+  const hasManualSubject = subjectRefs.some(
+    (r) => r.subject && Boolean(getNoteForSubjectLabel(r.subject.label)),
+  );
+  const indexable =
+    exam.id === "korean-history" || exam.isContainer || hasManualSubject;
+
   return {
-    title: exam.seo.title,
+    // seo.title은 이미 브랜드("…기출노트")를 포함 → template "| 기출노트" 중복 방지 위해 absolute
+    title: { absolute: exam.seo.title },
     description: exam.seo.description,
     keywords: exam.seo.keywords,
     alternates: { canonical: exam.routes.main },
+    ...(indexable ? {} : { robots: { index: false, follow: true } }),
     openGraph: {
       title: exam.seo.title,
       description: exam.seo.description,

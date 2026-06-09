@@ -173,10 +173,12 @@ export default function AboutPage() {
           <li className="flex gap-3">
             <span className="font-bold text-amber-700 shrink-0">3.</span>
             <div>
-              <strong>AI는 도구, 검수는 사람</strong>: 콘텐츠 초안 작성에 생성형 AI 도구를
-              활용하지만, 모든 글은 운영자가 직접 검토·수정·보강한 뒤 게재합니다.
-              이미지도 AI로 생성하되 한국 전통 회화 스타일로 통일성을 유지하며,
-              부적절하다고 판단되면 사용하지 않습니다.
+              <strong>사람이 구성하고 검수합니다</strong>: 87편 시대별 요약노트와 22편
+              long-form 가이드는 국사편찬위원회·교과서 등 공식 자료와 1,900+ 기출문제
+              분석을 토대로 운영자가 직접 구성·편집한 학습 콘텐츠입니다. 초안과 반복
+              작업에는 생성형 AI를 보조 도구로 쓰지만, 사실관계·문체·구성은 운영자가
+              일일이 검토·수정·보강한 뒤에만 게재하며, 부정확하거나 부적절하다고
+              판단되면 게재하지 않습니다.
             </div>
           </li>
           <li className="flex gap-3">

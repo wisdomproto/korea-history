@@ -59,13 +59,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (isHistorySubject(subject.id) && exam.id !== "korean-history") {
     return historyUnifiedMeta(exam.label);
   }
-  const meta = civilSubjectMeta(exam, subject);
-  // 수동 단권화 노트(23과목)만 색인. 자동 가이드 과목은 thin/near-duplicate라
-  // noindex,follow — 도메인 단위 콘텐츠 품질 신호 희석 방지 (AdSense/GSC).
-  if (!getNoteForSubjectLabel(subject.label)) {
-    meta.robots = { index: false, follow: true };
-  }
-  return meta;
+  // 수동 본문(23개 과목 — 행정법·국어·영어 등 실 SEO 타깃)이 있는 과목만 색인.
+  // 자동 가이드/CBT 전용 과목은 noindex (AdSense 저가치 양산 표면 제외).
+  const hasManualContent =
+    subject.id === "korean-history" || Boolean(getNoteForSubjectLabel(subject.label));
+  return civilSubjectMeta(exam, subject, hasManualContent);
 }
 
 /**
