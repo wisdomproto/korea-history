@@ -8,8 +8,8 @@ import {
   historyUnifiedMeta,
 } from "@/lib/korean-history-redirect";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 3600;
+// ISR: 회차 진입(→1번 문제 redirect)을 URL별 캐시. force-dynamic 제거로 봇 반복 크롤 시 재실행 방지.
+export const revalidate = 86400;
 
 interface PageProps {
   params: Promise<{ examSlug: string; subjectSlug: string; examId: string }>;

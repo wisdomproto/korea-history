@@ -596,6 +596,14 @@ AdSense 3차+ 반려("가치가 별로 없는 콘텐츠"). 원인은 thin 페이
 - `web/app/about/page.tsx` 원칙#3 재프레이밍 — 87노트+22가이드 원본 강조 + "AI는 보조도구, 사람 검수"
 - ⏭️ 재신청 전 GSC "페이지 색인 생성"의 "크롤링됨/발견됨 - 색인 안 됨" 수치로 진단 검증 권고. 상세 memory `adsense_low_value_diagnosis`
 
+### Vercel 함수 호출 급증 대응 — ClaudeBot 크롤 + force-dynamic→ISR (2026-06-10)
+Vercel "Function invocation spike" (Low Severity, 47분 11K = 평소 하루 16K의 2/3). Observability가 **Anthropic ClaudeBot** 크롤러 지목 — exam 라우트 대량 크롤 (`/[examSlug]/[subjectSlug]/exam/[examId]/[questionNumber]` 7.6K + `/exam/[examId]` 4.9K + `/exam` 870 + `/notes` 547).
+- **감별 (재사용)**: GA4 realtime/hourly로 사람 트래픽 측정 → 활성 5명·시간당 PV 평탄인데 Vercel만 13배 = **봇 확정** (봇은 JS 미실행이라 GA4 미집계). `author-tool/ga4-key.json` + property 529244912로 `runRealtimeReport`/`runReport(hour)`.
+- **근본 원인 (설정 버그)**: CBT 깊은 라우트 4개가 `export const dynamic = "force-dynamic"` — **주석은 "첫 요청 SSR + ISR cache" 의도인데 force-dynamic이 정확히 그 캐시를 끔** (revalidate 무시). 봇이 같은 URL 재fetch마다 CDN 캐시 대신 함수 재실행 (R2 fetch + adapt). 100만+ URL × 무캐시 = invocation landmine. 요청시점 의존성(cookies/headers/searchParams) 없어 ISR 안전했음.
+- **처방 ① ISR 전환**: 4개 라우트 `force-dynamic` 제거 → `revalidate = 86400`. `[examSlug]/[subjectSlug]/exam/page.tsx` · `.../exam/[examId]/page.tsx` · `.../exam/[examId]/[questionNumber]/page.tsx` · `.../notes/page.tsx`. (wrong-answers·my-record는 localStorage 전용 + robots 차단이라 force-dynamic 유지)
+- **처방 ② robots AI봇 차단**: `web/app/robots.ts` `rules`를 배열로 → ClaudeBot/anthropic-ai/Claude-Web UA에 `Disallow: /*/*/exam` + `/*/*/notes`. **thin CBT/공무원 표면만 차단, 한능검 `/exam`·`/notes`·랜딩은 허용해 Claude 답변 노출(GEO) 유지** (사용자 선택). 패턴 검증: `/*/*/exam`는 한능검 최상위 `/exam/78/1`·`/notes/s1-01` 미매칭, CBT `/X/Y/exam`만 매칭.
+- **발효·확인**: ISR은 배포 즉시, robots는 ClaudeBot 재읽기(~24h). 즉시 차단 필요 시 Vercel Firewall에 UA `ClaudeBot` Deny. **교훈**: 대규모 URL 표면에 `force-dynamic` 금지 — 정적 데이터는 무조건 ISR(`revalidate`). noindex는 fetch를 막지 않음(봇이 태그 보려 재크롤) → 크롤 자체 감소는 robots Disallow/ISR. 상세 memory `vercel_claudebot_invocation_spike`.
+
 ### 공무원 황금키워드 — Naver API 실측 검증 (2026-05-15)
 사용자가 새 Naver API 키 제공 → `author-tool/scripts/validate-keywords-civil-naver.mjs` (74 후보 / 12 카테고리) 실행. 결과 + 사용자 empirical 인사이트로 황금 정의 재고:
 - **74개 중 "낮음/중간" 16개, vol≥100 황금 0개** — 공무원 시장은 학원·인강 dominated, 측정 가능 키워드 거의 모두 "높음"

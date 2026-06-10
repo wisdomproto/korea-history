@@ -21,9 +21,9 @@ interface PageProps {
 }
 
 // 회차 목록은 R2 fetch — SSG 1098개는 Vercel ENOSPC 일으킴.
-// dynamic + revalidate 1h 로 변경 (첫 요청 SSR, 이후 1시간 cache).
-export const dynamic = "force-dynamic";
-export const revalidate = 3600;
+// ISR: generateStaticParams=[] + revalidate 로 첫 요청만 SSR, 이후 CDN 캐시.
+// (force-dynamic은 캐시를 꺼서 봇 크롤마다 함수 재실행시킴 → 제거)
+export const revalidate = 86400;
 
 export function generateStaticParams() {
   return [];

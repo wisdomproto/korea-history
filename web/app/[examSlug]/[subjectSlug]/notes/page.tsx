@@ -24,7 +24,8 @@ import CivilNotesHome from "./CivilNotesHome";
 import CivilNoteCombined from "./CivilNoteCombined";
 import { civilNotesMeta } from "@/lib/civil-seo";
 
-export const dynamic = "force-dynamic";
+// ISR: 통합 노트는 정적 콘텐츠 — force-dynamic 제거로 봇 크롤마다 재실행 방지.
+export const revalidate = 86400;
 
 interface PageProps {
   params: Promise<{ examSlug: string; subjectSlug: string }>;

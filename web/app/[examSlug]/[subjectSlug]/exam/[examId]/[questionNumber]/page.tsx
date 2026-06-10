@@ -23,9 +23,9 @@ import { getAutoRelatedTopicsForQuestion, getAutoMeta } from "@/lib/civil-notes-
 import { civilQuestionMeta, civilQuizJsonLd } from "@/lib/civil-seo";
 import { breadcrumbJsonLd } from "@/lib/seo";
 
-// 잠재 prerender 폭발 (수만개) 방지 — 첫 요청 SSR + ISR cache
-export const dynamic = "force-dynamic";
-export const revalidate = 3600;
+// 잠재 prerender 폭발 (수만개) 방지 — generateStaticParams 없이 첫 요청만 SSR + ISR 캐시.
+// (force-dynamic은 의도와 반대로 캐시를 꺼 봇 크롤마다 함수 재실행 → 제거)
+export const revalidate = 86400;
 
 interface PageProps {
   params: Promise<{
