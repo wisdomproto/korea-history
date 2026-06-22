@@ -29,6 +29,7 @@ korea_history/
 ├── data/threads-drafts/   # 스레드 배치 (md + csv, 수동 운영용)
 ├── data/images/           # 문제 이미지 (R2 업로드 + 로컬 백업)
 ├── scripts/               # 유틸리티 스크립트
+│   └── ga4/                # GA4 데이터 조회 도구 (재방문율/시즌/페이지 engagement, Python)
 ├── design/                # 디자인 참고 파일
 ├── promo/                 # Remotion 광고 영상 workspace (별도 npm)
 │   ├── src/
@@ -44,6 +45,7 @@ korea_history/
 │   ├── img/investor/                  # 투자자 데크용 사이트 스크린샷 8장 (Hero/Question/Note/Record 등)
 │   ├── multi-exam-hub-strategy.html   # 통합 허브 전략 v2 (대표 보고용 — 한눈에 + 정밀 모델)
 │   ├── marketing-strategy.html        # 마케팅 전략 보고서 v1
+│   ├── marketing-strategy.md          # ⭐ 마케팅·수익화 전략 SSOT (프리미엄 모델, SEO 플라이휠). 에이전트: .claude/agents/marketing.md
 │   ├── marketing-plan-community.html  # 커뮤니티 마케팅 종합 플랜
 │   └── card-news-feature-plan.html    # 카드뉴스 생성 기능 기획서
 ├── author-tool/           # 저작도구 (별도 앱, Railway 배포)
@@ -73,6 +75,7 @@ korea_history/
 │   ├── lib/               # data.ts, notes.ts, seo.ts, supabase.ts, youtube.ts 등
 │   └── data/              # youtube-videos.json, note-lectures.json
 └── docs/                  # 프로젝트 문서
+    └── marketing-strategy.md  # 마케팅·수익화 전략 SSOT (프리미엄 모델, SEO 플라이휠). 에이전트: .claude/agents/marketing.md
 ```
 
 ## 배포 아키텍처
