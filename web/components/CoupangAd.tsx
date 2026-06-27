@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 /**
  * Coupang Partners 다이나믹 배너 — iframe 격리 방식.
  *
@@ -203,7 +207,14 @@ export function CoupangProductRow({
 }: CoupangProductRowProps) {
   // category 전달 시 동적 import 대신 호출부에서 products 를 넘기는 패턴 권장.
   const list = products ?? [];
+  // 여러 개여도 1권만 랜덤 노출 (한꺼번에 5개 = 지저분 → 매 로드 1권 회전).
+  // SSR/hydration 은 [0] 으로 일치, mount 후 클라에서 랜덤 교체(미스매치 방지).
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    if (list.length > 1) setIdx(Math.floor(Math.random() * list.length));
+  }, [list.length]);
   if (list.length === 0) return null;
+  const src = list[Math.min(idx, list.length - 1)];
 
   return (
     <section
@@ -217,12 +228,9 @@ export function CoupangProductRow({
         </span>
         <span className="text-[10px] text-slate-400">AD · 쿠팡파트너스</span>
       </div>
-      {/* 적응형: 카드 자체가 breakpoint 별로 커지고(CoupangProduct), 가운데 정렬 +
-          줄바꿈 — 1개면 가운데(휑함 없음), 여러 개면 화면 폭만큼 채우고 다음 줄로. */}
-      <div className="flex flex-wrap justify-center gap-3 pb-1">
-        {list.map((src) => (
-          <CoupangProduct key={src} src={src} />
-        ))}
+      {/* 1권만 가운데 노출 (매 로드 랜덤 회전), 카드는 반응형 */}
+      <div className="flex justify-center pb-1">
+        <CoupangProduct src={src} />
       </div>
       <p className="mt-2 text-[10px] leading-relaxed text-slate-400">{COUPANG_DISCLOSURE}</p>
     </section>
