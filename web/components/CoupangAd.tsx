@@ -119,40 +119,65 @@ export function CoupangBand({
 // 배포 즉시 라이브(승인 스크린샷 가능). 다이나믹 배너보다 맥락 일치·전환율 우위.
 
 /**
- * 단일 상품 위젯 (coupa.ng iframe).
- * scale: 쿠팡 링크는 고정 사이즈(예 120×240)라, CSS transform 으로 확대해 더 크게 노출.
- *        이미지(책 표지)라 1.5배 정도는 시각적으로 무리 없음. 더 선명히 키우려면
- *        쿠팡에서 큰 사이즈로 상품 링크 재생성 권장.
+ * 단일 상품 위젯 (coupa.ng iframe). 쿠팡 링크는 고정 120×240 라 CSS transform 으로 확대.
+ *
+ *  - scale 지정 → 그 배율 고정 (사이드레일 등 고정 크기 자리).
+ *  - scale 미지정 → 반응형: 모바일 1.3배(156×312) → sm 1.5배(180×360) → lg 1.8배(216×432).
+ *    화면 폭에 맞춰 카드가 커지고 작아짐(적응형). 책 표지 이미지라 스케일 업해도 무리 없음.
  */
 export function CoupangProduct({
   src,
-  width = 120,
-  height = 240,
-  scale = 1,
+  scale,
   className = "",
 }: {
   src: string;
-  width?: number;
-  height?: number;
   scale?: number;
   className?: string;
 }) {
+  const iframe = (
+    <iframe
+      title="쿠팡 추천 상품"
+      src={src}
+      width={120}
+      height={240}
+      scrolling="no"
+      frameBorder={0}
+      referrerPolicy="unsafe-url"
+      className="origin-top-left border-0"
+    />
+  );
+
+  // 고정 배율 (사이드레일 등)
+  if (scale != null) {
+    return (
+      <div
+        className={`shrink-0 overflow-hidden ${className}`}
+        style={{ width: 120 * scale, height: 240 * scale }}
+      >
+        <div style={{ transform: `scale(${scale})`, transformOrigin: "top left", width: 120, height: 240 }}>
+          {iframe}
+        </div>
+      </div>
+    );
+  }
+
+  // 반응형 배율 (인라인 추천줄) — Tailwind 임의 속성으로 breakpoint 별 scale
   return (
     <div
-      className={`shrink-0 overflow-hidden ${className}`}
-      style={{ width: width * scale, height: height * scale }}
+      className={
+        "shrink-0 overflow-hidden " +
+        "w-[156px] h-[312px] sm:w-[180px] sm:h-[360px] lg:w-[216px] lg:h-[432px] " +
+        className
+      }
     >
-      <iframe
-        title="쿠팡 추천 상품"
-        src={src}
-        width={width}
-        height={height}
-        scrolling="no"
-        frameBorder={0}
-        referrerPolicy="unsafe-url"
-        className="border-0"
-        style={{ width, height, transform: `scale(${scale})`, transformOrigin: "top left" }}
-      />
+      <div
+        className={
+          "origin-top-left w-[120px] h-[240px] " +
+          "[transform:scale(1.3)] sm:[transform:scale(1.5)] lg:[transform:scale(1.8)]"
+        }
+      >
+        {iframe}
+      </div>
     </div>
   );
 }
@@ -182,7 +207,7 @@ export function CoupangProductRow({
 
   return (
     <section
-      className={`mx-auto w-full max-w-xl rounded-2xl border border-[var(--gc-hairline,#e5ddcf)] bg-[var(--gc-paper,#fff)] p-4 ${className}`}
+      className={`mx-auto w-full max-w-3xl rounded-2xl border border-[var(--gc-hairline,#e5ddcf)] bg-[var(--gc-paper,#fff)] p-4 ${className}`}
       aria-label={heading}
       data-coupang-category={category}
     >
@@ -192,11 +217,11 @@ export function CoupangProductRow({
         </span>
         <span className="text-[10px] text-slate-400">AD · 쿠팡파트너스</span>
       </div>
-      {/* 모바일·PC 적응형: 카드 가운데 정렬 + 박스 폭 제한으로 휑함 제거.
-          상품 여러 개면 PC 에서 가로로 채워지고 모바일에선 줄바꿈. */}
-      <div className="flex flex-wrap justify-center gap-4 pb-1">
+      {/* 적응형: 카드 자체가 breakpoint 별로 커지고(CoupangProduct), 가운데 정렬 +
+          줄바꿈 — 1개면 가운데(휑함 없음), 여러 개면 화면 폭만큼 채우고 다음 줄로. */}
+      <div className="flex flex-wrap justify-center gap-3 pb-1">
         {list.map((src) => (
-          <CoupangProduct key={src} src={src} scale={1.9} />
+          <CoupangProduct key={src} src={src} />
         ))}
       </div>
       <p className="mt-2 text-[10px] leading-relaxed text-slate-400">{COUPANG_DISCLOSURE}</p>
