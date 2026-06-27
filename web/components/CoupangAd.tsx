@@ -118,30 +118,42 @@ export function CoupangBand({
 // 쿠팡 "상품 링크" iframe 위젯. 제휴 코드가 src 에 포함돼 env 불필요 →
 // 배포 즉시 라이브(승인 스크린샷 가능). 다이나믹 배너보다 맥락 일치·전환율 우위.
 
-/** 단일 상품 위젯 (coupa.ng iframe). */
+/**
+ * 단일 상품 위젯 (coupa.ng iframe).
+ * scale: 쿠팡 링크는 고정 사이즈(예 120×240)라, CSS transform 으로 확대해 더 크게 노출.
+ *        이미지(책 표지)라 1.5배 정도는 시각적으로 무리 없음. 더 선명히 키우려면
+ *        쿠팡에서 큰 사이즈로 상품 링크 재생성 권장.
+ */
 export function CoupangProduct({
   src,
   width = 120,
   height = 240,
+  scale = 1,
   className = "",
 }: {
   src: string;
   width?: number;
   height?: number;
+  scale?: number;
   className?: string;
 }) {
   return (
-    <iframe
-      title="쿠팡 추천 상품"
-      src={src}
-      width={width}
-      height={height}
-      scrolling="no"
-      frameBorder={0}
-      referrerPolicy="unsafe-url"
-      className={`shrink-0 border-0 ${className}`}
-      style={{ width, height }}
-    />
+    <div
+      className={`shrink-0 overflow-hidden ${className}`}
+      style={{ width: width * scale, height: height * scale }}
+    >
+      <iframe
+        title="쿠팡 추천 상품"
+        src={src}
+        width={width}
+        height={height}
+        scrolling="no"
+        frameBorder={0}
+        referrerPolicy="unsafe-url"
+        className="border-0"
+        style={{ width, height, transform: `scale(${scale})`, transformOrigin: "top left" }}
+      />
+    </div>
   );
 }
 
@@ -180,9 +192,9 @@ export function CoupangProductRow({
         </span>
         <span className="text-[10px] text-slate-400">AD · 쿠팡파트너스</span>
       </div>
-      <div className="flex gap-3 overflow-x-auto pb-1">
+      <div className="flex flex-wrap gap-4 pb-1">
         {list.map((src) => (
-          <CoupangProduct key={src} src={src} />
+          <CoupangProduct key={src} src={src} scale={1.9} />
         ))}
       </div>
       <p className="mt-2 text-[10px] leading-relaxed text-slate-400">{COUPANG_DISCLOSURE}</p>
