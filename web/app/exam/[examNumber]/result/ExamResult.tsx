@@ -6,6 +6,8 @@ import { getWrongAnswers } from "@/lib/wrong-answers";
 import { saveExamRecord } from "@/lib/exam-history";
 import { useCurrentExamSlug, useCurrentSubjectSlug } from "@/lib/exam-context";
 import AdSlot from "@/components/AdSlot";
+import { CoupangProductRow } from "@/components/CoupangAd";
+import { getCoupangProducts } from "@/lib/coupang-products";
 import ShareButtons from "@/components/ShareButtons";
 
 interface Props {
@@ -135,6 +137,7 @@ export default function ExamResult({ examNumber }: Props) {
 
       {/* Ad: after score, before actions — high engagement moment */}
       <AdSlot size="rectangle" slot={process.env.NEXT_PUBLIC_AD_SLOT_RESULT} className="mb-6" />
+      <CoupangProductRow products={getCoupangProducts("history")} className="mb-6" />
 
       {/* Share result */}
       <div className="flex justify-center mb-6">

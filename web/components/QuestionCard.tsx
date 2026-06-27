@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Question } from "@/lib/types";
 import AdSlot from "@/components/AdSlot";
+import { CoupangProductRow } from "@/components/CoupangAd";
+import { getCoupangProducts } from "@/lib/coupang-products";
 import YouTubeEmbed from "@/components/YouTubeEmbed";
 import { playSelectSound, playCorrectSound, playWrongSound } from "@/lib/sounds";
 
@@ -305,6 +307,7 @@ export default function QuestionCard({
 
           {/* Ad: after explanation, before youtube */}
           <AdSlot size="rectangle" slot={process.env.NEXT_PUBLIC_AD_SLOT_QUESTION} className="my-2" />
+          <CoupangProductRow products={getCoupangProducts("history")} className="my-2" />
 
           {!hideYouTubeInCard && youtube && (
             <div className="rounded-2xl overflow-hidden border border-slate-200/60 bg-white shadow-md">

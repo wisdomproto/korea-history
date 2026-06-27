@@ -16,6 +16,8 @@ import PrevNextNav from "@/components/PrevNextNav";
 import NoteContent from "./NoteContent";
 import NoteActions from "./NoteActions";
 import AdSlot from "@/components/AdSlot";
+import { CoupangProductRow } from "@/components/CoupangAd";
+import { getCoupangProducts } from "@/lib/coupang-products";
 import ShareButtons from "@/components/ShareButtons";
 import YouTubeEmbed from "@/components/YouTubeEmbed";
 import { NoteIntro, NoteOutro } from "@/components/NoteSEOContent";
@@ -280,6 +282,7 @@ export default async function NotePage({ params }: Props) {
 
       {/* Ad: after lectures or after content */}
       <AdSlot size="rectangle" slot={process.env.NEXT_PUBLIC_AD_SLOT_NOTE} className="my-6" />
+      <CoupangProductRow products={getCoupangProducts("history")} className="my-6" />
 
       {/* Related questions — study session button */}
       <NoteActions

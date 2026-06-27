@@ -614,6 +614,16 @@ AdSense "가치 낮은 콘텐츠" 6번째 반려 (재심사 2026-06-26). 6/9 noi
 - 패턴 안전: 한능검 `/exam/78/1`(segment 3="1")·`/notes/s1-01` 미매칭, 수동 `/civil-notes/**` 미매칭.
 - **재신청 타이밍**: robots 재읽기(~24h) + 양산 표면 재크롤(수일) 후 GSC "페이지 색인"의 크롤/발견-미색인 수치 감소 확인 뒤 재신청. 배포 직후 즉시 재신청 금지. 상세 memory `adsense-low-value-diagnosis`.
 
+### 쿠팡 파트너스 수익화 — 상품 링크 큐레이션 (2026-06-27)
+AdSense 반려 누적 대응으로 쿠팡파트너스 제휴(CPS) 병행 시작. 계정 채널 ID `AF4431481`.
+- **방식 결정**: "상품 링크" iframe 위젯 (제휴코드가 `coupa.ng/{code}` src 에 포함 → **env 불필요, 배포 즉시 라이브·수수료 적립**). 다이나믹 배너(자동 상품)보다 **맥락 일치·전환율 우위** — 수험생 트래픽엔 쇼핑 의도가 낮아 페이지 주제별 큐레이션이 핵심.
+- **데이터**: `web/lib/coupang-products.ts` — `COUPANG_PRODUCTS` 카테고리 키(`history` 등) → 상품 iframe src 배열 + `getCoupangProducts(category)`. 상품 추가 = 파트너스 → 링크생성 → 상품링크 → "이미지+텍스트" HTML 의 iframe src 만 복사해 배열에 추가.
+- **컴포넌트**: `web/components/CoupangAd.tsx` — `CoupangProductRow`(헤딩 "📚 수험생 추천템" + 상품 가로 스크롤 + 공식 고지) · `CoupangProduct`(단일 iframe) · `CoupangBand`/`CoupangAd`(다이나믹 배너, env `NEXT_PUBLIC_COUPANG_PARTNERS_ID`+`NEXT_PUBLIC_COUPANG_TRACKING_CODE` 필요 — 현재는 상품링크 우선이라 미사용 fallback). `COUPANG_DISCLOSURE` 공식 문구 상수.
+- **배치(한능검 = 메인 트래픽)**: `QuestionCard`(정답 후) · `notes/[noteId]` · `ExamResult`. AdSlot 옆에 병행. **홈은 제외**(사용자 결정).
+- **고지(필수)**: 공정위 심사지침 — "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다." 각 추천줄에 내장.
+- **승인 절차**: 위젯 라이브 → 노트 페이지(`/notes/{id}`, 항상 노출) 캡처 → 파트너스 마이페이지 스크린샷 업로드 → 최종 승인.
+- **다음**: ① 한국사 상품 추가(줄 풍성화) ② **오답노트·내 기록**(robots 차단 localStorage = SEO 영향 0 + 체류 길어 광고 명당)·학습세션 확산 ③ **공무원/자격증 과목별 자동 = Open API(Access/Secret Key)로 페이지 키워드 검색→상품 자동 노출** (사용자 3번 선택, 키 발급 대기 중).
+
 ### 공무원 황금키워드 — Naver API 실측 검증 (2026-05-15)
 사용자가 새 Naver API 키 제공 → `author-tool/scripts/validate-keywords-civil-naver.mjs` (74 후보 / 12 카테고리) 실행. 결과 + 사용자 empirical 인사이트로 황금 정의 재고:
 - **74개 중 "낮음/중간" 16개, vol≥100 황금 0개** — 공무원 시장은 학원·인강 dominated, 측정 가능 키워드 거의 모두 "높음"
