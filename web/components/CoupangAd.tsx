@@ -234,23 +234,27 @@ export function CoupangCard({
       href={href}
       target="_blank"
       rel="sponsored nofollow noopener"
-      className="flex w-full items-center gap-4 rounded-2xl border border-[var(--gc-hairline,#e5ddcf)] bg-white p-3 transition hover:shadow-md sm:p-4"
+      className="group flex w-full items-stretch gap-4 rounded-2xl border border-[var(--gc-hairline,#e5ddcf)] bg-gradient-to-br from-white to-[#fdf8ee] p-3.5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:p-4"
     >
-      <img
-        src={book.image}
-        alt={book.title}
-        referrerPolicy="no-referrer"
-        loading="lazy"
-        onError={hideOnError}
-        className="h-24 w-20 shrink-0 rounded-lg object-contain sm:h-28 sm:w-24"
-      />
-      <div className="min-w-0 flex-1">
-        <div className="line-clamp-2 text-sm font-bold leading-snug text-slate-800 sm:text-[15px]">
+      <div className="shrink-0 self-center rounded-lg bg-white p-1.5 shadow-sm ring-1 ring-black/5">
+        <img
+          src={book.image}
+          alt={book.title}
+          referrerPolicy="no-referrer"
+          loading="lazy"
+          onError={hideOnError}
+          className="h-[92px] w-[92px] rounded object-contain sm:h-[108px] sm:w-[108px]"
+        />
+      </div>
+      <div className="flex min-w-0 flex-1 flex-col justify-center">
+        <div className="line-clamp-2 text-[15px] font-extrabold leading-snug text-slate-800 sm:text-base">
           {book.title}
         </div>
-        <span className="mt-2.5 inline-flex items-center gap-1 rounded-full bg-[var(--gc-amber,#B45309)] px-3.5 py-1.5 text-xs font-bold text-white">
-          쿠팡 최저가 보기 →
-        </span>
+        <div className="mt-3">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--gc-amber,#B45309)] px-4 py-2 text-[13px] font-bold text-white shadow-sm transition group-hover:brightness-110">
+            쿠팡 최저가 보기 →
+          </span>
+        </div>
       </div>
     </a>
   );
@@ -288,7 +292,7 @@ export function CoupangProductRow({
 
   return (
     <section
-      className={`mx-auto w-full max-w-2xl ${className}`}
+      className={`mx-auto w-full max-w-md ${className}`}
       aria-label={heading}
       data-coupang-category={category}
     >
