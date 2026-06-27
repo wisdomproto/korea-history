@@ -17,6 +17,13 @@ export default function robots(): MetadataRoute.Robots {
     "/*/my-record",
     "/*/*/wrong-answers",
     "/*/*/my-record",
+    // CBT·공무원 기출/문제 표면 (/[examSlug]/[subjectSlug]/exam/**) — 100만+ URL.
+    // 6/9 게이트로 이미 전부 noindex(civilQuestionMeta/ExamListMeta always noindex)라
+    // 검색 순위 손실 0. AdSense 리뷰어가 noindex는 무시하고 내부링크로 크롤·평가하므로
+    // (noindex≠크롤차단) 양산 thin 표면을 robots Disallow로 전체 봇에서 제거 — low value 대응.
+    // 한능검 /exam/78/1 (segment 3="1") 과 /notes/s1-01 는 /*/*/exam·/*/*/notes 패턴에
+    // 안 걸려 그대로 허용. 수동 civil notes(/civil-notes/**, /*/*/notes)도 영향 없음.
+    "/*/*/exam",
   ];
 
   return {
@@ -27,13 +34,13 @@ export default function robots(): MetadataRoute.Robots {
         disallow: sharedDisallow,
       },
       {
-        // Anthropic ClaudeBot 등 AI 크롤러 — 검색 색인 가치 0인데 무캐시 양산 페이지를
-        // 대량 크롤(Vercel function invocation 폭증)함. CBT·공무원 thin 표면만 차단:
-        // /[examSlug]/[subjectSlug]/exam* 과 /notes (수만 URL). 한능검 /exam·/notes·
-        // 랜딩 등 양질 콘텐츠는 계속 허용해 Claude 답변 노출(GEO)은 유지.
+        // Anthropic ClaudeBot 등 AI 크롤러 — Vercel function invocation 폭증 대응.
+        // 위 공통 /*/*/exam 차단에 더해 /*/*/notes(통합 노트)까지 차단. 통합 노트는
+        // 23개 수동 과목이 실제 색인 콘텐츠라 Googlebot엔 열어두고(SEO 보존),
+        // ClaudeBot만 추가 차단(GEO 가치 대비 크롤 비용 큼).
         userAgent: ["ClaudeBot", "anthropic-ai", "Claude-Web"],
         allow: "/",
-        disallow: [...sharedDisallow, "/*/*/exam", "/*/*/notes"],
+        disallow: [...sharedDisallow, "/*/*/notes"],
       },
     ],
     sitemap: `${BASE_URL}/sitemap.xml`,
