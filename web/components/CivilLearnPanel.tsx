@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Question, Exam } from "@/lib/types";
 import QuestionWithTracking from "./QuestionWithTracking";
 import NoteDrawer, { type NoteContent } from "./NoteDrawer";
+import CoupangSubjectRow from "./CoupangSubjectRow";
 import type { RelatedNoteLink } from "./QuestionCard";
 
 interface Props {
@@ -43,6 +44,9 @@ export default function CivilLearnPanel({
         onAnswered={() => setAnswered(true)}
         hideRelatedNotes={hasNotes}
       />
+
+      {/* 과목 맞춤 추천 상품 (공무원/자격증) */}
+      <CoupangSubjectRow className="mt-4" />
 
       {/* 정답 후: 통합 학습 박스 (단원 drawer trigger) */}
       {answered && hasNotes && (

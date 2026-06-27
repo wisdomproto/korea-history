@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { CoupangProduct, COUPANG_DISCLOSURE } from "@/components/CoupangAd";
-import { getCoupangProducts } from "@/lib/coupang-products";
+import { getCoupangProductsForPath } from "@/lib/coupang-products";
 
 /**
  * PC 와이드 화면 좌우 사이드 광고 (스카이스크래퍼 자리).
@@ -18,7 +18,7 @@ export default function SideRails() {
   const pathname = usePathname();
   if (pathname === "/") return null;
 
-  const products = getCoupangProducts("history");
+  const products = getCoupangProductsForPath(pathname); // 한능검=한국사 / 공무원=과목 매칭
   if (products.length === 0) return null;
 
   const leftSrc = products[0];
