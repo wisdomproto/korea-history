@@ -14,9 +14,13 @@
  */
 
 export const COUPANG_PRODUCTS: Record<string, string[]> = {
-  // 한국사능력검정시험 교재·기출문제집 (직접 큐레이션)
+  // 한국사능력검정시험 교재·기출문제집 (직접 큐레이션, 전부 trackingCode AF4431481 검증)
   history: [
-    "https://coupa.ng/cnGE78", // 2026 큰별쌤 최태성 한국사능력검정시험 심화
+    "https://coupa.ng/cnGE78", // 큰별쌤 최태성 별별한국사 심화 상+하 세트
+    "https://coupa.ng/cnGIhL", // 큰별쌤 최태성 별별한국사 심화 상+하+기출
+    "https://coupa.ng/cnGIdS", // 에듀윌 한능검 시대별 기출문제집 심화 + 필기노트
+    "https://coupa.ng/cnGIi3", // 해커스 한능검 심화 2주 합격 + 빈출주제 TOP5
+    "https://coupa.ng/cnGIj2", // 원큐패스 서경석 데이트 한국사 심화 + 기출문제집
   ],
 };
 
