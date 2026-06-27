@@ -234,26 +234,53 @@ export function CoupangCard({
       href={href}
       target="_blank"
       rel="sponsored nofollow noopener"
-      className="group flex w-full items-stretch gap-4 rounded-2xl border border-[var(--gc-hairline,#e5ddcf)] bg-gradient-to-br from-white to-[#fdf8ee] p-3.5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:p-4"
+      className="group relative block w-full overflow-hidden rounded-3xl border border-[#ece0c8] bg-gradient-to-br from-[#fdf9f0] to-[#f6ecda] p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:p-6"
     >
-      <div className="shrink-0 self-center rounded-lg bg-white p-1.5 shadow-sm ring-1 ring-black/5">
-        <img
-          src={book.image}
-          alt={book.title}
-          referrerPolicy="no-referrer"
-          loading="lazy"
-          onError={hideOnError}
-          className="h-[92px] w-[92px] rounded object-contain sm:h-[108px] sm:w-[108px]"
-        />
-      </div>
-      <div className="flex min-w-0 flex-1 flex-col justify-center">
-        <div className="line-clamp-2 text-[15px] font-extrabold leading-snug text-slate-800 sm:text-base">
-          {book.title}
-        </div>
-        <div className="mt-3">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--gc-amber,#B45309)] px-4 py-2 text-[13px] font-bold text-white shadow-sm transition group-hover:brightness-110">
-            쿠팡 최저가 보기 →
+      {/* 한국풍 장식 모티프 (은은하게) — 단청 원 + 물결 + 점 */}
+      <svg
+        className="pointer-events-none absolute right-0 top-0 h-full w-1/2 text-[var(--gc-amber,#B45309)] opacity-[0.07]"
+        viewBox="0 0 200 120"
+        fill="none"
+        preserveAspectRatio="xMaxYMid slice"
+        aria-hidden
+      >
+        <circle cx="172" cy="28" r="26" stroke="currentColor" strokeWidth="3" />
+        <circle cx="172" cy="28" r="15" stroke="currentColor" strokeWidth="3" />
+        <path d="M112 112 q14 -16 28 0 t28 0 t28 0 t28 0" stroke="currentColor" strokeWidth="3" />
+        <path d="M112 103 q14 -16 28 0 t28 0 t28 0 t28 0" stroke="currentColor" strokeWidth="3" />
+        <g fill="currentColor">
+          <circle cx="116" cy="18" r="2" /><circle cx="128" cy="18" r="2" /><circle cx="140" cy="18" r="2" />
+          <circle cx="116" cy="30" r="2" /><circle cx="128" cy="30" r="2" /><circle cx="140" cy="30" r="2" />
+          <circle cx="116" cy="42" r="2" /><circle cx="128" cy="42" r="2" /><circle cx="140" cy="42" r="2" />
+        </g>
+      </svg>
+
+      <div className="relative">
+        <div className="mb-3 flex items-center gap-2">
+          <span className="inline-flex items-center gap-1 rounded-full bg-[var(--gc-amber,#B45309)] px-2.5 py-1 text-[11px] font-bold text-white">
+            ★ 수험생 추천템
           </span>
+          <span className="text-[11px] font-semibold text-slate-400">AD · 쿠팡파트너스</span>
+        </div>
+        <div className="flex items-center gap-4 sm:gap-6">
+          <img
+            src={book.image}
+            alt={book.title}
+            referrerPolicy="no-referrer"
+            loading="lazy"
+            onError={hideOnError}
+            className="h-24 w-24 shrink-0 object-contain drop-shadow-md sm:h-36 sm:w-36"
+          />
+          <div className="min-w-0 flex-1">
+            <div className="line-clamp-3 font-serif-kr text-lg font-extrabold leading-tight text-slate-900 sm:text-[26px] sm:leading-[1.15]">
+              {book.title}
+            </div>
+            <div className="mt-3 sm:mt-5">
+              <span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ED7029] to-[#d9601c] px-5 py-2.5 text-sm font-extrabold text-white shadow-md transition group-hover:brightness-105 sm:px-6 sm:py-3 sm:text-base">
+                쿠팡 최저가 보기 <span aria-hidden>→</span>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </a>
@@ -292,19 +319,13 @@ export function CoupangProductRow({
 
   return (
     <section
-      className={`mx-auto w-full max-w-md ${className}`}
+      className={`mx-auto w-full max-w-3xl ${className}`}
       aria-label={heading}
       data-coupang-category={category}
     >
-      <div className="mb-2 flex items-center gap-2">
-        <span className="text-xs font-semibold tracking-wide text-[var(--gc-amber,#B45309)]">
-          📚 {heading}
-        </span>
-        <span className="text-[10px] text-slate-400">AD · 쿠팡파트너스</span>
-      </div>
-      {/* 자체 가로형 카드 1개 (매 로드 랜덤 회전) — PC 폭 채움, 모바일 컴팩트 */}
+      {/* 배너형 카드 1개 (매 로드 랜덤 회전) — 추천핀·AD 라벨은 배너 내부 */}
       <CoupangCard book={book} variant="horizontal" />
-      <p className="mt-2 text-[10px] leading-relaxed text-slate-400">{COUPANG_DISCLOSURE}</p>
+      <p className="mt-2 px-1 text-[10px] leading-relaxed text-slate-400">{COUPANG_DISCLOSURE}</p>
     </section>
   );
 }
