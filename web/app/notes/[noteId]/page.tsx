@@ -190,6 +190,9 @@ export default async function NotePage({ params }: Props) {
         )}
       </div>
 
+      {/* 광고: 노트 상단 (제목·태그 직후, 적극 노출) */}
+      <CoupangProductRow products={getCoupangProducts("history")} className="mb-6" />
+
       {/* Cross-link to in-depth blog guide if available */}
       {(() => {
         const blogPost = getBlogPostByRelatedNoteId(noteId);
@@ -282,7 +285,6 @@ export default async function NotePage({ params }: Props) {
 
       {/* Ad: after lectures or after content */}
       <AdSlot size="rectangle" slot={process.env.NEXT_PUBLIC_AD_SLOT_NOTE} className="my-6" />
-      <CoupangProductRow products={getCoupangProducts("history")} className="my-6" />
 
       {/* Related questions — study session button */}
       <NoteActions
