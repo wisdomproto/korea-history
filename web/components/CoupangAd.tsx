@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type SyntheticEvent } from "react";
+import type { CoupangBook } from "@/lib/coupang-products";
 
 /**
  * Coupang Partners 다이나믹 배너 — iframe 격리 방식.
@@ -186,9 +187,78 @@ export function CoupangProduct({
   );
 }
 
+/**
+ * 자체 상품 카드 (쿠팡 위젯 대신) — 표지 + 제목 + CTA, 제휴 링크로 이동.
+ * horizontal: 본문 추천줄(PC 폭 채움) / vertical: PC 사이드레일(좁은 세로).
+ */
+export function CoupangCard({
+  book,
+  variant = "horizontal",
+}: {
+  book: CoupangBook;
+  variant?: "horizontal" | "vertical";
+}) {
+  const href = `https://coupa.ng/${book.code}`;
+  const hideOnError = (e: SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.style.display = "none";
+  };
+
+  if (variant === "vertical") {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="sponsored nofollow noopener"
+        className="block w-[150px] rounded-xl border border-[var(--gc-hairline,#e5ddcf)] bg-white p-2 transition hover:shadow-md"
+      >
+        <img
+          src={book.image}
+          alt={book.title}
+          referrerPolicy="no-referrer"
+          loading="lazy"
+          onError={hideOnError}
+          className="h-[140px] w-full rounded-lg object-contain"
+        />
+        <div className="mt-1.5 line-clamp-2 text-[11px] font-semibold leading-snug text-slate-700">
+          {book.title}
+        </div>
+        <span className="mt-1.5 block rounded-full bg-[var(--gc-amber,#B45309)] px-2 py-1 text-center text-[11px] font-bold text-white">
+          쿠팡에서 보기
+        </span>
+      </a>
+    );
+  }
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="sponsored nofollow noopener"
+      className="flex w-full items-center gap-4 rounded-2xl border border-[var(--gc-hairline,#e5ddcf)] bg-white p-3 transition hover:shadow-md sm:p-4"
+    >
+      <img
+        src={book.image}
+        alt={book.title}
+        referrerPolicy="no-referrer"
+        loading="lazy"
+        onError={hideOnError}
+        className="h-24 w-20 shrink-0 rounded-lg object-contain sm:h-28 sm:w-24"
+      />
+      <div className="min-w-0 flex-1">
+        <div className="line-clamp-2 text-sm font-bold leading-snug text-slate-800 sm:text-[15px]">
+          {book.title}
+        </div>
+        <span className="mt-2.5 inline-flex items-center gap-1 rounded-full bg-[var(--gc-amber,#B45309)] px-3.5 py-1.5 text-xs font-bold text-white">
+          쿠팡 최저가 보기 →
+        </span>
+      </div>
+    </a>
+  );
+}
+
 interface CoupangProductRowProps {
-  /** 직접 product src 배열 전달 (우선). 없으면 category 로 조회. */
-  products?: string[];
+  /** 추천 상품 목록. 1권 랜덤 노출. */
+  products?: CoupangBook[];
   /** coupang-products.ts 카테고리 키 (예: "history"). */
   category?: string;
   heading?: string;
@@ -214,24 +284,22 @@ export function CoupangProductRow({
     if (list.length > 1) setIdx(Math.floor(Math.random() * list.length));
   }, [list.length]);
   if (list.length === 0) return null;
-  const src = list[Math.min(idx, list.length - 1)];
+  const book = list[Math.min(idx, list.length - 1)];
 
   return (
     <section
-      className={`mx-auto w-full max-w-3xl rounded-2xl border border-[var(--gc-hairline,#e5ddcf)] bg-[var(--gc-paper,#fff)] p-4 ${className}`}
+      className={`mx-auto w-full max-w-2xl ${className}`}
       aria-label={heading}
       data-coupang-category={category}
     >
-      <div className="mb-3 flex items-center gap-2">
+      <div className="mb-2 flex items-center gap-2">
         <span className="text-xs font-semibold tracking-wide text-[var(--gc-amber,#B45309)]">
           📚 {heading}
         </span>
         <span className="text-[10px] text-slate-400">AD · 쿠팡파트너스</span>
       </div>
-      {/* 1권만 가운데 노출 (매 로드 랜덤 회전), 카드는 반응형 */}
-      <div className="flex justify-center pb-1">
-        <CoupangProduct src={src} />
-      </div>
+      {/* 자체 가로형 카드 1개 (매 로드 랜덤 회전) — PC 폭 채움, 모바일 컴팩트 */}
+      <CoupangCard book={book} variant="horizontal" />
       <p className="mt-2 text-[10px] leading-relaxed text-slate-400">{COUPANG_DISCLOSURE}</p>
     </section>
   );
