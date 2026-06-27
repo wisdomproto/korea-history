@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Header from "@/components/Header";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Footer from "@/components/Footer";
+import SideRails from "@/components/SideRails";
 import { getAllExamTypes, getAllSubjects } from "@/lib/exam-types";
 import "./globals.css";
 
@@ -181,6 +182,7 @@ export default function RootLayout({
           <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-5">
             {children}
           </main>
+          <SideRails />
           <Footer />
         </div>
       </body>

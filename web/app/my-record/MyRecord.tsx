@@ -5,6 +5,8 @@ import Link from "next/link";
 import { getExamHistory, getGradeColor, type ExamRecord } from "@/lib/exam-history";
 import { getWrongAnswers, type WrongAnswer } from "@/lib/wrong-answers";
 import { useCurrentExamSlug, useCurrentSubjectSlug } from "@/lib/exam-context";
+import { CoupangProductRow } from "@/components/CoupangAd";
+import { getCoupangProducts } from "@/lib/coupang-products";
 
 const ERA_ORDER = ["선사·고조선", "삼국", "남북국", "고려", "조선 전기", "조선 후기", "근대", "현대"];
 
@@ -265,6 +267,8 @@ export default function MyRecord() {
           <p className="text-sm font-bold text-gray-700">학습하기</p>
         </Link>
       </div>
+
+      <CoupangProductRow products={getCoupangProducts("history")} />
     </div>
   );
 }
