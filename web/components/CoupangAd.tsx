@@ -182,7 +182,7 @@ export function CoupangProductRow({
 
   return (
     <section
-      className={`rounded-2xl border border-[var(--gc-hairline,#e5ddcf)] bg-[var(--gc-paper,#fff)] p-4 ${className}`}
+      className={`mx-auto w-full max-w-xl rounded-2xl border border-[var(--gc-hairline,#e5ddcf)] bg-[var(--gc-paper,#fff)] p-4 ${className}`}
       aria-label={heading}
       data-coupang-category={category}
     >
@@ -192,7 +192,9 @@ export function CoupangProductRow({
         </span>
         <span className="text-[10px] text-slate-400">AD · 쿠팡파트너스</span>
       </div>
-      <div className="flex flex-wrap gap-4 pb-1">
+      {/* 모바일·PC 적응형: 카드 가운데 정렬 + 박스 폭 제한으로 휑함 제거.
+          상품 여러 개면 PC 에서 가로로 채워지고 모바일에선 줄바꿈. */}
+      <div className="flex flex-wrap justify-center gap-4 pb-1">
         {list.map((src) => (
           <CoupangProduct key={src} src={src} scale={1.9} />
         ))}
