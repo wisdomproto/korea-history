@@ -15,8 +15,10 @@ import LoginModal from "./LoginModal";
 interface AuthContextValue {
   user: User | null;
   loading: boolean;
-  /** 프리미엄(구독/트라이얼) 여부. 현재는 dev 토글 기반, 추후 premium_until 연동. */
+  /** 프리미엄(구독/트라이얼) 여부. profiles.premium_until > now() (또는 dev 토글). */
   isPremium: boolean;
+  /** 프리미엄 만료 시각(ms). 0 = 없음. "트라이얼 N일 남음" 표시용. */
+  premiumUntil: number;
   openLogin: () => void;
   signOut: () => Promise<void>;
 }
@@ -36,7 +38,8 @@ export default function AuthProvider({
 }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-  const [isPremium, setIsPremium] = useState(false);
+  const [premiumUntil, setPremiumUntil] = useState(0);
+  const [devPremium, setDevPremium] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
 
   useEffect(() => {
@@ -57,17 +60,42 @@ export default function AuthProvider({
     };
   }, []);
 
-  // 프리미엄 상태 — 현재 dev 토글(localStorage). 다음 단계에서 profiles.premium_until 연동.
+  // dev 토글(localStorage) — 게이팅 로컬 테스트용 fallback.
   useEffect(() => {
     const read = () =>
-      setIsPremium(
+      setDevPremium(
         typeof window !== "undefined" &&
           localStorage.getItem("gcnote_dev_premium") === "1"
       );
     read();
     window.addEventListener("storage", read);
     return () => window.removeEventListener("storage", read);
+  }, []);
+
+  // 프리미엄 상태 — profiles.premium_until 조회 (가입 시 7일 트라이얼 부여됨).
+  useEffect(() => {
+    let active = true;
+    if (!user) {
+      setPremiumUntil(0);
+      return;
+    }
+    supabase
+      .from("profiles")
+      .select("premium_until")
+      .eq("id", user.id)
+      .maybeSingle()
+      .then(({ data }) => {
+        if (!active) return;
+        setPremiumUntil(
+          data?.premium_until ? new Date(data.premium_until).getTime() : 0
+        );
+      });
+    return () => {
+      active = false;
+    };
   }, [user]);
+
+  const isPremium = devPremium || premiumUntil > Date.now();
 
   const openLogin = useCallback(() => setLoginOpen(true), []);
   const signOut = useCallback(async () => {
@@ -76,7 +104,7 @@ export default function AuthProvider({
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, loading, isPremium, openLogin, signOut }}>
+    <AuthContext.Provider value={{ user, loading, isPremium, premiumUntil, openLogin, signOut }}>
       {children}
       <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />
     </AuthContext.Provider>
