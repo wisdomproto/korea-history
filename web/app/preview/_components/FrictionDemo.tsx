@@ -85,7 +85,7 @@ export default function FrictionDemo() {
                 marginBottom: 9,
               }}
             >
-              📺 광고 보고 10문제 더 풀기
+              📺 광고 보고 1회차 더 풀기
             </button>
             <button
               onClick={() => setOpen(false)}

@@ -3,7 +3,16 @@ import { createClient } from "@supabase/supabase-js";
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// 클라이언트 전용(localStorage 세션) 구조 — 매직링크/OAuth redirect를 별도
+// /auth/callback 라우트 없이 클라이언트가 URL에서 직접 처리하도록 옵션 명시.
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    persistSession: true,
+    autoRefreshToken: true,
+    detectSessionInUrl: true,
+    flowType: "implicit",
+  },
+});
 
 export type Board = "free" | "suggestion" | "notice";
 

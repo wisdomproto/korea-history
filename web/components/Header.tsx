@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import ExamSelector from "@/components/ExamSelector";
 import PWAInstallButton from "@/components/PWAInstallButton";
+import AuthButton from "@/components/auth/AuthButton";
 import { getExamSlugFromPath, getSubjectSlugFromPath } from "@/lib/exam-context";
 import type { ExamType, Subject } from "@/lib/exam-types";
 
@@ -214,6 +215,9 @@ export default function Header({ examTypes, subjects }: HeaderProps) {
 
           {/* PWA 모바일 헤더 아이콘 — 햄버거 좌측 */}
           <PWAInstallButton variant="mobile" />
+
+          {/* 로그인 / 계정 */}
+          <AuthButton />
 
           {/* Mobile menu button */}
           <button
