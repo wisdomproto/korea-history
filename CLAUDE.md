@@ -229,6 +229,13 @@ korea_history/
 - **내 기록**: 회차별 점수/급수/날짜, 약점 분석 (시대/유형)
 - **시험 기록**: 결과 페이지에서 자동 저장, 급수 판정 (80%=1급, 70%=2급, 60%=3급)
 
+### 멤버십·인증 (진행 중, 브랜치 `preview/membership-model`, 2026-06-28)
+듀오링고형 F2P 유료화. **새 기능 0개** — 무료=광고+하루 한도 / 프리미엄=광고 없이 무제한. 가입 즉시 7일 트라이얼(카드 X) + 친구 초대 시 둘 다 +7일.
+- **팀 리뷰 데모** (커밋 `f05608c`): `/preview`(허브), `/preview/membership`(요금제 비교표), `/preview/note`(노트 게이팅), `FrictionDemo`(한도 도달 마찰 모달). 모델 합의용 — 사용자 결정: 데모는 부차, 실 구현 진행.
+- **사이트 전역 인증** (커밋 `6664bd1`): `web/lib/auth.ts`(카카오/구글 OAuth + 이메일 매직링크) · `web/components/auth/`(`AuthProvider` useAuth context, `LoginModal` createPortal, `AuthButton` 헤더 로그인+계정 드롭다운, 데스크톱·모바일 둘 다) · `layout.tsx`가 `AuthProvider`로 wrap · `Header.tsx`에 `AuthButton` mount · `supabase.ts`에 클라이언트 전용 auth 옵션(`flowType: implicit` + `detectSessionInUrl`)으로 `/auth/callback` 라우트 없이 redirect 처리. 로컬 dev 런타임 검증 완료(모달·콘솔 에러 0).
+- **미완**: `isPremium`은 아직 `localStorage` dev 토글(`gcnote_dev_premium=1`) → `profiles.premium_until` DB 연동 필요 · 실페이지(`/exam`·`/notes`) 한도/광고 게이팅 미적용 · 카카오/구글 provider 미설정(코드만 준비) · 실 매직링크 테스트 전 Supabase redirect allowlist 등록 필요(`redirectTo: origin()`이라 dev는 고정 포트 권장).
+- ⚠️ **Supabase 프로젝트 불일치**: web `.env.local`은 `uonznnypdnerdigfyfci`인데 위 환경변수 섹션 기록은 `ptyjifdidulnkuunkswv`. Supabase MCP 계정엔 둘 다 없음(tangobook만) → web Auth 설정/SQL은 대시보드에서 직접. 로컬/운영 어느 게 실제인지 DB 연동 전 확인. 상세 [memory/membership_auth_v1.md]
+
 ### OG 이미지 (SNS 공유 썸네일)
 - **빌드 시 정적 생성** (SSG, 4,100+ 이미지)
 - 메인/시험/문제/노트 페이지별 OG 이미지
