@@ -240,6 +240,7 @@ korea_history/
 - ✅ **Supabase 프로젝트 (확정 2026-06-28)**: web은 `uonznnypdnerdigfyfci` (로컬=운영 동일, 사용자 확인). 위 환경변수 `NEXT_PUBLIC_SUPABASE_URL` 정정 완료. Supabase MCP 계정엔 없음(tangobook만) → web Auth 설정/SQL은 대시보드에서 직접 실행. author-tool `SUPABASE_URL`(ptyji, weekly_reports용)은 별개/미확인.
 - **멤버십 DB (2026-06-28)**: `web/supabase/migrations/0001_profiles.sql` — `profiles`(premium_until 기반) + RLS(본인 row) + `handle_new_user` 트리거(가입 시 7일 트라이얼) + 기존 유저 백필. 대시보드 SQL Editor에서 실행. `AuthProvider`가 `profiles.premium_until` 조회로 `isPremium` 판정(dev 토글 `gcnote_dev_premium`는 OR fallback 유지). 친구초대(`referral_code`/`referred_by`)는 컬럼만 — 로직 다음 단계. 상세 [memory/membership_auth_v1.md]
 - **실페이지 게이팅 (2026-06-28)**: `web/lib/daily-limit.ts`(localStorage 일자별 한도, 무료 **50문제/일**, 쿠팡 광고 보면 +50 충전, 자정 리셋) + `web/components/LimitGateModal.tsx`(쿠팡 `CoupangProductRow` + "추천템 보고 계속(+50)"/프리미엄/나중에). `QuestionCard.handleReveal`에서 `!isPremium && !canSolveMore()`면 게이트(정답 안 까짐, recordSolved 차단). `NoteContent`(한능검 노트)는 비로그인 soft clip(maxHeight+mask, **DOM 전체 HTML 유지→봇 색인 = SEO moat 보존**)+로그인 카드, 로그인(무료 포함)하면 전체. 프리미엄은 한도 무시. 프리미엄 버튼=로그인(7일 트라이얼) 유도, 실 결제 미구현. 전 흐름 로컬 런타임 검증 완료(노트 clip·DOM 65KB 유지·exam 게이트·충전 해제·콘솔 에러 0). ⚠️ 이 작업 전 `preview/membership-model`에 main의 쿠팡/AdSense/SEO가 없어 main 머지(`f5a6c29`, layout 충돌=AuthProvider+SideRails 둘 다 보존) 선행.
+- **구독 결제 스캐폴드 (토스 정기결제/빌링, 2026-06-28)**: `web/supabase/migrations/0002_billing.sql`(profiles에 subscription_status/current_period_end + **billing_accounts**[billing_key 격리, RLS로 클라 접근 0, service role만] + payments 이력) · `web/lib/billing.ts`(₩4,900/월 상수·clientKey·`BILLING_ENABLED` 가드·customerKey 헬퍼) · `web/lib/supabase-admin.ts`(service role 클라, 키 없으면 null) · `web/app/membership/`(결제 페이지 noindex + 토스 `requestBillingAuth` 클라 위젯) · `web/app/api/billing/confirm/route.ts`(successUrl GET: authKey→빌링키 발급→첫 결제→profiles active+premium_until +30일, 클라 세션 못 읽어 customerKey→user.id 복원으로 매칭). 토스 SDK `@tosspayments/tosspayments-sdk` 설치. **키 없이 스캐폴드** — `NEXT_PUBLIC_TOSS_CLIENT_KEY`/`TOSS_SECRET_KEY`/`SUPABASE_SERVICE_ROLE_KEY` 미설정 시 버튼 "준비 중"(빌드 안전), tsc 클린. 실 위젯·결제 미검증(키 받은 뒤 sandbox). 자동갱신 cron·해지는 후속(빌링키 저장됨).
 
 ### OG 이미지 (SNS 공유 썸네일)
 - **빌드 시 정적 생성** (SSG, 4,100+ 이미지)
@@ -548,6 +549,9 @@ NEXT_PUBLIC_SITE_URL=https://gcnote.co.kr
 NEXT_PUBLIC_KAKAO_JS_KEY=
 ADMIN_PASSWORD=
 NEXT_PUBLIC_AD_REVIEW_MODE=         # 'true'면 전 광고(AdSense+AdFit) OFF — AdSense 심사 중만, 승인 후 삭제
+SUPABASE_SERVICE_ROLE_KEY=          # 멤버십 billing 서버 쓰기 (서버 전용, NEXT_PUBLIC 아님)
+NEXT_PUBLIC_TOSS_CLIENT_KEY=        # 토스 정기결제 클라 키 (test_ck_/라이브). 미설정 시 결제 버튼 "준비 중"
+TOSS_SECRET_KEY=                    # 토스 시크릿 키 (서버 전용) — 빌링키 발급/결제 승인
 ```
 
 ### 저작도구 (author-tool/.env)
