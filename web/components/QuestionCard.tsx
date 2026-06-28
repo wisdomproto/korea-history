@@ -1,6 +1,9 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { canSolveMore, recordSolved } from "@/lib/daily-limit";
+import LimitGateModal from "@/components/LimitGateModal";
 import Link from "next/link";
 import { Question } from "@/lib/types";
 import AdSlot from "@/components/AdSlot";
@@ -49,6 +52,8 @@ export default function QuestionCard({
   const [showFlash, setShowFlash] = useState<"correct" | "wrong" | null>(null);
   const [showScorePopup, setShowScorePopup] = useState(false);
   const feedbackRef = useRef<HTMLDivElement>(null);
+  const { isPremium } = useAuth();
+  const [gateOpen, setGateOpen] = useState(false);
 
   const handleSelect = (choiceNum: number) => {
     if (revealed) return;
@@ -58,6 +63,12 @@ export default function QuestionCard({
 
   const handleReveal = () => {
     if (selected === null) return;
+    // 무료 하루 한도 — 프리미엄이 아니고 한도 초과면 게이트 모달
+    if (!isPremium && !canSolveMore()) {
+      setGateOpen(true);
+      return;
+    }
+    recordSolved();
     setRevealed(true);
     const isCorrect = selected === question.correctAnswer;
     if (isCorrect) {
@@ -338,6 +349,7 @@ export default function QuestionCard({
           )}
         </div>
       )}
+      <LimitGateModal open={gateOpen} onClose={() => setGateOpen(false)} />
     </div>
   );
 }
