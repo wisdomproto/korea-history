@@ -51,7 +51,9 @@ const AD_REVIEW_MODE = process.env.NEXT_PUBLIC_AD_REVIEW_MODE === "true";
 const ADSENSE_ENABLED = process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true";
 const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "ca-pub-6002059361162458";
 
-const ADFIT_ENABLED = process.env.NEXT_PUBLIC_ADFIT_ENABLED === "true";
+// 카카오 애드핏 비활성 (2026-06-27) — 쿠팡 파트너스 광고 우선, 디스플레이 광고 경합 제거.
+// env 무관 강제 off. 다시 켜려면 false → process.env.NEXT_PUBLIC_ADFIT_ENABLED === "true".
+const ADFIT_ENABLED = false;
 const ADFIT_UNITS: Partial<Record<AdSize, string | undefined>> = {
   rectangle: process.env.NEXT_PUBLIC_ADFIT_UNIT_RECTANGLE,
   banner: process.env.NEXT_PUBLIC_ADFIT_UNIT_BANNER,

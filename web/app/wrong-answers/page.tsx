@@ -9,6 +9,8 @@ import {
   WrongAnswer,
 } from "@/lib/wrong-answers";
 import { useCurrentExamSlug, useCurrentSubjectSlug } from "@/lib/exam-context";
+import { CoupangProductRow } from "@/components/CoupangAd";
+import { getCoupangProducts } from "@/lib/coupang-products";
 
 type MainTab = "all" | "analysis";
 type StatusFilter = "all" | "unresolved" | "resolved";
@@ -179,6 +181,8 @@ export default function WrongAnswersPage() {
           </button>
         )}
       </div>
+
+      <CoupangProductRow products={getCoupangProducts("history")} className="mb-4" />
 
       {/* Main tabs */}
       <div className="flex gap-1 mb-4 rounded-2xl bg-slate-100 p-1">

@@ -16,6 +16,8 @@ import PrevNextNav from "@/components/PrevNextNav";
 import NoteContent from "./NoteContent";
 import NoteActions from "./NoteActions";
 import AdSlot from "@/components/AdSlot";
+import { CoupangProductRow } from "@/components/CoupangAd";
+import { getCoupangProducts } from "@/lib/coupang-products";
 import ShareButtons from "@/components/ShareButtons";
 import YouTubeEmbed from "@/components/YouTubeEmbed";
 import { NoteIntro, NoteOutro } from "@/components/NoteSEOContent";
@@ -187,6 +189,9 @@ export default async function NotePage({ params }: Props) {
           </span>
         )}
       </div>
+
+      {/* 광고: 노트 상단 (제목·태그 직후, 적극 노출) */}
+      <CoupangProductRow products={getCoupangProducts("history")} className="mb-6" />
 
       {/* Cross-link to in-depth blog guide if available */}
       {(() => {

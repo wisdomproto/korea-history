@@ -57,3 +57,6 @@ ga4-key.json
 
 # scripts/output (capture results — re-generated on demand)
 scripts/output/
+
+# GA4 service account key — never commit
+scripts/ga4/service-account.json

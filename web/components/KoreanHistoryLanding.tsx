@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getAllExams, getAllKeywords } from "@/lib/data";
 import type { ExamFile } from "@/lib/types";
 import AdSlot from "@/components/AdSlot";
+import { CoupangBand } from "@/components/CoupangAd";
 import MultiExamStrip from "@/components/MultiExamStrip";
 
 // ── Design tokens (match globals.css :root vars) ────────────────────────
